@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "simplespawn",
+  "name": "simplespawn",
+  "author": "funnybunnyofdoom",
+  "description": "use /spawn to return to world spawn",
+  "version": "1.0.0",
+  "dependency": {
+    "game": ""
+  },
+  "requiredonclient":false
+}
