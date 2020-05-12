@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "jrtp",
+  "name": "justRandomTeleport",
+  "author": "Funnybunnyofdoom",
+  "description": "Adds /rtp to randomly teleport",
+  "version": "1.0.0",
+  "dependency": {
+    "game": ""
+  },
+  "requiredonclient":false
+}
