@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "risingsun",
+  "name": "risingsun",
+  "author": "Funnybunnyofdoom",
+  "description": "The sun rises when a new player joins",
+  "version": "1.0.0",
+  "dependency": {
+    "game": ""
+  },
+  "requiredonclient":false
+}
