@@ -9,3 +9,6 @@ A collection of mods for the game Vintage Story
 
 -Rising Sun:
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
+
+-Bunny Utilities:
+  Collection of utility mods (Spawn/rtp) with permission support.
