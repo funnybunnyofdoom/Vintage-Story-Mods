@@ -24,8 +24,10 @@ public class JustRandomTeleport : ModSystem
 	public override void StartServerSide(ICoreServerAPI api)
 	{
 		base.StartServerSide(api); //Register the server api to "api"
+		IPermissionManager ipm = api.Permissions;
+		ipm.RegisterPrivilege("rtp","Random Teleport");
 
-		api.RegisterCommand("rtp", "Teleports the player to spawn", "",
+		api.RegisterCommand("rtp", "Teleports the player to spawn","",
 			(IServerPlayer player, int groupId, CmdArgs args) =>
 			{
 				EntityPlayer byEntity = player.Entity; //Get the player
@@ -49,12 +51,12 @@ public class JustRandomTeleport : ModSystem
 
 				
 				
-			}, Privilege.chat);
+			}, BPrivilege.rtp);
 	}
 
 	private void OnTick(float dt)
 	{
-		if (count >= 3)
+		if (count >= 5)
 		{
 			GEntity.Properties.FallDamage = true;
 			count = 0;
@@ -67,4 +69,14 @@ public class JustRandomTeleport : ModSystem
 		}
 		Console.WriteLine(count);
 	}
+
+	public class BPrivilege : Privilege
+    {
+		/// <summary>
+		/// Ability to use /rtp
+		/// </summary>
+		public static string rtp = "rtp";
+	}
+
+	
 }
