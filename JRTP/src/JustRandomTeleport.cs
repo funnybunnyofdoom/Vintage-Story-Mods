@@ -26,6 +26,7 @@ public class JustRandomTeleport : ModSystem
 		base.StartServerSide(api); //Register the server api to "api"
 		IPermissionManager ipm = api.Permissions;
 		ipm.RegisterPrivilege("rtp","Random Teleport");
+		AddPrivilegeToGroup("suplayer", "rtp");
 
 		api.RegisterCommand("rtp", "Teleports the player to spawn","",
 			(IServerPlayer player, int groupId, CmdArgs args) =>
