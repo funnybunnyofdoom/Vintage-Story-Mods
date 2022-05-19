@@ -4,7 +4,7 @@
   "name": "justRandomTeleport",
   "author": "Funnybunnyofdoom",
   "description": "Adds /rtp to randomly teleport",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "dependency": {
     "game": ""
   },
