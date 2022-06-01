@@ -1,0 +1,19 @@
+{
+  "ingredientPattern": "CCC,L_L,LLL",
+  "width": 3,
+  "height": 3,
+  "ingredients": {
+    "C": {
+      "type": "item",
+      "code": "game:burnedbrick-blue"
+    },
+    "L": {
+      "type": "block",
+      "code": "game:glass-plain"
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "Jarblock:jarblock"
+  }
+}

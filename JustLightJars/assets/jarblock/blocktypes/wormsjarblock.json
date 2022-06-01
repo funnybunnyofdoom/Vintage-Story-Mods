@@ -1,0 +1,110 @@
+{
+  "code": "wormsjarblock",
+  "class": "wormsjarblock",
+
+  "creativeinventory": { "general": [ "*" ] },
+  "shape": {
+    "base": "block/glassjar_big_worms",
+    "scale":  0.75
+  },
+  "blockmaterial": "Glass",
+  "drawtype": "json",
+  "storageFlags": 257,
+  "sounds": {
+    "place": "game:block/glass",
+    "break": "game:block/glass",
+    "hit": "game:block/glass"
+  },
+  "maxStackSize": 1,
+  "resistance": 0.5,
+  "sidesolid": {
+    "all": "false"
+  },
+  "sideopaque": {
+    "all": "false"
+  },
+  "lightAbsorption": 0,
+  "lightHsv": [ 42, 4, 20 ],
+  "randomizeRotations": true,
+  "overrideRandomDrawOffset" :  0.1,
+  "randomDrawOffset": true,
+  "particleProperties": [
+    {
+      "gravityEffect": {
+        "avg": 0,
+        "var": 0
+      },
+      "posOffset": [
+        {
+          "avg": 0,
+          "var": 0.5
+        },
+        {
+          "avg": -0.2,
+          "var": 0
+        },
+        {
+          "avg": 0,
+          "var": 0.5
+        }
+      ],
+      "velocity": [
+        {
+          "avg": 0,
+          "var": 0.025
+        },
+        {
+          "avg": 0.18,
+          "var": 0.07
+        },
+        {
+          "avg": 0,
+          "var": 0.025
+        }
+      ],
+      "hsvaColor": [
+        {
+          "avg": 196,
+          "var": 40
+        },
+        {
+          "avg": 87,
+          "var": 40
+        },
+        {
+          "avg": 86,
+          "var": 40
+        },
+        {
+          "avg": 255,
+          "var": 40
+        }
+      ],
+      "quantity": { "avg": 0.4 },
+      "size": {
+        "avg": 0.25,
+        "var": 0.05
+      },
+      "lifeLength": { "avg": 0.5 }
+    }
+  ],
+
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0.15,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": -90,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.15,
+      "z": 0.5
+    },
+    "scale": 2
+  }
+}

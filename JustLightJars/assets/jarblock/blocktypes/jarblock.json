@@ -1,0 +1,25 @@
+{
+  "code": "jarblock",
+  "class": "jarblock",
+  "creativeinventory": { "general": [ "*" ] },
+  "shape": {
+    "base": "block/glassjar_big_empty",
+    "scale": 0.75
+  },
+  "blockmaterial": "Glass",
+  "sounds": {
+    "place": "game:block/glass",
+    "break": "game:block/glass",
+    "hit": "game:block/glass"
+  },
+  "randomizeRotations": true,
+  "lightAbsorbtion": 0,
+  "drawtype": "json",
+  "resistance": 0.5,
+  "sidesolid": {
+    "all": "false"
+  },
+  "sideopaque": {
+    "all": "false"
+  }
+}

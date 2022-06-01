@@ -1,0 +1,15 @@
+[
+  {
+    "op": "add",
+    "path": "/drops/0",
+    "value": {
+      "type": "item",
+      "code": "jarblock:glowwormsitem",
+      "quantity": {
+        "avg": 2,
+        "var": 2
+      }
+    },
+    "file": "game:blocktypes/plant/glowworms.json"
+  }
+]

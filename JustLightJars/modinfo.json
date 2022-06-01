@@ -1,0 +1,11 @@
+{
+  "type": "code",
+  "modid": "jlj",
+  "name": "Just Light Jars",
+  "authors": ["FunnyBunnyofDOOM","DukePony"],
+  "description": "Just Light Jars",
+  "version": "1.0.1",
+  "dependencies": {
+    "game": ""
+  }
+}

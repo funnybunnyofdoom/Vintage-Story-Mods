@@ -1,0 +1,10 @@
+{
+  "code": "glowwormsitem",
+  "creativeinventory": {
+    "general": [ "*" ]
+  },
+  "texture": {
+    "base": "jarblock:item/glowworm/glowworms"
+  },
+  "maxStackSize":  64
+}
