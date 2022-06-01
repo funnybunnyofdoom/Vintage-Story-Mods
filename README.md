@@ -12,3 +12,6 @@ A collection of mods for the game Vintage Story
 
 -Bunny Utilities:
   Collection of utility mods (Spawn/rtp) with permission support.
+  
+-Just Light Jars:
+  harvest glow worms and craft them with a glass jar to get glowing jars
