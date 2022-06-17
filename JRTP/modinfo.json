@@ -4,10 +4,10 @@
   "name": "justRandomTeleport",
   "author": "Funnybunnyofdoom",
   "description": "Adds /rtp to randomly teleport",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "dependency": {
     "game": ""
   },
   "website": "http://doomlandgaming.com",
-  "requiredonclient":false
+  "requiredonclient": false
 }
