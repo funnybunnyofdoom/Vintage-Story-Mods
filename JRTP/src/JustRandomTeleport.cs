@@ -15,6 +15,9 @@ public class JustRandomTeleport : ModSystem
     public IServerChunk SChunk;
     public BlockPos cblockpos;
     int randx, randz = 0;
+    bool teleporting = false;
+    int count = 0;
+    long CID;
 
 
     public override bool ShouldLoad(EnumAppSide side)
@@ -38,11 +41,12 @@ public class JustRandomTeleport : ModSystem
 
     private void OnChunkColumnLoaded(Vec2i chunkCoord, IWorldChunk[] chunks)
     {
-        if (randx / myAPI.WorldManager.ChunkSize == chunkCoord.X & (randz / myAPI.WorldManager.ChunkSize == chunkCoord.Y))
+        if (randx / myAPI.WorldManager.ChunkSize == chunkCoord.X & (randz / myAPI.WorldManager.ChunkSize == chunkCoord.Y) & (teleporting == true))
         {
             Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location.", Vintagestory.API.Common.EnumChatType.Notification);
             int height = myAPI.World.BlockAccessor.GetRainMapHeightAt(randx,randz);
             GEntity.TeleportTo(randx, height+1, randz);
+            teleporting = false;
         }
 
     }
@@ -58,13 +62,28 @@ public class JustRandomTeleport : ModSystem
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait while destination chunks are loaded.", Vintagestory.API.Common.EnumChatType.Notification);
                     randx = GEntity.World.Rand.Next(400000, 600000);//Using a hard coded 100000x in each direction until I can do the math
                     randz = GEntity.World.Rand.Next(400000, 600000);
-                    world.LoadChunkColumn(randx / myAPI.WorldManager.ChunkSize, randz / myAPI.WorldManager.ChunkSize);   
-                }
+                    world.LoadChunkColumn(randx / myAPI.WorldManager.ChunkSize, randz / myAPI.WorldManager.ChunkSize);
+                    CID = api.Event.RegisterGameTickListener(CoolDown, 4500); // register the cooldown tick listener
+                    teleporting = true;
+        }
                 else
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait a short while before trying again.", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
+
+    private void CoolDown(float ct)
+    {
+        if (count >= 10)
+        {
+            count = 0;
+            myAPI.Event.UnregisterGameTickListener(CID);
+        }
+        else
+        {
+            count = count + 1;
+        }
+    }  
 
     public class BPrivilege : Privilege
     {
