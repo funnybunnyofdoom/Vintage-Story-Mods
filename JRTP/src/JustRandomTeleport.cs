@@ -48,10 +48,10 @@ public class JustRandomTeleport : ModSystem
             GEntity.TeleportTo(randx, height+1, randz);
             teleporting = false;
         }
-        if (teleporting == true)
-        {
-            Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "loading chunk " + chunkCoord.X.ToString() + " " + chunkCoord.Y.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
-        }
+        //if (teleporting == true)
+        //{
+         //   Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "loading chunk " + chunkCoord.X.ToString() + " " + chunkCoord.Y.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
+        //}
 
     }
 
@@ -73,7 +73,7 @@ public class JustRandomTeleport : ModSystem
             {
 
             }
-                    CID = api.Event.RegisterGameTickListener(CoolDown, 4500); // register the cooldown tick listener
+                    CID = api.Event.RegisterGameTickListener(CoolDown, 1000); // register the cooldown tick listener
                     count = 1;
                     teleporting = true;
                 }
@@ -82,13 +82,13 @@ public class JustRandomTeleport : ModSystem
                 }
         else
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait a short while before trying again.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + (120-count) + " seconds", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
     private void CoolDown(float ct)
     {
-        if (count >= 10)
+        if (count >= 120)
         {
             count = 0;
             myAPI.Event.UnregisterGameTickListener(CID);
