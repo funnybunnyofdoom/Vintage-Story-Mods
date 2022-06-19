@@ -4,6 +4,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Config;
 //FunnyBunnyofDOOM@gmail.com
 //https://www.doomlandgaming.com
 
@@ -35,6 +36,35 @@ public class JustRandomTeleport : ModSystem
         api.Event.ChunkColumnLoaded += OnChunkColumnLoaded;
         api.RegisterCommand("rtp", "Randomly Teleports the player", "",
             cmd_rtp, BPrivilege.rtp);
+
+        try
+        {
+            var Config = api.LoadModConfig<JrtpConfig>("jrtpconfig.json");
+            if (Config != null)
+            {
+                api.Logger.Notification("Mod Config successfully loaded.");
+                JrtpConfig.Current = Config;
+            }
+            else
+            {
+                api.Logger.Notification("No Mod Config specified. Falling back to default settings");
+                JrtpConfig.Current = JrtpConfig.getDefault();
+            }
+        }
+        catch
+        {
+            JrtpConfig.Current = JrtpConfig.getDefault();
+            api.Logger.Error("Failed to load custom mod configuration. Falling back to default settings!");
+        }
+        finally
+        {
+            if (JrtpConfig.Current.cooldownseconds == null)
+                JrtpConfig.Current.cooldownseconds = JrtpConfig.getDefault().cooldownseconds;
+            if (JrtpConfig.Current.teleportradius == null)
+                JrtpConfig.Current.teleportradius = JrtpConfig.getDefault().teleportradius;
+
+            api.StoreModConfig(JrtpConfig.Current, "jrtpconfig.json");
+        }
     }
 
   
@@ -66,8 +96,15 @@ public class JustRandomTeleport : ModSystem
                 if (count == 0 & teleporting == false)
                 {                   
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait while destination chunks are loaded.", Vintagestory.API.Common.EnumChatType.Notification);
-                    randx = GEntity.World.Rand.Next(400000, 600000);//Using a hard coded 100000x in each direction until I can do the math
-                    randz = GEntity.World.Rand.Next(400000, 600000);
+                    int radius = JrtpConfig.Current.teleportradius ?? default(int);
+                    int worldx = world.MapSizeX;
+                    int worldz = world.MapSizeZ;
+                    int rawxmin = (worldx/2) - radius;
+                    int rawxmax = (worldx / 2) + radius;
+                    int rawzmin = (worldz / 2) - radius;
+                    int rawzmax = (worldz / 2) + radius;
+                    randx = GEntity.World.Rand.Next(rawxmin, rawxmax);
+                    randz = GEntity.World.Rand.Next(rawzmin, rawzmax);
                     world.LoadChunkColumnPriority(randx / myAPI.WorldManager.ChunkSize, randz / myAPI.WorldManager.ChunkSize);
                    
             {
@@ -82,13 +119,13 @@ public class JustRandomTeleport : ModSystem
                 }
         else
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + (120-count) + " seconds", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + (JrtpConfig.Current.cooldownseconds-count) + " seconds", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
     private void CoolDown(float ct)
     {
-        if (count >= 120)
+        if (count >= JrtpConfig.Current.cooldownseconds)
         {
             count = 0;
             myAPI.Event.UnregisterGameTickListener(CID);
@@ -97,7 +134,25 @@ public class JustRandomTeleport : ModSystem
         {
             count = count + 1;
         }
-    }  
+    }
+
+    public class JrtpConfig
+    {
+        public static JrtpConfig Current { get; set; }
+
+        public int? cooldownseconds { get; set; }
+        public int? teleportradius { get; set; }
+
+        public static JrtpConfig getDefault()
+        {
+            var config = new JrtpConfig();
+
+            config.cooldownseconds = 120;
+            config.teleportradius = 100000;
+
+            return config;
+        }
+    }
 
     public class BPrivilege : Privilege
     {
