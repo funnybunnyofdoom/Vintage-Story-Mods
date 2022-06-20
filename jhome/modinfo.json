@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "jhome",
+  "name": "jhome",
+  "authors": [ "FunnyBunnyofDOOM" ],
+  "description": "allows a user to /sethome and /home to return",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  },
+  "requiredonclient": false
+}
