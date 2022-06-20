@@ -74,7 +74,12 @@ public class JustRandomTeleport : ModSystem
         if (randx / myAPI.WorldManager.ChunkSize == chunkCoord.X & (randz / myAPI.WorldManager.ChunkSize == chunkCoord.Y) & (teleporting == true))
         {
             Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location.", Vintagestory.API.Common.EnumChatType.Notification);
-            int height = myAPI.World.BlockAccessor.GetRainMapHeightAt(randx,randz);
+            //int height = myAPI.World.BlockAccessor.GetRainMapHeightAt(randx,randz);
+            BlockPos checkheight = new BlockPos();
+            checkheight.X = randx;
+            checkheight.Y = 1;
+            checkheight.Z = randz;
+            int height = myAPI.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
             GEntity.TeleportTo(randx, height+1, randz);
             teleporting = false;
         }
