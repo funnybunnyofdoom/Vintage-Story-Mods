@@ -18,3 +18,6 @@ A collection of mods for the game Vintage Story
   
 -Just Light Jars:
   harvest glow worms and craft them with a glass jar to get glowing jars
+  
+  -Group Random Teleport
+    /grtp to teleport to a point that moves randomly at a configurable interval of time for group random teleport excursions
