@@ -1,0 +1,13 @@
+{
+  "type": "code",
+  "modid": "grtp",
+  "name": "grtp",
+  "authors": [ "FunnyBunnyofDOOM" ],
+  "description": "Teleport to the group RTP location",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  },
+  "website": "http://doomlandgaming.com",
+  "requiredonclient": false
+}
