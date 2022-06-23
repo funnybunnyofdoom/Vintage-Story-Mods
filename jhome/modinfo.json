@@ -4,7 +4,7 @@
   "name": "jhome",
   "authors": [ "FunnyBunnyofDOOM" ],
   "description": "allows a user to /sethome and /home to return",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "dependencies": {
     "game": ""
   },
