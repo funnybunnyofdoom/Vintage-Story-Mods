@@ -1,0 +1,5 @@
+{
+  //Guide Info
+  "game:jhome-title": "Just Home Teleport",
+  "game:jhome-text": "/sethome will set a home location.<br>/home will take you to your set home.<br><br>If enabled, /back will take you back to your last death or the last place you used /home,/back."
+}
