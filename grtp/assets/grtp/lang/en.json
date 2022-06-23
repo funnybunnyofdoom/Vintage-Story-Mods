@@ -1,0 +1,6 @@
+{
+  //Guide Info
+  "game:grtp-title": "Group Random Teleport - /grtp",
+  "game:grtp-text": "GRTP is a server side mod that allows you and other players to teleport to the same random location in the world.<br><br>The teleport point will change at an interval set by your server admin.<br><br>Make sure you do not bring any valuables with you unless you have a way to return home after your teleport. There will be a server announcement when the teleport point updates.<br><br>Command: /grtp"
+
+}
