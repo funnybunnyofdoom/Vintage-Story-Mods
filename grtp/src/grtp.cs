@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,14 +78,7 @@ public class grtp : ModSystem
     {
         if (loaded == true)
         {
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (grtpConfig.Current.cooldownseconds - count) + " Seconds.", Vintagestory.API.Common.EnumChatType.Notification);
-            
-            
-                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Chunk is still loading", Vintagestory.API.Common.EnumChatType.Notification);
-            
-            
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (grtpConfig.Current.cooldownseconds - count) + " Seconds.", Vintagestory.API.Common.EnumChatType.Notification);
-            
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (grtpConfig.Current.cooldownseconds - count) + " Seconds.", Vintagestory.API.Common.EnumChatType.Notification);          
             player.Entity.TeleportTo(randx, height + 2, randz);
             
         }
@@ -112,6 +105,7 @@ public class grtp : ModSystem
             randz = sapi.World.Rand.Next(rawzmin, rawzmax);
             loaded = false;
             sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
+
         }
         else
         {
@@ -127,7 +121,7 @@ public class grtp : ModSystem
             checkheight.Y = 1;
             checkheight.Z = randz;
             height = sapi.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
-            
+            sapi.BroadcastMessageToAllGroups("New /GRTP coordinates generated", Vintagestory.API.Common.EnumChatType.Notification);
             
             loaded = true;
         }
