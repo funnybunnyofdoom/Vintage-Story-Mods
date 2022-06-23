@@ -1,10 +1,10 @@
 {
   "type": "code",
-  "modid": "jrtp",
-  "name": "justRandomTeleport",
-  "author": "Funnybunnyofdoom",
-  "description": "Adds /rtp to randomly teleport",
-  "version": "2.0.0",
+  "modid": "simplespawn",
+  "name": "simplespawn",
+  "author": "funnybunnyofdoom",
+  "description": "use /spawn to return to world spawn",
+  "version": "1.0.1",
   "dependency": {
     "game": ""
   },
