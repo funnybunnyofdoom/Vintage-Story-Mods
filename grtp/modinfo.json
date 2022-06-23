@@ -4,7 +4,7 @@
   "name": "grtp",
   "authors": [ "FunnyBunnyofDOOM" ],
   "description": "Teleport to the group RTP location",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "game": ""
   },
