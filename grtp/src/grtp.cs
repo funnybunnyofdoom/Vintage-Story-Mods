@@ -12,7 +12,7 @@ using Vintagestory.API.Datastructures;
 public class grtp : ModSystem
 {
     ICoreServerAPI sapi;
-    int? count = 901;
+    int? count = 99999;
     long CID;
     int randx, randz;
     public bool loaded = false;
@@ -63,6 +63,7 @@ public class grtp : ModSystem
 
             api.StoreModConfig(grtpConfig.Current, "grtpconfig.json");
         }
+        count = grtpConfig.Current.cooldownseconds + 1;
         CID = api.Event.RegisterGameTickListener(CoolDown, 1000);
     }
 
@@ -79,6 +80,7 @@ public class grtp : ModSystem
         if (loaded == true)
         {
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (grtpConfig.Current.cooldownseconds - count) + " Seconds.", Vintagestory.API.Common.EnumChatType.Notification);          
+            
             player.Entity.TeleportTo(randx, height + 2, randz);
             
         }
@@ -121,7 +123,11 @@ public class grtp : ModSystem
             checkheight.Y = 1;
             checkheight.Z = randz;
             height = sapi.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
-            sapi.BroadcastMessageToAllGroups("New /GRTP coordinates generated", Vintagestory.API.Common.EnumChatType.Notification);
+            if (loaded == false)
+            {
+                sapi.BroadcastMessageToAllGroups("New /GRTP coordinates generated", Vintagestory.API.Common.EnumChatType.Notification);
+            
+            }
             
             loaded = true;
         }
@@ -145,4 +151,3 @@ public class grtp : ModSystem
         }
     }
 }
-
