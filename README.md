@@ -39,3 +39,6 @@ A collection of mods for the game Vintage Story
 
 -Paper Craft: [FunnyBunnyofDOOM][DukePony]
 	Sawmill machine to saw logs into boards but also produce sawdust. soak sawdust in barrel with water to produce pulp. Use pulp with paper machine to make paper. Paper can be used for bookshelves, paper constructs, wall scrolls and LAND CLAIM PAPERS which will allow the user to claim more land.
+-fish and game:
+        Block entity traps that "generate" animals. Minnow trap, crab trap, lobster trap, crayfish trap, rabbit trap, fox trap
+        Should check for on grass placement and under skylight. Traps should not work indoors. 
