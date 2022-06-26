@@ -37,5 +37,5 @@ A collection of mods for the game Vintage Story
 -Temporal Power: [FunnyBunnyofDOOM][DukePony]
 	Killing drifters and having rifts in a chunk with a "temporal collector" or "temporal antenna' or something stores temporal energy on that chunk which could be used by a machine in that chunk to "harvest" this power and use it instead of wind to power mechanics.   
 
--Paper Craft: 
+-Paper Craft: [FunnyBunnyofDOOM][DukePony]
 	Sawmill machine to saw logs into boards but also produce sawdust. soak sawdust in barrel with water to produce pulp. Use pulp with paper machine to make paper. Paper can be used for bookshelves, paper constructs, wall scrolls and LAND CLAIM PAPERS which will allow the user to claim more land.
