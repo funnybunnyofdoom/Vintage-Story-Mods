@@ -1,5 +1,5 @@
 {
-  "pageCode": "grtp-grouprandomteleportguide",
-  "title": "grtp-title",
-  "text": "grtp-text"
+  "pageCode": "grtp:gamemechanicinfo-grtp",
+  "title": "grtp:gamemechanicinfo-grtp-title",
+  "text": "grtp:gamemechanicinfo-grtp-text"
 }
