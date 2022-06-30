@@ -1,0 +1,49 @@
+[
+  {
+    "op": "remove",
+    "path": "/transitionableProps",
+    "file": "game:blocktypes/plant/mushroom-side.json"
+  },
+  {
+    "op": "add",
+    "path": "/grindingPropsByType",
+    "value": {
+      "*-dried-*": {
+        "grindedStack": {
+          "type": "item",
+          "code": "game:flour-cassava"
+        }
+      }
+    },
+    "file": "game:blocktypes/plant/mushroom-side.json"
+  },
+  {
+    "op": "add",
+    "path": "/transitionablePropsByType",
+    "value": {
+      "*-normal-*": [
+        {
+          "type": "dry",
+          "freshHours": {
+            "avg": 0
+          },
+          "transitionHours": {
+            "avg": 24
+          },
+          "transitionedStack": {
+            "type": "block",
+            "code": "mushroom-{mushroom}-dried-north"
+          },
+          "transitionRatio": 1
+        }
+      ]
+    },
+    "file": "game:blocktypes/plant/mushroom-side.json"
+  },
+  {
+    "op": "add",
+    "path": "/variantgroups/1/states/2",
+    "value": "dried",
+    "file": "game:blocktypes/plant/mushroom-side.json"
+  }
+]
