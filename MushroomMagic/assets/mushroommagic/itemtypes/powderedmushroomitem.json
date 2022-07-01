@@ -1,0 +1,28 @@
+{
+  "code": "powderedmushroomitem",
+  "maxstacksize": 64,
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "almondmushroom", "reishi", "funeralbell", "deerear", "livermushroom", "pinkbonnet", "shiitake", "witchhat", "devilstooth", "beardedtooth", "bitterbolete", "blacktrumpet", "chanterelle", "commonmorel", "deathcap", "devilbolete", "earthball,", "elfinsaddle", "golddropmilkcap", "greencrackedrussula", "indigomilkcap", "jackolantern", "kingbolete", "lobster", "orangeoakbolete", "paddystraw", "puffball", "redwinecap", "saffronmilkcap", "violetwebcap", "chickenofthewoods", "dryadsaddle", "pinkoyster", "tinderhoof", "whiteoyster", "flyagaric", "bolete", "fieldmushroom" ]
+    }
+  ],
+  "texture": { "base": "item/{type}-powdered" },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ]
+  },
+  "materialDensity": 600,
+  "transitionableProps": [
+    {
+      "type": "Perish",
+      "freshHours": { "avg": 4320 },
+      "transitionHours": { "avg": 336 },
+      "transitionedStack": {
+        "type": "item",
+        "code": "rot"
+      },
+      "transitionRatio": 0.25
+    }
+  ]
+}

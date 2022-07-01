@@ -37,5 +37,11 @@
   "game:block-mushroom-whiteoyster-dried-*": "Dried White oyster",
   "game:block-mushroom-flyagaric-dried": "Dried Fly agaric",
   "game:block-mushroom-bolete-dried": "Dried Bolete",
-  "game:block-mushroom-fieldmushroom-dried": "Dried Field mushroom"
+  "game:block-mushroom-fieldmushroom-dried": "Dried Field mushroom",
+
+  "mushroommagic:item-powderedmushroomitem-puffball": "Powdered Puffball Mushroom",
+
+  "mushroommagic:item-mushroomportion-puffball": "Liquid Puffball Mushroom",
+  "mushroommagic:incontainer-item-mushroomportion-puffball": "Liquid Puffball Mushroom"
+
 }

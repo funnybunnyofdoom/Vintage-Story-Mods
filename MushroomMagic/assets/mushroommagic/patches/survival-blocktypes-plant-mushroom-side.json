@@ -11,7 +11,7 @@
       "*-dried-*": {
         "grindedStack": {
           "type": "item",
-          "code": "game:flour-cassava"
+          "code": "mushroommagic:powderedmushroomitem-{mushroom}"
         }
       }
     },

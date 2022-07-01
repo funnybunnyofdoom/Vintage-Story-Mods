@@ -1,0 +1,22 @@
+[
+  {
+    "code": "mushroomliquid",
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "game:waterportion",
+        "litres": 1
+      },
+      {
+        "type": "item",
+        "code": "mushroommagic:powderedmushroomitem-puffball",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "mushroommagic:mushroomportion-puffball",
+      "litres": 1
+    }
+  }
+]

@@ -1,0 +1,95 @@
+{
+  "code": "mushroomportion",
+  "variantGroups": [
+    {
+      "code": "type",
+      "states": [ "almondmushroom", "reishi", "funeralbell", "deerear", "livermushroom", "pinkbonnet", "shiitake", "witchhat", "devilstooth", "beardedtooth", "bitterbolete", "blacktrumpet", "chanterelle", "commonmorel", "deathcap", "devilbolete", "earthball,", "elfinsaddle", "golddropmilkcap", "greencrackedrussula", "indigomilkcap", "jackolantern", "kingbolete", "lobster", "orangeoakbolete", "paddystraw", "puffball", "redwinecap", "saffronmilkcap", "violetwebcap", "chickenofthewoods", "dryadsaddle", "pinkoyster", "tinderhoof", "whiteoyster", "flyagaric", "bolete", "fieldmushroom" ]
+    }
+  ],
+  "class": "ItemLiquidPortion",
+  "matterState": "liquid",
+  "attributes": {
+    "handbook": {
+      "ignoreCreativeInvStacks": true
+    },
+    "waterTightContainerProps": {
+      "containable": true,
+      "itemsPerLitre": 100,
+      "texture": {
+        "base": "mushroommagic:item/{type}-liquid"
+      },
+      "allowSpill": true,
+      "whenSpilled": {
+        "action": "DropContents",
+        "stack": {
+          "type": "item",
+          "code": "mushroommagic:mushroomportion-{type}"
+        }
+      }
+    }
+  },
+  "shape": { "base": "item/liquid" },
+  "texture": {
+    "alpha": 255,
+    "base": "mushroommagic:item/{type}-liquid"
+  },
+  "creativeinventoryStacks": [
+    {
+      "tabs": [ "general", "liquids" ],
+      "stacks": [
+        {
+          "type": "block",
+          "code": "game:woodbucket",
+          "attributes": {
+            "ucontents": [
+              {
+                "type": "item",
+                "code": "mushroommagic:mushroomportion-{type}",
+                "makefull": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "maxstacksize": 5000,
+  "materialDensity": 200,
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 1,
+      "z": 0
+    },
+    "rotation": {
+      "x": 123,
+      "y": -33,
+      "z": -13
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 1.4
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 25,
+      "y": 157,
+      "z": -5
+    }
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.5,
+      "y": -1,
+      "z": -1.4
+    }
+  }
+}
