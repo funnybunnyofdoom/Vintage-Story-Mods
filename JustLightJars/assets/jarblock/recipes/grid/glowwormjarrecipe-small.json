@@ -1,0 +1,23 @@
+{
+  "ingredientPattern": "G,J",
+  "width": 1,
+  "height": 2,
+  "recipeGroup": 1,
+  "ingredients": {
+    "G": {
+      "type": "item",
+      "code": "jarblock:glowwormsitem",
+      "quantity": 4
+    },
+    "J": {
+      "code": "jarblock:jarblock-small",
+      "type": "block",
+      "quantity": 1
+    }
+  },
+  "output": {
+    "type": "block",
+    "code": "jarblock:wormsjarblock-small",
+    "quantity": 1
+  }
+}

@@ -1,9 +1,15 @@
 {
   "code": "jarblock",
   "class": "jarblock",
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": ["big","small"]
+    }
+  ],
   "creativeinventory": { "general": [ "*" ] },
   "shape": {
-    "base": "block/glassjar_big_empty",
+    "base": "block/glassjar-empty-{type}",
     "scale": 0.75
   },
   "blockmaterial": "Glass",

@@ -1,10 +1,15 @@
 {
   "code": "wormsjarblock",
   "class": "wormsjarblock",
-
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": ["big","small"]
+    }
+  ],
   "creativeinventory": { "general": [ "*" ] },
   "shape": {
-    "base": "block/glassjar_big_worms",
+    "base": "block/glassjar-worms-{type}",
     "scale":  0.75
   },
   "blockmaterial": "Glass",
