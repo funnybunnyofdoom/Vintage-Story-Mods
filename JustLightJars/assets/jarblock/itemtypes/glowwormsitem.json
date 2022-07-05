@@ -1,10 +1,83 @@
 {
   "code": "glowwormsitem",
   "creativeinventory": {
-    "general": [ "*" ]
+    "general": [ "*" ],
+    "items": [ "*" ]
   },
   "texture": {
     "base": "jarblock:item/glowworm/glowworms"
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0.22,
+      "z": 0
+    },
+    "rotation": {
+      "x": 31,
+      "y": 10,
+      "z": 2
+    },
+    "origin": {
+      "x": 0.7,
+      "y": 0.1,
+      "z": 0.5
+    },
+    "scale": 0.74
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.85,
+      "y": -0.23,
+      "z": -1.61
+    },
+    "rotation": {
+      "x": 124,
+      "y": -42,
+      "z": -65
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.1,
+      "z": 0.5
+    },
+    "scale": 0.26
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 90,
+      "y": 0,
+      "z": -3
+    },
+    "origin": {
+      "x": 0.47,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 1.35
+  },
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 127,
+      "y": 180,
+      "z": 23
+    },
+    "origin": {
+      "x": -0.1,
+      "y": 0,
+      "z": 0
+    },
+    "scale": 2.04
   },
   "maxStackSize":  64
 }
