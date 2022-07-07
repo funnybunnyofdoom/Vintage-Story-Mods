@@ -21,9 +21,11 @@ A collection of mods for the game Vintage Story
   
 -Simple Server Messages: [FunnyBunnyofDOOM]
 
+-tpt - Teleport Too: [FunnyBunnyofDOOM]
+	Teleports the user to another player with permission
+
 -Just Light Jars: [FunnyBunnyofDOOM][DukePony]
-  harvest glow worms and craft them with a glass jar to get glowing jars
-  
+  harvest glow worms and craft them with a glass jar to get glowing jars  
 
 -Trash Drop: [FunnyBunnyofDOOM][DukePony]
 	Instead of despawning, non-compostable items will turn into a Trash block, forcing the player to deal with trash on their land.

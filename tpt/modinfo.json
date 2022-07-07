@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "tpt",
+  "name": "tpt",
+  "authors": [ "FunnyBunnyofDOOM" ],
+  "description": "Asks a player to teleport to them",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  },
+  "requiredonclient": false
+}
