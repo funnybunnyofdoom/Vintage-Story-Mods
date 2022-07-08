@@ -15,7 +15,7 @@ namespace tpt.src
     {
         ICoreServerAPI myAPI;
         int timevalue;
-        
+
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server;
@@ -32,6 +32,8 @@ namespace tpt.src
                 cmd_tpt, BPrivilege.tpt);
             api.RegisterCommand("tpaccept", "Teleports the player to another player", "",
                 cmd_tpaccept, BPrivilege.tpt);
+            api.RegisterCommand("tpdeny", "Teleports the player to another player", "",
+                cmd_tpdeny, BPrivilege.tpt);
             timevalue = 0;
             myAPI.Event.RegisterGameTickListener(CoolDown, 60000);
 
@@ -65,6 +67,28 @@ namespace tpt.src
             }
         }
 
+        private void cmd_tpdeny(IServerPlayer player, int groupId, CmdArgs args)
+        {
+
+             if (tptConfig.Current.waitDict.ContainsKey(player.PlayerUID))
+            {
+                String value;
+                tptConfig.Current.waitDict.TryGetValue(player.PlayerUID, out value);
+                string tpPlayer = value;
+                myAPI.SendMessage(myAPI.World.PlayerByUid(tpPlayer), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your teleport request has been denied.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To denied.", Vintagestory.API.Common.EnumChatType.Notification);
+                tptConfig.Current.waitDict.Remove(player.PlayerUID);
+                tptConfig.Current.tptDict.Remove(tpPlayer);
+                myAPI.StoreModConfig(tptConfig.Current, "tptconfig.json");
+
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You have no active requests to deny.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+
+        }
+
         private void cmd_tpaccept(IServerPlayer player, int groupId, CmdArgs args)
         {
             if (tptConfig.Current.waitDict.ContainsKey(player.PlayerUID))
@@ -80,6 +104,10 @@ namespace tpt.src
                 tptConfig.Current.tptDict.Remove(tpPlayer);
                 myAPI.StoreModConfig(tptConfig.Current, "tptconfig.json");
             }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You have no active requests to accept.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
         }
 
         private void cmd_tpt(IServerPlayer player, int groupId, CmdArgs args)
@@ -92,11 +120,11 @@ namespace tpt.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player could not be found. Please check your spelling and try again.", Vintagestory.API.Common.EnumChatType.Notification);
                     return;
                 }
-                
-                
+
+
                 if (tptConfig.Current.tptDict.ContainsKey(player.PlayerUID) == false)
                 {
-                    
+
                     if (tptConfig.Current.waitDict.ContainsKey(pdata.PlayerUID) == false)
                     {
                         tptinfo info = new tptinfo();
@@ -105,7 +133,7 @@ namespace tpt.src
                         info.waiting = true;
                         info.timer = timevalue;
                         tptConfig.Current.tptDict.Add(player.PlayerUID, info);
-                        tptConfig.Current.waitDict.Add(pdata.PlayerUID,player.PlayerUID);
+                        tptConfig.Current.waitDict.Add(pdata.PlayerUID, player.PlayerUID);
                         myAPI.StoreModConfig(tptConfig.Current, "tptconfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Stand by. You will be teleported when the other player accepts the teleport", Vintagestory.API.Common.EnumChatType.Notification);
                         myAPI.SendMessage(myAPI.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, player.PlayerName + " would like to teleport to you. Please type /tpaccept to accept.", Vintagestory.API.Common.EnumChatType.Notification);
@@ -134,9 +162,9 @@ namespace tpt.src
                 tptinfo value = new tptinfo();
                 var dic = tptConfig.Current.tptDict.Values;
                 tptConfig.Current.tptDict.TryGetValue(keyvalue, out value);
-                if ((timevalue - value.timer)>=2 )
+                if ((timevalue - value.timer) >= 2)
                 {
-                    myAPI.SendMessage(myAPI.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup,"Your TP to player has expired", Vintagestory.API.Common.EnumChatType.Notification);
+                    myAPI.SendMessage(myAPI.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your TP to player has expired", Vintagestory.API.Common.EnumChatType.Notification);
                     tptConfig.Current.tptDict.Remove(keyvalue);
                     myAPI.StoreModConfig(tptConfig.Current, "tptconfig.json");
                     return;
@@ -172,7 +200,7 @@ namespace tpt.src
         }
         public class tptinfo
         {
-            
+
             public String toplayer;
             public Boolean haspermission;
             public Boolean waiting;
@@ -180,7 +208,7 @@ namespace tpt.src
 
         }
 
-            public class BPrivilege : Privilege
+        public class BPrivilege : Privilege
         {
             /// <summary>
             /// Ability to use /tpt
