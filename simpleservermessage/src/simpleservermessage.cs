@@ -12,6 +12,7 @@ namespace simpleservermessage.src
     {
         ICoreServerAPI myAPI;
         int timevalue;
+        int messageplace = 0;
 
         public override bool ShouldLoad(EnumAppSide side)
         {
@@ -23,38 +24,165 @@ namespace simpleservermessage.src
             base.StartServerSide(api);
             myAPI = api;
             IPermissionManager ipm = api.Permissions;
+            ipm.RegisterPrivilege("ssm","Simple Server Messages");
+            ipm.RemovePrivilegeFromGroup("suplayer", BPrivilege.ssm);
+            ipm.AddPrivilegeToGroup("admin", BPrivilege.ssm);
+            api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now]", cmd_ssm, BPrivilege.ssm);
             timevalue = 0;
-            myAPI.Event.RegisterGameTickListener(CoolDown, 60000);
+            
+            
+
+
+            try
+            {
+                var Config = api.LoadModConfig<ssmConfig>("ssmconfig.json");
+                if (Config != null)
+                {
+                    api.Logger.Notification("Mod Config successfully loaded.");
+                    ssmConfig.Current = Config;
+                }
+                else
+                {
+                    api.Logger.Notification("No Mod Config specified. Falling back to default settings");
+                    ssmConfig.Current = ssmConfig.getDefault();
+                }
+            }
+            catch
+            {
+                ssmConfig.Current = ssmConfig.getDefault();
+                api.Logger.Error("Failed to load custom mod configuration. Falling back to default settings!");
+            }
+            finally
+            {
+                if (ssmConfig.Current.messages == null)
+                    ssmConfig.Current.messages = ssmConfig.getDefault().messages;
+                if (ssmConfig.Current.frequency == null)
+                    ssmConfig.Current.frequency = ssmConfig.getDefault().frequency;
+
+                api.StoreModConfig(ssmConfig.Current, "ssmconfig.json");
+            }
+            int broadcastFrequency = (int) ssmConfig.Current.frequency;
+            myAPI.Event.RegisterGameTickListener(broadcast, (broadcastFrequency * 100000)); //This has to be after the config try statement so that all the values are filled
         }
 
-        private void CoolDown(float obj)
+        private void cmd_ssm(IServerPlayer player, int groupId, CmdArgs args)
         {
-            System.Diagnostics.Debug.WriteLine("NOTHING");
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "add":       
+                    string text = args.PopAll();
+                    ssmConfig.Current.messages.Add(text);
+                    myAPI.StoreModConfig(ssmConfig.Current,"ssmconfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Added message.", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "remove":
+                    int? listindex = args.PopInt();
+                    if (listindex != null)
+                    {
+                        int lindex = (int)listindex;
+
+                        List<string> msglist = ssmConfig.Current.messages;
+                        if (msglist.Count >= lindex)
+                        {
+                            string removemsg = msglist.ElementAt(lindex);
+                            ssmConfig.Current.messages.Remove(removemsg);
+                            myAPI.StoreModConfig(ssmConfig.Current, "ssmconfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Removed message", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please use /ssm list and then use /ssm remove number to delete the message", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please use /ssm remove aNumber to remove a message", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "list":
+                    List<string> listofmessages = ssmConfig.Current.messages;
+                    int lastindex = listofmessages.Count;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "List of current server messages:", Vintagestory.API.Common.EnumChatType.Notification);
+                    for (int i = 0; i < lastindex; i++)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i+" : "+listofmessages[i], Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "frequency":
+                    int? frqnum = args.PopInt();
+                    if (frqnum != null & frqnum >=1)
+                    {
+                        ssmConfig.Current.frequency = frqnum;
+                        myAPI.StoreModConfig(ssmConfig.Current, "ssmconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Broadcast Message Frequency set to " + frqnum + " Minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number in minutes", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "now":
+                    if (ssmConfig.Current.messages.Count > 0)
+                    {
+                        List<String> messagelist = ssmConfig.Current.messages;
+
+
+                        if (messageplace < messagelist.Count)
+                        {
+                            myAPI.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                            messageplace++;
+                        }
+                        else
+                        {
+                            messageplace = 0;
+                            myAPI.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                        }
+                    }
+                    break;
+
+
+            }
+        }
+
+        private void broadcast(float obj)
+        {
+            if (ssmConfig.Current.messages.Count > 0)
+            {
+                List<String> messagelist = ssmConfig.Current.messages;
+                
+                
+                if (messageplace < messagelist.Count)
+                {
+                    myAPI.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                    messageplace++;
+                }
+                else
+                {
+                    messageplace = 0;
+                    myAPI.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                }
+            }
         }
 
         public class ssmConfig
         {
             public static ssmConfig Current { get; set; }
 
-            public Dictionary<String, tptinfo> tptDict { get; set; }
-            public Dictionary<String, String> waitDict { get; set; }
-
             public List<String> messages { get; set; }
+            public int? frequency;
 
-            public static tptConfig getDefault()
+            public static ssmConfig getDefault()
             {
-                var config = new tptConfig();
-                //BlockPos defPos = new BlockPos(0, 0, 0);
-                Dictionary<String, tptinfo> tptdictionary = new Dictionary<string, tptinfo>
+                var config = new ssmConfig();
+                List<String> dmessages = new List<string>
                 {
-                    { "Default",new tptinfo() }
+                    "Welcome to the server!"
                 };
-                Dictionary<String, String> waitdictionary = new Dictionary<string, string>
-                {
-                    { "Default","Default"}
-                };
-                config.tptDict = tptdictionary;
-                config.waitDict = waitdictionary;
+                int frq = 1;
+
+                config.messages = dmessages;
+                config.frequency = frq;
                 return config;
             }
         }
