@@ -18,7 +18,6 @@ namespace jhome.src
         public ICoreServerAPI sapi;
         public BlockPos homepos;
         //NOTE TO SELF: Remove admin only for release
-        //our server will have HOME only available to donators
 
         
 
