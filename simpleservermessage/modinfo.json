@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "simpleservermessage",
+  "name": "simpleservermessage",
+  "authors": [ "FunnyBunnyOfDOOM" ],
+  "description": "Sends messages to players",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  },
+  "requiredonclient": false
+}

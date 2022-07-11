@@ -13,6 +13,8 @@ A collection of mods for the game Vintage Story
 -Rising Sun: [FunnyBunnyofDOOM]
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
 
+-Simple Server Message [FunnyBunnyofDOOM]
+
 -Bunny Utilities: [FunnyBunnyofDOOM]
   Collection of utility mods (Spawn/rtp) with permission support.
 
