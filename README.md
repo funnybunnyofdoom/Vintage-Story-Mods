@@ -22,6 +22,7 @@ A collection of mods for the game Vintage Story
     /grtp to teleport to a point that moves randomly at a configurable interval of time for group random teleport excursions
   
 -Simple Server Messages: [FunnyBunnyofDOOM]
+	/smm add, /smm remove,/ssm now, /ssm frequency, /ssm list
 
 -tpt - Teleport Too: [FunnyBunnyofDOOM]
 	Teleports the user to another player with permission
