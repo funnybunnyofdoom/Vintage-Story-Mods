@@ -11,8 +11,8 @@ namespace simpleservermessage.src
     class simpleservermessage : ModSystem
     {
         ICoreServerAPI myAPI;
-        int timevalue;
         int messageplace = 0;
+        long BCL; //Event listener
 
         public override bool ShouldLoad(EnumAppSide side)
         {
@@ -27,10 +27,11 @@ namespace simpleservermessage.src
             ipm.RegisterPrivilege("ssm","Simple Server Messages");
             ipm.RemovePrivilegeFromGroup("suplayer", BPrivilege.ssm);
             ipm.AddPrivilegeToGroup("admin", BPrivilege.ssm);
-            api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now]", cmd_ssm, BPrivilege.ssm);
-            timevalue = 0;
+            api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now|help]", cmd_ssm, BPrivilege.ssm);
             
-            
+
+
+
 
 
             try
@@ -62,7 +63,7 @@ namespace simpleservermessage.src
                 api.StoreModConfig(ssmConfig.Current, "ssmconfig.json");
             }
             int broadcastFrequency = (int) ssmConfig.Current.frequency;
-            myAPI.Event.RegisterGameTickListener(broadcast, (broadcastFrequency * 100000)); //This has to be after the config try statement so that all the values are filled
+            BCL = myAPI.Event.RegisterGameTickListener(broadcast, (broadcastFrequency * 100000)); //This has to be after the config try statement so that all the values are filled
         }
 
         private void cmd_ssm(IServerPlayer player, int groupId, CmdArgs args)
@@ -116,6 +117,9 @@ namespace simpleservermessage.src
                         ssmConfig.Current.frequency = frqnum;
                         myAPI.StoreModConfig(ssmConfig.Current, "ssmconfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Broadcast Message Frequency set to " + frqnum + " Minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        myAPI.Event.UnregisterGameTickListener(BCL);
+                        int bcFrequency = (int)ssmConfig.Current.frequency;
+                        BCL = myAPI.Event.RegisterGameTickListener(broadcast,(bcFrequency*100000));
                     }
                     else
                     {
@@ -140,7 +144,16 @@ namespace simpleservermessage.src
                         }
                     }
                     break;
-
+                case "help":
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm add <i>Server Message</i> - adds a message to the list of server messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm list - lists the existing server messages ", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm remove <i>number from /ssm list</i> - remove the message from the number in the list", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm frequency <i>number in minutes</i> - changes the duration of minutes between messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm now - broadcasts the next server message in line", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
 
             }
         }
@@ -179,7 +192,7 @@ namespace simpleservermessage.src
                 {
                     "Welcome to the server!"
                 };
-                int frq = 1;
+                int frq = 10;
 
                 config.messages = dmessages;
                 config.frequency = frq;
