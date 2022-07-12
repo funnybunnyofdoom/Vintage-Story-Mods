@@ -9,6 +9,9 @@ A collection of mods for the game Vintage Story
   
 -Just Home: [FunnyBunnyofDOOM]
   /sethome to set your home position /home to teleport to home
+ 
+-Join Announce: [FunnyBunnyofDOOM]
+  Sends a message to all players when a new player joins
   
 -Rising Sun: [FunnyBunnyofDOOM]
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
