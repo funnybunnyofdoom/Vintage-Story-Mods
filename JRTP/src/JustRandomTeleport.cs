@@ -5,6 +5,7 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Config;
+using System.Collections.Generic;
 //FunnyBunnyofDOOM@gmail.com
 //https://www.doomlandgaming.com
 
@@ -18,8 +19,9 @@ public class JustRandomTeleport : ModSystem
     int randx, randz = 0;
     bool teleporting = false;
     int count = 0;
+    int cooldowntimer;
     long CID;
-
+    
 
     public override bool ShouldLoad(EnumAppSide side)
     {
@@ -36,6 +38,8 @@ public class JustRandomTeleport : ModSystem
         api.Event.ChunkColumnLoaded += OnChunkColumnLoaded;
         api.RegisterCommand("rtp", "Randomly Teleports the player", "",
             cmd_rtp, BPrivilege.rtp);
+        cooldowntimer = 0;
+        CID = api.Event.RegisterGameTickListener(CoolDown, 60000);
 
         try
         {
@@ -61,7 +65,10 @@ public class JustRandomTeleport : ModSystem
             if (JrtpConfig.Current.cooldownseconds == null)
                 JrtpConfig.Current.cooldownseconds = JrtpConfig.getDefault().cooldownseconds;
             if (JrtpConfig.Current.teleportradius == null)
-                JrtpConfig.Current.teleportradius = JrtpConfig.getDefault().teleportradius;
+                JrtpConfig.Current.teleportradius = JrtpConfig.getDefault().teleportradius;                
+            if (JrtpConfig.Current.cooldownduration == null)
+                JrtpConfig.Current.cooldownduration = JrtpConfig.getDefault().cooldownduration;
+            JrtpConfig.Current.cooldownDict = JrtpConfig.getDefault().cooldownDict;
 
             api.StoreModConfig(JrtpConfig.Current, "jrtpconfig.json");
         }
@@ -98,7 +105,7 @@ public class JustRandomTeleport : ModSystem
                 IWorldManagerAPI world = api.WorldManager;
                 System.Diagnostics.Debug.Write(count);
 
-                if (count == 0 & teleporting == false)
+                if (JrtpConfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == false & teleporting == false)
                 {                   
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait while destination chunks are loaded.", Vintagestory.API.Common.EnumChatType.Notification);
                     int radius = JrtpConfig.Current.teleportradius ?? default(int);
@@ -110,35 +117,40 @@ public class JustRandomTeleport : ModSystem
                     int rawzmax = (worldz / 2) + radius;
                     randx = GEntity.World.Rand.Next(rawxmin, rawxmax);
                     randz = GEntity.World.Rand.Next(rawzmin, rawzmax);
-                    world.LoadChunkColumnPriority(randx / myAPI.WorldManager.ChunkSize, randz / myAPI.WorldManager.ChunkSize);
-                   
-            {
-
-            }
-                    CID = api.Event.RegisterGameTickListener(CoolDown, 1000); // register the cooldown tick listener
-                    count = 1;
+                    world.LoadChunkColumnPriority(randx / myAPI.WorldManager.ChunkSize, randz / myAPI.WorldManager.ChunkSize);     
+                    count = 1;  
                     teleporting = true;
-                }
-                else if(teleporting == true & count != 0){
+                    JrtpConfig.Current.cooldownDict.Add(player.PlayerUID,cooldowntimer);
+                    myAPI.StoreModConfig(JrtpConfig.Current, "jrtpconfig.json");
+        }
+                else if(teleporting == true){
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your chunks are still being generated, please be patient.", Vintagestory.API.Common.EnumChatType.Notification);
-                }
-        else
+                }else if(JrtpConfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == true & teleporting == false)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + (JrtpConfig.Current.cooldownseconds-count) + " seconds", Vintagestory.API.Common.EnumChatType.Notification);
+                    int values;
+                    JrtpConfig.Current.cooldownDict.TryGetValue(player.PlayerUID,out values);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + ((values+JrtpConfig.Current.cooldownduration)-cooldowntimer) + " minutes", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
     private void CoolDown(float ct)
     {
-        if (count >= JrtpConfig.Current.cooldownseconds)
-        {
-            count = 0;
-            myAPI.Event.UnregisterGameTickListener(CID);
-        }
-        else
-        {
-            count = count + 1;
-        }
+        cooldowntimer++;
+       
+            Dictionary<string,int>.KeyCollection tempdict = JrtpConfig.Current.cooldownDict.Keys;
+            foreach (var keyvalue in tempdict)
+            {
+                int value;
+                //var dic = JrtpConfig.Current.cooldownDict.Values;
+                JrtpConfig.Current.cooldownDict.TryGetValue(keyvalue, out value);
+                if ((cooldowntimer - value) >= JrtpConfig.Current.cooldownduration)
+                {
+                    //myAPI.SendMessage(myAPI.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait until the cooldown timer has elapsed", Vintagestory.API.Common.EnumChatType.Notification);
+                    JrtpConfig.Current.cooldownDict.Remove(keyvalue);
+                    myAPI.StoreModConfig(JrtpConfig.Current, "jrtpconfig.json");
+                    return;
+                }
+            }
     }
 
     public class JrtpConfig
@@ -147,6 +159,9 @@ public class JustRandomTeleport : ModSystem
 
         public int? cooldownseconds { get; set; }
         public int? teleportradius { get; set; }
+        public int? cooldownduration { get; set; }
+        public Dictionary<String, int> cooldownDict { get; set; }
+
 
         public static JrtpConfig getDefault()
         {
@@ -154,6 +169,11 @@ public class JustRandomTeleport : ModSystem
 
             config.cooldownseconds = 120;
             config.teleportradius = 100000;
+            config.cooldownduration = 15;
+            config.cooldownDict = new Dictionary<string, int>
+                {
+                    { "Default",1}
+                };
 
             return config;
         }
