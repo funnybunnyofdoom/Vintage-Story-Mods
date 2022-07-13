@@ -27,13 +27,8 @@ namespace simpleservermessage.src
             ipm.RegisterPrivilege("ssm","Simple Server Messages");
             ipm.RemovePrivilegeFromGroup("suplayer", BPrivilege.ssm);
             ipm.AddPrivilegeToGroup("admin", BPrivilege.ssm);
-            api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now|help]", cmd_ssm, BPrivilege.ssm);
-            
-
-
-
-
-
+            api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now|help|version]", cmd_ssm, BPrivilege.ssm);
+            System.Console.WriteLine("Simple Server Message loaded - [Author: FunnyBunnyofDOOM]");
             try
             {
                 var Config = api.LoadModConfig<ssmConfig>("ssmconfig.json");
@@ -150,6 +145,10 @@ namespace simpleservermessage.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm remove <i>number from /ssm list</i> - remove the message from the number in the list", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm frequency <i>number in minutes</i> - changes the duration of minutes between messages", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm now - broadcasts the next server message in line", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "version":
+                    var modinfo = Mod.Info;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case null:
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now", Vintagestory.API.Common.EnumChatType.Notification);
