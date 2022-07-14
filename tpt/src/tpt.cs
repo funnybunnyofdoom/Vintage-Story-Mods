@@ -39,7 +39,7 @@ namespace tpt.src
 
             try
             {
-                var Config = api.LoadModConfig<tptConfig>("jrtpconfig.json");
+                var Config = api.LoadModConfig<tptConfig>("tptconfig.json");
                 if (Config != null)
                 {
                     api.Logger.Notification("Mod Config successfully loaded.");
