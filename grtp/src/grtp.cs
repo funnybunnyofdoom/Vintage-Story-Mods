@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,13 +58,13 @@ public class grtp : ModSystem
             
             if (grtpConfig.Current.teleportradius == null)
                 grtpConfig.Current.teleportradius = grtpConfig.getDefault().teleportradius;
-            if (grtpConfig.Current.cooldownseconds == null)
-                grtpConfig.Current.cooldownseconds = grtpConfig.getDefault().cooldownseconds;
+            if (grtpConfig.Current.cooldownminutes == null)
+                grtpConfig.Current.cooldownminutes = grtpConfig.getDefault().cooldownminutes;
 
             api.StoreModConfig(grtpConfig.Current, "grtpconfig.json");
         }
-        count = grtpConfig.Current.cooldownseconds + 1;
-        CID = api.Event.RegisterGameTickListener(CoolDown, 1000);
+        count = grtpConfig.Current.cooldownminutes + 1;
+        CID = api.Event.RegisterGameTickListener(CoolDown, 60000);
     }
 
     public class BPrivilege : Privilege
@@ -77,22 +77,85 @@ public class grtp : ModSystem
 
     private void cmd_grtp(IServerPlayer player, int groupId, CmdArgs args)
     {
-        if (loaded == true)
+        string cmd = args.PopWord();
+        switch (cmd)
         {
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (grtpConfig.Current.cooldownseconds - count) + " Seconds.", Vintagestory.API.Common.EnumChatType.Notification);          
-            
-            player.Entity.TeleportTo(randx, height + 2, randz);
-            
+            case null:
+                if (loaded == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (grtpConfig.Current.cooldownminutes - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+
+                    player.Entity.TeleportTo(randx, height + 2, randz);
+
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Chunk is loading. Please try again in a few seconds", Vintagestory.API.Common.EnumChatType.Notification);
+                    sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
+                }
+                break;
+            case "help":
+                displayhelp(player);
+                break;
+            case "version":
+                var modinfo = Mod.Info;
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
+                break;
+            case "cooldown":
+                if (player.Role.Code == "admin")
+                {
+                    int? cdnum = args.PopInt();
+                    if (cdnum == null | cdnum == 0)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number greater than 0 in minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else if (cdnum < 0)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        grtpConfig.Current.cooldownminutes = cdnum;
+                        sapi.StoreModConfig(grtpConfig.Current, "grtpconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                }
+                break;
+            case "radius":
+                if (player.Role.Code == "admin")
+                {
+                    int? cdnum = args.PopInt();
+                    if (cdnum == null | cdnum < 10 )
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number 10 or greater.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else if (cdnum < 0)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        grtpConfig.Current.teleportradius = cdnum;
+                        sapi.StoreModConfig(grtpConfig.Current, "grtpconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP radius has been updated to " + cdnum + " blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                }
+                break;
+            case "now":
+                if (player.Role.Code == "admin")
+                {
+                    count = grtpConfig.Current.cooldownminutes + 1;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP now issued. Please wait up to a couple minutes to take effect.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                break;
         }
-        else
-        {
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Chunk is loading. Please try again in a few seconds", Vintagestory.API.Common.EnumChatType.Notification);
-            sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
-        }
+
+
+        
     }
     private void CoolDown(float ct)
     {
-        if (count >= grtpConfig.Current.cooldownseconds)
+        if (count >= grtpConfig.Current.cooldownminutes)
         {
             count = 0;
             
@@ -125,7 +188,7 @@ public class grtp : ModSystem
             height = sapi.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
             if (loaded == false)
             {
-                sapi.BroadcastMessageToAllGroups("New /GRTP coordinates generated", Vintagestory.API.Common.EnumChatType.Notification);
+                sapi.BroadcastMessageToAllGroups("New /grtp coordinates generated. New location will be available in "+grtpConfig.Current.cooldownminutes, Vintagestory.API.Common.EnumChatType.Notification);
             
             }
             
@@ -133,21 +196,37 @@ public class grtp : ModSystem
         }
 
     }
+
+    private void displayhelp(IServerPlayer player)
+    {
+        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Group Random Teleport Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP location updates every "+grtpConfig.Current.cooldownminutes+" minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport Radius: "+ grtpConfig.Current.teleportradius + " Blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp - teleports the player to the group teleport point", Vintagestory.API.Common.EnumChatType.Notification);
+        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp version - displays the current version of GRTP installed", Vintagestory.API.Common.EnumChatType.Notification);
+        if (player.Role.Code == "admin")
+        {
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp cooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp radius <i>number</i> - sets the teleport radius", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp now - Sets the GRTP to update on the next 1 minute tick", Vintagestory.API.Common.EnumChatType.Notification);
+        }
+    }
     public class grtpConfig
     {
         public static grtpConfig Current { get; set; }
 
         public int? teleportradius { get; set; }
-        public int? cooldownseconds { get; set; }
+        public int? cooldownminutes { get; set; }
 
         public static grtpConfig getDefault()
         {
             var config = new grtpConfig();
 
-            config.cooldownseconds = 900;
+            config.cooldownminutes = 60;
             config.teleportradius = 100000;
 
             return config;
         }
     }
 }
+
