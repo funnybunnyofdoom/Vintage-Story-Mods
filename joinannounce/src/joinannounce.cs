@@ -13,6 +13,7 @@ using Vintagestory.API.Server;
 public class joinannounce : ModSystem
 {
     ICoreServerAPI myAPI;
+    List<IServerPlayer> joinedPlayers = new List<IServerPlayer>();
     public override bool ShouldLoad(EnumAppSide side)
     {
         return side == EnumAppSide.Server;
@@ -22,10 +23,24 @@ public class joinannounce : ModSystem
         base.StartServerSide(api);
         myAPI = api;
         api.Event.PlayerCreate += OnPlayerCreate;
+        api.Event.PlayerNowPlaying += onNowPlaying;
     }
+
+    private void onNowPlaying(IServerPlayer byPlayer)
+    {
+        if (joinedPlayers != null)
+        {
+            if (joinedPlayers.Contains(byPlayer))
+            {
+                myAPI.BroadcastMessageToAllGroups("Please welcome <font color=\"white\"><strong>" + byPlayer.PlayerName + "</strong></font> to the server!", Vintagestory.API.Common.EnumChatType.AllGroups);
+                joinedPlayers.Remove(byPlayer);
+            }
+        }
+    }
+
     public void OnPlayerCreate(IServerPlayer byPlayer)
     {
-        myAPI.BroadcastMessageToAllGroups("Please welcome <font color=\"white\"><strong>" + byPlayer.PlayerName + "</strong></font> to the server!", Vintagestory.API.Common.EnumChatType.AllGroups);
+        joinedPlayers.Add(byPlayer);
     }
 
 }
