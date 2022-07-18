@@ -28,6 +28,7 @@ namespace jpm.src
             api.RegisterCommand("jpm", "Simple Server Message Management", "[help | spy | version]", cmd_jpm, BPrivilege.jpmadmin); //Register the /jpm command for admins
             
             api.RegisterCommand("dm", "Private Message", " ", cmd_pm, BPrivilege.jpm);
+            ipm.AddPrivilegeToGroup("suplayer",BPrivilege.jpm);
             ipm.RemovePrivilegeFromGroup("suplayer", BPrivilege.jpmadmin);
             var modinfo = Mod.Info;
             System.Console.WriteLine("Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version + " LOADED");
@@ -81,8 +82,8 @@ namespace jpm.src
                     }
                     else
                     {
-                        myAPI.SendMessage(myAPI.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#52307C\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
-                        myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#52307C\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                        myAPI.SendMessage(myAPI.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                        myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
                         if (jpmConfig.Current.spycfg == true)
                         {
 
@@ -94,7 +95,7 @@ namespace jpm.src
                                 IServerPlayerData adata = myAPI.PlayerData.GetPlayerDataByLastKnownName(Aplayer.PlayerName);
                                 if (adata.RoleCode == "admin")
                                 {
-                                    myAPI.SendMessage(myAPI.World.PlayerByUid(Aplayer.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " to " + Aplayer.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                                    myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"green\"><strong>" + pdata.LastKnownPlayername + " to " + Aplayer.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
                                 }
                             }
                         }
