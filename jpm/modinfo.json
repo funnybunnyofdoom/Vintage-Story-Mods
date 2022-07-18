@@ -2,10 +2,11 @@
   "type": "code",
   "modid": "jpm",
   "name": "Just Private Messages",
-  "authors": ["Funnybunnyofdoom"],
+  "authors": [ "Funnybunnyofdoom" ],
   "description": "Allows the player to send/recieve private messages",
   "version": "1.0.0",
   "dependencies": {
     "game": ""
-  }
+  },
+  "requiredonclient": false
 }
