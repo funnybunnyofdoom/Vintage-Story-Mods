@@ -17,6 +17,8 @@ namespace jhome.src
     {
         public ICoreServerAPI sapi;
         public BlockPos homepos;
+        Dictionary<string, BlockPos> backSave;
+        Dictionary<string, BlockPos> homeSave;
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server;
@@ -28,6 +30,8 @@ namespace jhome.src
             sapi = api;
             IPermissionManager ipm = api.Permissions;
             api.Event.PlayerDeath += OnPlayerDeath;
+            api.Event.SaveGameLoaded += OnSaveGameLoading;
+            api.Event.GameWorldSave += OnSaveGameSaving;
 
 
             api.RegisterCommand("sethome", "Set your current position as home", " ",
@@ -39,7 +43,8 @@ namespace jhome.src
             ipm.RegisterPrivilege("sethome", "Set your current position as home",false);
             ipm.RegisterPrivilege("home", "Set your current position as home",false);
             ipm.RegisterPrivilege("back", "Go back to your last TP location", false);
-
+            api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
+                cmd_importOldHomes);
 
 
             try
@@ -63,10 +68,8 @@ namespace jhome.src
             }
             finally
             {
-                if (HomeConfig.Current.homeDict == null)
-                    HomeConfig.Current.homeDict = HomeConfig.getDefault().homeDict;
-                if (HomeConfig.Current.backDict == null)
-                    HomeConfig.Current.backDict = HomeConfig.getDefault().backDict;
+                if (HomeConfig.Current.homeDict == null)//Must be preserved to pull old homes to the new save
+                    HomeConfig.Current.homeDict = HomeConfig.getDefault().homeDict;//Must be preserved to pull old homes to the new save
                 if (HomeConfig.Current.enablePermissions == null)
                     HomeConfig.Current.enablePermissions = HomeConfig.getDefault().enablePermissions;
                 if (HomeConfig.Current.enableBack == null)
@@ -86,16 +89,38 @@ namespace jhome.src
 
         }
 
+        private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            if (player.Role.Code == "admin")
+            {
+                if (HomeConfig.Current.homeDict != null)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
+                    homeSave.Clear();
+                    for (int i = 0; i < HomeConfig.Current.homeDict.Count(); i++)
+                    {
+                        KeyValuePair<string,BlockPos> kvp = HomeConfig.Current.homeDict.PopOne();
+                        
+                        homeSave.Add(kvp.Key,kvp.Value);
+                    }
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
+                    HomeConfig.Current.homeDict.Clear();
+                    HomeConfig.Current.homeDict = null;
+                    sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                }
+
+            }
+        }
+
         private void OnPlayerDeath(IServerPlayer player, DamageSource damageSource)
         {
             if (HomeConfig.Current.enableBack == true)
             {
-                if (HomeConfig.Current.backDict.ContainsKey(player.Entity.PlayerUID))
+                if (backSave.ContainsKey(player.PlayerUID))
                 {
-                    HomeConfig.Current.backDict.Remove(player.Entity.PlayerUID);
+                    backSave.Remove(player.PlayerUID);
                 }
-                HomeConfig.Current.backDict.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
-                sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Use /back to return to your death point", Vintagestory.API.Common.EnumChatType.Notification);
             }
         }
@@ -109,14 +134,13 @@ namespace jhome.src
                     if (HomeConfig.Current.enableBack == true)
                     {
                         BlockPos newPos = player.Entity.Pos.AsBlockPos;
-                        if (HomeConfig.Current.backDict.ContainsKey(player.Entity.PlayerUID))
+                        if (backSave.ContainsKey(player.Entity.PlayerUID))
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Returning to your last location", Vintagestory.API.Common.EnumChatType.Notification);
-                            sapi.WorldManager.LoadChunkColumnPriority(HomeConfig.Current.backDict[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, HomeConfig.Current.backDict[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
-                            player.Entity.TeleportTo(HomeConfig.Current.backDict[player.Entity.PlayerUID].X, HomeConfig.Current.backDict[player.Entity.PlayerUID].Y, HomeConfig.Current.backDict[player.Entity.PlayerUID].Z);
-                            HomeConfig.Current.backDict.Remove(player.Entity.PlayerUID);
-                            HomeConfig.Current.backDict.Add(player.Entity.PlayerUID, newPos);
-                            sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                            sapi.WorldManager.LoadChunkColumnPriority(backSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, backSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
+                            player.Entity.TeleportTo(backSave[player.Entity.PlayerUID].X, backSave[player.Entity.PlayerUID].Y, backSave[player.Entity.PlayerUID].Z);
+                            backSave.Remove(player.Entity.PlayerUID);
+                            backSave.Add(player.Entity.PlayerUID, newPos);
                         }
                         else
                         {
@@ -156,12 +180,11 @@ namespace jhome.src
 
         private void cmd_sethome(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (HomeConfig.Current.homeDict.ContainsKey(player.Entity.PlayerUID))
+            if (homeSave.ContainsKey(player.Entity.PlayerUID))
             {
-                HomeConfig.Current.homeDict.Remove(player.Entity.PlayerUID);
+                homeSave.Remove(player.Entity.PlayerUID);
             }
-            HomeConfig.Current.homeDict.Add(player.Entity.PlayerUID,player.Entity.Pos.AsBlockPos);
-            sapi.StoreModConfig(HomeConfig.Current,"homeconfig.json");
+            homeSave.Add(player.Entity.PlayerUID,player.Entity.Pos.AsBlockPos);
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "New home has been saved.", Vintagestory.API.Common.EnumChatType.Notification);
 
 
@@ -174,18 +197,18 @@ namespace jhome.src
                 case null:
                     if (HomeConfig.Current.enableBack == true)
                     {
-                        if (HomeConfig.Current.backDict.ContainsKey(player.Entity.PlayerUID))
+                        if (backSave.ContainsKey(player.PlayerUID))
                         {
-                            HomeConfig.Current.backDict.Remove(player.Entity.PlayerUID);
+                            backSave.Remove(player.PlayerUID);
                         }
-                        HomeConfig.Current.backDict.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
-                        sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+
+                        backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
                     }
-                    if (HomeConfig.Current.homeDict.ContainsKey(player.Entity.PlayerUID))
+                    if (homeSave.ContainsKey(player.Entity.PlayerUID))
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to your saved home", Vintagestory.API.Common.EnumChatType.Notification);
-                        sapi.WorldManager.LoadChunkColumnPriority(HomeConfig.Current.homeDict[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, HomeConfig.Current.homeDict[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
-                        player.Entity.TeleportTo(HomeConfig.Current.homeDict[player.Entity.PlayerUID].X, HomeConfig.Current.homeDict[player.Entity.PlayerUID].Y, HomeConfig.Current.homeDict[player.Entity.PlayerUID].Z);
+                        sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
+                        player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
                     }
                     else
                     {
@@ -238,13 +261,25 @@ namespace jhome.src
 
         }
 
+        private void OnSaveGameSaving()
+        {
+            sapi.WorldManager.SaveGame.StoreData("back", SerializerUtil.Serialize(backSave));
+        }
+
+        private void OnSaveGameLoading()
+        {
+            byte[] data = sapi.WorldManager.SaveGame.GetData("back");
+
+            backSave = data == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(data);
+            homeSave = data == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(data);
+        }
+
 
         public class HomeConfig
         {
             public static HomeConfig Current { get; set; }
 
-            public Dictionary<String,BlockPos> homeDict { get; set; }
-            public Dictionary<String,BlockPos> backDict { get; set; }
+            public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
             public bool? enablePermissions;
             public bool? enableBack;
 
@@ -256,16 +291,10 @@ namespace jhome.src
                 BlockPos defPos = new BlockPos(0,0,0);
                 bool perms = false;
                 bool backperms = true;
-                Dictionary<String, BlockPos> homedictionary = new Dictionary<string, BlockPos> 
-                {
-                    { "Default", defPos }
-                };
-                Dictionary<String, BlockPos> backdictionary = new Dictionary<string, BlockPos>
-                {
-                    { "Default", defPos }
-                };
-                config.homeDict = homedictionary;
-                config.backDict = backdictionary;
+
+                Dictionary<String, BlockPos> homedictionary = null;
+                
+                config.homeDict = homedictionary;//Must be preserved to pull old homes to the new save
                 config.enablePermissions = perms;
                 config.enableBack = backperms;
                 return config;
