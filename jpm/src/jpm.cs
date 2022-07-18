@@ -82,7 +82,7 @@ namespace jpm.src
                     else
                     {
                         myAPI.SendMessage(myAPI.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#52307C\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
-                        myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerName), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#52307C\"><strong>" + pdata.PlayerUID + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                        myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#52307C\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
                         if (jpmConfig.Current.spycfg == true)
                         {
 
