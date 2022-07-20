@@ -4,6 +4,9 @@ A collection of mods for the game Vintage Story
 -Simple Spawn: [FunnyBunnyofDOOM]
   /spawn - telports the player to world spawn
   
+-Bunny Bell: [FunnyBunnyofDOOM]
+  Makes a "bing" noise when the player's name is mentioned
+  
 -Just Random Teleport: [FunnyBunnyofDOOM]
   /rtp - Teleports the player to a random location within a 100k block radius of spawn
   
@@ -16,19 +19,20 @@ A collection of mods for the game Vintage Story
 -Rising Sun: [FunnyBunnyofDOOM]
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
 
--Simple Server Message [FunnyBunnyofDOOM]
-
--Bunny Utilities: [FunnyBunnyofDOOM]
-  Collection of utility mods (Spawn/rtp) with permission support.
+-Bunny Server Utilities: [FunnyBunnyofDOOM]
+  Collection of utility mods (Work In Progress)
 
 -Group Random Teleport: [FunnyBunnyofDOOM]
     /grtp to teleport to a point that moves randomly at a configurable interval of time for group random teleport excursions
   
--Simple Server Messages: [FunnyBunnyofDOOM]
+-Simple Server Message: [FunnyBunnyofDOOM]
 	/smm add, /smm remove,/ssm now, /ssm frequency, /ssm list
 
 -tpt - Teleport Too: [FunnyBunnyofDOOM]
 	Teleports the user to another player with permission
+
+-jpm - Just Private Message
+	Allows the player to send messages to each other. Admin can view private messages.
 
 -Just Light Jars: [FunnyBunnyofDOOM][DukePony]
   harvest glow worms and craft them with a glass jar to get glowing jars  
