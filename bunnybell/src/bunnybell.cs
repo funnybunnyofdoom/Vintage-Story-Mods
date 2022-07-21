@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,26 +16,136 @@ namespace bunnybell.src
         ICoreServerAPI sapi;
         Dictionary<string, BlockPos> location;
         AssetLocation sound = new AssetLocation("game", "sounds/effect/receptionbell");
+
         public override void StartServerSide(ICoreServerAPI api)
         {
             base.StartServerSide(api);
             sapi = api;
             api.Event.PlayerChat += onPlayerChat;
+            api.RegisterCommand("bb", "Bunny Bell configuration", "[volume|mute|help|version]", cmd_bb, Privilege.controlserver);
 
+            try
+            {
+                var Config = api.LoadModConfig<bbConfig>("bbconfig.json");
+                if (Config != null)
+                {
+                    api.Logger.Notification("Mod Config successfully loaded.");
+                    bbConfig.Current = Config;
+                }
+                else
+                {
+                    api.Logger.Notification("No Mod Config specified. Falling back to default settings");
+                    bbConfig.Current = bbConfig.getDefault();
+                }
+            }
+            catch
+            {
+                bbConfig.Current = bbConfig.getDefault();
+                api.Logger.Error("Failed to load custom mod configuration. Falling back to default settings!");
+            }
+            finally
+            {
+
+                if (bbConfig.Current.settings == null)
+                    bbConfig.Current.settings = bbConfig.getDefault().settings;
+
+                api.StoreModConfig(bbConfig.Current, "bbconfig.json");
+            }
+        }
+
+        private void cmd_bb(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "help":
+                    displayhelp(player);
+                    break;
+                case "version":
+                    var modinfo = Mod.Info;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "volume":
+                    //Add configuration logic| not larger than dusk
+                    break;
+                case "mute":
+                    List<soundSettings> stlist = bbConfig.Current.settings;
+                    for (var j = 0; j < stlist.Count; j++)
+                    {
+                        soundSettings usersound = stlist[j];
+                        if (usersound.user == player.PlayerUID)
+                        {
+                            bbConfig.Current.settings.Remove(usersound);
+                        }
+                            soundSettings sounds = new soundSettings();
+                            sounds.user = player.PlayerUID;
+                            sounds.volume = 0;
+                            bbConfig.Current.settings.Add(sounds);
+                    }
+                    break;
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb volume|mute|help|version", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+            }
+        }
+
+        public class bbConfig
+        {
+            public static bbConfig Current { get; set; }
+
+            public List<soundSettings> settings;
+
+            public static bbConfig getDefault()
+            {
+                var config = new bbConfig();
+
+                soundSettings tempsettings = new soundSettings();
+                tempsettings.user = "server";
+                tempsettings.volume = 7;
+                List<soundSettings> tempsetlist = new List<soundSettings>();
+                tempsetlist.Add(tempsettings);
+                config.settings = tempsetlist;
+
+                return config;
+            }
         }
         private void onPlayerChat(IServerPlayer byPlayer, int channelId, ref string message, ref string data, BoolRef consumed)
         {
             string checklist = data;
             IPlayer[] playerList = sapi.World.AllOnlinePlayers;
+            int volume = 1;
             for (var i = 0; i < playerList.Count(); i++)
             {
                 string templist = checklist;
                 IPlayer templayer = playerList[i];
                 if (templist.CaseInsensitiveContains(templayer.PlayerName))
                 {
-                    templayer.Entity.World.PlaySoundFor(sound,templayer);
+                    List<soundSettings> stlist = bbConfig.Current.settings;
+                    for (var j = 0;j < stlist.Count; j++)
+                    {
+                        soundSettings usersound = stlist[j];
+                        if (usersound.user == templayer.PlayerUID)
+                        {
+                            volume = usersound.volume;
+                        }
+                    }
+                    templayer.Entity.World.PlaySoundFor(sound, templayer,true,32,volume);
                 }
             }
+        }
+
+        private void displayhelp(IServerPlayer player)
+        {
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb volume <i>number</i> - Sets your notification volume", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb mute - turns off your notification sound", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Bunny Bell", Vintagestory.API.Common.EnumChatType.Notification);
+        }
+
+        public class soundSettings
+        {
+            public string user;
+            public int volume;
         }
     }
 }
