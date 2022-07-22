@@ -1,4 +1,4 @@
-﻿using System;
+System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +25,7 @@ namespace jpm.src
             IPermissionManager ipm = api.Permissions; //Register a permission manager. 
             ipm.RegisterPrivilege("jpm", "Private Messages"); //Register the privilege for general teleports
             ipm.RegisterPrivilege("jpmadmin", "JPM management"); //Register the privilege for admin control
-            api.RegisterCommand("jpm", "Simple Server Message Management", "[help | spy | version]", cmd_jpm, BPrivilege.jpmadmin); //Register the /jpm command for admins
+            api.RegisterCommand("jpm", "Simple Server Message Management", "[help | spy enable | spy disable | version]", cmd_jpm, BPrivilege.jpmadmin); //Register the /jpm command for admins
             
             api.RegisterCommand("dm", "Private Message", " ", cmd_pm, BPrivilege.jpm);
             ipm.AddPrivilegeToGroup("suplayer",BPrivilege.jpm);
@@ -124,13 +124,13 @@ namespace jpm.src
                     displayhelp(player);
                     break;
                 case "spy":
-                    if (jpmConfig.Current.spycfg == true)
+                    string cmd2 = args.PopWord();
+                    if (cmd2 == "disable")
                     {
                         jpmConfig.Current.spycfg = false;
                         myAPI.StoreModConfig(jpmConfig.Current, "jpmconfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Private Message Spy has been disabled.", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    else
+                    }else if (cmd2 == "enable")
                     {
                         jpmConfig.Current.spycfg = true;
                         myAPI.StoreModConfig(jpmConfig.Current, "jpmconfig.json");
@@ -150,7 +150,8 @@ namespace jpm.src
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm <i>playername messageToPlayer</i> - sends a message to a player ", Vintagestory.API.Common.EnumChatType.Notification);
             if (player.Role.Code == "admin")
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm spy - Toggles admin visibility of private messages", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm spy enable - enables admin visibility of private messages", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm spy disable - disables admin visibility of private messages", Vintagestory.API.Common.EnumChatType.Notification);
             }
         }
 
