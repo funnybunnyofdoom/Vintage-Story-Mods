@@ -29,7 +29,9 @@ namespace jpm.src
             
             api.RegisterCommand("dm", "Private Message", " ", cmd_pm, BPrivilege.jpm);
             ipm.AddPrivilegeToGroup("suplayer",BPrivilege.jpm);
+            ipm.AddPrivilegeToGroup("doplayer", BPrivilege.jpm);
             ipm.RemovePrivilegeFromGroup("suplayer", BPrivilege.jpmadmin);
+            ipm.RemovePrivilegeFromGroup("doplayer", BPrivilege.jpmadmin);
             var modinfo = Mod.Info;
             System.Console.WriteLine("Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version + " LOADED");
             try
@@ -83,8 +85,8 @@ namespace jpm.src
                     else
                     {
                         myAPI.SendMessage(myAPI.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
-                        myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
-                        if (jpmConfig.Current.spycfg == true)
+                        myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " to "+ pdata.LastKnownPlayername +" : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                        /*if (jpmConfig.Current.spycfg == true)
                         {
 
 
@@ -98,7 +100,7 @@ namespace jpm.src
                                     myAPI.SendMessage(myAPI.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"green\"><strong>" + pdata.LastKnownPlayername + " to " + Aplayer.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
                                 }
                             }
-                        }
+                        }*/
                     }
                 }
             }else if (cmd == "help")
@@ -134,6 +136,7 @@ namespace jpm.src
                     {
                         jpmConfig.Current.spycfg = true;
                         myAPI.StoreModConfig(jpmConfig.Current, "jpmconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "This feature is currently disabled. Will be enabled in a future release", Vintagestory.API.Common.EnumChatType.Notification);
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Private Message Spy has been enabled.", Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
