@@ -33,6 +33,9 @@ A collection of mods for the game Vintage Story
 
 -jpm - Just Private Message
 	Allows the player to send messages to each other. Admin can view private messages.
+	
+-ironman
+	Puts the player in ironman mode in the doomland server
 
 -Just Light Jars: [FunnyBunnyofDOOM][DukePony]
   harvest glow worms and craft them with a glass jar to get glowing jars  
