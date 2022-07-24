@@ -1,0 +1,11 @@
+{
+  "type": "content",
+  "modid": "extrajuice",
+  "name": "extra juice",
+  "authors": ["funnybunnyofdoom"],
+  "description": "adds various juices",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  }
+}
