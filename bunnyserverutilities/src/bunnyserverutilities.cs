@@ -27,26 +27,38 @@ namespace jhome.src
 
         public override void StartServerSide(ICoreServerAPI api)
         {
+            //Start and assign APIs
             base.StartServerSide(api);
             sapi = api;
             IPermissionManager ipm = api.Permissions;
+            
+            //Event listerners
             api.Event.PlayerDeath += OnPlayerDeath;
             api.Event.SaveGameLoaded += OnSaveGameLoading;
             api.Event.GameWorldSave += OnSaveGameSaving;
 
-
+            //register commands
+            //home commands
             api.RegisterCommand("sethome", "Set your current position as home", " ",
                 cmd_sethome, CPrivilege.home);
             api.RegisterCommand("home", "Teleport to your /sethome location", " ",
                 cmd_home, CPrivilege.home);
+            api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
+                cmd_importOldHomes);
+            //back commands
             api.RegisterCommand("back", "Go back to your last TP location", " ",
                 cmd_back, DPrivilege.back);
+            //spawn commands
+            api.RegisterCommand("spawn", "Teleports the player to spawn", "", cmd_spawn, Privilege.chat);
+
+            //Register Privileges
+            //Home privileges
             ipm.RegisterPrivilege("sethome", "Set your current position as home",false);
             ipm.RegisterPrivilege("home", "Set your current position as home",false);
             ipm.RegisterPrivilege("back", "Go back to your last TP location", false);
-            api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
-                cmd_importOldHomes);
-            api.RegisterCommand("spawn", "Teleports the player to spawn", "", cmd_spawn, Privilege.chat);
+            ipm.RegisterPrivilege("spawn","teleport to spawn",false);
+            
+            
 
 
             try
@@ -80,35 +92,73 @@ namespace jhome.src
                     bsuconfig.Current.enableHome = bsuconfig.getDefault().enableHome;
                 if (bsuconfig.Current.homesImported == null)
                     bsuconfig.Current.homesImported = bsuconfig.getDefault().homesImported;
+                if (bsuconfig.Current.enableSpawn == null)
+                    bsuconfig.Current.enableSpawn = bsuconfig.getDefault().enableSpawn;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
             if (bsuconfig.Current.enablePermissions == false)
             {
+                //Add home privileges to all standard groups
                 ipm.AddPrivilegeToGroup("admin", CPrivilege.home);
-                ipm.AddPrivilegeToGroup("doplayer", CPrivilege.home);
-                ipm.AddPrivilegeToGroup("admin", DPrivilege.back);
-                ipm.AddPrivilegeToGroup("doplayer", DPrivilege.back);
                 ipm.AddPrivilegeToGroup("suplayer", CPrivilege.home);
+                ipm.AddPrivilegeToGroup("doplayer", CPrivilege.home);
+                //Add back privileges to all standard groups
+                ipm.AddPrivilegeToGroup("admin", DPrivilege.back);
                 ipm.AddPrivilegeToGroup("suplayer", DPrivilege.back);
+                ipm.AddPrivilegeToGroup("doplayer", DPrivilege.back);
+                //Add spawn privileges to all standard groups : doplayer is our servers donating player group
+                ipm.AddPrivilegeToGroup("admin", BPrivilege.spawn);
+                ipm.AddPrivilegeToGroup("suplayer", BPrivilege.spawn);
+                ipm.AddPrivilegeToGroup("doplayer", BPrivilege.spawn);
             }
 
         }
 
-        private void cmd_spawn(IServerPlayer player, int groupId, CmdArgs args)
+        private void cmd_spawn(IServerPlayer player, int groupId, CmdArgs args) //spawn command
         {
-            if (bsuconfig.Current.enableBack == true)
+            string cmd = args.PopWord();
+            switch (cmd)
             {
-                if (backSave.ContainsKey(player.PlayerUID))
-                {
-                    backSave.Remove(player.PlayerUID);
-                }
-                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+                case null:
+                    if(bsuconfig.Current.enableSpawn == true)
+                    {
+                        if (bsuconfig.Current.enableBack == true)
+                        {
+                            if (backSave.ContainsKey(player.PlayerUID))
+                            {
+                                backSave.Remove(player.PlayerUID);
+                            }
+                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+                        }
+                        EntityPlayer byEntity = player.Entity; //Get the player
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
+                        EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
+                        byEntity.TeleportTo(spawnpoint);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/Spawn is currently disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSpawn = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSpawn = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
             }
-                EntityPlayer byEntity = player.Entity; //Get the player
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
-            EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
-            byEntity.TeleportTo(spawnpoint);
+            
         }
 
         private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
@@ -300,6 +350,7 @@ namespace jhome.src
         private void displayhelp(IServerPlayer player)
         {
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny's Server Utility Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+            //home help
             if (bsuconfig.Current.enableHome == true)
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Home Commands---", Vintagestory.API.Common.EnumChatType.Notification);
@@ -307,23 +358,37 @@ namespace jhome.src
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home - teleports you to your set home location", Vintagestory.API.Common.EnumChatType.Notification);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Just Home", Vintagestory.API.Common.EnumChatType.Notification);
             }
+            //admin home help
             if (player.Role.Code == "admin")
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home enable - enable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home disable - disable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/importOldHomes - moves saved homes from jhome 1.05 and earlier to the new save type. Run this only once if you are updating to this mod from 1.0.5 or earlier.", Vintagestory.API.Common.EnumChatType.Notification);
             }
+            //back help
             if (bsuconfig.Current.enableBack == true)
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Back Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back - return to the last place you used /home, /back or died", Vintagestory.API.Common.EnumChatType.Notification);
             }
+            //admin back help
             if (player.Role.Code == "admin")
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back enable - enable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back disable - disable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
             }
-            
+            //spawn help
+            if (bsuconfig.Current.enableSpawn == true)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Spawn Commands---", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn - return to the server set spawn point", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            //admin spawn help
+            if (player.Role.Code == "admin")
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn enable - enable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn disable - disable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
+            }
         }
 
         public class CPrivilege : Privilege
@@ -340,8 +405,15 @@ namespace jhome.src
             /// <summary>
             /// Ability to use /back
             /// </summary>
-
             public static string back = "back";
+
+        }
+        public class BPrivilege : Privilege
+        {
+            /// <summary>
+            /// Ability to use /spawn
+            /// </summary>
+            public static string spawn = "spawn";
 
         }
 
@@ -370,6 +442,7 @@ namespace jhome.src
             public bool? homesImported;
             public bool? enableBack;
             public bool? enableHome;
+            public bool? enableSpawn;
 
 
 
@@ -387,6 +460,7 @@ namespace jhome.src
                 config.homesImported = false;
                 config.enableBack = backperms;
                 config.enableHome = true;
+                config.enableSpawn = true;
                 return config;
             }
 
