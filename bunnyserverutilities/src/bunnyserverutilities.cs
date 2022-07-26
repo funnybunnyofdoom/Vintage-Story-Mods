@@ -78,6 +78,8 @@ namespace jhome.src
                     bsuconfig.Current.enableBack = bsuconfig.getDefault().enableBack;
                 if (bsuconfig.Current.enableHome == null)
                     bsuconfig.Current.enableHome = bsuconfig.getDefault().enableHome;
+                if (bsuconfig.Current.homesImported == null)
+                    bsuconfig.Current.homesImported = bsuconfig.getDefault().homesImported;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -111,24 +113,42 @@ namespace jhome.src
 
         private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (player.Role.Code == "admin")
+            if (bsuconfig.Current.homesImported == false)
             {
-                if (bsuconfig.Current.homeDict != null)
+                if (player.Role.Code == "admin")
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
-                    homeSave.Clear();
-                    for (int i = 0; i < bsuconfig.Current.homeDict.Count(); i++)
+                    if (bsuconfig.Current.homeDict != null)
                     {
-                        KeyValuePair<string,BlockPos> kvp = bsuconfig.Current.homeDict.PopOne();
-                        
-                        homeSave.Add(kvp.Key,kvp.Value);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
+                        homeSave.Clear();
+                        for (int i = 0; i < bsuconfig.Current.homeDict.Count(); i++)
+                        {
+                            KeyValuePair<string, BlockPos> kvp = bsuconfig.Current.homeDict.PopOne();
+
+                            homeSave.Add(kvp.Key, kvp.Value);
+                        }
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
+                        bsuconfig.Current.homeDict.Clear();
+                        bsuconfig.Current.homeDict = null;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                     }
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
-                    bsuconfig.Current.homeDict.Clear();
-                    bsuconfig.Current.homeDict = null;
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No valid home configs to import.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    bsuconfig.Current.homesImported = true;
                     sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                 }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You do not have permission to run this command.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }           
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Old homes have already been imported. This command should only be used once.", Vintagestory.API.Common.EnumChatType.Notification);
             }
+            
         }
 
         private void OnPlayerDeath(IServerPlayer player, DamageSource damageSource)
@@ -291,6 +311,7 @@ namespace jhome.src
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home enable - enable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home disable - disable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/importOldHomes - moves saved homes from jhome 1.05 and earlier to the new save type. Run this only once if you are updating to this mod from 1.0.5 or earlier.", Vintagestory.API.Common.EnumChatType.Notification);
             }
             if (bsuconfig.Current.enableBack == true)
             {
@@ -346,6 +367,7 @@ namespace jhome.src
 
             public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
             public bool? enablePermissions;
+            public bool? homesImported;
             public bool? enableBack;
             public bool? enableHome;
 
@@ -362,6 +384,7 @@ namespace jhome.src
                 
                 config.homeDict = homedictionary;//Must be preserved to pull old homes to the new save
                 config.enablePermissions = perms;
+                config.homesImported = false;
                 config.enableBack = backperms;
                 config.enableHome = true;
                 return config;
