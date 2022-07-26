@@ -326,15 +326,17 @@ namespace jhome.src
 
         private void OnSaveGameSaving()
         {
-            sapi.WorldManager.SaveGame.StoreData("back", SerializerUtil.Serialize(backSave));
+            sapi.WorldManager.SaveGame.StoreData("bsuBack", SerializerUtil.Serialize(backSave));
+            sapi.WorldManager.SaveGame.StoreData("bsuHome", SerializerUtil.Serialize(homeSave));
         }
 
         private void OnSaveGameLoading()
         {
-            byte[] data = sapi.WorldManager.SaveGame.GetData("back");
+            byte[] backdata = sapi.WorldManager.SaveGame.GetData("bsuBack");
+            byte[] homedata = sapi.WorldManager.SaveGame.GetData("bsuHome");
 
-            backSave = data == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(data);
-            homeSave = data == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(data);
+            backSave = backdata == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(backdata);
+            homeSave = homedata == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(homedata);
         }
 
 
