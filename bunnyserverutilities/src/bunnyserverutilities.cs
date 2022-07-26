@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.Common.Entities;
 
 namespace jhome.src
 {
@@ -45,39 +46,42 @@ namespace jhome.src
             ipm.RegisterPrivilege("back", "Go back to your last TP location", false);
             api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
                 cmd_importOldHomes);
+            api.RegisterCommand("spawn", "Teleports the player to spawn", "", cmd_spawn, Privilege.chat);
 
 
             try
             {
-                var Config = api.LoadModConfig<HomeConfig>("homeconfig.json");
+                var Config = api.LoadModConfig<bsuconfig>("BunnyServerUtilitiesConfig.json");
                 if (Config != null)
                 {
                     api.Logger.Notification("Mod Config successfully loaded.");
-                    HomeConfig.Current = Config;
+                    bsuconfig.Current = Config;
                 }
                 else
                 {
                     api.Logger.Notification("No Mod Config specified. Falling back to default settings");
-                    HomeConfig.Current = HomeConfig.getDefault();
+                    bsuconfig.Current = bsuconfig.getDefault();
                 }
             }
             catch
             {
-                HomeConfig.Current = HomeConfig.getDefault();
+                bsuconfig.Current = bsuconfig.getDefault();
                 api.Logger.Error("Failed to load custom mod configuration. Falling back to default settings!");
             }
             finally
             {
-                if (HomeConfig.Current.homeDict == null)//Must be preserved to pull old homes to the new save
-                    HomeConfig.Current.homeDict = HomeConfig.getDefault().homeDict;//Must be preserved to pull old homes to the new save
-                if (HomeConfig.Current.enablePermissions == null)
-                    HomeConfig.Current.enablePermissions = HomeConfig.getDefault().enablePermissions;
-                if (HomeConfig.Current.enableBack == null)
-                    HomeConfig.Current.enableBack = HomeConfig.getDefault().enableBack;
+                if (bsuconfig.Current.homeDict == null)//Must be preserved to pull old homes to the new save
+                    bsuconfig.Current.homeDict = bsuconfig.getDefault().homeDict;//Must be preserved to pull old homes to the new save
+                if (bsuconfig.Current.enablePermissions == null)
+                    bsuconfig.Current.enablePermissions = bsuconfig.getDefault().enablePermissions;
+                if (bsuconfig.Current.enableBack == null)
+                    bsuconfig.Current.enableBack = bsuconfig.getDefault().enableBack;
+                if (bsuconfig.Current.enableHome == null)
+                    bsuconfig.Current.enableHome = bsuconfig.getDefault().enableHome;
 
-                api.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
-            if (HomeConfig.Current.enablePermissions == false)
+            if (bsuconfig.Current.enablePermissions == false)
             {
                 ipm.AddPrivilegeToGroup("admin", CPrivilege.home);
                 ipm.AddPrivilegeToGroup("doplayer", CPrivilege.home);
@@ -89,32 +93,47 @@ namespace jhome.src
 
         }
 
+        private void cmd_spawn(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            if (bsuconfig.Current.enableBack == true)
+            {
+                if (backSave.ContainsKey(player.PlayerUID))
+                {
+                    backSave.Remove(player.PlayerUID);
+                }
+                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+            }
+                EntityPlayer byEntity = player.Entity; //Get the player
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
+            EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
+            byEntity.TeleportTo(spawnpoint);
+        }
+
         private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
         {
             if (player.Role.Code == "admin")
             {
-                if (HomeConfig.Current.homeDict != null)
+                if (bsuconfig.Current.homeDict != null)
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
                     homeSave.Clear();
-                    for (int i = 0; i < HomeConfig.Current.homeDict.Count(); i++)
+                    for (int i = 0; i < bsuconfig.Current.homeDict.Count(); i++)
                     {
-                        KeyValuePair<string,BlockPos> kvp = HomeConfig.Current.homeDict.PopOne();
+                        KeyValuePair<string,BlockPos> kvp = bsuconfig.Current.homeDict.PopOne();
                         
                         homeSave.Add(kvp.Key,kvp.Value);
                     }
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
-                    HomeConfig.Current.homeDict.Clear();
-                    HomeConfig.Current.homeDict = null;
-                    sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                    bsuconfig.Current.homeDict.Clear();
+                    bsuconfig.Current.homeDict = null;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                 }
-
             }
         }
 
         private void OnPlayerDeath(IServerPlayer player, DamageSource damageSource)
         {
-            if (HomeConfig.Current.enableBack == true)
+            if (bsuconfig.Current.enableBack == true)
             {
                 if (backSave.ContainsKey(player.PlayerUID))
                 {
@@ -131,7 +150,7 @@ namespace jhome.src
             switch (cmd)
             {
                 case null:
-                    if (HomeConfig.Current.enableBack == true)
+                    if (bsuconfig.Current.enableBack == true)
                     {
                         BlockPos newPos = player.Entity.Pos.AsBlockPos;
                         if (backSave.ContainsKey(player.Entity.PlayerUID))
@@ -155,16 +174,16 @@ namespace jhome.src
                 case "enable":
                     if (player.Role.Code == "admin")
                     {
-                        HomeConfig.Current.enableBack = true;
-                        sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                        bsuconfig.Current.enableBack = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
                     }
                         break;
                 case "disable":
                     if (player.Role.Code == "admin")
                     {
-                        HomeConfig.Current.enableBack = false;
-                        sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
+                        bsuconfig.Current.enableBack = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
                     }
                         break;
@@ -180,12 +199,20 @@ namespace jhome.src
 
         private void cmd_sethome(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (homeSave.ContainsKey(player.Entity.PlayerUID))
+            if (bsuconfig.Current.enableHome == true)
             {
-                homeSave.Remove(player.Entity.PlayerUID);
+                if (homeSave.ContainsKey(player.Entity.PlayerUID))
+                {
+                    homeSave.Remove(player.Entity.PlayerUID);
+                }
+                homeSave.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "New home has been saved.", Vintagestory.API.Common.EnumChatType.Notification);
             }
-            homeSave.Add(player.Entity.PlayerUID,player.Entity.Pos.AsBlockPos);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "New home has been saved.", Vintagestory.API.Common.EnumChatType.Notification);
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home is disabled. an admin must use /home enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            
 
 
         }
@@ -195,26 +222,49 @@ namespace jhome.src
             switch (cmd)
             {
                 case null:
-                    if (HomeConfig.Current.enableBack == true)
+                    if (bsuconfig.Current.enableHome == true)
                     {
-                        if (backSave.ContainsKey(player.PlayerUID))
+                        if (bsuconfig.Current.enableBack == true)
                         {
-                            backSave.Remove(player.PlayerUID);
-                        }
+                            if (backSave.ContainsKey(player.PlayerUID))
+                            {
+                                backSave.Remove(player.PlayerUID);
+                            }
 
-                        backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-                    }
-                    if (homeSave.ContainsKey(player.Entity.PlayerUID))
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to your saved home", Vintagestory.API.Common.EnumChatType.Notification);
-                        sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
-                        player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
+                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+                        }
+                        if (homeSave.ContainsKey(player.Entity.PlayerUID))
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to your saved home", Vintagestory.API.Common.EnumChatType.Notification);
+                            sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
+                            player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No Home Saved. Teleporting to world center. Use /sethome to set a home.", Vintagestory.API.Common.EnumChatType.Notification);
+                            sapi.WorldManager.LoadChunkColumnPriority(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Z);
+                            player.Entity.TeleportTo(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Y, sapi.World.DefaultSpawnPosition.XYZInt.Z);
+                        }
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No Home Saved. Teleporting to world center. Use /sethome to set a home.", Vintagestory.API.Common.EnumChatType.Notification);
-                        sapi.WorldManager.LoadChunkColumnPriority(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Z);
-                        player.Entity.TeleportTo(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Y, sapi.World.DefaultSpawnPosition.XYZInt.Z);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home is disabled. an admin must use /home enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
+                    }     
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableHome = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home and /sethome has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableHome = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home and /sethome has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "help":
@@ -230,12 +280,23 @@ namespace jhome.src
         private void displayhelp(IServerPlayer player)
         {
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny's Server Utility Commands:", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Home Commands---", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/sethome - Sets your location as your home teleport", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home - teleports you to your set home location", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Just Home", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Back Commands---", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back - return to the last place you used /home, /back or died", Vintagestory.API.Common.EnumChatType.Notification);
+            if (bsuconfig.Current.enableHome == true)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Home Commands---", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/sethome - Sets your location as your home teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home - teleports you to your set home location", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Just Home", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            if (player.Role.Code == "admin")
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home enable - enable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home disable - disable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            if (bsuconfig.Current.enableBack == true)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Back Commands---", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back - return to the last place you used /home, /back or died", Vintagestory.API.Common.EnumChatType.Notification);
+            }
             if (player.Role.Code == "admin")
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back enable - enable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
@@ -277,19 +338,20 @@ namespace jhome.src
         }
 
 
-        public class HomeConfig
+        public class bsuconfig
         {
-            public static HomeConfig Current { get; set; }
+            public static bsuconfig Current { get; set; }
 
             public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
             public bool? enablePermissions;
             public bool? enableBack;
+            public bool? enableHome;
 
 
 
-            public static HomeConfig getDefault()
+            public static bsuconfig getDefault()
             {
-                var config = new HomeConfig();
+                var config = new bsuconfig();
                 BlockPos defPos = new BlockPos(0,0,0);
                 bool perms = false;
                 bool backperms = true;
@@ -299,6 +361,7 @@ namespace jhome.src
                 config.homeDict = homedictionary;//Must be preserved to pull old homes to the new save
                 config.enablePermissions = perms;
                 config.enableBack = backperms;
+                config.enableHome = true;
                 return config;
             }
 
