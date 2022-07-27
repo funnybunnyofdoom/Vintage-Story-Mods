@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,15 +11,28 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Common.Entities;
+using privileges;
 
-namespace jhome.src
+namespace bunnyserverutilities.src
 {
     public class bunnyserverutilities : ModSystem
     {
-        public ICoreServerAPI sapi;
-        public BlockPos homepos;
-        Dictionary<string, BlockPos> backSave;
-        Dictionary<string, BlockPos> homeSave;
+        //BSU variable initilization
+        public ICoreServerAPI sapi; //Variable to store our server API. We assign this in startServerSide
+        
+        //jHome variable initialization
+        Dictionary<string, BlockPos> backSave; //Dictionary to hold our /back locations
+        Dictionary<string, BlockPos> homeSave; //Dictionary to hold our /home locations
+        
+        //GRTP variable initialization
+        int? count; //Variable to check against for timing and cooldowns
+        long CID; //Variable to hold our event listener for the cooldown timer
+        int randx, randz; //Variables to hold our random location
+        public bool loaded = false; //Tracks whether or not the current GRTP chunk is loaded
+        int height;
+
+        //
+
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server;
@@ -38,28 +51,35 @@ namespace jhome.src
             api.Event.GameWorldSave += OnSaveGameSaving;
 
             //register commands
+            
             //home commands
             api.RegisterCommand("sethome", "Set your current position as home", " ",
-                cmd_sethome, CPrivilege.home);
+                cmd_sethome, privileges.src.CPrivilege.home);
             api.RegisterCommand("home", "Teleport to your /sethome location", " ",
-                cmd_home, CPrivilege.home);
+                cmd_home, privileges.src.CPrivilege.home);
             api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
-                cmd_importOldHomes);
+                cmd_importOldHomes, Privilege.ban);
+
             //back commands
             api.RegisterCommand("back", "Go back to your last TP location", " ",
-                cmd_back, DPrivilege.back);
+                cmd_back, privileges.src.DPrivilege.back);
+
             //spawn commands
-            api.RegisterCommand("spawn", "Teleports the player to spawn", "", cmd_spawn, Privilege.chat);
+            api.RegisterCommand("spawn", "Teleports the player to spawn", "", cmd_spawn, privileges.src.BPrivilege.spawn);
+
 
             //Register Privileges
-            //Home privileges
-            ipm.RegisterPrivilege("sethome", "Set your current position as home",false);
-            ipm.RegisterPrivilege("home", "Set your current position as home",false);
-            ipm.RegisterPrivilege("back", "Go back to your last TP location", false);
-            ipm.RegisterPrivilege("spawn","teleport to spawn",false);
-            
-            
 
+            //Home privileges
+            ipm.RegisterPrivilege("sethome", "Set your current position as home");
+            ipm.RegisterPrivilege("home", "Set your current position as home");
+            ipm.RegisterPrivilege("back", "Go back to your last TP location");
+            ipm.RegisterPrivilege("spawn","teleport to spawn");
+
+            //GRTP privileges
+            ipm.RegisterPrivilege("grtp", "Random Teleport");
+
+            //Check config for nulls
 
             try
             {
@@ -94,23 +114,37 @@ namespace jhome.src
                     bsuconfig.Current.homesImported = bsuconfig.getDefault().homesImported;
                 if (bsuconfig.Current.enableSpawn == null)
                     bsuconfig.Current.enableSpawn = bsuconfig.getDefault().enableSpawn;
+                if (bsuconfig.Current.cooldownminutes == null)
+                    bsuconfig.Current.cooldownminutes = bsuconfig.getDefault().cooldownminutes;
+                if (bsuconfig.Current.teleportradius == null)
+                    bsuconfig.Current.teleportradius = bsuconfig.getDefault().teleportradius;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
+
+
+            //If enable permissions is false, we will give the standard groups all low-level privileges
             if (bsuconfig.Current.enablePermissions == false)
             {
+
+                //Add grtp privileges to all standard groups
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.APrivilege.grtp);
+                ipm.AddPrivilegeToGroup("admin", privileges.src.APrivilege.grtp);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.APrivilege.grtp);
+                //Add spawn privileges to all standard groups
+                ipm.AddPrivilegeToGroup("admin", privileges.src.BPrivilege.spawn);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.BPrivilege.spawn);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.BPrivilege.spawn);
                 //Add home privileges to all standard groups
-                ipm.AddPrivilegeToGroup("admin", CPrivilege.home);
-                ipm.AddPrivilegeToGroup("suplayer", CPrivilege.home);
-                ipm.AddPrivilegeToGroup("doplayer", CPrivilege.home);
+                ipm.AddPrivilegeToGroup("admin", privileges.src.CPrivilege.home);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.CPrivilege.home);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.CPrivilege.home);
                 //Add back privileges to all standard groups
-                ipm.AddPrivilegeToGroup("admin", DPrivilege.back);
-                ipm.AddPrivilegeToGroup("suplayer", DPrivilege.back);
-                ipm.AddPrivilegeToGroup("doplayer", DPrivilege.back);
-                //Add spawn privileges to all standard groups : doplayer is our servers donating player group
-                ipm.AddPrivilegeToGroup("admin", BPrivilege.spawn);
-                ipm.AddPrivilegeToGroup("suplayer", BPrivilege.spawn);
-                ipm.AddPrivilegeToGroup("doplayer", BPrivilege.spawn);
+                ipm.AddPrivilegeToGroup("admin", privileges.src.DPrivilege.back);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.DPrivilege.back);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.DPrivilege.back);
+                
+                
             }
 
         }
@@ -391,32 +425,7 @@ namespace jhome.src
             }
         }
 
-        public class CPrivilege : Privilege
-        {
-            /// <summary>
-            /// Ability to use /home
-            /// </summary>
-            
-            public static string home = "home";
-
-        }
-        public class DPrivilege : Privilege
-        {
-            /// <summary>
-            /// Ability to use /back
-            /// </summary>
-            public static string back = "back";
-
-        }
-        public class BPrivilege : Privilege
-        {
-            /// <summary>
-            /// Ability to use /spawn
-            /// </summary>
-            public static string spawn = "spawn";
-
-        }
-
+        
         private void OnSaveGameSaving()
         {
             sapi.WorldManager.SaveGame.StoreData("bsuBack", SerializerUtil.Serialize(backSave));
@@ -437,12 +446,20 @@ namespace jhome.src
         {
             public static bsuconfig Current { get; set; }
 
-            public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
-            public bool? enablePermissions;
-            public bool? homesImported;
+            //enable/disable properties
             public bool? enableBack;
             public bool? enableHome;
             public bool? enableSpawn;
+
+            //jhome properties
+            public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
+            public bool? enablePermissions;
+            public bool? homesImported;
+
+
+            //grtp properties
+            public int? teleportradius;
+            public int? cooldownminutes;
 
 
 
@@ -451,16 +468,23 @@ namespace jhome.src
                 var config = new bsuconfig();
                 BlockPos defPos = new BlockPos(0,0,0);
                 bool perms = false;
-                bool backperms = true;
 
+
+                //jHome default assignments
                 Dictionary<String, BlockPos> homedictionary = null;
-                
                 config.homeDict = homedictionary;//Must be preserved to pull old homes to the new save
                 config.enablePermissions = perms;
                 config.homesImported = false;
-                config.enableBack = backperms;
+
+                //enable/disable module defaults
+                config.enableBack = true;
                 config.enableHome = true;
                 config.enableSpawn = true;
+
+                //grtp module defaults
+                config.cooldownminutes = 60;
+                config.teleportradius = 100000;
+
                 return config;
             }
 
