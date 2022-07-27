@@ -404,7 +404,15 @@ namespace bunnyserverutilities.src
                     if (loaded == true)
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        if (bsuconfig.Current.enableBack == true)
+                        {
+                            if (backSave.ContainsKey(player.PlayerUID))
+                            {
+                                backSave.Remove(player.PlayerUID);
+                            }
 
+                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+                        }
                         player.Entity.TeleportTo(randx, height + 2, randz);
 
                     }
