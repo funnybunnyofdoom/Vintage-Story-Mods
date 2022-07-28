@@ -250,7 +250,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player,"back");
+                    displayhelp(player,cmdname);
                     break;
                 case "version":
                     var modinfo = Mod.Info;
@@ -350,7 +350,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player,"home");
+                    displayhelp(player,cmdname);
                     break;
                 case "version":
                     var modinfo = Mod.Info;
@@ -431,7 +431,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player,"grtp");
+                    displayhelp(player,cmdname);
                     break;
                 case "version":
                     var modinfo = Mod.Info;
@@ -587,7 +587,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player, "spawn");
+                    displayhelp(player, cmdname);
                     break;
                 case "version":
                     var modinfo = Mod.Info;
