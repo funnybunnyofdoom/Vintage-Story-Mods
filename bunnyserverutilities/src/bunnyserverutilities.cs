@@ -193,39 +193,8 @@ namespace bunnyserverutilities.src
                 case null:
                     if (bsuconfig.Current.enableBack == true)
                     {
-                        int playersactivecooldowntime;
-                        string modname = cmdname;
-                        if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
-                        {
-                            Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
-                            if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
-                            {
-                                dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
-                                if (count >= playersactivecooldowntime + bsuconfig.Current.backPlayerCooldown)
-                                {
-                                    backteleport(player);
-
-                                    cooldownDict[modname].Remove(player.PlayerUID);
-                                    cooldownDict[modname].Add(player.PlayerUID, count);
-                                }
-                                else
-                                {
-                                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + bsuconfig.Current.backPlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                    return;
-                                }
-                            }
-                            else
-                            {
-                               backteleport(player);
-                                cooldownDict[modname].Add(player.PlayerUID, count);
-                            }
-                        }
-                        else
-                        {
-                            backteleport(player);
-                            cooldownDict.Add(modname, new Dictionary<string, int>());
-                            cooldownDict[modname].Add(player.PlayerUID, count);
-                        }
+                        Action<IServerPlayer> a = (IServerPlayer) => backteleport(player);
+                        checkCooldown(player, cmdname, a, bsuconfig.Current.backPlayerCooldown);
 
                     }
                     else
@@ -293,39 +262,8 @@ namespace bunnyserverutilities.src
                 case null:
                     if (bsuconfig.Current.enableHome == true)
                     {
-                        int playersactivecooldowntime;
-                        string modname = cmdname;
-                        if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
-                        {
-                            Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
-                            if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
-                            {
-                                dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
-                                if (count >= playersactivecooldowntime + bsuconfig.Current.homePlayerCooldown)
-                                {
-                                    homeTeleport(player);
-
-                                    cooldownDict[modname].Remove(player.PlayerUID);
-                                    cooldownDict[modname].Add(player.PlayerUID, count);
-                                }
-                                else
-                                {
-                                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + bsuconfig.Current.homePlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                    return;
-                                }
-                            }
-                            else
-                            {
-                                homeTeleport(player);
-                                cooldownDict[modname].Add(player.PlayerUID, count);
-                            }
-                        }
-                        else
-                        {
-                            homeTeleport(player);
-                            cooldownDict.Add(modname, new Dictionary<string, int>());
-                            cooldownDict[modname].Add(player.PlayerUID, count);
-                        }
+                        Action<IServerPlayer> a = (IServerPlayer) => homeTeleport(player);
+                        checkCooldown(player, cmdname, a, bsuconfig.Current.homePlayerCooldown);
 
                     }
                     else
@@ -376,42 +314,8 @@ namespace bunnyserverutilities.src
                         {
                             if (loaded == true)
                             {
-                                int playersactivecooldowntime;
-                                string modname = cmdname;
-                                if (cooldownDict.ContainsKey(modname)) //look for the GRTP cooldown dictionary
-                                {
-                                    Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our GRTP cooldown dictionary to dicdata
-                                    if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
-                                    {
-                                        dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
-                                        if (count >= playersactivecooldowntime+bsuconfig.Current.grtpPlayerCooldown)
-                                        {
-                                            grtpteleport(player);
-
-                                            cooldownDict[modname].Remove(player.PlayerUID);
-                                            cooldownDict[modname].Add(player.PlayerUID, count);
-                                        }
-                                        else
-                                        {
-                                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime+bsuconfig.Current.grtpPlayerCooldown)-count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                            return;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        grtpteleport(player);
-                                        cooldownDict[modname].Add(player.PlayerUID, count);
-                                    }
-                                }
-                                else
-                                {
-                                    grtpteleport(player);
-                                    cooldownDict.Add(modname, new Dictionary<string, int>());
-                                    cooldownDict[modname].Add(player.PlayerUID, count);
-                                }
-
-
-
+                                Action<IServerPlayer> a = (IServerPlayer) => grtpteleport(player);
+                                checkCooldown(player, cmdname, a, bsuconfig.Current.grtpPlayerCooldown);
                             }
                             else
                             {
@@ -530,40 +434,9 @@ namespace bunnyserverutilities.src
                 case null:
                     if (bsuconfig.Current.enableSpawn == true)
                     {
-                        int playersactivecooldowntime;
-                        string modname = cmdname;
-                        if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
-                        {
-                            Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
-                            if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
-                            {
-                                dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
-                                if (count >= playersactivecooldowntime + bsuconfig.Current.spawnPlayerCooldown)
-                                {
-                                    spawnTeleport(player);
+                        Action<IServerPlayer> a = (IServerPlayer) => spawnTeleport(player);
+                        checkCooldown(player, cmdname, a, bsuconfig.Current.spawnPlayerCooldown);
 
-                                    cooldownDict[modname].Remove(player.PlayerUID);
-                                    cooldownDict[modname].Add(player.PlayerUID, count);
-                                }
-                                else
-                                {
-                                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + bsuconfig.Current.spawnPlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                    return;
-                                }
-                            }
-                            else
-                            {
-                                spawnTeleport(player);
-                                cooldownDict[modname].Add(player.PlayerUID, count);
-                            }
-                        }
-                        else
-                        {
-                            spawnTeleport(player);
-                            cooldownDict.Add(modname, new Dictionary<string, int>());
-                            cooldownDict[modname].Add(player.PlayerUID, count);
-                        }
-                        
                     }
                     else
                     {
@@ -774,6 +647,7 @@ namespace bunnyserverutilities.src
                 backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
             }
             player.Entity.TeleportTo(randx, height + 2, randz);
+            
         }
 
         private void homeTeleport(IServerPlayer player)
@@ -871,6 +745,43 @@ namespace bunnyserverutilities.src
                     sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, cmd+" cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
                 }
+            }
+        }
+
+        private void checkCooldown(IServerPlayer player, string cmdname, Action<IServerPlayer> function, int? modPlayerCooldown)
+        {
+            int playersactivecooldowntime;
+            string modname = cmdname;
+            if (cooldownDict.ContainsKey(modname)) //look for the mods cooldown dictionary
+            {
+                Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our cooldown dictionary to dicdata
+                if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
+                {
+                    dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
+                    if (count >= playersactivecooldowntime + modPlayerCooldown)
+                    {
+                        function(player);
+
+                        cooldownDict[modname].Remove(player.PlayerUID);
+                        cooldownDict[modname].Add(player.PlayerUID, count);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + modPlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        return;
+                    }
+                }
+                else
+                {
+                    function(player);
+                    cooldownDict[modname].Add(player.PlayerUID, count);
+                }
+            }
+            else
+            {
+                function(player);
+                cooldownDict.Add(modname, new Dictionary<string, int>());
+                cooldownDict[modname].Add(player.PlayerUID, count);
             }
         }
 
