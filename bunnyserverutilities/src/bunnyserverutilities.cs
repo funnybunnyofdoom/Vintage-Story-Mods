@@ -336,26 +336,7 @@ namespace bunnyserverutilities.src
                                         dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
                                         if (count >= playersactivecooldowntime+bsuconfig.Current.grtpPlayerCooldown)
                                         {
-                                            if (bsuconfig.Current.cooldownminutes - (count - grtptimer) <= 0)
-                                            {
-                                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. A new location will be generated within 1 minute", Vintagestory.API.Common.EnumChatType.Notification);
-                                            }
-                                            else
-                                            {
-                                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                            }
-
-
-                                            if (bsuconfig.Current.enableBack == true)
-                                            {
-                                                if (backSave.ContainsKey(player.PlayerUID))
-                                                {
-                                                    backSave.Remove(player.PlayerUID);
-                                                }
-
-                                                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-                                            }
-                                            player.Entity.TeleportTo(randx, height + 2, randz);
+                                            grtpteleport(player);
 
                                             cooldownDict["grtp"].Remove(player.PlayerUID);
                                             cooldownDict["grtp"].Add(player.PlayerUID, count);
@@ -368,51 +349,13 @@ namespace bunnyserverutilities.src
                                     }
                                     else
                                     {
-                                        if (bsuconfig.Current.cooldownminutes - (count - grtptimer) <= 0)
-                                        {
-                                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. A new location will be generated within 1 minute", Vintagestory.API.Common.EnumChatType.Notification);
-                                        }
-                                        else
-                                        {
-                                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                        }
-
-
-                                        if (bsuconfig.Current.enableBack == true)
-                                        {
-                                            if (backSave.ContainsKey(player.PlayerUID))
-                                            {
-                                                backSave.Remove(player.PlayerUID);
-                                            }
-
-                                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-                                        }
-                                        player.Entity.TeleportTo(randx, height + 2, randz);
+                                        grtpteleport(player);
                                         cooldownDict["grtp"].Add(player.PlayerUID, count);
                                     }
                                 }
                                 else
                                 {
-                                    if (bsuconfig.Current.cooldownminutes - (count - grtptimer) <= 0)
-                                    {
-                                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. A new location will be generated within 1 minute", Vintagestory.API.Common.EnumChatType.Notification);
-                                    }
-                                    else
-                                    {
-                                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                                    }
-
-
-                                    if (bsuconfig.Current.enableBack == true)
-                                    {
-                                        if (backSave.ContainsKey(player.PlayerUID))
-                                        {
-                                            backSave.Remove(player.PlayerUID);
-                                        }
-
-                                        backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-                                    }
-                                    player.Entity.TeleportTo(randx, height + 2, randz);
+                                    grtpteleport(player);
                                     cooldownDict.Add("grtp", new Dictionary<string, int>());
                                     cooldownDict["grtp"].Add(player.PlayerUID, count);
                                 }
@@ -730,7 +673,29 @@ namespace bunnyserverutilities.src
         //===============//
         //other functions//
         //===============//
+        private void grtpteleport(IServerPlayer player)
+        {
+            if (bsuconfig.Current.cooldownminutes - (count - grtptimer) <= 0)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. A new location will be generated within 1 minute", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
 
+
+            if (bsuconfig.Current.enableBack == true)
+            {
+                if (backSave.ContainsKey(player.PlayerUID))
+                {
+                    backSave.Remove(player.PlayerUID);
+                }
+
+                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+            }
+            player.Entity.TeleportTo(randx, height + 2, randz);
+        }
 
         //========================//
         //Event Listener Functions//
