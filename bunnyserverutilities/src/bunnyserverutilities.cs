@@ -186,6 +186,7 @@ namespace bunnyserverutilities.src
         //back command
         private void cmd_back(IServerPlayer player, int groupId, CmdArgs args) 
         {
+            string cmdname = "back";
             string cmd = args.PopWord();
             switch (cmd)
             {
@@ -193,7 +194,7 @@ namespace bunnyserverutilities.src
                     if (bsuconfig.Current.enableBack == true)
                     {
                         int playersactivecooldowntime;
-                        string modname = "back";
+                        string modname = cmdname;
                         if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
                         {
                             Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
@@ -255,6 +256,9 @@ namespace bunnyserverutilities.src
                     var modinfo = Mod.Info;
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
+                case "playercooldown":
+                    setplayercooldown(player, args.PopInt(),cmdname);
+                    break;
             }
         }
 
@@ -282,6 +286,7 @@ namespace bunnyserverutilities.src
         //home command
         private void cmd_home(IServerPlayer player, int groupId, CmdArgs args)
         {
+            string cmdname = "home";
             string cmd = args.PopWord();
             switch (cmd)
             {
@@ -289,7 +294,7 @@ namespace bunnyserverutilities.src
                     if (bsuconfig.Current.enableHome == true)
                     {
                         int playersactivecooldowntime;
-                        string modname = "home";
+                        string modname = cmdname;
                         if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
                         {
                             Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
@@ -351,12 +356,16 @@ namespace bunnyserverutilities.src
                     var modinfo = Mod.Info;
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
+                case "playercooldown":
+                    setplayercooldown(player, args.PopInt(), cmdname);
+                    break;
             }
         }
 
         //grtp command
         private void cmd_grtp(IServerPlayer player, int groupId, CmdArgs args)
         {
+            string cmdname = "grtp";
             string cmd = args.PopWord();
             switch (cmd)
             {
@@ -368,7 +377,7 @@ namespace bunnyserverutilities.src
                             if (loaded == true)
                             {
                                 int playersactivecooldowntime;
-                                string modname = "grtp";
+                                string modname = cmdname;
                                 if (cooldownDict.ContainsKey(modname)) //look for the GRTP cooldown dictionary
                                 {
                                     Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our GRTP cooldown dictionary to dicdata
@@ -491,6 +500,9 @@ namespace bunnyserverutilities.src
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
+                case "playercooldown":
+                    setplayercooldown(player, args.PopInt(), cmdname);
+                    break;
             }
         }
 
@@ -511,6 +523,7 @@ namespace bunnyserverutilities.src
         //spawn command
         private void cmd_spawn(IServerPlayer player, int groupId, CmdArgs args) //spawn command
         {
+            string cmdname = "spawn";
             string cmd = args.PopWord();
             switch (cmd)
             {
@@ -518,7 +531,7 @@ namespace bunnyserverutilities.src
                     if (bsuconfig.Current.enableSpawn == true)
                     {
                         int playersactivecooldowntime;
-                        string modname = "spawn";
+                        string modname = cmdname;
                         if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
                         {
                             Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
@@ -579,6 +592,9 @@ namespace bunnyserverutilities.src
                 case "version":
                     var modinfo = Mod.Info;
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "playercooldown":
+                    setplayercooldown(player, args.PopInt(), cmdname);
                     break;
             }
 
@@ -815,6 +831,46 @@ namespace bunnyserverutilities.src
             else
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No back location. Use /home to create a back location.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+        }
+
+        //Set player's cooldown for (player, cooldown time, mod cmd name)
+        //You must add the mod name to the if cmd == statement to update cooldowns
+        private void setplayercooldown(IServerPlayer player, int? cdnum,string cmd)
+        {
+            if (player.Role.Code == "admin")
+            {
+                //int? cdnum = args.PopInt();
+                if (cdnum == null | cdnum == 0)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number greater than 0 in minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else if (cdnum < 0)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    if (cmd == "spawn")
+                    {
+                        bsuconfig.Current.spawnPlayerCooldown = cdnum;
+                    }
+                    else if(cmd == "home"){
+                        bsuconfig.Current.homePlayerCooldown = cdnum;
+                    }
+                    else if (cmd == "back")
+                    {
+                        bsuconfig.Current.backPlayerCooldown = cdnum;
+                    }
+                    else if (cmd == "grtp")
+                    {
+                        bsuconfig.Current.grtpPlayerCooldown = cdnum;
+                    }
+                    
+                    
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, cmd+" cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
             }
         }
 
