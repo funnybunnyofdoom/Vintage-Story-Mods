@@ -34,7 +34,8 @@ namespace bunnyserverutilities.src
         public bool loaded = false; //Tracks whether or not the current GRTP chunk is loaded
         int height; //Stores the height of the GRTP location once GRTP loads the chunk
 
-        //
+        //Join Announce Initialization
+        List<IServerPlayer> joinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
 
         public override bool ShouldLoad(EnumAppSide side)
         {
@@ -53,15 +54,17 @@ namespace bunnyserverutilities.src
             api.Event.SaveGameLoaded += OnSaveGameLoading; // Load our data each game load
             api.Event.GameWorldSave += OnSaveGameSaving; // Save our data each game save
             api.Event.ChunkColumnLoaded += OnChunkColumnLoaded; // /grtp and /rtp use this to check for their chunk to be loaded
+            api.Event.PlayerCreate += OnPlayerCreate; // Used by join announce and rising sun to track new players
+            api.Event.PlayerNowPlaying += onNowPlaying; // Used by join announce and rising sun to tell when players are loaded into the game
 
             //register commands
 
             //Bunny Server Utilities Commands
-            api.RegisterCommand("bsu", "Bunny Server utilities", " ",
+            api.RegisterCommand("bsu", "Bunny Server utilities", "[help | Version]",
                 cmd_bsu);
-            api.RegisterCommand("bunnyServerUtilities", "Bunny Server utilities", " ",
+            api.RegisterCommand("bunnyServerUtilities", "Bunny Server utilities", "[help | Version]",
                 cmd_bsu);
-            api.RegisterCommand("bunnyServerUtility", "Bunny Server utilities", " ",
+            api.RegisterCommand("bunnyServerUtility", "Bunny Server utilities", "[help | Version]",
                 cmd_bsu);
 
             //home commands
@@ -82,6 +85,10 @@ namespace bunnyserverutilities.src
             //grtp commands
             api.RegisterCommand("grtp", "Randomly Teleports the player to a group location", "",
             cmd_grtp, privileges.src.APrivilege.grtp);
+
+            //Join Announce Commands
+            api.RegisterCommand("joinannounce", "Announces a new player to the server when they join", "[help | enable | disable]", cmd_joinannounce, Privilege.ban);
+
 
             //Register Privileges
 
@@ -143,6 +150,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.backPlayerCooldown = bsuconfig.getDefault().backPlayerCooldown;
                 if (bsuconfig.Current.spawnPlayerCooldown == null)
                     bsuconfig.Current.spawnPlayerCooldown = bsuconfig.getDefault().spawnPlayerCooldown;
+                if (bsuconfig.Current.enableJoinAnnounce == null)
+                    bsuconfig.Current.enableJoinAnnounce = bsuconfig.getDefault().enableJoinAnnounce;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -221,10 +230,6 @@ namespace bunnyserverutilities.src
                 case "help":
                     displayhelp(player,cmdname);
                     break;
-                case "version":
-                    var modinfo = Mod.Info;
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
-                    break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(),cmdname);
                     break;
@@ -290,10 +295,6 @@ namespace bunnyserverutilities.src
                 case "help":
                     displayhelp(player,cmdname);
                     break;
-                case "version":
-                    var modinfo = Mod.Info;
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
-                    break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
                     break;
@@ -336,10 +337,6 @@ namespace bunnyserverutilities.src
                     break;
                 case "help":
                     displayhelp(player,cmdname);
-                    break;
-                case "version":
-                    var modinfo = Mod.Info;
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case "cooldown":
                     if (player.Role.Code == "admin")
@@ -416,11 +413,12 @@ namespace bunnyserverutilities.src
             string cmd = args.PopWord();
             switch (cmd)
             {
-                case null:
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bsu help or /bunnyserverutility help for a list of commands", Vintagestory.API.Common.EnumChatType.Notification);
-                    break;
                 case "help":
                     displayhelp(player, "all");
+                    break;
+                case "version":
+                    var modinfo = Mod.Info;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
             }
         }
@@ -461,10 +459,6 @@ namespace bunnyserverutilities.src
                     break;
                 case "help":
                     displayhelp(player, cmdname);
-                    break;
-                case "version":
-                    var modinfo = Mod.Info;
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
@@ -513,16 +507,51 @@ namespace bunnyserverutilities.src
 
         }
 
+        private void cmd_joinannounce(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "joinannounce";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "[help | Enable | disable]", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "help":
+                    displayhelp(player, cmdname);
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableJoinAnnounce = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Join Announce has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableJoinAnnounce = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Join Announce has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
 
-        private void displayhelp(IServerPlayer player,string helpType = "all")
+        private void displayhelp(IServerPlayer player, string helpType = "all")
         {
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny's Server Utility Commands:", Vintagestory.API.Common.EnumChatType.Notification);
             if (helpType != "all")
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "-Use /bsu help to see help for all Bunny Server utility commands", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "-Use /bsu version for mod version", Vintagestory.API.Common.EnumChatType.Notification);
             }
 
             //home help
@@ -533,7 +562,6 @@ namespace bunnyserverutilities.src
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/sethome - Sets your location as your home teleport", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home - teleports you to your set home location", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Just Home", Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else
                 {
@@ -570,7 +598,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back disable - disable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
-            
+
             //spawn help
             if (helpType == "spawn" || helpType == "all")
             {
@@ -591,20 +619,19 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn enable - enable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn disable - disable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
                 }
-            }    
-            
-            //grtp help / needs enable/disable added
+            }
+
+            //grtp help
             if (helpType == "grtp" || helpType == "all")
             {
                 //grtp help
-                
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Group Random Teleport Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Group Random Teleport Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                 if (bsuconfig.Current.enableGrtp == true)
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP location updates every " + bsuconfig.Current.cooldownminutes + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport Radius: " + bsuconfig.Current.teleportradius + " Blocks.", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp - teleports the player to the group teleport point", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp version - displays the current version of GRTP installed", Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else
                 {
@@ -613,6 +640,7 @@ namespace bunnyserverutilities.src
                 //grtp admin help
                 if (player.Role.Code == "admin")
                 {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP Admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp cooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp radius <i>number</i> - sets the teleport radius", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp now - Sets the GRTP to update on the next 1 minute tick", Vintagestory.API.Common.EnumChatType.Notification);
@@ -620,7 +648,18 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp disable - disables the GRTP module", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
-            
+
+            //Join Announce help
+            if (helpType == "joinannounce" || helpType == "all")
+            {
+                if (player.Role.Code == "admin")
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Join Announce Admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/joinannounce enable - enables sending a message to players the first time they join", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/joinannounce disable - disables sending a message to players the first time they join", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+
         }
         //===============//
         //other functions//
@@ -863,6 +902,29 @@ namespace bunnyserverutilities.src
             }
         }
 
+        private void onNowPlaying(IServerPlayer byPlayer)
+        {
+            if (bsuconfig.Current.enableJoinAnnounce == true)
+            {
+                if (joinedPlayers != null)
+                {
+                    if (joinedPlayers.Contains(byPlayer))
+                    {
+                        sapi.BroadcastMessageToAllGroups("Please welcome <font color=\"white\"><strong>" + byPlayer.PlayerName + "</strong></font> to the server!", Vintagestory.API.Common.EnumChatType.AllGroups);
+                        joinedPlayers.Remove(byPlayer);
+                    }
+                }
+            }  
+        }
+
+        public void OnPlayerCreate(IServerPlayer byPlayer)
+        {
+            if (bsuconfig.Current.enableJoinAnnounce == true)
+            {
+                joinedPlayers.Add(byPlayer);
+            }
+            
+        }
 
         //===========//
         //Config file//
@@ -894,6 +956,9 @@ namespace bunnyserverutilities.src
             //spawn properties
             public int? spawnPlayerCooldown;
 
+            //Join announce Properties
+            public bool? enableJoinAnnounce;
+
 
             public static bsuconfig getDefault()
             {
@@ -915,6 +980,7 @@ namespace bunnyserverutilities.src
                 config.enableHome = true;
                 config.enableSpawn = true;
                 config.enableGrtp = true;
+                config.enableJoinAnnounce = true;
                 
 
                 //grtp module defaults
