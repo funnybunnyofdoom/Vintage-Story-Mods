@@ -141,6 +141,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.homePlayerCooldown = bsuconfig.getDefault().homePlayerCooldown;
                 if (bsuconfig.Current.backPlayerCooldown == null)
                     bsuconfig.Current.backPlayerCooldown = bsuconfig.getDefault().backPlayerCooldown;
+                if (bsuconfig.Current.spawnPlayerCooldown == null)
+                    bsuconfig.Current.spawnPlayerCooldown = bsuconfig.getDefault().spawnPlayerCooldown;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -352,31 +354,6 @@ namespace bunnyserverutilities.src
             }
         }
 
-        private void homeTeleport(IServerPlayer player)
-        {
-            if (bsuconfig.Current.enableBack == true)
-            {
-                if (backSave.ContainsKey(player.PlayerUID))
-                {
-                    backSave.Remove(player.PlayerUID);
-                }
-
-                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-            }
-            if (homeSave.ContainsKey(player.Entity.PlayerUID))
-            {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to your saved home", Vintagestory.API.Common.EnumChatType.Notification);
-                sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
-                player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
-            }
-            else
-            {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No Home Saved. Teleporting to world center. Use /sethome to set a home.", Vintagestory.API.Common.EnumChatType.Notification);
-                sapi.WorldManager.LoadChunkColumnPriority(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Z);
-                player.Entity.TeleportTo(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Y, sapi.World.DefaultSpawnPosition.XYZInt.Z);
-            }
-        }
-
         //grtp command
         private void cmd_grtp(IServerPlayer player, int groupId, CmdArgs args)
         {
@@ -540,18 +517,40 @@ namespace bunnyserverutilities.src
                 case null:
                     if (bsuconfig.Current.enableSpawn == true)
                     {
-                        if (bsuconfig.Current.enableBack == true)
+                        int playersactivecooldowntime;
+                        string modname = "spawn";
+                        if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
                         {
-                            if (backSave.ContainsKey(player.PlayerUID))
+                            Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
+                            if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
                             {
-                                backSave.Remove(player.PlayerUID);
+                                dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
+                                if (count >= playersactivecooldowntime + bsuconfig.Current.spawnPlayerCooldown)
+                                {
+                                    spawnTeleport(player);
+
+                                    cooldownDict[modname].Remove(player.PlayerUID);
+                                    cooldownDict[modname].Add(player.PlayerUID, count);
+                                }
+                                else
+                                {
+                                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + bsuconfig.Current.spawnPlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                                    return;
+                                }
                             }
-                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+                            else
+                            {
+                                spawnTeleport(player);
+                                cooldownDict[modname].Add(player.PlayerUID, count);
+                            }
                         }
-                        EntityPlayer byEntity = player.Entity; //Get the player
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
-                        EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
-                        byEntity.TeleportTo(spawnpoint);
+                        else
+                        {
+                            spawnTeleport(player);
+                            cooldownDict.Add(modname, new Dictionary<string, int>());
+                            cooldownDict[modname].Add(player.PlayerUID, count);
+                        }
+                        
                     }
                     else
                     {
@@ -761,6 +760,47 @@ namespace bunnyserverutilities.src
             player.Entity.TeleportTo(randx, height + 2, randz);
         }
 
+        private void homeTeleport(IServerPlayer player)
+        {
+            if (bsuconfig.Current.enableBack == true)
+            {
+                if (backSave.ContainsKey(player.PlayerUID))
+                {
+                    backSave.Remove(player.PlayerUID);
+                }
+
+                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+            }
+            if (homeSave.ContainsKey(player.Entity.PlayerUID))
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to your saved home", Vintagestory.API.Common.EnumChatType.Notification);
+                sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
+                player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No Home Saved. Teleporting to world center. Use /sethome to set a home.", Vintagestory.API.Common.EnumChatType.Notification);
+                sapi.WorldManager.LoadChunkColumnPriority(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Z);
+                player.Entity.TeleportTo(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Y, sapi.World.DefaultSpawnPosition.XYZInt.Z);
+            }
+        }
+
+        private void spawnTeleport(IServerPlayer player)
+        {
+            if (bsuconfig.Current.enableBack == true)
+            {
+                if (backSave.ContainsKey(player.PlayerUID))
+                {
+                    backSave.Remove(player.PlayerUID);
+                }
+                backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+            }
+            EntityPlayer byEntity = player.Entity; //Get the player
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
+            EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
+            byEntity.TeleportTo(spawnpoint);
+        }
+
         private void backteleport(IServerPlayer player)
         {
             BlockPos newPos = player.Entity.Pos.AsBlockPos;
@@ -884,6 +924,8 @@ namespace bunnyserverutilities.src
             public int? cooldownminutes; //How often GRTP changes locations
             public int? grtpPlayerCooldown; //How often the player can use GRTP
 
+            //spawn properties
+            public int? spawnPlayerCooldown;
 
 
             public static bsuconfig getDefault()
@@ -912,6 +954,9 @@ namespace bunnyserverutilities.src
                 config.cooldownminutes = 60;
                 config.teleportradius = 100000;
                 config.grtpPlayerCooldown = 1;
+
+                //spawn module defaults
+                config.spawnPlayerCooldown = 1;
                 
 
                 return config;
