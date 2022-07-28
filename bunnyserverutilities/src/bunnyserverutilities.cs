@@ -52,6 +52,14 @@ namespace bunnyserverutilities.src
 
             //register commands
 
+            //Bunny Server Utilities Commands
+            api.RegisterCommand("bsu", "Bunny Server utilities", " ",
+                cmd_bsu);
+            api.RegisterCommand("bunnyServerUtilities", "Bunny Server utilities", " ",
+                cmd_bsu);
+            api.RegisterCommand("bunnyServerUtility", "Bunny Server utilities", " ",
+                cmd_bsu);
+
             //home commands
             api.RegisterCommand("sethome", "Set your current position as home", " ",
                 cmd_sethome, privileges.src.CPrivilege.home);
@@ -157,100 +165,7 @@ namespace bunnyserverutilities.src
             CID = api.Event.RegisterGameTickListener(CoolDown, 60000); //Check the cooldown timer every 1 minute
         }
 
-        private void cmd_spawn(IServerPlayer player, int groupId, CmdArgs args) //spawn command
-        {
-            string cmd = args.PopWord();
-            switch (cmd)
-            {
-                case null:
-                    if(bsuconfig.Current.enableSpawn == true)
-                    {
-                        if (bsuconfig.Current.enableBack == true)
-                        {
-                            if (backSave.ContainsKey(player.PlayerUID))
-                            {
-                                backSave.Remove(player.PlayerUID);
-                            }
-                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-                        }
-                        EntityPlayer byEntity = player.Entity; //Get the player
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
-                        EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
-                        byEntity.TeleportTo(spawnpoint);
-                    }
-                    else
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/Spawn is currently disabled", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "enable":
-                    if (player.Role.Code == "admin")
-                    {
-                        bsuconfig.Current.enableSpawn = true;
-                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "disable":
-                    if (player.Role.Code == "admin")
-                    {
-                        bsuconfig.Current.enableSpawn = false;
-                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "help":
-                    displayhelp(player, "spawn");
-                    break;
-                case "version":
-                    var modinfo = Mod.Info;
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
-                    break;
-            }
-            
-        }
-
-        private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
-        {
-            if (bsuconfig.Current.homesImported == false)
-            {
-                if (player.Role.Code == "admin")
-                {
-                    if (bsuconfig.Current.homeDict != null)
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
-                        homeSave.Clear();
-                        for (int i = 0; i < bsuconfig.Current.homeDict.Count(); i++)
-                        {
-                            KeyValuePair<string, BlockPos> kvp = bsuconfig.Current.homeDict.PopOne();
-
-                            homeSave.Add(kvp.Key, kvp.Value);
-                        }
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
-                        bsuconfig.Current.homeDict.Clear();
-                        bsuconfig.Current.homeDict = null;
-                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                    }
-                    else
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No valid home configs to import.", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    bsuconfig.Current.homesImported = true;
-                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                }
-                else
-                {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You do not have permission to run this command.", Vintagestory.API.Common.EnumChatType.Notification);
-                }
-            }           
-            else
-            {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Old homes have already been imported. This command should only be used once.", Vintagestory.API.Common.EnumChatType.Notification);
-            }
-            
-        }
-
-
+       
         //========//
         //COMMANDS//
         //========//
@@ -494,8 +409,113 @@ namespace bunnyserverutilities.src
                     }
                     break;
             }
+        }
 
+        //Bunnys Server Utility command
+        private void cmd_bsu(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bsu help or /bunnyserverutility help for a list of commands", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "help":
+                    displayhelp(player, "all");
+                    break;
+            }
+        }
+        //spawn command
+        private void cmd_spawn(IServerPlayer player, int groupId, CmdArgs args) //spawn command
+        {
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case null:
+                    if (bsuconfig.Current.enableSpawn == true)
+                    {
+                        if (bsuconfig.Current.enableBack == true)
+                        {
+                            if (backSave.ContainsKey(player.PlayerUID))
+                            {
+                                backSave.Remove(player.PlayerUID);
+                            }
+                            backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
+                        }
+                        EntityPlayer byEntity = player.Entity; //Get the player
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
+                        EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
+                        byEntity.TeleportTo(spawnpoint);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/Spawn is currently disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSpawn = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSpawn = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "help":
+                    displayhelp(player, "spawn");
+                    break;
+                case "version":
+                    var modinfo = Mod.Info;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+            }
 
+        }
+        //Import Old Homes Command
+        private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            if (bsuconfig.Current.homesImported == false)
+            {
+                if (player.Role.Code == "admin")
+                {
+                    if (bsuconfig.Current.homeDict != null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
+                        homeSave.Clear();
+                        for (int i = 0; i < bsuconfig.Current.homeDict.Count(); i++)
+                        {
+                            KeyValuePair<string, BlockPos> kvp = bsuconfig.Current.homeDict.PopOne();
+
+                            homeSave.Add(kvp.Key, kvp.Value);
+                        }
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
+                        bsuconfig.Current.homeDict.Clear();
+                        bsuconfig.Current.homeDict = null;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No valid home configs to import.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    bsuconfig.Current.homesImported = true;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You do not have permission to run this command.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Old homes have already been imported. This command should only be used once.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
 
         }
         //============//
@@ -513,16 +533,21 @@ namespace bunnyserverutilities.src
             //home help
             if (helpType == "home" || helpType == "all")
             {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Home Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                 if (bsuconfig.Current.enableHome == true)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Home Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/sethome - Sets your location as your home teleport", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home - teleports you to your set home location", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Just Home", Vintagestory.API.Common.EnumChatType.Notification);
                 }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
+                }
                 //admin home help
                 if (player.Role.Code == "admin")
                 {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home enable - enable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home disable - disable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/importOldHomes - moves saved homes from jhome 1.05 and earlier to the new save type. Run this only once if you are updating to this mod from 1.0.5 or earlier.", Vintagestory.API.Common.EnumChatType.Notification);
@@ -533,14 +558,19 @@ namespace bunnyserverutilities.src
             if (helpType == "back" || helpType == "all")
             {
                 //back help
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Back Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                 if (bsuconfig.Current.enableBack == true)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Back Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back - return to the last place you used /home, /back or died", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 //admin back help
                 if (player.Role.Code == "admin")
                 {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back enable - enable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back disable - disable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
                 }
@@ -550,14 +580,19 @@ namespace bunnyserverutilities.src
             if (helpType == "spawn" || helpType == "all")
             {
                 //spawn help
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Spawn Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                 if (bsuconfig.Current.enableSpawn == true)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "---Spawn Commands---", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn - return to the server set spawn point", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 //admin spawn help
                 if (player.Role.Code == "admin")
                 {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn enable - enable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn disable - disable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
                 }
@@ -567,17 +602,27 @@ namespace bunnyserverutilities.src
             if (helpType == "grtp" || helpType == "all")
             {
                 //grtp help
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Group Random Teleport Commands:", Vintagestory.API.Common.EnumChatType.Notification);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP location updates every " + bsuconfig.Current.cooldownminutes + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport Radius: " + bsuconfig.Current.teleportradius + " Blocks.", Vintagestory.API.Common.EnumChatType.Notification);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp - teleports the player to the group teleport point", Vintagestory.API.Common.EnumChatType.Notification);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp version - displays the current version of GRTP installed", Vintagestory.API.Common.EnumChatType.Notification);
+                
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Group Random Teleport Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                if (bsuconfig.Current.enableGrtp == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP location updates every " + bsuconfig.Current.cooldownminutes + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport Radius: " + bsuconfig.Current.teleportradius + " Blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp - teleports the player to the group teleport point", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp version - displays the current version of GRTP installed", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
+                }
                 //grtp admin help
                 if (player.Role.Code == "admin")
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp cooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp radius <i>number</i> - sets the teleport radius", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp now - Sets the GRTP to update on the next 1 minute tick", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp enable - enables the GRTP module", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp disable - disables the GRTP module", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
             
