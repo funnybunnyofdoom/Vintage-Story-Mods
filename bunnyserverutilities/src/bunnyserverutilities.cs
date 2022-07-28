@@ -139,6 +139,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.grtpPlayerCooldown = bsuconfig.getDefault().grtpPlayerCooldown;
                 if (bsuconfig.Current.homePlayerCooldown == null)
                     bsuconfig.Current.homePlayerCooldown = bsuconfig.getDefault().homePlayerCooldown;
+                if (bsuconfig.Current.backPlayerCooldown == null)
+                    bsuconfig.Current.backPlayerCooldown = bsuconfig.getDefault().backPlayerCooldown;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -188,19 +190,40 @@ namespace bunnyserverutilities.src
                 case null:
                     if (bsuconfig.Current.enableBack == true)
                     {
-                        BlockPos newPos = player.Entity.Pos.AsBlockPos;
-                        if (backSave.ContainsKey(player.Entity.PlayerUID))
+                        int playersactivecooldowntime;
+                        string modname = "back";
+                        if (cooldownDict.ContainsKey(modname)) //look for the home cooldown dictionary
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Returning to your last location", Vintagestory.API.Common.EnumChatType.Notification);
-                            sapi.WorldManager.LoadChunkColumnPriority(backSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, backSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
-                            player.Entity.TeleportTo(backSave[player.Entity.PlayerUID].X, backSave[player.Entity.PlayerUID].Y, backSave[player.Entity.PlayerUID].Z);
-                            backSave.Remove(player.Entity.PlayerUID);
-                            backSave.Add(player.Entity.PlayerUID, newPos);
+                            Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our home cooldown dictionary to dicdata
+                            if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
+                            {
+                                dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
+                                if (count >= playersactivecooldowntime + bsuconfig.Current.backPlayerCooldown)
+                                {
+                                    backteleport(player);
+
+                                    cooldownDict[modname].Remove(player.PlayerUID);
+                                    cooldownDict[modname].Add(player.PlayerUID, count);
+                                }
+                                else
+                                {
+                                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + bsuconfig.Current.backPlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                               backteleport(player);
+                                cooldownDict[modname].Add(player.PlayerUID, count);
+                            }
                         }
                         else
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No back location. Use /home to create a back location.", Vintagestory.API.Common.EnumChatType.Notification);
+                            backteleport(player);
+                            cooldownDict.Add(modname, new Dictionary<string, int>());
+                            cooldownDict[modname].Add(player.PlayerUID, count);
                         }
+
                     }
                     else
                     {
@@ -738,6 +761,23 @@ namespace bunnyserverutilities.src
             player.Entity.TeleportTo(randx, height + 2, randz);
         }
 
+        private void backteleport(IServerPlayer player)
+        {
+            BlockPos newPos = player.Entity.Pos.AsBlockPos;
+            if (backSave.ContainsKey(player.Entity.PlayerUID))
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Returning to your last location", Vintagestory.API.Common.EnumChatType.Notification);
+                sapi.WorldManager.LoadChunkColumnPriority(backSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, backSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
+                player.Entity.TeleportTo(backSave[player.Entity.PlayerUID].X, backSave[player.Entity.PlayerUID].Y, backSave[player.Entity.PlayerUID].Z);
+                backSave.Remove(player.Entity.PlayerUID);
+                backSave.Add(player.Entity.PlayerUID, newPos);
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No back location. Use /home to create a back location.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+        }
+
         //========================//
         //Event Listener Functions//
         //========================//
@@ -834,7 +874,7 @@ namespace bunnyserverutilities.src
             //jhome properties
             public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
             public int? homePlayerCooldown; //How often the player can use /home
-
+            public int? backPlayerCooldown;//How often the player can use /back
             public bool? enablePermissions;
             public bool? homesImported;
 
@@ -859,6 +899,7 @@ namespace bunnyserverutilities.src
                 config.enablePermissions = perms;
                 config.homesImported = false;
                 config.homePlayerCooldown = 1;
+                config.backPlayerCooldown = 1;
 
                 //enable/disable module defaults
                 config.enableBack = true;
