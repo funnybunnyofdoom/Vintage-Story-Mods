@@ -37,4 +37,13 @@ namespace privileges.src
         /// </summary>
         public static string back = "back";
     }
+
+    public class EPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use Just Private Message commands
+        /// </summary>
+        public static string jpm = "jpm";
+        public static string jpmadmin = "jpmadmin";
+    }
 }

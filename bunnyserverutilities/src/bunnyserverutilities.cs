@@ -42,7 +42,7 @@ namespace bunnyserverutilities.src
 
         public override bool ShouldLoad(EnumAppSide side)
         {
-            return side == EnumAppSide.Server;
+            return side == EnumAppSide.Server; //load on the server side
         }
 
         public override void StartServerSide(ICoreServerAPI api)
@@ -60,7 +60,9 @@ namespace bunnyserverutilities.src
             api.Event.PlayerCreate += OnPlayerCreate; // Used by join announce and rising sun to track new players
             api.Event.PlayerNowPlaying += onNowPlaying; // Used by join announce and rising sun to tell when players are loaded into the game
 
-            //register commands
+            //=================//
+            //register commands//
+            //=================//
 
             //Bunny Server Utilities Commands
             api.RegisterCommand("bsu", "Bunny Server utilities", "[help | Version]",
@@ -95,7 +97,13 @@ namespace bunnyserverutilities.src
             //Rising Sun Commands
             api.RegisterCommand("rs", "Rising Sun configuration", "[dawn|dusk|help|version]", cmd_rs, Privilege.controlserver);
 
-            //Register Privileges
+            //Just Private Message commands
+            api.RegisterCommand("jpm", "Simple Server Message Management", "[help | enable | disable]", cmd_jpm, privileges.src.EPrivilege.jpmadmin); //Register the /jpm command for admins
+            api.RegisterCommand("dm", "Private Message", " ", cmd_pm, privileges.src.EPrivilege.jpm);
+
+            //===================//
+            //Register Privileges//
+            //===================//
 
             //Home privileges
             ipm.RegisterPrivilege("sethome", "Set your current position as home");
@@ -103,9 +111,12 @@ namespace bunnyserverutilities.src
             ipm.RegisterPrivilege("back", "Go back to your last TP location");
             ipm.RegisterPrivilege("spawn","teleport to spawn");
 
-            //GRTP privileges
+            //Group Random Teleport privileges
             ipm.RegisterPrivilege("grtp", "Random Teleport");
 
+            //Just Random Teleport privileges
+            ipm.RegisterPrivilege("jpm", "Private Messages");//Register the privilege for general private messages
+            ipm.RegisterPrivilege("jpmadmin", "JPM management"); //Register the privilege for admin control
             //Check config for nulls
 
             try
@@ -198,8 +209,15 @@ namespace bunnyserverutilities.src
                 ipm.AddPrivilegeToGroup("admin", privileges.src.DPrivilege.back);
                 ipm.AddPrivilegeToGroup("suplayer", privileges.src.DPrivilege.back);
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.DPrivilege.back);
-                
-                
+                //add back privileges to all standard groups
+                ipm.AddPrivilegeToGroup("admin", privileges.src.EPrivilege.jpm);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.EPrivilege.jpm);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.EPrivilege.jpm);
+
+                //Verify admin permissions are not avaialble for default groups
+                ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.EPrivilege.jpmadmin);
+                ipm.RemovePrivilegeFromGroup("doplayer", privileges.src.EPrivilege.jpmadmin);
+
             }
 
             //GRTP count and event listener set at server startup
@@ -639,6 +657,79 @@ namespace bunnyserverutilities.src
             }
         }
 
+        //private message player command
+        private void cmd_pm(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            if (bsuconfig.Current.enablejpm == true)
+            {
+                string cmdname = "jpm";
+                string cmd = args.PopWord();
+                IServerPlayerData pdata = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
+                if (cmd != "" & cmd != null & cmd != "help")
+                {
+                    if (pdata == null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player could not be found. Please check your spelling and try again.", Vintagestory.API.Common.EnumChatType.Notification);
+                        return;
+                    }
+                    else
+                    {
+                        string message = args.PopAll();
+                        System.Diagnostics.Debug.WriteLine(message);
+                        if (message == null | message == "")
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please include a message.", Vintagestory.API.Common.EnumChatType.Notification);
+                            return;
+                        }
+                        else
+                        {
+                            sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                            sapi.SendMessage(sapi.World.PlayerByUid(player.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "<font color=\"#B491C8\"><strong>" + player.PlayerName + " to " + pdata.LastKnownPlayername + " : </strong><i>" + message + "</i></font>", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                }
+                else if (cmd == "help")
+                {
+                    displayhelp(player, cmdname);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please include a player name.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            
+            
+        }
+
+        //Private Message admin commands
+        private void cmd_jpm(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "jpm";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "help":
+                    displayhelp(player,cmdname);
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enablejpm = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enablejpm = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
@@ -774,6 +865,17 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs dusk <i>number</i> - Sets the hour that Rising Sun considers Night", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs enable - Turns on Rising Sun", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs disable - Turns off Rising Sun", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+
+            if (helpType == "jpm" || helpType == "all")
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Just Private Message Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm <i>playername messageToPlayer</i> - sends a message to a player ", Vintagestory.API.Common.EnumChatType.Notification);
+                if (player.Role.Code == "admin")
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm enable - enables private messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm disable - disables private messages", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
         }
