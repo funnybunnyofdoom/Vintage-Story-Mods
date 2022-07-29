@@ -14,7 +14,7 @@ namespace risingsun.src
     class risingsun : ModSystem
     {
         List<IServerPlayer> joinedPlayers = new List<IServerPlayer>();
-        ICoreServerAPI myAPI;
+        ICoreServerAPI sapi;
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server;
@@ -22,7 +22,7 @@ namespace risingsun.src
         public override void StartServerSide(ICoreServerAPI api)
         {
             base.StartServerSide(api);
-            myAPI = api;
+            sapi = api;
             api.Event.PlayerCreate += OnPlayerCreate;
             api.Event.PlayerNowPlaying += onNowPlaying;
 
@@ -93,17 +93,27 @@ namespace risingsun.src
 
         private void onNowPlaying(IServerPlayer byPlayer)
         {
-            myAPI.BroadcastMessageToAllGroups("The sun has risen on a new player! Welcome " + byPlayer.PlayerName, Vintagestory.API.Common.EnumChatType.AllGroups);
-            int hour = byPlayer.Entity.World.Calendar.FullHourOfDay;
-            if (hour < rsConfig.Current.dawn)
+            if (joinedPlayers != null)
             {
-                
-                byPlayer.Entity.World.Calendar.Add((int)rsConfig.Current.dawn - hour);
+                if (joinedPlayers.Contains(byPlayer))
+                {
+                    sapi.BroadcastMessageToAllGroups("The sun has risen on a new player! Welcome " + byPlayer.PlayerName, Vintagestory.API.Common.EnumChatType.AllGroups);
+                    int hour = byPlayer.Entity.World.Calendar.FullHourOfDay;
+                    if (hour < rsConfig.Current.dawn)
+                    {
+
+                        byPlayer.Entity.World.Calendar.Add((int)rsConfig.Current.dawn - hour);
+                    }
+                    else if (hour > (int)rsConfig.Current.dusk)
+                    {
+                        byPlayer.Entity.World.Calendar.Add(24 - hour + (int)rsConfig.Current.dawn);
+                    }
+                    joinedPlayers.Remove(byPlayer);
+                }
             }
-            else if (hour > (int)rsConfig.Current.dusk)
-            {
-                byPlayer.Entity.World.Calendar.Add(24 - hour + (int)rsConfig.Current.dawn);
-            }
+
+            
+            
         }
         public void OnPlayerCreate(IServerPlayer byPlayer)
         {
