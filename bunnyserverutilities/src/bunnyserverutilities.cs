@@ -152,6 +152,18 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.spawnPlayerCooldown = bsuconfig.getDefault().spawnPlayerCooldown;
                 if (bsuconfig.Current.enableJoinAnnounce == null)
                     bsuconfig.Current.enableJoinAnnounce = bsuconfig.getDefault().enableJoinAnnounce;
+                if (bsuconfig.Current.enableBunnyBell == null)
+                    bsuconfig.Current.enableBunnyBell = bsuconfig.getDefault().enableBunnyBell;
+                if (bsuconfig.Current.enablejpm == null)
+                    bsuconfig.Current.enablejpm = bsuconfig.getDefault().enablejpm;
+                if (bsuconfig.Current.enablejrtp == null)
+                    bsuconfig.Current.enablejrtp = bsuconfig.getDefault().enablejrtp;
+                if (bsuconfig.Current.enableRisingSun == null)
+                    bsuconfig.Current.enableRisingSun = bsuconfig.getDefault().enableRisingSun;
+                if (bsuconfig.Current.enableSimpleServerMessages == null)
+                    bsuconfig.Current.enableSimpleServerMessages = bsuconfig.getDefault().enableSimpleServerMessages;
+                if (bsuconfig.Current.enabletpt == null)
+                    bsuconfig.Current.enabletpt = bsuconfig.getDefault().enabletpt;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -939,6 +951,12 @@ namespace bunnyserverutilities.src
             public bool? enableHome;
             public bool? enableSpawn;
             public bool? enableGrtp;
+            public bool? enableBunnyBell;
+            public bool? enablejpm;
+            public bool? enablejrtp;
+            public bool? enableRisingSun;
+            public bool? enableSimpleServerMessages;
+            public bool? enabletpt;
 
             //jhome properties
             public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
@@ -981,6 +999,12 @@ namespace bunnyserverutilities.src
                 config.enableSpawn = true;
                 config.enableGrtp = true;
                 config.enableJoinAnnounce = true;
+                config.enableBunnyBell = true;
+                config.enablejpm = true;
+                config.enablejrtp = false;
+                config.enableRisingSun = false;
+                config.enableSimpleServerMessages = false;
+                config.enabletpt = true;
                 
 
                 //grtp module defaults
