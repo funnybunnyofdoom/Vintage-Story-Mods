@@ -37,6 +37,9 @@ namespace bunnyserverutilities.src
         //Join Announce Initialization
         List<IServerPlayer> joinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
 
+        //Rising Sun Initialization
+        List<IServerPlayer> rsjoinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
+
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server;
@@ -73,7 +76,7 @@ namespace bunnyserverutilities.src
             api.RegisterCommand("home", "Teleport to your /sethome location", " ",
                 cmd_home, privileges.src.CPrivilege.home);
             api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
-                cmd_importOldHomes, Privilege.ban);
+                cmd_importOldHomes, Privilege.controlserver);
 
             //back commands
             api.RegisterCommand("back", "Go back to your last TP location", " ",
@@ -87,8 +90,10 @@ namespace bunnyserverutilities.src
             cmd_grtp, privileges.src.APrivilege.grtp);
 
             //Join Announce Commands
-            api.RegisterCommand("joinannounce", "Announces a new player to the server when they join", "[help | enable | disable]", cmd_joinannounce, Privilege.ban);
+            api.RegisterCommand("joinannounce", "Announces a new player to the server when they join", "[help | enable | disable]", cmd_joinannounce, Privilege.controlserver);
 
+            //Rising Sun Commands
+            api.RegisterCommand("rs", "Rising Sun configuration", "[dawn|dusk|help|version]", cmd_rs, Privilege.controlserver);
 
             //Register Privileges
 
@@ -164,6 +169,10 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.enableSimpleServerMessages = bsuconfig.getDefault().enableSimpleServerMessages;
                 if (bsuconfig.Current.enabletpt == null)
                     bsuconfig.Current.enabletpt = bsuconfig.getDefault().enabletpt;
+                if (bsuconfig.Current.dawn == null)
+                    bsuconfig.Current.dawn = bsuconfig.getDefault().dawn;
+                if (bsuconfig.Current.dusk == null)
+                    bsuconfig.Current.dusk = bsuconfig.getDefault().dusk;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -550,6 +559,86 @@ namespace bunnyserverutilities.src
             }
         }
 
+        //rising sun command
+        private void cmd_rs(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "risingsun";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "help":
+                    displayhelp(player,cmdname);
+                    break;
+                case "dawn":
+                    if (player.Role.Code == "admin")
+                    {
+                        int? cdnum = args.PopInt();
+                        if (cdnum < 1 | cdnum > 23)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum > bsuconfig.Current.dusk)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number smaller than dusk: " + bsuconfig.Current.dusk, Vintagestory.API.Common.EnumChatType.Notification);
+                        }else if (cdnum == null)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.dawn = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "dawn time has been updated to " + cdnum + ":00", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    break;
+                case "dusk":
+                    if (player.Role.Code == "admin")
+                    {
+                        int? cdnum = args.PopInt();
+                        if (cdnum < 1 | cdnum > 23)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum < bsuconfig.Current.dawn)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number larger than dawn: " + bsuconfig.Current.dawn, Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum == null)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.dusk = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "dusk time has been updated to " + cdnum + ":00", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableRisingSun = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Rising Sun has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableRisingSun = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Rising Sun has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /rs dawn|dusk|help|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
+
+                    break;
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
@@ -641,8 +730,11 @@ namespace bunnyserverutilities.src
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Group Random Teleport Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                 if (bsuconfig.Current.enableGrtp == true)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP location updates every " + bsuconfig.Current.cooldownminutes + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport Radius: " + bsuconfig.Current.teleportradius + " Blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+                    if (helpType == "grtp")
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP location updates every " + bsuconfig.Current.cooldownminutes + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport Radius: " + bsuconfig.Current.teleportradius + " Blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp - teleports the player to the group teleport point", Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else
@@ -672,6 +764,18 @@ namespace bunnyserverutilities.src
                 }
             }
 
+            //Rising Sun help
+            if (helpType == "risingsun" || helpType == "all")
+            {
+                if (player.Role.Code == "admin")
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "rising sun admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs dawn <i>number</i> - Sets the hour Rising Sun will advance the night to", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs dusk <i>number</i> - Sets the hour that Rising Sun considers Night", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs enable - Turns on Rising Sun", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rs disable - Turns off Rising Sun", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
         }
         //===============//
         //other functions//
@@ -926,7 +1030,28 @@ namespace bunnyserverutilities.src
                         joinedPlayers.Remove(byPlayer);
                     }
                 }
-            }  
+            }
+            if (bsuconfig.Current.enableRisingSun == true)
+            {
+                if (rsjoinedPlayers != null)
+                {
+                    if (rsjoinedPlayers.Contains(byPlayer))
+                    {
+                        sapi.BroadcastMessageToAllGroups("The sun has risen on a new player! Welcome " + byPlayer.PlayerName, Vintagestory.API.Common.EnumChatType.AllGroups);
+                        int hour = byPlayer.Entity.World.Calendar.FullHourOfDay;
+                        if (hour < bsuconfig.Current.dawn)
+                        {
+
+                            byPlayer.Entity.World.Calendar.Add((int)bsuconfig.Current.dawn - hour);
+                        }
+                        else if (hour > (int)bsuconfig.Current.dusk)
+                        {
+                            byPlayer.Entity.World.Calendar.Add(24 - hour + (int)bsuconfig.Current.dawn);
+                        }
+                        rsjoinedPlayers.Remove(byPlayer);
+                    }
+                }
+            }
         }
 
         public void OnPlayerCreate(IServerPlayer byPlayer)
@@ -935,7 +1060,11 @@ namespace bunnyserverutilities.src
             {
                 joinedPlayers.Add(byPlayer);
             }
-            
+            if (bsuconfig.Current.enableRisingSun == true)
+            {
+                rsjoinedPlayers.Add(byPlayer);
+            }
+
         }
 
         //===========//
@@ -977,6 +1106,10 @@ namespace bunnyserverutilities.src
             //Join announce Properties
             public bool? enableJoinAnnounce;
 
+            //Rising Sun Properties
+            public int? dawn;
+            public int? dusk;
+
 
             public static bsuconfig getDefault()
             {
@@ -1014,7 +1147,10 @@ namespace bunnyserverutilities.src
 
                 //spawn module defaults
                 config.spawnPlayerCooldown = 1;
-                
+
+                //Rising Sun module defaults
+                config.dawn = 8;
+                config.dusk = 21;
 
                 return config;
             }
