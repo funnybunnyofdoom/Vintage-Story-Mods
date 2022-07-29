@@ -72,10 +72,44 @@ namespace risingsun.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case "dawn":
-                    //Add configuration logic| not larger than dusk
+                    if (player.Role.Code == "admin")
+                    {
+                        int? cdnum = args.PopInt();
+                        if (cdnum < 1 | cdnum > 23)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum > rsConfig.Current.dusk)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number smaller than dusk: " + rsConfig.Current.dusk, Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            rsConfig.Current.dawn = cdnum;
+                            sapi.StoreModConfig(rsConfig.Current, "rsconfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "dawn time has been updated to " + cdnum + ":00", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
                     break;
                 case "dusk":
-                    //Add configuration logic
+                    if (player.Role.Code == "admin")
+                    {
+                        int? cdnum = args.PopInt();
+                        if (cdnum < 1 | cdnum > 23)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum < rsConfig.Current.dawn)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number larger than dawn: " + rsConfig.Current.dawn, Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            rsConfig.Current.dusk = cdnum;
+                            sapi.StoreModConfig(rsConfig.Current, "rsconfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "dusk time has been updated to " + cdnum + ":00", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
                     break;
                 case null:
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /rs dawn|dusk|help|version", Vintagestory.API.Common.EnumChatType.Notification);
