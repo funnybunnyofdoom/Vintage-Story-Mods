@@ -40,6 +40,10 @@ namespace bunnyserverutilities.src
         //Rising Sun Initialization
         List<IServerPlayer> rsjoinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
 
+        //Simple Server Message initialization
+        int messageplace = 0;
+        int ssmtimer = 0; //sets the SSM cooldown timer at 0
+
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server; //load on the server side
@@ -101,6 +105,9 @@ namespace bunnyserverutilities.src
             api.RegisterCommand("jpm", "Simple Server Message Management", "[help | enable | disable]", cmd_jpm, privileges.src.EPrivilege.jpmadmin); //Register the /jpm command for admins
             api.RegisterCommand("dm", "Private Message", " ", cmd_pm, privileges.src.EPrivilege.jpm);
 
+            //Simple Server Message commands
+            api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now|help|version]", cmd_ssm, privileges.src.FPrivilege.ssm);
+
             //===================//
             //Register Privileges//
             //===================//
@@ -117,6 +124,10 @@ namespace bunnyserverutilities.src
             //Just Random Teleport privileges
             ipm.RegisterPrivilege("jpm", "Private Messages");//Register the privilege for general private messages
             ipm.RegisterPrivilege("jpmadmin", "JPM management"); //Register the privilege for admin control
+
+            //Simple Server message privileges
+            ipm.RegisterPrivilege("ssm", "Simple Server Messages");
+
             //Check config for nulls
 
             try
@@ -184,6 +195,10 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.dawn = bsuconfig.getDefault().dawn;
                 if (bsuconfig.Current.dusk == null)
                     bsuconfig.Current.dusk = bsuconfig.getDefault().dusk;
+                if (bsuconfig.Current.messages == null)
+                    bsuconfig.Current.messages = bsuconfig.getDefault().messages;
+                if (bsuconfig.Current.frequency == null)
+                    bsuconfig.Current.frequency = bsuconfig.getDefault().frequency;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -213,17 +228,23 @@ namespace bunnyserverutilities.src
                 ipm.AddPrivilegeToGroup("admin", privileges.src.EPrivilege.jpm);
                 ipm.AddPrivilegeToGroup("suplayer", privileges.src.EPrivilege.jpm);
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.EPrivilege.jpm);
+                //add Simple Server Message permissions to ADMIN ONLY:
+                ipm.AddPrivilegeToGroup("admin", privileges.src.FPrivilege.ssm);
 
                 //Verify admin permissions are not avaialble for default groups
                 ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.EPrivilege.jpmadmin);
                 ipm.RemovePrivilegeFromGroup("doplayer", privileges.src.EPrivilege.jpmadmin);
+                ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.FPrivilege.ssm);
+                ipm.RemovePrivilegeFromGroup("doplayer", privileges.src.FPrivilege.ssm);
 
             }
 
             //GRTP count and event listener set at server startup
             grtptimer = 0; //This puts the cooldown timer as expired and will force a new GRTP location
-            count = (int)bsuconfig.Current.cooldownminutes;
+            count = (int)bsuconfig.Current.cooldownminutes;//grtp cooldown timer
             CID = api.Event.RegisterGameTickListener(CoolDown, 60000); //Check the cooldown timer every 1 minute
+            int broadcastFrequency = (int)bsuconfig.Current.frequency; //SSM cooldown timer
+            
         }
 
        
@@ -730,6 +751,80 @@ namespace bunnyserverutilities.src
             }
         }
 
+        private void cmd_ssm(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "add":
+                    string text = args.PopAll();
+                    bsuconfig.Current.messages.Add(text);
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Added message.", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "remove":
+                    int? listindex = args.PopInt();
+                    if (listindex != null)
+                    {
+                        int lindex = (int)listindex;
+
+                        List<string> msglist = bsuconfig.Current.messages;
+                        if (msglist.Count >= lindex)
+                        {
+                            string removemsg = msglist.ElementAt(lindex);
+                            bsuconfig.Current.messages.Remove(removemsg);
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Removed message", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please use /ssm list and then use /ssm remove number to delete the message", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please use /ssm remove aNumber to remove a message", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "list":
+                    List<string> listofmessages = bsuconfig.Current.messages;
+                    int lastindex = listofmessages.Count;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "List of current server messages:", Vintagestory.API.Common.EnumChatType.Notification);
+                    for (int i = 0; i < lastindex; i++)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i + " : " + listofmessages[i], Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "frequency":
+                    int? frqnum = args.PopInt();
+                    if (frqnum != null & frqnum >= 1)
+                    {
+                        bsuconfig.Current.frequency = frqnum;
+                        sapi.StoreModConfig(bsuconfig.Current, "ssmconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Broadcast Message Frequency set to " + frqnum + " Minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number in minutes", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "now":
+                    broadcast();
+                    break;
+                case "help":
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm add <i>Server Message</i> - adds a message to the list of server messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm list - lists the existing server messages ", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm remove <i>number from /ssm list</i> - remove the message from the number in the list", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm frequency <i>number in minutes</i> - changes the duration of minutes between messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm now - broadcasts the next server message in line", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
@@ -1042,6 +1137,27 @@ namespace bunnyserverutilities.src
             }
         }
 
+        //Simple Server Messages broadcast messages
+        private void broadcast()
+        {
+            if (bsuconfig.Current.messages.Count > 0)
+            {
+                List<String> messagelist = bsuconfig.Current.messages;
+
+
+                if (messageplace < messagelist.Count)
+                {
+                    sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                    messageplace++;
+                }
+                else
+                {
+                    messageplace = 0;
+                    sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                }
+            }
+        }
+
         //========================//
         //Event Listener Functions//
         //========================//
@@ -1070,6 +1186,16 @@ namespace bunnyserverutilities.src
                 }
                 
             }
+            if (bsuconfig.Current.enableSimpleServerMessages == true)
+            {
+                if (count >= bsuconfig.Current.frequency + ssmtimer)
+                {
+                    ssmtimer = count; //set the timer to the current time
+                    broadcast(); //broadcast our messages
+                }
+            }
+
+
             count = count + 1; //add a minute to our timer
         }
 
@@ -1212,12 +1338,20 @@ namespace bunnyserverutilities.src
             public int? dawn;
             public int? dusk;
 
+            //Simple Server Message Properties
+            public List<String> messages { get; set; }
+            public int? frequency;
+
 
             public static bsuconfig getDefault()
             {
                 var config = new bsuconfig();
                 BlockPos defPos = new BlockPos(0,0,0);
                 bool perms = false;
+                List<String> dmessages = new List<string> //SSM default dmessages
+                {
+                    "Welcome to the server!"
+                };
 
 
                 //jHome default assignments
@@ -1253,6 +1387,10 @@ namespace bunnyserverutilities.src
                 //Rising Sun module defaults
                 config.dawn = 8;
                 config.dusk = 21;
+
+                //Simple Server Message defaults
+                config.messages = dmessages;
+                config.frequency = 10;
 
                 return config;
             }

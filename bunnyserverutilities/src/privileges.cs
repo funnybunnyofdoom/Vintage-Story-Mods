@@ -46,4 +46,12 @@ namespace privileges.src
         public static string jpm = "jpm";
         public static string jpmadmin = "jpmadmin";
     }
+
+    public class FPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use Simple Server Message commands
+        /// </summary>
+        public static string ssm = "ssm";
+    }
 }
