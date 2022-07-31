@@ -54,4 +54,12 @@ namespace privileges.src
         /// </summary>
         public static string ssm = "ssm";
     }
+
+    public class GPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use /tpt
+        /// </summary>
+        public static string tpt = "tpt";
+    }
 }

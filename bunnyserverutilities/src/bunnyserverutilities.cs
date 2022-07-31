@@ -108,6 +108,14 @@ namespace bunnyserverutilities.src
             //Simple Server Message commands
             api.RegisterCommand("ssm", "Simple Server Message Management", "[add|remove|list|frequency|now|help|version]", cmd_ssm, privileges.src.FPrivilege.ssm);
 
+            //Teleport To Commands
+            api.RegisterCommand("tpt", "Teleports the player to another player", "",
+                cmd_tpt, privileges.src.GPrivilege.tpt);
+            api.RegisterCommand("tpaccept", "Teleports the player to another player", "",
+                cmd_tpaccept, privileges.src.GPrivilege.tpt);
+            api.RegisterCommand("tpdeny", "Teleports the player to another player", "",
+                cmd_tpdeny, privileges.src.GPrivilege.tpt);
+
             //===================//
             //Register Privileges//
             //===================//
@@ -127,6 +135,9 @@ namespace bunnyserverutilities.src
 
             //Simple Server message privileges
             ipm.RegisterPrivilege("ssm", "Simple Server Messages");
+
+            //Teleport To privileges
+            ipm.RegisterPrivilege("tpt", "Teleport To");
 
             //Check config for nulls
 
@@ -199,6 +210,11 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.messages = bsuconfig.getDefault().messages;
                 if (bsuconfig.Current.frequency == null)
                     bsuconfig.Current.frequency = bsuconfig.getDefault().frequency;
+                if (bsuconfig.Current.tptDict == null)
+                    bsuconfig.Current.tptDict = bsuconfig.getDefault().tptDict;
+                if (bsuconfig.Current.waitDict == null)
+                    bsuconfig.Current.waitDict = bsuconfig.getDefault().waitDict;
+
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -230,6 +246,8 @@ namespace bunnyserverutilities.src
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.EPrivilege.jpm);
                 //add Simple Server Message permissions to ADMIN ONLY:
                 ipm.AddPrivilegeToGroup("admin", privileges.src.FPrivilege.ssm);
+                //add Teleport Tp pernussions
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.GPrivilege.tpt);
 
                 //Verify admin permissions are not avaialble for default groups
                 ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.EPrivilege.jpmadmin);
@@ -838,6 +856,134 @@ namespace bunnyserverutilities.src
             }
         }
 
+        //Teleport to deny
+        private void cmd_tpdeny(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            if (bsuconfig.Current.enabletpt == true)
+            {
+                if (bsuconfig.Current.waitDict.ContainsKey(player.PlayerUID))
+                {
+                    String value;
+                    bsuconfig.Current.waitDict.TryGetValue(player.PlayerUID, out value);
+                    string tpPlayer = value;
+                    sapi.SendMessage(sapi.World.PlayerByUid(tpPlayer), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your teleport request has been denied.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To denied.", Vintagestory.API.Common.EnumChatType.Notification);
+                    bsuconfig.Current.waitDict.Remove(player.PlayerUID);
+                    bsuconfig.Current.tptDict.Remove(tpPlayer);
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You have no active requests to deny.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+        }
+        //teleport to accept
+        private void cmd_tpaccept(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            if (bsuconfig.Current.enabletpt == true)
+            {
+                if (bsuconfig.Current.waitDict.ContainsKey(player.PlayerUID))
+                {
+                    String value;
+                    bsuconfig.Current.waitDict.TryGetValue(player.PlayerUID, out value);
+                    String tpPlayer = value;
+                    sapi.SendMessage(sapi.World.PlayerByUid(tpPlayer), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your teleport request has been accepted. Stand by while you are teleported.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To accepted.", Vintagestory.API.Common.EnumChatType.Notification);
+                    EntityPlayer tpserverplayer = sapi.World.PlayerByUid(tpPlayer).WorldData.EntityPlayer;
+                    tpserverplayer.TeleportTo(player.Entity.Pos.AsBlockPos);
+                    bsuconfig.Current.waitDict.Remove(player.PlayerUID);
+                    bsuconfig.Current.tptDict.Remove(tpPlayer);
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You have no active requests to accept.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }  
+        }
+        //teleport to
+        private void cmd_tpt(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "tpt";
+            string cmd = args.PopWord();
+            if (cmd != null & cmd != "help"  & cmd != "enable" & cmd != "disable")
+            {
+                if (bsuconfig.Current.enabletpt == true)
+                {
+                    IServerPlayerData pdata = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
+                    if (pdata == null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player could not be found. Please check your spelling and try again.", Vintagestory.API.Common.EnumChatType.Notification);
+                        return;
+                    }
+
+
+                    if (bsuconfig.Current.tptDict.ContainsKey(player.PlayerUID) == false)
+                    {
+
+                        if (bsuconfig.Current.waitDict.ContainsKey(pdata.PlayerUID) == false)
+                        {
+                            tptinfo info = new tptinfo();
+                            info.toplayer = args.PeekWord();
+                            info.haspermission = false;
+                            info.waiting = true;
+                            info.timer = count;
+                            bsuconfig.Current.tptDict.Add(player.PlayerUID, info);
+                            bsuconfig.Current.waitDict.Add(pdata.PlayerUID, player.PlayerUID);
+                            sapi.StoreModConfig(bsuconfig.Current, "tptconfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Stand by. You will be teleported when the other player accepts the teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                            sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, player.PlayerName + " would like to teleport to you. Please type /tpaccept to accept.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Destination player already has another active TP request. Try again shortly.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You already have a pending teleport request.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "TPT is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                
+            }
+            else if (cmd == "help")
+            {
+                displayhelp(player, cmdname);
+            }
+            else if (cmd == "enable")
+            {
+                if (player.Role.Code == "admin")
+                {
+                    bsuconfig.Current.enabletpt = true;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To Player has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "disable")
+            {
+                bsuconfig.Current.enabletpt = false;
+                sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To Player has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            else
+            {
+                if (bsuconfig.Current.enabletpt == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter the name of the player you would like to teleport to.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "TPT is disabled by admin.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
@@ -979,8 +1125,11 @@ namespace bunnyserverutilities.src
             //Just Private Message help
             if (helpType == "jpm" || helpType == "all")
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Just Private Message Commands:", Vintagestory.API.Common.EnumChatType.Notification);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm <i>playername messageToPlayer</i> - sends a message to a player ", Vintagestory.API.Common.EnumChatType.Notification);
+                if (bsuconfig.Current.enablejpm == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Just Private Message Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm <i>playername messageToPlayer</i> - sends a message to a player ", Vintagestory.API.Common.EnumChatType.Notification);
+                }
                 if (player.Role.Code == "admin")
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm enable - enables private messages", Vintagestory.API.Common.EnumChatType.Notification);
@@ -1003,7 +1152,23 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm disable - disables SSM", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
-            
+
+            //Simple Teleport To help
+            if (helpType == "tpt" || helpType == "all")
+            {
+                if (bsuconfig.Current.enabletpt == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt playername - Asks a player if you can teleport to them", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpaccept - accepts a tpt request and teleports player to you", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpdeny - denies a tpt request", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                if (player.Role.Code == "admin")
+                {                  
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt enable - enables tpt", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt disable - disables tpt", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+
         }
         //===============//
         //other functions//
@@ -1229,6 +1394,22 @@ namespace bunnyserverutilities.src
                     broadcast(); //broadcast our messages
                 }
             }
+            if (bsuconfig.Current.enabletpt == true)
+            {
+                foreach (var keyvalue in bsuconfig.Current.tptDict.Keys)
+                {
+                    tptinfo value = new tptinfo();
+                    var dic = bsuconfig.Current.tptDict.Values;
+                    bsuconfig.Current.tptDict.TryGetValue(keyvalue, out value);
+                    if ((count - value.timer) >= 2)
+                    {
+                        sapi.SendMessage(sapi.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your TP to player has expired", Vintagestory.API.Common.EnumChatType.Notification);
+                        bsuconfig.Current.tptDict.Remove(keyvalue);
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        return;
+                    }
+                }
+            }
 
 
             count = count + 1; //add a minute to our timer
@@ -1329,6 +1510,19 @@ namespace bunnyserverutilities.src
             }
 
         }
+        //=======//
+        //Classes//
+        //=======//
+
+        public class tptinfo
+        {
+
+            public String toplayer;
+            public Boolean haspermission;
+            public Boolean waiting;
+            public int timer;
+
+        }
 
         //===========//
         //Config file//
@@ -1377,6 +1571,10 @@ namespace bunnyserverutilities.src
             public List<String> messages { get; set; }
             public int? frequency;
 
+            //Teleport To Properties
+            public Dictionary<String, tptinfo> tptDict { get; set; }
+            public Dictionary<String, String> waitDict { get; set; }
+
 
             public static bsuconfig getDefault()
             {
@@ -1386,6 +1584,14 @@ namespace bunnyserverutilities.src
                 List<String> dmessages = new List<string> //SSM default dmessages
                 {
                     "Welcome to the server!"
+                };
+                Dictionary<String, tptinfo> tptdictionary = new Dictionary<string, tptinfo> //Dictionary to hold Teleport To info
+                {
+                    { "Default",new tptinfo() }
+                };
+                Dictionary<String, String> waitdictionary = new Dictionary<string, string> //Dictionary to hold cooldowns per player
+                {
+                    { "Default","Default"}
                 };
 
 
@@ -1426,6 +1632,10 @@ namespace bunnyserverutilities.src
                 //Simple Server Message defaults
                 config.messages = dmessages;
                 config.frequency = 10;
+
+                //Teleport To player defaults
+                config.tptDict = tptdictionary;
+                config.waitDict = waitdictionary;
 
                 return config;
             }
