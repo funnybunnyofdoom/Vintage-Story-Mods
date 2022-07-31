@@ -753,6 +753,7 @@ namespace bunnyserverutilities.src
 
         private void cmd_ssm(IServerPlayer player, int groupId, CmdArgs args)
         {
+            string cmdname = "ssm";
             string cmd = args.PopWord();
             switch (cmd)
             {
@@ -812,14 +813,26 @@ namespace bunnyserverutilities.src
                     broadcast();
                     break;
                 case "help":
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm add <i>Server Message</i> - adds a message to the list of server messages", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm list - lists the existing server messages ", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm remove <i>number from /ssm list</i> - remove the message from the number in the list", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm frequency <i>number in minutes</i> - changes the duration of minutes between messages", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm now - broadcasts the next server message in line", Vintagestory.API.Common.EnumChatType.Notification);
+                    displayhelp(player, cmdname);
                     break;
                 case null:
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSimpleServerMessages = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Server Messages have been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSimpleServerMessages = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Server Messages have been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     break;
 
             }
@@ -963,6 +976,7 @@ namespace bunnyserverutilities.src
                 }
             }
 
+            //Just Private Message help
             if (helpType == "jpm" || helpType == "all")
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Just Private Message Commands:", Vintagestory.API.Common.EnumChatType.Notification);
@@ -973,6 +987,23 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/jpm disable - disables private messages", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
+
+            //Simple Server Message help
+            if (helpType == "ssm" || helpType == "all")
+            {
+                if (player.Role.Code == "admin")
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Simple Server messages Admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm add <i>Server Message</i> - adds a message to the list of server messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm list - lists the existing server messages ", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm remove <i>number from /ssm list</i> - remove the message from the number in the list", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm frequency <i>number in minutes</i> - changes the duration of minutes between messages", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm now - broadcasts the next server message in line", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm enable - enables SSM", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/ssm disable - disables SSM", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            
         }
         //===============//
         //other functions//
@@ -1140,22 +1171,26 @@ namespace bunnyserverutilities.src
         //Simple Server Messages broadcast messages
         private void broadcast()
         {
-            if (bsuconfig.Current.messages.Count > 0)
+            if (bsuconfig.Current.enableSimpleServerMessages == true)
             {
-                List<String> messagelist = bsuconfig.Current.messages;
+                if (bsuconfig.Current.messages.Count > 0)
+                {
+                    List<String> messagelist = bsuconfig.Current.messages;
 
 
-                if (messageplace < messagelist.Count)
-                {
-                    sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
-                    messageplace++;
-                }
-                else
-                {
-                    messageplace = 0;
-                    sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                    if (messageplace < messagelist.Count)
+                    {
+                        sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                        messageplace++;
+                    }
+                    else
+                    {
+                        messageplace = 0;
+                        sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                    }
                 }
             }
+            
         }
 
         //========================//
