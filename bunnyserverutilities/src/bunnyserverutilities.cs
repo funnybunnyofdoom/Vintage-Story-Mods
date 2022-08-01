@@ -44,6 +44,8 @@ namespace bunnyserverutilities.src
         int messageplace = 0;
         int ssmtimer = 0; //sets the SSM cooldown timer at 0
 
+        //Bunny Bell Initilization
+        AssetLocation sound = new AssetLocation("game", "sounds/effect/receptionbell");
         public override bool ShouldLoad(EnumAppSide side)
         {
             return side == EnumAppSide.Server; //load on the server side
@@ -63,6 +65,7 @@ namespace bunnyserverutilities.src
             api.Event.ChunkColumnLoaded += OnChunkColumnLoaded; // /grtp and /rtp use this to check for their chunk to be loaded
             api.Event.PlayerCreate += OnPlayerCreate; // Used by join announce and rising sun to track new players
             api.Event.PlayerNowPlaying += onNowPlaying; // Used by join announce and rising sun to tell when players are loaded into the game
+            api.Event.PlayerChat += onPlayerChat; // Used by BunnyBell to read in player chat and check for names
 
             //=================//
             //register commands//
@@ -115,6 +118,9 @@ namespace bunnyserverutilities.src
                 cmd_tpaccept, privileges.src.GPrivilege.tpt);
             api.RegisterCommand("tpdeny", "Teleports the player to another player", "",
                 cmd_tpdeny, privileges.src.GPrivilege.tpt);
+
+            //Bunny Bell Commands
+            api.RegisterCommand("bb", "Bunny Bell configuration", "[help|enable|disable]", cmd_bb, Privilege.controlserver);
 
             //===================//
             //Register Privileges//
@@ -246,8 +252,10 @@ namespace bunnyserverutilities.src
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.EPrivilege.jpm);
                 //add Simple Server Message permissions to ADMIN ONLY:
                 ipm.AddPrivilegeToGroup("admin", privileges.src.FPrivilege.ssm);
-                //add Teleport Tp pernussions
+                //add Teleport To permissions
+                ipm.AddPrivilegeToGroup("admin", privileges.src.GPrivilege.tpt);
                 ipm.AddPrivilegeToGroup("suplayer", privileges.src.GPrivilege.tpt);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.GPrivilege.tpt);
 
                 //Verify admin permissions are not avaialble for default groups
                 ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.EPrivilege.jpmadmin);
@@ -984,6 +992,38 @@ namespace bunnyserverutilities.src
             }
         }
 
+        private void cmd_bb(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "bb";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "help":
+                    displayhelp(player,cmdname);
+                    break;
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb [help|enable|disable]", Vintagestory.API.Common.EnumChatType.Notification);
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableBunnyBell = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableBunnyBell = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+            }
+        }
+
+
         //=============//
         //Help Function//
         //=============//
@@ -1168,6 +1208,18 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt disable - disables tpt", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
+
+            //Simple Teleport To help
+            if (helpType == "bb" || helpType == "all")
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny bell creates a -ding- when your name is typed", Vintagestory.API.Common.EnumChatType.Notification);
+                if (player.Role.Code == "admin")
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb enable - enables Bunny Bell", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb disable - disables Bunny Bell", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+
 
         }
         //===============//
@@ -1509,6 +1561,26 @@ namespace bunnyserverutilities.src
                 rsjoinedPlayers.Add(byPlayer);
             }
 
+        }
+
+        private void onPlayerChat(IServerPlayer byPlayer, int channelId, ref string message, ref string data, BoolRef consumed)
+        {
+            if (bsuconfig.Current.enableBunnyBell == true)
+            {
+                string checklist = data;
+                IPlayer[] playerList = sapi.World.AllOnlinePlayers;
+                int volume = 1;
+                for (var i = 0; i < playerList.Count(); i++)
+                {
+                    string templist = checklist;
+                    IPlayer templayer = playerList[i];
+                    if (templist.CaseInsensitiveContains(templayer.PlayerName))
+                    {
+                        templayer.Entity.World.PlaySoundFor(sound, templayer, true, 32, volume);//volume);
+                    }
+                }
+            }
+            
         }
         //=======//
         //Classes//
