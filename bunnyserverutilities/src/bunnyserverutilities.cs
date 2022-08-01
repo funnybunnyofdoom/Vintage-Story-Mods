@@ -19,8 +19,8 @@ namespace bunnyserverutilities.src
         //BSU variable initilization
         public ICoreServerAPI sapi; //Variable to store our server API. We assign this in startServerSide
         int count; //Variable to check against for timing and cooldowns
-        public Dictionary<string, Dictionary<string,int>> cooldownDict = new Dictionary<string, Dictionary<string, int>>(); //dictionary to hold mod cooldown lists
-        
+        public Dictionary<string, Dictionary<string, int>> cooldownDict = new Dictionary<string, Dictionary<string, int>>(); //dictionary to hold mod cooldown lists
+
 
         //jHome variable initialization
         Dictionary<string, BlockPos> backSave; //Dictionary to hold our /back locations
@@ -51,13 +51,22 @@ namespace bunnyserverutilities.src
             return side == EnumAppSide.Server; //load on the server side
         }
 
+        //Random Teleport Initialization
+        public EntityPlayer GEntity;
+        public IServerPlayer Splayer;
+        public IServerChunk SChunk;
+        public BlockPos cblockpos;
+        int rtprandx, rtprandz = 0;
+        bool teleporting = false;
+        int cooldowntimer;
+
         public override void StartServerSide(ICoreServerAPI api)
         {
             //Start and assign APIs
             base.StartServerSide(api);
             sapi = api;
             IPermissionManager ipm = api.Permissions;
-            
+
             //Event listerners
             api.Event.PlayerDeath += OnPlayerDeath; // /back listens for the player's death
             api.Event.SaveGameLoaded += OnSaveGameLoading; // Load our data each game load
@@ -122,6 +131,10 @@ namespace bunnyserverutilities.src
             //Bunny Bell Commands
             api.RegisterCommand("bb", "Bunny Bell configuration", "[help|enable|disable]", cmd_bb, Privilege.controlserver);
 
+            //Random Teleport Commands
+            api.RegisterCommand("rtp", "Randomly Teleports the player", "[rtp|help|cooldown|enable|disable]",
+            cmd_rtp, privileges.src.HPrivilege.rtp);
+
             //===================//
             //Register Privileges//
             //===================//
@@ -130,7 +143,7 @@ namespace bunnyserverutilities.src
             ipm.RegisterPrivilege("sethome", "Set your current position as home");
             ipm.RegisterPrivilege("home", "Set your current position as home");
             ipm.RegisterPrivilege("back", "Go back to your last TP location");
-            ipm.RegisterPrivilege("spawn","teleport to spawn");
+            ipm.RegisterPrivilege("spawn", "teleport to spawn");
 
             //Group Random Teleport privileges
             ipm.RegisterPrivilege("grtp", "Random Teleport");
@@ -144,6 +157,9 @@ namespace bunnyserverutilities.src
 
             //Teleport To privileges
             ipm.RegisterPrivilege("tpt", "Teleport To");
+
+            //Random Teleport Privileges
+            ipm.RegisterPrivilege("rtp", "Random Teleport");
 
             //Check config for nulls
 
@@ -220,9 +236,45 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.tptDict = bsuconfig.getDefault().tptDict;
                 if (bsuconfig.Current.waitDict == null)
                     bsuconfig.Current.waitDict = bsuconfig.getDefault().waitDict;
-
-
+                if (bsuconfig.Current.rtpradius == null)
+                    bsuconfig.Current.rtpradius = bsuconfig.getDefault().rtpradius;
+                if (bsuconfig.Current.cooldownDict == null)
+                    bsuconfig.Current.cooldownDict = bsuconfig.getDefault().cooldownDict;
+                if (bsuconfig.Current.cooldownduration == null)
+                    bsuconfig.Current.cooldownduration = bsuconfig.getDefault().cooldownduration;
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+            }
+
+            //Old Home config used to pull homes for new config
+            try
+            {
+                var Config = api.LoadModConfig<HomeConfig>("homeconfig.json");
+                if (Config != null)
+                {
+                    api.Logger.Notification("Mod Config successfully loaded.");
+                    HomeConfig.Current = Config;
+                }
+                else
+                {
+                    api.Logger.Notification("No Mod Config specified. Falling back to default settings");
+                    HomeConfig.Current = HomeConfig.getDefault();
+                }
+            }
+            catch
+            {
+                HomeConfig.Current = HomeConfig.getDefault();
+                api.Logger.Error("Failed to load custom mod configuration. Falling back to default settings!");
+            }
+            finally
+            {
+                if (HomeConfig.Current.homeDict == null)//Must be preserved to pull old homes to the new save
+                    HomeConfig.Current.homeDict = HomeConfig.getDefault().homeDict;//Must be preserved to pull old homes to the new save
+                if (HomeConfig.Current.enablePermissions == null)
+                    HomeConfig.Current.enablePermissions = HomeConfig.getDefault().enablePermissions;
+                if (HomeConfig.Current.enableBack == null)
+                    HomeConfig.Current.enableBack = HomeConfig.getDefault().enableBack;
+
+                api.StoreModConfig(HomeConfig.Current, "homeconfig.json");
             }
 
 
@@ -252,10 +304,14 @@ namespace bunnyserverutilities.src
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.EPrivilege.jpm);
                 //add Simple Server Message permissions to ADMIN ONLY:
                 ipm.AddPrivilegeToGroup("admin", privileges.src.FPrivilege.ssm);
-                //add Teleport To permissions
+                //add Teleport To permissions to all standard groups
                 ipm.AddPrivilegeToGroup("admin", privileges.src.GPrivilege.tpt);
                 ipm.AddPrivilegeToGroup("suplayer", privileges.src.GPrivilege.tpt);
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.GPrivilege.tpt);
+                //Add Random teleport permissions to all standard groups
+                ipm.AddPrivilegeToGroup("admin", privileges.src.HPrivilege.rtp);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.HPrivilege.rtp);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.HPrivilege.rtp);
 
                 //Verify admin permissions are not avaialble for default groups
                 ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.EPrivilege.jpmadmin);
@@ -270,16 +326,16 @@ namespace bunnyserverutilities.src
             count = (int)bsuconfig.Current.cooldownminutes;//grtp cooldown timer
             CID = api.Event.RegisterGameTickListener(CoolDown, 60000); //Check the cooldown timer every 1 minute
             int broadcastFrequency = (int)bsuconfig.Current.frequency; //SSM cooldown timer
-            
+
         }
 
-       
+
         //========//
         //COMMANDS//
         //========//
 
         //back command
-        private void cmd_back(IServerPlayer player, int groupId, CmdArgs args) 
+        private void cmd_back(IServerPlayer player, int groupId, CmdArgs args)
         {
             string cmdname = "back";
             string cmd = args.PopWord();
@@ -314,10 +370,10 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player,cmdname);
+                    displayhelp(player, cmdname);
                     break;
                 case "playercooldown":
-                    setplayercooldown(player, args.PopInt(),cmdname);
+                    setplayercooldown(player, args.PopInt(), cmdname);
                     break;
             }
         }
@@ -338,7 +394,7 @@ namespace bunnyserverutilities.src
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home is disabled. an admin must use /home enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
             }
-            
+
 
 
         }
@@ -360,7 +416,7 @@ namespace bunnyserverutilities.src
                     else
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home is disabled. an admin must use /home enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
-                    }     
+                    }
                     break;
                 case "enable":
                     if (player.Role.Code == "admin")
@@ -379,7 +435,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player,cmdname);
+                    displayhelp(player, cmdname);
                     break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
@@ -414,7 +470,7 @@ namespace bunnyserverutilities.src
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP has not been set yet. Did the server just start?", Vintagestory.API.Common.EnumChatType.Notification);
                         }
-                        
+
                     }
                     else
                     {
@@ -422,7 +478,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "help":
-                    displayhelp(player,cmdname);
+                    displayhelp(player, cmdname);
                     break;
                 case "cooldown":
                     if (player.Role.Code == "admin")
@@ -559,20 +615,20 @@ namespace bunnyserverutilities.src
             {
                 if (player.Role.Code == "admin")
                 {
-                    if (bsuconfig.Current.homeDict != null)
+                    if (HomeConfig.Current.homeDict != null)
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
                         homeSave.Clear();
-                        for (int i = 0; i < bsuconfig.Current.homeDict.Count(); i++)
+                        for (int i = 0; i < HomeConfig.Current.homeDict.Count(); i++)
                         {
-                            KeyValuePair<string, BlockPos> kvp = bsuconfig.Current.homeDict.PopOne();
+                            KeyValuePair<string, BlockPos> kvp = HomeConfig.Current.homeDict.PopOne();
 
                             homeSave.Add(kvp.Key, kvp.Value);
                         }
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
-                        bsuconfig.Current.homeDict.Clear();
-                        bsuconfig.Current.homeDict = null;
-                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //HomeConfig.Current.homeDict.Clear();
+                        //HomeConfig.Current.homeDict = null;
+                        //sapi.StoreModConfig(HomeConfig.Current, "homeconfig.json");
                     }
                     else
                     {
@@ -632,7 +688,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case "help":
-                    displayhelp(player,cmdname);
+                    displayhelp(player, cmdname);
                     break;
                 case "dawn":
                     if (player.Role.Code == "admin")
@@ -645,7 +701,8 @@ namespace bunnyserverutilities.src
                         else if (cdnum > bsuconfig.Current.dusk)
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number smaller than dusk: " + bsuconfig.Current.dusk, Vintagestory.API.Common.EnumChatType.Notification);
-                        }else if (cdnum == null)
+                        }
+                        else if (cdnum == null)
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter an hour between 1 and 23.", Vintagestory.API.Common.EnumChatType.Notification);
                         }
@@ -744,8 +801,8 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please include a player name.", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
-            
-            
+
+
         }
 
         //Private Message admin commands
@@ -756,7 +813,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case "help":
-                    displayhelp(player,cmdname);
+                    displayhelp(player, cmdname);
                     break;
                 case "enable":
                     if (player.Role.Code == "admin")
@@ -909,14 +966,14 @@ namespace bunnyserverutilities.src
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You have no active requests to accept.", Vintagestory.API.Common.EnumChatType.Notification);
                 }
-            }  
+            }
         }
         //teleport to
         private void cmd_tpt(IServerPlayer player, int groupId, CmdArgs args)
         {
             string cmdname = "tpt";
             string cmd = args.PopWord();
-            if (cmd != null & cmd != "help"  & cmd != "enable" & cmd != "disable")
+            if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable")
             {
                 if (bsuconfig.Current.enabletpt == true)
                 {
@@ -958,7 +1015,7 @@ namespace bunnyserverutilities.src
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "TPT is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
                 }
-                
+
             }
             else if (cmd == "help")
             {
@@ -999,7 +1056,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case "help":
-                    displayhelp(player,cmdname);
+                    displayhelp(player, cmdname);
                     break;
                 case null:
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb [help|enable|disable]", Vintagestory.API.Common.EnumChatType.Notification);
@@ -1018,6 +1075,113 @@ namespace bunnyserverutilities.src
                         bsuconfig.Current.enableBunnyBell = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+            }
+        }
+
+        private void cmd_rtp(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "rtp";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "cooldown":
+                    if (player.Role.Code == "admin")
+                    {
+                        int? cdnum = args.PopInt();
+                        if (cdnum == null)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number 0 or higher in minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum < 0)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.cooldownduration = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "RTP cooldown timer set to " + bsuconfig.Current.cooldownduration + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You do not have permission to use this command.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "help":
+                    displayhelp(player, cmdname);
+                    break;
+                case null:
+                    ICoreServerAPI api = sapi; //get the server api
+                    Splayer = player;
+                    GEntity = player.Entity; //assign the entity to global variable
+                    IWorldManagerAPI world = api.WorldManager;
+                    System.Diagnostics.Debug.Write(count);
+                    if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == false & teleporting == false)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait while destination chunks are loaded.", Vintagestory.API.Common.EnumChatType.Notification);
+                        int radius = bsuconfig.Current.rtpradius ?? default(int);
+                        int worldx = world.MapSizeX;
+                        int worldz = world.MapSizeZ;
+                        int rawxmin = (worldx / 2) - radius;
+                        int rawxmax = (worldx / 2) + radius;
+                        int rawzmin = (worldz / 2) - radius;
+                        int rawzmax = (worldz / 2) + radius;
+                        rtprandx = GEntity.World.Rand.Next(rawxmin, rawxmax);
+                        rtprandz = GEntity.World.Rand.Next(rawzmin, rawzmax);
+                        world.LoadChunkColumnPriority(rtprandx / sapi.WorldManager.ChunkSize, rtprandz / sapi.WorldManager.ChunkSize);
+                        count = 1;
+                        teleporting = true;
+                        bsuconfig.Current.cooldownDict.Add(player.PlayerUID, cooldowntimer);
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    }
+                    else if (teleporting == true)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your chunks are still being generated, please be patient.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == true & teleporting == false)
+                    {
+                        int values;
+                        bsuconfig.Current.cooldownDict.TryGetValue(player.PlayerUID, out values);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + ((values + bsuconfig.Current.cooldownduration) - cooldowntimer) + " minutes", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enablejrtp = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Random Teleport has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enablejrtp = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Random Teleport has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "radius":
+                    if (player.Role.Code == "admin")
+                    {
+                        int? cdnum = args.PopInt();
+                        if (cdnum == null | cdnum < 10)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number 10 or greater.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum < 0)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.rtpradius = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "RTP radius has been updated to " + cdnum + " blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
                     }
                     break;
             }
@@ -1203,16 +1367,19 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpdeny - denies a tpt request", Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 if (player.Role.Code == "admin")
-                {                  
+                {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt enable - enables tpt", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt disable - disables tpt", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
-            //Simple Teleport To help
+            //BunnyBell help
             if (helpType == "bb" || helpType == "all")
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny bell creates a -ding- when your name is typed", Vintagestory.API.Common.EnumChatType.Notification);
+                if (bsuconfig.Current.enableBunnyBell == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny bell creates a -ding- when your name is typed", Vintagestory.API.Common.EnumChatType.Notification);
+                }
                 if (player.Role.Code == "admin")
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb enable - enables Bunny Bell", Vintagestory.API.Common.EnumChatType.Notification);
@@ -1220,8 +1387,26 @@ namespace bunnyserverutilities.src
                 }
             }
 
+            //Random Teleport Help
+            if (helpType == "rtp" || helpType == "all")
+            {
+                if (bsuconfig.Current.enableBunnyBell == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "RTP Commands:", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp - Teleports the player to a random location", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+
+                if (player.Role.Code == "admin")
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp cooldown <i>number</i> - Sets the cooldown timer in minutes", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp enable - enables Random Teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp disable - disables Random Teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
 
         }
+
+
         //===============//
         //other functions//
         //===============//
@@ -1247,7 +1432,7 @@ namespace bunnyserverutilities.src
                 backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
             }
             player.Entity.TeleportTo(randx, height + 2, randz);
-            
+
         }
 
         private void homeTeleport(IServerPlayer player)
@@ -1310,7 +1495,7 @@ namespace bunnyserverutilities.src
 
         //Set player's cooldown for (player, cooldown time, mod cmd name)
         //You must add the mod name to the if cmd == statement to update cooldowns
-        private void setplayercooldown(IServerPlayer player, int? cdnum,string cmd)
+        private void setplayercooldown(IServerPlayer player, int? cdnum, string cmd)
         {
             if (player.Role.Code == "admin")
             {
@@ -1329,7 +1514,8 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.spawnPlayerCooldown = cdnum;
                     }
-                    else if(cmd == "home"){
+                    else if (cmd == "home")
+                    {
                         bsuconfig.Current.homePlayerCooldown = cdnum;
                     }
                     else if (cmd == "back")
@@ -1340,10 +1526,10 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.grtpPlayerCooldown = cdnum;
                     }
-                    
-                    
+
+
                     sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, cmd+" cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, cmd + " cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
         }
@@ -1407,7 +1593,7 @@ namespace bunnyserverutilities.src
                     }
                 }
             }
-            
+
         }
 
         //========================//
@@ -1418,7 +1604,7 @@ namespace bunnyserverutilities.src
         {
             if (bsuconfig.Current.enableGrtp == true)
             {
-                if (count >= bsuconfig.Current.cooldownminutes+grtptimer)
+                if (count >= bsuconfig.Current.cooldownminutes + grtptimer)
                 {
                     grtptimer = count;
 
@@ -1432,11 +1618,11 @@ namespace bunnyserverutilities.src
                     randx = sapi.World.Rand.Next(rawxmin, rawxmax);
                     randz = sapi.World.Rand.Next(rawzmin, rawzmax);
                     loaded = false;
-                    
+
                     sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
 
                 }
-                
+
             }
             if (bsuconfig.Current.enableSimpleServerMessages == true)
             {
@@ -1457,6 +1643,22 @@ namespace bunnyserverutilities.src
                     {
                         sapi.SendMessage(sapi.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your TP to player has expired", Vintagestory.API.Common.EnumChatType.Notification);
                         bsuconfig.Current.tptDict.Remove(keyvalue);
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        return;
+                    }
+                }
+            }
+            if (bsuconfig.Current.enablejrtp == true)
+            {
+                Dictionary<string, int>.KeyCollection tempdict = bsuconfig.Current.cooldownDict.Keys;
+                foreach (var keyvalue in tempdict)
+                {
+                    int value;
+                    int cooldowntimer = count;
+                    bsuconfig.Current.cooldownDict.TryGetValue(keyvalue, out value);
+                    if (cooldowntimer >= value + bsuconfig.Current.cooldownduration)
+                    {
+                        bsuconfig.Current.cooldownDict.Remove(keyvalue);
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         return;
                     }
@@ -1483,6 +1685,18 @@ namespace bunnyserverutilities.src
                 }
 
                 loaded = true;
+            }
+            //rtp check chunk
+            if (rtprandx / sapi.WorldManager.ChunkSize == chunkCoord.X & (rtprandz / sapi.WorldManager.ChunkSize == chunkCoord.Y) & (teleporting == true))
+            {
+                Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location.", Vintagestory.API.Common.EnumChatType.Notification);
+                BlockPos checkheight = new BlockPos();
+                checkheight.X = rtprandx;
+                checkheight.Y = 1;
+                checkheight.Z = rtprandz;
+                int height = sapi.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
+                GEntity.TeleportTo(rtprandx, height + 1, rtprandz);
+                teleporting = false;
             }
 
         }
@@ -1580,7 +1794,7 @@ namespace bunnyserverutilities.src
                     }
                 }
             }
-            
+
         }
         //=======//
         //Classes//
@@ -1617,7 +1831,7 @@ namespace bunnyserverutilities.src
             public bool? enabletpt;
 
             //jhome properties
-            public Dictionary<String,BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
+            public Dictionary<String, BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
             public int? homePlayerCooldown; //How often the player can use /home
             public int? backPlayerCooldown;//How often the player can use /back
             public bool? enablePermissions;
@@ -1644,14 +1858,20 @@ namespace bunnyserverutilities.src
             public int? frequency;
 
             //Teleport To Properties
-            public Dictionary<String, tptinfo> tptDict { get; set; }
-            public Dictionary<String, String> waitDict { get; set; }
+            public Dictionary<String, tptinfo> tptDict;
+            public Dictionary<String, String> waitDict;
+
+            //Random Teleport Properties
+            //public int? rtpcooldownminutes; //How long the player must wait to teleport
+            public int? rtpradius; //How far the player can teleport
+            public int? cooldownduration; //how long between RTP teleports
+            public Dictionary<String, int> cooldownDict { get; set; }
 
 
             public static bsuconfig getDefault()
             {
                 var config = new bsuconfig();
-                BlockPos defPos = new BlockPos(0,0,0);
+                BlockPos defPos = new BlockPos(0, 0, 0);
                 bool perms = false;
                 List<String> dmessages = new List<string> //SSM default dmessages
                 {
@@ -1665,6 +1885,7 @@ namespace bunnyserverutilities.src
                 {
                     { "Default","Default"}
                 };
+
 
 
                 //jHome default assignments
@@ -1687,7 +1908,7 @@ namespace bunnyserverutilities.src
                 config.enableRisingSun = false;
                 config.enableSimpleServerMessages = false;
                 config.enabletpt = true;
-                
+
 
                 //grtp module defaults
                 config.cooldownminutes = 60;
@@ -1709,12 +1930,46 @@ namespace bunnyserverutilities.src
                 config.tptDict = tptdictionary;
                 config.waitDict = waitdictionary;
 
+                //Random Teleport defaults
+                config.rtpradius = 100000;
+                config.cooldownduration = 15;
+                config.cooldownDict = new Dictionary<string, int> //Dictionary to hold JRTP cooldown
+                {
+                    { "Default",1}
+                };
+
                 return config;
             }
 
 
         }
-            
+
+        //Old home config to allow us to get the old home file
+        public class HomeConfig
+        {
+            public static HomeConfig Current { get; set; }
+
+            public Dictionary<String, BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
+            public bool? enablePermissions;
+            public bool? enableBack;
+
+
+
+            public static HomeConfig getDefault()
+            {
+                var config = new HomeConfig();
+                BlockPos defPos = new BlockPos(0, 0, 0);
+                bool perms = false;
+                bool backperms = true;
+
+                Dictionary<String, BlockPos> homedictionary = null;
+
+                config.homeDict = homedictionary;//Must be preserved to pull old homes to the new save
+                config.enablePermissions = perms;
+                config.enableBack = backperms;
+                return config;
+            }
+
+        }
     }
-    
 }

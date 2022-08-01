@@ -62,4 +62,11 @@ namespace privileges.src
         /// </summary>
         public static string tpt = "tpt";
     }
+    public class HPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use /rtp
+        /// </summary>
+        public static string rtp = "rtp";
+    }
 }
