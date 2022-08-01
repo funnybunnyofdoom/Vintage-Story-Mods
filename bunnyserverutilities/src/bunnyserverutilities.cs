@@ -619,11 +619,16 @@ namespace bunnyserverutilities.src
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
                         homeSave.Clear();
-                        for (int i = 0; i < HomeConfig.Current.homeDict.Count(); i++)
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Size of Home Config: "+HomeConfig.Current.homeDict.Count(), Vintagestory.API.Common.EnumChatType.Notification);
+                        int configsize = HomeConfig.Current.homeDict.Count();
+                        for (int i = 0; i < configsize; i++)
                         {
                             KeyValuePair<string, BlockPos> kvp = HomeConfig.Current.homeDict.PopOne();
 
                             homeSave.Add(kvp.Key, kvp.Value);
+                            
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (i + 1) + "/" + configsize + ":Player: " + kvp.Key+ " " + kvp.Value, Vintagestory.API.Common.EnumChatType.Notification);
+                            
                         }
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
                         //HomeConfig.Current.homeDict.Clear();
