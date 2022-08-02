@@ -1,4 +1,26 @@
 {
   "extrajuice:incontainer-item-extrajuiceportion-turnip": "Turnip Juice",
-  "extrajuice:incontainer-item-extrajuiceportion-carrot": "Carrot Juice"
+  "extrajuice:incontainer-item-extrajuiceportion-carrot": "Carrot Juice",
+  "extrajuice:incontainer-item-extrajuiceportion-cabbage": "Cabbage Juice",
+  "extrajuice:incontainer-item-extrajuiceportion-onion": "Onion Juice",
+  "extrajuice:incontainer-item-extrajuiceportion-olive": "Olive Juice",
+  "extrajuice:incontainer-item-extrajuiceportion-parsnip": "Parsnip Juice",
+  "extrajuice:incontainer-item-extrajuiceportion-bellpepper": "Bellpepper Juice",
+  "extrajuice:incontainer-item-extrajuiceportion-pumpkin": "Pumpkin Juice",
+  "extrajuice:item-extrapressedmash-turnip-dry": "Pressed Turnips",
+  "extrajuice:item-extrapressedmash-carrot-dry": "Pressed carrots",
+  "extrajuice:item-extrapressedmash-cabbage-dry": "Pressed cabbage",
+  "extrajuice:item-extrapressedmash-onion-dry": "Pressed onion",
+  "extrajuice:item-extrapressedmash-olive-dry": "Pressed onlive",
+  "extrajuice:item-extrapressedmash-parsnip-dry": "Pressed parsnip",
+  "extrajuice:item-extrapressedmash-bellpepper-dry": "Pressed bellpepper",
+  "extrajuice:item-extrapressedmash-pumpkin-dry": "Pressed pumpkin",
+  "extrajuice:item-extrapressedmash-turnip-wet": "Wet Pressed turnip",
+  "extrajuice:item-extrapressedmash-carrot-wet": "Wet Pressed carrots",
+  "extrajuice:item-extrapressedmash-cabbage-wet": "Wet Pressed cabbage",
+  "extrajuice:item-extrapressedmash-onion-wet": "Wet Pressed onion",
+  "extrajuice:item-extrapressedmash-olive-wet": "Wet Pressed olive",
+  "extrajuice:item-extrapressedmash-parsnip-wet": "Wet Pressed parsnip",
+  "extrajuice:item-extrapressedmash-bellpepper-wet": "Wet Pressed bellpepper",
+  "extrajuice:item-extrapressedmash-pumpkin-wet": "Wet Pressed pumpkin"
 }

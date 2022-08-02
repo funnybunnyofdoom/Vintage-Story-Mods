@@ -1,0 +1,158 @@
+[
+  {
+    "op": "add",
+    "path": "/attributesByType/*-bellpepper",
+    "value": {
+      "juiceableProperties": {
+        "litresPerItem": 1,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-bellpepper",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-bellpepper",
+          "stacksize": 1
+        }
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-carrot",
+    "value": {
+      "juiceableProperties": {
+        "litresPerItem": 1,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-carrot",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-carrot",
+          "stacksize": 1
+        }
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-olive",
+    "value": {
+      "juiceableProperties": {
+        "litresPerItem": 1,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-olive",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-olive",
+          "stacksize": 1
+        }
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-onion",
+    "value": {
+      "juiceableProperties": {
+        "litresPerItem": 1,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-onion",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-onion",
+          "stacksize": 1
+        }
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-parsnip",
+    "value": {
+      "juiceableProperties": {
+        "litresPerItem": 1,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-parsnip",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-parsnip",
+          "stacksize": 1
+        }
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-turnip",
+    "value": {
+      "juiceableProperties": {
+        "litresPerItem": 1,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-turnip",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-turnip",
+          "stacksize": 1
+        }
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-cabbage/juiceableProperties",
+    "value": {
+      "litresPerItem": 1,
+      "liquidStack": {
+        "type": "item",
+        "code": "extrajuice:extrajuiceportion-cabbage",
+        "stacksize": 1
+      },
+      "pressedStack": {
+        "type": "item",
+        "code": "extrajuice:extrapressedmash-cabbage",
+        "stacksize": 1
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-pumpkin/juiceableProperties",
+    "value": {
+      "litresPerItem": 1,
+      "liquidStack": {
+        "type": "item",
+        "code": "extrajuice:extrajuiceportion-pumpkin",
+        "stacksize": 1
+      },
+      "pressedStack": {
+        "type": "item",
+        "code": "extrajuice:extrapressedmash-pumpkin",
+        "stacksize": 1
+      }
+    },
+    "file": "itemtypes/food/vegetable.json"
+  }
+]

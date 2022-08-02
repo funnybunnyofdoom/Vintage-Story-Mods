@@ -9,21 +9,23 @@
 		}
 	],
 	"attributes": {
-		"juiceableProperties": {
-			"litresPerItem": 0.3125,
-			"liquidStack": {
-				"type": "item",
-				"code": "extrajuice:extrajuiceportion-{type}",
-				"stacksize": 1
-			},
-			"pressedStack": {
-				"type": "item",
-				"code": "extrajuice:extrapressedmash-{type}",
-				"stacksize": 1
+		"juiceablePropertiesByType": {
+			"*": {
+				"liquidStack": {
+					"type": "item",
+					"code": "extrajuice:extrajuiceportion-{type}",
+					"stacksize": 1
+				},
+				"pressedStack": {
+					"type": "item",
+					"code": "extrajuice:extrapressedmash-{type}",
+					"stacksize": 1
+				}
 			}
-		}	
+			
+		}
 	},
-	"shape": { "base": "item/pressedmash" },
+	"shape": { "base": "game:item/pressedmash" },
 	"textures": {
 		"material": { "base": "game:block/food/pie/fill-{type}" }
 	},
