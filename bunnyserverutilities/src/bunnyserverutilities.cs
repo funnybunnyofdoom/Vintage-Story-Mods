@@ -1000,7 +1000,7 @@ namespace bunnyserverutilities.src
                         if (bsuconfig.Current.waitDict.ContainsKey(pdata.PlayerUID) == false)
                         {
                             tptinfo info = new tptinfo();
-                            info.toplayer = args.PeekWord();
+                            info.toplayer = pdata.PlayerUID;
                             info.haspermission = false;
                             info.waiting = true;
                             info.timer = count;
@@ -1461,11 +1461,9 @@ namespace bunnyserverutilities.src
             else
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-            }
-
-
-            setbackteleport(player);
-            player.Entity.TeleportTo(randx, height + 2, randz);
+                setbackteleport(player);
+                player.Entity.TeleportTo(randx, height + 2, randz);
+            }          
         }
 
         private void homeTeleport(IServerPlayer player)
@@ -1660,7 +1658,9 @@ namespace bunnyserverutilities.src
                     if ((count - value.timer) >= 2)
                     {
                         sapi.SendMessage(sapi.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your TP to player has expired", Vintagestory.API.Common.EnumChatType.Notification);
-                        bsuconfig.Current.tptDict.Remove(keyvalue);
+                        bsuconfig.Current.tptDict.Remove(keyvalue); //player that is teleporting
+                        bsuconfig.Current.waitDict.Remove(value.toplayer); //player that is being teleported to
+
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         return;
                     }
