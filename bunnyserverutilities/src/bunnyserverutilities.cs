@@ -1143,7 +1143,7 @@ namespace bunnyserverutilities.src
                         rtprandx = GEntity.World.Rand.Next(rawxmin, rawxmax);
                         rtprandz = GEntity.World.Rand.Next(rawzmin, rawzmax);
                         world.LoadChunkColumnPriority(rtprandx / sapi.WorldManager.ChunkSize, rtprandz / sapi.WorldManager.ChunkSize);
-                        count = 1;
+
                         teleporting = true;
                         bsuconfig.Current.cooldownDict.Add(player.PlayerUID, cooldowntimer);
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1450,7 +1450,6 @@ namespace bunnyserverutilities.src
 
                 backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
             }
-            player.Entity.TeleportTo(randx, height + 2, randz);
         }
         
         private void grtpteleport(IServerPlayer player)
@@ -1466,7 +1465,7 @@ namespace bunnyserverutilities.src
 
 
             setbackteleport(player);
-
+            player.Entity.TeleportTo(randx, height + 2, randz);
         }
 
         private void homeTeleport(IServerPlayer player)
