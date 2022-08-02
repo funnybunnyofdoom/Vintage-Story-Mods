@@ -1124,39 +1124,46 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case null:
-                    ICoreServerAPI api = sapi; //get the server api
-                    Splayer = player;
-                    GEntity = player.Entity; //assign the entity to global variable
-                    IWorldManagerAPI world = api.WorldManager;
-                    System.Diagnostics.Debug.Write(count);
-                    if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == false & teleporting == false)
+                    if (bsuconfig.Current.enablejrtp == true)
                     {
-                        setbackteleport(player);
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait while destination chunks are loaded.", Vintagestory.API.Common.EnumChatType.Notification);
-                        int radius = bsuconfig.Current.rtpradius ?? default(int);
-                        int worldx = world.MapSizeX;
-                        int worldz = world.MapSizeZ;
-                        int rawxmin = (worldx / 2) - radius;
-                        int rawxmax = (worldx / 2) + radius;
-                        int rawzmin = (worldz / 2) - radius;
-                        int rawzmax = (worldz / 2) + radius;
-                        rtprandx = GEntity.World.Rand.Next(rawxmin, rawxmax);
-                        rtprandz = GEntity.World.Rand.Next(rawzmin, rawzmax);
-                        world.LoadChunkColumnPriority(rtprandx / sapi.WorldManager.ChunkSize, rtprandz / sapi.WorldManager.ChunkSize);
+                        ICoreServerAPI api = sapi; //get the server api
+                        Splayer = player;
+                        GEntity = player.Entity; //assign the entity to global variable
+                        IWorldManagerAPI world = api.WorldManager;
+                        System.Diagnostics.Debug.Write(count);
+                        if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == false & teleporting == false)
+                        {
+                            setbackteleport(player);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait while destination chunks are loaded.", Vintagestory.API.Common.EnumChatType.Notification);
+                            int radius = bsuconfig.Current.rtpradius ?? default(int);
+                            int worldx = world.MapSizeX;
+                            int worldz = world.MapSizeZ;
+                            int rawxmin = (worldx / 2) - radius;
+                            int rawxmax = (worldx / 2) + radius;
+                            int rawzmin = (worldz / 2) - radius;
+                            int rawzmax = (worldz / 2) + radius;
+                            rtprandx = GEntity.World.Rand.Next(rawxmin, rawxmax);
+                            rtprandz = GEntity.World.Rand.Next(rawzmin, rawzmax);
+                            world.LoadChunkColumnPriority(rtprandx / sapi.WorldManager.ChunkSize, rtprandz / sapi.WorldManager.ChunkSize);
 
-                        teleporting = true;
-                        bsuconfig.Current.cooldownDict.Add(player.PlayerUID, cooldowntimer);
-                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            teleporting = true;
+                            bsuconfig.Current.cooldownDict.Add(player.PlayerUID, cooldowntimer);
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        }
+                        else if (teleporting == true)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your chunks are still being generated, please be patient.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == true & teleporting == false)
+                        {
+                            int values;
+                            bsuconfig.Current.cooldownDict.TryGetValue(player.PlayerUID, out values);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + ((values + bsuconfig.Current.cooldownduration) - cooldowntimer) + " minutes", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
                     }
-                    else if (teleporting == true)
+                    else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your chunks are still being generated, please be patient.", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    else if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == true & teleporting == false)
-                    {
-                        int values;
-                        bsuconfig.Current.cooldownDict.TryGetValue(player.PlayerUID, out values);
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You can teleport again in " + ((values + bsuconfig.Current.cooldownduration) - cooldowntimer) + " minutes", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "JRTP is disabled by admin.", Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "enable":
