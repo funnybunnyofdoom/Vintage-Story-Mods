@@ -1461,9 +1461,9 @@ namespace bunnyserverutilities.src
             else
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
-                setbackteleport(player);
-                player.Entity.TeleportTo(randx, height + 2, randz);
-            }          
+            }
+            setbackteleport(player);
+            player.Entity.TeleportTo(randx, height + 2, randz);
         }
 
         private void homeTeleport(IServerPlayer player)
