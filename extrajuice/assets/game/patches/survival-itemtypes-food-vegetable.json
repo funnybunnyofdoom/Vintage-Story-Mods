@@ -1,158 +1,210 @@
-[
-  {
+  [{
     "op": "add",
-    "path": "/attributesByType/*-bellpepper",
+    "path": "/attributesByType",
     "value": {
-      "juiceableProperties": {
-        "litresPerItem": 1,
-        "liquidStack": {
-          "type": "item",
-          "code": "extrajuice:extrajuiceportion-bellpepper",
-          "stacksize": 1
+      "*-turnip": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-turnip",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-turnip",
+            "stacksize": 1
+          }
         },
-        "pressedStack": {
-          "type": "item",
-          "code": "extrajuice:extrapressedmash-bellpepper",
-          "stacksize": 1
-        }
-      }
-    },
-    "file": "itemtypes/food/vegetable.json"
-  },
-  {
-    "op": "add",
-    "path": "/attributesByType/*-carrot",
-    "value": {
-      "juiceableProperties": {
-        "litresPerItem": 1,
-        "liquidStack": {
-          "type": "item",
-          "code": "extrajuice:extrajuiceportion-carrot",
-          "stacksize": 1
+        "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
         },
-        "pressedStack": {
-          "type": "item",
-          "code": "extrajuice:extrapressedmash-carrot",
-          "stacksize": 1
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
         }
-      }
-    },
-    "file": "itemtypes/food/vegetable.json"
-  },
-  {
-    "op": "add",
-    "path": "/attributesByType/*-olive",
-    "value": {
-      "juiceableProperties": {
-        "litresPerItem": 1,
-        "liquidStack": {
-          "type": "item",
-          "code": "extrajuice:extrajuiceportion-olive",
-          "stacksize": 1
-        },
-        "pressedStack": {
-          "type": "item",
-          "code": "extrajuice:extrapressedmash-olive",
-          "stacksize": 1
-        }
-      }
-    },
-    "file": "itemtypes/food/vegetable.json"
-  },
-  {
-    "op": "add",
-    "path": "/attributesByType/*-onion",
-    "value": {
-      "juiceableProperties": {
-        "litresPerItem": 1,
-        "liquidStack": {
-          "type": "item",
-          "code": "extrajuice:extrajuiceportion-onion",
-          "stacksize": 1
-        },
-        "pressedStack": {
-          "type": "item",
-          "code": "extrajuice:extrapressedmash-onion",
-          "stacksize": 1
-        }
-      }
-    },
-    "file": "itemtypes/food/vegetable.json"
-  },
-  {
-    "op": "add",
-    "path": "/attributesByType/*-parsnip",
-    "value": {
-      "juiceableProperties": {
-        "litresPerItem": 1,
-        "liquidStack": {
-          "type": "item",
-          "code": "extrajuice:extrajuiceportion-parsnip",
-          "stacksize": 1
-        },
-        "pressedStack": {
-          "type": "item",
-          "code": "extrajuice:extrapressedmash-parsnip",
-          "stacksize": 1
-        }
-      }
-    },
-    "file": "itemtypes/food/vegetable.json"
-  },
-  {
-    "op": "add",
-    "path": "/attributesByType/*-turnip",
-    "value": {
-      "juiceableProperties": {
-        "litresPerItem": 1,
-        "liquidStack": {
-          "type": "item",
-          "code": "extrajuice:extrajuiceportion-turnip",
-          "stacksize": 1
-        },
-        "pressedStack": {
-          "type": "item",
-          "code": "extrajuice:extrapressedmash-turnip",
-          "stacksize": 1
-        }
-      }
-    },
-    "file": "itemtypes/food/vegetable.json"
-  },
-  {
-    "op": "add",
-    "path": "/attributesByType/*-cabbage/juiceableProperties",
-    "value": {
-      "litresPerItem": 1,
-      "liquidStack": {
-        "type": "item",
-        "code": "extrajuice:extrajuiceportion-cabbage",
-        "stacksize": 1
       },
-      "pressedStack": {
-        "type": "item",
-        "code": "extrajuice:extrapressedmash-cabbage",
-        "stacksize": 1
+      "*-parsnip": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-parsnip",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-parsnip",
+            "stacksize": 1
+          }
+        },
+        "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
+        }
+      },
+      "*-onion": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-{type}",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-{type}",
+            "stacksize": 1
+          }
+        },
+        "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
+        }
+      },
+      "*-olive": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-{type}",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-{type}",
+            "stacksize": 1
+          }
+        },
+        "inContainerTexture": { "base": "block/food/pie/fill-mixedvegetable" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
+        }
+      },
+      "*-bellpepper": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-{type}",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-{type}",
+            "stacksize": 1
+          }
+        },
+        "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
+        }
+      },
+      "*-carrot": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-{type}",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-{type}",
+            "stacksize": 1
+          }
+        },
+        "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
+        }
       }
     },
     "file": "itemtypes/food/vegetable.json"
   },
   {
     "op": "add",
-    "path": "/attributesByType/*-pumpkin/juiceableProperties",
+    "path": "/attributesByType/*-cabbage",
     "value": {
-      "litresPerItem": 1,
-      "liquidStack": {
-        "type": "item",
-        "code": "extrajuice:extrajuiceportion-pumpkin",
-        "stacksize": 1
+      "juiceableProperties": {
+        "litresPerItem": 0.5,
+        "liquidStack": {
+          "type": "item",
+          "code": "extrajuice:extrajuiceportion-{type}",
+          "stacksize": 1
+        },
+        "pressedStack": {
+          "type": "item",
+          "code": "extrajuice:extrapressedmash-{type}",
+          "stacksize": 1
+        }
       },
-      "pressedStack": {
-        "type": "item",
-        "code": "extrajuice:extrapressedmash-pumpkin",
-        "stacksize": 1
+      "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+      "nutritionPropsWhenInMeal": {
+        "satiety": 150,
+        "foodcategory": "Vegetable"
+      },
+      "inPieProperties": {
+        "texture": "block/food/pie/fill-{type}",
+        "partType": "Filling"
       }
     },
     "file": "itemtypes/food/vegetable.json"
-  }
+  },
+    {
+      "op": "add",
+      "path": "/attributesByType/*-pumpkin",
+      "value": {
+        "juiceableProperties": {
+          "litresPerItem": 0.5,
+          "liquidStack": {
+            "type": "item",
+            "code": "extrajuice:extrajuiceportion-{type}",
+            "stacksize": 1
+          },
+          "pressedStack": {
+            "type": "item",
+            "code": "extrajuice:extrapressedmash-{type}",
+            "stacksize": 1
+          }
+        },
+        "inContainerTexture": { "base": "block/wood/barrel/raw-{type}" },
+        "nutritionPropsWhenInMeal": {
+          "satiety": 150,
+          "foodcategory": "Vegetable"
+        },
+        "inPieProperties": {
+          "texture": "block/food/pie/fill-{type}",
+          "partType": "Filling"
+        }
+      },
+      "file": "itemtypes/food/vegetable.json"
+    }
 ]
