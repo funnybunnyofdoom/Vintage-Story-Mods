@@ -69,4 +69,11 @@ namespace privileges.src
         /// </summary>
         public static string rtp = "rtp";
     }
+    public class IPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use /warn
+        /// </summary>
+        public static string warn = "warn";
+    }
 }

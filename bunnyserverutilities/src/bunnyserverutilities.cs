@@ -60,7 +60,7 @@ namespace bunnyserverutilities.src
         int rtprandx, rtprandz = 0;
         bool teleporting = false;
         int cooldowntimer;
-        
+
         public override void StartServerSide(ICoreServerAPI api)
         {
             //Start and assign APIs
@@ -89,6 +89,8 @@ namespace bunnyserverutilities.src
                 cmd_bsu);
             api.RegisterCommand("removedeny", "removes a privilege denial", "/removedeny <i>playername privilege</i>",
                 cmd_removedeny, Privilege.controlserver);
+            api.RegisterCommand("warn", "Issues a warning for a player", "/warn <i>playername reason</i>",
+                cmd_warn, privileges.src.IPrivilege.warn);
 
             //home commands
             api.RegisterCommand("sethome", "Set your current position as home", " ",
@@ -244,6 +246,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.cooldownDict = bsuconfig.getDefault().cooldownDict;
                 if (bsuconfig.Current.cooldownduration == null)
                     bsuconfig.Current.cooldownduration = bsuconfig.getDefault().cooldownduration;
+                if (bsuconfig.Current.warningDict == null)
+                    bsuconfig.Current.warningDict = bsuconfig.getDefault().warningDict;
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
 
@@ -320,7 +324,8 @@ namespace bunnyserverutilities.src
                 ipm.RemovePrivilegeFromGroup("doplayer", privileges.src.EPrivilege.jpmadmin);
                 ipm.RemovePrivilegeFromGroup("suplayer", privileges.src.FPrivilege.ssm);
                 ipm.RemovePrivilegeFromGroup("doplayer", privileges.src.FPrivilege.ssm);
-
+                //add /warn permissions to ADMIN ONLY:
+                ipm.AddPrivilegeToGroup("admin", privileges.src.IPrivilege.warn);
             }
 
             //GRTP count and event listener set at server startup
@@ -330,6 +335,7 @@ namespace bunnyserverutilities.src
             int broadcastFrequency = (int)bsuconfig.Current.frequency; //SSM cooldown timer
 
         }
+
 
 
         //========//
@@ -621,16 +627,16 @@ namespace bunnyserverutilities.src
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
                         homeSave.Clear();
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Size of Home Config: "+HomeConfig.Current.homeDict.Count(), Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Size of Home Config: " + HomeConfig.Current.homeDict.Count(), Vintagestory.API.Common.EnumChatType.Notification);
                         int configsize = HomeConfig.Current.homeDict.Count();
                         for (int i = 0; i < configsize; i++)
                         {
                             KeyValuePair<string, BlockPos> kvp = HomeConfig.Current.homeDict.PopOne();
 
                             homeSave.Add(kvp.Key, kvp.Value);
-                            
-                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (i + 1) + "/" + configsize + ":Player: " + kvp.Key+ " " + kvp.Value, Vintagestory.API.Common.EnumChatType.Notification);
-                            
+
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (i + 1) + "/" + configsize + ":Player: " + kvp.Key + " " + kvp.Value, Vintagestory.API.Common.EnumChatType.Notification);
+
                         }
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "old homes imported", Vintagestory.API.Common.EnumChatType.Notification);
                         //HomeConfig.Current.homeDict.Clear();
@@ -958,7 +964,7 @@ namespace bunnyserverutilities.src
             {
                 if (bsuconfig.Current.waitDict.ContainsKey(player.PlayerUID))
                 {
-                    
+
                     String value;
                     bsuconfig.Current.waitDict.TryGetValue(player.PlayerUID, out value);
                     String tpPlayer = value;
@@ -1212,13 +1218,115 @@ namespace bunnyserverutilities.src
             IServerPlayerData targetplayer = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
             if (targetplayer != null)
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Removing denial of "+cmd2+" from "+cmd+".", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Removing denial of " + cmd2 + " from " + cmd + ".", Vintagestory.API.Common.EnumChatType.Notification);
                 ipm.RemovePrivilegeDenial(targetplayer.PlayerUID, cmd2);
 
             }
-                     
+
         }
 
+        //warning command
+        private void cmd_warn(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "warn";
+            string cmd = args.PopWord();
+            if (cmd != "list" & cmd != null)
+            {
+                IServerPlayerData targetplayer = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
+                if (targetplayer != null)
+                {
+                    string warnReason = args.PopAll();
+                    if (bsuconfig.Current.warningDict.ContainsKey(targetplayer.PlayerUID))
+                    {
+                        userwarning uwd;
+                        bsuconfig.Current.warningDict.TryGetValue(targetplayer.PlayerUID, out uwd);
+                        uwd.warnings++;
+                        uwd.reasons.Add(warnReason);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player: " + targetplayer.LastKnownPlayername, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "IP: " + uwd.ipaddress, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Warnings: " + uwd.warnings, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Reasons: ", Vintagestory.API.Common.EnumChatType.Notification);
+                        for (int i = 0; i < uwd.reasons.Count; i++)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i + 1 + ": " + uwd.reasons[i], Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        bsuconfig.Current.warningDict.Remove(targetplayer.PlayerUID);
+                        bsuconfig.Current.warningDict.Add(targetplayer.PlayerUID, uwd);
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    }
+                    else
+                    {
+                        userwarning uwd = new userwarning();
+                        uwd.playeruid = targetplayer.PlayerUID;
+                        uwd.playername = targetplayer.LastKnownPlayername;
+                        uwd.warnings = 1;
+                        uwd.reasons.Add(warnReason);
+                        IServerPlayer[] pdata = sapi.Server.Players;
+                        for (int i = 0; i < pdata.Length; i++)
+                        {
+                            IServerPlayer splayer = pdata[i];
+                            if (splayer.PlayerUID == targetplayer.PlayerUID)
+                            {
+                                uwd.ipaddress = splayer.IpAddress;
+                            }
+                        }
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player: " + targetplayer.LastKnownPlayername, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "IP: " + uwd.ipaddress, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Warnings: " + uwd.warnings, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Reasons: ", Vintagestory.API.Common.EnumChatType.Notification);
+                        for (int i = 0; i < uwd.reasons.Count; i++)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i + 1 + ": " + uwd.reasons[i], Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        bsuconfig.Current.warningDict.Add(targetplayer.PlayerUID, uwd);
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    }
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player not found", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "list")
+            {
+                int? listnum = args.PopInt();
+                Dictionary<String, userwarning> uswd = new Dictionary<String, userwarning>();
+                uswd = bsuconfig.Current.warningDict;
+                if (listnum == null)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Use /warn list num to see the warnings for that player", Vintagestory.API.Common.EnumChatType.Notification);
+                    for (var i = 1; i < uswd.Count; i++)
+                    {
+                        userwarning UW = uswd.ElementAt(i).Value;
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i+") Player: " + UW.playername+ " | Warnings: "+UW.warnings, Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                }
+                else
+                {
+                    if (listnum != null & listnum >0 & listnum < uswd.Count)
+                    {
+                        userwarning UW = uswd.ElementAt((int)listnum).Value;
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player: " + UW.playername, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "IP: " + UW.ipaddress, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Warnings: " + UW.warnings, Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Reasons: ", Vintagestory.API.Common.EnumChatType.Notification);
+                        for (int j = 0; j < UW.reasons.Count; j++)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, j + 1 + ": " + UW.reasons[j], Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number between 1 and "+ (uswd.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    
+                }
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/warn playername reason | /warn list", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+        }
 
         //=============//
         //Help Function//
@@ -1835,6 +1943,17 @@ namespace bunnyserverutilities.src
 
         }
 
+        public class userwarning
+        {
+
+            public String playeruid = "default";
+            public String playername = "null";
+            public int warnings = 0;
+            public String ipaddress = "null";
+            public List<String> reasons = new List<string>();
+
+        }
+
         //===========//
         //Config file//
         //===========//
@@ -1892,6 +2011,9 @@ namespace bunnyserverutilities.src
             public int? cooldownduration; //how long between RTP teleports
             public Dictionary<String, int> cooldownDict { get; set; }
 
+            //userwarning properties
+            public Dictionary<String, userwarning> warningDict;
+
 
             public static bsuconfig getDefault()
             {
@@ -1909,6 +2031,10 @@ namespace bunnyserverutilities.src
                 Dictionary<String, String> waitdictionary = new Dictionary<string, string> //Dictionary to hold cooldowns per player
                 {
                     { "Default","Default"}
+                };
+                Dictionary<String, userwarning> warningdictionary = new Dictionary<string, userwarning>
+                {
+                    {"Default",new userwarning() }
                 };
 
 
@@ -1962,6 +2088,9 @@ namespace bunnyserverutilities.src
                 {
                     { "Default",1}
                 };
+
+                //user warning defaults
+                config.warningDict = warningdictionary;
 
                 return config;
             }
