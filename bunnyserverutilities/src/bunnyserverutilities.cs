@@ -248,6 +248,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.cooldownduration = bsuconfig.getDefault().cooldownduration;
                 if (bsuconfig.Current.warningDict == null)
                     bsuconfig.Current.warningDict = bsuconfig.getDefault().warningDict;
+                if (bsuconfig.Current.enablejoinmessage == null)
+                    bsuconfig.Current.enablejoinmessage = bsuconfig.getDefault().enablejoinmessage;
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
 
@@ -1895,6 +1897,16 @@ namespace bunnyserverutilities.src
                     }
                 }
             }
+            if(bsuconfig.Current.enablejoinmessage == true)
+            {
+                byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Players Online: " + sapi.Server.Players.Length.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
+                string players = " ";
+                for (int i = 0;i < sapi.Server.Players.Length; i++)
+                {
+                    players = players + sapi.Server.Players[i].PlayerName + " | ";
+                }
+                byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, players, Vintagestory.API.Common.EnumChatType.Notification);
+            }
         }
 
         public void OnPlayerCreate(IServerPlayer byPlayer)
@@ -1973,6 +1985,7 @@ namespace bunnyserverutilities.src
             public bool? enableRisingSun;
             public bool? enableSimpleServerMessages;
             public bool? enabletpt;
+            public bool? enablejoinmessage;
 
             //jhome properties
             public Dictionary<String, BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
@@ -2059,6 +2072,7 @@ namespace bunnyserverutilities.src
                 config.enableRisingSun = false;
                 config.enableSimpleServerMessages = false;
                 config.enabletpt = true;
+                config.enablejoinmessage = true;
 
 
                 //grtp module defaults
