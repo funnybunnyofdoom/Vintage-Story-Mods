@@ -1899,11 +1899,12 @@ namespace bunnyserverutilities.src
             }
             if(bsuconfig.Current.enablejoinmessage == true)
             {
-                byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Players Online: " + sapi.Server.Players.Length.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
+                IPlayer[] aoplayers = sapi.World.AllOnlinePlayers;
+                byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Players Online: " + aoplayers.Length.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
                 string players = " ";
-                for (int i = 0;i < sapi.Server.Players.Length; i++)
+                for (int i = 0;i < aoplayers.Length; i++)
                 {
-                    players = players + sapi.Server.Players[i].PlayerName + " | ";
+                    players = players + aoplayers[i].PlayerName + " | ";
                 }
                 byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, players, Vintagestory.API.Common.EnumChatType.Notification);
             }
