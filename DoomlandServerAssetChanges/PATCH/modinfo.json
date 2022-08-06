@@ -1,0 +1,18 @@
+{
+  "Type": 1,
+  "TextureSize": 32,
+  "Name": "doomlandedits01",
+  "Version": "",
+  "NetworkVersion": null,
+  "Description": "",
+  "Website": "",
+  "ModID": "doomlandedits01",
+  "Authors": [
+    "Funnybunnyofdoom"
+  ],
+  "Contributors": [],
+  "Side": "Universal",
+  "RequiredOnClient": true,
+  "RequiredOnServer": true,
+  "Dependencies": {}
+}

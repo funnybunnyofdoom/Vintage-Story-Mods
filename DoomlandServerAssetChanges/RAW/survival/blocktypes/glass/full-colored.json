@@ -1,0 +1,43 @@
+{
+	code: "glass",
+	attributes: {
+		handbook: {
+			groupBy: ["glass-*"],
+		}
+	},
+	variantgroups: [
+		{ code: "color", states: ["green", "blue", "violet", "red", "yellow", "brown", "vintage", "smoky", "pink"]  }
+	],
+	shape: { base: "block/glass/framed" },
+	drawtype: "json",
+	creativeinventory: { "general": ["*"], "construction": ["*"] },
+	blockmaterial: "Glass",
+	faceCullMode: "MergeMaterial",
+	replaceable: 900,
+	lightAbsorption: 0,
+	renderPass: "Transparent",
+	vertexFlags: {
+		zOffset: 2
+	},
+	textures: {
+		material: { base: "block/glass/{color}" },
+	},
+	resistance: 0.25,
+	sideopaque: {
+		all: false
+	},
+	sounds: {
+		"place": "player/buildhigh",
+		"break": "block/glass",
+		"hit": "block/glass"
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: -0.01, z: 0.5 },
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

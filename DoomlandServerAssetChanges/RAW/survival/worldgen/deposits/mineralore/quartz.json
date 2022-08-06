@@ -1,0 +1,49 @@
+[
+	{
+		code: "quartz",
+		triesPerChunk: 0.5,
+		generator: "disc-anywhere",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate"] },
+			placeblock: { code: "ore-quartz-{rock}" },
+			surfaceBlock: { code: "looseores-quartz-{rock}-free" },
+			genSurfaceBlockChance: 0.35,
+			surfaceBlockChance: 0.05,
+			radius: { dist: "gaussian", avg: 32, var: 32 },
+			yPosRel: {dist: "uniform", avg: 0.5, var: 0.5 },
+			thickness: { dist: "invexp", avg: 1.2, var: 3 }
+		},
+		childDeposits: [
+			{
+				code: "gold",
+				triesPerChunk: 6,
+				withOreMap: true,
+				handbookPageCode: "item-nugget-nativegold",
+				generator: "childdeposit-pointcloud",
+				attributes: {
+					randomTries: { avg: 20 },
+					placeblock: { code: "ore-*-quartz_nativegold-{rock}", name: "grade", allowedVariants: ["poor", "medium", "rich", "bountiful"] },
+					surfaceBlock: { code: "looseores-quartz_nativegold-{rock}-free" },
+					surfaceBlockChance: 0.1,
+					radius: { dist: "gaussian", avg: 2, var: 2 },
+					thickness: { dist: "invexp", avg: 2, var: 1 }
+				}
+			},
+			{
+				code: "silver",
+				triesPerChunk: 20,
+				withOreMap: true,
+				handbookPageCode: "item-nugget-nativesilver",
+				generator: "childdeposit-pointcloud",
+				attributes: {
+					randomTries: { avg: 20 },
+					placeblock: { code: "ore-*-quartz_nativesilver-{rock}", name: "grade", allowedVariants: ["poor", "medium", "rich", "bountiful"] },
+					surfaceBlock: { code: "looseores-quartz_nativesilver-{rock}-free" },
+					surfaceBlockChance: 0.1,
+					radius: { dist: "gaussian", avg: 2, var: 2 },
+					thickness: { dist: "invexp", avg: 2, var: 1 }
+				}
+			}
+		],
+	}
+]

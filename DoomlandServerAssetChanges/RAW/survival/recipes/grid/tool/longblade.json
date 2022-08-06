@@ -1,0 +1,25 @@
+[
+	{
+		ingredientPattern: "T	S",
+		ingredients: {
+			"T": { type: "item", code: "longbladehead-*", name: "metal"  },
+			"S": { type: "item", code: "stick" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "longblade-{metal}", quantity: 1  }
+	},
+	{
+		ingredientPattern: "TH	SC",
+		requiresTrait: "merciless",
+		ingredients: {
+			"T": { type: "item", code: "longbladehead-iron"  },
+			"S": { type: "item", code: "stick" },
+			"H": { type: "item", code: "hammer-iron", isTool: true },
+			"C": { type: "item", code: "charcoal" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "item", code: "longblade-blackguard", quantity: 1  }
+	}
+]

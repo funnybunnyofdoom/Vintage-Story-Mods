@@ -1,0 +1,31 @@
+{
+	code: "genericwood",
+	shape: { base: "block/basic/cube" },
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	drawtype: "cube",
+	creativeinventory: { "general": ["*"], "construction": ["*"] },
+	blockmaterial: "Wood",
+	replaceable: 900,
+	lightAbsorption: 99,
+	combustibleProps: {
+		burnTemperature: 800,
+		burnDuration: 30,
+	},
+	maxStackSize: 32,
+	materialDensity: 700,
+	resistance: 4,
+	textures: {
+		all: { base: "block/wood/planks/generic" },
+	},
+	resistance: 1,
+	sideopaque: {
+		all: true
+	},
+	sidesolid: {
+		all: true
+	}
+}

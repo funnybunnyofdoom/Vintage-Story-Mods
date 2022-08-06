@@ -1,0 +1,37 @@
+[
+	{
+		ingredientPattern: "_T_,T_T",
+		ingredients: {
+			"T": { type: "item", code: "metalchain-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel", "gold", "silver"], quantity: 1 },
+			"C": { type: "item", code: "metalchain-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel", "gold", "silver"], quantity: 2 }
+		},
+		width: 3,
+		height: 2,
+		name: "chain helmet",
+		output: { type: "item", code: "armor-head-chain-{metal}"  }
+	},
+	{
+		ingredientPattern: "TJT,CCC,TTT",
+		ingredients: {
+			"J": { type: "item", code: "armor-body-jerkin-leather", quantity: 1 },
+			"T": { type: "item", code: "metalchain-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel", "gold", "silver"], quantity: 1 },
+			"C": { type: "item", code: "metalchain-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel", "gold", "silver"], quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		name: "chain body armor",
+		output: { type: "item", code: "armor-body-chain-{metal}"  }
+	},
+	{
+		ingredientPattern: "TCT,TJT",
+		ingredients: {
+			"J": { type: "item", code: "armor-legs-jerkin-leather", quantity: 1 },
+			"T": { type: "item", code: "metalchain-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel", "gold", "silver"], quantity: 1 },
+			"C": { type: "item", code: "metalchain-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel", "gold", "silver"], quantity: 2 }
+		},
+		width: 3,
+		height: 2,
+		name: "chain leg armor",
+		output: { type: "item", code: "armor-legs-chain-{metal}"  }
+	}
+]

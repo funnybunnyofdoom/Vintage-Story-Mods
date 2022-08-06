@@ -1,0 +1,14 @@
+[
+  {
+    "op": "replace",
+    "path": "/server/behaviors/9/aitasks/0/entityCodes/3",
+    "value": "hare-female",
+    "file": "entities/land/wolf-male.json"
+  },
+  {
+    "op": "replace",
+    "path": "/server/behaviors/9/aitasks/0/entityCodes/4",
+    "value": "hare-male",
+    "file": "entities/land/wolf-male.json"
+  }
+]

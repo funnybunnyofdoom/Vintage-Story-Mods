@@ -1,0 +1,26 @@
+[
+	{
+		code: "dye-red",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion",  litres: 4 },
+			{ type: "item", code: "crushed-cinnabar", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-red", litres: 4 }
+	},
+	{
+		code: "dye-red",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "item", code: "crushed-cinnabar", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-red", litres: 2 }
+	},
+	{
+		code: "dye-red",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "item", code: "crushed-cinnabar", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-red", litres: 3 }
+	}
+]

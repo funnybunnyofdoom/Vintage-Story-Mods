@@ -1,0 +1,45 @@
+{
+	code: "coke",
+	shape: { base: "item/ore/ungraded/coke" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	class: "ItemCoal",
+	maxstacksize: 64,
+	attributes: {
+		displayInsideCrate: true,
+		placeSound: "block/charcoal",
+		pigment: {
+			name: "Coke black",
+			color: { red: 38, green: 37, blue: 34 },
+		},
+		displaycaseable: true,
+		shelvable: true
+	},
+	materialDensity: 300,
+	combustibleProps: {
+		burnTemperature: 1340,
+		burnDuration: 200,
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 1, y: 90, z: 0 },
+		scale: 1.67
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 150, y: -38, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 3.8
+	},
+	tpHandTransform: {
+		translation: { x: -0.93, y: -0.19, z: -0.77 },
+		rotation: { x: -48, y: -180, z: 23 },
+		origin: { x: 0.5, y: 0.12, z: 0.5 },
+		scale: 0.6
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.5
+	}
+}

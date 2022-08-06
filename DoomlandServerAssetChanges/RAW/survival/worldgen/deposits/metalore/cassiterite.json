@@ -1,0 +1,68 @@
+[
+	{
+		code: "surfacecassiterite",
+		_comment: "Rare poor surface cassiterite deposits",
+		generator: "disc-followsurface",
+		triesPerChunk: 0.007,
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["andesite", "granite", "basalt", "peridotite", "phyllite", "slate"] },
+			placeblock: { code: "ore-poor-cassiterite-{rock}" },
+			surfaceBlock: { code: "looseores-cassiterite-{rock}-free" },
+			surfaceBlockChance: 0.33,
+			radius: { dist: "uniform", avg: 3, var: 0.5 },
+			yPosRel: {dist: "uniform", avg: 0.95, var: 0.03 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	},
+	{
+		code: "cassiterite",
+		triesPerChunk: 7,
+		withOreMap: true,
+		handbookPageCode: "item-nugget-cassiterite",
+		generator: "disc-followsurface",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["andesite", "granite", "basalt", "peridotite", "phyllite", "slate"] },
+			placeblock: { 
+				code: "ore-*-cassiterite-{rock}", 
+				name: "grade",
+				allowedVariantsByInBlock: {			
+					"rock-andesite": ["poor", "medium"],
+					"rock-granite": ["poor", "medium", "rich", "bountiful"],
+					"rock-basalt": ["poor", "medium"],
+					"rock-peridotite": ["poor", "medium"],
+					"rock-phyllite": ["poor", "medium"],
+					"rock-slate": ["poor", "medium"]
+				}
+			},
+			radius: { dist: "gaussian", avg: 5, var: 3 },
+			yPosRel: {dist: "uniform", avg: 0.575, var: 0.175 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	},
+	{
+		code: "cassiterite",
+		_comment: "Extremly rare massive cassiterite deposits",
+		triesPerChunk: 0.1,
+		withOreMap: true,
+		generator: "disc-followsurface",
+		handbookPageCode: "item-nugget-cassiterite",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["andesite", "granite", "basalt", "peridotite", "phyllite", "slate"] },
+			placeblock: { 
+				code: "ore-*-cassiterite-{rock}", 
+				name: "grade",
+				allowedVariantsByInBlock: {			
+					"rock-andesite": ["poor", "medium"],
+					"rock-granite": ["poor", "medium", "rich", "bountiful"],
+					"rock-basalt": ["poor", "medium"],
+					"rock-peridotite": ["poor", "medium"],
+					"rock-phyllite": ["poor", "medium"],
+					"rock-slate": ["poor", "medium"]
+				}
+			},
+			radius: { dist: "gaussian", avg: 12, var: 3 },
+			yPosRel: {dist: "uniform", avg: 0.3, var: 0.3 },
+			thickness: { dist: "uniform", avg: 1, var: 0 },
+		}
+	}
+]

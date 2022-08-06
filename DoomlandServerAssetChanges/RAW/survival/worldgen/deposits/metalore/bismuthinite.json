@@ -1,0 +1,27 @@
+[
+	{
+		code: "bismuthinite",
+		triesPerChunk: 16,
+		withOreMap: true,
+		handbookPageCode: "item-nugget-bismuthinite",
+		generator: "disc-followsurface",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["andesite", "granite", "basalt", "peridotite", "phyllite", "slate"] },
+			placeblock: { 
+				code: "ore-*-bismuthinite-{rock}",
+				name: "grade",
+				allowedVariantsByInBlock: {
+					"rock-andesite": ["poor", "medium", "rich"],
+					"rock-granite": ["poor", "medium", "rich"],
+					"rock-basalt": ["poor", "medium", "rich", "bountiful"],
+					"rock-peridotite": ["poor", "medium", "rich"],
+					"rock-phyllite": ["poor", "medium"],
+					"rock-slate": ["poor", "medium"]					
+				}
+			},
+			radius: { dist: "triangle", avg: 4, var: 3 },
+			yPosRel: {dist: "uniform", avg: 0.45, var: 0.4 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	}
+]

@@ -1,0 +1,28 @@
+[
+	{
+		ingredientPattern: "LLL,LLL",
+		ingredients: {
+			"L": { type: "item", code: "stone-*", name: "rock", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite", "kimberlite", "suevite", "whitemarble", "redmarble", "greenmarble"] }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "drystonefence-{rock}-ew-free", quantity: 1 }
+	},
+	{
+		ingredientPattern: "ABC	DEF	GHI",
+		ingredients: {
+			"A": { type: "item", code: "stone-bauxite" },
+			"B": { type: "item", code: "stone-granite" },
+			"C": { type: "item", code: "stone-limestone" },
+			"D": { type: "item", code: "stone-conglomerate" },
+			"F": { type: "item", code: "stone-andesite" },
+			"G": { type: "item", code: "stone-claystone" },
+			"H": { type: "item", code: "stone-chalk" },
+			"I": { type: "item", code: "stone-phyllite" },
+			"E": { type: "item", code: "plank-*", name: "wood" },
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "drystonefence-mixed-ew-free", quantity: 1 }
+	}
+]

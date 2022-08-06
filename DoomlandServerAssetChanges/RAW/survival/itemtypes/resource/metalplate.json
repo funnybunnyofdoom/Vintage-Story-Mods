@@ -1,0 +1,181 @@
+{
+	code: "metalplate",
+	class: "ItemMetalPlate",
+	behaviors: [{ 
+		name: "GroundStorable",
+		properties: {
+			layout: 'Stacking',
+			placeRemoveSound: 'sounds/block/plate',
+			stackingModel: 'block/metal/platepile',
+			stackingTextures: {
+				"metal": "block/metal/ingot/{metal}",
+			},
+			collisionBox: { x1: 0.125, y1: 0, z1: 0.125, x2: 0.875, y2: 0.0625, z2: 0.875 },
+			cbScaleYByLayer: 1,
+			tessQuantityElements: 1,
+			stackingCapacity: 16,
+			transferQuantity: 1,
+			bulkTransferQuantity: 4	
+		}
+	}],
+	shape: { base: "item/plate" },
+	maxstacksize: 8,
+	storageFlags: 5,
+	attributes: {
+		handbook: {
+			groupBy: ["metalplate-*"],
+			excludeByType: {
+				"*-chromium": true,
+				"*-platinum": true,
+				"*-titanium": true,
+				"*-rhodium": true,
+				"*-stainlessteel": true,
+				"*-uranium": true
+			}
+		}
+	},
+	variantgroups: [
+		{ code: "metal", loadFromProperties: "block/metal" },
+	],
+	texture: { base: "block/metal/ingot/{metal}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensityByType: {
+		"*-copper": 8960,
+		"*-brass": 8500,
+		"*-tinbronze": 7600,
+		"*-bismuthbronze": 7900,
+		"*-blackbronze": 9000,
+		"*-iron": 7870,
+		"*-gold": 19300,
+		"*-lead": 11300,
+		"*-tin": 7260,
+		"*-chromium": 7150,
+		"*-platinum": 21500,
+		"*-titanium": 4510,
+		"*-zinc": 7140,
+		"*-silver": 10500,
+		"*-bismuth": 9790,
+		"*-molybdochalkos": 9600
+	},
+	combustiblePropsByType: {
+		"metalplate-copper": {
+			meltingPoint: 1084,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-copper", stacksize: 2 }
+		},
+		"metalplate-brass": {
+			meltingPoint: 920,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-brass", stacksize: 2 }
+		},
+		"metalplate-tinbronze": {
+			meltingPoint: 950,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tinbronze", stacksize: 2 }
+		},
+		"metalplate-bismuthbronze": {
+			meltingPoint: 850,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuthbronze", stacksize: 2 }
+		},
+		"metalplate-blackbronze": {
+			meltingPoint: 1020,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-blackbronze", stacksize: 2 }
+		},
+		"metalplate-iron": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-iron", stacksize: 2 }
+		},
+		"metalplate-gold": {
+			meltingPoint: 1063,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-gold", stacksize: 2 }
+		},
+		"metalplate-lead": {
+			meltingPoint: 327,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-lead", stacksize: 2 }
+		},
+		"metalplate-tin": {
+			meltingPoint: 232,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tin", stacksize: 2 }
+		},
+		"metalplate-chromium": {
+			meltingPoint: 1907,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-chromium", stacksize: 2 }
+		},
+		"metalplate-platinum": {
+			meltingPoint: 1770,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-platinum", stacksize: 2 }
+		},
+		"metalplate-titanium": {
+			meltingPoint: 1668,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-titanium", stacksize: 2 }
+		},
+		"metalplate-zinc": {
+			meltingPoint: 419,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-zinc", stacksize: 2 }
+		},
+		"metalplate-silver": {
+			meltingPoint: 961,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-silver", stacksize: 2 }
+		},
+		"metalplate-bismuth": {
+			meltingPoint: 271,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuth", stacksize: 2 }
+		},
+		"metalplate-molybdochalkos": {
+			meltingPoint: 902,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-molybdochalkos", stacksize: 2 }
+		}
+	},
+	fpHandTransform: {
+		translation: { x: -0.35, y: -0.15, z: 0 },
+		rotation: { x: 0, y: 0, z: 79 },
+		scale: 1.8
+	},
+	guiTransform: {
+		translation: { x: 3, y: 0, z: 0 },
+		rotation: { x: -30, y: -44, z: -180 },
+		origin: { x: 0.5, y: 0.0625, z: 0.5 },
+		scale: 1.85
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 90, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.31
+	},
+	tpHandTransform: {
+		translation: { x: -0.7, y: 0.1, z: -0.53 },
+		rotation: { x: 94, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.75
+	}
+}

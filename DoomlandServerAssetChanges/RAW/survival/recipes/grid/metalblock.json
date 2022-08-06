@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "GGG,GGG",
+	ingredients: {
+		"G": { type: "item", code: "metalplate-*", name: "metal" }
+	},
+	width: 3,
+	height: 2,
+	output: { type: "block", code: "metalblock-{metal}", quantity: 1  }
+}

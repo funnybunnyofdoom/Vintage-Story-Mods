@@ -1,0 +1,20 @@
+{
+	code: "flour",
+	maxstacksize: 64,
+	attributes: {
+		dissolveInWater: true
+	},
+	variantgroups: [
+		{ code: "type", states: ["spelt", "rice", "flax", "rye", "cassava", "amaranth", "sunflower" ] },
+	],
+	texture: { base: "item/food/grain/{type}-flour" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 600,
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 4320 },
+		transitionHours: { avg: 336 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.25
+	}]
+}

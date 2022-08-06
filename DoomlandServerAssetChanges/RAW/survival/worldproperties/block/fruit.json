@@ -1,0 +1,59 @@
+{
+	"code": "fruit",
+	"variants": [
+		{
+			code: "blueberry"
+		},
+		{
+			code: "cranberry"
+		},
+		{
+			code: "redcurrant"
+		},
+		{
+			code: "whitecurrant"
+		},
+		{
+			code: "blackcurrant"
+		},
+		{
+			code: "saguaro"
+		},
+		{
+			code: "pineapple"
+		},
+		{
+			code: "redapple"
+		},
+		{
+			code: "pinkapple"
+		},
+		{
+			code: "yellowapple"
+		},
+		{
+			code: "cherry"
+		},
+		{
+			code: "peach"
+		},
+		{
+			code: "pear"
+		},
+		{
+			code: "orange"
+		},
+		{
+			code: "mango"
+		},
+		{
+			code: "breadfruit"
+		},
+		{
+			code: "lychee"
+		},
+		{
+			code: "pomegranate"
+		}
+	]
+}

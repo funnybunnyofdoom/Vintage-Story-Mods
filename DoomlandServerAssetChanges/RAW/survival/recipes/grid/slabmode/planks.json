@@ -1,0 +1,10 @@
+{
+	"__comment": "The OmniRotatable modifiers the output of this recipe to change the placement mode in the item stacks attributes",
+	ingredientPattern: "L",
+	ingredients: {
+		"L": { type: "block", code: "plankslab-*-down-free", name: "type" }
+	},
+	width: 1,
+	height: 1,
+	output: { type: "block", code: "plankslab-{type}-down-free", quantity: 1 }
+}

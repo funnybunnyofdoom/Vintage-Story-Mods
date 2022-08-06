@@ -1,0 +1,82 @@
+[
+	{
+		ingredientPattern: "T	S",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-*", name: "material"  },
+			"S": { type: "item", code: "stick" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-{material}", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-granite" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-granite", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-andesite" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-andesite", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-obsidian" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-obsidian", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-peridotite" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-peridotite", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-chert" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-chert", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-flint" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-flint", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "knifeblade-basalt" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "knife-bone-basalt", quantity: 1  }
+	}
+]

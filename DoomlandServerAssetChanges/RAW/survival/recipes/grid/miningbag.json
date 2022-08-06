@@ -1,0 +1,12 @@
+{
+	ingredientPattern: "_T_,PLP",
+	ingredients: {
+		"T": { type: "item", code: "flaxtwine" },
+		"L": { type: "block", code: "linen-*" },
+		"P": { type: "item", code: "metalplate-*", allowedVariants: ["tinbronze", "bismuthbronze", "blackbronze"] }
+	},
+	width: 3,
+	height: 2,
+	name: "miningbag",
+	output: { type: "item", code: "miningbag"  }
+}

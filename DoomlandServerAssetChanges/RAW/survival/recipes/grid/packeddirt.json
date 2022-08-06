@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "___	GGG	GGG",
+	ingredients: {
+		"G": { type: "block", code: "soil-*", allowedVariants: ["verylow-none", "low-none", "medium-none"] }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "packeddirt", quantity: 6  }
+}

@@ -1,0 +1,13 @@
+{
+	ingredientPattern: "SXC",
+	ingredients: {
+		"S": { type: "item", code: "saltpeter", quantity: 4 },
+		"X": { type: "item", code: "powderedsulfur", quantity: 2 },
+		"C": { type: "item", code: "ore-bituminouscoal" },
+	},
+	name: "blastingpowder",
+	width: 3,
+	height: 1,
+	shapeless: true,
+	output: { type: "item", code: "blastingpowder", quantity: 6  }
+}

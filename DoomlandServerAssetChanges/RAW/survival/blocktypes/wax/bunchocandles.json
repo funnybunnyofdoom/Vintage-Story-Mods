@@ -1,0 +1,105 @@
+{
+	code: "bunchocandles",
+	"__comment": "The BunchOCandles contains code to spawn the fire particles at the right spot",
+	class: "BlockBunchOCandles",
+	maxstacksize: 1,
+	variantgroups: [
+		{ code: "quantity", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9"] }
+	],
+	behaviors: [ {name: "Unstable"} ],
+	shapeByType: {
+		"*-1": { 
+			base: "block/wax/bunch", quantityElements: 2,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-2": { 
+			base: "block/wax/bunch", quantityElements: 4,
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-3": { 
+			base: "block/wax/bunch", quantityElements: 6,
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-4": { 
+			base: "block/wax/bunch", quantityElements: 8,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-5": { 
+			base: "block/wax/bunch", quantityElements: 10,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-6": { 
+			base: "block/wax/bunch", quantityElements: 12,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-7": { 
+			base: "block/wax/bunch", quantityElements: 14,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-8": { 
+			base: "block/wax/bunch", quantityElements: 16,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		},
+		"*-9": { 
+			base: "block/wax/bunch", quantityElements: 18,  
+			alternates: [{ rotateY: 90 }, { rotateY: 180 }, { rotateY: 270 } ]
+		}
+	},
+	creativeinventory: {  },
+	blockmaterial: "Other",
+	replaceable: 900,
+	lightAbsorption: 0,
+	resistance: 1.25,
+	sideopaque: { all: false },
+	sidesolid: { all: false },
+	lightHsvByType: {
+		"*-1": [7, 7, 7],
+		"*-2": [7, 7, 8],
+		"*-3": [7, 7, 9],
+		"*-4": [7, 7, 10],
+		"*-5": [7, 7, 11],
+		"*-6": [7, 7, 12],
+		"*-7": [7, 7, 13],
+		"*-8": [7, 7, 14],
+		"*-9": [7, 7, 15]
+	},
+	particleProperties: [
+		{
+			"__comment": "Fire quads",
+			hsvaColor: [{ avg: 20, var: 20 }, { avg: 255, var: 50 }, { avg: 255, var: 50 },  { avg: 255, var: 0 }],
+			opacityEvolve: { transform: "quadratic", factor: -16 },
+			gravityEffect: { avg: 0, var: 0 },
+			velocity: [ { avg: 0, var: 0.0125 }, { avg: 0.03, var: 0.01 }, { avg: 0, var: 0.0125 }],
+			quantity: { avg: 0.1 },
+			size: { avg: 0.05, var: 0.025 },
+			lifeLength: { avg: 0.5 },
+			sizeEvolve: { transform: "linear", factor: 0.1 },
+			particleModel: "Quad",
+			vertexFlags: 128,
+			windAffectednes: 0.05
+		}		
+	],
+	sounds: {
+		place: "block/planks",
+		break: "block/planks",
+		hit: "block/planks",
+		ambientByType: { "*-populated-*": "creature/beehive" }
+	},
+	dropsByType: {
+		"*-1": [  { type: "item", code: "candle", quantity: { avg: 1 } } ],
+		"*-2": [  { type: "item", code: "candle", quantity: { avg: 2 } } ],
+		"*-3": [  { type: "item", code: "candle", quantity: { avg: 3 } } ],
+		"*-4": [  { type: "item", code: "candle", quantity: { avg: 4 } } ],
+		"*-5": [  { type: "item", code: "candle", quantity: { avg: 5 } } ],
+		"*-6": [  { type: "item", code: "candle", quantity: { avg: 6 } } ],
+		"*-7": [  { type: "item", code: "candle", quantity: { avg: 7 } } ],
+		"*-8": [  { type: "item", code: "candle", quantity: { avg: 8 } } ],
+		"*-9": [  { type: "item", code: "candle", quantity: { avg: 9 } } ],
+	},
+	materialDensity: 300,
+	combustibleProps: {
+		burnTemperature: 500,
+		burnDuration: 8,
+	},
+	collisionSelectionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 },
+}

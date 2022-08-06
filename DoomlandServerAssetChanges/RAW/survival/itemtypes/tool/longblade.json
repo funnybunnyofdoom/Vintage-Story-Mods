@@ -1,0 +1,250 @@
+{
+	code: "longblade",
+	damagedby: ["blockbreaking", "attacking"],
+	tool: "sword",
+	class: "ItemSword",
+	attributes: {
+		handbook: {
+			groupBy: ["longblade-*"]
+		},
+		toolrackTransformByType: {
+			"*-scrap":
+				{
+					translation: { x: 0.2, y: 0.85 },
+					rotation: { y: 180, z: 1 },
+					scale: 1.66
+				},
+			"*-blackguard":
+				{
+					rotation: { y: 180, z: 1 },
+					translation: { x: -0.1, y: 0.6 },
+					scale: 1.25
+				},
+			"*-forlorn":
+				{
+					rotation: { y: 180, z: 1 },
+					translation: { x: -0.05, y: 0.7 },
+					scale: 1.25
+				},
+			"*":
+				{
+					rotation: { y: 180, z: 1 },
+					translation: { x: -0.1, y: 0.6 },
+					scale: 1.25
+				}
+		}
+	},
+	variantgroups: [
+		{ code: "metal", states: ["scrap", "copper", "tinbronze", "bismuthbronze", "blackbronze", "gold", "silver", "iron", "meteoriciron", "steel", "blackguard", "forlorn", "admin" ] },
+	],
+	shapeByType: {
+		"*-scrap": { base: "item/tool/longblade-scrap" },
+		"*-admin": { base: "item/tool/longblade-admin" },
+		"*-blackguard": { base: "item/tool/sword-blackguard" },
+		"*-forlorn": { base: "item/tool/sword-forlorn" },
+		"*": { base: "item/tool/longblade" }
+	},
+	heldTpHitAnimation: "swordhit",
+	texturesByType: {
+		"*-scrap": { },
+		"*-blackguard": { },
+		"*-forlorn": { },
+		"*-admin": { "metal":  { base: "block/fire-pink"  } },
+		"*": {
+			"metal": { base: "block/metal/sheet/{metal}1" }
+		}
+	},
+	attackRange: 2.5,
+	tooltierbytype: {
+		"*-scrap": 2,
+		"*-copper": 2,
+		"*-gold": 2,
+		"*-silver": 2,
+		"*-bismuthbronze": 3,
+		"*-tinbronze": 3,
+		"*-blackbronze": 3,
+		"*-iron": 4,
+		"*-meteoriciron": 4,
+		"*-steel": 5,
+		"*-blackguard": 4,
+		"*-forlorn": 4,
+		"*-admin": 5
+	},
+	miningspeedbytype: {
+		"longblade-scrap": {
+			"wood": 2,
+			"leaves": 1.4
+		},
+		"longblade-copper": {
+			"wood": 2.2,
+			"leaves": 1.6
+		},
+		"longblade-bismuthbronze": {
+			"wood": 2.3,
+			"leaves": 2
+		},
+		"longblade-tinbronze": {
+			"wood": 2.4,
+			"leaves": 2.2
+		},
+		"longblade-gold": {
+			"wood": 2.4,
+			"leaves": 2.2
+		},
+		"longblade-silver": {
+			"wood": 2.4,
+			"leaves": 2.2
+		},
+		"longblade-blackbronze": {
+			"wood": 2.5,
+			"leaves": 2.3
+		},
+		"longblade-iron": {
+			"wood": 3,
+			"leaves": 3
+		},
+		"longblade-meteoriciron": {
+			"wood": 3.25,
+			"leaves": 3.5
+		},
+		"longblade-steel": {
+			"wood": 3.5,
+			"leaves": 4
+		},
+		"longblade-blackguard": {
+			"wood": 3,
+			"leaves": 3
+		},
+		"longblade-forlorn": {
+			"wood": 3,
+			"leaves": 3
+		},
+		"longblade-admin": {
+			"wood": 7,
+			"leaves": 7
+		}
+	},
+	attackpowerbytype: {
+		"longblade-scrap": 3,
+		"longblade-copper": 3.75,
+		"longblade-gold": 4,
+		"longblade-silver": 4,
+		"longblade-bismuthbronze": 4.25,
+		"longblade-tinbronze": 4.25,
+		"longblade-blackbronze": 4.75,
+		"longblade-iron": 5,
+		"longblade-meteoriciron": 5.25,
+		"longblade-steel": 5.25,
+		"longblade-blackguard": 5.25,
+		"longblade-forlorn": 5.25,
+		"longblade-admin": 300
+	},
+	durabilitybytype: {
+		"longblade-scrap": 90,
+		"longblade-gold": 175,
+		"longblade-silver": 175,
+		"longblade-copper": 250,
+		"longblade-tinbronze": 450,
+		"longblade-bismuthbronze": 530,
+		"longblade-blackbronze": 600,
+		"longblade-iron": 850,
+		"longblade-meteoriciron": 1100,
+		"longblade-steel": 2125,
+		"longblade-blackguard": 1100,
+		"longblade-forlorn": 650,
+		"longblade-admin": 9999
+	},
+	creativeinventoryByType: {
+		"*": { "general": ["*"], "items": ["*"], "tools": ["*"] }
+	},
+	guiTransformByType: {
+		"*-scrap":
+			{
+				translation: { x: 0, y: 0, z: 0 },
+				rotation: { x: -94, y: 47, z: 44 },
+				origin: { x: 0.73, y: 0, z: 0.48 },
+				scale: 2.2
+			},
+		"*-blackguard":
+			{
+				translation: { x: 0, y: 0, z: 0 },
+				rotation: { x: -89, y: 47, z: -13 },
+				origin: { x: 0.6, y: -0.1, z: 0.44 },
+				scale: 1.65
+			},
+		"*-forlorn":
+			{
+				translation: { x: 0, y: 0, z: 0 },
+				rotation: { x: -89, y: 47, z: 44 },
+				origin: { x: 0.6, y: -0.2, z: 0.44 },
+				scale: 1.42
+			},
+		"*":
+			{
+				translation: { x: 0, y: 0, z: 0 },
+				rotation: { x: -89, y: 47, z: 44 },
+				origin: { x: 0.65, y: 0, z: 0.47 },
+				scale: 1.68
+			}
+	},
+	fpHandTransformByType: {
+		"*-scrap":
+			{
+				translation: { x: -0.2, y: -0.4, z: 0 },
+				rotation: { x: 15, y: 15, z: 90 },
+				scale: 2.83
+			},
+		"*":
+			{
+				translation: { x: -0.2, y: -0.2, z: 0 },
+				rotation: { x: 15, y: 15, z: 90 },
+				scale: 2.45
+			}
+	},
+	groundTransformByType: {
+		"*-scrap":
+			{
+				translation: { x: 0, y: 0.05, z: 0 },
+				rotation: { x: 0, y: 0, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 },
+				scale: 3.67
+			},
+		"*":
+			{
+				translation: { x: 0, y: 0, z: 0 },
+				rotation: { x: 0, y: 0, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 },
+				scale: 3.4
+			}
+	},
+	tpHandTransformByType: {
+		"*-scrap":
+			{
+				translation: { x: -0.65, y: -0.01, z: -0.53 },
+				rotation: { x: 90, y: 0, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 },
+				scale: 0.91
+			},
+		"*-blackguard":
+			{
+				translation: { x: -1.03, y: -0.01, z: -0.56 },
+				rotation: { x: -90, y: 0, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 },
+				scale: 0.8
+			},
+		"*-forlorn":
+			{
+				translation: { x: -1, y: -0.01, z: -0.62 },
+				rotation: { x: -90, y: 0, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 },
+				scale: 0.8
+			},
+		"*":
+			{
+				translation: { x: -1.03, y: -0.01, z: -0.56 },
+				rotation: { x: -81, y: 0, z: 0 },
+				origin: { x: 0.5, y: 0, z: 0.5 },
+				scale: 0.8
+			}
+	}
+}

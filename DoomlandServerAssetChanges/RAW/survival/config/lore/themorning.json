@@ -1,0 +1,6 @@
+{
+	code: "themorning",
+	title: "lore-themorning-title",
+	category: "villager",
+	pieces: ["lore-themorning-piece1", "lore-themorning-piece2", "lore-themorning-piece3", "lore-themorning-piece4", "lore-themorning-piece5"]
+}

@@ -1,0 +1,23 @@
+[
+	{
+		ingredientPattern: "LLL	L_L	LLL",
+		ingredients: {
+			"L": { type: "item", code: "cattailtops", quantity: 3 }
+		},
+		name: "stationarybasket",
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "stationarybasket-east", attributes: { type: "reed" }  }
+	},
+
+	{
+		ingredientPattern: "LLL	L_L	LLL",
+		ingredients: {
+			"L": { type: "item", code: "papyrustops", quantity: 3 }
+		},
+		name: "stationarybasket",
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "stationarybasket-east", attributes: { type: "reed" }  }
+	}
+]

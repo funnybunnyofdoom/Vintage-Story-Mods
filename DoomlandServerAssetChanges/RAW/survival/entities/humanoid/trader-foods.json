@@ -1,0 +1,815 @@
+{
+	code: "humanoid-trader-foods",
+	class: "EntityTrader",
+	canClimb: true,
+	hitboxSize: { x: 0.6, y: 1.75 },
+	deadHitboxSize: { x: 0.75, y: 0.5 },
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/humanoid/trader" },
+		texture: { base: "entity/humanoid/trader", alternates: [ { base: "entity/humanoid/traderclothes/set1" }, { base: "entity/humanoid/traderclothes/set2" },
+                                                             { base: "entity/humanoid/traderclothes/set3" }, { base: "entity/humanoid/traderclothes/set4" },
+                                                             { base: "entity/humanoid/traderclothes/set5" }  ] },
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "interpolateposition" }
+		],
+		animations: [
+			{
+				code: "die",
+				animation: "die",
+				animationSpeed: 1.75,
+				weight: 10,
+				blendMode: "AddAverage"
+			},
+			{
+				code: "hurt",
+				animation: "hurt",
+				animationSpeed: 2,
+				blendMode: "AddAverage"
+			},
+            { code: "rowdywelcome", animation: "rowdywelcome", blendMode: "AddAverage" },
+            { code: "lazywelcome", animation: "lazywelcome", blendMode: "AddAverage" },
+            { code: "lazynod", animation: "lazynod", blendMode: "AddAverage" }
+		]
+	},
+    attributes: {
+        tradeProps: {
+            money: { avg: 30, var: 10 },
+
+
+    "selling": {
+        "maxItems": 10,
+        "list": [
+            {
+                "code": "fruit-saguaro",
+                "type": "item",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "fruit-blueberry",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "fruit-cranberry",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "vegetable-parsnip",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "bowl-fired",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "attributes": {
+                    "ucontents": [
+                        {
+                            "type": "item",
+                            "code": "honeyportion",
+                            "makefull": true
+                        }
+                    ]
+                }
+            },
+            {
+                "code": "beeswax",
+                "type": "item",
+                "stacksize": 2,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "honeycomb",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "bread-spelt-perfect",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "bread-rye-perfect",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "bread-flax-perfect",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "bread-rice-perfect",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "redmeat-cooked",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "fat",
+                "type": "item",
+                "stacksize": 3,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "treeseed-oak",
+                "type": "item",
+                "stacksize": 2,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "treeseed-maple",
+                "type": "item",
+                "stacksize": 2,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "treeseed-pine",
+                "type": "item",
+                "stacksize": 2,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "treeseed-redwood",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "treeseed-kapok",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "seeds-flax",
+                "type": "item",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "seeds-cabbage",
+                "type": "item",
+                "stacksize": 2,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "seeds-parsnip",
+                "type": "item",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "compost",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "cheese-waxedcheddar-4slice",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "cheese-blue-4slice",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "paper-parchment",
+                "type": "item",
+                "stacksize": 5,
+                "stock": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            }
+        ]
+    },
+    "buying": {
+        "maxItems": 10,
+        "list": [
+            {
+                "code": "hoe-tinbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "hoe-bismuthbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "hoe-blackbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "knife-tinbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "knife-bismuthbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "knife-blackbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "scythe-tinbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "scythe-bismuthbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "scythe-blackbronze",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "linensack",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "skep-empty-east",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clothes-foot-shepherd-sandals",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clothes-head-shepherds-cowl",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "clothes-lowerbody-shepherd-pants",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-upperbody-shepherd-tunic",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-foot-wool-lined-knee-high-boots",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-lowerbody-woolen-leggings",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-shoulder-woolen-scarf",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-upperbody-woolen-shirt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "bowl-fired",
+                "type": "block",
+                "stacksize": 6,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "crate",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "attributes": {
+                    "type": "wood-aged"
+                }
+            },
+            {
+                "code": "creature-wolf-pup",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "pumpkin-fruit-4",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "legume-soybean",
+                "type": "item",
+                "stacksize": 16,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "stone-halite",
+                "type": "item",
+                "stacksize": 20,
+                "stock": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            }
+        ]
+    }
+        }
+    },
+	server: {
+		attributes: {
+			pathfinder: {
+				minTurnAnglePerSec: 720,
+				maxTurnAnglePerSec: 1440
+			}
+		},
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true, selectFromRandomName: ["Yern", "Gild", "Hans", "Hector", "McCrae", "Yoskolo", "Grit", "Bounder"] },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "reviveondeath", minHours: 24, maxHours: 72 },
+			{ code: "health", currenthealth: 25, maxhealth: 25 },
+			{
+				code: "emotionstates",
+				states: [
+					{ code: "aggressiveondamage", duration: 6, chance: 0.6, slot: 0, priority: 2, accumType: "noaccum" },
+					{ code: "fleeondamage", duration: 10, chance: 0.4, slot: 0, priority: 1, accumType: "max" }
+				],
+			},
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damage: 5,
+						mincooldown: 2500,
+						maxcooldown: 3500,
+						attackDurationMs: 900,
+						damagePlayerAtMs: 300,
+						animation: "Attack",
+						animationSpeed: 2,
+						whenInEmotionState: "aggressiveondamage",
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						mincooldown: 1000,
+						maxcooldown: 1500,
+						seekingRange: 20,
+						movespeed: 0.035,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						movespeed: 0.035,
+						seekingRange: 12,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "fleeondamage"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 2000,
+						maxcooldown: 10000,
+						animation: "laugh"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 5000,
+						maxcooldown: 30000,
+						animation: "idle2"
+					},
+					{
+						code: "wander",
+						priority: 1.0,
+						movespeed: 0.01,
+						animation: "Walk",
+						wanderChance: 0.005,
+						maxDistanceToSpawn: 4,
+						wanderRangeMin: 1,
+						wanderRangeMax: 3,
+						teleportWhenOutOfRange: true,
+						teleportInGameHours: 1
+					},
+					{
+						code: "lookaround",
+						priority: 0.5
+					}
+				]
+			}
+		],
+	},
+	sounds: {
+	}
+}

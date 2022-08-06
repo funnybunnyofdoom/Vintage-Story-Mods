@@ -1,0 +1,65 @@
+{
+	code: "tallfern",
+	class: "BlockPlant",
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	randomDrawOffset: true,
+	renderpass: "OpaqueNoCull",
+	shape: { base: "block/plant/tallfern" },
+	textures: {
+		all: { base: "block/plant/tallgrass/fern*" },
+	},
+	attributes: {
+		plantContainable: {
+			smallContainer: {
+				shape: { base: "block/clay/flowerpot/contents" },
+				textures: {
+					"north": { base: "block/plant/potted/tallfern" },
+					"south": { base: "block/plant/potted/tallfern" },
+				}
+			},
+			largeContainer: {
+				shape: { base:  "block/clay/planter/contents" },
+				textures: {
+					"north": { base: "block/plant/potted/tallfern" },
+					"south": { base: "block/plant/potted/tallfern" },
+				}
+			}
+		},
+		handbook: {
+			groupBy: ["tallgrass-*"]
+		},
+	},
+	blockmaterial: "Plant",
+	climateColorMap: "climatePlantTint",
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	sideao: { all: false },
+	replaceable: 6500,
+	lightAbsorption: 0,
+	resistance: 0.25,
+	randomizeRotations: true,
+	randomSizeAdjust: 0.15,
+	collisionbox: null,
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	rainPermeable: true,
+	drops: [
+		{ type: "block", code: "tallfern", quantity: { avg: 1 }, tool: "knife" },
+	],
+	materialDensity: 200,
+	frostable: true,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.9, z: 0.5 }
+	}
+}

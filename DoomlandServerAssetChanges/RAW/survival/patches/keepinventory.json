@@ -1,0 +1,12 @@
+[
+  {
+    "op": "add",
+    "path": "/server/attributes",
+    "value": {
+      "keepContents": true
+    },
+    "file": "entities/humanoid/player.json",
+    "condition": { "when": "deathPunishment", "isValue": "keep" },
+    "side": "Server"
+  }
+]

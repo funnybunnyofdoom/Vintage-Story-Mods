@@ -1,0 +1,70 @@
+{
+	code: "juiceportion",
+	variantGroups: [
+		{ code: "fruit", loadFromProperties: "block/fruit", states: ["apple"] },
+	],
+	skipVariants: ["*-pinkapple", "*-redapple", "*-yellowapple", "*-olive"],
+	class: "ItemLiquidPortion",
+	matterState: "liquid",
+	attributes: {
+		handbook: {
+			ignoreCreativeInvStacks: true
+		},
+		waterTightContainerProps: {
+			nutritionPropsPerLitre: {
+				satiety: 200, 
+				foodcategory: "Fruit"
+			},
+			containable: true,
+			itemsPerLitre: 100,
+			texture: { 
+				base: "block/food/pie/fill-{fruit}", 
+				alphaByType: {
+					"*-breadfruit": 255,
+					"*-blueberry": 255,
+					"*-saguaro": 255,
+					"*" : 178 
+				}				
+			},
+			isOpaqueByType: {
+				"*-breadfruit": true,
+				"*-blueberry": true,
+				"*-saguaro": true,
+				"*": false
+			},
+			allowSpill: true,
+			whenSpilled: { 
+				action: "DropContents",
+				stack: { type: "item", code: "juiceportion-{fruit}" } 
+			}
+		}
+	},
+	shape: { base: "item/liquid" },
+	texture: { 
+		base: "block/food/pie/fill-{fruit}", 
+		alpha: 255
+	},
+	creativeinventoryStacks: [ { tabs: ["general", "liquids"], stacks: [ { type: "block", code: "woodbucket", attributes: { ucontents: [ { type:"item", code: "juiceportion-{fruit}", makefull: true } ] } } ] } ],
+	maxstacksize: 5000,
+	materialDensity: 200,
+	guiTransform: {
+		translation: { x: 0, y: 1, z: 0 },
+		rotation: { x: 123, y: -33, z: -13 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 1.4
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 25, y: 157, z: -5 }
+	},
+	tpHandTransform: {
+		translation: { x: -1.5, y: -1, z: -1.4 }
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 168 },
+		transitionHours: { avg: 48 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.005
+	}],
+}

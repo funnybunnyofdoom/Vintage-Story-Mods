@@ -1,0 +1,10 @@
+[
+  {
+    "op": "replace",
+    "path": "/0/triesPerChunk",
+    "value": 0.15,
+    "file": "worldgen/deposits/metalore/nativecopper.json",
+    "condition": { "when": "surfaceCopperDeposits", "useValue": true },
+    "side": "Server"
+  }
+]

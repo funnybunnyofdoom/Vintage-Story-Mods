@@ -1,0 +1,145 @@
+{
+	code: "nugget",
+	"__comment": "ItemNugget is just for displaying the yield in units in the tooltip",
+	class: "ItemNugget",
+	maxstacksize: 128,
+	dimensions: { width: 0.0625, height: 0.0625, length: 0.0625 },
+	attributes: {
+		handbook: {
+			groupBy: ["ore-{ore}-*"],
+			excludeByType: {
+				"*-chromite-*": true,
+				"*-platinum-*": true,
+				"*-ilmenite-*": true,
+				"*-rocksalt_sylvite-*": true
+			}
+		},
+		pigmentByType: {
+			"*-malachite": {
+				name: "Verdigris",
+				color: { red: 112, green: 154, blue: 108 },
+			}
+		},
+		displaycaseable: true,
+		shelvable: true
+	},
+	variantgroups: [
+		{ code: "ore", loadFromProperties: "block/ore-nugget" },
+	],
+	storageFlags: 5,
+	shape: { base: "item/nugget" },
+	textures: {
+		"ore": { base: "item/resource/nugget/{ore}" }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	combustiblePropsByType: {
+		"*-nativecopper": {
+			meltingPoint: 1084,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-copper" }
+		},
+		"*-malachite": {
+			meltingPoint: 1084,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-copper" }
+		},
+		"*-limonite": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ironbloom" }
+		},
+		"*-hematite": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ironbloom" }
+		},
+		"*-nativegold": {
+			meltingPoint: 1063,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-gold", }
+		},
+		"*-galena": {
+			meltingPoint: 327,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-lead" }
+		},
+		"*-cassiterite": {
+			meltingPoint: 232,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-tin" }
+		},
+		"*-chromite": {
+			meltingPoint: 1907,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-chromium" }
+		},
+		"*-platinum": {
+			meltingPoint: 1770,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-platinum" }
+		},
+		"*-ilmenite": {
+			meltingPoint: 1668,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-titanium" }
+		},
+		"*-sphalerite": {
+			meltingPoint: 419,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-zinc" }
+		},
+		"*-nativesilver": {
+			meltingPoint: 961,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-silver" }
+		},
+		"*-bismuthinite": {
+			meltingPoint: 271,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ingot-bismuth" }
+		},
+		"*-magnetite": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 20,
+			smeltedStack: { type: "item", code: "ironbloom" }
+		}
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 176, y: 132, z: -21 },
+		origin: { x: 0.5, y: 0.07, z: 0.5 },
+		scale: 5.61
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.2, z: 0 },
+		rotation: { x: 0, y: 24, z: 20 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 2.68
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.4
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.1, z: -0.7 },
+		rotation: { x: 5, y: 82, z: 16 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.7
+	}
+}

@@ -1,0 +1,44 @@
+{
+	code: "candle",
+	class: "ItemCandle",
+	attributes: {
+		blockfirstcodepart: "bunchocandles",
+		displaycaseable: true, 
+		shelvable: true,
+		onDisplayTransform: {
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.75
+		}
+	},
+	maxstacksize: 32,
+	shape: { base: "block/wax/candle3" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	combustibleProps: {
+		burnTemperature: 700,
+		burnDuration: 8,
+	},
+	materialDensity: 200,
+	guiTransform: {
+		translation: { x: 1, y: 4, z: 0 },
+		rotation: { x: -180, y: 36, z: -29 },
+		origin: { x: 0.5, y: 0.11, z: 0.5 },
+		scale: 4	
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.16, z: 0 },
+		rotation: { x: 1, y: 88, z: -5 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 2.63
+	},
+	tpHandTransform: {
+		translation: { x: -1.25, y: -0.7, z: -0.8 },
+		rotation: { x: 0, y: -12, z: -83 },
+		scale: 0.66
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 3, y: 1, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.65
+	}
+}

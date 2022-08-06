@@ -1,0 +1,49 @@
+{
+	code: "lore",
+	class: "ItemLore",
+	maxstacksize: 1,
+	attributes: {
+		displaycaseable: true,
+		shelvable: true
+	},
+	variantgroups: [
+		{ code: "type", states: ["unidentified", "paper", "scroll", "book" ] },
+	],
+	shapeByType: {
+		"*-book": { base: "item/lore/{type}" }
+	},
+	texture: { base: "item/lore/{type}" },
+	creativeinventory: { "general": [""], "items": [""] },
+	guiTransformByType: {
+		"*-book": {
+			rotate: true,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 106, y: 168, z: 50 },
+			origin: { x: 0.6, y: 0.1, z: 0.5 },
+			scale: 2.86
+		}
+	},
+	fpHandTransformByType: {
+		"*-book": {
+			rotation: { x: 69, y: 26, z: -17 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 2.07
+		}
+	},
+	tpHandTransformByType: {
+		"*-book": {
+			translation: { x: -0.75, y: -0.16, z: -0.73 },
+			rotation: { x: 0, y: -84, z: -65 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.67
+		}
+	},
+	groundTransformByType: {
+		"*-book": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 3.5
+		}
+	}
+}

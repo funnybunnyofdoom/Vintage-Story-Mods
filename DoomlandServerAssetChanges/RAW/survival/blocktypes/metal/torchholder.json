@@ -1,0 +1,121 @@
+{
+	code: "torchholder",
+	class: "BlockTorchHolder",
+	entityClass: "TorchHolder",
+	behaviors: [{name: "HorizontalAttachable", properties: { handleDrops: false } }],
+	variantgroups: [
+		{ code:"material", states: ["brass", "aged"] },
+		{ code:"state", states: ["empty", "filled"] },
+		{ loadFromProperties: "abstract/horizontalorientation" }
+	],
+	shapebytype: {
+		"*-north": { base: "block/metal/torchholder/{state}", rotateY: 0 },
+		"*-east": { base: "block/metal/torchholder/{state}", rotateY: 270 },
+		"*-south": { base: "block/metal/torchholder/{state}", rotateY: 180 },
+		"*-west": { base: "block/metal/torchholder/{state}", rotateY: 90 }
+	},
+	doNotRenderAtLod2: true,
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	creativeinventory: { "general": ["*-empty-north"], "decorative": ["*-empty-north"] },
+	replaceable: 5001,
+	resistance: 0.5,
+	maxStackSize: 8,
+	lightAbsorption: 0,
+	lightHsvByType: { "*-filled-*": [4, 2, 14] },
+	textures: {
+		"material": { base: "block/metal/torchholder/{material}" }
+	},
+	dropsByType: {
+		"*-empty-*": [{ code: "torchholder-{material}-empty-north" }],
+		"*-filled-*": [{ code: "torchholder-{material}-empty-north" }, { code: "torch-basic-lit-up" }]
+	},
+	particlePropertiesByType: {
+		"*-filled-*": [
+			{
+				"__comment": "Ember cubicles",
+				hsvaColor: [{ avg: 20, var: 20 }, { avg: 255, var: 50 }, { avg: 255, var: 50 },  { avg: 255, var: 0 }],
+				gravityEffect: { dist: "invexp", avg: -0.07, var: 0.4 },
+				posOffset: [ { avg: 0, var: 0.1 }, { avg: 0, var: 0 }, { avg: 0, var: 0.1 }],
+				velocity: [ { avg: 0, var: 0.15 }, { avg: 0.5, var: 0.1 }, { avg: 0, var: 0.15 }],
+				quantity: { avg: 0.015 },
+				size: { avg: 0.4, var: 0 },
+				sizeEvolve: { transform: "quadratic", factor: -0.7 },
+				lifeLength: { avg: 1.5 },
+				vertexFlags: 128,
+				windAffectednes: 0.2
+			},
+			{
+				"__comment": "Smoke quads",
+				hsvaColor: [{ avg: 0, var: 0 }, { avg: 0, var: 0 }, { avg: 40, var: 30 },  { avg: 220, var: 50 }],
+				opacityEvolve: { transform: "quadratic", factor: -16 },
+				gravityEffect: { avg: 0, var: 0 },
+				posOffset: [ { avg: 0, var: 0.1 }, { avg: 0, var: 0 }, { avg: 0, var: 0.1 }],
+				velocity: [ { avg: 0, var: 0.025 }, { avg: 0.15, var: 0.1 }, { avg: 0, var: 0.025 }],
+				quantity: { avg: 0.05 },
+				size: { avg: 0.25, var: 0.05 },
+				sizeEvolve: { transform: "linear", factor: 0.5 },
+				particleModel: "Quad",
+				windAffectednes: 0.7
+			},
+			{
+				"__comment": "Fire quads",
+				hsvaColor: [{ avg: 20, var: 20 }, { avg: 255, var: 50 }, { avg: 255, var: 50 },  { avg: 255, var: 0 }],
+				opacityEvolve: { transform: "quadratic", factor: -16 },
+				gravityEffect: { avg: 0, var: 0 },
+				posOffset: [ { avg: 0, var: 0.1 }, { avg: 0, var: 0 }, { avg: 0, var: 0.1 }],
+				velocity: [ { avg: 0, var: 0.025 }, { avg: 0.18, var: 0.07 }, { avg: 0, var: 0.025 }],
+				quantity: { avg: 0.4 },
+				size: { avg: 0.25, var: 0.05 },
+				lifeLength: { avg: 0.5 },
+				sizeEvolve: { transform: "linear", factor: 0.5 },
+				particleModel: "Quad",
+				vertexFlags: 128,
+				windAffectednes: 0.7
+			}
+		]
+	},
+	collisionbox: null,
+	selectionbox: {
+		x1: 0.3125, y1: 0.125, z1: 0.5625, 
+		x2: 0.6875, y2: 0.875, z2: 1, 
+		rotateYByType: {
+			"*-east": 90,
+			"*-south": 0,
+			"*-west": 270,
+			"*-north": 180,
+		}
+	},
+	blockmaterial: "metal",
+	fpHandTransform: {
+		translation: { x: 0.29, y: -0.1, z: 0 },
+		scale: 1.25
+	},
+	guiTransform: {
+		rotation: { x: -23, y: 137, z: 0 },
+		origin: { x: 0.5, y: 0.4, z: 0.18 },
+		scale: 2.5
+	},
+	fpHandTransform: {
+		translation: { x: 0.29, y: -0.1, z: 0 },
+		rotation: { x: 0, y: -130, z: 2 },
+		scale: 2.5
+	},
+	groundTransform: {
+		rotation: { x: 0, y: 0, z: 90 },
+		origin: { x: 0.39, y: 0.6, z: 0.1 },
+		scale: 4.5
+	},
+	tpHandTransform: {
+		translation: { x: -4.2, y: -1.8, z: 2.3 },
+		rotation: { x: 85, y: 130, z: 69 },
+		origin: { x: 2.8, y: 1.3, z: 0.1 },
+		scale: 0.66
+	},
+	rainPermeable: true,
+	materialDensity: 600
+}

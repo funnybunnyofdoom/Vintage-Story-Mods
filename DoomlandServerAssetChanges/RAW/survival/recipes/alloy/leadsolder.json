@@ -1,0 +1,10 @@
+{
+	ingredients: [
+		{ type: "item", code: "ingot-lead", minratio: 0.45, maxratio: 0.55  },
+		{ type: "item", code: "ingot-tin", minratio: 0.45, maxratio: 0.55  },
+	],
+	output: {
+		type: "item",
+		code: "ingot-leadsolder"
+	}
+}

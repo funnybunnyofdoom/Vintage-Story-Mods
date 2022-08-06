@@ -1,0 +1,33 @@
+{
+	code: "hopper",
+	class: "BlockHopper",
+	behaviors: [{name: "Lockable" }, {name: "Container"}],
+	entityclass: "ItemFlow",
+	attributes: {
+		"pullFaces": [],
+		"acceptFromFaces": ["up"],
+		"pushFaces": ["down"]
+	},
+	creativeinventory: { "general": ["*"], "mechanics": ["*"] },
+	blockmaterial: "Metal",
+	lightAbsorption: 0,
+	shape: { base: "block/metal/hopperh" },
+	textures: 
+	{
+		all: { base: "block/metal/sheet/copper1" },
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	resistance: 1.75,
+	sounds: {
+		"place": "block/chute",
+		"break": "block/chute",
+		"hit": "block/chute",
+		"walk": "walk/stone"
+	}
+	
+}

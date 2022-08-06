@@ -1,0 +1,32 @@
+{
+	"code": "herb",
+	"variants": [
+		{
+			code: "basil"
+		},
+		{
+			code: "chamomile"
+		},
+		{
+			code: "cilantro"
+		},
+		{
+			code: "lavender"
+		},
+		{
+			code: "marjoram"
+		},
+		{
+			code: "mint"
+		},
+		{
+			code: "saffron"
+		},
+		{
+			code: "sage"
+		},
+		{
+			code: "thyme"
+		}
+	]
+}

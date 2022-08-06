@@ -1,0 +1,63 @@
+{
+	code: "loosestones",
+	class: "BlockLooseStones",
+	attributes: {
+		handbook: {
+			groupBy: ["loosestones-*"],
+			includeByType: { "*-free": true }
+		}
+	},
+	behaviors: [{name: "UnstableFalling"}, { name: "RightClickPickup", properties: { dropsPickupMode: true, sound: "sounds/block/loosestone" } }],
+	variantgroups: [
+		{ code:"rock", states: ["meteorite-iron"], loadFromProperties: "block/rockwithdeposit" },
+		{ code: "cover", states: ["free", "snow"] }
+	],
+	replaceable: 6500,
+	creativeinventory: { "general": [""] },
+	shape: {
+		base: "block/stone/loosestones/{cover}1",
+		alternates: [
+			{ base: "block/stone/loosestones/{cover}1", rotateY: 90 },
+			{ base: "block/stone/loosestones/{cover}1", rotateY: 180 },
+			{ base: "block/stone/loosestones/{cover}1", rotateY: 270 },
+			
+			{ base: "block/stone/loosestones/{cover}2", rotateY: 0 },
+			{ base: "block/stone/loosestones/{cover}2", rotateY: 90 },
+			{ base: "block/stone/loosestones/{cover}2", rotateY: 180 },
+			{ base: "block/stone/loosestones/{cover}2", rotateY: 270 },
+			
+			{ base: "block/stone/loosestones/{cover}3", rotateY: 0 },
+			{ base: "block/stone/loosestones/{cover}3", rotateY: 90 },
+			{ base: "block/stone/loosestones/{cover}3", rotateY: 180 },
+			{ base: "block/stone/loosestones/{cover}3", rotateY: 270 },
+		]
+	},
+	resistance: 0.15,
+	textures: {
+		rock: {base: "block/stone/rock/{rock}1" },
+	},
+	drawtypeByType: {
+		"*-free": "JSON",
+		"*-snow": "JSONAndSnowLayer",
+	},
+	drops: [
+		{
+			type: "item", 
+			code: "stone-{rock}", 
+			quantity: { avg: 1, var: 0 } 
+		}
+	],
+	sidesolid: { all: false },
+	sideopaqueByType: {
+		"*-snow": { all: false, down: true },
+		"*": { all: false }
+	},
+	lightAbsorption: 0,
+	selectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+	collisionbox: null,
+	guiTransform: {
+		translation: { x: 0, y: -8, z: 0 },
+		rotation: { x: -22.59375, y: 82, z: 0 },
+		scale: 1.64
+	}
+}

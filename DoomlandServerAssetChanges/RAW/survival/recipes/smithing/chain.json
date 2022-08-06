@@ -1,0 +1,16 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "gold", "silver", "meteoriciron", "steel"] },
+	pattern: [[
+		"_#_#_#_#_",
+		"#########",
+		"#_#_#_#_#",
+		"#########",
+		"_#_#_#_#_",
+		"#########",
+		"#_#_#_#_#",
+		"#########",
+		"_#_#_#_#_",
+	]],
+	name: "Chain",
+	output: { type: "item", code: "metalchain-{metal}"  }
+}

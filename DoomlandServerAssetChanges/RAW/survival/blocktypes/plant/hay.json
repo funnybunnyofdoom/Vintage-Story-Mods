@@ -1,0 +1,35 @@
+{
+	code: "hay",
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	attributes: {
+		handbook: {
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["normal"] }
+	],
+	creativeinventory: { "general": ["*"], "construction": ["*"], "flora": ["*"], "decorative": ["*"] },
+	blockmaterial: "Plant",
+	replaceable: 900,
+	lightAbsorption: 99,
+	textures: {
+		horizontals: { base: "block/hay/{type}-side" },
+		verticals: { base: "block/hay/{type}-top" },
+	},
+	resistance: 0.25,
+	sideopaque: {
+		all: true
+	},
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	materialDensity: 200,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 5,
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock"
+}

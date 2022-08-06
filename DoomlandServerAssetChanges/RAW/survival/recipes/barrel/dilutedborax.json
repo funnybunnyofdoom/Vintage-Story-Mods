@@ -1,0 +1,8 @@
+{
+	code: "dilutedborax",
+	ingredients: [
+		{ type: "item", code: "waterportion",  litres: 5 },
+		{ type: "item", code: "powderedborax", quantity: 2 }
+	],
+	output: { type: "item", code: "dilutedboraxportion", litres: 5 }
+}

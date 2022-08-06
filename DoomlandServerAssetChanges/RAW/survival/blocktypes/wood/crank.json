@@ -1,0 +1,57 @@
+{
+	code: "crank",
+	handbook: { exclude: true },
+	behaviors: [
+		{name: "HorizontalOrientable", properties: {  dropBlockFace: "south" }}
+	],
+	blockmaterial: "Wood",
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": [""] },
+	shapeByType: {
+		"*-north": { base: "block/wood/mechanics/crank", rotateY: 270 },
+		"*-east": { base: "block/wood/mechanics/crank", rotateY: 180 },
+		"*-south": { base: "block/wood/mechanics/crank", rotateY: 90 },
+		"*-west": { base: "block/wood/mechanics/crank", rotateY: 0 },
+	},
+	replaceable: 900,
+	resistance: 1.5,
+	lightAbsorption: 1,
+	sidesolid: {
+		all: false
+	},	
+	sideopaque: {
+		all: false
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 30,
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	materialDensity: 400,
+	selectionbox: { x1: 0.0, y1: .4375, z1: 0.4375, x2: .3125, y2: 0.75, z2: .5625 },
+	collisionbox: { x1: 0.0, y1: 0, z1: 0.0, x2: 0.0, y2: 0.0, z2: 0.0 },
+	guiTransform: {
+		translation: { x: 0, y: 2, z: 0 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 }
+	},
+	groundTransform: {
+		scale: 1.7
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.42, z: -0.39 },
+		rotation: { x: -8, y: 75, z: -101 },
+		scale: 0.62
+	},
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.25, z: 0.7 },
+		rotation: { x: 30, y: -42, z: 91 },
+		scale: 1.45
+	}
+}

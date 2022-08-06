@@ -1,0 +1,95 @@
+{
+	code: "bed",
+	class: "Block",
+	entityClassByType: {
+		"*-head-*": "Bed",
+	},
+	attributes: {
+		sleepEfficiencyByType: {
+			"bed-wood-*": 0.70833333,
+			"bed-hay-*": 0.58333333,
+			"bed-woodaged-*": 0.79166666
+		},
+		handbook: {
+			groupBy: ["bed-{material}-*"]
+		},
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	variantgroups: [
+		{ code: "material", states: ["wood", "hay", "woodaged"] },
+		{ code: "part", states: ["head", "feet"] },
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": ["*-head-north"], "decorative": ["*-head-north"] },
+	shapeinventory: { base: "block/{material}/bed-inventory" },
+	shapebytype: {
+		"*-head-north": { base: "block/{material}/bed-head", rotateY: 90 },
+		"*-head-east": { base: "block/{material}/bed-head", rotateY: 0 },
+		"*-head-south": { base: "block/{material}/bed-head", rotateY: 270 },
+		"*-head-west": { base: "block/{material}/bed-head", rotateY: 180 },
+		"*-feet-north": { base: "block/{material}/bed-feet", rotateY: 90 },
+		"*-feet-east": { base: "block/{material}/bed-feet", rotateY: 0 },
+		"*-feet-south": { base: "block/{material}/bed-feet", rotateY: 270 },
+		"*-feet-west": { base: "block/{material}/bed-feet", rotateY: 180 },
+	},
+	blockmaterial: "Wood",
+	replaceable: 550,
+	resistance: 2,
+	lightAbsorption: 0,
+	maxStackSize: 2,
+	guitransform: {
+		scale: 0.75,
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 40,
+	},
+	fpHandTransform: {
+		translation: { x: 0.31, y: -0.2, z: 0 },
+		rotation: { x: -67, y: -33, z: 77 },
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 1.35
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2
+	},
+	tpHandTransformByType: {
+		"bed-hay-*": {
+			translation: { x: -0.8, y: -0.1, z: -0.9 },
+			rotation: { x: -71, y: -37, z: 17 },
+			scale: 0.45
+		},
+		"*": {
+			translation: { x: -0.9, y: -0.3, z: -0.9 },
+			rotation: { x: -80, y: -37, z: 17 },
+			scale: 0.45
+		}
+	},
+	guiTransformByType: {
+		"bed-hay-*": {
+			translation: { x: 0, y: 2, z: 0 },
+			origin: { x: 0.5, y: 0.125, z: 0.5 },
+			scale: 0.75
+		},
+		"bed-wood-*": {
+			origin: { x: 0.5, y: 0.4, z: 0.5 },
+			scale: 0.75
+		}
+	},
+	selectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2ByType: { "bed-hay-*": 0.25, "*" : 0.5  }, z2: 1},
+	collisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2ByType: { "bed-hay-*": 0.25, "*" : 0.5  }, z2: 1},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	materialDensity: 600
+}

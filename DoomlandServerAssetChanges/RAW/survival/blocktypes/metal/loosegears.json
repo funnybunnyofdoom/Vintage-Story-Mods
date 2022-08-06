@@ -1,0 +1,50 @@
+{
+	code: "loosegears",
+	"__comment": "BlockLooseGears contains only the code to have them randomly placed in caves during worldgen",
+	class: "BlockLooseGears",
+	behaviors: [{name: "UnstableFalling"}],
+	variantgroups: [
+		{ code:"amount", states: ["1", "2", "3", "4", "5"] },
+	],	
+	creativeinventory: { general: [""], decorative: [""] },
+	blockmaterial: "Metal",
+	drawtype: "json",
+	shape: { 
+		base: "block/currency/loosegears-{amount}",
+		alternates: [
+			{ base: "block/currency/loosegears-{amount}", rotateY: 90 },
+			{ base: "block/currency/loosegears-{amount}", rotateY: 180 },
+			{ base: "block/currency/loosegears-{amount}", rotateY: 270 }
+		]
+	},
+	doNotRenderAtLod2: true,
+	lightAbsorption: 0,
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	replaceable: 100,
+	resistance: 0.25,
+	selectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+	collisionbox: null,
+	drops: [
+		{
+			type: "item", 
+			code: "gear-rusty", 
+			quantityByType:  {
+				"*-1": { avg: 1 },
+				"*-2": { avg: 2 },
+				"*-3": { avg: 3 },
+				"*-4": { avg: 4 },
+				"*-5": { avg: 5 },
+			}
+		}
+	],
+	materialDensity: 600,
+	guiTransform: {
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 1.6
+	}
+}

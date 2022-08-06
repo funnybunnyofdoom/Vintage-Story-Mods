@@ -1,0 +1,60 @@
+{
+	code: "mushroom",
+	class: "BlockMushroom",
+	variantgroups: [
+		{ code: "mushroom", states: ["bolete", "flyagaric", "fieldmushroom" ] },
+		{ code: "state", states: ["normal", "harvested"] },
+		{ code: "cover", states: ["snow"] },
+	],
+	creativeinventory: { "general": [] },
+	drawtype: "JSONAndSnowLayer",
+	shape: { base: "block/plant/mushroom/{mushroom}/{state}*" },
+	doNotRenderAtLod2: true,
+	randomDrawOffset: false,
+	blockmaterial: "Plant",
+	randomizeRotations: true,
+	sideopaque: {
+		all: false, down: true
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 0,
+	resistance: 1.5,
+	collisionbox: null,
+	selectionBox: { x1: 0.125, y1: 0, z1: 0.125, x2: 0.875, y2: 0.25, z2: 0.875 },
+	guiTransform: {
+		rotation: { x: -22, y: 107, z: 0 },
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 3
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: -0.93, y: -0.17, z: -0.8 },
+		rotation: { x: 15, y: -10, z: -114 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.58
+	},
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	rainPermeable: true,
+	materialDensity: 200,
+	frostable: true,
+	drops: [
+		{ 
+			type: "block", 
+			codeByType: {
+				"*-bolete-*": "mushroom-kingbolete-normal", 
+				"*": "mushroom-{mushroom}-normal"
+			},
+			quantity: { avg: 1, var: 0 }  
+		}
+	],
+}

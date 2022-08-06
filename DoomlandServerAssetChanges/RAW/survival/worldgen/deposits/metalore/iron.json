@@ -1,0 +1,71 @@
+[
+	{
+		code: "limonite",
+		triesPerChunk: 0.8,
+		withOreMap: true,
+		handbookPageCode: "item-nugget-limonite",
+		generator: "disc-followsealevel",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["basalt", "shale", "chert"] },
+			placeblock: {
+				code: "ore-*-limonite-{rock}",
+				name: "grade",
+				allowedVariantsByInBlock: {
+					"rock-basalt": ["poor", "medium"],
+					"rock-shale": ["poor", "medium", "rich", "bountiful"],
+					"rock-chert": ["poor", "medium", "rich", "bountiful"],
+				}
+			},
+			radius: { dist: "uniform", avg: 26, var: 10 },
+			yPosRel: {dist: "uniform", avg: 0.45, var: 0.4 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	},
+	{
+		code: "hematite",
+		triesPerChunk: 0.5,
+		withOreMap: true,
+		handbookPageCode: "item-nugget-hematite",
+		generator: "disc-followsealevel",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["granite", "peridotite", "limestone", "phyllite"] },
+			placeblock: { 
+				code: "ore-*-hematite-{rock}",
+				name: "grade",
+				allowedVariantsByInBlock: {
+					"rock-granite": ["poor", "medium", "rich", "bountiful"],
+					"rock-peridotite": ["poor", "medium", "rich", "bountiful"],
+					"rock-limestone": ["poor", "medium", "rich"],
+					"rock-phyllite": ["poor", "medium"]
+				}
+			},
+			radius: { dist: "uniform", avg: 26, var: 10 },
+			yPosRel: {dist: "uniform", avg: 0.45, var: 0.4 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	},		
+	{
+		code: "magnetite",
+		triesPerChunk: 0.3,
+		withOreMap: true,
+		handbookPageCode: "item-nugget-magnetite",
+		generator: "disc-followsealevel",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["andesite", "claystone", "chalk", "conglomerate", "slate"] },
+			placeblock: {
+				code: "ore-*-magnetite-{rock}",
+				name: "grade",
+				allowedVariantsByInBlock: {
+					"rock-andesite": ["poor", "medium", "rich"],
+					"rock-claystone": ["poor", "medium"],
+					"rock-chalk": ["poor", "medium"],
+					"rock-conglomerate": ["poor", "medium"],
+					"rock-slate": ["poor", "medium"],
+				}
+			},
+			radius: { dist: "uniform", avg: 26, var: 10 },
+			yPosRel: {dist: "uniform", avg: 0.45, var: 0.4 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	}
+]

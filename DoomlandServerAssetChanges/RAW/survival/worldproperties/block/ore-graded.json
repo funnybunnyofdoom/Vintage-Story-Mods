@@ -1,0 +1,59 @@
+{
+	"code": "ore-graded",
+	"variants": [
+		{
+			"Code": "nativecopper",
+		},
+		{
+			"Code": "limonite",
+		},
+		{
+			"Code": "quartz_nativegold",
+		},
+		{
+			"Code": "galena",
+		},
+		{
+			"Code": "cassiterite",
+		},
+		{
+			"Code": "chromite",
+		},
+		{
+			"Code": "ilmenite",
+		},
+		{
+			"Code": "sphalerite",
+		},
+		{
+			"Code": "quartz_nativesilver",
+		},
+		{
+			"Code": "galena_nativesilver",
+		},
+		{
+			"Code": "bismuthinite",
+		},
+		{
+			"Code": "magnetite",
+		},
+		{
+			"Code": "hematite",
+		},
+		{
+			"Code": "malachite",
+		},
+		{
+			"Code": "pentlandite",
+		},
+		{
+			"Code": "uranium",
+		},
+		{
+			"Code": "wolframite",
+		},
+		{
+			"Code": "rhodochrosite",
+		}
+	]
+}

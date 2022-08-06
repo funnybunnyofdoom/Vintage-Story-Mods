@@ -1,0 +1,50 @@
+[
+	{
+		ingredientPattern: "DBM	BFB	MBD",
+		enabled: false,
+		ingredients: {
+			"F": { type: "item", code: "fat" },
+			"M": { 
+				type: "item", 
+				code: "*-cooked", 
+				allowedVariants: ["redmeat", "poultry", "fish" ],
+			},
+			"B": { 
+				type: "item", 
+				code: "fruit-*"
+			},
+			"D": { 
+				type: "item", 
+				code: "fruit-*", 
+				quantity: 2
+			}
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "pemmican-raw-basic", quantity: 1  }
+	},
+	{
+		ingredientPattern: "DBM	BFB	MBD",
+		enabled: false,
+		ingredients: {
+			"F": { type: "item", code: "fat" },
+			"M": { 
+				type: "item", 
+				code: "*-cured", 
+				allowedVariants: ["redmeat", "poultry", "fish" ],
+			},
+			"B": { 
+				type: "item", 
+				code: "fruit-*"
+			},
+			"D": { 
+				type: "item", 
+				code: "fruit-*", 
+				quantity: 2
+			}
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "pemmican-raw-salted", quantity: 1  }
+	}
+]

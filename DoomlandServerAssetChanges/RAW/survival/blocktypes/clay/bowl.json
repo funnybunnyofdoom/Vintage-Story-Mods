@@ -1,0 +1,111 @@
+{
+	code: "bowl",
+	classByType: {
+		"*-fired": "BlockLiquidContainerTopOpened"
+	},
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 } } },
+		{ name: "Unplaceable", "__comment": "The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility" },	
+		{ name: "RightClickPickup"} 
+	],
+	variantgroups: [
+		{ code:"type", states: ["raw", "fired"] },
+	],
+	attributesByType: {
+		"*-fired": {
+			shelvable: true,
+			liquidContainerProps: {
+				capacityLitres: 1,
+				transferSizeLitres: 0.1,
+				emptyShapeLoc: "shapes/block/clay/bowl-empty-ground",
+				opaqueContentShapeLoc: "shapes/block/clay/bowl-contents",
+				liquidContentShapeLoc: "shapes/block/clay/bowl-liquidcontents",
+				liquidMaxYTranslate: 0.05
+			},
+			mealContainer: true,
+			mealBlockCode: "bowl-meal",
+			servingCapacity: 1,
+			bowlContents: null,
+		},
+		"*-raw": {
+			shelvable: true,
+			bowlContents: null
+		}
+	},
+	combustiblePropsByType: {
+		"bowl-raw": {
+			meltingPoint: 650,
+			meltingDuration: 45,
+			smeltedRatio: 1,
+			smeltingType: "fire",
+			smeltedStack: { type: "block", code: "bowl-fired" },
+			requiresContainer: false
+		}
+	},
+	shape: {
+		base: "block/clay/bowl-empty-ground"
+	},
+	doNotRenderAtLod2: true,
+	blockmaterial: "Ceramic",
+	creativeinventoryStacksByType: {
+		"*-fired":
+		[
+			{ 
+				tabs: ["general", "decorative"],
+				stacks: [
+					{ type: "block", code: "bowl-fired", attributes: { ucontents: [{ type: "item", code: "waterportion", makefull: true }] } },
+					{ type: "block", code: "bowl-fired", attributes: { ucontents: [{ type: "item", code: "honeyportion", makefull: true }] } },
+					{ type: "block", code: "bowl-fired" },
+					{ type: "block", code: "bowl-raw" }
+				]
+			}
+		],
+	},
+	replaceable: 300,
+	liquidSelectable: 1,
+	resistance: 0.75,
+	maxStackSize: 8,
+	lightAbsorption: 0,
+	texturesByType: {
+		"*-raw": { 
+			floor: { base: "block/clay/blueclay" },
+			mat: { base: "block/clay/blueclay" }
+		},
+		"*-honey": {
+			content: { base: "block/liquid/honey" }
+		},
+		"*-milk": {
+			content: { base: "block/food/dairy/milk" }
+		}
+	},
+	sounds: {
+		walk: "walk/stone",
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	collisionbox: { x1: 0.3125, y1: 0, z1: 0.3125, x2: 0.6875, y2: 0.125, z2: 0.6875 },
+	selectionbox: { x1: 0.3125, y1: 0, z1: 0.3125, x2: 0.6875, y2: 0.125, z2: 0.6875 },
+	guiTransform: {
+		translation: { x: 0, y: 3, z: 0 },
+		origin: { x: 0.5, y: 0.0625, z: 0.5 },
+		scale: 3
+	},
+	groundTransform: {
+		scale: 3.5
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.4, z: 0 },
+		rotation: { x: 0, y: -14, z: 0 },
+		scale: 2
+	},
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.1, z: -0.8 },
+		rotation: { x: 0, y: -56, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.66
+	}
+}

@@ -1,0 +1,47 @@
+{
+	code: "sling",
+	class: "ItemSling",
+	maxstacksize: 1,
+	durability: 300,
+	shape: {
+		base: "item/tool/sling/folded",
+		alternates: [
+			{ base: "item/tool/sling/sling-charge2" },
+			{ base: "item/tool/sling/sling-charge3" }
+		]
+	},
+	tool: "sling",
+	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	attributes: {
+		damage: 2.5,
+		toolrackTransform: {
+			translation: { x: -0.35, y: 0.73, z: 0.1 },
+			rotation: { x: 1, y: 180, z: 0 },
+			scale: 1.25
+		}
+	},
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.7, z: 0.4 },
+		rotation: { x: 96, y: 1, z: 84 },
+		origin: { x: 1, y: 0, z: 1.2 },
+		scale: 3.14
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -129, y: 25, z: 41 },
+		origin: { x: 0.47, y: 0.08, z: 0.55 },
+		scale: 4.92
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.8
+	},
+	tpHandTransform: {
+		translation: { x: -0.48, y: -0.02, z: -0.44 },
+		rotation: { x: 0, y: -35, z: -8 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 1.15
+	}
+}

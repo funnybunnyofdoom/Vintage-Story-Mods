@@ -1,0 +1,74 @@
+{
+	code: "pumpkin",
+	class: "Block",
+	entityClass: "PumpkinVine",
+	variantgroups: [
+		{ code: "variant", states: ["vine"] },
+		{ code: "stage", states: ["1-normal", "2-normal", "3-normal", "3-blooming", "4-withered"] },
+	],
+	creativeinventory: { "general": [""], "flora": [""] },
+	renderpass: "OpaqueNoCull",
+	shape: { base: "block/plant/pumpkin/vine/vine" },
+	randomizeRotations: true,
+	blockmaterial: "Plant",
+	attributes: {
+		butterflyFeedByType: {
+			"*-1": false,
+			"*-4": false,
+			"*": true
+		},
+		beeFeedByType: {
+			"*-1": false,
+			"*-4": false,
+			"*": true
+		}
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	sideao: { all: false },
+	texturesByType: {
+		"pumpkin-vine-3-blooming": {
+			"north": { base: "block/plant/pumpkin/vine/stage3-blooming-north" },
+			"south": { base: "block/plant/pumpkin/vine/stage3-blooming-south" }
+		},
+		"pumpkin-vine-1-normal": {
+			"north": { base: "block/plant/pumpkin/vine/stage1-north" },
+			"south": { base: "block/plant/pumpkin/vine/stage1-south" }
+		},
+		"pumpkin-vine-2-normal": {
+			"north": { base: "block/plant/pumpkin/vine/stage2-north" },
+			"south": { base: "block/plant/pumpkin/vine/stage2-south" }
+		},
+		"pumpkin-vine-3-normal": {
+			"north": { base: "block/plant/pumpkin/vine/stage3-north" },
+			"south": { base: "block/plant/pumpkin/vine/stage3-south" }
+		},
+		"pumpkin-vine-4-withered": {
+			"north": { base: "block/plant/pumpkin/vine/stage4-north" },
+			"south": { base: "block/plant/pumpkin/vine/stage4-south" }
+		}
+	},
+	replaceable: 5800,
+	lightAbsorption: 0,
+	resistance: 0.5,
+	collisionbox: null,
+	selectionbox: { x1: 0.125, y1: 0, z1: 0.125,   x2: 0.875, y2: 0.25, z2: 0.875 },
+	guitransform: {
+		rotation: { x: 0, y: 0, z: 0 }
+	},
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant"
+	},
+	materialDensity: 200,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	drops: []
+}

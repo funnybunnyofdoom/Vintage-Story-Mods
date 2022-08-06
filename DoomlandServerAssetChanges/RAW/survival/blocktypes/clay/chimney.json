@@ -1,0 +1,95 @@
+{
+	code: "claybrickchimney",
+	entityclass: "ParticleEmitter",
+	behaviors: [{name: "NoParticles"}, {name: "NWOrientable"}],
+	attributes: {
+		handbook: {
+			groupBy: ["claybrickchimney-*"],
+			excludeByType: {
+				"*-red-*": true,
+				"*-lit-*": true
+			}
+		}
+	},
+	variantgroups: [
+		{ code:"type", states: ["blue", "brown", "fire", "red"] },
+		{ code:"state", states: ["unlit", "lit"] },
+		{ code:"orientation", states: ["ns", "we"] },
+	],
+	shapeByType: {
+		"*-ns": { base: "block/clay/chimney" },
+		"*-we": { base: "block/clay/chimney", rotateY: 90 }
+	},
+	blockmaterial: "Ceramic",
+	creativeinventory: { "general": ["claybrickchimney-*-ns"], "decorative": ["claybrickchimney-*-ns"] },
+	replaceable: 700,
+	resistance: 3,
+	lightAbsorption: 1,
+	textures: {
+		brick: { 
+			base: "block/clay/brick/{type}1", 
+			alternates: [ { base: "block/clay/brick/{type}2" } ] 
+		},
+	},
+	sounds: {
+		walk: "walk/stone",
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	particlePropertiesByType: {
+		"*-lit-ns": [
+			{
+				hsvaColor: [{ avg: 0, var: 0 }, { avg: 0, var: 0 }, { avg: 140, var: 20 },  { avg: 220, var: 50 }],
+				opacityEvolve: { transform: "quadratic", factor: -24 },
+				gravityEffect: { avg: 0, var: 0 },
+				posOffset: [ { avg: 0, var: 0.1 }, { avg: 0.3, var: 0 }, { avg: 0, var: 0.4 }],
+				velocity: [ { avg: 0, var: 0.05 }, { avg: 0.4, var: 0.05 }, { avg: 0, var: 0.05 }],
+				quantity: { avg: 0.1 },
+				size: { avg: 0.6, var: 0.08 },
+				sizeEvolve: { transform: "linear", factor: 3 },
+				particleModel: "Quad",
+				lifeLength: { avg: 14 },
+				selfPropelled: true,
+				windAffectednes: 0.5
+			}
+		],
+		"*-lit-we": [
+			{
+				hsvaColor: [{ avg: 0, var: 0 }, { avg: 0, var: 0 }, { avg: 140, var: 20 },  { avg: 220, var: 50 }],
+				opacityEvolve: { transform: "quadratic", factor: -24 },
+				gravityEffect: { avg: 0, var: 0 },
+				posOffset: [ { avg: 0, var: 0.4 }, { avg: 0.3, var: 0 }, { avg: 0, var: 0.1 }],
+				velocity: [ { avg: 0, var: 0.05 }, { avg: 0.4, var: 0.05 }, { avg: 0, var: 0.05 }],
+				quantity: { avg: 0.1 },
+				size: { avg: 0.6	, var: 0.08 },
+				sizeEvolve: { transform: "linear", factor: 3 },
+				particleModel: "Quad",
+				lifeLength: { avg: 14 },
+				selfPropelled: true,
+				windAffectednes: 0.5
+			}
+		],
+	},
+	collisionbox: { 
+		x1: 0.25, y1: 0, z1: 0.0625, x2: 0.75, y2: 0.5, z2: 0.9375,
+		rotateYByType: {
+			"*-ns": 0,
+			"*-we": 90
+		}
+	},
+	selectionbox: { 
+		x1: 0.25, y1: 0, z1: 0.0625, x2: 0.75, y2: 0.75, z2: 0.9375,
+		rotateYByType: {
+			"*-ns": 0,
+			"*-we": 90
+		}
+	},
+	particlecollisionboxes: [ { x1: 0, y1: 0, z1: 0.0625, x2: 0.125, y2: 0.5, z2: 0.9375, rotateYByType: {"*-ns": 0, "*-we": 90 }},
+		{ x1: 0.875, y1: 0, z1: 0.0625, x2: 1, y2: 0.5, z2: 0.9375, rotateYByType: {"*-ns": 0, "*-we": 90 }},
+		{ x1: 0.25, y1: 0, z1: 0.495, x2: 0.75, y2: 0.5, z2: 0.505, rotateYByType: {"*-ns": 0, "*-we": 90 }}
+	]
+}

@@ -1,0 +1,95 @@
+{
+	code: "clothes",
+	class: "ItemWearable",
+	variantgroups: [
+		{ code: "category",  states: ["neck"] },
+		{ code: "neck", combine: "SelectiveMultiply", onVariant: "category", states: [
+			"bronze-gem-necklace", "copper-torc", "fancy-royal-collar", "golden-necklace", "merchant-amulet", "noble-necklace", "pearl-necklace",
+			"forlorn-talisman", "acorn-amulet", "cypress-seed-amulet", "larch-seed-amulet", "pinecone-amulet", "redwood-amulet", "walnut-amulet"
+		] },
+	],
+	shapeByType: {
+		"@*-(pearl-necklace|forlorn-talisman)": {
+			base: "entity/humanoid/seraph" 
+		},
+		"@*": {
+			base: "entity/humanoid/seraph/clothing/neck/{neck}" 
+		}
+	},
+	storageFlags: 128,
+	attributesByType: {
+		"@*-(pearl-necklace|forlorn-talisman)": {
+			clothescategory: "neck",
+			warmth: 0
+		},
+		"*": {
+			wearableAttachment: true,
+			clothescategory: "neck",
+			warmth: 0
+		}
+	},
+	texturesByType: {
+		"@*-(pearl-necklace|forlorn-talisman)": {
+			"seraph": { base: "entity/humanoid/seraphclothes/{category}/{neck}" }
+		},
+		"*": {
+			"seraph": { base: "block/transparent" }
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	renderAlphaTest: 0.25,
+	fpHandTransform: {
+		translation: { x: 0.2, y: -2.5, z: -0.9 },
+		rotation: { x: -2, y: 31, z: -46 },
+		scale: 4.09
+	},
+	tpHandTransform: {
+		translation: { x: -0.6, y: -2.1, z: -0.7 },
+		rotation: { x: -21, y: -180, z: 25 },
+		origin: { x: 0.5, y: 1.4, z: 0.5 },
+		scale: 0.71
+	},
+	guiTransformByType: {
+		"*-copper-torc": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -128, z: 6 },
+			origin: { x: 0.54, y: 1.5499, z: 0.54 },
+			scale: 3.95
+		},
+		"@*-(pearl-necklace|forlorn-talisman)": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -90, z: 23 },
+			origin: { x: 0.5, y: 1.4, z: 0.55 },
+			scale: 2.5
+		},
+		"@*-(walnut-amulet|redwood-amulet|pinecone-amulet|larch-seed-amulet|cypress-seed-amulet|acorn-amulet)": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 163, y: -113, z: 6 },
+			origin: { x: 0.45, y: 1.48, z: 0.55 },
+			scale: 3.93
+		},
+		"*": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -128, z: 6 },
+			origin: { x: 0.45, y: 1.43, z: 0.54 },
+			scale: 3.5
+		}
+	},
+	groundTransformByType: {
+		"*-copper-torc": {
+			translation: { x: 0, y: 0.05, z: 0 },
+			rotation: { x: 0, y: 0, z: -180 },
+			origin: { x: 0.5, y: 1.5, z: 0.5 },
+			scale: 3.06
+		},
+		"*": {
+			translation: { x: 0, y: -0.05, z: 0 },
+			rotation: { x: 0, y: 0, z: -90 },
+			origin: { x: 0.5, y: 1.5, z: 0.5 },
+			scale: 3.06
+		}
+	}
+}

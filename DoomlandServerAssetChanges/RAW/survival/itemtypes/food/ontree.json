@@ -1,0 +1,17 @@
+{
+	code: "ontree",
+	maxstacksize: 1,
+	variantgroups: [
+		{ code: "type", states: ["bellpepper" ] },
+		{ code: "variant", states: ["1", "2", "3", "4", "5", "6", "7"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6"] }
+	],
+	shape: { base: "block/plant/crop/bellpepper/fruit{variant}", selectiveElements: ["origin/stage{stage}/*"]  },
+	attributesByType: {
+		"*-bellpepper-2-6": { "onGround": true },
+		"*-bellpepper-5-6": { "onGround": true },
+		"*-bellpepper-6-6": { "onGround": true }	
+	},
+	creativeinventory: { },
+	materialDensity: 600
+}

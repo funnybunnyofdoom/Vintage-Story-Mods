@@ -1,0 +1,103 @@
+[
+	{
+		comment: "Stalactites and Stalagmites",
+		blockCodes: ["stalagsection-andesite-06", "stalagsection-andesite-08", "stalagsection-andesite-10", "stalagsection-andesite-12", "stalagsection-andesite-14"],
+		quantity: { avg: 6, var: 3 },
+		chance: 5,
+		offsetX: { avg: 0, var: 8 },
+		offsetZ: { avg: 0, var: 8 },
+		placement: "Underground"
+	},
+	{
+		comment: "Single loose stones everywhere",
+		blockCodes: ["loosestones-{rocktype}-free"],
+		minTemp: -2,
+		minForest: 0,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.5,
+	},
+	{
+		comment: "Small patches of loose stones everywhere",
+		blockCodes: ["loosestones-{rocktype}-free"],
+		minTemp: -2,
+		minForest: 0,
+		quantity: { avg: 3, var: 6 },
+		chance: 1,
+	},
+	{
+		comment: "Small patches of loose boulders in dry places",
+		blockCodes: ["looseboulders-{rocktype}-free"],
+		minTemp: -12,
+		maxRain: 0.35,
+		quantity: { avg: 3, var: 6 },
+		chance: 1,
+	},
+	{
+		comment: "Small patches of loose boulders in mountains",
+		blockCodes: ["looseboulders-{rocktype}-free"],
+		minY: 0.7,
+		minTemp: -12,
+		quantity: { avg: 3, var: 6 },
+		chance: 1,
+	},
+	{
+		comment: "Big patches of loose stones in the mountains",
+		blockCodes: ["loosestones-{rocktype}-free"],
+		minTemp: -2,
+		minY: 0.72,
+		quantity: { avg: 25, var: 15 },
+		chance: 0.2,
+		offsetX: { avg: 0, var: 10 },
+		offsetZ: { avg: 0, var: 10 },
+	},
+	{
+		comment: "Single loose shells. The shell block class takes care of the random variant spawning",
+		blockCodes: ["seashell-scallop-plain"],
+		minTemp: -5,
+		minForest: 0,
+		minRain: 0.3,
+		quantity: { avg: 1, var: 0 },
+		chance: 2,
+		placement: "NearWater"
+	},
+	{
+		comment: "Small patches of loose shellsThe shell block class takes care of the random variant spawning",
+		blockCodes: ["seashell-scallop-plain"],
+		minTemp: -5,
+		minForest: 0,
+		minRain: 0.3,
+		quantity: { avg: 3, var: 6 },
+		chance: 0.3,
+		placement: "NearWater"
+	},
+	{
+		comment: "Deserty areas: Single loose shells. The shell block class takes care of the random variant spawning",
+		blockCodes: ["seashell-scallop-plain"],
+		minTemp: -5,
+		minForest: 0,
+		maxRain: 0.3,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.4,
+		placement: "NearWater"
+	},
+	{
+		comment: "Deserty areas: Small patches of loose shellsThe shell block class takes care of the random variant spawning",
+		blockCodes: ["seashell-scallop-plain"],
+		minTemp: -5,
+		minForest: 0,
+		maxRain: 0.3,
+		quantity: { avg: 3, var: 6 },
+		chance: 0.1,
+		placement: "NearWater"
+	},
+	{
+		comment: "Single pieces of bony remains found in hot and dry climate",
+		blockCodes: ["bonyremains-cowskull-up", "bonyremains-ribcage"],
+		minTemp: 20,
+		maxTemp: 37,
+		minRain: 0,
+		maxRain: 0.28,
+		chance: 0.15,
+		quantity: { avg: 1, var: 0 },
+	}
+]

@@ -1,0 +1,262 @@
+[
+	{
+		ingredientPattern: "_H,H_",
+		ingredients: {
+			"H": { type: "block", code: "hay-*", name: "type" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "slantedroofing-thatch-east-free", quantity: 4  }
+	},
+	{
+		ingredientPattern: "_H_,H_H",
+		ingredients: {
+			"H": { type: "block", code: "hay-*", name: "type" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingridge-thatch-ns-free", quantity: 4  }
+	},
+	{
+		ingredientPattern: "_H_,HHH",
+		ingredients: {
+			"H": { type: "block", code: "hay-*", name: "type" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingtip-thatch-free", quantity: 4  }
+	},
+	{
+		ingredientPattern: "_H,H_,_H",
+		ingredients: {
+			"H": { type: "block", code: "hay-*", name: "type" }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "slantedroofingcornerinner-thatch-east-free", quantity: 4  }
+	},
+	{
+		ingredientPattern: "_H,HH",
+		ingredients: {
+			"H": { type: "block", code: "hay-*", name: "type" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "slantedroofingcornerouter-thatch-east-free", quantity: 4  }
+	},
+	{
+		ingredientPattern: "HK",
+		ingredients: {
+			"H": { type: "block", code: "*-thatch-*" },
+			"K": { type: "item", code: "knife-*", isTool: true, toolDurabilityCost: 1 },
+		},
+		width: 2,
+		height: 1,
+		recipeGroup: 2,
+		shapeless: true,
+		output: { type: "item", code: "drygrass", quantity: 2 }
+	},
+
+
+	{
+		ingredientPattern: "__H,_H_,H__",
+		ingredients: {
+			"H": { type: "item", code: "metalplate-copper" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "slantedroofing-copper-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H_,H_H",
+		ingredients: {
+			"H": { type: "item", code: "metalplate-copper" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingridge-copper-ns-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H_,HHH",
+		ingredients: {
+			"H": { type: "item", code: "metalplate-copper" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingtip-copper-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,H_,_H",
+		ingredients: {
+			"H": { type: "item", code: "metalplate-copper" }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "slantedroofingcornerinner-copper-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,HH",
+		ingredients: {
+			"H": { type: "item", code: "metalplate-copper" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "slantedroofingcornerouter-copper-east-free", quantity: 2  }
+	},
+
+
+	{
+		ingredientPattern: "__H,_H_,H__",
+		ingredients: {
+			"H": { type: "item", code: "shingle-burned-*", name: "material", quantity: 1 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "slantedroofing-{material}clay-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H_,H_H",
+		ingredients: {
+			"H": { type: "item", code: "shingle-burned-*", name: "material", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingridge-{material}clay-ns-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "HS",
+		ingredients: {
+			"H": { type: "block", code: "clayshinglestairs-*-up-north-free", name: "material" },
+			"S": { type: "item", code: "shingle-burned-*", name: "material" }
+		},
+		width: 2,
+		height: 1,
+		output: { type: "block", code: "slantedroofing-{material}clay-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H_,HHH",
+		ingredients: {
+			"H": { type: "item", code: "shingle-burned-*", name: "material", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingtip-{material}clay-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,H_,_H",
+		ingredients: {
+			"H": { type: "item", code: "shingle-burned-*", name: "material", quantity: 1 }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "slantedroofingcornerinner-{material}clay-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,HH",
+		ingredients: {
+			"H": { type: "item", code: "shingle-burned-*", name: "material", quantity: 1 }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "slantedroofingcornerouter-{material}clay-east-free", quantity: 2  }
+	},
+
+
+	{
+		ingredientPattern: "__H,CH_,H__",
+		ingredients: {
+			"C": { type: "item", code: "clay-blue", quantity: 1 },
+			"H": { type: "item", code: "stone-slate", quantity: 3 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "slantedroofing-slate-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "CH_,H_H",
+		ingredients: {
+			"C": { type: "item", code: "clay-blue", quantity: 1 },
+			"H": { type: "item", code: "stone-slate", quantity: 3 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingridge-slate-ns-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "CH_,HHH",
+		ingredients: {
+			"C": { type: "item", code: "clay-blue", quantity: 1 },
+			"H": { type: "item", code: "stone-slate", quantity: 3 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingtip-slate-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,HC,_H",
+		ingredients: {
+			"C": { type: "item", code: "clay-blue", quantity: 1 },
+			"H": { type: "item", code: "stone-slate", quantity: 3 }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "slantedroofingcornerinner-slate-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "CH,HH",
+		ingredients: {
+			"C": { type: "item", code: "clay-blue", quantity: 1 },
+			"H": { type: "item", code: "stone-slate", quantity: 3 }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "slantedroofingcornerouter-slate-east-free", quantity: 2  }
+	},
+
+
+	{
+		ingredientPattern: "__H,_H_,H__",
+		ingredients: {
+			"H": { type: "item", code: "bamboostakes" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "slantedroofing-bamboo-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H_,H_H",
+		ingredients: {
+			"H": { type: "item", code: "bamboostakes" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingridge-bamboo-ns-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H_,HHH",
+		ingredients: {
+			"H": { type: "item", code: "bamboostakes" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "slantedroofingtip-bamboo-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,H_,_H",
+		ingredients: {
+			"H": { type: "item", code: "bamboostakes" }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "slantedroofingcornerinner-bamboo-east-free", quantity: 2  }
+	},
+	{
+		ingredientPattern: "_H,HH",
+		ingredients: {
+			"H": { type: "item", code: "bamboostakes" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "slantedroofingcornerouter-bamboo-east-free", quantity: 2  }
+	}
+]

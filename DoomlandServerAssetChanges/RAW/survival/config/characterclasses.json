@@ -1,0 +1,80 @@
+[
+	{
+		code: "commoner",
+		traits: [],
+		gear: [
+			{ type: "item", code: "clothes-upperbody-commoner-shirt" },
+			{ type: "item", code: "clothes-upperbodyover-commoner-coat" },
+			{ type: "item", code: "clothes-lowerbody-commoner-trousers" },
+			{ type: "item", code: "clothes-foot-commoner-boots" },
+			{ type: "item", code: "clothes-hand-commoner-gloves" }
+		]
+	},
+	{
+		code: "hunter",
+		traits: ["focused", "resourceful", "fleetfooted", "bowyer", "farsighted", "claustrophobic"],
+		gear: [
+			{ type: "item", code: "clothes-head-hunter-cape" },
+			{ type: "item", code: "clothes-shoulder-hunter-poncho" },
+			{ type: "item", code: "clothes-upperbody-hunter-shirt" },
+			{ type: "item", code: "clothes-upperbodyover-hunter-coat" },
+			{ type: "item", code: "clothes-lowerbody-hunter-leggings" },
+			{ type: "item", code: "clothes-foot-hunter-boots" },
+			{ type: "item", code: "clothes-face-hunter-mask" },
+			{ type: "item", code: "clothes-hand-hunter-gloves" }
+		]
+	},
+	{
+		code: "malefactor",
+		traits: ["forager", "pilferer", "furtive", "improviser", "frail", "nervous"],
+		gear: [
+			{ type: "item", code: "clothes-upperbody-malefactor-shirt" },
+			{ type: "item", code: "clothes-upperbodyover-malefactor-tunic" },
+			{ type: "item", code: "clothes-shoulder-malefactor-cloak" },
+			{ type: "item", code: "clothes-lowerbody-malefactor-trousers" },
+			{ type: "item", code: "clothes-foot-malefactor-boots" },
+			{ type: "item", code: "clothes-emblem-malefactor-pendant" },
+			{ type: "item", code: "clothes-face-malefactor-mask" },
+			{ type: "item", code: "clothes-hand-malefactor-gloves" },
+			{ type: "item", code: "clothes-waist-malefactor-sash" }
+		]
+	},
+	{
+		code: "clockmaker",
+		traits: ["precise", "technical", "fleetfooted", "frail", "nervous"],
+		gear: [
+			{ type: "item", code: "clothes-shoulder-clockmaker-apron" },
+			{ type: "item", code: "clothes-upperbody-clockmaker-shirt" },
+			{ type: "item", code: "clothes-upperbodyover-clockmaker-tunic" },
+			{ type: "item", code: "clothes-lowerbody-clockmaker-pants" },
+			{ type: "item", code: "clothes-foot-clockmaker-shoes" },
+			{ type: "item", code: "clothes-hand-clockmaker-wristguard" },
+			{ type: "item", code: "clothes-waist-clockmaker-belt" }
+		]
+	},
+	{
+		code: "blackguard",
+		traits: ["soldier", "hardy", "merciless", "ravenous", "nearsighted", "heavyhanded"],
+		gear: [
+			{ type: "item", code: "clothes-upperbody-blackguard-shirt" },
+			{ type: "item", code: "clothes-lowerbody-blackguard-leggings" },
+			{ type: "item", code: "clothes-foot-blackguard-shoes" },
+			{ type: "item", code: "clothes-emblem-blackguard-pin" },
+			{ type: "item", code: "clothes-waist-blackguard-belt" }
+		]
+	},
+	{
+		code: "tailor",
+		traits: ["clothier", "mender", "civil", "weak", "kind"],
+		gear: [
+			{ type: "item", code: "clothes-face-tailor-mask" },
+			{ type: "item", code: "clothes-upperbodyover-tailor-jacket" },
+			{ type: "item", code: "clothes-upperbody-tailor-blouse" },
+			{ type: "item", code: "clothes-waist-tailor-belt" },
+			{ type: "item", code: "clothes-lowerbody-tailor-trousers" },
+			{ type: "item", code: "clothes-hand-tailor-gloves" },
+			{ type: "item", code: "clothes-foot-tailor-shoes" },
+			{ type: "item", code: "clothes-arm-tailor-needlepuff" }
+		]
+	}
+]

@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "T	L",
+	ingredients: {
+		"T": { type: "item", code: "flaxtwine" },
+		"L": { type: "block", code: "linen-*" }
+	},
+	width: 1,
+	height: 2,
+	output: { type: "item", code: "linensack"  }
+}

@@ -1,0 +1,28 @@
+{
+	code: "coalpile",
+	class: "BlockCoalPile",
+	entityClass: "CoalPile",
+	creativeinventory: { general: [""], decorative: [""] },
+	behaviors: [
+		{ name: "UnstableFalling" },
+		{ name: "HeatSource" }
+	],
+	blockmaterial: "Soil",
+	lightAbsorption: 0,
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	textures: {
+		"charcoal": { base: "block/coal/charcoal" },
+		"coke": { base: "block/coal/coke" },
+		"ore-anthracite": { base: "block/coal/anthracite" },
+		"ore-lignite": { base: "block/coal/lignite" },
+		"ore-bituminouscoal": { base: "block/coal/bituminous" },
+		"ember": { base: "block/coal/ember" }
+	},
+	replaceable: 100,
+	resistance: 2,
+	collisionbox: { x1: 0, y1: 0, x2: 1, y2: 0, z2: 1 },
+	selectionbox: { x1: 0, y1: 0, x2: 1, y2: 0, z2: 1 },
+	drops: [],
+	materialDensity: 600
+}

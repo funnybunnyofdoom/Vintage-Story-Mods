@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "I	I",
+	ingredients: {
+		"I": { type: "item", code: "metalplate-brass" }
+	},
+	width: 1,
+	height: 2,
+	output: { type: "block", code: "torchholder-brass-empty-north", quantity: 2  }
+}

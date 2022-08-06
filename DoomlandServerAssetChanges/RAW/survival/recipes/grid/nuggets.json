@@ -1,0 +1,85 @@
+[
+	{
+		"__comment": "All these recipes are just matching templates. The actual output item and quantity is determined in code in ItemNugget.OnCreatedByCrafting. The quantity is read from the ore attributes from the ore json file",
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "ore-poor-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "ore-medium-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "ore-rich-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "ore-bountiful-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+
+
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "crystalizedore-poor-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "crystalizedore-medium-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "crystalizedore-rich-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	},
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", name: "ore", code: "crystalizedore-bountiful-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "nugget-nativecopper", quantity: 1  }
+	}
+]

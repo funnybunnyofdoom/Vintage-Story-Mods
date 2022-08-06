@@ -1,0 +1,13 @@
+{
+	ingredientPattern: "CLC	G_G",
+	enabled: true,
+	ingredients: {
+		"G": { type: "item", code: "drygrass", quantity: 2 },
+		"C": { type: "item", code: "clay-*", quantity: 1 },
+		"L": { type: "block", code: "soil-low-none", quantity: 1 }
+	},
+	name: "mudbrick",
+	width: 3,
+	height: 2,
+	output: { type: "block", code: "mudbrickslab-dark-down-free", quantity: 4  }
+}

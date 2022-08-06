@@ -1,0 +1,100 @@
+{
+	code: "plankstairs",
+	class: "BlockStairs",
+	attributes: {
+		canChisel: true,
+		chiselShapeFromCollisionBox: true,
+		handbook: {
+			groupBy: ["plankstairs-*"]
+		},
+		partialAttachable: true
+	},
+	variantgroups: [
+		{ code: "wood", states: ["aged"], loadFromProperties: "block/wood" },
+		{ loadFromProperties: "abstract/verticalorientation" },
+		{ loadFromProperties: "abstract/horizontalorientation" },
+		{ code: "cover", states: ["free", "snow"] }
+	],
+	skipVariants: ["*-down-north-snow", "*-down-east-snow", "*-down-south-snow", "*-down-west-snow"],
+	creativeinventory: { "general": ["*-up-north-free"], "construction": ["*-up-north-free"] },
+	sidesolidByType: {	
+		"*-up-north-*": { all:false, down:true, north: true },
+		"*-up-west-*": { all:false, down:true, west: true },
+		"*-up-south-*": { all:false, down:true, south: true },
+		"*-up-east-*": { all:false, down:true, east: true },
+		"*-down-north-*": { all:false, up:true, north: true },
+		"*-down-south-*": { all:false, up:true, south: true },
+		"*-down-west-*": { all:false, up:true, west: true },
+		"*-down-east-*": { all:false, up:true, east: true },
+	},
+	sideopaqueByType	: {
+		"*-up-north-*": { all:false, down:true, north: true },
+		"*-up-west-*": { all:false, down:true, west: true },
+		"*-up-south-*": { all:false, down:true, south: true },
+		"*-up-east-*": { all:false, down:true, east: true },
+		"*-down-north-*": { all:false, up:true, north: true },
+		"*-down-south-*": { all:false, up:true, south: true },
+		"*-down-west-*": { all:false, up:true, west: true },
+		"*-down-east-*": { all:false, up:true, east: true },
+	},
+	shapeByType: { 
+		"*-north-*": { base: "block/basic/stairs/planks-{cover}-{verticalorientation}", rotateY: 0 },
+		"*-west-*": { base: "block/basic/stairs/planks-{cover}-{verticalorientation}", rotateY: 90 },
+		"*-south-*": { base: "block/basic/stairs/planks-{cover}-{verticalorientation}", rotateY: 180 },
+		"*-east-*": { base: "block/basic/stairs/planks-{cover}-{verticalorientation}", rotateY: 270 }
+	},
+	faceCullModeByType: {
+		"*-snow": "NeverCull",
+		"*-free": "Stairs"
+	},
+	blockmaterial: "Wood",
+	textures: {
+		sides: { base: "block/wood/planks/{wood}1" },
+	},
+	lightAbsorption: 99,
+	resistance: 3,
+	emitSideAo: { all: true },
+	sounds: {
+		"hit": "block/planks",
+		"break": "block/planks",
+		"place": "block/planks",
+		"walk": "walk/wood"
+	},
+	combustibleProps: {
+		burnTemperature: 800,
+		burnDuration: 10,
+	},
+	materialDensity: 600,
+	collisionSelectionBoxesByType: {
+		"*-down-*": [
+			{ x1: 0, y1: 0.5, z1: 0, x2: 1, y2: 1, z2: 1 },
+			{ 
+				x1: 0, y1: 0, z1: 0.5, x2: 1, y2: 0.5, z2: 1, 
+				rotateYByType: {
+					"*-north-*": 180,
+					"*-east-*": 90,
+					"*-south-*": 0,
+					"*-west-*": 270,
+				}
+			}			
+		],
+		"*-up-*": [
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 },
+			{ 
+				x1: 0, y1: 0.5, z1: 0.5, x2: 1, y2: 1, z2: 1, 
+				rotateYByType: {
+					"*-north-*": 180,
+					"*-east-*": 90,
+					"*-south-*": 0,
+					"*-west-*": 270,
+				}
+			}
+		],	
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

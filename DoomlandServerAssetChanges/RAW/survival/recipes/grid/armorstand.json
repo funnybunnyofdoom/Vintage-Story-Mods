@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "_H_,BHB,BBB",
+	ingredients: {
+		"H": { type: "block", code: "hay-normal" },
+		"B": { type: "item", code: "plank-*" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "item", code: "armorstand", quantity: 1  }
+}

@@ -1,0 +1,35 @@
+[
+	{
+		ingredientPattern: "A	L",
+		ingredients: {
+			"A": { type: "item", code: "axe-*", isTool: true  },
+			"L": { type: "block", code: "log-*", allowedVariants: ["placed-birch-ud", "placed-oak-ud", "placed-maple-ud", "placed-pine-ud", "placed-acacia-ud", "placed-redwood-ud", "placed-larch-ud", "placed-baldcypress-ud", "placed-walnut-ud"] }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "firewood", quantity: 4  }
+	},
+	
+	{
+		ingredientPattern: "A	L",
+		ingredients: {
+			"A": { type: "item", code: "axe-*", isTool: true  },
+			"L": { type: "block", code: "logsection-placed-*" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "firewood", quantity: 4  }
+	},
+
+	{
+		ingredientPattern: "A	L",
+		ingredients: {
+			"A": { type: "item", code: "axe-*", isTool: true  },
+			"L": { type: "block", code: "log-*", allowedVariants: ["placed-kapok-ud", "placed-purpleheart-ud", "placed-ebony-ud"] }
+		},
+		width: 1,
+		height: 2,
+		name: "Kapok Firewood",
+		output: { type: "item", code: "firewood", quantity: 3  }
+	}
+]

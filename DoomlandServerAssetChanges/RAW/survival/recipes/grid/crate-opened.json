@@ -1,0 +1,24 @@
+[
+	{
+		ingredientPattern: "C",
+		ingredients: {
+			"C": { type: "block", code: "crate", attributes: { lidState: "closed" } }
+		},
+		shapeless: true,
+		copyAttributesFrom: 'C',
+		width: 1,
+		height: 1,
+		output: { type: "block", code: "crate", attributes: { lidState: "opened" }  }
+	},
+	{
+		ingredientPattern: "C",
+		ingredients: {
+			"C": { type: "block", code: "crate", attributes: { lidState: "opened" } }
+		},
+		shapeless: true,
+		copyAttributesFrom: 'C',
+		width: 1,
+		height: 1,
+		output: { type: "block", code: "crate", attributes: { lidState: "closed" }  }
+	}
+]

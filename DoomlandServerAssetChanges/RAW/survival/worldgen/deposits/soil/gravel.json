@@ -1,0 +1,20 @@
+[
+	{
+		code: "gravel",
+		triesPerChunk: 0.03,
+		generator: "disc-alluvialdeposit",
+		attributes: {
+			radius: { dist: "gaussian", avg: 15, var: 5 },
+			depth: { dist: "uniform", avg: 0, var: 0 },
+			thickness: { avg: 1.5, var: 0.5 },
+			maxYRoughness: 1,
+			ignoreParentTestPerBlock: true
+		},
+		climate: {
+			minRain: 0.45,
+			maxRain: 1,
+			minTemp: 3,
+			maxTemp: 25
+		}
+	}
+]

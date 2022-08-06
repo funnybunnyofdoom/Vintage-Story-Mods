@@ -1,0 +1,13 @@
+{
+	ingredientPattern: "BCF",
+	ingredients: {
+		"B": { type: "item", code: "blastingpowder", quantity: 4 },
+		"C": { type: "item", code: "flaxtwine" },
+		"F": { type: "block", code: "linen-*" },
+	},
+	name: "oreblastingbomb",
+	width: 3,
+	height: 1,
+	shapeless: true,
+	output: { type: "block", code: "oreblastingbomb", quantity: 8  }
+}

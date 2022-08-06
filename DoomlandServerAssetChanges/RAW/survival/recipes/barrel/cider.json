@@ -1,0 +1,63 @@
+[
+	{
+		code: "cider",
+		sealHours: 168,
+		ingredients: [
+			{ type: "item", code: "juiceportion-*",  name: "fruit", litres: 0.1 }
+		],
+		output: { type: "item", code: "ciderportion-{fruit}", litres: 0.1 }
+	},
+	{
+		code: "mead",
+		sealHours: 336,
+		ingredients: [
+			{ type: "item", code: "honeyportion", litres: 0.1 }
+		],
+		output: { type: "item", code: "ciderportion-mead", litres: 0.1 }
+	},
+	{
+		code: "spelt",
+		sealHours: 336,
+		ingredients: [
+			{ type: "item", code: "waterportion",  litres: 1 },
+			{ type: "item", code: "flour-spelt", quantity: 1 }
+		],
+		output: { type: "item", code: "ciderportion-spelt", litres: .2 }
+	},
+	{
+		code: "rice",
+		sealHours: 336,
+		ingredients: [
+			{ type: "item", code: "waterportion",  litres: 1 },
+			{ type: "item", code: "flour-rice", quantity: 1 }
+		],
+		output: { type: "item", code: "ciderportion-rice", litres: .2 }
+	},
+	{
+		code: "rye",
+		sealHours: 336,
+		ingredients: [
+			{ type: "item", code: "waterportion",  litres: 1 },
+			{ type: "item", code: "flour-rye", quantity: 1 }
+		],
+		output: { type: "item", code: "ciderportion-rye", litres: .2 }
+	},
+	{
+		code: "amaranth",
+		sealHours: 336,
+		ingredients: [
+			{ type: "item", code: "waterportion",  litres: 1 },
+			{ type: "item", code: "flour-amaranth", quantity: 1 }
+		],
+		output: { type: "item", code: "ciderportion-amaranth", litres: .2 }
+	},
+	{
+		code: "cassava",
+		sealHours: 336,
+		ingredients: [
+			{ type: "item", code: "waterportion",  litres: 1 },
+			{ type: "item", code: "flour-cassava", quantity: 1 }
+		],
+		output: { type: "item", code: "ciderportion-cassava", litres: .2 }
+	}
+]

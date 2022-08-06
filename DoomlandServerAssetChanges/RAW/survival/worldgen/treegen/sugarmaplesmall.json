@@ -1,0 +1,29 @@
+{
+	treeWorldPropertyCode: "sugarmaplesmall",
+	sizeMultiplier: 0.35,
+	trunks: [{
+		widthloss: 0.045,
+		dieAt: { avg: 0.001 },
+		branchStart: { avg: 0.3, var: 0.12 },
+		branchSpacing: { dist: "gaussian", avg: 0.2, var: 0.1 },
+		branchVerticalAngle:  { avg: 1.8, var: 0 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 1 },
+		branchWidthMultiplier: { avg: 1, var: 0 },
+		branchQuantity: { avg: 3, var: 0 },
+		angleVert: { avg: 0, var: 0.5 }
+	}],
+	branches: [{
+		widthLoss: 0.1,
+		gravityDrag: 0,
+		dieAt: { avg: 0.001 },
+		branchStart:  { avg: 2, var: 0.01 },
+	}],
+	treeBlocks: {
+		logBlockCode: "log-grown-maple-ud",
+		leavesBlockCode: "leaves-grown-maple",
+		leavesBranchyBlockCode: "leavesbranchy-grown-maple",
+		vinesBlockCode: "wildvine-section-north",
+		vinesEndBlockCode: "wildvine-end-north"
+	}
+}

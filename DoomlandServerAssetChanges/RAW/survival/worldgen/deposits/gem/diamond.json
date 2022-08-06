@@ -1,0 +1,23 @@
+[
+	{
+		code: "diamond",
+		triesPerChunk: 18,
+		withOreMap: true,
+		handbookPageCode: "item-gem-diamond-rough",
+		generator: "disc-followsealevel",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["kimberlite", "suevite"] },
+			placeblock: { 
+				code: "ore-*-diamond-{rock}",
+				name: "potential",
+				allowedVariantsByInBlock: {
+					"rock-kimberlite": ["low", "medium", "high"],
+					"rock-suevite": ["low"],
+				}
+			},
+			radius: { dist: "gaussian", avg: 2, var: 1 },
+			yPosRel: {dist: "uniform", avg: 0.1, var: 0.1 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	}
+]

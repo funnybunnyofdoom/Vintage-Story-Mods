@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "W	P	W",
+	ingredients: {
+		"W": { type: "item", code: "plank-*" },
+		"P": { type: "block", code: "plaster-plain" }
+	},
+	width: 1,
+	height: 3,
+	output: { type: "block", code: "plaster-stripes-ud"  }
+}

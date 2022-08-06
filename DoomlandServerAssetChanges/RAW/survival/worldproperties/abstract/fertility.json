@@ -1,0 +1,20 @@
+{
+	"code": "fertility",
+	"variants": [
+		{
+			"code": "verylow",
+		},
+		{
+			"code": "low",
+		},
+		{
+			"code": "medium",
+		},
+		{
+			"code": "compost",
+		},
+		{
+			"code": "high",
+		}
+	]
+}

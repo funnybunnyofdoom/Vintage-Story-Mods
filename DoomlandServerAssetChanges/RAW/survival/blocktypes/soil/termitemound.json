@@ -1,0 +1,32 @@
+{
+	code: "termitemound",
+	class: "BlockRequireSolidGround",
+	behaviors: [{name: "BreakIfFloating"}],
+	creativeinventory: { "general": ["*"], "flora": ["*"], "terrain": ["*"] },
+	shape: { base: "block/termite/mound*" },
+	blockmaterial: "Soil",
+	replaceable: 1100,
+	resistance: 1.5,
+  randomizeRotations: true,
+	sounds: {
+		place: "block/dirt",
+		break: "block/dirt",
+		hit: "block/dirt",
+		walk: "walk/grass"
+	},
+	sidesolid: { all: false },
+	sideao: { all: true },
+	emitsideao: { all: false },
+	sideopaque: { all: false },
+	selectionBox: { x1: 0.125, y1: 0, z1: 0.125, x2: 0.875, y2: 0.875, z2: 0.875 },
+	collisionBox: { x1: 0.125, y1: 0, z1: 0.125, x2: 0.875, y2: 0.875, z2: 0.875 },
+	drops: [
+		{ type: "item", code: "insect-termite", quantity: { avg: 4 }  }
+	],
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

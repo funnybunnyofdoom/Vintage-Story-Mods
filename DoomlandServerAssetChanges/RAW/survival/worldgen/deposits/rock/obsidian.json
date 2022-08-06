@@ -1,0 +1,16 @@
+[
+	{
+		code: "rock-obsidian",
+		triesPerChunk: 12,
+		generator: "disc-followsealevel",
+		attributes: {	
+			inblock: { code: "rock-basalt" },
+			placeblock: { code: "rock-obsidian" },
+			surfaceBlock: { code: "loosestones-obsidian-free" },
+			surfaceBlockChance: 0.15,
+			radius: { dist: "gaussian", avg: 5, var: 2 },
+			yPosRel: {dist: "uniform", avg: 0.8, var: 0.25 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	}
+]

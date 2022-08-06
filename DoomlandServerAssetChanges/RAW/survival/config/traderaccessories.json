@@ -1,0 +1,411 @@
+{
+  shapes: {
+      "armor-bracers": { base: "entity/humanoid/traderaccessories/armor/bracers", weight: 1 },
+      "armor-bracers2": {
+         base: "entity/humanoid/traderaccessories/armor/bracers",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+         },
+         weight: 0.5,
+       },
+      "armor-chest": { base: "entity/humanoid/traderaccessories/armor/chest", weight: 1 },
+      "armor-chest2": {
+         base: "entity/humanoid/traderaccessories/armor/chest",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+         },
+         weight: 0.5,
+       },
+      "armor-head": { base: "entity/humanoid/traderaccessories/armor/head", weight: 1 },
+      "armor-head2": {
+         base: "entity/humanoid/traderaccessories/armor/head",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+         },
+         weight: 0,
+       },
+      "armor-shins": { base: "entity/humanoid/traderaccessories/armor/shins", weight: 1 },
+      "armor-shins2": {
+         base: "entity/humanoid/traderaccessories/armor/shins",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+         },
+         weight: 0.5,
+       },
+      "armor-shoulders": { base: "entity/humanoid/traderaccessories/armor/shoulders", weight: 1 },
+      "armor-shoulders2": {
+         base: "entity/humanoid/traderaccessories/armor/shoulders",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+         },
+         weight: 0.5,
+       },
+      "armor-thighs": { base: "entity/humanoid/traderaccessories/armor/thighs", weight: 1 },
+      "armor-thighs2": {
+         base: "entity/humanoid/traderaccessories/armor/thighs",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+         },
+         weight: 0.5,
+       },
+      "armor-mask": { base: "entity/humanoid/traderaccessories/armor/mask", weight: 0.5 },
+      "bandage-chest": { base: "entity/humanoid/traderaccessories/bandages/chest", weight: 0.5 },
+      "bandage-head": { base: "entity/humanoid/traderaccessories/bandages/head", weight: 0.5 },
+      "bandage-eye": { base: "entity/humanoid/traderaccessories/bandages/eye", weight: 0.5 },
+      "bandage-left-arm": { base: "entity/humanoid/traderaccessories/bandages/left-arm", weight: 0.5 },
+      "bandage-left-shin": { base: "entity/humanoid/traderaccessories/bandages/left-shin", weight: 0.5 },
+      "bandage-left-shoulder": { base: "entity/humanoid/traderaccessories/bandages/left-shoulder", weight: 0.5 },
+      "bandage-left-thigh": { base: "entity/humanoid/traderaccessories/bandages/left-thigh", weight: 0.5 },
+      "bandage-right-arm": { base: "entity/humanoid/traderaccessories/bandages/right-arm", weight: 0.5 },
+      "bandage-right-shin": { base: "entity/humanoid/traderaccessories/bandages/right-shin", weight: 0.5 },
+      "bandage-right-shoulder": { base: "entity/humanoid/traderaccessories/bandages/right-shoulder", weight: 0.5 },
+      "bandage-right-thigh": { base: "entity/humanoid/traderaccessories/bandages/right-thigh", weight: 0.5 },
+      "jewelry-chestpin": { base: "entity/humanoid/traderaccessories/jewelry/chestpin", weight: 0.2 },
+      "jewelry-chestpin2": {
+         base: "entity/humanoid/traderaccessories/jewelry/chestpin",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-chestpin3": {
+         base: "entity/humanoid/traderaccessories/jewelry/chestpin",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-girdle": { base: "entity/humanoid/traderaccessories/jewelry/girdle", weight: 0.2 },
+      "jewelry-girdle2": {
+         base: "entity/humanoid/traderaccessories/jewelry/girdle",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-girdle3": {
+         base: "entity/humanoid/traderaccessories/jewelry/girdle",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-left-bracelet": { base: "entity/humanoid/traderaccessories/jewelry/left-bracelet", weight: 0.2 },
+      "jewelry-left-bracelet2": {
+         base: "entity/humanoid/traderaccessories/jewelry/left-bracelet",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-left-bracelet3": {
+         base: "entity/humanoid/traderaccessories/jewelry/left-bracelet",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-left-rings": { base: "entity/humanoid/traderaccessories/jewelry/left-rings", weight: 0.2 },
+      "jewelry-left-rings2": {
+         base: "entity/humanoid/traderaccessories/jewelry/left-rings",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-left-rings3": {
+         base: "entity/humanoid/traderaccessories/jewelry/left-rings",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-necklace": { base: "entity/humanoid/traderaccessories/jewelry/necklace", weight: 0.2 },
+      "jewelry-necklace2": {
+         base: "entity/humanoid/traderaccessories/jewelry/necklace",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-necklace3": {
+         base: "entity/humanoid/traderaccessories/jewelry/necklace",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-pouch": { base: "entity/humanoid/traderaccessories/jewelry/pouch", weight: 0.2 },
+      "jewelry-pouch2": {
+         base: "entity/humanoid/traderaccessories/jewelry/pouch",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-pouch3": {
+         base: "entity/humanoid/traderaccessories/jewelry/pouch",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-right-bracelet": { base: "entity/humanoid/traderaccessories/jewelry/right-bracelet", weight: 0.2 },
+      "jewelry-right-bracelet2": {
+         base: "entity/humanoid/traderaccessories/jewelry/right-bracelet",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-right-bracelet3": {
+         base: "entity/humanoid/traderaccessories/jewelry/right-bracelet",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-right-rings": { base: "entity/humanoid/traderaccessories/jewelry/right-rings", weight: 0.2 },
+      "jewelry-right-rings2": {
+         base: "entity/humanoid/traderaccessories/jewelry/right-rings",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-right-rings3": {
+         base: "entity/humanoid/traderaccessories/jewelry/right-rings",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "jewelry-monocle": { base: "entity/humanoid/traderaccessories/jewelry/monocle", weight: 0.2 },
+      "jewelry-monocle2": {
+         base: "entity/humanoid/traderaccessories/jewelry/monocle",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/gold"
+         },
+         weight: 0.1,
+       },
+      "jewelry-monocle3": {
+         base: "entity/humanoid/traderaccessories/jewelry/monocle",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/jewelry/copper"
+         },
+         weight: 0.3,
+       },
+      "mask": { base: "entity/humanoid/traderaccessories/masks/mask", weight: 0.5 },
+      "mask-african1": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/african1"
+         },
+         weight: 0.05,
+       },
+      "mask-african2": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/african2"
+         },
+         weight: 0.05,
+       },
+      "mask-african3": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/african3"
+         },
+         weight: 0.05,
+       },
+      "mask-boar": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/boar"
+         },
+         weight: 0.05,
+       },
+      "mask-bull": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/bull"
+         },
+         weight: 0.05,
+       },
+      "mask-devil": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/devil"
+         },
+         weight: 0.05,
+       },
+      "mask-gazelle": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/gazelle"
+         },
+         weight: 0.05,
+       },
+      "mask-kabuki": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/kabuki"
+         },
+         weight: 0.05,
+       },
+      "mask-plaguebird": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/plaguebird"
+         },
+         weight: 0.05
+       },
+      "mask-skull": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/skull"
+         },
+         weight: 0.05,
+       },
+      "mask-teeth": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/teeth"
+         },
+         weight: 0.05,
+       },
+      "mask-wolf": {
+         base: "entity/humanoid/traderaccessories/masks/mask",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/masks/wolf"
+         },
+         weight: 0.05,
+       },
+      "abacus": { base: "entity/humanoid/traderaccessories/navigation/abacus", weight: 0.8 },
+      "magnifying-glass": { base: "entity/humanoid/traderaccessories/navigation/magnifying-glass", weight: 0.5 },
+      "sack": { base: "entity/humanoid/traderaccessories/navigation/sack", weight: 0.5 },
+      "spyglass": { base: "entity/humanoid/traderaccessories/navigation/spyglass", weight: 0.5 },
+      "waterskin": { base: "entity/humanoid/traderaccessories/navigation/waterskin", weight: 0.5 },
+      "bow": { base: "entity/humanoid/traderaccessories/tools/bow", weight: 1 },
+      "chisel": { base: "entity/humanoid/traderaccessories/tools/chisel", weight: 1 },
+      "dagger": { base: "entity/humanoid/traderaccessories/tools/dagger", weight: 1 },
+      "hammer": { base: "entity/humanoid/traderaccessories/tools/hammer", weight: 1 },
+      "handsaw": { base: "entity/humanoid/traderaccessories/tools/handsaw", weight: 1 },
+      "knife": { base: "entity/humanoid/traderaccessories/tools/knife", weight: 1 },
+      "pickaxe": { base: "entity/humanoid/traderaccessories/tools/pickaxe", weight: 1 },
+      "spear": { base: "entity/humanoid/traderaccessories/tools/spear", weight: 0.5 },
+      "sword": { base: "entity/humanoid/traderaccessories/tools/sword", weight: 0.5 },
+      "apron": { base: "entity/humanoid/traderaccessories/apron", weight: 1.3 },
+      "apron2": {
+         base: "entity/humanoid/traderaccessories/apron",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/apron/cloth"
+         },
+         weight: 1.3,
+       },
+      "apron3": {
+         base: "entity/humanoid/traderaccessories/apron",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/apron/fancy"
+         },
+         weight: 0.7,
+       },
+      "backpack": { base: "entity/humanoid/traderaccessories/backpack", weight: 2 },
+      "belt-kit": { base: "entity/humanoid/traderaccessories/belt-kit", weight: 0.5 },
+      "beret": { base: "entity/humanoid/traderaccessories/beret", weight: 1 },
+      "boots": { base: "entity/humanoid/traderaccessories/boots", weight: 2 },
+      "chaperon": { base: "entity/humanoid/traderaccessories/chaperon", weight: 1.5 },
+      "chaperon2": {
+         base: "entity/humanoid/traderaccessories/chaperon",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/chaperon/red"
+         },
+         weight: 0.8,
+       },
+      "fez": { base: "entity/humanoid/traderaccessories/fez", weight: 1.2 },
+      "gloves": { base: "entity/humanoid/traderaccessories/gloves", weight: 2 },
+      "hood": { base: "entity/humanoid/traderaccessories/hood", weight: 1.2 },
+      "hood2": {
+         base: "entity/humanoid/traderaccessories/hood",
+         textures: {
+           "material": "entity/humanoid/traderaccessories/hood/red"
+         },
+         weight: 0.6,
+       },
+      "miner-hat": { base: "entity/humanoid/traderaccessories/miner-hat", weight: 0.5 },
+      "sash": { base: "entity/humanoid/traderaccessories/sash", weight: 1 },
+      "scarf": { base: "entity/humanoid/traderaccessories/scarf", weight: 1.5 },
+      "keffiyeh": { base: "entity/humanoid/traderaccessories/keffiyeh", weight: 2 },
+      "empty": { base: null, weight: 4 }        
+  },
+  bySlot: [
+      {
+          code: "head",
+          shapes: ["armor-head", "armor-head2", "armor-mask", "bandage-head", "bandage-eye", "jewelry-monocle", "jewelry-monocle2", "jewelry-monocle3", 
+                   "mask", "mask-african1", "mask-african2", "mask-african3", "mask-boar", "mask-bull", "mask-devil", "mask-gazelle", "mask-kabuki", 
+                   "mask-plaguebird", "mask-skull", "mask-teeth", "mask-wolf", "beret", "chaperon", "chaperon2", "fez", "miner-hat", "hood", "hood2", "keffiyeh", "empty"]
+      },
+      {
+          code: "back",
+          shapes: ["bow", "dagger", "pickaxe", "spear", "backpack", "empty"]
+      },
+      {
+          code: "chest",
+          shapes: ["armor-chest", "armor-chest2", "bandage-chest", "jewelry-chestpin", "jewelry-chestpin2", "jewelry-chestpin3", "waterskin", "apron", "apron2", "apron3", "empty"]
+      },
+      {
+          code: "shoulders",
+          shapes: ["armor-shoulders", "armor-shoulders2", "bandage-left-shoulder", "bandage-right-shoulder", "jewelry-necklace", "jewelry-necklace2", "jewelry-necklace3", "sash", "scarf", "empty"]
+      },
+      {
+          code: "belt",
+          shapes: ["jewelry-girdle", "jewelry-girdle2", "jewelry-girdle3", "belt-kit", "empty"]
+      },
+      {
+          code: "belt-slot",
+          shapes: ["jewelry-pouch", "jewelry-pouch2", "jewelry-pouch3", "magnifying-glass", "sack", "spyglass", "chisel", "dagger", "hammer", "handsaw", "sword", "empty"]
+      },
+      {
+          code: "arms",
+          shapes: ["armor-bracers", "armor-bracers2", "bandage-left-arm", "bandage-right-arm", "jewelry-left-bracelet", "jewelry-left-bracelet2", "jewelry-left-bracelet3", 
+                   "jewelry-right-bracelet", "jewelry-right-bracelet2", "jewelry-right-bracelet3", "jewelry-left-rings", "jewelry-left-rings2", "jewelry-left-rings3", 
+                   "jewelry-right-rings", "jewelry-right-rings2", "jewelry-right-rings3", "abacus", "gloves", "empty"]
+      },
+      {
+          code: "thigh",
+          shapes: ["armor-thighs", "armor-thighs2", "bandage-left-thigh", "bandage-right-thigh", "empty"]
+      },
+      {
+          code: "feet",
+          shapes: ["armor-shins", "armor-shins2", "bandage-left-shin", "bandage-right-shin", "knife", "boots", "empty"]
+      },
+  ],
+  blockCombinations: {
+      "apron": [ "bandage-left-shoulder", "bandage-right-shoulder", "bandage-left-thigh", "bandage-right-thigh", "bandage-left-shin", "bandage-right-shin", "bandage-head", 
+                 "jewelry-girdle", "jewelry-girdle2", "jewelry-girdle3", "belt-kit" ],
+      "armor-chest": [ "jewelry-girdle", "jewelry-girdle2", "jewelry-girdle3", "belt-kit" ],
+      "bandage-left-shoulder": [ "apron", "apron2", "apron3" ],
+      "bandage-right-shoulder": [ "apron", "apron2", "apron3" ],
+      "bandage-left-thigh": [ "apron", "apron2", "apron3" ],
+      "bandage-right-thigh": [ "apron", "apron2", "apron3" ],
+      "bandage-left-shin": [ "apron", "apron2", "apron3" ],
+      "bandage-right-shin": [ "apron", "apron2", "apron3" ],
+      "bandage-head": [ "apron", "apron2", "apron3" ],
+      "backpack": [ "hood", "hood2" ],
+      "knife": [ "bow" ],
+      "jewelry-girdle": [ "apron", "apron2", "apron3", "armor-chest", "armor-chest2" ],
+      "jewelry-necklace": [ "scarf", "sash" ],
+      "magnifying-glass": [ "bow" ],
+      "spyglass": [ "bow" ],
+      "dagger": [ "belt-kit", "hood", "hood2" ],
+      "belt-kit": [ "dagger", "spear", "sword", "saw", "hammer", "apron", "apron2", "apron3", "armor-chest", "armor-chest2" ],
+      "bow": [ "magnifying-glass", "spyglass", "saw", "chisel", "hammer" ],
+      "spear": [ "belt-kit", "sword" ],
+      "saw": [ "belt-kit", "bow" ],
+      "chisel": [ "bow" ],
+      "pickaxe": [ "hood", "hood2" ],
+      "sword": [ "belt-kit", "spear" ],
+      "scarf": [ "jewelry-chestpin", "jewelry-chestpin2", "jewelry-chestpin3", "sack" ],
+      "sash": [ "apron", "apron2", "apron3", "armor-chest", "armor-chest2", "jewelry-chestpin", "jewelry-chestpin2", "jewelry-chestpin3" ],
+      "hammer": [ "belt-kit", "spear" ]
+  }
+}

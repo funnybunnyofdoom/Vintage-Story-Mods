@@ -1,0 +1,28 @@
+{
+	code: "bonysoil",
+	creativeinventory: { "general": ["*"], "flora": ["*"], "terrain": ["*"] },
+	shape: { base: "block/basic/cube" },
+	blockmaterial: "Soil",
+	textures: {
+		all: {base: "block/soil/bony/normal*"},
+	},
+	attributes: {
+		pannable: true,
+		preventsDecay: true
+	},
+	replaceable: 400,
+	fertility: 30,
+	resistance: 2.2,
+	sounds: {
+		place: "block/dirt",
+		break: "block/dirt",
+		hit: "block/dirt",
+		walk: "walk/grass"
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

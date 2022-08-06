@@ -1,0 +1,71 @@
+{
+	code: "table",
+	behaviors: [{name: "UnstableFalling"} ],
+	variantgroups: [
+		{ code:"type", states: ["normal", "aged", "whitemarble", "redmarble", "greenmarble" ] },
+	],
+	attributes: {
+		"pieFormingSurface": true
+	},
+	shape: { base: "block/wood/table" },
+	heldTpIdleAnimation: "holdunderarm",
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 1.5,
+	lightAbsorption: 1,
+	sidesolid: {
+		up: true,
+		all: false
+	},	
+	sideopaque: {
+		up: true,
+		all: false
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 35,
+	},
+	texturesByType: {
+		"*-whitemarble": {
+			"sides": { base: "block/wood/table/normal/sides-{type}" },
+			"top": { base: "block/stone/polishedrock/{type}-inside" },
+			"bottom": { base: "block/wood/table/normal/bottom" },
+			"legs": { base: "block/wood/table/normal/legs" }
+		},
+		"*-redmarble": {
+			"sides": { base: "block/wood/table/normal/sides-{type}" },
+			"top": { base: "block/stone/polishedrock/{type}-inside" },
+			"bottom": { base: "block/wood/table/normal/bottom" },
+			"legs": { base: "block/wood/table/normal/legs" }
+		},
+		"*-greenmarble": {
+			"sides": { base: "block/wood/table/normal/sides-{type}" },
+			"top": { base: "block/stone/polishedrock/{type}-inside" },
+			"bottom": { base: "block/wood/table/normal/bottom" },
+			"legs": { base: "block/wood/table/normal/legs" }
+		},
+		"*": {
+			"sides": { base: "block/wood/table/{type}/sides" },
+			"top": { base: "block/wood/table/{type}/top" },
+			"bottom": { base: "block/wood/table/{type}/bottom" },
+			"legs": { base: "block/wood/table/{type}/legs" }
+		}
+	},
+	materialDensity: 400,
+	tpHandTransform: {
+		translation: { x: -0.7, y: -0.6, z: -0.9 },
+		rotation: { x: 80, y: 0, z: 0 },
+		scale: 0.56
+	},
+	fpHandTransform: {
+		translation: { x: 0.08, y: -0.2, z: 0.6 },
+		rotation: { x: 33, y: 134, z: -102 }
+	}
+}

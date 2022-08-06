@@ -1,0 +1,13 @@
+{
+	code: "silvertorchcactus",
+	enabled: false,
+	shape: { base: "block/plant/silvertorchcactus/normal" },
+	creativeinventory: { "general": ["*"] },
+	blockmaterial: "Glass",
+	replaceable: 900,
+	lightAbsorption: 0,
+	resistance: 0.25,
+	sideopaque: {
+		all: false
+	},
+}

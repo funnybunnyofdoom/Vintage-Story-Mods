@@ -1,0 +1,114 @@
+{
+	code: "crucible",
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', placeRemoveSound: 'sounds/player/build',	collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.4375, z2: 1 } } },
+		{ name: "Unplaceable", "__comment": "The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility" },
+		{ name: "RightClickPickup"}
+	],
+	classByType: {
+		"crucible-burned": "BlockSmeltingContainer",
+		"crucible-smelted": "BlockSmeltedContainer"
+	},
+	heldTpIdleAnimation: "holdbothhands",
+	attributesByType: {
+		"crucible-burned": {
+			shelvable: true,
+			cookingContainerSlots: 4,
+			maxContentDimensions: { width: 0.125, height: 0.25, length: 0.125 },
+			storageType: 4,
+			maxHeatableTemp: 1200,
+			inFirePitProps: {
+				transform: { },
+				useFirepitModel: "Wide"
+			}
+		},
+		"crucible-smelted": {
+			shelvable: true,
+			inFirePitProps: {
+				transform: { },
+				useFirepitModel: "Wide"
+			},
+			emptiedBlockCode: "crucible-burned"
+		},
+		"*": {
+			shelvable: true
+		}
+	},
+	variantgroups: [
+		{ code:"type", states: ["raw", "burned", "smelted"] },
+	],
+	entityclassByType: {
+		"*-raw": null,
+		"*-smelted": "SmeltedContainer",
+		"*-burned": null
+	},
+	combustiblePropsByType: {
+		"crucible-raw": {
+			meltingPoint: 600,
+			meltingDuration: 45,
+			smeltedRatio: 1,
+			smeltingType: "fire",
+			smeltedStack: { type: "block", code: "crucible-burned" },
+			requiresContainer: false
+		},
+		"crucible-smelted": {
+			meltingPoint: 2400,
+			meltingDuration: 45,
+			smeltedRatio: 1,
+			smeltingType: "bake",
+			smeltedStack: { type: "block", code: "crucible-burned" },
+			requiresContainer: false
+		}
+	},
+	shape: { base: "block/clay/crucible" },
+	doNotRenderAtLod2: true,
+	blockmaterial: "Ceramic",
+	creativeinventory: { "general": ["crucible-raw", "crucible-burned"], "decorative": ["crucible-raw", "crucible-burned"] },
+	replaceable: 300,
+	resistance: 2,
+	maxStackSizeByType: {
+		"*-raw": 4,
+		"*-burned": 4,
+		"*-smelted": 1,
+	},
+	lightAbsorption: 0,
+	texturesByType: {
+		"*-raw": { 
+			all: { base: "block/clay/blueclay" }
+		},
+	},
+	sounds: {
+		walk: "walk/stone",
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	emitsideao: {
+		all: false
+	},
+	collisionbox: { x1: 0.3125, y1: 0, z1: 0.3125, x2: 0.6875, y2: 0.4375, z2: 0.6875 },
+	selectionbox: { x1: 0.3125, y1: 0, z1: 0.3125, x2: 0.6875, y2: 0.4375, z2: 0.6875 },
+	guiTransform: {
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 2.4
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.4, z: 0.5 },
+		scale: 2
+	},
+	tpHandTransform: {
+		translation: { x: -0.5, y: 0.05, z: -0.6 },
+		rotation: { x: 0, y: 22, z: -100 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 0.76
+	}
+	
+	
+}

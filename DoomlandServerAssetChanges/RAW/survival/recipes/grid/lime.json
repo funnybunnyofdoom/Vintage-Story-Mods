@@ -1,0 +1,12 @@
+[
+	{
+		ingredientPattern: "H	S",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true  },
+			"S": { type: "item", code: "stone-*", allowedVariants: ["chalk", "marble", "limestone"] }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "lime", quantity: 1  }
+	}
+]

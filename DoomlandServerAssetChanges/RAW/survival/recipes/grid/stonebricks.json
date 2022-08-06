@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "LLL	LCL	LLL",
+	ingredients: {
+		"C": { type: "item", code: "mortar" },
+		"L": { type: "item", code: "stonebrick-*", name: "rock", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite"] }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "stonebricks-{rock}", quantity: 2 }
+}

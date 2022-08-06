@@ -1,0 +1,26 @@
+[
+	{
+		code: "dye-brown",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 4 },
+			{ type: "block", code: "log-placed-oak-ud",  quantity: 1 }
+		],
+		output: { type: "item", code: "dye-brown", litres: 4 }
+	},
+	{
+		code: "dye-brown",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "block", code: "log-placed-oak-ud",  quantity: 1 }
+		],
+		output: { type: "item", code: "dye-brown", litres: 2 }
+	},
+	{
+		code: "dye-brown",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "block", code: "log-placed-oak-ud",  quantity: 1 }
+		],
+		output: { type: "item", code: "dye-brown", litres: 3 }
+	}
+]

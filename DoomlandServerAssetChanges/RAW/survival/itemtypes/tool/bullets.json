@@ -1,0 +1,46 @@
+{
+	code: "bullets",
+	class: "ItemArrow",
+	variantgroups: [
+		{ code: "material", states: ["lead"] },
+	],
+	maxstacksize: 64,
+	storageFlags: 513,
+	shape: { base: "item/tool/bullets" },
+	textures: {
+		metal: { base: "block/metal/ingot/{material}" }
+	},
+	//creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	guiTransform: {
+		rotation: { x: -33, y: -45, z: 0 },
+		origin: { x: 0 , y: .4 , z: 0 },
+		scale: 1.44
+	},
+	fpHandTransform: {
+		translation: { x: 0.35, y: 0, z: 0 },
+		rotation: { x: 87, y: 90, z: 0 },
+		scale: 1.14
+	},
+	tpHandTransform: {
+		translation: { x: -1.05, y: -0.59, z: -0.96 },
+		rotation: { x: 0, y: 2, z: 3 },
+		scale: 0.48
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.64
+	},
+	attributes: {
+		damageByType: {
+			"*-lead": -0.75
+		},
+		breakChanceOnImpactByType: {
+			"*-lead": 0.33
+		},
+		handbook: {
+			groupBy: ["bullet-*"]
+		}
+	},
+}

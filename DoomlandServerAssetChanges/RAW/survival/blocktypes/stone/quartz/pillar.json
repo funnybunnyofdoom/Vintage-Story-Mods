@@ -1,0 +1,48 @@
+{
+	code: "quartzpillar",
+	behaviors: [{name: "Pillar"}],
+	variantgroups: [
+		{ code: "rotation", states: ["ud", "ns", "we"] },
+	],
+	creativeinventory: { "general": ["*-ud"], "construction": ["*-ud"] },
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	blockmaterial: "Stone",
+	texturesByType: {
+		"*-ud": {
+			"all": { base: "block/stone/quartz/pillar/side" },
+			"up": { base: "block/stone/quartz/pillar/topbottom" },
+			"down": { base: "block/stone/quartz/pillar/topbottom" }
+		},
+		"*-ns": {
+			"all": { base: "block/stone/quartz/pillar/side-h" },
+			"up": { base: "block/stone/quartz/pillar/side" },
+			"down": { base: "block/stone/quartz/pillar/side" },
+			"north": { base: "block/stone/quartz/pillar/topbottom" },
+			"south": { base: "block/stone/quartz/pillar/topbottom" }
+		},
+		"*-we": {
+			"all": { base: "block/stone/quartz/pillar/side-h" },
+			"up": { base: "block/stone/quartz/pillar/side-h" },
+			"west": { base: "block/stone/quartz/pillar/topbottom" },
+			"east": { base: "block/stone/quartz/pillar/topbottom" }
+		},
+	},
+	replaceable: 500,
+	resistance: 4,
+	sounds: {
+		"walk": "walk/stone",
+		byTool: {
+			"Pickaxe": { hit: "block/rock-hit-pickaxe", break: "block/rock-break-pickaxe" }
+		}
+	},
+	drops: [
+		{ type: "block", code: "quartzpillar-ud", quantity: { avg: 1 }  }
+	],
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

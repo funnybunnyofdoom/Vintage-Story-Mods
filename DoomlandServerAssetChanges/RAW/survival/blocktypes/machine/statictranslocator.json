@@ -1,0 +1,49 @@
+{
+	code: "statictranslocator",
+	class: "BlockStaticTranslocator",
+	behaviors: [{name: "HorizontalOrientable"}],
+	entityBehaviors: [{ name: "Animatable" }],
+	entityClassByType: { "*-normal-*": "StaticTranslocator" },
+	variantgroups: [
+		{ code:"state", states: ["normal", "broken"] },
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": ["*-broken-north"] },
+	drawtype: "json",
+	faceCullMode: "NeverCull",
+	blockmaterial: "Metal",
+	replaceable: 900,
+	lightAbsorption: 0,
+	shapeByType: {
+		"*-north": { base: "block/machine/statictranslocator/{state}", rotateY:0 },
+		"*-east": { base: "block/machine/statictranslocator/{state}", rotateY:270 },
+		"*-south": { base: "block/machine/statictranslocator/{state}", rotateY:180 },
+		"*-west": { base: "block/machine/statictranslocator/{state}", rotateY:90 },
+	},
+	resistance: 99999,
+	sideopaque: {
+		all: false
+	},
+	sideao: { all: false } ,
+	sidesolid: { all: false },
+	soundsByType: {
+		"*-broken-*": {
+			"place": "block/planks",
+			"walk": "walk/wood",
+		},
+		"*-normal-*": {
+			"place": "block/planks",
+			"walk": "walk/wood",
+			"ambient": "effect/translocate-idle"
+		}
+	},
+	drops: [],
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	},
+	collisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+	selectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 },
+}

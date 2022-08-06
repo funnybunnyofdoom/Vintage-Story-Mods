@@ -1,0 +1,34 @@
+[
+	{
+		code: "peat",
+		triesPerChunk: 0.05,
+		generator: "disc-followsurfacebelow",
+		attributes: {
+			inblock: { code: "soil-*", name: "fertcover", allowedVariants: ["low-none", "medium-none", "low-verysparse", "medium-verysparse", "low-sparse", "medium-sparse", "low-normal", "medium-normal"] },
+			placeblock: { 
+				code: "peat-*", 
+				name: "peatfertcover",
+				allowedVariantsByInBlock: {
+					"soil-low-none": ["none"],
+					"soil-medium-none": ["none"],
+					"soil-low-verysparse": ["verysparse"],
+					"soil-medium-verysparse": ["verysparse"],
+					"soil-low-sparse": ["verysparse"],
+					"soil-medium-sparse": ["verysparse"],
+					"soil-low-normal": ["verysparse"],
+					"soil-medium-normal": ["verysparse"]
+				}
+			},
+			withLastLayerBlockCallback: true,
+			radius: { dist: "uniform", avg: 13, var: 6 },
+			depth: { dist: "uniform", avg: 0, var: 0 },
+			thickness: { avg: 3.3, var: 1 },
+			maxYRoughness: 1,
+		},
+		climate: {
+			minRain: 0.5,
+			minTemp: 1,
+			maxTemp: 18
+		}
+	}
+]

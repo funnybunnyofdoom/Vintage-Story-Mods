@@ -1,0 +1,71 @@
+{
+	code: "anvil",
+	class: "BlockAnvil",
+	behaviors: [
+		{ name: "UnstableFalling", impactDamageMul: 20 },
+	],
+	attributes: {
+	},
+	entityClass: "Anvil",
+	enabled: true,
+	heldTpIdleAnimation: "holdunderarm",
+	variantgroups: [
+		{ code:"metal", states: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel"] },
+	],
+	shapeByType: {
+		"@anvil-(iron|meteoriciron|steel)": {
+			"base": "block/metal/anvil/iron"
+		},
+		"*": {
+			"base": "block/metal/anvil/normal"
+		}
+	},
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	blockmaterial: "Metal",
+	replaceable: 100,
+	resistance: 2,
+	lightAbsorption: 0,
+	maxStackSize: 1,
+	textures: {
+		all: { base: "block/metal/anvil/{metal}" },
+		ironbloom: { base: "item/resource/ironbloom" },
+		blistersteel: { base: "block/metal/ingot/blistersteel" },
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	"__comment": "defined for both angles",
+	collisionSelectionBoxesByType: {
+		"*":
+			[
+				{ x1: 0, y1: 0, z1: 0.3125, x2: 1, y2: 0.625, z2: 0.6875 },
+				{ x1: 0.3125, y1: 0, z1: 0, x2: 0.6875, y2: 0.625, z2: 1 }
+			]
+	},
+	sounds: {
+		"place": "block/anvil",
+		"break": "block/anvil",
+		"hit": "block/anvil"
+	},
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.3, z: -0.5 },
+		rotation: { x: 0, y: 0, z: -110 },
+		scale: 0.6
+	},
+	guiTransform: {
+		rotation: { x: -20, y: -41, z: 0 },
+		origin: { x: 0.46, y: 0.34, z: 0.5 },
+		scale: 1.48
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2
+	},
+	fpHandTransform: {
+		rotation: { x: 12, y: -22, z: 0 },
+		origin: { x: 0.5, y: 0.3, z: 0.5 }
+	}
+}

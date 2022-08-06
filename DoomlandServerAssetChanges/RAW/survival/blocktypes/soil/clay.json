@@ -1,0 +1,77 @@
+{
+	code: "rawclay",
+	"__comment": "BlockSoilDeposit contains 1 method for setting the correct map color via GetBlockColor(), 1 method for generating soil below a deposit where needed and 1 method to make it grow grass",
+	class: "BlockSoilDeposit",
+	variantgroups: [
+		{ code:"type", states: ["blue", "fire"] },
+		{ code:"grasscoverage", states: ["none", "verysparse"] },
+	],
+	shape: { base: "block/basic/cube" },
+	drawtype: "TopSoil",
+	renderpass: "TopSoil",
+	blockmaterial: "Soil",
+	attributes: {
+		ignoreTintInventory: true,
+		placeBelowBlockCode: "soil-low-none",
+		growthBlockLayer: "l1soilwithgrass",
+		growthLightLevel: 7,
+		preventsDecay: true,
+		tallGrassGrowthChance: 0.6,
+		spreadsGrassByType: {
+			"*-verysparse": true,
+			"*-none": false,
+		}
+	},
+	creativeinventory: { "general": ["*"], "terrain": ["*"] },
+	replaceable: 700,
+	resistance: 4,
+	textures: {
+		all: {base: "block/soil/{type}clay"},
+		snowed: {base: "block/plant/grasscoverage/snow/normal"},
+		specialSecondTexture: {base: "block/plant/grasscoverage/{grasscoverage}"}
+	},
+	texturesInventory: {
+		down: {base: "block/soil/{type}clay"},
+		horizontals: {
+			base: "block/soil/{type}clay",
+			overlays: ["block/plant/grasscoverage/inventory/side_{grasscoverage}"]
+		},
+		up: {
+			base: "block/soil/{type}clay",
+			overlays: ["block/plant/grasscoverage/inventory/top_{grasscoverage}"]
+		}
+	},
+	climateColorMapByType: {
+		"*-none": null,
+		"*": "climatePlantTint",
+	},
+	seasonColorMapByType: {
+		"*-none": null,
+		"*": "seasonalGrass",
+	},
+	frostable: true,
+	sounds: {
+		place: "block/dirt",
+		break: "block/dirt",
+		hit: "block/dirt",
+	},
+	fertility: 5,
+	drops: [
+		{ 
+			type: "item", 
+			code: "clay-{type}",
+			quantity: { avg: 4.5, var: 1 },
+		},
+		{
+			type: "block",
+			code: "ethoslab",
+			quantity: { avg: 0.000001 }
+		}
+	],
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

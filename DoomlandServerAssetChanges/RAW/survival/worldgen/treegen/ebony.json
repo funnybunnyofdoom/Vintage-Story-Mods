@@ -1,0 +1,37 @@
+{
+	treeWorldPropertyCode: "ebony",
+	isTropical: true,
+	sizeMultiplier: 1.3,
+	trunks: [{
+		widthloss: 0.1,
+		branchStart: { avg: 0.3, var: 0.05 },
+		branchSpacing: { avg: 0, var: 0 },
+		branchVerticalAngle:  { avg: 1.32, var: 0 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplier: { avg: 0.3, var: 0 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 1.4 },
+		branchQuantity: { avg: 2, var: 0 },
+		branchQuantityEvolve: { transform: "linear", factor: 3 }
+	}],
+	branches: [{
+		widthLoss: 0.1,
+		gravityDrag: 0,
+
+		branchStart:  { avg: 0, var: 0 },
+		branchSpacing: { avg: 0.01, var: 0 },
+		branchVerticalAngle: { avg: 1.1, var: 0.2 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+
+		branchQuantity: { avg: 0.9, var: 0 },
+		branchWidthMultiplier: { avg: 0.5, var: 0 }
+	}, {
+		branchStart: { avg: 2 }
+	}],
+	treeBlocks: {
+		logBlockCode: "log-grown-ebony-ud",
+		leavesBlockCode: "leaves-grown-ebony",
+		leavesBranchyBlockCode: "leavesbranchy-grown-ebony",
+		vinesBlockCode: "wildvine-section-north",
+		vinesEndBlockCode: "wildvine-end-north"
+	}
+}

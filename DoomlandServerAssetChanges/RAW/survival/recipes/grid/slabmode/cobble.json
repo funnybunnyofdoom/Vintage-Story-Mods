@@ -1,0 +1,10 @@
+{
+	"__comment": "The OmniRotatable modifiers the output of this recipe to change the placement mode in the item stacks attributes",
+	ingredientPattern: "L",
+	ingredients: {
+		"L": { type: "block", code: "cobblestoneslab-*-down-free", name: "rock" }
+	},
+	width: 1,
+	height: 1,
+	output: { type: "block", code: "cobblestoneslab-{rock}-down-free", quantity: 1 }
+}

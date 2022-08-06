@@ -1,0 +1,13 @@
+{
+	"code": "verticalorientation",
+	"variants": [
+		{
+			"code": "up",
+			"angle": "0",
+		},
+		{
+			"code": "down",
+			"angle": "180",
+		}
+	]
+}

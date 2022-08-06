@@ -1,0 +1,56 @@
+{
+	code: "smallcarpet",
+	behaviors: [ {name: "Decor", properties: {sides: ["up"], notFullFace:true, removable:true }} ],
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	variantgroups: [
+		{ code:"color", states: ["black", "blue", "brown", "purple", "red", "turqoise", "turqoise2"] },
+	],
+	shape: { base: "block/basic/flat" },
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	blockmaterial: "Cloth",
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	replaceable: 5200,
+	resistance: 0.5,
+	vertexFlags: {
+		zOffset: 5
+	},
+	lightAbsorption: 0,
+	textures: {
+		all: { 
+			base: "block/cloth/smallcarpet/{color}"
+		}
+	},
+	selectionbox: {
+		x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1,
+	},
+	collisionbox: null,
+	combustibleProps: {
+		burnTemperature: 400,
+		burnDuration: 10,
+	},
+	sounds: {
+		place: "block/cloth",
+		walk: "walk/cloth"
+	},
+	guiTransform: {
+		translation: { x: 0, y: 3, z: 0 },
+		origin: { x: 0.5, y: 0.0625, z: 0.5 }
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: -45, z: 0 },
+		origin: { x: 0.5, y: -0.02, z: 0.5 },
+		scale: 1.5
+	},	
+	tpHandTransform: {
+		translation: { x: -1.7, y: 0.1, z: -1.5 },
+		rotation: { x: -46, y: 0, z: -2 },
+		origin: { x: 0.5, y: 0, z: 0.5 }
+	},
+	materialDensity: 200
+}

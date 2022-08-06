@@ -1,0 +1,14 @@
+{
+	"code": "ore-gem-cut",
+	"variants": [
+		{
+			"Code": "diamond"
+		},
+		{
+			"Code": "emerald"
+		},
+		{
+			"Code": "peridot"
+		}
+	]
+}

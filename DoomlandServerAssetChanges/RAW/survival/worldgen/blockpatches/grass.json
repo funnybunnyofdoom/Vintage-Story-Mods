@@ -1,0 +1,109 @@
+[
+	{
+		comment: "Very short grass under trees",
+		blockCodes: ["tallgrass-veryshort-free"],
+		minTemp: 5,
+		maxTemp: 20,
+		minForest: 0.5,
+		minRain: 0.4,
+		maxRain: 0.8,
+		minFertility: 0.2,
+		maxFertility: 0.4,
+		quantity: { avg: 10, var: 5 },
+		chance: 16
+	},
+	{
+		comment: "Medium grass in forest clearings",
+		blockCodes: ["tallgrass-mediumshort-free"],
+		minTemp: 5,
+		maxTemp: 20,
+		minForest: 0.5,
+		minRain: 0.4,
+		maxRain: 0.8,
+		minFertility: 0.2,
+		maxFertility: 0.4,
+		quantity: { avg: 20, var:10 },
+		chance: 4
+	},
+	{
+		comment: "Tall grass in forest clearings",
+		blockCodes: ["tallgrass-tall-free"],
+		minTemp: 5,
+		maxTemp: 20,
+		minForest: 0.5,
+		minRain: 0.4,
+		maxRain: 0.8,
+		minFertility: 0.4,
+		quantity: { avg: 20, var:10 },
+		chance: 4
+	},
+	{
+		comment: "small tight patches of water lily",
+		blockCodes: ["waterlily"],
+		minTemp: 10,
+		maxTemp: 40,
+		minRain: 0.5,
+		quantity: { avg: 4, var: 3 },
+		chance: 4
+	},
+	{
+		comment: "Rare but huge patches of tall grass in deserts",
+		blockCodes: ["tallgrass-tall-free", "tallgrass-medium-free"],
+		minTemp: 20,
+		maxTemp: 40,
+		minRain: 0.1,
+		maxRain: 0.15,
+		chance: 0.1,
+		quantity: { dist: "invexp", avg: 300, var: 250 },
+		offsetX: { dist: "gaussian", avg: 0, var: 24 },
+		offsetZ: { dist: "gaussian", avg: 0, var: 24 },
+	},
+	{
+		comment: "Semi-common but huge patches of tall grass in savannas",
+		blockCodes: ["tallgrass-tall-free", "tallgrass-medium-free"],
+		minTemp: 25,
+		maxTemp: 40,
+		minRain: 0.3,
+		maxRain: 0.35,
+		chance: 0.25,
+		quantity: { dist: "invexp", avg: 200, var: 250 },
+		offsetX: { dist: "gaussian", avg: 0, var: 24 },
+		offsetZ: { dist: "gaussian", avg: 0, var: 24 },
+	},
+	{
+		comment: "Just random patches of short grass",
+		blockCodes: ["tallgrass-short-free"],
+		minTemp: 12,
+		minRain: 0.2,
+		quantity: { avg: 20, var:10 },
+		chance: 0.2
+	},
+	{
+		comment: "Just random patches of tall grass",
+		blockCodes: ["tallgrass-tall-free"],
+		minTemp: 5,
+		minRain: 0.4,
+		quantity: { avg: 20, var:10 },
+		chance: 0.2
+	},
+	{
+		comment: "Random loose patches of small tall grass in cold climates",
+		blockCodes: ["tallgrass-mediumshort-free", "tallgrass-veryshort-free", "tallgrass-short-free", "tallgrass-mediumshort-free"],
+		minTemp: -12,
+		maxTemp: 0,
+		minRain: 0.12,
+		chance: 0.7,
+		offsetX: { dist: "gaussian", avg: 0, var: 10 },
+		offsetZ: { dist: "gaussian", avg: 0, var: 10 },
+		quantity: { avg: 30, var: 15 }
+	},
+	{
+		comment: "Random tight patches of free tall grass in cold climates",
+		blockCodes: ["tallgrass-medium-free", "tallgrass-tall-free"],
+		minTemp: -5,
+		maxTemp: 0,
+		minRain: 0.12,
+		chance: 0.4,
+		quantity: { avg: 20, var:10 }
+	}
+]

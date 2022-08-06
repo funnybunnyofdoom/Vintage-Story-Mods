@@ -1,0 +1,19 @@
+{
+	code: "chiseledblock",
+	class: "BlockChisel",
+	entityClass: "Chisel",
+	attributes: {
+		dropSelf: true
+	},
+	variantgroups: [
+		{ code: "cover", states: ["snow"] }
+	],
+	creativeinventory: { "general": [""] },
+	shape: { base: "game:block/basic/cube" },
+	replaceable: 90,
+	drops: [],
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	sideao: { all: true },
+	lightAbsorption: 99
+}

@@ -1,0 +1,431 @@
+{
+	code: "drifter",
+	class: "EntityHumanoid",
+	canClimb: true,
+	hitboxSize: { x: 0.6, y: 1.3 },
+	deadHitboxSize: { x: 0.6, y: 1 },
+	eyeHeight: 1.3,
+	attributes: {
+		glitchAffected: true,
+		reckless: true,
+		extraSplashParticlesMul: 4,
+		spawnCloserDuringLowStability: true,
+		onDeathStabilityRecoveryByType: {
+			"drifter-normal": 0.01,
+			"drifter-deep": 0.015,
+			"drifter-tainted": 0.02,
+			"drifter-corrupt": 0.025,
+			"drifter-nightmare": 0.3,
+			"drifter-double-headed": 0.35,
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["normal", "deep", "tainted", "corrupt", "nightmare", "double-headed"]},
+	],
+	drops: [],
+	client: {
+		renderer: "Shape",
+		pitchStep: false,
+		shapeByType: {
+			"*-normal": { base: "entity/land/drifter/surface" },
+			"*-deep": { base: "entity/land/drifter/surface" },
+			
+			"*-tainted": { base: "entity/land/drifter/spiked1", alternates: [{ base: "entity/land/drifter/spiked2" }] },
+			"*-corrupt": { base: "entity/land/drifter/deerhorn" },
+			"*-nightmare": { base: "entity/land/drifter/knife" },
+			"*-double-headed": { base: "entity/land/drifter/double-headed" },
+		},
+		texturesByType: {
+			"*-normal": {
+				"skin": { base: "entity/drifter/surface1", alternates: [ { base: "entity/drifter/surface2" }, {base: "entity/drifter/surface3" }] },
+			},
+			"*-deep": {
+				"skin": { base: "entity/drifter/deep1", alternates: [ { base: "entity/drifter/deep2" } ] },
+			},
+			"*-double-headed": {
+				"skin": { base: "entity/drifter/double" },
+			}
+		},
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "interpolateposition" },
+			{ code: "harvestable", duration: 2 }
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "standhurt", 
+				animationSpeed: 2,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "die",
+				animation: "standdie", 
+				animationSpeed: 0.7,
+				weight: 10,
+				blendMode: "Average",
+				triggeredBy: { onControls: ["dead"] }
+			},
+			{ 
+				code: "idle", 
+				animation: "standidle",
+				blendMode: "Average", 
+				triggeredBy: { defaultAnim: true },
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "health", 
+				currenthealthByType: {
+					"*-normal": 12,
+					"*-deep": 16,
+					"*-tainted": 22,
+					"*-corrupt": 30,
+					"*-nightmare": 40,
+					"*-double-headed": 48
+				},
+				maxhealthByType: {
+					"*-normal": 12,
+					"*-deep": 16,
+					"*-tainted": 22,
+					"*-corrupt": 30,
+					"*-nightmare": 40,
+					"*-double-headed": 48
+				}
+			},
+			{ code: "deaddecay", hoursToDecay: 3 },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "despawn", minPlayerDistance: 32, minSeconds: 30 },
+			{ code: "despawn", minPlayerDistance: 64, minSeconds: 6 },
+			{
+				code: "emotionstates",
+				states: [  {
+						code: "fleeondamage", 
+						duration: 10,
+						chanceByType: {
+							"*-normal": 0.15,
+							"*-deep": 0.07,
+							"*-tainted": 0.03,
+							"*-corrupt": 0.015,
+							"*-nightmare": 0.01,
+							"*-double-headed": 0.01,
+						},
+						slot: 0, 
+						priority: 1, 
+						accumType: "max" 
+					} ]
+			},
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 3,
+						movespeed: 0.018,
+						seekingRange: 20,
+						fleeingDistance: 64,
+						fleeDurationMs: 9999999,
+						minDayLightByType: {
+							"*-normal": 0.925,
+							"*-deep": 0.97,
+							"*-tainted": 2,
+							"*-corrupt": 2,
+							"*-nightmare": 2,
+							"*-double-headed": 2,
+						},
+						ignoreDeepDayLight: true,
+						cancelOnHurt: true,
+						executionChance: 0.003,
+						animation: "standrun",
+						animationSpeed: 1.3
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 2.5,
+						movespeed: 0.018,
+						seekingRange: 12,
+						cancelOnHurt: true,
+						animation: "standrun",
+						animationSpeed: 1.3,
+						whenInEmotionState: "fleeondamage"
+					},
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damageByType: {
+							"*-normal": 2.5,
+							"*-deep": 4,
+							"*-tainted": 8,
+							"*-corrupt": 12,
+							"*-nightmare": 20,
+							"*-double-headed": 24
+						},
+						damageTierByType: {
+							"*-normal": 0,
+							"*-deep": 1,
+							"*-tainted": 2,
+							"*-corrupt": 3,
+							"*-nightmare": 4,
+							"*-double-headed": 4
+						},
+						damageTypeByType: {
+							"*-corrupt": "SlashingAttack",
+							"*-nightmare": "SlashingAttack",
+							"*-double-headed": "SlashingAttack"
+						},
+						mincooldown: 500, 
+						maxcooldown: 1750, 
+						damagePlayerAtMs: 400,
+						attackDurationMs: 1000,
+						animation: "standattack",
+						animationSpeed: 1.5,
+						sound: "creature/drifter-hit",
+						soundStartMs: 400
+					},
+					{
+						code: "throwatentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						priorityForCancel: 9,
+						mincooldown: 1000, 
+						maxcooldown: 10000, 
+						durationMs: 1200,
+						releaseAtMs: 700,
+						seekingRange: 15,
+						animationSpeed: 1.5,
+						animation: "standthrowleft"
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						mincooldown: 400, 
+						maxcooldown: 800, 
+						movespeed: 0.018,
+						seekingRange: 20,
+						animationSpeed: 1.3,
+						animation: "standrun",
+						sound: "creature/drifter-aggro"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 4000,
+						maxduration: 6000,
+						chance: 0.001,
+						initialMinCoolDown: 2000,
+						initialMaxCoolDown: 150000,
+						mincooldown: 300000,
+						maxcooldown: 10000000,
+						animation: "standdespair",
+						animationSpeed: 1.25
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 2.1,
+						minduration: 4000,
+						maxduration: 6000,
+						chance: 0.001,
+						initialMinCoolDown: 2000,
+						initialMaxCoolDown: 150000,
+						mincooldown: 300000,
+						maxcooldown: 10000000,
+						animation: "standcry",
+						animationSpeed: 1
+					},
+					{
+						code: "wander", 
+						priority: 1.0, 
+						movespeed: 0.01,
+						animationSpeed: 1.2,
+						animation: "standwalk",
+						preferredLightLevel: 15
+					},
+					{
+						code: "wander", 
+						priority: 0.99,
+						priorityForCancel: 1.1,
+						movespeed: 0.008,
+						animationSpeed: 1.1,
+						animation: "standlowwalk",
+						preferredLightLevel: 15
+					},
+					{
+						code: "getoutofwater",
+						priority: 1.4,
+						movespeed: 0.015,
+						animation: "standwalk",
+						animationSpeed: 1.55
+					},
+					{ 
+						code: "lookaround", 
+						priority: 0.5
+					}
+				]
+			},
+			{ code: "harvestable", duration: 2, dropsByType: {
+				"*-normal": [
+					{
+						type: "item",
+						code: "gear-temporal",
+						quantity: { avg: 0.02666, var: 0 }
+					},
+					{
+						type: "item",
+						code: "flaxfibers",
+						quantity: { avg: 0.2, var: 0 }
+					},
+					{
+						type: "item",
+						code: "gear-rusty",
+						dropModbyStat: "rustyGearDropRate",
+						quantity: { avg: 0.01, var: 0 }
+					}
+				],
+				"*-deep": [
+					{
+						type: "item",
+						code: "gear-temporal",
+						quantity: { avg: 0.033325, var: 0 }
+					},
+					{
+						type: "item",
+						code: "gear-rusty",
+						dropModbyStat: "rustyGearDropRate",
+						quantity: { avg: 0.03, var: 0 }
+					},
+					{
+						type: "item",
+						code: "flaxfibers",
+						quantity: { avg: 0.4, var: 0 }
+					}
+				],		
+				"*-tainted": [
+					{
+						type: "item",
+						code: "gear-temporal",
+						quantity: { avg: 0.03999, var: 0 }
+					},
+					{
+						type: "item",
+						code: "gear-rusty",
+						dropModbyStat: "rustyGearDropRate",
+						quantity: { avg: 0.07, var: 0 }
+					},
+					{
+						type: "item",
+						code: "flaxfibers",
+						quantity: { avg: 0.6, var: 0 }
+					}
+				],
+				"*-corrupt": [
+					{
+						type: "item",
+						code: "gear-temporal",
+						quantity: { avg: 0.046655, var: 0 }
+					},
+					{
+						type: "item",
+						code: "gear-rusty",
+						dropModbyStat: "rustyGearDropRate",
+						quantity: { avg: 0.1, var: 0 }
+					},
+					{
+						type: "item",
+						code: "flaxfibers",
+						quantity: { avg: 0.8, var: 0 }
+					}
+				],
+				"*-nightmare": [
+					{
+						type: "item",
+						code: "gear-temporal",
+						quantity: { avg: 0.05332, var: 0 }
+					},
+					{
+						type: "item",
+						code: "gear-rusty",
+						dropModbyStat: "rustyGearDropRate",
+						quantity: { avg: 0.2, var: 0 }
+					},
+					{
+						type: "item",
+						code: "flaxfibers",
+						quantity: { avg: 1, var: 0 }
+					}
+				],
+				"*-double-headed": [
+					{
+						type: "item",
+						code: "gear-temporal",
+						quantity: { avg: 1, var: 0.4 }
+					},
+					{
+						type: "item",
+						code: "gear-rusty",
+						dropModbyStat: "rustyGearDropRate",
+						quantity: { avg: 5, var: 2.5 }
+					},
+					{
+						type: "item",
+						code: "flaxfibers",
+						quantity: { avg: 2, var: 0 }
+					}
+				],
+				},
+			}
+		],
+		spawnconditions: {
+			runtime: {
+				group: "hostile",
+				maxQuantityByType: {
+					"*-normal": 14,
+					"*-deep": 8,
+					"*-tainted": 7,
+					"*-corrupt": 6,
+					"*-nightmare": 5,
+					"*-double-headed": 0
+				},
+				maxLightLevel: 9,
+				chance: 0.1,
+				lightLevelType: "MaxTimeOfDayLight",
+				groupSizeByType: {
+					"*-normal": { dist: "invexp", avg: 1, var: 3 },
+					"*": { dist: "uniform", avg: 1.5, var: 0.5 },
+				},
+				insideBlockCodes: ["air", "tallgrass-*"],
+				minYByType: {
+					"*-normal": 0.85,
+					"*-deep": 0.22,
+					"*-tainted": 0.1,
+					"*-corrupt": 0,
+					"*-nightmare": 0
+				},
+				maxYByType: {
+					"*-normal": 2,
+					"*-deep": 0.89,
+					"*-tainted": 0.55,
+					"*-corrupt": 0.35,
+					"*-nightmare": 0.23
+				}
+			}
+		}
+	},
+	idleSoundRange: 14,
+	sounds: {
+		hurt: "creature/drifter-hurt",
+		death: "creature/drifter-death",
+		idle: "creature/drifter-idle"
+	}
+}

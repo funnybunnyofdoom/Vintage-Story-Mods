@@ -1,0 +1,17 @@
+{
+	ingredient: { type: "item", code: "stone-*", name: "rock", allowedVariants: ["chert", "granite", "andesite", "basalt", "obsidian", "flint", "peridotite"] },
+	pattern: [[
+		"____##____",
+		"____##____",
+		"___####___",
+		"___####___",
+		"___####___",
+		"__######__",
+		"__######__",
+		"__######__",
+		"__######__",
+		"___####___"
+	]],
+	name: "Stone spear",
+	output: { type: "item", code: "spearhead-{rock}"  }
+}

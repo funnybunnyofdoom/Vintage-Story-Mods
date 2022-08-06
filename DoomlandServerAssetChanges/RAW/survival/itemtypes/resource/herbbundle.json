@@ -1,0 +1,15 @@
+{
+	code: "herbbundle",
+	maxstacksize: 32,
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	variantgroups: [
+		{ code: "herb", loadFromProperties: "block/herb" },
+	],
+	texture: { base: "item/resource/herb/{herb}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 300
+}

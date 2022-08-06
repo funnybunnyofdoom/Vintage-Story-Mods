@@ -1,0 +1,55 @@
+{
+	code: "fallenleaves",
+	enabled: false,
+	behaviors: [ {name: "Decor", properties: {sides: ["up"], notFullFace:true }} ],
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	lod0shape: { base: "block/plant/leaves/fallen" },
+	shape: { base: "block/plant/leaves/fallen-lod1" },
+	shapeInventory: { base: "block/plant/leaves/fallen" },
+	seasonColorMap: "seasonalFoliage",
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	blockmaterial: "Leaves",
+	renderPass: "BlendNoCull",
+	creativeinventory: { "general": ["*"], "terrain": ["*"] },
+	replaceable: 5900,
+	resistance: 0.5,
+	vertexFlags: {
+		zOffset: 1
+	},
+	lightAbsorption: 0,
+	selectionbox: {
+		x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1,
+	},
+	collisionbox: null,
+	combustibleProps: {
+		burnTemperature: 150,
+		burnDuration: 2,
+	},
+	sounds: {
+		break: "block/plant",
+		place: "block/plant",
+		hit: "block/plant",
+		walk: "walk/grass"
+	},
+	guiTransform: {
+		translation: { x: 0, y: 3, z: 0 },
+		origin: { x: 0.5, y: 0.0625, z: 0.5 }
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: -45, z: 0 },
+		origin: { x: 0.5, y: -0.02, z: 0.5 },
+		scale: 1.5
+	},	
+	tpHandTransform: {
+		translation: { x: -1.7, y: 0.1, z: -1.5 },
+		rotation: { x: -46, y: 0, z: -2 },
+		origin: { x: 0.5, y: 0, z: 0.5 }
+	},
+	materialDensity: 300
+}

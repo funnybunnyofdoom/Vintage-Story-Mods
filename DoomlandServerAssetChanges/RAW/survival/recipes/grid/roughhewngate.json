@@ -1,0 +1,11 @@
+{
+	ingredientPattern: "APS	PSP	SPS",
+	ingredients: {
+		"A": { type: "item", code: "axe-*", isTool: true  },
+		"P": { type: "block", code: "log-placed-*-ud", name: "wood", allowedVariants: ["birch", "oak", "maple", "pine", "acacia", "kapok", "aged", "baldcypress", "larch", "redwood", "walnut"] },
+		"S": { type: "item", code: "stick" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "roughhewnfencegate-{wood}-n-closed-free", quantity: 2  }
+}

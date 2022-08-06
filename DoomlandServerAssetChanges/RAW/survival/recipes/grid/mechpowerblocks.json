@@ -1,0 +1,186 @@
+[
+	{
+		ingredientPattern: "_H_,_C_,RSF",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 80 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 50 },
+			"R": { type: "item", code: "resin" },
+			"S": { type: "block", code: "log-placed-*-ud", name: "wood", quantity: 2 },
+			"F": { type: "item", code: "fat" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "windmillrotor-north", quantity: 1 }
+	},
+	
+	{
+		ingredientPattern: "H_,C_,SF",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 5 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 5 },
+			"S": { type: "block", code: "log-placed-*-ud", name: "wood" },
+			"F": { type: "item", code: "fat" }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "woodenaxle-ud", quantity: 2 }
+	},
+	
+	{
+		ingredientPattern: "HX_,PCP,RSF",
+		ingredients: {
+			"X": { type: "item", code: "saw-*", isTool: true, toolDurabilityCost: 10 },
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 10 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 10 },
+			"S": { type: "block", code: "log-placed-*-ud", name: "wood" },
+			"R": { type: "item", code: "resin" },
+			"P": { type: "item", code: "stick" },
+			"F": { type: "item", code: "fat" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "angledgears-s", quantity: 1 }
+	},
+	
+	{
+		ingredientPattern: "__S,_SL,SL_",
+		ingredients: {
+			"S": { type: "item", code: "stick", quantity: 2 },
+			"L": { type: "block", code: "linen-*", quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "sail", quantity: 4 }
+	},
+	
+	
+	{
+		ingredientPattern: "H__,C__,SFR",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 60 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 40 },
+			"S": { type: "block", code: "log-placed-*-ud", name: "wood" },
+			"F": { type: "block", code: "woodenaxle-ud" },
+			"R": { type: "item", code: "resin", quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "brake-north", quantity: 1 }
+	},
+	
+	{
+		ingredientPattern: "H_P,CP_,PR_",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 40 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 10 },
+			"P": { type: "item", code: "plank-*", name: "wood" },
+			"R": { type: "item", code: "resin" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "helvehammerbase-north", quantity: 1 }
+	},
+	
+	
+	{
+		ingredientPattern: "HCR,PAP,_F_",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 50 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 20 },
+			"R": { type: "item", code: "resin", quantity: 4 },
+			"P": { type: "item", code: "plank-*", name: "wood", quantity: 4 },
+			"F": { type: "item", code: "fat" },
+			"A": { type: "block", code: "woodenaxle-ud" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "woodentoggle-ns", quantity: 1 }
+	},
+
+	{
+		ingredientPattern: "SPS,PAP,SPS",
+		ingredients: {
+			"P": { type: "item", code: "plank-*", name: "wood", quantity: 6 },
+			"S": { type: "item", code: "largegearsection-wood" },
+			"A": { type: "block", code: "woodenaxle-ud" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "largegear3", quantity: 1 }
+	},
+
+	{
+		ingredientPattern: "HCX,PRS,AAA",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 10 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 15 },
+			"X": { type: "item", code: "saw-*", isTool: true, toolDurabilityCost: 40 },
+			"P": { type: "item", code: "plank-*", name: "wood", quantity: 2 },
+			"A": { type: "item", code: "plank-*", name: "wood", quantity: 1 },
+			"S": { type: "item", code: "stick", quantity: 12 },
+			"R": { type: "item", code: "resin", quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "largegearsection-wood", quantity: 1 }
+	},
+
+	{
+		ingredientPattern: "HCX,PAS,RF_",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 30 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 15 },
+			"X": { type: "item", code: "saw-*", isTool: true, toolDurabilityCost: 25 },
+			"P": { type: "item", code: "plank-*", quantity: 8 },
+			"A": { type: "block", code: "log-placed-*-ud" },
+			"S": { type: "item", code: "stick", quantity: 8 },
+			"R": { type: "item", code: "resin", quantity: 2 },
+			"F": { type: "item", code: "fat", quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "clutch-north", quantity: 1 }
+	},
+
+	{
+		ingredientPattern: "HCX,GPG,RF_",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 30 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 15 },
+			"X": { type: "item", code: "saw-*", isTool: true, toolDurabilityCost: 25 },
+			"G": { type: "block", code: "angledgears-s" },
+			"P": { type: "item", code: "plank-*", name: "wood", quantity: 8 },
+			"R": { type: "item", code: "resin", quantity: 2 },
+			"F": { type: "item", code: "fat" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "transmission-ns", quantity: 1 }
+	},
+
+	{
+		ingredientPattern: "HS,X_,C_",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 20 },
+			"S": { type: "item", code: "shears-*", isTool: true, toolDurabilityCost: 20 },
+			"X": { type: "item", code: "metalplate-*" },
+			"C": { type: "item", code: "chutesection-*" }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "archimedesscrew-straight", quantity: 1 }
+	},
+
+	{
+		ingredientPattern: "H_,X_,CS",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 20 },
+			"S": { type: "item", code: "shears-*", isTool: true, toolDurabilityCost: 20 },
+			"X": { type: "item", code: "metalplate-*" },
+			"C": { type: "item", code: "chutesection-*" }
+		},
+		width: 2,
+		height: 3,
+		output: { type: "block", code: "archimedesscrew-ported-north", quantity: 1 }
+	}
+]

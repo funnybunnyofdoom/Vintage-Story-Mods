@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "WW",
+	ingredients: {
+		"W": { type: "block", code: "chest-east", attributes: { type: "normal-generic" }  }
+	},
+	width: 2,
+	height: 1,
+	shapeless: true,
+	output: { type: "block", code: "trunk-east", attributes: { type: "normal-generic" }  }
+}

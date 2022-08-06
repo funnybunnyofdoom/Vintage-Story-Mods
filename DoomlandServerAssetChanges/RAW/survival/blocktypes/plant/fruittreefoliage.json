@@ -1,0 +1,122 @@
+{
+	code: "fruittree",
+	class: "BlockDynamicTreeFoliage",
+	entityClass: "DynamicTreeFoliage",
+	attributes: {
+		handbook: {
+			groupBy: ["fruittree-leaves-*"]
+		},
+		foliageBlock: "fruittree-foliage",
+		branchBlock: "fruittree-branch",
+		treeFellingGroupCode: "fruittree",
+		foliageProperties: {
+			"base": {
+				"textures": {
+					"smallleaves-flowering": { base: "leaves" },
+					"smallleaves-fruiting": { base: "leaves" },
+					"smallleaves-ripe": { base: "leaves" },
+					"smallleaves-plain": { base: "leaves" },
+					
+					"largeleaves-flowering": { base: "largeleaves" },
+					"largeleaves-fruiting": { base: "largeleaves" },
+					"largeleaves-ripe": { base: "largeleaves" },
+					"largeleaves-plain": { base: "largeleaves" },
+					
+					"fruit-fruiting": { base: "fruiting" },
+					"fruit-ripe": { base: "ripe" },
+					
+					"blossom": { base: "blossom" },
+					"largeblossom": { base: "largeblossom" },
+					
+					"bark": { base: "bark" },
+					"treetrunk": { base: "treetrunk" }
+				},
+				"leafParticlesTexture": { base: "leaves" },
+				"blossomParticlesTexture": { base: "blossom" },
+			},
+			"pinkapple": {
+				"texturesBasePath": "block/plant/fruittree/pinkapple/"
+			},
+			"redapple": {
+				"texturesBasePath": "block/plant/fruittree/redapple/"
+			},
+			"yellowapple": {
+				"texturesBasePath": "block/plant/fruittree/yellowapple/"
+			},
+			"cherry": {
+				"texturesBasePath": "block/plant/fruittree/cherry/"
+			},
+			"mango": {
+				"texturesBasePath": "block/plant/fruittree/mango/"
+			},
+			"olive": {
+				"texturesBasePath": "block/plant/fruittree/olive/",	
+				climateColorMap: "climateLighterPlantTint",
+				seasonColorMap: "seasonalOlive",
+			},
+			"orange": {
+				"texturesBasePath": "block/plant/fruittree/orange/",
+				climateColorMap: "climateDarkerPlantTint",
+			},
+			"peach": {
+				"texturesBasePath": "block/plant/fruittree/peach/"
+			},
+			"pear": {
+				"texturesBasePath": "block/plant/fruittree/pear/"
+			},
+			"breadfruit": {
+				"texturesBasePath": "block/plant/fruittree/breadfruit/",
+				seasonColorMap: "tropicalKapok",
+			},
+			"lychee": {
+				"texturesBasePath": "block/plant/fruittree/lychee/",
+			},
+			"pomegranate": {
+				"texturesBasePath": "block/plant/fruittree/pomegranate/",
+			},
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["foliage"] },
+	],
+	creativeinventory: { "general": [""], "flora": [""] },
+	shape: { 
+		base: "block/plant/fruittree/leaves-ver",
+	},
+	renderpass: "OpaqueNoCull",
+	faceCullMode: "Callback",
+	blockmaterial: "Leaves",
+	vertexFlags: {
+		zOffset: 4
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	sideao: {
+		all: true
+	},
+	emitSideAo: {
+		all: false
+	},
+	snowCoverage: true,
+	replaceable: 4000,
+	lightAbsorption: 1,
+	resistance: 0.5,
+	collisionbox: null,
+	drops: [],
+	sounds: {
+		break: "block/plant",
+		place: "block/plant",
+		hit: "block/plant",
+		walk: "walk/grass"
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	materialDensity: 300,
+	frostable: true
+}

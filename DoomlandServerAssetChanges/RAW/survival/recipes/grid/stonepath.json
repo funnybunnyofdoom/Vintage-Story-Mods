@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "L	S",
+	ingredients: {
+		"L": { type: "item", code: "stone-*", name: "rock", quantity: 4 },
+		"S": { type: "block", code: "soil-*" }
+	},
+	width: 1,
+	height: 2,
+	output: { type: "block", code: "stonepath-free", quantity: 1 }
+}

@@ -1,0 +1,39 @@
+{
+	code: "ethoslab",
+	"__comment": "A must have for every good builder",
+	shape: { base: "block/basic/slab/slab-down" },
+	blockmaterial: "Soil",
+	creativeinventory: { "general": [""], "terrain": [""] },
+	replaceable: 700,
+	resistance: 2,
+	textures: {
+		all: {base: "block/soil/blueclay"},
+	},
+	sounds: {
+		place: "block/dirt",
+		break: "block/dirt",
+		hit: "block/dirt",
+	},
+	fertility: 5,
+	drops: [
+		{ 
+			type: "item",
+			code: "clay-blue",
+			quantity: { avg: 5, var: 15 },
+		},
+		{
+			type: "item", 
+			code: "blastingpowder",
+			quantity: { avg: 5, var: 3 },
+		}
+	],
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	collisionSelectionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 },
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "op": "replace",
+    "path": "/server/behaviors/4/currenthealth",
+    "value": 20.0,
+    "file": "entities/humanoid/player.json",
+    "condition": { "when": "playerHealthPoints", "useValue": true },
+    "side": "Server"
+  },
+  {
+    "op": "replace",
+    "path": "/server/behaviors/4/maxhealth",
+    "value": 20.0,
+    "file": "entities/humanoid/player.json",
+    "condition": { "when": "playerHealthPoints", "useValue": true },
+    "side": "Server"
+  }
+]

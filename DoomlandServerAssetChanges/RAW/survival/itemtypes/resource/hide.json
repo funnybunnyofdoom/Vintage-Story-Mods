@@ -1,0 +1,101 @@
+{
+	code: "hide",
+	maxstacksizeByType: {
+		"*-small": 64,
+		"*-medium": 32,
+		"*-large": 16,
+		"*-huge": 8
+	},
+	materialDensity: 620,
+	attributes: {
+		handbook: {
+			groupBy: ["hide-{type}-*"]
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: [ "raw", "soaked", "scraped", "prepared", "oiled", "pelt"  ] },
+		{ code: "size", states: [ "small", "medium", "large", "huge"  ] },
+	],
+
+	tpHandTransformbyType: {
+		"*-small": {
+			translation: { x: -1.85, y: -0.3, z: -1.5 },
+			rotation: { x: 0, y: -2, z: 18 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.3
+		},
+		"*-medium": {
+			translation: { x: -1.36, y: -0.3, z: -1.24 },
+			rotation: { x: 0, y: -2, z: 18 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.39
+		},
+		"*-large": {
+			translation: { x: -1.12, y: -0.3, z: -0.92 },
+			rotation: { x: 0, y: -2, z: 18 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.49
+		},
+		"*-huge": {
+			translation: { x: -0.86, y: -0.3, z: -0.68 },
+			rotation: { x: 0, y: -2, z: 18 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.67	
+		}
+	},
+
+	guiTransformByType: {
+		"*-small": {
+			scale: 0.75
+		},
+		"*-medium": {
+			scale: 0.85
+		},
+		"*-large": {
+			scale: 1
+		},
+		"*-huge": {
+			scale: 1.15
+		},
+	},
+	groundTransformByType: {
+		"*-small": {
+			scale: 1.5
+		},
+		"*-medium": {
+			scale: 2
+		},
+		"*-large": {
+			scale: 2.4
+		},
+		"*-huge": {
+			scale: 2.85
+		},
+	},
+	fpHandTransformByType: {
+		"*-small": {
+			scale: 0.75
+		},
+		"*-medium": {
+			scale: 0.85
+		},
+		"*-large": {
+			scale: 1
+		},
+		"*-huge": {
+			scale: 1.15
+		},
+	},
+	texture: { base: "item/resource/hide/{type}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	transitionablePropsByType: {
+		"hide-oiled-*":
+			[{
+				type: "Cure",
+				freshHours: { avg: 0 },
+				transitionHours: { avg: 48 },
+				transitionedStack: { type: "item", code: "hide-pelt-{size}" },
+				transitionRatio: 1
+			}]
+	}
+}

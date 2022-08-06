@@ -1,0 +1,167 @@
+{
+	code: "metalscale",
+	shape: { base: "item/scales" },
+	textures: {
+		"material": { base: "block/metal/sheet/{metal}1" }
+	},
+	maxstacksize: 8,
+	storageFlags: 5,
+	attributes: {
+		handbook: {
+			groupBy: ["metalscale-*"],
+			excludeByType: {
+				"*-chromium": true,
+				"*-platinum": true,
+				"*-titanium": true,
+				"*-rhodium": true,
+				"*-stainlessteel": true,
+				"*-uranium": true
+			}
+		}
+	},
+	variantgroups: [
+		{ code: "metal", loadFromProperties: "block/metal" },
+	],
+	texture: { base: "block/metal/ingot/{metal}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensityByType: {
+		"*-copper": 8960,
+		"*-brass": 8500,
+		"*-tinbronze": 7600,
+		"*-bismuthbronze": 7900,
+		"*-blackbronze": 9000,
+		"*-iron": 7870,
+		"*-gold": 19300,
+		"*-lead": 11300,
+		"*-tin": 7260,
+		"*-chromium": 7150,
+		"*-platinum": 21500,
+		"*-titanium": 4510,
+		"*-zinc": 7140,
+		"*-silver": 10500,
+		"*-bismuth": 9790,
+		"*-molybdochalkos": 9600
+	},
+	combustiblePropsByType: {
+		"metalscale-copper": {
+			meltingPoint: 1084,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-copper", stacksize: 1 }
+		},
+		"metalscale-brass": {
+			meltingPoint: 920,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-brass", stacksize: 1 }
+		},
+		"metalscale-tinbronze": {
+			meltingPoint: 950,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tinbronze", stacksize: 1 }
+		},
+		"metalscale-bismuthbronze": {
+			meltingPoint: 850,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuthbronze", stacksize: 1 }
+		},
+		"metalscale-blackbronze": {
+			meltingPoint: 1020,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-blackbronze", stacksize: 1 }
+		},
+		"metalscale-iron": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-iron", stacksize: 1 }
+		},
+		"metalscale-gold": {
+			meltingPoint: 1063,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-gold", stacksize: 1 }
+		},
+		"metalscale-lead": {
+			meltingPoint: 327,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-lead", stacksize: 1 }
+		},
+		"metalscale-tin": {
+			meltingPoint: 232,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tin", stacksize: 1 }
+		},
+		"metalscale-chromium": {
+			meltingPoint: 1907,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-chromium", stacksize: 1 }
+		},
+		"metalscale-platinum": {
+			meltingPoint: 1770,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-platinum", stacksize: 1 }
+		},
+		"metalscale-titanium": {
+			meltingPoint: 1668,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-titanium", stacksize: 1 }
+		},
+		"metalscale-zinc": {
+			meltingPoint: 419,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-zinc", stacksize: 1 }
+		},
+		"metalscale-silver": {
+			meltingPoint: 961,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-silver", stacksize: 1 }
+		},
+		"metalscale-bismuth": {
+			meltingPoint: 271,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuth", stacksize: 1 }
+		},
+		"metalscale-molybdochalkos": {
+			meltingPoint: 902,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-molybdochalkos" }
+		}
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.2, z: 0 },
+		rotation: { x: 21, y: 0, z: -1 },
+		origin: { x: 0.5, y: -0.3, z: 0.5 },
+		scale: 1.8
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -30, y: -44, z: -180 },
+		origin: { x: 0.45, y: 0.09, z: 0.5 },
+		scale: 3
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 90, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.31
+	},
+	tpHandTransform: {
+		translation: { x: -0.7, y: 0.1, z: -0.53 },
+		rotation: { x: 94, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.75
+	}
+}

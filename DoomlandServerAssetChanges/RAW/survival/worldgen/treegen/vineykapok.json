@@ -1,0 +1,86 @@
+{
+	treeWorldPropertyCode: "vineykapok",
+	isTropical: true,
+	sizeMultiplier: 1,
+	trunks: [{
+		widthloss: 0.06,
+		dieAt: { avg: 0.002 },
+		branchStart: { avg: 0.5, var: 0.05 },
+		branchSpacing: { avg: 0, var: 0 },
+		branchVerticalAngle:  { avg: 3, var: 0.5 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplier: { avg: 1, var: 0 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 1 },
+		branchQuantity: { avg: 10, var: 0 },
+		branchQuantityEvolve: { transform: "linear", factor: 3 },
+		branchWidthLossMul: 0.5,
+		angleVert: { dist: "inversegaussian", avg: 0, var: 0 },
+		angleVertEvolve: { transform: "quadratic", factor: 2 }
+	},
+	{
+		widthloss: 0.06,
+		dieAt: { avg: 0.002 },
+		branchStart: { avg: 0.5, var: 0.05 },
+		branchSpacing: { avg: 0, var: 0 },
+		branchVerticalAngle:  { avg: 3, var: 0.5 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplier: { avg: 1, var: 0 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 1 },
+		branchQuantity: { avg: 10, var: 0 },
+		branchQuantityEvolve: { transform: "linear", factor: 3 },
+		branchWidthLossMul: 0.5,
+		angleVert: { dist: "inversegaussian", avg: 0, var: 0 },
+		angleVertEvolve: { transform: "quadratic", factor: 2 }
+	},
+	{
+		widthloss: 0.06,
+		dieAt: { avg: 0.002 },
+		branchStart: { avg: 0.5, var: 0.05 },
+		branchSpacing: { avg: 0, var: 0 },
+		branchVerticalAngle:  { avg: 3, var: 0.5 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplier: { avg: 1, var: 0 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 1 },
+		branchQuantity: { avg: 10, var: 0 },
+		branchQuantityEvolve: { transform: "linear", factor: 3 },
+		branchWidthLossMul: 0.5,
+		angleVert: { dist: "inversegaussian", avg: 0, var: 0 },
+		angleVertEvolve: { transform: "quadratic", factor: 2 }
+	},
+	{
+		widthloss: 0.06,
+		dieAt: { avg: 0.002 },
+		branchStart: { avg: 0.5, var: 0.05 },
+		branchSpacing: { avg: 0, var: 0 },
+		branchVerticalAngle:  { avg: 3, var: 0.5 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplier: { avg: 1, var: 0 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 1 },
+		branchQuantity: { avg: 10, var: 0 },
+		branchQuantityEvolve: { transform: "linear", factor: 3 },
+		branchWidthLossMul: 0.5,
+		angleVert: { dist: "inversegaussian", avg: 0, var: 0 },
+		angleVertEvolve: { transform: "quadratic", factor: 2 }
+	}
+	
+	],
+	branches: [{
+		widthLoss: 0.06,
+		gravityDrag: 0,
+		dieAt: { avg: 0.002 },
+		branchStart:  { avg: 0.2, var: 0.1 },
+		branchSpacing: { avg: 0.4, var: 0 },
+		branchVerticalAngle: { dist: "gaussian", avg: 1.2, var: 0.2 },
+		branchHorizontalAngle: { dist: "inversegaussian", avg: 0, var: 3.1415 },
+		branchQuantity: { avg: 6, var: 0 },
+		branchQuantityEvolve: { transform: "linear", factor: 1 },
+		branchWidthMultiplier: { avg: 0.8, var: 0 }
+	}],
+	treeBlocks: {
+		logBlockCode: "log-grown-kapok-ud",
+		leavesBlockCode: "leaves-grown-kapok",
+		leavesBranchyBlockCode: "leavesbranchy-grown-kapok",
+		vinesBlockCode: "wildvine-tropical-section-north",
+		vinesEndBlockCode: "wildvine-tropical-end-north"
+	}
+}

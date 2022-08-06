@@ -1,0 +1,217 @@
+{
+	code: "animalbot",
+	class: "EntityAnimalBot",
+	variantgroups: [
+		{ code: "type", states: ["wolf-male", "wolf-male-gray", "chicken-hen", "chicken-rooster", "chicken-baby", "hyena-male", "hyena-female", "hyena-pup", "sheep-bighorn-male", "sheep-bighorn-female", "sheep-bighorn-lamb", "bell", "locust-corrupt", "drifter-normal", "drifter-corrupt", "drifter-nightmare", "hare-female-lightgrey", "fox-female", "piglet" ] },
+	],
+	hitboxSizeByType: {
+		"*-wolf-male": { x: 1.2, y: 1 },
+		"*-wolf-male-gray": { x: 1.2, y: 1 },
+		"*-hyena-male": { x: 1.2, y: 1 },
+		"*-hyena-female": { x: 1.2, y: 1 },
+		"*-hyena-pup": { x: 0.6, y: 0.5 },
+		"*-chicken-hen": { x: 0.75, y: 0.6 },
+		"*-chicken-rooster": { x: 0.75, y: 0.6 },
+		"*-chicken-baby": { x: 0.3, y: 0.2 },
+		
+		"*-sheep-bighorn-male": { x: 1.3, y: 1.4 },
+		"*-sheep-bighorn-female": { x: 1.3, y: 1.4 },
+		"*-sheep-bighorn-lamb": { x: 1.0, y: 0.5 },
+		"*-bell-normal": { x: 0.75, y: 0.75 },
+		"*-locust-corrupt": { x: 0.65, y: 0.6 },
+		
+		"*-hare-female-lightgrey": { x: 0.75, y: 0.5 },
+		"*-fox-female": { x: 0.75, y: 0.75 },
+		
+		"*-piglet": { x: 0.6, y: 0.5 },
+		
+		"*-drifter-*": { x: 0.6, y: 1.3 },
+	},
+	eyeHeightByType: {
+		"*-wolf-male": 0.9,
+		"*-wolf-male-gray": 0.9,
+		"*-hyena-male": 0.9,
+		"*-hyena-female": 0.9,
+		"*-hyena-pup": 0.4,
+		"*-chicken-hen": 0.3,
+		"*-chicken-rooster": 0.3,
+		"*-chicken-baby": 0.15,
+		"*-sheep-bighorn-male": 1.4,
+		"*-sheep-bighorn-female": 1.4,
+		"*-sheep-bighorn-lamb": 0.4,
+
+		"*-hare-female-lightgrey": 0.6,
+		"*-fox-female": 0.7,
+
+		"*-bell-normal": 0.75,
+		"*-locust-corrupt": 0.3,
+		"*-drifter-*": 1.2,
+		"*-piglet": 0.4
+	},
+	drops: [],
+	client: {
+		renderer: "Shape",
+		shapeByType: {
+			"*-locust-corrupt": { base: "entity/land/locust-corrupt" },
+			"*-drifter-normal": { base: "entity/land/drifter/surface" },
+			"*-drifter-deep": { base: "entity/land/drifter/surface" },
+			"*-drifter-tainted": { base: "entity/land/drifter/spiked1", alternates: [{ base: "entity/land/drifter/spiked2" }] },
+			"*-drifter-corrupt": { base: "entity/land/drifter/deerhorn" },
+			"*-drifter-nightmare": { base: "entity/land/drifter/knife" },
+			
+			"*-hare-female-lightgrey": { base: "entity/land/hare-female" },
+			
+			"*-wolf-male-gray": { base: "entity/land/wolf-male" },
+			"*-piglet": { base: "entity/land/pig-wild-piglet" },
+			
+			"*": { base: "entity/land/{type}" },
+		},
+		textureByType: {
+			"*-hyena-pup": { base: "entity/hyena/pup" },
+			"*-hyena-male": { base: "entity/hyena/hyena-male1" },
+			"*-hyena-female": { base: "entity/hyena/hyena-female1" },
+			
+			"*-sheep-bighorn-lamb": { base: "entity/sheep/sheep-bighorn-lamb" },
+			"*-sheep-bighorn-male": { base: "entity/sheep/sheep-bighorn-male" },
+			"*-sheep-bighorn-female": { base: "entity/sheep/sheep-bighorn-female" },
+			
+			"*-bell": { base: "entity/bell" },
+			"*-locust-corrupt": { base: "entity/locust/corrupt" },
+			
+			"*-wolf-male": { base: "entity/wolf/wolf1", alternates: [ { base: "entity/wolf/wolf2" }, { base: "entity/wolf/wolf3" }, { base: "entity/wolf/wolf4" }, { base: "entity/wolf/wolf5" }, { base: "entity/wolf/wolf6" }, { base: "entity/wolf/wolf7" }, { base: "entity/wolf/wolf8" }, { base: "entity/wolf/wolf9" } ] },
+			"*-wolf-male-gray": { base: "entity/wolf/wolf2" },
+			"*-chicken-hen": { base: "entity/chicken/hen1", alternates: [ { base: "entity/chicken/hen2" }, { base: "entity/chicken/hen3" }, { base: "entity/chicken/hen4" }, { base: "entity/chicken/hen5" }, { base: "entity/chicken/hen6" }, { base: "entity/chicken/hen7" }, { base: "entity/chicken/hen8" } ] },
+			"*-chicken-baby": { base: "entity/chicken/babychick1", alternates: [ { base: "entity/chicken/babychick2" }, { base: "entity/chicken/babychick3" }, { base: "entity/chicken/babychick4" }, { base: "entity/chicken/babychick5" }, { base: "entity/chicken/babychick6" }, { base: "entity/chicken/babychick7" }, { base: "entity/chicken/babychick8" } ] },
+			"*-chicken-rooster": { base: "entity/chicken/rooster1", alternates: [ { base: "entity/chicken/rooster2" }, { base: "entity/chicken/rooster3" }, { base: "entity/chicken/rooster4" }, { base: "entity/chicken/rooster5" } ] },
+			
+			"*-drifter-normal": { base: "entity/drifter/surface1", alternates: [ { base: "entity/drifter/surface2" }, {base: "entity/drifter/surface3" }] },
+			"*-drifter-deep": { base: "entity/drifter/deep1", alternates: [ { base: "entity/drifter/deep2" } ] },
+			"*-drifter-corrupt": { base: "entity/drifter/spiked1", alternates: [ { base: "entity/drifter/spiked2" } ] },
+			"*-drifter-nightmare": { base: "entity/drifter/deep1", alternates: [ { base: "entity/drifter/deep2" } ] },
+			
+			"*-hare-female-lightgrey": { base: "entity/hare/female-lightgrey" },
+			"*-fox-female": { base: "entity/fox/forest-female" },
+			
+			"*-piglet": { base: "entity/pig/pig-wild-piglet" },
+			
+			"*": { base: "entity/{type}/{type}*" },
+		},
+		behaviors: [
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "interpolateposition" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true }
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 2.2,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "die",
+				animation: "death", 
+				animationSpeed: 1.25,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "eat",
+				animation: "eat", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "walk",
+				animation: "walk", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "cry",
+				animation: "cry", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "shamble",
+				animation: "shamble", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "lowshamble",
+				animation: "lowshamble", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "sleep",
+				animation: "sleep", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "sit",
+				animation: "sit", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "listen",
+				animation: "listen", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "hide",
+				animation: "hide", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "idletwitch",
+				animation: "idletwitch", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "drill",
+				animation: "drill", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "health", currenthealth: 10, maxhealth: 10, },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "breathe" },
+		],
+	},
+	soundsByType: {
+		"*-wolf-male": {
+			hurt: "creature/wolf/hurt",
+			death: "creature/wolf/hurt"
+		},
+		"*-chicken-hen": {
+			hurt: "creature/chicken/hurt",
+			death: "creature/chicken/hurt"
+		}
+	},
+	idleSoundChance: 0
+}

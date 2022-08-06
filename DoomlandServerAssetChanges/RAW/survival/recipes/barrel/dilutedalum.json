@@ -1,0 +1,8 @@
+{
+	code: "dilutedalum",
+	ingredients: [
+		{ type: "item", code: "waterportion",  litres: 1 },
+		{ type: "item", code: "crushed-alum", quantity: 1 }
+	],
+	output: { type: "item", code: "dilutedalumportion", litres: 1 }
+}

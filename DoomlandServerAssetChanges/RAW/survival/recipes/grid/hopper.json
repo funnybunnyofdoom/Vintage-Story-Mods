@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "I_I,_I_",
+	ingredients: {
+		"I": { type: "item", code: "metalplate-copper" }
+	},
+	width: 3,
+	height: 2,
+	output: { type: "block", code: "hopper"  }
+}

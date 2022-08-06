@@ -1,0 +1,37 @@
+  {
+	code: "paperlantern",
+	attributes: {
+		handbook: {
+			exclude: true
+		},
+	},
+	variantgroups: [
+		{ code:"state", states: ["off", "on"] }
+	],
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	drawtype: "cube",
+	blockmaterial: "Metal",
+	lightAbsorption: 0,
+	lightHsvByType: {
+		"*-off": [0,0,0],
+		"*-on": [8, 2, 21],
+	},
+	sidesolid: {
+		all: true
+	},
+	sideopaque: {
+		all: true
+	},
+	textures: {
+		all: { base: "block/metal/paperlantern_{state}" }
+	},
+	vertexFlags: {
+		glowLevel: 128,
+	},
+	replaceable: 1000,
+	resistance: 1,
+	sounds: {
+		place: "block/cloth",
+		walk: "walk/cloth"
+	}
+}

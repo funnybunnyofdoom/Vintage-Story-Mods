@@ -1,0 +1,722 @@
+[
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/fruitingDays/avg",
+    "value": 14,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/fruitingDays/var",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/breadfruit/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/fruitingDays/avg",
+    "value": 5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/fruitingDays/var",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/vernalizationHours/avg",
+    "value": 72,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/cherry/vernalizationHours/var",
+    "value": 15,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/fruitingDays/avg",
+    "value": 14,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/fruitingDays/var",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/lychee/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/fruitingDays/avg",
+    "value": 14,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/mango/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/fruitingDays/avg",
+    "value": 10,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/olive/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/fruitingDays/avg",
+    "value": 14,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/orange/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/fruitingDays/avg",
+    "value": 10,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/vernalizationHours/avg",
+    "value": 72,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/peach/vernalizationHours/var",
+    "value": 15,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/fruitingDays/avg",
+    "value": 7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/vernalizationHours/avg",
+    "value": 72,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pear/vernalizationHours/var",
+    "value": 15,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/fruitingDays/avg",
+    "value": 7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/vernalizationHours/avg",
+    "value": 72,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pinkapple/vernalizationHours/var",
+    "value": 15,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/fruitingDays/avg",
+    "value": 7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/pomegranate/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/fruitingDays/avg",
+    "value": 7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/vernalizationHours/avg",
+    "value": 72,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/redapple/vernalizationHours/var",
+    "value": 15,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/cuttingGraftChance",
+    "value": 0.7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/cuttingRootingChance",
+    "value": 0.6,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/floweringDays/avg",
+    "value": 2.5,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/floweringDays/var",
+    "value": 1,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/fruitingDays/avg",
+    "value": 7,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/fruitingDays/var",
+    "value": 3,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/growthStepDays/avg",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/ripeDays/avg",
+    "value": 4,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/ripeDays/var",
+    "value": 2,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/vernalizationHours/avg",
+    "value": 72,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  },
+  {
+    "op": "replace",
+    "path": "/attributes/fruittreeProperties/yellowapple/vernalizationHours/var",
+    "value": 15,
+    "file": "blocktypes/plant/fruittreebranch.json"
+  }
+]

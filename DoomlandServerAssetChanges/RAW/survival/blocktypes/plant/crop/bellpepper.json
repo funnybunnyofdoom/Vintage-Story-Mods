@@ -1,0 +1,267 @@
+{
+	code: "crop",
+	classByType: {
+		"*-11": "BlockFruiting",
+		"*-12": "BlockFruiting",
+		"*-13": "BlockFruiting",
+		"*-14": "BlockFruiting",
+		"*-15": "BlockFruiting",
+		"*-16": "BlockFruiting",
+		"*-17": "BlockFruiting",
+		"*-18": "BlockFruiting",
+		"*-19": "BlockFruiting",
+		"*": "BlockCrop"
+	},
+	entityClassByType: { "*-11": "Generic", "*-12": "Generic", "*-13": "Generic", "*-14": "Generic", "*-15": "Generic", "*-16": "Generic", "*-17": "Generic", "*-18": "Generic", "*-19": "Generic" },
+	entityBehaviorsByType: {
+		"*-1": [],
+		"*-2": [],
+		"*-3": [],
+		"*-4": [],
+		"*-5": [],
+		"*-6": [],
+		"*-7": [],
+		"*-8": [],
+		"*-9": [],
+		"*-10": [],
+		"*": [ {
+			name: "Fruiting",
+			properties: {
+			        positions: 10,
+			        maturePlant: "crop-bellpepper-16",
+			        maxFruit: 6,
+			        fruitStages: 6,
+			        ripeStage: 5,
+			        maxGerminationDays: 4.0,
+			        transitionDays: 1.1,
+			        successfulGrowthChance: 0.6,
+			        fruitCodeBases: [
+			            "ontree-bellpepper-1-",
+			            "ontree-bellpepper-2-",
+			            "ontree-bellpepper-3-",
+			            "ontree-bellpepper-4-",
+			            "ontree-bellpepper-5-",
+			            "ontree-bellpepper-6-",
+			            "ontree-bellpepper-7-"
+			        ],
+			        dropCode: "vegetable-bellpepper"
+			} } ]
+	},
+	behaviors: [{name: "Unstable"}],
+	variantgroups: [
+		{ code: "type", states: ["bellpepper"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"] },
+	],
+	creativeinventory: { "general": [""], "plants": [""] },
+	renderpass: "OpaqueNoCull",
+	shapeByType: {
+		"*-1": { base: "block/plant/crop/bellpepper/bellpepper-small", scale: 0.89 },
+		"*-2": { base: "block/plant/crop/bellpepper/bellpepper-small", scale: 0.89 },
+		"*-3": { base: "block/plant/crop/bellpepper/bellpepper-small", scale: 0.89 },
+		"*-4": { base: "block/plant/crop/bellpepper/bellpepper-small", scale: 0.89 },
+		"*-5": { base: "block/plant/crop/bellpepper/bellpepper-small", scale: 0.89 },
+		"*-6": { base: "block/plant/crop/bellpepper/bellpepper-6", scale: 0.89 },
+		"*-7": { base: "block/plant/crop/bellpepper/bellpepper-7", scale: 0.89 },
+		"*-8": { base: "block/plant/crop/bellpepper/bellpepper-8", scale: 0.89 },
+		"*-9": { base: "block/plant/crop/bellpepper/bellpepper-10", scale: 0.89 },
+		"*-10": { base: "block/plant/crop/bellpepper/bellpepper-10", scale: 0.89 },
+		"*-16": { base: "block/plant/crop/bellpepper/bellpepper-fruiting", scale: 0.89, selectiveElements: ["origin/face*" ]  },
+		"*-17": { base: "block/plant/crop/bellpepper/bellpepper-fruiting", scale: 0.89, selectiveElements: ["origin/face*" ]  },
+		"*-18": { base: "block/plant/crop/bellpepper/bellpepper-fruiting", scale: 0.89, selectiveElements: ["origin/face*" ]  },
+		"*": { base: "block/plant/crop/bellpepper/bellpepper-fullgrown", scale: 0.89 }
+	},
+	blockmaterial: "Plant",
+	randomizeRotations: true,
+	texturesByType: {
+		"*-1": { 
+			"normal3": { base: "block/plant/crop/bellpepper/seed3" },
+			"normal2": { base: "block/plant/crop/bellpepper/seed2" },
+			"foliage": { base: "block/plant/crop/bellpepper/seed-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-2": { 
+			"normal3": { base: "block/plant/crop/bellpepper/normal0-3" },
+			"normal2": { base: "block/plant/crop/bellpepper/normal0-2" },
+			"foliage": { base: "block/plant/crop/bellpepper/normal0-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-3": { 
+			"normal3": { base: "block/plant/crop/bellpepper/normal1-3" },
+			"normal2": { base: "block/plant/crop/bellpepper/normal1-2" },
+			"foliage": { base: "block/plant/crop/bellpepper/normal1-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},			
+		"*-4": { 
+			"normal3": { base: "block/plant/crop/bellpepper/normal2-3" },
+			"normal2": { base: "block/plant/crop/bellpepper/normal2-2" },
+			"foliage": { base: "block/plant/crop/bellpepper/normal2-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},			
+		"*-9": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage7" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal7-3" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal7-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal7-1" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage7" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-11": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage9" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage9" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal9-3" },
+			"bulb": { base: "block/plant/crop/bellpepper/bulb" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal9-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal9-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-12": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage10" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage10" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal10-3" },
+			"bulb": { base: "block/plant/crop/bellpepper/bulb" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal10-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal10-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-13": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage11" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage11" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal11-3" },
+			"bulb": { base: "block/plant/crop/bellpepper/bulb" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal11-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal11-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-14": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage12" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage12" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal12-3" },
+			"bulb": { base: "block/plant/crop/bellpepper/bulb" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal12-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal12-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-15": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage14" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage14" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal14-3" },
+			"bulb": { base: "block/plant/crop/bellpepper/bulb" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal14-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal14-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+		"*-19": {
+			"foliage": { base: "block/plant/crop/bellpepper/foliage15" },
+			"leaves1": { base: "block/plant/crop/bellpepper/foliage15" },
+			"normal-3": { base: "block/plant/crop/bellpepper/normal15-3" },
+			"bulb": { base: "block/plant/crop/bellpepper/bulb" },
+			"normal-2": { base: "block/plant/crop/bellpepper/normal15-2" },
+			"foliage2": { base: "block/plant/crop/bellpepper/normal15-1" },
+			"mapcolor": { base: "block/plant/crop/bellpepper/foliage15" }
+		},
+	},
+	attributes: {
+		textureCodeForBlockColor: "mapcolor",
+		butterflyFeedByType: {
+			"*-10": true,
+			"*-11": true,
+			"*-12": true,
+			"*-13": true,
+			"*-14": true,
+			"*": false
+		},
+		beeFeedByType: {
+			"*-10": true,
+			"*-11": true,
+			"*-12": true,
+			"*-13": true,
+			"*-14": true,
+			"*": false
+		},
+		pickPromptByType: {
+			"*-15": true,
+			"*-16": true,
+			"*-17": true,
+			"*-18": true,
+			"*-19": true,
+			"*": false
+		},
+		sitHeight: 0.85,
+		tickGrowthProbability: 0.05,
+		handbook: {
+			include: true
+		}
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 0,
+	resistance: 0.5,
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant"
+	},
+	rainPermeable: false,
+	dropsByType: {
+		"*-14": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 1.05 }  }
+		],
+		"*-15": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 1.09 }  }
+		],
+		"*-16": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 1.09 }  }
+		],
+		"*-17": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 1.09 }  }
+		],
+		"*-18": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 1.09 }  },
+			{ type: "item", code: "vegetable-bellpepper", quantity: { avg: 0.001, var: 0 }  }
+		],
+		"*-19": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 1.05 }  }
+		],
+		"*": [
+			{ type: "item", code: "seeds-bellpepper", quantity: { avg: 0.7 }  },
+		]
+	},
+	cropProps: {
+		requiredNutrient: "N",
+		nutrientConsumption: 35,
+		growthStages: 19,
+		totalGrowthDays: 20,
+		coldDamageBelow: 8,
+		heatDamageAbove: 34
+	},
+	collisionbox: null,
+	selectionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.25, z2: 0.9375 },
+	selectionBoxByType: {
+		"*-1": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.175, z2: 0.75 },
+		"*-2": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.175, z2: 0.75 },
+		"*-3": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.175, z2: 0.75 },
+		"*-4": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.3, z2: 0.75 },
+		"*-5": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.45, z2: 0.75 },
+		"*-6": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.625, z2: 0.75 },
+		"*-7": { x1: 0.125, y1: -0.0625, z1: 0.125, x2: 0.875, y2: 0.7, z2: 0.875 },
+		"*-8": { x1: 0.125, y1: -0.0625, z1: 0.125, x2: 0.875, y2: 0.8, z2: 0.875 },
+		"*-9": { x1: 0.125, y1: -0.0625, z1: 0.125, x2: 0.875, y2: 0.9, z2: 0.875 },
+		"*-10": { x1: 0.125, y1: -0.0625, z1: 0.125, x2: 0.875, y2: 1.1, z2: 0.875 },
+		"*-11": { x1: 0.125, y1: -0.0625, z1: 0.125, x2: 0.875, y2: 1.275, z2: 0.875 },
+		"*": { x1: 0.115, y1: -0.0625, z1: 0.115, x2: 0.885, y2: 1.375, z2: 0.885 }
+	},
+	materialDensity: 200,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	guiTransform: {
+		translation: { x: 0, y: 6, z: 0 },
+		scale: 0.94
+	}
+}

@@ -1,0 +1,80 @@
+{
+	code: "crop",
+	class: "BlockCrop",
+	behaviors: [{name: "Unstable"}],
+	variantgroups: [
+		{ code: "type", states: ["cassava"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9"] },
+	],
+	creativeinventory: { "general": [""], "plants": [""] },
+	renderpass: "OpaqueNoCull",
+	shape: { base: "block/plant/crop/cassava/stage{stage}" },
+	blockmaterial: "Plant",
+	randomizeRotations: true,
+	randomSizeAdjust: 0.025,
+	attributes: {
+		butterflyFeed: false,
+		beeFeed: false,
+		tickGrowthProbability: 0.05,
+		handbook: {
+			includeByType: {
+				"*-9": true,
+				"*": false
+			}
+		}
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 0,
+	resistance: 0.5,
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant"
+	},
+	rainPermeable: false,
+	dropsByType: {
+		"*-8": [
+			{ type: "item", code: "seeds-cassava", quantity: { avg: 1 }  },
+			{ type: "item", code: "rawcassava-raw", quantity: { avg: 3, var: 0.5 }  },
+		],
+		"*-9": [
+			{ type: "item", code: "seeds-cassava", quantity: { avg: 1.1 }  },
+			{ type: "item", code: "rawcassava-raw", quantity: { avg: 10, var: 1 }  },
+		],
+		"*": [
+			{ type: "item", code: "seeds-cassava", quantity: { avg: 0.7 }  },
+		]
+	},
+	cropProps: {
+		"__comment": "Cassava needs equal amounts of NPK.  K makes the roots bulky, so gone for that one until we can have multi-nutrient crops. https://cassavamatters.org/wp-content/uploads/2020/01/Tailored-Fertilizer-Application-Recommendations-for-Cassava.pdf",
+		requiredNutrient: "K",
+		nutrientConsumption: 25,
+		growthStages: 9,
+		totalGrowthDays: 18,
+		coldDamageBelow: 4,
+		heatDamageAbove: 44,
+	},
+	collisionBox: null,
+	selectionBoxByType: {
+		"*-1": { x1: 0.375, y1: -0.0625, z1: 0.375, x2: 0.625, y2: 0.125, z2: 0.625 },
+		"*-2": { x1: 0.375, y1: -0.0625, z1: 0.375, x2: 0.625, y2: 0.25, z2: 0.625 },
+		"*-3": { x1: 0.34, y1: -0.0625, z1: 0.34, x2: 0.66, y2: 0.375, z2: 0.66 },
+		"*-4": { x1: 0.3125, y1: -0.0625, z1: 0.3125, x2: 0.6875, y2: 0.5, z2: 0.6875 },
+		"*-5": { x1: 0.3125, y1: -0.0625, z1: 0.3125, x2: 0.6875, y2: 0.625, z2: 0.6875 },
+		"*-6": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.75, z2: 0.75 },
+		"*-7": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 0.9125, z2: 0.75 },
+		"*-8": { x1: 0.25, y1: -0.0625, z1: 0.25, x2: 0.75, y2: 1.1, z2: 0.75 },
+		"*-9": { x1: 0.22, y1: -0.0625, z1: 0.22, x2: 0.78, y2: 1.25, z2: 0.78 }
+	},
+	materialDensity: 300,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	}
+}

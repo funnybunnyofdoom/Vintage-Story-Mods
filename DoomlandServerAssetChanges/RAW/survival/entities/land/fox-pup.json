@@ -1,0 +1,174 @@
+{
+	code: "fox-pup",
+	class: "EntityAgent",
+	variantgroups:  [ { code: "type", states: ["forest", "arctic"] } ] ,
+	enabled: true,
+	hitboxSize: { x: 0.4, y: 0.3 },
+	eyeHeight: 0.4,
+	drops: [
+		
+	],
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/fox-pup" },
+		texture: { base: "entity/fox/{type}-pup" }, 
+		size: 0.9,
+		sizeGrowthFactor: 0.2,
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "interpolateposition" },
+			{ code: "harvestable" },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },			
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 2.2,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "die",
+				animation: "death", 
+				animationSpeed: 1.25,
+				weight: 10,
+				blendMode: "Average",
+				triggeredBy: { onControls: ["dead"] }
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "AddAverage",
+				easeOutSpeed: 4,
+				triggeredBy: { defaultAnim: true },
+			},
+			{
+				code: "sleep", 
+				animation: "sleep",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				blendMode: "Average", 
+			},
+			{
+				code: "sit", 
+				animation: "sit",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				blendMode: "Average", 
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "health", currenthealth: 3, maxhealth: 3 },
+			{ code: "deaddecay", hoursToDecay: 96, decayedBlock: "carcass-tiny" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "harvestable", drops: [] },
+			{ code: "breathe" },
+			{ 
+				hoursToGrow: 336,
+				adultEntityCodes: ["fox-male", "fox-female"],
+				code: "grow" 
+			},
+			{ 
+				code: "taskai",
+				aitasks: [
+					{
+						code: "fleeentity",
+						entityCodes: ["player", "wolf-male", "wolf-female", "hyena-male", "hyena-female"],
+						priority: 1.5,
+						movespeed: 0.02,
+						animationSpeed: 1.8,
+						seekingRange: 9,
+						animation: "Run"
+					},
+					{
+						code: "getoutofwater",
+						priority: 1.45,
+						movespeed: 0.015,
+						animation: "Walk",
+						animationSpeed: 2.2
+					},
+					{
+						code: "stayclosetoentity",
+						priority: 1.4,
+						entityCode: "fox-female",
+						movespeed: 0.02,
+						animationSpeed: 3,
+						maxDistance: 5,
+						searchRange: 25,
+						animation: "Run"
+					},
+					{
+						code: "idle",
+						priority: 1.38,
+						minduration: 200000,
+						maxduration: 800000,
+						mincooldown: 10000,
+						maxcooldown: 30000,
+						priorityForCancel: 1.38,
+						animation: "Sleep",
+						whenNotInEmotionState: "aggressiveondamage",
+						duringDayTimeFrames: [ { fromHour: 10, toHour: 18 }, { fromHour: 1, toHour: 4 } ],
+						stopOnNearbyEntityCodes: ["player", "wolf-male", "wolf-female", "hyena-male", "hyena-female"],
+						stopRange: 8,
+						stopOnHurt: true
+					},
+					{
+						code: "idle",
+						priority: 1.3,
+						priorityForCancel: 1.35,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 10000,
+						maxcooldown: 50000,
+						animation: "Sniff",
+						animationSpeed: 0.8,
+					},
+					{
+						code: "idle",
+						priority: 1.1,
+						minduration: 1000,
+						maxduration: 3000,
+						mincooldown: 2000,
+						maxcooldown: 30000,
+						animation: "Idle"
+					},
+					{
+						code: "wander", 
+						priority: 1.0, 
+						priorityForCancel: 1.35,
+						movespeed: 0.008,
+						animationSpeed: 1.7,
+						animation: "Walk",
+						preferredLightLevel: 24
+					},
+					{
+						code: "idle",
+						priority: 0.9,
+						minduration: 5000,
+						maxduration: 30000,
+						mincooldown: 2000,
+						maxcooldown: 40000,
+						priorityForCancel: 1.35,
+						animation: "Sit"
+					},
+					{ 
+						code: "lookaround", 
+						priority: 0.5
+					}
+				]
+			}
+		]
+	},
+	sounds: {
+		hurt: "creature/fox/hurt",
+		death: "creature/fox/die"
+	},
+}

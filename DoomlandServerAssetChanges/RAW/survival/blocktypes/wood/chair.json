@@ -1,0 +1,59 @@
+{
+	code: "chair",
+	behaviors: [{name: "UnstableFalling"} ],
+	variantgroups: [
+		{ code: "type", states: ["plain", "blue", "red", "yellow", "purple", "brown", "green", "orange", "black", "gray", "pink", "white", "aged"] },
+	],
+	shapeByType: {
+		"*-aged": { base: "block/wood/chair-aged" },
+		"*": { base: "block/wood/chair-normal" }
+	},
+	texturesByType: {
+		"*-aged": null,
+		"*": {
+			"cover": { base: "block/cloth/linen/{type}*" }
+		}
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 1.5,
+	lightAbsorption: 1,
+	sidesolid: {
+		all: false
+	},	
+	sideopaque: {
+		all: false
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 30,
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	materialDensity: 400,
+	selectionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.5, z2: 0.9375 },
+	collisionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.5, z2: 0.9375 },
+	guiTransform: {
+		translation: { x: 0, y: 2, z: 0 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 }
+	},
+	groundTransform: {
+		scale: 1.7
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.42, z: -0.39 },
+		rotation: { x: -8, y: 75, z: -101 },
+		scale: 0.62
+	},
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.25, z: 0.7 },
+		rotation: { x: 30, y: -42, z: 91 },
+		scale: 1.45
+	}
+}

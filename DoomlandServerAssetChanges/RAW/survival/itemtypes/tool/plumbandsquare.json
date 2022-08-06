@@ -1,0 +1,37 @@
+{
+	code: "plumbandsquare",
+	class: "ItemPlumbAndSquare",
+	shape: { base: "item/tool/plumbandsquare" },
+	attributes: {
+		handbook: {
+			include: true,
+			extraSections: [
+				{ title: "plumbandsquare-handbook-help-title", text: "plumbandsquare-handbook-help-text" }
+			]
+		}
+	},	
+	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	fpHandTransform: {
+		translation: { x: -0.15, y: -0.12, z: 0 },
+		rotation: { x: 4, y: 90, z: -30 },
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 2
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -26, y: -27, z: 90 },
+		origin: { x: 0.43, y: 0.38, z: 0.6 },
+		scale: 3
+	},
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.6, z: -0.55 },
+		rotation: { x: 1, y: 0, z: -40 },
+		scale: 0.76
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 90, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: 0.56 },
+		scale: 3.6
+	}
+}

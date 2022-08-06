@@ -1,0 +1,36 @@
+[
+	{
+		ingredientPattern: "CCC,CSC",
+		requiresTrait: "clothier",
+		ingredients: {
+			"C": { type: "item", code: "cloth-purple", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-shoulder-longsleeve-pearl-moonrobe"  }
+	},
+	{
+		ingredientPattern: "CGC,SC_",
+		requiresTrait: "clothier",
+		ingredients: {
+			"C": { type: "item", code: "cloth-purple", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" },
+			"G": { type: "item", code: "nugget-nativegold", quantity: 4 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-shoulder-shortsleeve-pearl-moonrobe"  }
+	},
+	{
+		ingredientPattern: "C_C,CSC",
+		requiresTrait: "clothier",
+		ingredients: {
+			"C": { type: "item", code: "cloth-purple", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-lowerbody-minstrel-pants"  }
+	},
+]

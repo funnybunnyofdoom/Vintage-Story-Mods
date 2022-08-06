@@ -1,0 +1,36 @@
+[
+	{
+		code: "soil",
+		triesPerChunk: 0.025,
+		generator: "disc-followsurfacebelow",
+		attributes: {
+			inblock: { code: "soil-*", name: "fertcover", allowedVariants: ["low-none", "medium-none", "low-verysparse", "medium-verysparse", "low-sparse", "medium-sparse", "low-normal", "medium-normal"] },
+			placeblock: {
+				code: "soil-high-*",
+				name: "coverage",
+				allowedVariantsByInBlock: {
+					"soil-low-none": ["none"],
+					"soil-medium-none": ["none"],
+					"soil-low-verysparse": ["verysparse"],
+					"soil-medium-verysparse": ["verysparse"],
+					"soil-low-sparse": ["sparse"],
+					"soil-medium-sparse": ["sparse"],
+					"soil-low-normal": ["normal"],
+					"soil-medium-normal": ["normal"]
+				}
+			},
+			radius: { dist: "gaussian", avg: 5, var: 3 },
+			depth: { dist: "uniform", avg: 0, var: 0 },
+			thickness: { avg: 1, var: 0 },
+			maxYRoughness: 1,
+			ignoreParentTestPerBlock: true
+		},
+		climate: {
+			minRain: 0.5,
+			maxRain: 0.9,
+			minTemp: 5,
+			maxTemp: 37,
+			maxY: 0.53
+		}
+	}
+]

@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "FF	FF",
+	ingredients: {
+		"F": { type: "item", code: "flaxfibers" }
+	},
+	width: 2,
+	height: 2,
+	output: { type: "item", code: "flaxtwine"  }
+}

@@ -1,0 +1,18 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["copper"] },
+	pattern: [[
+		"#####",
+		"#___#",
+		"#___#",
+		"#___#",
+		"#####",
+	], [
+		"#####",
+		"#___#",
+		"#___#",
+		"#___#",
+		"#####",
+	]],
+	name: "chutesection",
+	output: { type: "item", code: "chutesection-copper"  }
+}

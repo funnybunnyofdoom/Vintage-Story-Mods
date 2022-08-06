@@ -1,0 +1,65 @@
+{
+	code: "legume",
+	maxstacksize: 32,
+	variantgroups: [
+		{ code: "type", states: ["soybean", "peanut" ] },
+	],
+	shapeByType: {
+		"*-peanut": { base: "item/food/legume/peanut" }
+	},
+	attributes: {
+		inContainerTexture: { base: "block/wood/barrel/raw-soybean" },
+		nutritionPropsWhenInMeal: { 
+			satietyByType: {
+				"*-soybean": 240,
+				"*-peanut": 160,
+			},
+			foodcategory: "Protein" ,
+			inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling', allowMixing: false }
+		}
+	},
+	texture: { base: "item/food/legume/{type}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 8760 },
+		transitionHours: { avg: 876 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.33
+	}],
+	materialDensity: 600,
+	nutritionPropsByType: {
+		"*-peanut": { saturation: 160, foodcategory: "Protein" },
+	},
+	guiTransformByType: {
+		"*-peanut": {
+			translation: { x: -1, y: 1, z: 0 },
+			rotation: { x: -43, y: 60, z: -180 },
+			origin: { x: 0.6, y: 0.1, z: 0.5 },
+			scale: 2.01
+		}
+	},
+	fpHandTransformByType: {
+		"*-peanut": {
+			rotation: { x: -8, y: -81, z: -27 }
+		}
+	},
+	groundTransformByType: {
+		"*-peanut": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 1.91
+		}
+	},
+	tpHandTransformByType: {
+		"*-peanut": {
+			translation: { x: -1.7, y: -0.7, z: -1.1 },
+			rotation: { x: 12, y: 26, z: -93 },
+			origin: { x: 0.5, y: 0.21, z: 0.48 }
+		}
+	},
+	heldTpIdleAnimationByType: {
+		"*-peanut": "holdbothhands"
+	}
+}

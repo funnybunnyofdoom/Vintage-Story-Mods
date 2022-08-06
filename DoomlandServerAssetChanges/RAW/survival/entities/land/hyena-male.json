@@ -1,0 +1,232 @@
+{
+	code: "hyena-male",
+	class: "EntityAgent",
+	hitboxSize: { x: 1.2, y: 1 },
+	deadHitboxSize: { x: 1.2, y: 0.5 },
+	eyeHeight: 0.9,
+	drops: [],
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/hyena-male" },
+		texture: { base: "entity/hyena/hyena-male1"},
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "interpolateposition" },
+			{ code: "harvestable" },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 2.2,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "die",
+				animation: "death", 
+				animationSpeed: 1.25,
+				weight: 10,
+				blendMode: "Average",
+				triggeredBy: { onControls: ["dead"] }
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "AddAverage",
+				easeOutSpeed: 4,
+				triggeredBy: { defaultAnim: true },
+			},
+			{
+				code: "sleep", 
+				animation: "sleep",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				blendMode: "Average", 
+			},
+			{
+				code: "sit", 
+				animation: "sit",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				blendMode: "Average", 
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "health", currenthealth: 12, maxhealth: 12, },
+			{ code: "deaddecay", hoursToDecay: 96, decayedBlock: "carcass-medium" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "harvestable", drops: [				
+				{
+					type: "item", 
+					code: "bushmeat-raw", 
+					quantity: { avg: 9, var: 1.5 } 
+				},
+				{
+					type: "item", 
+					code: "hide-raw-medium", 
+					quantity: { avg: 1.5, var: 0 } 
+				},
+				{
+					type: "item", 
+					code: "fat", 
+					quantity: { avg: 1, var: 0 } 
+				},
+				{
+					type: "item", 
+					code: "bone", 
+					quantity: { avg: 2, var: 0.2 } 
+				}
+				]
+			},
+			{ 
+				code: "emotionstates",
+				states: [ { code: "fleeondamage", duration: 15, chance: 0.8, slot: 0, priority: 1, accumType: "max" } ]
+			},
+			{ code: "breathe" },
+			{ 
+				code: "taskai",
+				aitasks: [
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 2.5,
+						movespeed: 0.04,
+						seekingRange: 12,
+						animation: "Run",
+						animationSpeed: 2,
+						whenInEmotionState: "fleeondamage",
+						animation: "Run",
+						sound: "creature/hyena/laugh"
+					},
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damage: 6,
+						damageType: "SlashingAttack",
+						slot: 1,
+						mincooldown: 1500, 
+						maxcooldown: 1500, 
+						attackDurationMs: 800,
+						damagePlayerAtMs: 500,
+						animation: "Attack",
+						animationSpeed: 2.5,
+						sound: "creature/hyena/attack"
+					},
+					{
+						code: "idle",
+						priority: 1.6,
+						minduration: 5000000,
+						maxduration: 5000000,
+						mincooldown: 5000,
+						maxcooldown: 15000,
+						priorityForCancel: 1.6,
+						animation: "Sleep",
+						whenNotInEmotionState: "aggressiveondamage",
+						duringDayTimeFrames: [ { fromHour: 20, toHour: 24 }, { fromHour: 0, toHour: 7 } ],
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 6,
+						stopOnHurt: true
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						movespeed: 0.04,
+						seekingRange: 10,
+						animation: "Run",
+						animationSpeed: 2,
+						sound: "creature/hyena/growl"
+					},
+					{
+						code: "getoutofwater",
+						priority: 1.4,
+						movespeed: 0.015,
+						animation: "Walk",
+						animationSpeed: 2.2
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "Sniff",
+						animationSpeed: 1.25,
+						whenNotInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "wander", 
+						priority: 1.0, 
+						priorityForCancel: 1.35,
+						movespeed: 0.006,
+						animation: "Walk",
+						preferredLightLevel: 24
+					},
+					{
+						code: "idle",
+						priority: 0.9,
+						minduration: 5000,
+						maxduration: 30000,
+						mincooldown: 2000,
+						maxcooldown: 120000,
+						priorityForCancel: 1.28,
+						animation: "Sit",
+						whenNotInEmotionState: "aggressiveondamage",
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 5
+					},
+					{ 
+						code: "lookaround", 
+						priority: 0.5
+					}
+				]
+			}
+		],
+		spawnconditions: {
+			worldgen: {
+				TriesPerChunk: { avg: 0.3, var: 0 },
+				tryOnlySurface: true,
+				minLightLevel: 10,
+				groupSize: { dist: "verynarrowgaussian", avg: 2, var: 3 },
+				insideBlockCodes: ["air", "tallgrass-*"],
+				minTemp: 25,
+				maxTemp: 40,
+				minRain: 0.1,
+				maxRain: 0.39,
+				companions: ["hyena-female", "hyena-pup"]
+			},
+			runtime: {
+				group: "hostile",
+				tryOnlySurface: true,
+				chance: 0.0008,
+				maxQuantity: 4,
+				minLightLevel: 10,
+				groupSize: { dist: "verynarrowgaussian", avg: 2, var: 3 },
+				insideBlockCodes: ["air", "tallgrass-*"],
+				minTemp: 25,
+				maxTemp: 40,
+				minRain: 0.1,
+				maxRain: 0.39,
+				companions: ["hyena-female", "hyena-pup"]
+			}
+		}
+	},
+	sounds: {
+		hurt: "creature/hyena/hurt",
+		death: "creature/hyena/death",
+		idle: "creature/hyena/laugh"
+	},
+	idleSoundChance: 0.02
+}

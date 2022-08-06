@@ -1,0 +1,33 @@
+{
+	code: "lootvessel",
+	class: "BlockLootVessel",
+	behaviors: [{name: "UnstableFalling"}],
+	attributes: {
+		handbook: {
+			"foundIn": "Surface and underground ruins"
+		}
+	},
+	variantgroups: [
+		{ code: "loottype", states: ["seed", "food", "forage", "ore", "tool", "farming", "arcticsupplies" ] },
+	],
+	shape: { base: "block/clay/lootvessel" },
+	blockmaterial: "Ceramic",
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	replaceable: 1000,
+	resistance: 0.45,
+	maxStackSize: 4,
+	lightAbsorption: 0,
+	sounds: {
+		walk: "walk/stone",
+		break: "block/ceramicbreak",
+		hit: "block/ceramicbreak",
+		place: "block/ceramicplace"
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	collisionSelectionBox: { x1: 0.125, y1: 0, z1: 0.125, x2: 0.875, y2: 1, z2: 0.875 }
+}

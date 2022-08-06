@@ -1,0 +1,205 @@
+{
+	code: "clothes",
+	class: "ItemWearable",
+	variantgroups: [
+		{ code: "category",  states: ["foot"] },		
+		{ code: "foot", combine: "SelectiveMultiply", onVariant: "category", states: [
+			"aristocrat-shoes", "great-steppe-boots", "fur-lined-reindeer-herder-shoes", "high-leather-boots", "jailor-boots", "knee-high-fur-boots", "lackey-shoes", "merchant-shoes", 
+			"messenger-shoes", "metalcap-boots", "minstrel-boots", "noble-shoes", "peasent-slippers", "prince-boots", "prisoner-binds", "shepherd-sandals", "soldier-boots", "squire-boots", 
+			"nomad-boots", "temptress-velvet-shoes", "tigh-high-boots", "wool-lined-knee-high-boots", "worn-leather-boots", "blackguard-shoes", "clockmaker-shoes", "hunter-boots", "malefactor-boots",
+			"forlorn-shoes", "commoner-boots", "tailor-shoes"
+		] },
+	],
+	behaviors: [{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.25, z2: 1 } } }],
+	shapeByType: {
+		"*-clockmaker-shoes": {
+			base: "entity/humanoid/seraph/clothing/foot/clockmaker-shoes" 
+		},
+		"*-commoner-boots": {
+			base: "entity/humanoid/seraph/clothing/foot/commoner-boots" 
+		},
+		"*-hunter-boots": {
+			base: "entity/humanoid/seraph/clothing/foot/hunter-boots" 
+		},
+		"*-malefactor-boots": {
+			base: "entity/humanoid/seraph/clothing/foot/malefactor-boots" 
+		},
+		"*": {
+			base: "entity/humanoid/seraph" 
+		}
+	},
+	storageFlags: 128,
+	attributes: {
+		groundStorageTransform: {
+			translation: { x: 0, y: 0.011, z: 0 }
+		},
+		onDisplayTransform: {
+			translation: { x: 0, y: 0.011, z: 0 },
+			rotation: { x: 0, y: -90, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.9
+		},
+		clothescategory: "foot",
+		displaycaseable: true,
+		shelvable: true,
+		warmthByType: {
+			"*-peasent-slippers*": 0.5,
+			"*-noble-shoes": 0.5,
+			"*-merchant-shoes": 0.5,
+			"*-aristocrat-shoes": 0.5,
+			"*-shepherd-sandals*": 0.5,
+			"*-clockmaker-shoes": 0.5,
+			"*-commoner-boots": 1,
+			"*-fur-lined-reindeer-herder-shoes": 1.5,
+			"*-hunter-boots": 1.5,
+			"*-worn-leather-boots": 0.5,
+			"*-soldier-boots": 0.5,
+			"*-wool-lined-knee-high-boots": 1.5,
+			"*-knee-high-fur-boots": 3,
+			"*-malefactor-boots": 1,
+			"*": 1
+		},
+		wearableAttachmentByType: {
+			"*-clockmaker-shoes": true,
+			"*-commoner-boots": true,
+			"*-hunter-boots": true,
+			"*-malefactor-boots": true
+		}
+	},
+	texturesByType: {
+		"*-clockmaker-shoes": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*-commoner-boots": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*-hunter-boots": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*-malefactor-boots": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*": {
+			"seraph": { base: "entity/humanoid/seraphclothes/{category}/{foot}" }
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	renderAlphaTest: 0.25,
+	fpHandTransform: {
+		translation: { x: 0.7, y: 0.1, z: -0.4 },
+		rotation: { x: -33, y: 10, z: -24 },
+		scale: 2.5
+	},
+	tpHandTransformByType: {
+		"*-tailor-shoes": {
+			translation: { x: -0.7, y: -0.6, z: -1.2 },
+			rotation: { x: -75, y: -82, z: 13 },
+			scale: 0.67
+		},
+		"*-shepherd-sandals": {
+			translation: { x: -0.7, y: -0.6, z: -1.2 },
+			rotation: { x: -75, y: -82, z: 13 },
+			scale: 0.67
+		},
+		"*-prisoner-binds": {
+			translation: { x: -0.7, y: -0.6, z: -1.2 },
+			rotation: { x: -75, y: -82, z: 13 },
+			scale: 0.67
+		},
+		"*-peasent-slippers": {
+			translation: { x: -0.7, y: -0.6, z: -1.2 },
+			rotation: { x: -75, y: -82, z: 13 },
+			scale: 0.67
+		},
+		"*-noble-shoes": {
+			translation: { x: -0.7, y: -0.6, z: -1.2 },
+			rotation: { x: -75, y: -82, z: 13 },
+			scale: 0.67
+		},
+		"*-merchant-shoes": {
+			translation: { x: -0.7, y: -0.65, z: -1.15 },
+			rotation: { x: -75, y: -82, z: 13 },
+			scale: 0.67
+		},
+		"*-aristocrat-shoes": {
+			translation: { x: -0.7, y: -0.65, z: -1.15 },
+			rotation: { x: -75, y: 96, z: -15 },
+			scale: 0.67
+		},
+		"*-fur-lined-reindeer-herder-shoes": {
+			translation: { x: -0.75, y: -0.65, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*-lackey-shoes": {
+			translation: { x: -0.75, y: -0.7, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*-tigh-high-boots": {
+			translation: { x: -0.75, y: -1.2, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*-worn-leather-boots": {
+			translation: { x: -0.75, y: -0.55, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*-clockmaker-shoes": {
+			translation: { x: -0.75, y: -0.5, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*-soldier-boots": {
+			translation: { x: -0.75, y: -0.5, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*-temptress-velvet-shoes": {
+			translation: { x: -0.75, y: -0.6, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		},
+		"*": {
+			translation: { x: -0.75, y: -0.8, z: -0.9 },
+			rotation: { x: 48, y: 88, z: 54 },
+			scale: 0.6
+		}
+	},
+	guiTransformByType: {
+		"*-clockmaker-shoes": {
+			translation: { x: 2, y: 0, z: 18 },
+			rotation: { x: 152, y: -136, z: -4 },
+			origin: { x: 0.49, y: 0.16, z: 0.54 },
+			scale: 2.84
+		},
+		"*-tigh-high-boots": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 180, y: -76, z: 8 },
+			origin: { x: 0.7, y: 0.4, z: 0.6 },
+			scale: 1.94
+		},
+		"*-tailor-shoes": {
+			rotate: false,
+			translation: { x: 2, y: 0, z: 18 },
+			rotation: { x: 152, y: -118, z: -3 },
+			origin: { x: 0.5, y: 0.14, z: 0.55 },
+			scale: 2.69
+		},
+		"*": {
+			rotate: false,
+			translation: { x: 2, y: 0, z: 18 },
+			rotation: { x: 152, y: -118, z: -3 },
+			origin: { x: 0.5, y: 0.29, z: 0.55 },
+			scale: 2.2
+		}
+	},
+	groundTransform: {
+		translation: { x: 0.05, y: 0.02, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.11
+	}
+}

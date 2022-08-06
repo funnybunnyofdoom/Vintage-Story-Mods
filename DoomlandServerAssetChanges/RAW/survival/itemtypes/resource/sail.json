@@ -1,0 +1,30 @@
+{
+	code: "sail",
+	shape: { base: "item/sail" },
+	creativeinventory: { "general": ["*"], "items": ["*"], "mechanics": ["*"] },
+	maxstacksize: 4,
+	materialDensity: 510,
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: -42, z: -131 },
+		origin: { x: 0.6, y: 0.05, z: 0.5 },
+		scale: 1.44
+	},
+	fpHandTransform: {
+		translation: { x: 0.05, y: 0.3, z: 0 },
+		rotation: { x: -21, y: -72, z: -69 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 }
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -1, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.7
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: 0.21, z: -0.73 },
+		rotation: { x: -80, y: 3, z: 17 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.7
+	}
+}

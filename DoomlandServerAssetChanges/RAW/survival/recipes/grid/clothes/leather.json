@@ -1,0 +1,86 @@
+[
+	{
+		ingredientPattern: "LTL,_L_,_L_",
+		recipeGroup: 1,
+		ingredients: {
+			"L": { type: "item", code: "leather-plain", quantity: 2 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "clothes-shoulder-blacksmith-apron"  }
+	},
+	{
+		ingredientPattern: "L_L,LTL",
+		recipeGroup: 1,
+		ingredients: {
+			"L": { type: "item", code: "leather-plain", quantity: 2 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-foot-worn-leather-boots"  }
+	},
+	{
+		ingredientPattern: "LTL,LTL",
+		recipeGroup: 1,
+		ingredients: {
+			"L": { type: "item", code: "leather-plain", quantity: 3 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-foot-high-leather-boots"  }
+	},
+	{
+		ingredientPattern: "LTL",
+		recipeGroup: 1,
+		ingredients: {
+			"L": { type: "item", code: "leather-plain", quantity: 2 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 1,
+		output: { type: "item", code: "clothes-arm-leather-bracers"  }
+	},
+	{
+		ingredientPattern: "LTL,_T_",
+		recipeGroup: 1,
+		ingredients: {
+			"L": { type: "item", code: "leather-plain", quantity: 3 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-hand-heavy-leather-gloves"  }
+	},
+	{
+		ingredientPattern: "LL",
+		ingredients: {
+			"L": { type: "item", code: "leather-black", quantity: 1 }
+		},
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "clothes-face-leather-reinforced-mask"  }
+	},	
+	{
+		ingredientPattern: "TL_,LLL",
+		ingredients: {
+			"L": { type: "item", code: "leather-orange", quantity: 2 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-shoulder-stained-leather-poncho"  }
+	},	
+	{
+		ingredientPattern: "LTL,L_L",
+		ingredients: {
+			"L": { type: "item", code: "leather-black", quantity: 2 },
+			"T": { type: "item", code: "flaxtwine" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-foot-tigh-high-boots"  }
+	}
+]

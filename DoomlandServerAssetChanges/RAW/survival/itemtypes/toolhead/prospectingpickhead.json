@@ -1,0 +1,38 @@
+{
+	code: "prospectingpickhead",
+	variantgroups: [
+		{ code: "metal", states: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "gold", "silver", "iron", "meteoriciron", "steel" ] },
+	],
+	maxstacksize: 4,
+	shape: { base: "item/tool/prospectingpick" },
+	textures: {
+		"metal": { base: "block/metal/ingot/{metal}" },
+		"handle": { base: "block/transparent" },
+		"string": { base: "block/transparent" },
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	fpHandTransform: {
+		translation: { x: 0.5, y: -0.3, z: -0.1 },
+		rotation: { x: 50, y: 11, z: 99 },
+		origin: { x: 0.5, y: -0.2, z: 1.3 },
+		scale: 2.25
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 150 },
+		rotation: { x: -48, y: -118, z: -180 },
+		origin: { x: 0.53, y: 0.62, z: 0.16 },
+		scale: 3.43
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.3, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.71, y: 0.47, z: 0.4 },
+		scale: 3.1
+	},
+	tpHandTransform: {
+		translation: { x: -0.4, y: -0.75, z: -0.23 },
+		rotation: { x: 1, y: -80, z: 81 },
+		origin: { x: 0.6, y: 0.4, z: 0.6 },
+		scale: 1
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"__comment": "This is the old pre 1.16 crate kept for backwards compatibility. Will look like an aged crate and also drop the new crate block upon breaking",
+	code: "woodencrate",
+	variantgroups: [
+		{ code:"state", states: ["closed", "opened"] },
+	],	
+	shapeByType: {
+		"*-closed": { base: "block/wood/crate/aged-closed" },
+		"*-opened": { base: "block/wood/crate/aged-opened" }
+	},
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 1.5,
+	lightAbsorption: 1,
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 30,
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	drops: [ { type: "block", code: "crate", attributes: { type: "wood-aged" } } ],
+	collisionboxesByType: {
+		"*-opened": [ 
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625, rotateY: 90 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625, rotateY: 180 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625, rotateY: 270 },
+		]
+	},
+	selectionboxesByType: {
+		"*-opened": [ 
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625, rotateY: 90 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625, rotateY: 180 },
+			{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.0625, rotateY: 270 },
+		]
+	},
+	materialDensity: 600,
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

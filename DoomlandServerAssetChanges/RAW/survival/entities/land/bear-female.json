@@ -1,0 +1,413 @@
+{
+	code: "bear-female",
+	class: "EntityAgent",
+	canClimb: true,
+	"__comment": "Many values are optimized for the polar bear. The other bears are unfinished.",
+	variantgroups: [
+		{ code: "type", states: ["black", "brown", "sun", "panda", "polar"]},
+	],
+	collisionBoxSize: { x: 1.2, y: 1.2 },
+	deadCollisionBoxSize: { x: 1.2, y: 0.75 },
+	
+	selectionBoxSizeByType: {
+		"*-black": { x: 1.5, y: 1.8 },
+		"*-brown": { x: 1.5, y: 1.8 },
+		"*-sun": { x: 1.5, y: 1.8 },
+		"*-panda": { x: 1.5, y: 1.8 },
+		"*-polar": { x: 2.2, y: 2 }
+	},
+	deadSelectionBoxSizeByType: {
+		"*-black": { x: 1.2, y: 1 },
+		"*-brown": { x: 1.2, y: 1 },
+		"*-sun": { x: 1.2, y: 1 },
+		"*-panda": { x: 1.2, y: 1 },
+		"*-polar": { x: 1.7, y: 1.5 },
+	},	
+	hitboxSize: { x: 1.2, y: 1 },
+	deadHitboxSize: { x: 1, y: 0.75 },
+	eyeHeight: 0.9,
+	drops: [],
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/bear" },
+		textureByType: {
+			"*-black": { base: "entity/bear/black1" },
+			"*-brown": { base: "entity/bear/brown1", alternates: [ { base: "entity/bear/brown2" }, { base: "entity/bear/brown3" } ] },
+			"*-sun": { base: "entity/bear/sun1" },
+			"*-panda": { base: "entity/bear/panda1" },
+			"*-polar": { base: "entity/bear/polar1" },
+		},
+		sizeByType: {
+			"*-black": 0.9,
+			"*-brown": 1.15,
+			"*-sun": 0.5,
+			"*-panda": 0.7,
+			"*-polar": 1.3
+		},
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 3.1251 }, 
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "interpolateposition" },
+			{ code: "harvestable" },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 2.2,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "die",
+				animation: "die", 
+				animationSpeed: 1.25,
+				weight: 10,
+				blendMode: "Average",
+				triggeredBy: { onControls: ["dead"] }
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "AddAverage",
+				easeOutSpeed: 4,
+				triggeredBy: { defaultAnim: true },
+			},
+			{
+				code: "sleep", 
+				animation: "sleep",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				weight: 1.25,
+				blendMode: "Average", 
+			},
+			{
+				code: "sit", 
+				animation: "sit",
+				easeInSpeed: 4,
+				easeOutSpeed: 3,
+				supressDefaultAnimation: true,
+				blendMode: "Average", 
+			},
+			{
+				code: "stand",
+				animation: "stand",
+				easeOutSpeed: 2,
+				weight: 1,
+				blendMode: "Average", 
+			},
+			{
+				code: "lie",
+				animation: "lie",
+				blendMode: "Average", 
+			},
+			{
+				code: "walk",
+				animation: "walk",
+				supressDefaultAnimation: true,
+				blendMode: "AddAverage"
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "health", 
+				currenthealthByType: {
+					"*-black": 32,
+					"*-brown": 42,
+					"*-sun": 22,
+					"*-panda": 26,
+					"*-polar": 54
+				},
+				maxhealthByType: {
+					"*-black": 32,
+					"*-brown": 42,
+					"*-sun": 22,
+					"*-panda": 26,
+					"*-polar": 54
+				}
+			},
+			{ code: "deaddecay", hoursToDecay: 96, decayedBlock: "carcass-medium" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "harvestable", drops: [
+				{
+					type: "item", 
+					code: "bushmeat-raw", 
+					quantityByType: {
+						"*-black": { avg: 12, var: 2 },
+						"*-brown": { avg: 16, var: 2 },
+						"*-sun": { avg: 9, var: 2 },
+						"*-panda": { avg: 10, var: 2 },
+						"*-polar": { avg: 22, var: 2 },
+					},
+				},
+				{
+					type: "item", 
+					code: "hide-raw-huge", 
+					quantityByType: {
+						"*-black": { avg: 2, var: 0 },
+						"*-brown": { avg: 3, var: 0 },
+						"*-sun": { avg: 2, var: 0 },
+						"*-panda": { avg: 2, var: 0 },
+						"*-polar": { avg: 3, var: 0 },
+					},
+				},
+				{
+					type: "item", 
+					code: "fat", 
+					quantityByType: {
+						"*-black": { avg: 2, var: 1 },
+						"*-brown": { avg: 2, var: 1 },
+						"*-sun": { avg: 1, var: 1 },
+						"*-panda": { avg: 2, var: 1 },
+						"*-polar": { avg: 4, var: 1 },
+					},
+				},
+				{
+					type: "item", 
+					code: "bone", 
+					quantity: { avg: 4, var: 0.5 } 
+				}
+				],
+			},
+			{ code: "breathe" },
+			{ 
+				code: "emotionstates",
+				states: [
+					{ code: "fleeondamage", 
+							duration: 30, 
+							chanceByType: {
+								"*-black": 0.1,
+								"*-brown": 0.05,
+								"*-sun": 0.05,
+								"*-panda": 0.3,
+								"*-polar": 0.05
+							}, 
+							slot: 2, 
+							priority: 5, 
+							accumType: "max", 
+							whenHealthRelBelow: 0.3 },
+					{ 
+						code: "saturated", 
+						duration: 1200, chance: 1, slot: 0, priority: 1, accumType: "sum",
+						belowTempDuration: 600,
+						belowTempThreshold: -5
+					},
+					{ code: "aggressiveondamage", duration: 30, chance: 1, slot: 2, priority: 2, accumType: "noaccum" },
+					{ code: "alarmherdondamage", chance: 1, slot: 1, priority: 1, accumType: "max" },
+				],
+			},
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattack",
+						entityCodes: ["player", "chicken-rooster", "chicken-hen", "chicken-baby", "hare-*", "fox-*", "pig-*", "sheep-*"],
+						priorityByType: {
+							"*-black": 0.1,
+							"*-brown": 0.6,
+							"*-sun": 1.5,
+							"*-panda": 0.02,
+							"*-polar": 1.5
+						},
+						damageByType: {
+							"*-black": 10,
+							"*-brown": 12,
+							"*-sun": 8,
+							"*-panda": 8,
+							"*-polar": 16
+						},
+						damageTier: 2,
+						damageType: "SlashingAttack",
+						damage: 15,
+						minDist: 2,
+						minVerDist: 1.5,
+						slot: 1,
+						mincooldown: 1500, 
+						maxcooldown: 1500, 
+						attackDurationMs: 800,
+						damagePlayerAtMs: 500,
+						animation: "Attack",
+						animationSpeed: 2.5,
+						sound: "creature/bear/attack"
+					},
+
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damageTier: 2,
+						damageByType: {
+							"*-black": 10,
+							"*-brown": 12,
+							"*-sun": 8,
+							"*-panda": 8,
+							"*-polar": 16
+						},
+						damageType: "SlashingAttack",
+						damage: 15,
+						minDist: 2.5,
+						minVerDist: 1.5,
+						slot: 1,
+						mincooldown: 1500, 
+						maxcooldown: 1500, 
+						attackDurationMs: 800,
+						damagePlayerAtMs: 500,
+						animation: "Attack",
+						animationSpeed: 2.5,
+						sound: "creature/bear/attack",
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 1.7,
+						movespeed: 0.052,
+						seekingRange: 20,
+						animation: "Run",
+						animationSpeed: 2,
+						sound: "creature/bear/flee",
+						whenInEmotionState: "fleeondamage"
+					},					
+					{
+						code: "seekentity",
+						entityCodes: ["player", "chicken-*", "hare-*", "fox-*", "pig-*", "sheep-*"],
+						priorityByType: {
+							"*-black": 0.1,
+							"*-brown": 0.6,
+							"*-sun": 1,
+							"*-panda": 0.02,
+							"*-polar": 1
+						},
+						movespeed: 0.06,
+						animationSpeed: 2.1,
+						extraTargetDistance: 0.5,
+						
+						seekingRange: 12,
+						
+						belowTempSeekingRange: 25,
+						belowTempThreshold: -10,
+						
+						animation: "Run",
+						
+						sound: "creature/bear/growl",
+						whenNotInEmotionState: "saturated"
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.49,
+						movespeed: 0.045,
+						seekingRange: 15,
+						animation: "Run",
+						animationSpeed: 2.2,
+						leapAtTarget: true,
+						leapAnimation: null,
+						leapChance: 0.01,
+						sound: "creature/bear/growl",
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "getoutofwater",
+						priority: 1.4,
+						movespeed: 0.015,
+						animation: "Swim",
+						animationSpeed: 1
+					},
+					{
+						code: "idle",
+						priority: 1.3,
+						priorityForCancel: 1.35,
+						minduration: 200000,
+						maxduration: 800000,
+						mincooldown: 10000,
+						maxcooldown: 30000,
+						animation: "Sleep",
+						animationSpeed: 0.3,
+						whenNotInEmotionState: "aggressiveondamage",
+						duringDayTimeFrames: [ { fromHour: 10, toHour: 18 }, { fromHour: 1, toHour: 3 } ],
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 10,
+						stopOnHurt: true
+					},					
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 4667,
+						maxduration: 4667,
+						mincooldown: 80000,
+						maxcooldown: 500000,
+						animation: "Stand",
+						whenNotInEmotionState: "aggressiveondamage",
+						animationSpeed: 0.5
+					},
+					{
+						code: "idle",
+						priority: 1.1,
+						priorityForCancel: 1.35,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "Stand",
+						whenNotInEmotionState: "aggressiveondamage",
+						animationSpeed: 1.25
+					},
+					{
+						code: "wander", 
+						priority: 1.0, 
+						priorityForCancel: 1.35,
+						movespeed: 0.0135,
+						animation: "Walk",
+						animationSpeed: 0.75,
+						preferredLightLevel: 20
+					},
+					{
+						code: "idle",
+						priority: 0.9,
+						priorityForCancel: 1.35,
+						minduration: 5000,
+						maxduration: 30000,
+						mincooldown: 2000,
+						maxcooldown: 120000,
+						animation: "Sit",
+						supressDefaultAnimation: true,
+						whenNotInEmotionState: "aggressiveondamage",
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 5
+					},
+					{
+						code: "idle",
+						priority: 0.6,
+						priorityForCancel: 1.35,
+						minduration: 5000,
+						maxduration: 30000,
+						mincooldown: 2000,
+						maxcooldown: 120000,
+						animation: "Lie",
+						whenNotInEmotionState: "aggressiveondamage",
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 5
+					},
+					{ 
+						code: "lookaround", 
+						turnSpeedMul: 0.5,
+						priority: 0.5
+					}
+				]
+			},
+		]
+	},
+	sounds: {
+		hurt: "creature/bear/hurt",
+		death: "creature/bear/flee",
+		idle: "creature/bear/growl"
+	},
+	idleSoundChance: 0
+}

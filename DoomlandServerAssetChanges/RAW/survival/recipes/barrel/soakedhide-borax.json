@@ -1,0 +1,38 @@
+[
+	{
+		code: "soakedhide",
+		sealHours: 18,
+		ingredients: [
+			{ type: "item", code: "dilutedboraxportion", litres: 2, consumeLitres: 2 },
+			{ type: "item", code: "hide-raw-small", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-soaked-small", stackSize: 1 }
+	},
+	{
+		code: "soakedhide",
+		sealHours: 18,
+		ingredients: [
+			{ type: "item", code: "dilutedboraxportion", litres: 4, consumeLitres: 4 },
+			{ type: "item", code: "hide-raw-medium", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-soaked-medium", stackSize: 1 }
+	},
+	{
+		code: "soakedhide",
+		sealHours: 18,
+		ingredients: [
+			{ type: "item", code: "dilutedboraxportion", litres: 6, consumeLitres: 6 },
+			{ type: "item", code: "hide-raw-large", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-soaked-large", stackSize: 1 }
+	},
+	{
+		code: "soakedhide",
+		sealHours: 18,
+		ingredients: [
+			{ type: "item", code: "dilutedboraxportion", litres: 10, consumeLitres: 10 },
+			{ type: "item", code: "hide-raw-huge", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-soaked-huge", stackSize: 1}
+	}
+]

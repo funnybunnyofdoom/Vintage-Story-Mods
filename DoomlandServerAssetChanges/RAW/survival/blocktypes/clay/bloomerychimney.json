@@ -1,0 +1,29 @@
+{
+	code: "bloomerychimney",
+	behaviors: [{name: "UnstableFalling"}, { name: "Unplaceable" }],
+	blockmaterial: "Ceramic",
+	creativeinventory: { "general": ["*"], "construction": ["*"] },
+	replaceable: 400,
+	resistance: 2.5,
+	maxStackSize: 1,
+	lightAbsorption: 0,
+	shape: { base: "block/clay/bloomery/chimney" },
+	sounds: {
+		walk: "walk/stone",
+		place: "block/brickplace",
+		byTool: {
+			"Pickaxe": { hit: "block/rock-hit-pickaxe", break: "block/rock-break-pickaxe" }
+		}
+	},
+	collisionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.625, z2: 0.9375 },
+	selectionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.625, z2: 0.9375 },
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	drops: [
+		{ type: "item", code: "burnedbrick-fire",  quantity: { avg: 3, var: 1 }  }
+	]
+}

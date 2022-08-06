@@ -1,0 +1,141 @@
+{
+	code: "trough",
+	class: "BlockTrough",
+	behaviors: [{name: "NWOrientable"}],	
+	entityClass: "Trough",
+	attributes: {
+		handbook: {
+			groupBy: ["trough-*-small-*"]
+		},
+		contentConfig: [
+			{
+				code: "flax",
+				content: { type: "item", code: "grain-flax" }, 
+				foodFor: ["chicken-*"],
+				quantityPerFillLevel: 1,
+				maxFillLevels: 8,
+				shapesPerFillLevel: ["block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill4", "block/wood/trough/small/grainfill4"],
+				textureCode: "contents-flax"
+			},
+			{
+				code: "rice",
+				content: { type: "item", code: "grain-rice" }, 
+				quantityPerFillLevel: 1,
+				maxFillLevels: 8,
+				shapesPerFillLevel: ["block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill4", "block/wood/trough/small/grainfill4"],
+				foodFor: ["chicken-*"],
+				textureCode: "contents-rice"
+			},
+			{
+				code: "rye",
+				content: { type: "item", code: "grain-rye" }, 
+				quantityPerFillLevel: 1,
+				maxFillLevels: 8,
+				shapesPerFillLevel: ["block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill4", "block/wood/trough/small/grainfill4"],
+				foodFor: ["chicken-*"],
+				textureCode: "contents-rye"
+			},
+			{
+				code: "spelt",
+				content: { type: "item", code: "grain-spelt" }, 
+				quantityPerFillLevel: 1,
+				maxFillLevels: 8,
+				shapesPerFillLevel: ["block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill4", "block/wood/trough/small/grainfill4"],
+				foodFor: ["chicken-*"],
+				textureCode: "contents-spelt"
+			},
+			{
+				code: "amaranth",
+				content: { type: "item", code: "grain-amaranth" }, 
+				quantityPerFillLevel: 1,
+				maxFillLevels: 8,
+				shapesPerFillLevel: ["block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill4", "block/wood/trough/small/grainfill4"],
+				foodFor: ["chicken-*"],
+				textureCode: "contents-amaranth"
+			},
+			{
+				code: "sunflower",
+				content: { type: "item", code: "grain-sunflower" }, 
+				quantityPerFillLevel: 1,
+				maxFillLevels: 8,
+				shapesPerFillLevel: ["block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill1", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill2", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill3", "block/wood/trough/small/grainfill4", "block/wood/trough/small/grainfill4"],
+				foodFor: ["chicken-*"],
+				textureCode: "contents-sunflower"
+			}
+		]
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	variantgroups: [
+		{ code: "material", states: ["genericwood"] },
+		{ code: "part", states: ["small"] },
+		{ code:"side", states: ["ns", "we"]}
+	],
+	creativeinventory: { "general": ["*-ns"], "decorative": ["*-ns"] },
+	
+	shape: { base: "block/wood/trough/small/empty" },
+	shapebytype: {
+		"*-ns": { base: "block/wood/trough/small/empty", rotateY: 0 },
+		"*-we": { base: "block/wood/trough/small/empty", rotateY: 90 },
+	},
+	textures: {
+		"contents-flax": { base: "block/wood/trough/small/flax" },
+		"contents-rice": { base: "block/wood/trough/small/rice" },
+		"contents-rye": { base: "block/wood/trough/small/rye" },
+		"contents-spelt": { base: "block/wood/trough/small/spelt" },
+		"contents-amaranth": { base: "block/wood/trough/small/amaranth" },
+		"contents-sunflower": { base: "block/wood/trough/small/sunflower" },
+		"normal-side": { base: "block/hay/normal-side" },
+		"normal-top": { base: "block/hay/normal-top" },
+		
+		"rotoverlay": { base: "item/resource/rot/rotoverlay" },
+		"rot": { base: "block/wood/trough/large/rot" }
+	},
+	blockmaterial: "Wood",
+	replaceable: 550,
+	resistance: 2,
+	lightAbsorption: 0,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 40,
+	},
+	guiTransform: {
+		translation: { x: -1, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.22, z: 0.5 },
+		scale: 1.53
+	},
+	fpHandTransform: {
+		translation: { x: 0.16, y: 0.4, z: 0 },
+		rotation: { x: 125, y: 132, z: -82 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 1.9
+	},
+	tpHandTransform: {
+		translation: { x: -0.5, y: -0.3, z: -0.01 },
+		rotation: { x: 85, y: 1, z: 0 },
+		scale: 0.88
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.5
+	},
+	collisionselectionbox: { 
+		x1: 0.25, y1: 0, z1: 0.0625, x2: 0.75, y2: 0.25, z2: 0.9375, rotateYByType: 
+		{
+			"*-ns": 90,
+			"*-we": 0,
+		}
+	},	
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	materialDensity: 600
+}

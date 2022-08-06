@@ -1,0 +1,212 @@
+{
+	code: "pickledvegetable",
+	maxstacksize: 64,
+	attributes: {
+		inContainerTexture: { base: "block/wood/barrel/pickled-{type}" },
+		crockable: true,
+		inPieProperties: { texture: "block/food/pie/fill-{type}", partType: 'Filling' }
+	},
+	variantgroups: [
+		{ code: "type", states: ["carrot", "cabbage", "onion", "turnip", "parsnip", "pumpkin", "bellpepper" ] },
+	],
+	shapebytype: {
+		"*-cabbage": { base: "item/food/pickledvegetable/sauerkraut" },
+		"*-soybean": { base: "item/food/pickledvegetable/soypile" },
+		"*-carrot": { base: "item/food/pickledvegetable/carrot" },
+		"*-onion": { base: "item/food/pickledvegetable/onion" },
+		"*-parsnip": { base: "item/food/pickledvegetable/parsnip" },
+		"*-turnip": { base: "item/food/pickledvegetable/turnip" },
+		"*-pumpkin": { base: "item/food/pickledvegetable/pumpkin" },
+		"*-bellpepper": { base: "item/food/pickledvegetable/bellpepper" }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	nutritionPropsByType: {
+		"*-cabbage": { saturation: 250, foodcategory: "Vegetable" },
+		"*": { saturation: 80, foodcategory: "Vegetable" },
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 1800 },
+		transitionHours: { avg: 240 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.5
+	}],
+	materialDensity: 600,
+	guiTransformByType: {
+		"*-cabbage": {
+			translation: { x: 2.5, y: 1, z: 0 },
+			rotation: { x: 137, y: 131, z: 0 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 1.38
+		},
+		"*-carrot": {
+			translation: { x: 2, y: 1, z: 0 },
+			rotation: { x: 180, y: 44, z: 56 },
+			origin: { x: 0.5, y: 0.2, z: 0.5 },
+			scale: 4.75
+		},
+		"*-onion": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -37, y: 135, z: -155 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 5.35
+		},
+		"*-parsnip": {
+			translation: { x: 2, y: 2, z: 0 },
+			rotation: { x: 180, y: 158, z: 38 },
+			origin: { x: 0.5, y: 0.23, z: 0.5 },
+			scale: 3.6
+		},
+		"*-turnip": {
+			translation: { x: 1, y: 2, z: 0 },
+			rotation: { x: 180, y: 158, z: 38 },
+			origin: { x: 0.5, y: 0.18, z: 0.5 },
+			scale: 4.25
+		},
+		"*-pumpkin": {
+			translation: { x: 2, y: 2, z: 0 },
+			rotation: { x: 127, y: 180, z: 38 },
+			origin: { x: 0.5, y: 0.05, z: 0.5 },
+			scale: 3.5999
+		},
+		"*-bellpepper": {
+			translation: { x: -7, y: 5, z: 0 },
+			rotation: { x: -37, y: 135, z: -155 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 3
+		}
+
+	},
+	fpHandTransformByType: {
+		"*-cabbage": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 51, y: 90, z: -30 },
+			scale: 1.9
+		},
+		"*-carrot": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 45, y: 47, z: -30 },
+			origin: { x: 0.5, y: 0.3, z: 0.5 },
+			scale: 1.9
+		},
+		"*-onion": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 45, y: 47, z: -30 },
+			origin: { x: 0.5, y: 0.3, z: 0.5 },
+			scale: 1.9
+		},
+		"*-parsnip": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 45, y: 47, z: -30 },
+			origin: { x: 0.5, y: 0.3, z: 0.5 },
+			scale: 1.9
+		},
+		"*-turnip":	{
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 45, y: 47, z: -30 },
+			origin: { x: 0.5, y: 0.3, z: 0.5 },
+			scale: 1.9
+		},
+		"*-pumpkin":	{
+			translation: { x: 0, y: 0.22, z: 0 },
+			rotation: { x: 45, y: 47, z: -30 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 1.8999
+		},
+		"*-bellpepper": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 45, y: 47, z: -30 },
+			origin: { x: 0.5, y: 0.3, z: 0.5 },
+			scale: 1.9
+		}
+	},
+	tpHandTransformByType: {
+		"*-cabbage": {
+			translation: { x: -0.7, y: -0.14, z: -0.6 },
+			rotation: { x: 1, y: -1, z: -31 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.79
+		},
+		"*-carrot": {
+			translation: { x: -0.6, y: -0.22, z: -0.61 },
+			rotation: { x: 0, y: 0, z: -42 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.8
+		},
+		"*-onion": {
+			translation: { x: -0.6, y: -0.18, z: -0.6 },
+			rotation: { x: 0, y: 0, z: -42 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.8
+		},
+		"*-parsnip": {
+			translation: { x: -0.6, y: -0.18, z: -0.6 },
+			rotation: { x: 0, y: 0, z: -42 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.8
+		},
+		"*-turnip": {
+			translation: { x: -0.6, y: -0.18, z: -0.6 },
+			rotation: { x: 0, y: 0, z: -42 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.8
+		},
+		"*-pumpkin": {
+			translation: { x: -0.75, y: -0.13, z: -0.71 },
+			rotation: { x: 45, y: -42, z: -65 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.75
+		},
+		"*-bellpepper": {
+			translation: { x: -0.6, y: -0.18, z: -0.6 },
+			rotation: { x: 0, y: 0, z: -42 },
+			origin: { x: 0.5, y: 0.1, z: 0.5 },
+			scale: 0.8
+		}
+		
+	},
+	groundTransformByType: {
+		"*-cabbage": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 3.5
+		},
+		"*-carrot": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 4.3
+		},
+		"*-onion": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 4.3
+		},
+		"*-parsnip": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 4.3
+		},
+		"*-turnip": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 75 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 3.8
+		},
+		"*-pumpkin": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 75 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 3.8
+		},
+		"*-bellpepper": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 83 },
+			origin: { x: 0.47, y: 0, z: 0.5 },
+			scale: 4.3
+		}
+	}
+}

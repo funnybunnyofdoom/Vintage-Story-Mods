@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "C_C	C_C	CCC",
+	ingredients: {
+		"C": { type: "block", code: "cobblestone-*", name: "stone" },
+	},
+	width: 3,
+	height: 3,
+	name: "Forge",
+	output: { type: "block", code: "forge", quantity: 1 }
+}

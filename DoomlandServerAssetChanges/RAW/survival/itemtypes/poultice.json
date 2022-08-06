@@ -1,0 +1,46 @@
+{
+	code: "poultice",
+	class: "ItemPoultice",
+	attributesByType: {
+		"*-reed-honey-sulfur": { health: 4 },
+		"*-reed-horsetail": { health: 2 },
+		
+		"*-linen-honey-sulfur": { health: 7 },
+		"*-linen-horsetail": { health: 4 }
+	},
+	maxstacksize: 16,
+	variantgroups: [
+		{ code: "material", states: ["linen", "reed" ] },
+		{ code: "agent", states: ["honey-sulfur", "horsetail" ] },
+	],
+	shape: { base: "item/medicine/poultice-{material}" },
+	textures: {
+		"agent": { base: "item/medicine/{material}/{agent}" },
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 600,
+	guiTransform: {
+		translation: { x: 3, y: 0, z: 0 },
+		rotation: { x: 120, y: 41, z: 7 },
+		origin: { x: 0.5, y: 0.11, z: 0.5 },
+		scale: 2.15
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 40, y: 91, z: 15 },
+		origin: { x: 0.8, y: 0.4, z: 0 },
+		scale: 1.47
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 180, y: 33, z: -180 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 5, y: 41, z: -31 },
+		origin: { x: 0.16, y: 0.05, z: 0.08 },
+		scale: 0.44
+	}
+}

@@ -1,0 +1,770 @@
+{
+	code: "humanoid-trader-furniture",
+	class: "EntityTrader",
+	canClimb: true,
+	hitboxSize: { x: 0.6, y: 1.75 },
+	deadHitboxSize: { x: 0.75, y: 0.5 },
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/humanoid/trader" },
+		texture: { base: "entity/humanoid/trader", alternates: [ { base: "entity/humanoid/traderclothes/set1" }, { base: "entity/humanoid/traderclothes/set2" },
+                                                             { base: "entity/humanoid/traderclothes/set3" }, { base: "entity/humanoid/traderclothes/set4" },
+                                                             { base: "entity/humanoid/traderclothes/set5" }  ] },
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "interpolateposition" }
+		],
+		animations: [
+			{
+				code: "die",
+				animation: "die",
+				animationSpeed: 1.75,
+				weight: 10,
+				blendMode: "AddAverage"
+			},
+			{
+				code: "hurt",
+				animation: "hurt",
+				animationSpeed: 2,
+				blendMode: "AddAverage"
+			},
+            { code: "rowdywelcome", animation: "rowdywelcome", blendMode: "AddAverage" },
+            { code: "lazywelcome", animation: "lazywelcome", blendMode: "AddAverage" },
+            { code: "lazynod", animation: "lazynod", blendMode: "AddAverage" }
+		]
+	},
+    attributes: {
+        tradeProps: {
+            money: { avg: 30, var: 10 },
+
+
+    "selling": {
+        "maxItems": 8,
+        "list": [
+            {
+                "code": "painting-bogfort-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "painting-castleruin-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "painting-cow-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-hunterintheforest-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-seraph-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "painting-sunkenruin-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-traveler-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "ironfence-base-ew",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 32,
+                    "var": 8
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "ironfence-top-ew",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 32,
+                    "var": 8
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "lantern-up",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "material": "copper",
+                    "lining": "plain"
+                }
+            },
+            {
+                "code": "lantern-up",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "material": "brass",
+                    "lining": "plain"
+                }
+            },
+            {
+                "code": "lantern-up",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                },
+                "attributes": {
+                    "material": "tinbronze",
+                    "lining": "plain"
+                }
+            },
+            {
+                "code": "lantern-up",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                },
+                "attributes": {
+                    "material": "bismuthbronze",
+                    "lining": "plain"
+                }
+            },
+            {
+                "code": "lantern-up",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                },
+                "attributes": {
+                    "material": "blackbronze",
+                    "lining": "plain"
+                }
+            },
+            {
+                "code": "bookshelves-ns",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "bed-wood-head-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "chair-plain",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "door-plank-north-down-closed-left",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "table-normal",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "ladder-wood-north",
+                "type": "block",
+                "stacksize": 16,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "shelf-normal-east",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "chest-east",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "attributes": {
+                    "type": "normal-generic"
+                }
+            },
+            {
+                "code": "barrel",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "crate",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "attributes": {
+                    "type": "wood-aged"
+                }
+            },
+            {
+                "code": "torchholder-brass-empty-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            },
+            {
+                "code": "irondoor-north-down-closed-left",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 20,
+                    "var": 5
+                }
+            }
+        ]
+    },
+    "buying": {
+        "maxItems": 8,
+        "list": [
+            {
+                "code": "glass-green",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-blue",
+                "type": "block",
+                "stacksize": 3,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-violet",
+                "type": "block",
+                "stacksize": 3,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-red",
+                "type": "block",
+                "stacksize": 3,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-yellow",
+                "type": "block",
+                "stacksize": 3,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-brown",
+                "type": "block",
+                "stacksize": 3,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-plain",
+                "type": "block",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "chandelier-candle0",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "smallcarpet-blue",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "smallcarpet-brown",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "smallcarpet-red",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "smallcarpet-turqoise",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "chest-east",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                },
+                "attributes": {
+                    "type": "golden"
+                }
+            },
+            {
+                "code": "clothes-shoulder-artisans-scarf",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clothes-lowerbody-workmans-gown",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clothes-waist-heavy-tool-belt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "linen-normal-down",
+                "type": "block",
+                "stacksize": 2,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clothes-shoulder-embroidered-tartarean-scarf",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            },
+            {
+                "code": "clothes-shoulder-mooncloth-robe",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 11,
+                    "var": 2.75
+                }
+            }
+        ]
+    }
+
+
+
+        }
+    },
+	server: {
+		attributes: {
+			pathfinder: {
+				minTurnAnglePerSec: 720,
+				maxTurnAnglePerSec: 1440
+			}
+		},
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true, selectFromRandomName: ["Wilt", "Lin", "Robert", "Ra Bal", "Filipe", "Hosa", "Vlad", "Mouse"] },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "reviveondeath", minHours: 24, maxHours: 72 },
+			{ code: "health", currenthealth: 25, maxhealth: 25 },
+			{
+				code: "emotionstates",
+				states: [
+					{ code: "aggressiveondamage", duration: 6, chance: 0.6, slot: 0, prority: 2, accumType: "noaccum" },
+					{ code: "fleeondamage", duration: 10, chance: 0.4, slot: 0, prority: 1, accumType: "max" }
+				],
+			},
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damage: 5,
+						mincooldown: 2500,
+						maxcooldown: 3500,
+						attackDurationMs: 900,
+						damagePlayerAtMs: 300,
+						animation: "Attack",
+						animationSpeed: 2,
+						whenInEmotionState: "aggressiveondamage",
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						mincooldown: 1000,
+						maxcooldown: 1500,
+						seekingRange: 20,
+						movespeed: 0.035,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						movespeed: 0.035,
+						seekingRange: 12,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "fleeondamage"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 2000,
+						maxcooldown: 10000,
+						animation: "laugh"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 5000,
+						maxcooldown: 30000,
+						animation: "idle2"
+					},
+					{
+						code: "wander",
+						priority: 1.0,
+						movespeed: 0.01,
+						animation: "Walk",
+						wanderChance: 0.005,
+						maxDistanceToSpawn: 4,
+						wanderRangeMin: 1,
+						wanderRangeMax: 3,
+						teleportWhenOutOfRange: true,
+						teleportInGameHours: 1
+					},
+					{
+						code: "lookaround",
+						priority: 0.5
+					}
+				]
+			}
+		],
+	},
+	sounds: {
+	}
+}

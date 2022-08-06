@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "SPS	SPS",
+	ingredients: {
+		"P": { type: "item", code: "plank-*", name: "wood", allowedVariants: ["birch", "oak", "maple", "pine", "acacia", "kapok", "aged", "baldcypress", "larch", "redwood", "ebony", "walnut", "purpleheart"] },
+		"S": { type: "item", code: "stick" }
+	},
+	width: 3,
+	height: 2,
+	output: { type: "block", code: "woodenfencegate-{wood}-n-closed-left-free", quantity: 1  }
+}

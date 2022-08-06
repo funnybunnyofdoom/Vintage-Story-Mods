@@ -1,0 +1,62 @@
+{
+	code: "lognarrow",
+	behaviorsByType: {
+		"*-grown-*": [{name: "PushEventOnBlockBroken",	properties: {eventName: "testForDecay"}}],
+		"*": [{name: "Pillar"}]
+	},
+	attributes: {
+		preventsDecayByType: {
+			"*-grown-*": true
+		},
+		treeFellingGroupCodeByType: {
+			"*-grown-*": "{wood}"
+		},
+		treeFellingGroupSpreadIndex: 3
+	},
+	variantgroups: [
+		{ code: "type", states: ["grown", "placed"] },
+		{ code: "wood", states: ["cypress"] },
+		{ code: "rotation", states: ["ud", "ns", "we"] },
+	],
+	creativeinventory: { "general": ["lognarrow-placed-*-ud"], "flora": ["lognarrow-placed-*-ud"] },
+	shape: { base: "block/wood/log/narrow8" },
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	blockmaterial: "Wood",
+	requiredMiningTier: 1,
+	textures: {
+		"all": { base: "block/wood/treetrunk/fruit/{wood}" }
+	},
+	replaceable: 500,
+	resistance: 4,
+	sounds: {
+		"place": "block/planks",
+		"walk": "walk/wood",
+		"hit": "block/planks",
+		"break": "block/planks",
+		byTool: {
+			"Axe": { hit: "block/chop", break: "block/planks" }
+		}
+	},
+	drops: [
+		{ type: "item", code: "firewood", quantity: { avg: 3 }  }
+	],
+	combustibleProps: {
+		burnTemperature: 800,
+		burnDuration: 48,
+	},
+	collisionbox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 1, z2: 0.75 },
+	selectionbox: { x1: 0.21, y1: 0, z1: 0.21, x2: 0.79, y2: 1, z2: 0.79 },
+	maxStackSize: 16,
+	materialDensity: 700,
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

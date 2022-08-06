@@ -1,0 +1,11 @@
+{
+	ingredientPattern: "S,C",
+	ingredients: {
+		"S": { type: "block", code: "sign-ground-north" },
+		"C": { type: "block", code: "chest-east", attributes: { type: "normal-generic" } }
+	},
+	shapeless: true,
+	width: 1,
+	height: 2,
+	output: { type: "block", code: "labeledchest-east", attributes: { type: "normal-labeled" }  }
+}

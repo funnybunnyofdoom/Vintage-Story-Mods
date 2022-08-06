@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "T	S",
+	ingredients: {
+		"T": { type: "item", code: "chisel-copper" },
+		"S": { type: "item", code: "stick" }
+	},
+	width: 1,
+	height: 2,
+	output: { type: "item", code: "solderingiron", quantity: 1  }
+}

@@ -1,0 +1,75 @@
+{
+	code: "wallpaper",
+	behaviors: [ {name: "Decor", properties: {sides: ["north", "east", "south", "west", "up", "down"], thickness: 0.0 }} ],
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	vertexFlags: {
+		zOffset: 2
+	},
+	variantgroups: [
+		{ code:"type", states: ["blue4","green1", "grey1", "brown", "walnut", "darkpurple", "yellow", "pink", "lightgreen"] }
+	],
+	drawtype: "surfacelayer",
+	shapeInventory: {
+		base: "block/basic/layers/0voxel", rotateX: 90
+	},
+	sidesolidByType: {
+		"*-down": { all: false, down: true },
+		"*-up": { all: false, up: true },
+		"*-north": { all: false, north: true },
+		"*-east": { all: false, east: true },
+		"*-west": { all: false, west: true },
+		"*-south": { all: false, south: true },
+	},
+	sideopaqueByType: {
+		"*-down": { all: false, down: true },
+		"*-up": { all: false, up: true },
+		"*-north": { all: false, north: true },
+		"*-east": { all: false, east: true },
+		"*-west": { all: false, west: true },
+		"*-south": { all: false, south: true },
+	},
+	blockmaterial: "Cloth",
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	replaceable: 5500,
+	resistance: 0,
+	lightAbsorption: 0,
+	textures: {
+		all: { 
+			base: "block/wallpaper/{type}"
+		}
+	},
+	drops: [],
+	combustibleProps: {
+		burnTemperature: 150,
+		burnDuration: 2,
+	},
+	guiTransform: {
+		rotate: false,
+		rotation: { x: 15, y: -42, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: 0 },
+		scale: 1.5
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -90, y: 1, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: -0.02 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: -1.2, y: -0.7, z: 0.1 },
+		rotation: { x: 5, y: -12, z: -25 },
+		origin: { x: 0.5, y: 0.5, z: 0 },
+		scale: 0.45
+	},
+	sounds: {
+		place: "block/cloth",
+		break: "block/cloth",
+		hit: "block/cloth",
+		walk: "walk/cloth"
+	},
+	materialDensity: 400
+}

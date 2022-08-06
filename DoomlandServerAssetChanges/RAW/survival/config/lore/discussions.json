@@ -1,0 +1,6 @@
+{
+	code: "discussions",
+	title: "lore-discussions-title",
+	category: "villager",
+	pieces: ["lore-discussions-piece1", "lore-discussions-piece2", "lore-discussions-piece3", "lore-discussions-piece4" ]
+}

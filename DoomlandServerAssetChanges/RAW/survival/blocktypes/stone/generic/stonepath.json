@@ -1,0 +1,60 @@
+{
+	code: "stonepath",
+	shape: { base: "block/basic/cube-lowered-{cover}" },
+	creativeinventory: { "general": ["*-free"], "decorative": ["*-free"] },
+	blockmaterial: "Gravel",
+	replaceable: 900,
+	lightAbsorption: 99,
+	variantgroups: [
+		{ code: "cover", states: ["free", "snow"] }
+	],
+	behaviorsByType: {
+		"*-snow": [{name: "BreakSnowFirst"}]
+	},
+	textures: {
+		sides: { 
+			base: "block/stone/path/normal1",
+			alternates: [{base: "block/stone/path/normal2" }, {base: "block/stone/path/normal3" }, {base: "block/stone/path/normal4" }, {base: "block/stone/path/normal5" }, {base: "block/stone/path/normal6" } ],
+		},
+	},
+	resistanceByType: {
+		"*-snow": 0.2,
+		"*-free": 2.4
+	},
+	walkspeedmultiplier: 1.30,
+	faceCullMode: "FlushExceptTop",
+	sideopaque: {
+		all: false,
+		down: true
+	},
+	sidesolid: {
+		all: false,
+		down: true
+	},
+	selectionbox: { x1: 0, y1: 0, z1:0, x2: 1, y2: 1, z2: 1 },
+	collisionbox: { x1: 0, y1: 0, z1:0, x2: 1, y2: 1, z2: 1 },
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	},
+	drops: [
+		{
+			type: "block", 
+			code: "stonepath-free"
+		}
+	],
+	sounds: {
+		place: "block/gravel",
+		breakByType: {
+			"*-snow": "block/snow",
+		 	"*-free": "block/gravel"
+		},
+		hitByType: {
+			"*-snow": "block/snow",
+		 	"*-free": "block/gravel"
+		},
+		walk: "walk/gravel"
+	}
+}

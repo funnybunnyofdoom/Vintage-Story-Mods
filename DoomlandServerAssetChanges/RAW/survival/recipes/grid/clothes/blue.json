@@ -1,0 +1,112 @@
+[
+	{
+		ingredientPattern: "BB,_B",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "item", code: "clothes-head-peasent-head-scarf"  }
+	},
+	{
+		ingredientPattern: "B_B,B_B",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-lowerbody-tattered-peasent-gown"  }
+	},
+	{
+		ingredientPattern: "BBB,B_B",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-shoulder-artisans-scarf"  }
+	},
+	{
+		ingredientPattern: "BSB,CBC",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"C": { type: "item", code: "cloth-plain", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbody-minstrel-shirt"  }
+	},
+	{
+		ingredientPattern: "BSB,CBC",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"C": { type: "item", code: "cloth-plain", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbody-minstrel-shirt"  }
+	},
+	{
+		ingredientPattern: "BBB,_S_",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-waist-reindeer-herder-waistband"  }
+	},
+	{
+		ingredientPattern: "BSB,BYB",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"Y": { type: "item", code: "cloth-yellow", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbodyover-cobalt-mantle"  }
+	},
+	{
+		ingredientPattern: "B_R,YSB,R_Y",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"Y": { type: "item", code: "cloth-yellow", quantity: 1 },
+			"R": { type: "item", code: "cloth-red", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "clothes-shoulder-embroidered-tartarean-scarf"  }
+	},
+	{
+		ingredientPattern: "BSB,BBB",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbody-azure-embroidered-shirt"  }
+	},
+	{
+		ingredientPattern: "BPB,BPB,_S_",
+		requiresTrait: "clothier",
+		ingredients: {
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"P": { type: "item", code: "cloth-purple", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "clothes-shoulder-mooncloth-robe"  }
+	},
+]

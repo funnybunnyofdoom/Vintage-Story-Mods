@@ -1,0 +1,261 @@
+{
+	code: "claypot",
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.4375, z2: 1 } } },
+		{ name: "Unplaceable", "__comment": "The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility" }, 
+		{ name: "RightClickPickup"} 
+	],
+	classByType: {
+		"claypot-burned": "BlockCookingContainer",
+		"claypot-cooked": "BlockCookedContainer"
+	},
+	heldTpIdleAnimation: "holdbothhands",
+	heldTpUseAnimation: "twohandplaceblock",
+	attributesByType: {
+		"claypot-raw": { },
+		
+		"claypot-burned": {
+			attachmentArea: { x1: 4, y1: 0, z1: 4, x2: 11, y2: 0, z2: 11 },
+			cookingContainerSlots: 4,
+			maxContainerSlotStackSize: 6,
+			servingCapacity: 6,
+			storageType: 1,
+			maxTemperature: 200,
+			mealBlockCode: "claypot-cooked",
+			inFirePitProps: {
+				transform: { 
+					translation: { x: 0, y: 0.125, z: 0 } 
+				},
+				useFirepitModel: "Wide"
+			},
+			mealContainer: true,
+			mealBlockCode: "claypot-cooked",
+		},
+		
+		"claypot-cooked": {
+			attachmentArea: { x1: 4, y1: 0, z1: 4, x2: 11, y2: 0, z2: 11 },
+			mealContainer: true,
+			mealBlockCode: "claypot-cooked",
+			emptiedBlockCode: "claypot-burned",
+			servingCapacity: 6,
+			allowHeating: true,
+			maxTemperature: 200,
+			handleCookingContainerInteract: true,
+			
+			textureMapping: {
+				"grain-flax": ["grain", "group1" ],
+				"vegetable-carrot": ["vegetable", "group1"],
+				"pickledvegetable-carrot": ["vegetable", "group1"],
+				"fruit-blueberry": ["fruit", "group1"],
+				
+				"fruit-saguaro": ["fruit", "group2"],
+				"waterportion": ["water", "group2"],
+
+				"grain-millet": ["grain", "group3"],
+				"fruit-cranberry": ["fruit", "group3"],
+
+				"grain-rice": ["grain", "group4"],
+				"vegetable-parsnip": ["vegetable", "group4"],
+				"pickledvegetable-parsnip": ["vegetable", "group4"],
+				"fruit-whitecurrant": ["fruit", "group4"],
+				"cheese-blue-1slice": ["cheese", "group4"],
+				
+				"grain-rye": ["grain", "group5"],
+				"vegetable-turnip": ["vegetable", "group5"],
+				"pickledvegetable-turnip": ["vegetable", "group5"],			
+				"fruit-blackcurrant": ["fruit", "group5"],
+				"cheese-cheddar-1slice": ["dairyoregg", "group5"],
+				"poultry-raw": ["meat", "group5"],
+				"poultry-cured": ["meat", "group5"],
+				"cheese-cheddar-1slice": ["cheese", "group5"],
+
+				"grain-spelt": ["grain", "group6"],
+				"vegetable-onion": ["vegetable", "group6"],
+				"pickledvegetable-onion": ["vegetable", "group6"],
+				"fruit-redcurrant": ["fruit", "group6"],				
+				"redmeat-raw": ["meat", "group6"],
+				"redmeat-cured": ["meat", "group6"],
+				"egg-chicken-raw": ["egg", "group6"],
+
+				"fruit-pineapple": ["fruit", "group7"],
+				
+				"grain-amaranth": ["grain", "group8"],
+				"pumpkin-fruit-4": ["vegetable", "group8"],
+				"vegetable-pumpkin": ["vegetable", "group8"],
+				"vegetable-bellpepper": ["fruit", "group8"],
+				"pickledvegetable-bellpepper": ["fruit", "group8"],
+				"pickledvegetable-pumpkin": ["vegetable", "group8"],
+				
+				"grain-sunflower": ["grain", "group9"],
+				"legume-soybean": ["vegetable", "group9"],
+				"pickledlegume-soybean": ["vegetable", "group9"],
+				
+				"vegetable-cabbage": ["vegetable", "group10"],
+				"pickledvegetable-cabbage": ["vegetable", "group10"],
+				
+				"vegetable-cassava": ["vegetable", "group11"],
+				
+				"honeyportion": ["topping", "honey"],
+				"jamhoneyportion": ["topping", "honey"],
+				
+				"milkportion": ["liquid", "milkportion"],
+				"cottagecheeseportion": ["liquid", "cottagecheeseportion"],
+				
+				"fruit-pomegranate": ["fruit", "fruit-pomegranate"],
+				"fruit-lychee": ["fruit", "fruit-lychee"],
+				"fruit-breadfruit": ["fruit", "fill-breadfruit"],
+				"fruit-redapple": ["fruit", "fruit-redapple"],
+				"fruit-pinkapple": ["fruit", "fruit-pinkapple"],
+				"fruit-yellowapple": ["fruit", "fruit-yellowapple"],
+				"fruit-cherry": ["fruit", "fruit-cherry"],
+				"fruit-olive": ["fruit", "fruit-olive"],
+				"fruit-peach": ["fruit", "fruit-peach"],
+				"fruit-pear": ["fruit", "fruit-pear"],
+				"fruit-orange": ["fruit", "fruit-orange"],
+				"fruit-mango": ["fruit", "fruit-mango"],
+				
+				"mushroom-fieldmushroom-normal": ["vegetable", "group7"],
+				"mushroom-flyagaric-normal": ["vegetable", "group2"],
+				"mushroom-kingbolete-normal": ["vegetable", "group3"],
+				
+				"mushroom-almondmushroom-normal": ["vegetable", "group3"],
+				"mushroom-beardedtooth-normal": ["vegetable", "group7"],
+				"mushroom-bitterbolete-normal": ["vegetable", "group3"],
+				"mushroom-blacktrumpet-normal": ["vegetable", "group3"],
+				"mushroom-chanterelle-normal": ["vegetable", "group3"],
+				"mushroom-chickenofthewoods-normal": ["vegetable", "group3"],
+				"mushroom-commonmorel-normal": ["vegetable", "group3"],
+				"mushroom-deathcap-normal": ["vegetable", "group7"],
+				"mushroom-devilstooth-normal": ["vegetable", "group3"],
+				"mushroom-devilbolete-normal": ["vegetable", "group3"],
+				"mushroom-dryadsaddle-normal": ["vegetable", "group3"],
+				"mushroom-earthball-normal": ["vegetable", "group7"],
+				"mushroom-elfinsaddle-normal": ["vegetable", "group3"],
+				"mushroom-golddropmilkcap-normal": ["vegetable", "group3"],
+				"mushroom-greencrackedrussula-normal": ["vegetable", "group3"],
+				"mushroom-indigomilkcap-normal": ["vegetable", "group3"],
+				"mushroom-jackolantern-normal": ["vegetable", "group3"],
+				"mushroom-kingbolete-normal": ["vegetable", "group3"],
+				"mushroom-lobster-normal": ["vegetable", "group3"],
+				"mushroom-orangeoakbolete-normal": ["vegetable", "group3"],
+				"mushroom-paddystraw-normal": ["vegetable", "group7"],
+				"mushroom-pinkoyster-normal": ["vegetable", "group7"],
+				"mushroom-puffball-normal": ["vegetable", "group7"],
+				"mushroom-redwinecap-normal": ["vegetable", "group3"],
+				"mushroom-saffronmilkcap-normal": ["vegetable", "group3"],
+				"mushroom-tinderhoof-normal": ["vegetable", "group7"],
+				"mushroom-violetwebcap-normal": ["vegetable", "group3"],
+				"mushroom-whiteoyster-normal": ["vegetable", "group7"],
+				
+				"mushroom-reishi-normal": ["vegetable", "group7"],
+				"mushroom-funeralbell-normal": ["vegetable", "group7"],
+				"mushroom-deerear-normal": ["vegetable", "group7"],
+				"mushroom-livermushroom-normal": ["vegetable", "group7"],
+				"mushroom-pinkbonnet-normal": ["vegetable", "group7"],
+				"mushroom-shiitake-normal": ["vegetable", "group7"],
+				"mushroom-witchhat-normal": ["vegetable", "group7"]
+			}
+		}
+	},
+	variantgroups: [
+		{ code:"type", states: ["raw", "burned", "cooked"] },
+	],
+	entityclassByType: {
+		"*-raw": null,
+		"*-cooked": "CookedContainer",
+	},
+	combustiblePropsByType: {
+		"claypot-raw": {
+			meltingPoint: 600,
+			meltingDuration: 45,
+			smeltedRatio: 1,
+			smeltingType: "fire",
+			smeltedStack: { type: "block", code: "claypot-burned" },
+			requiresContainer: false
+		}
+	},
+	shape: { base: "block/clay/pot-opened-empty" },
+	doNotRenderAtLod2: true,
+	blockmaterial: "Ceramic",
+	creativeinventory: { "general": ["claypot-raw", "claypot-burned"], "decorative": ["claypot-raw", "claypot-burned"] },
+	replaceable: 400,
+	resistance: 1.5,
+	maxStackSizeByType: {
+		"*-cooked": 1,
+		"*": 8,
+	},
+	lightAbsorption: 0,
+	texturesByType: {
+		"*-raw": { 
+			all: { base: "block/clay/blueclay" }
+		},
+		"*": {
+			"transparent": { base: "block/transparent" },
+			"ceramic": { base: "block/clay/pot-side" },
+			"lid": { base: "block/clay/pot-lid" },
+			"group1": { base: "block/food/meal/group1-flax-carrot-blueberry-cottagecheese-fish" },
+			"group2": { base: "block/food/meal/group2-soup-flyagaric-cactifruit-redmeat" },
+			"group3": { base: "block/food/meal/group3-millet-bolete-cranberry-poultry" },
+			"group4": { base: "block/food/meal/group4-rice-parsnip-whitecurrant-bluecheese-fishstew" },
+			"group5": { base: "block/food/meal/group5-rye-turnip-blackcurrant-cheddarcheese-poultrystew" },
+			"group6": { base: "block/food/meal/group6-spelt-onion-redcurrant-egg-redmeatstew" },
+			"group7": { base: "block/food/meal/group7-honey-fieldmushroom-pineapple-scrambledegg-bushmeat" },
+			"group8": { base: "block/food/meal/group8-amaranth-pumpkin-bellpepper-bushmeatstew" },
+			"group9": { base: "block/food/meal/group9-sunflower-soya" },
+			"group10": { base: "block/food/meal/group10-cabbage" },
+			"group11": { base: "block/food/meal/group11-cassava" },
+			"group12": { base: "block/food/meal/group12-peanut" },
+			"group13": { base: "block/food/meal/group13-aubergine" },
+			"group14": { base: "block/food/meal/group14-tomato" },
+			"group15": { base: "block/food/meal/group15-walnut" },
+			"honey": { base: "block/liquid/honey" },
+			
+			"fruit-redapple": { base: "block/food/pie/fill-apple" },
+			"fruit-pinkapple": { base: "block/food/pie/fill-apple" },
+			"fruit-yellowapple": { base: "block/food/pie/fill-apple" },
+			"fruit-cherry": { base: "block/food/pie/fill-cherry" },
+			"fruit-olive": { base: "block/food/pie/fill-olive" },
+			"fruit-peach": { base: "block/food/pie/fill-peach" },
+			"fruit-pear": { base: "block/food/pie/fill-pear" },
+			"fruit-orange": { base: "block/food/pie/fill-orange" },
+			"fruit-mango": { base: "block/food/pie/fill-mango" },
+			"fruit-pomegranate": { base: "block/food/pie/fill-pomegranate" },
+			"fruit-lychee": { base: "block/food/pie/fill-lychee" },
+			"fruit-breadfruit": { base: "block/food/pie/fill-breadfruit" },
+			
+			"rot-solids": { base: "item/resource/rot/rot-solids" },
+			"rot-spill": { base: "item/resource/rot/rot-spill" },
+			
+			"milkportion": { base: "block/food/dairy/milk" },
+			"cottagecheeseportion": { base: "block/food/dairy/cottagecheese" }
+		}
+	},
+	sounds: {
+		walk: "walk/stone",
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	collisionbox: { x1: 0.28, y1: 0, z1: 0.28, x2: 0.72, y2: 0.35, z2: 0.72 },
+	selectionbox: { x1: 0.28, y1: 0, z1: 0.28, x2: 0.72, y2: 0.35, z2: 0.72 },
+	guiTransform: {
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 2
+	},
+	groundTransform: {
+		scale: 3
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.1, z: 0.5 },
+		scale: 2
+	},
+	tpHandTransform: {
+		translation: { x: -0.67, y: 0.06, z: -0.5 },
+		rotation: { x: -52, y: 20, z: -110 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 0.76
+	}
+}

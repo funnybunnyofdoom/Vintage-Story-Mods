@@ -1,0 +1,58 @@
+[
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 4 },
+			{ type: "item", code: "crushed-lapislazuli", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 4 }
+	},
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "item", code: "crushed-lapislazuli", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 2 }
+	},
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "item", code: "crushed-lapislazuli", quantity: 1 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 3 }
+	},
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 4 },
+			{ type: "block", code: "flower-cornflower-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 4 }
+	},
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "block", code: "flower-cornflower-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 2 }
+	},
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "block", code: "flower-cornflower-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 3 }
+	},
+	{
+		code: "dye-blue",
+		ingredients: [
+			{ type: "item", code: "waterportion", litres: 2 },
+			{ type: "block", code: "flower-woad-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-blue", litres: 2 }
+	}
+]

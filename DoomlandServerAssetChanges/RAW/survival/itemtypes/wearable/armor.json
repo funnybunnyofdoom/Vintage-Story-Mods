@@ -1,0 +1,739 @@
+{
+	code: "armor",
+	class: "ItemWearable",
+	heldTpIdleAnimation: "holdunderarm",
+	variantgroups: [
+		{ code: "bodypart",  states: ["head", "body", "legs"] },
+		{ code: "construction",  states: [
+			"improvised",
+			"jerkin",
+			"lamellar",
+			"sewn",
+			"tailored-blue",
+			"tailored-brown",
+			"tailored-gray",
+			"tailored-black",
+			"tailored-green",
+			"tailored-orange",
+			"tailored-pink",
+			"tailored-plain",
+			"tailored-purple",
+			"tailored-red",
+			"tailored-white",
+			"tailored-yellow",
+			"brigandine",
+			"chain",
+			"scale",
+			"plate",
+			"antique"
+		]},
+		{ code: "material", states: [
+			"wood",
+			"leather",
+			"linen",
+			"copper",
+			"tinbronze",
+			"bismuthbronze",
+			"blackbronze",
+			"iron",
+			"meteoriciron",
+			"steel",
+			"gold",
+			"silver",
+			"blackguard-pristine",
+			"blackguard-damaged",
+			"blackguard-broken",
+			"forlorn-pristine",
+			"forlorn-damaged",
+			"forlorn-broken"
+		]},
+	],
+	skipVariants: [
+		"armor-*-brigandine-leather",
+		"armor-*-brigandine-linen",
+		"armor-*-brigandine-wood",
+		"armor-*-brigandine-gold",
+		"armor-*-brigandine-silver",
+		"armor-*-brigandine-blackguard-*",
+		"armor-*-brigandine-forlorn-*",
+		"armor-*-chain-leather",
+		"armor-*-chain-linen",
+		"armor-*-chain-wood",
+		"armor-*-chain-blackguard-*",
+		"armor-*-chain-forlorn-*",
+		
+		"armor-*-scale-leather",
+		"armor-*-scale-linen",
+		"armor-*-scale-wood",
+		"armor-*-scale-gold",
+		"armor-*-scale-silver",
+		"armor-*-scale-blackguard-*",
+		"armor-*-scale-forlorn-*",
+		
+		"armor-*-plate-leather",
+		"armor-*-plate-linen",
+		"armor-*-plate-wood",
+		"armor-*-plate-blackguard-*",
+		"armor-*-plate-forlorn-*",
+		"armor-*-sewn-wood"
+	],
+	allowedVariants: [
+		"armor-body-improvised-wood",
+		
+		"armor-body-jerkin-leather",
+		"armor-legs-jerkin-leather",
+		
+		"armor-*-lamellar-wood",
+		"armor-*-lamellar-copper",
+		"armor-*-lamellar-tinbronze",
+		"armor-*-lamellar-bismuthbronze",
+		"armor-*-lamellar-blackbronze",
+
+		"armor-*-sewn-linen",
+		"armor-*-sewn-leather",
+
+		"armor-*-tailored-*-linen",
+		
+		"armor-*-scale-*",
+		"armor-*-chain-*",
+		"armor-*-plate-*",
+		"armor-*-brigandine-*",
+		"armor-*-antique-blackguard-*",
+		"armor-*-antique-forlorn-*",
+	],
+	shapeByType: {
+		"armor-body-improvised-wood": { base: "entity/humanoid/seraph/armor/improvised/body" },
+		
+		"armor-*-jerkin-*": { base: "entity/humanoid/seraph/armor/jerkin/{bodypart}" },
+		
+		"armor-*-sewn-leather": { base: "entity/humanoid/seraph/armor/leather/{bodypart}" },
+		"armor-*-sewn-linen": { base: "entity/humanoid/seraph/armor/gambeson/{bodypart}" },
+
+		"armor-*-tailored-*-linen": { base: "entity/humanoid/seraph/armor/gambeson/{bodypart}" },
+		
+		"armor-head-brigandine-tinbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-brigandine-blackbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-brigandine-bismuthbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-brigandine-meteoriciron": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-meteoriciron" },
+		"armor-head-brigandine-*": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-{material}" },
+		
+		"armor-head-chain-tinbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-chain-blackbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-chain-bismuthbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-chain-meteoriciron": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-meteoriciron" },
+		"armor-head-chain-*": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-{material}" },
+
+		"armor-head-scale-tinbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-scale-blackbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-scale-bismuthbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-scale-meteoriciron": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-meteoriciron" },
+		"armor-head-scale-*": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-{material}" },
+
+		"armor-head-plate-tinbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-plate-blackbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-plate-bismuthbronze": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-bronze" },
+		"armor-head-plate-meteoriciron": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-meteoriciron" },
+		"armor-head-plate-*": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}-{material}" },
+		
+		"armor-*-antique-*": { base: "entity/humanoid/seraph/armor/{construction}/{material}/{bodypart}" },
+		
+		"armor-*": { base: "entity/humanoid/seraph/armor/{construction}/{bodypart}" }
+	},
+	texturesByType: {
+		"*-blackguard-*": { 
+			"seraph": { base: "block/transparent" }
+		},
+		"*-forlorn-*": { 
+			"seraph": { base: "block/transparent" }
+		},
+		"*-tailored-*": { 
+			"seraph": { base: "block/transparent" },
+			"material": { 
+				baseByType: {
+					"*": "entity/humanoid/serapharmor/sewn/{construction}"
+				}
+			}
+		},
+		"*": {
+			"seraph": { base: "block/transparent" },
+			"material": { 
+				baseByType: {
+					"*": "entity/humanoid/serapharmor/{construction}/{material}"
+				}
+			}
+		}
+	},
+	storageFlags: 128,
+	attributes: {
+		wearableAttachment: true,
+		clothescategoryByType: {
+			"armor-head-*": "armorhead",
+			"armor-body-*": "armorbody",
+			"armor-legs-*": "armorlegs",
+		},
+		disableElementsByType: {
+			"armor-head-plate-tinbronze": ["Hair tile upper part", "Ponytail1", "Hair", "hideme"],
+			"armor-head-plate-blackbronze": ["Hair tile upper part", "Ponytail1", "Hair", "hideme"],
+			"armor-head-plate-bismuthbronze": ["Hair tile upper part", "Ponytail1", "Hair", "hideme"],
+			"armor-head-plate-*": ["Hair tile upper part", "Ponytail1", "Hair", "hideme", "hidefacialhair"],
+			"armor-head-chain-*": ["Hair tile upper part", "Ponytail1", "Hair", "hideme", "hidefacialhair"],
+			"armor-head-antique-*-pristine": ["Hair tile upper part", "Ponytail1", "Hair", "hideme", "hidefacialhair"],
+			"armor-head-antique-*": ["Hair tile upper part", "Ponytail1", "Hair", "hideme"],
+			"armor-head-*": ["Hair tile upper part", "Ponytail1", "hideme"],
+			"armor-body-improvised-*": ["Waist", "hideupperarm"],
+			"armor-body-*": ["Waist", "hideupperarm", "hidelowerarm"]
+		},
+		defaultProtLoss: {
+			perTierRelativeProtectionLoss: [0.03, 0.15],
+			perTierFlatDamageReductionLoss: [0.1, 0.2],
+		},
+		footStepSoundByType: {
+			"armor-body-jerkin-*": "wearable/leather*",
+			"armor-body-sewn-*": "wearable/leather*",
+			"armor-body-lamellar-wood": "wearable/leather*",
+			"armor-body-lamellar-*": "wearable/brigandine*",
+			"armor-body-brigandine-*": "wearable/brigandine*",
+			"armor-body-chain-*": "wearable/chain*",
+			"armor-body-scale-*": "wearable/scale*",
+			"armor-body-plate-*": "wearable/plate*",
+			"armor-body-antique-blackguard-*": "wearable/brigandine*",
+			"armor-body-antique-forlorn-*": "wearable/plate*"
+		},
+		protectionModifiersByType: {
+			"armor-*-improvised-wood": {
+				relativeProtection: 0.55,
+				flatDamageReduction: 0,
+				protectionTier: 0
+			},
+			"armor-*-jerkin-leather": {
+				relativeProtection: 0.4,
+				flatDamageReduction: 0.25,
+				protectionTier: 1
+			},
+			"armor-*-sewn-leather": {
+				relativeProtection: 0.6,
+				flatDamageReduction: 0.6,
+				protectionTier: 1,
+				perTierRelativeProtectionLoss: [0.015, 0.075],
+				perTierFlatDamageReductionLoss: [0.05, 0.1],
+			},
+			"armor-*-sewn-linen": {
+				relativeProtection: 0.7,
+				flatDamageReduction: 0.7,
+				protectionTier: 2,
+				perTierRelativeProtectionLoss: [0.015, 0.075],
+				perTierFlatDamageReductionLoss: [0.05, 0.1],
+			},
+			"armor-*-tailored-*-linen": {
+				relativeProtection: 0.75,
+				flatDamageReduction: 0.75,
+				protectionTier: 2,
+				perTierRelativeProtectionLoss: [0.015, 0.075],
+				perTierFlatDamageReductionLoss: [0.05, 0.1],
+			},
+			"armor-*-lamellar-wood": {
+				relativeProtection: 0.65,
+				flatDamageReduction: 0.5,
+				protectionTier: 0
+			},
+			"armor-*-lamellar-copper": {
+				relativeProtection: 0.75,
+				flatDamageReduction: 0.5,
+				protectionTier: 1
+			},
+			"armor-*-lamellar-tinbronze": {
+				relativeProtection: 0.77,
+				flatDamageReduction: 0.6,
+				protectionTier: 2
+			},
+			"armor-*-lamellar-bismuthbronze": {
+				relativeProtection: 0.76,
+				flatDamageReduction: 0.58,
+				protectionTier: 2
+			},
+			"armor-*-lamellar-blackbronze": {
+				relativeProtection: 0.78,
+				flatDamageReduction: 0.65,
+				protectionTier: 2
+			},
+			"armor-*-lamellar-iron": {
+				relativeProtection: 0.79,
+				flatDamageReduction: 0.7,
+				protectionTier: 3
+			},
+			"armor-*-lamellar-steel": {
+				relativeProtection: 0.81,
+				flatDamageReduction: 0.8,
+				protectionTier: 4
+			},
+			
+
+			"armor-*-brigandine-copper": {
+				relativeProtection: 0.78,
+				flatDamageReduction: 1.0,
+				protectionTier: 1
+			},
+			"armor-*-brigandine-tinbronze": {
+				relativeProtection: 0.8,
+				flatDamageReduction: 1.1,
+				protectionTier: 2
+			},
+			"armor-*-brigandine-bismuthbronze": {
+				relativeProtection: 0.79,
+				flatDamageReduction: 1.1,
+				protectionTier: 2
+			},
+			"armor-*-brigandine-blackbronze": {
+				relativeProtection: 0.81,
+				flatDamageReduction: 1.15,
+				protectionTier: 2
+			},
+			"armor-*-brigandine-iron": {
+				relativeProtection: 0.82,
+				flatDamageReduction: 1.2,
+				protectionTier: 3
+			},
+			"armor-*-brigandine-meteoriciron": {
+				relativeProtection: 0.825,
+				flatDamageReduction: 1.22,
+				protectionTier: 3
+			},
+			"armor-*-brigandine-steel": {
+				relativeProtection: 0.84,
+				flatDamageReduction: 1.3,
+				protectionTier: 4
+			},
+			
+			"armor-*-chain-copper": {
+				relativeProtection: 0.8,
+				flatDamageReduction: 1.1,
+				protectionTier: 1
+			},
+			"armor-*-chain-gold": {
+				relativeProtection: 0.82,
+				flatDamageReduction: 1.2,
+				protectionTier: 1
+			},
+			"armor-*-chain-silver": {
+				relativeProtection: 0.82,
+				flatDamageReduction: 1.2,
+				protectionTier: 2
+			},
+			"armor-*-chain-tinbronze": {
+				relativeProtection: 0.82,
+				flatDamageReduction: 1.2,
+				protectionTier: 2
+			},
+			"armor-*-chain-bismuthbronze": {
+				relativeProtection: 0.81,
+				flatDamageReduction: 1.2,
+				protectionTier: 2
+			},
+			"armor-*-chain-blackbronze": {
+				relativeProtection: 0.83,
+				flatDamageReduction: 1.25,
+				protectionTier: 2
+			},
+			"armor-*-chain-iron": {
+				relativeProtection: 0.84,
+				flatDamageReduction: 1.3,
+				protectionTier: 3
+			},
+			"armor-*-chain-meteoriciron": {
+				relativeProtection: 0.845,
+				flatDamageReduction: 1.35,
+				protectionTier: 3
+			},
+			"armor-*-chain-steel": {
+				relativeProtection: 0.86,
+				flatDamageReduction: 1.4,
+				protectionTier: 4
+			},
+			
+			"armor-*-scale-copper": {
+				relativeProtection: 0.84,
+				flatDamageReduction: 1.3,
+				protectionTier: 1
+			},
+			"armor-*-scale-tinbronze": {
+				relativeProtection: 0.86,
+				flatDamageReduction: 1.35,
+				protectionTier: 2
+			},
+			"armor-*-scale-bismuthbronze": {
+				relativeProtection: 0.85,
+				flatDamageReduction: 1.3,
+				protectionTier: 2
+			},
+			"armor-*-scale-blackbronze": {
+				relativeProtection: 0.87,
+				flatDamageReduction: 1.4,
+				protectionTier: 2
+			},
+			"armor-*-scale-iron": {
+				relativeProtection: 0.88,
+				flatDamageReduction: 1.5,
+				protectionTier: 3
+			},
+			"armor-*-scale-meteoriciron": {
+				relativeProtection: 0.885,
+				flatDamageReduction: 1.55,
+				protectionTier: 3
+			},
+			"armor-*-scale-steel": {
+				relativeProtection: 0.90,
+				flatDamageReduction: 1.6,
+				protectionTier: 4
+			},
+			"armor-*-plate-copper": {
+				relativeProtection: 0.9,
+				flatDamageReduction: 1.5,
+				highDamageTierResistant: true,
+				protectionTier: 1
+			},
+			"armor-*-plate-gold": {
+				relativeProtection: 0.9,
+				flatDamageReduction: 1.5,
+				highDamageTierResistant: true,
+				protectionTier: 1
+			},
+			"armor-*-plate-silver": {
+				relativeProtection: 0.92,
+				flatDamageReduction: 1.5,
+				highDamageTierResistant: true,
+				protectionTier: 2
+			},
+			"armor-*-plate-tinbronze": {
+				relativeProtection: 0.92,
+				flatDamageReduction: 1.6,
+				highDamageTierResistant: true,
+				protectionTier: 2
+			},
+			"armor-*-plate-bismuthbronze": {
+				relativeProtection: 0.94,
+				flatDamageReduction: 1.55,
+				highDamageTierResistant: true,
+				protectionTier: 2
+			},
+			"armor-*-plate-blackbronze": {
+				relativeProtection: 0.95,
+				flatDamageReduction: 1.65,
+				highDamageTierResistant: true,
+				protectionTier: 2
+			},
+			"armor-*-plate-iron": {
+				relativeProtection: 0.96,
+				flatDamageReduction: 1.7,
+				highDamageTierResistant: true,
+				protectionTier: 3
+			},
+			"armor-*-plate-meteoriciron": {
+				relativeProtection: 0.962,
+				flatDamageReduction: 1.72,
+				highDamageTierResistant: true,
+				protectionTier: 3
+			},
+			"armor-*-plate-steel": {
+				relativeProtection: 0.97,
+				flatDamageReduction: 1.8,
+				highDamageTierResistant: true,
+				protectionTier: 4
+			},
+			"armor-*-antique-blackguard-pristine": {
+				relativeProtection: 0.96,
+				flatDamageReduction: 1.7,
+				highDamageTierResistant: true,
+				protectionTier: 3
+			},
+			"armor-*-antique-blackguard-broken": {
+				relativeProtection: 0.4,
+				flatDamageReduction: 0.25,
+				protectionTier: 1
+			},
+			"armor-*-antique-blackguard-damaged": {
+				relativeProtection: 0.75,
+				flatDamageReduction: 0.5,
+				protectionTier: 1
+			},
+			"armor-*-antique-forlorn-pristine": {
+				relativeProtection: 0.96,
+				flatDamageReduction: 1.7,
+				highDamageTierResistant: true,
+				protectionTier: 3
+			},
+			"armor-*-antique-forlorn-damaged": {
+				relativeProtection: 0.9,
+				flatDamageReduction: 1.5,
+				highDamageTierResistant: true,
+				protectionTier: 1
+			},
+			"armor-*-antique-forlorn-broken": {
+				relativeProtection: 0.4,
+				flatDamageReduction: 0.25,
+				protectionTier: 1
+			}
+		},
+		statModifiersByType: {
+			"armor-*-lamellar-*": {
+				rangedWeaponsAcc: -0.03,
+				rangedWeaponsSpeed: -0.07,
+				walkSpeed: -0.03,
+				healingeffectivness: -0.1,
+				hungerrate: 0.08
+			},
+			"armor-*-sewn-linen": {
+				walkSpeed: -0.02,
+				healingeffectivness: -0.17,
+				hungerrate: 0.03
+			},
+			"armor-*-tailored-*-linen": {
+				healingeffectivness: -0.1,
+				hungerrate: 0.03
+			},
+			"armor-*-brigandine-*": {
+				rangedWeaponsAcc: -0.07,
+				rangedWeaponsSpeed: -0.14,
+				walkSpeed: -0.05,
+				healingeffectivness: -0.17,
+				hungerrate: 0.12
+			},
+			"armor-*-chain-*": {
+				rangedWeaponsAcc: -0.03,
+				rangedWeaponsSpeed: -0.06,
+				walkSpeed: -0.03,
+				healingeffectivness: -0.1,
+				hungerrate: 0.075
+			},
+			"armor-*-scale-*": {
+				rangedWeaponsAcc: -0.1,
+				rangedWeaponsSpeed: -0.2,
+				walkSpeed: -0.07,
+				healingeffectivness: -0.17,
+				hungerrate: 0.12
+			},
+			"armor-*-plate-*": {
+				rangedWeaponsAcc: -0.1,
+				rangedWeaponsSpeed: -0.2,
+				walkSpeed: -0.14,
+				healingeffectivness: -0.3334,
+				hungerrate: 0.24
+			},
+			"armor-*-antique-blackguard-pristine": {
+				rangedWeaponsAcc: -0.1,
+				rangedWeaponsSpeed: -0.2,
+				walkSpeed: -0.12,
+				healingeffectivness: -0.2,
+				hungerrate: 0.2
+			},
+			"armor-*-antique-blackguard-damaged": {
+				rangedWeaponsAcc: -0.08,
+				rangedWeaponsSpeed: -0.16,
+				walkSpeed: -0.08,
+				healingeffectivness: -0.18,
+				hungerrate: 0.15
+			},
+			"armor-*-antique-blackguard-broken": {
+				rangedWeaponsAcc: -0.07,
+				rangedWeaponsSpeed: -0.14,
+				walkSpeed: -0.05,
+				healingeffectivness: -0.17,
+				hungerrate: 0.12
+			},
+			"armor-*-antique-forlorn-pristine": {
+				rangedWeaponsAcc: -0.08,
+				rangedWeaponsSpeed: -0.18,
+				walkSpeed: -0.08,
+				healingeffectivness: -0.17,
+				hungerrate: 0.16
+			},
+			"armor-*-antique-forlorn-damaged": {
+				rangedWeaponsAcc: -0.08,
+				rangedWeaponsSpeed: -0.16,
+				walkSpeed: -0.07,
+				healingeffectivness: -0.17,
+				hungerrate: 0.14
+			},
+			"armor-*-antique-forlorn-broken": {
+				rangedWeaponsAcc: -0.07,
+				rangedWeaponsSpeed: -0.14,
+				walkSpeed: -0.05,
+				healingeffectivness: -0.17,
+				hungerrate: 0.12
+			}
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	renderAlphaTest: 0.25,
+	durabilityByType: {
+		"armor-*-improvised-wood": 75,
+		
+		"armor-*-jerkin-leather": 250,
+		
+		"armor-*-sewn-leather": 700,
+		"armor-*-sewn-linen": 900,
+		"armor-*-tailored-*-linen": 900,
+		"armor-*-lamellar-wood": 200,
+		"armor-*-lamellar-copper": 450,
+		"armor-*-lamellar-tinbronze": 600,
+		"armor-*-lamellar-bismuthbronze": 525, 
+		"armor-*-lamellar-blackbronze": 675,
+		"armor-*-lamellar-iron": 800,
+		"armor-*-lamellar-steel": 1600,
+		"armor-*-brigandine-copper": 900,
+		"armor-*-brigandine-tinbronze": 1100,
+		"armor-*-brigandine-bismuthbronze": 1050,
+		"armor-*-brigandine-blackbronze": 1200,
+		"armor-*-brigandine-iron": 1300,
+		"armor-*-brigandine-meteoriciron": 1500,
+		"armor-*-brigandine-steel": 2600,
+		"armor-*-chain-gold": 500,
+		"armor-*-chain-copper": 600,
+		"armor-*-chain-silver": 700,
+		"armor-*-chain-tinbronze": 700,
+		"armor-*-chain-bismuthbronze": 650, 
+		"armor-*-chain-blackbronze": 750,
+		"armor-*-chain-iron": 800,
+		"armor-*-chain-meteoriciron": 900,
+		"armor-*-chain-steel": 2000,
+		"armor-*-scale-copper": 800,
+		"armor-*-scale-tinbronze": 1200,
+		"armor-*-scale-bismuthbronze": 1150,
+		"armor-*-scale-blackbronze": 1300,
+		"armor-*-scale-iron": 1400,
+		"armor-*-scale-meteoriciron": 1700,
+		"armor-*-scale-steel": 3500,
+		
+		"armor-*-plate-gold": 400,
+		"armor-*-plate-silver": 1000,
+		"armor-*-plate-copper": 500,
+		"armor-*-plate-tinbronze": 1000,
+		"armor-*-plate-bismuthbronze": 900,
+		"armor-*-plate-blackbronze": 1200,
+		"armor-*-plate-iron": 2200,
+		"armor-*-plate-meteoriciron": 2800,
+		"armor-*-plate-steel": 5500,
+
+		"armor-*-antique-blackguard-pristine": 1800,
+		"armor-*-antique-blackguard-damaged": 900,
+		"armor-*-antique-blackguard-broken": 600,
+		"armor-*-antique-forlorn-pristine": 1600,
+		"armor-*-antique-forlorn-damaged": 1000,
+		"armor-*-antique-forlorn-broken": 500
+	},
+	
+	fpHandTransformByType: {
+		"armor-head-*": {
+			translation: { x: 0.4, y: -1.9, z: -0.5 },
+			rotation: { x: 163, y: -111, z: -180 },
+			origin: { x: 0.5, y: 1.7, z: 0.5 },
+			scale: 2.15
+		},
+		"armor-body-*": {
+			translation: { x: 0.4, y: -1.2, z: -0.5 },
+			rotation: { x: 163, y: -111, z: -180 },
+			origin: { x: 0.5, y: 1.6, z: 0.5 },
+			scale: 2.15
+		},
+		"armor-legs-*": {
+			translation: { x: 0.4, y: -1.2, z: -0.5 },
+			rotation: { x: 163, y: -111, z: -180 },
+			origin: { x: 0.5, y: 1.6, z: 0.5 },
+			scale: 2.15
+		},
+	},
+	tpHandTransformByType: {
+		"armor-legs-lamellar-*": {
+			translation: { x: -1, y: -0.6, z: -0.4 },
+			rotation: { x: 95, y: -20, z: -91 },
+			origin: { x: 0.5, y: 0.7, z: 0.5 },
+			scale: 0.74
+		},
+		"armor-head-antique-*": {
+			translation: { x: -0.66, y: -1.9, z: -0.45 },
+			rotation: { x: 18, y: 169, z: 30 },
+			origin: { x: 0.5, y: 1.7, z: 0.5 },
+			scale: 0.74
+		},
+		"armor-head-*": {
+			translation: { x: -0.82, y: -2.2, z: -0.5 },
+			rotation: { x: 18, y: 169, z: 30 },
+			origin: { x: 0.5, y: 1.7, z: 0.5 },
+			scale: 0.64
+		},
+		"armor-body-*": {
+			translation: { x: -1, y: -1.9, z: -0.5 },
+			rotation: { x: 97, y: -168, z: 94 },
+			origin: { x: 0.5, y: 1.5, z: 0.5 },
+			scale: 0.67
+		},
+		"armor-legs-*": {
+			translation: { x: -0.7, y: -0.6, z: -0.4 },
+			rotation: { x: 95, y: -20, z: -91 },
+			origin: { x: 0.5, y: 0.7, z: 0.5 },
+			scale: 0.74
+		}
+	},
+	guiTransformByType: {
+		"armor-legs-sewn-leather": {
+			translation: { x: 1, y: 0, z: 0 },
+			rotation: { x: -26, y: -46, z: -180 },
+			origin: { x: 0.5, y: 0.37, z: 0.53 },
+			scale: 2.14
+		},
+		"armor-head-*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -26, y: -46, z: -180 },
+			origin: { x: 0.6, y: 1.72, z: 0.5 },
+			scale: 2
+		},
+		"armor-body-*": {
+			translation: { x: 3, y: 0, z: 0 },
+			rotation: { x: -26, y: -46, z: -180 },
+			origin: { x: 0.5, y: 1.11, z: 0.5 },
+			scale: 1.37
+		},
+		"armor-legs-lamellar-*": {
+			translation: { x: 2, y: 0, z: 0 },
+			rotation: { x: -26, y: -46, z: -180 },
+			origin: { x: 0.5, y: 0.33, z: 0.5 },
+			scale: 2.2
+		},
+		"armor-legs-*": {
+			translation: { x: 1, y: 0, z: 0 },
+			rotation: { x: -26, y: -46, z: -180 },
+			origin: { x: 0.5, y: 0.6, z: 0.5 },
+			scale: 1.25
+		},
+	},
+	groundTransformByType: {
+		"armor-head-*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.34, y: 1.71, z: 0.5 },
+			scale: 3.1
+		},
+		"armor-body-*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 90 },
+			origin: { x: 0.34, y: 1.12, z: 0.5 },
+			scale: 3.1
+		},
+		"armor-legs-*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 90 },
+			origin: { x: 0.34, y: 1.12, z: 0.5 },
+			scale: 3.1
+		}
+	},
+	combustiblePropsByType: {
+		"*-improvised-wood": {
+			burnTemperature: 600,
+			burnDuration: 10,
+		},
+		"*-lamellar-wood": {
+			burnTemperature: 600,
+			burnDuration: 10,
+		}
+	},
+
+}

@@ -1,0 +1,59 @@
+[
+	{
+		ingredientPattern: "G	S",
+		ingredients: {
+			"G": { type: "item", code: "drygrass", quantity: 2 },
+			"S": { type: "item", code: "stick" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "block", code: "torch-basic-extinct-up", quantity: 1  }
+	},
+	{
+		ingredientPattern: "P	S",
+		ingredients: {
+			"P": { type: "item", code: "*", allowedVariants: ["papyrustops", "cattailtops" ], quantity: 1 },
+			"S": { type: "item", code: "stick" }
+		},
+		width: 1,
+		height: 2,
+		recipeGroup: 1,
+		output: { type: "block", code: "torch-basic-extinct-up", quantity: 1  }
+	},
+	{
+		ingredientPattern: "Z	C",
+		ingredients: {
+			"Z": { type: "item", code: "*", allowedVariants: ["fat", "resin" ], quantity: 1 },
+			"C": { type: "block", code: "torch-crude-*-up", allowedVariants: ["extinct", "lit" ], quantity: 1 }
+		},
+		width: 1,
+		height: 2,
+		enabled: false,
+		output: { type: "block", code: "torch-basic-extinct-up", quantity: 1  }
+	},
+	{
+		ingredientPattern: "F	B	S",
+		ingredients: {
+			"F": { type: "item", code: "*", allowedVariants: ["fat", "resin" ], quantity: 1 },
+			"B": { type: "item", code: "bandage-*", quantity: 1 },
+			"S": { type: "item", code: "stick" }
+		},
+		width: 1,
+		height: 3,
+		enabled: false,
+		output: { type: "block", code: "torch-cloth-extinct-up", quantity: 1  }
+	},
+
+	{
+		ingredientPattern: "B	T",
+		ingredients: {
+			"B": { type: "item", code: "bandage-*", quantity: 1 },
+			"T": { type: "block", code: "torch-basic-*-up", allowedVariants: ["extinct", "lit" ], quantity: 1 }
+		},
+		width: 1,
+		height: 2,
+		recipeGroup: 1,
+		enabled: false,
+		output: { type: "block", code: "torch-cloth-extinct-up", quantity: 1  }
+	}
+]

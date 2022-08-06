@@ -1,0 +1,91 @@
+{
+	code: "barrelcactus",
+	class: "BlockRequireSolidGround",
+	behaviors: [{name: "UnstableFalling"}],
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	variantgroups: [
+		{ code: "type", states: ["normal"] },
+	],
+	attributes: {
+		butterflyFeed: true,
+		beeFeed: true,
+		sitHeight: 0.45,
+		plantContainable: {
+			smallContainer: {
+				randomRotate: false,
+				shape: { base: "block/plant/barrelcactus/flowerpot/normal*" }
+			},
+			largeContainer: {
+				randomRotate: false,
+				shape: { base: "block/plant/barrelcactus/planter/normal*" }
+			}
+		}
+	},
+	shapeInventory: {
+		base: "block/plant/barrelcactus/inventory",
+	},
+	shapeByType: {
+		"*-normal": {
+			base: "block/plant/barrelcactus/normal1",
+			alternates: [
+				{ base: "block/plant/barrelcactus/normal1"  },
+				{ base: "block/plant/barrelcactus/normal2" },
+				{ base: "block/plant/barrelcactus/normal3" },
+				{ base: "block/plant/barrelcactus/normal4" },
+				{ base: "block/plant/barrelcactus/normal5" },
+				{ base: "block/plant/barrelcactus/normal6" },
+				{ base: "block/plant/barrelcactus/normal7" },
+				{ base: "block/plant/barrelcactus/normal8" },
+				{ base: "block/plant/barrelcactus/normal9" },
+				{ base: "block/plant/barrelcactus/normal10" },
+				{ base: "block/plant/barrelcactus/normal11" },
+			]
+		}
+	},
+	doNotRenderAtLod2: true,
+	blockmaterial: "Plant",
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+		sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	selectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.4, z2: 1 },
+	collisionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.4, z2: 1 },
+	replaceable: 3000,
+	lightAbsorption: 0,
+	resistance: 1,
+	randomizeRotations: true,
+	rainPermeable: false,
+	materialDensity: 200,
+	guiTransform: {
+		rotation: { x: -36, y: -27, z: 1 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 3.76
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: -45, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.64
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.2, z: -0.6 },
+		rotation: { x: -20, y: -12, z: -48 },
+		origin: { x: 0.5, y: 0.24, z: 0.5 },
+		scale: 0.91
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: -0.3, z: 0.1 },
+		scale: 2.28
+	},
+	drops: [
+		{ type: "block", code: "barrelcactus-normal", quantity: { avg: 1 } }
+	]
+}

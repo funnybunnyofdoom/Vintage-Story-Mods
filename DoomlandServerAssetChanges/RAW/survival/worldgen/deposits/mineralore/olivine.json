@@ -1,0 +1,32 @@
+[
+	{
+		code: "olivine",
+		triesPerChunk: 0.5,
+		generator: "disc-anywhere",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["peridotite"] },
+			placeblock: { code: "ore-olivine-{rock}" },
+			surfaceBlock: { code: "looseores-olivine-{rock}-free" },
+			genSurfaceBlockChance: 0.35,
+			surfaceBlockChance: 0.05,
+			radius: { dist: "gaussian", avg: 32, var: 32 },
+			yPosRel: {dist: "uniform", avg: 0.5, var: 0.5 },
+			thickness: { dist: "invexp", avg: 1.2, var: 3 },
+		},
+		childDeposits: [
+			{
+				code: "peridot",
+				triesPerChunk: 30,
+				withOreMap: true,
+				handbookPageCode: "item-gem-olivine_peridot-rough",
+				generator: "childdeposit-pointcloud",
+				attributes: {
+					randomTries: { avg: 20 },
+					placeblock: { code: "ore-*-olivine_peridot-{rock}", name: "grade", allowedVariants: ["low", "medium", "high"] },
+					radius: { dist: "gaussian", avg: 2, var: 2 },
+					thickness: { dist: "invexp", avg: 1.2, var: 3 }
+				}
+			}
+		],
+	}
+]

@@ -1,0 +1,13 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "silver", "gold", "iron", "meteoriciron", "steel"] },
+	pattern: [[
+		"__#####",
+		"_######",
+		"#######",
+		"#######",
+		"_######",
+		"__#####"
+	]],
+	name: "Shovel",
+	output: { type: "item", code: "shovelhead-{metal}"  }
+}

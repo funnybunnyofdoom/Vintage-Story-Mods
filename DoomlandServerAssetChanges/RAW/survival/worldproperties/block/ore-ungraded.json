@@ -1,0 +1,54 @@
+{
+	"code": "ore-ungraded",
+	"variants": [
+		{
+			"Code": "alum",
+		},
+		{
+			"Code": "lapislazuli",
+		},
+		{
+			"Code": "corundum",
+		},
+		{
+			"Code": "anthracite",
+		},
+		{
+			"Code": "borax",
+		},
+		{
+			"Code": "cinnabar",
+		},
+		{
+			"Code": "lignite",
+		},
+		{
+			"gronkh": "Kohle kohle kohle, schubdidu, Kohle kohle kohle, tralalala",
+			"Code": "bituminouscoal",
+		},
+		{
+			"Code": "sylvite",
+		},
+		{
+			"Code": "quartz",
+		},
+		{
+			"Code": "olivine",
+		},
+		{
+			"Code": "sulfur",
+		},
+		{
+			"Code": "fluorite",
+		},
+		{
+			"Code": "graphite",
+		},
+		{
+			"Code": "kernite",
+		},
+		{
+			"Code": "phosphorite",
+		}
+	]
+}

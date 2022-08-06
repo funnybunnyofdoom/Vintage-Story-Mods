@@ -1,0 +1,36 @@
+[
+	{	
+		ingredientPattern: "PPP,PSP,PRP",
+		ingredients: {
+			"S": { type: "item", code: "saw-*", isTool: true, toolDurabilityCost: 60 },
+			"P": { type: "item", code: "plank-*", quantity: 6 },
+			"R": { type: "block", code: "rock-*", name: "rock", allowedVariants: ["andesite", "granite", "basalt", "peridotite"]  }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "pulverizerframe-north", quantity: 1 }
+	},
+	{
+		ingredientPattern: "HP,CA",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 10 },
+			"P": { type: "item", code: "metalplate-*", allowedVariants: ["tinbronze", "bismuthbronze", "iron", "meteoriciron", "steel"] },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 20 },
+			"A": { type: "block", code: "woodenaxle-ud" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "item", code: "pulverizertoggle-oak", quantity: 1 }
+	},
+	{
+		ingredientPattern: "HL_,CL_,_L_",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true, toolDurabilityCost: 10 },
+			"C": { type: "item", code: "chisel-*", isTool: true, toolDurabilityCost: 10 },
+			"L": { type: "block", code: "log-placed-*-ud", name: "wood" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "pounder-oak", quantity: 1 }
+	}
+]

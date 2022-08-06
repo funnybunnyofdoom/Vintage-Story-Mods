@@ -1,0 +1,11 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel"] },
+	pattern: [[
+		"_#####_",
+		"####__#",
+		"####__#",
+		"_#####_"
+	]],
+	name: "Padlock",
+	output: { type: "item", code: "padlock-{metal}"  }
+}

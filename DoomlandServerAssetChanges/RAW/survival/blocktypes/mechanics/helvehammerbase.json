@@ -1,0 +1,88 @@
+{
+	code: "helvehammerbase",
+	class: "BlockHelveHammer",
+	entityClass: "HelveHammer",
+	behaviors: [{name: "HorizontalOrientable"}],
+	attributes: {
+		handbook: {
+			groupBy: ["helvehammerbase-*"]
+		}
+	},
+	creativeinventory: { "general": ["*-north"], mechanics: ["*-north"] },
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	shapebytype: {
+		"*-north": { base: "block/wood/mechanics/helvehammerbase", rotateY: 180 },
+		"*-east": { base: "block/wood/mechanics/helvehammerbase", rotateY: 90 },
+		"*-south": { base: "block/wood/mechanics/helvehammerbase", rotateY: 0 },
+		"*-west": { base: "block/wood/mechanics/helvehammerbase", rotateY: 270 }
+	},
+	textures: {
+		"tinbronze": { base: "block/metal/anvil/tinbronze" }
+	},
+	blockmaterial: "Wood",
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock", 
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	rainPermeable: true,
+	resistance: 3.5,
+	lightAbsorption: 0,
+	maxStackSize: 1,
+	drops: [
+		{ type: "block", code: "helvehammerbase-north", quantity: { avg: 1 }  }
+	],
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -90, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.45, z: 0 },
+		scale: 2.7
+	},
+	guiTransform: {
+		rotation: { x: -30, y: -146, z: 0 },
+		origin: { x: 0.5, y: 0.4, z: 0.3 },
+		scale: 1.07
+	},
+	tpHandTransform: {
+		translation: { x: -1.03, y: -0.4, z: -0.6 },
+		rotation: { x: 0, y: -28, z: 90 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 },
+		scale: 0.55
+	},
+	collisionSelectionBoxesByType: {
+		"*-north": 
+			[
+				{ x1: 0, y1: 0, z1: 0.25, x2: 0.125, y2: 0.8125, z2: 1, rotateY: 180 },
+				{ x1: 1, y1: 0, z1: 0.25, x2: 0.875, y2: 0.8125, z2: 1, rotateY: 180 },
+				{ x1: 0.125, y1: 0, z1: 0.75, x2: 0.875, y2: 1, z2: 1, rotateY: 180 },
+			],
+		"*-east": 
+			[
+				{ x1: 0, y1: 0, z1: 0.25, x2: 0.125, y2: 0.8125, z2: 1, rotateY: 90 },
+				{ x1: 1, y1: 0, z1: 0.25, x2: 0.875, y2: 0.8125, z2: 1, rotateY: 90 },
+				{ x1: 0.125, y1: 0, z1: 0.75, x2: 0.875, y2: 1, z2: 1, rotateY: 90 },
+			],
+		"*-south": 
+			[
+				{ x1: 0, y1: 0, z1: 0.25, x2: 0.125, y2: 0.8125, z2: 1 },
+				{ x1: 1, y1: 0, z1: 0.25, x2: 0.875, y2: 0.8125, z2: 1 },
+				{ x1: 0.125, y1: 0, z1: 0.75, x2: 0.875, y2: 1, z2: 1 },
+			],
+		"*-west": 
+			[
+				{ x1: 0, y1: 0, z1: 0.25, x2: 0.125, y2: 0.8125, z2: 1, rotateY: 270 },
+				{ x1: 1, y1: 0, z1: 0.25, x2: 0.875, y2: 0.8125, z2: 1, rotateY: 270 },
+				{ x1: 0.125, y1: 0, z1: 0.75, x2: 0.875, y2: 1, z2: 1, rotateY: 270 },
+			]
+	},
+	sounds: {
+		"hit": "block/planks",
+		"break": "block/planks",
+		"place": "block/planks",
+		"walk": "walk/wood"
+	}
+}

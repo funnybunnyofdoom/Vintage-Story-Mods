@@ -1,0 +1,33 @@
+{
+	code: "bass",
+	class: "EntityAgent",
+	hitboxSize: { x: 0.6, y: 0.25 },
+	eyeHeight: 0.2,
+	enabled: false,
+	client: {
+		renderer: "Shape",
+		texture: { base: "entity/fish/bass" },
+		shape: { base: "entity/water/bass" },
+		behaviors: [{ code: "controlledphysics" }, { code: "interpolateposition" }],
+	},
+	server: {
+		behaviors: [
+			{ code: "controlledphysics" },
+			{ code: "health", currenthealth: 2, maxhealth: 2 },
+			{ 
+				code: "taskai",
+				aitasks: [
+					{
+						code: "wander", 
+						priority: 1.0, 
+						movespeed: 0.015
+					},
+					{ 
+						code: "lookaround", 
+						priority: 0.5
+					}
+				]
+			}
+		]
+	}
+}

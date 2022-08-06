@@ -1,0 +1,461 @@
+{
+	code: "landforms",
+	"variants": 
+	[
+		{
+			"code":  "islandchess",
+			"comment": "checkboard of land and water",
+			"hexcolor": "#79E02E",
+			"weight": 6,
+			"minTemp": -4,
+			"minRain": 120,
+			"useClimateMap": true,
+			"terrainOctaves":          [0, 0, 0, 0, 0, 0,  0, 0, 1],
+			"terrainOctaveThresholds": [0, 0, 0, 0,   0,   0,0, 0, 0.1],
+			"terrainYKeyPositions":    [0.410, 0.445],
+			"terrainYKeyThresholds":   [1.000, 0.000]
+		},
+		{
+			"code":  "needledflatlands",
+			"comment": "Flat lands with very thin small hills",
+			"hexcolor": "#79E02E",
+			"weight": 3,
+			"terrainOctaves":          [0, 0, 0, 0, 0, 0,  0.1, 0.5, 0.75],
+			"terrainOctaveThresholds": [0, 0, 0, 0,   0,   0,0, 0, 0],
+			"terrainYKeyPositions":    [0.476, 0.490, 0.545, 0.559],
+			"terrainYKeyThresholds":   [1.000, 0.261, 0.167, 0.000]
+		},
+		{
+			"code":  "Realistic mountains",
+			"comment": "Very large scale mountains",
+			"hexcolor": "#84A878",
+			"weight": 2,
+			"terrainOctaves":          [1, 1, 1, 1, 0, 0.1, 0.1, 0.1, 0.1],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0.03, 0.03, 0.05],
+			"terrainYKeyPositions":    [0.345, 0.405, 1.000],
+			"terrainYKeyThresholds":   [1.000, 0.593, 0.000]
+		},
+		{
+			"code":  "siberiansinkholes",
+			"comment": "Siberian sink holes",
+			"hexcolor": "#AAAA00",
+			"weight": 2,
+			"terrainOctaves":          [0, 0, 0, 0, 0, 1, 1, 1, 1],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.335, 0.468, 0.525, 0.545],
+			"terrainYKeyThresholds":   [1.000, 0.978, 0.692, 0.000]
+		},
+		{
+			"code":  "shallowmillionstepmountains",
+			"comment": "More shallow Million steps mountain",
+			"hexcolor": "#333333",
+			"weight": 4,
+			"terrainOctaves":          [0, 0, 0, 0, 1, 0, 0, 0.5, 0.2],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.418, 0.449, 0.474, 0.502, 0.507, 0.526, 0.539, 0.556, 0.563, 0.583, 0.589, 0.605, 0.610, 0.623, 0.630, 0.647, 0.652, 0.669],
+			"terrainYKeyThresholds":   [1.000, 0.493, 0.439, 0.430, 0.397, 0.395, 0.360, 0.359, 0.319, 0.314, 0.287, 0.284, 0.257, 0.255, 0.224, 0.220, 0.187, 0.000]
+		},
+		{
+			"code":  "millionstepmountains",
+			"comment": "Million steps mountain",
+			"hexcolor": "#333333",
+			"weight": 2,
+			"terrainOctaves":          [0, 0, 0, 0, 1, 0, 0, 0.5, 0],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.413, 0.498, 0.547, 0.552, 0.582, 0.592, 0.620, 0.630, 0.657, 0.665, 0.687, 0.692, 0.715, 0.722, 0.745, 0.752, 0.782, 0.843, 0.892],
+			"terrainYKeyThresholds":   [1.000, 0.532, 0.530, 0.482, 0.480, 0.442, 0.442, 0.402, 0.402, 0.370, 0.370, 0.340, 0.340, 0.307, 0.303, 0.270, 0.270, 0.007, 0.000]
+		},
+		{
+			"code":  "roughflatlands",
+			"comment": "Rough near sea level flat lands",
+			"hexcolor": "#333333",
+			"weight": 8,
+			"terrainOctaves":          [0, 0, 0, 0, 1, 0, 0, 0.5, 0.1],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.438, 0.500, 0.600],
+			"terrainYKeyThresholds":   [1.000, 0.267, 0.000]
+		},
+		{
+			"code":  "roughlabyrinth",
+			"comment": "Rough labyrhinth lands",
+			"hexcolor": "#A9810F",
+			"weight": 10,
+			"terrainOctaves":          [1, 1, 1, 1, 1, 1, 1, 1, 0.5],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.43, 0.45, 0.51],
+			"terrainYKeyThresholds":   [1,    1, 0.4, 0],
+		},
+		{
+			"code":  "supersmoothills",
+			"comment": "Super Smooth hills",
+			"hexcolor": "#333333",
+			"weight": 0.5,
+			"terrainOctaves":          [0, 0, 0, 0, 1, 0, 0.4, 0, 0.1],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.43, 0.5, 0.6],
+			"terrainYKeyThresholds":   [1,    1, 0.4, 0]
+		},	
+		{
+			"code":  "largelake",
+			"comment": "Just water :P",
+			"hexcolor": "#0000FF",
+			"weight": 4,
+			"minTemp": 0,
+			"maxTemp": 50,
+			"useClimateMap": true,
+			"terrainOctaves":          [0, 0, 0, 0, 1, 0.1, 0.25, 0.3, 0.6],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0,   0,    0,   0,   0],
+			
+			"terrainYKeyPositions":    [0, 0.36,  0.4, 0.43],
+			"terrainYKeyThresholds":   [1,    1,  0.6,  0]
+		},	
+		{
+			"code":  "cold mountain range",
+			"comment": "",
+			"hexcolor": "#000099",
+			"weight": 10000,
+			"minTemp": -20,
+			"maxTemp": -19.5,
+			"useClimateMap": true,
+			"terrainOctaves":          [0, 0, 0, 1,   1, 1, 1, 0.6, 0.2],
+			"terrainOctaveThresholds": [0, 0, 0, 0.5, 0, 0,   0,   0, 0],
+			"terrainYKeyPositions":    [0,  0.42, 0.50, 0.6, 0.7, 0.9, 0.97, 1],
+			"terrainYKeyThresholds":   [1,  1.00, 0.94, 1.0, 1.0, 0.2, 0.05, 0]
+		},
+		{
+			"code":  "humongous mountain",
+			"comment": "humongous mountains with caverns in them",
+			"hexcolor": "#5BC184",
+			"weight": 1.5,
+			"terrainOctaves":          [0, 0, 0, 1,   1, 1, 1, 0.6, 0.15],
+			"terrainOctaveThresholds": [0, 0, 0, 0.5, 0, 0,   0,   0, 0],
+			"terrainYKeyPositions":    [0.000, 0.330, 0.370, 0.420, 0.430, 0.500, 0.600, 0.700, 1.000],
+			"terrainYKeyThresholds":   [1.000, 1.000, 0.870, 0.840, 0.700, 0.940, 1.000, 1.000, 0.000],
+			"mutations": [
+				{
+					"chance": 0.25,
+					"code":  "humongous mountain, cavernless",
+					"hexcolor": "#79E02E",
+					"terrainYKeyPositions":    [0.000, 0.330, 0.600, 1.000],
+					"terrainYKeyThresholds":   [1.000, 1.000, 1.000, 0.000]
+				}
+			]
+		},
+		{
+			"code":  "hillplateu",
+			"comment": "high plateu with hills on top",
+			"hexcolor": "#5BC184",
+			"weight": 0.5,
+			"terrainOctaves":          [0, 1, 1, 1,   1, 0, 0.25, 0.25, 0.25],
+			"terrainOctaveThresholds": [0, 0, 0, 0.5, 0, 0,   0,   0, 0],
+			"terrainYKeyPositions":    [0.432, 0.611, 0.712, 0.735, 0.885],
+			"terrainYKeyThresholds":   [1.000, 0.952, 0.660, 0.629, 0.000]
+		},
+		{
+			"code":  "smallshallowislands",
+			"comment": "Small shallow islands with very small hills and lots of water",
+			"hexcolor": "#79E02E",
+			"weight": 15,
+			"terrainOctaves":          [  0, 0, 0, 0, 1, 0.1,  0.25, 0.3, 0.6],
+			"terrainOctaveThresholds": [  0, 0, 0,   0, 0,  0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.000, 0.360, 0.400, 0.430, 0.440, 0.497],
+			"terrainYKeyThresholds":   [1.000, 1.000, 0.800, 0.300, 0.170, 0.000]
+		},
+		{
+			"code":  "shallowislands",
+			"comment": "Medium sized shallow islands with small bumps and lots of water",
+			"hexcolor": "#79E02E",
+			"weight": 20,
+			"terrainOctaves":          [  0, 0, 0, 0.2, 1, 0.1,  0.25, 0.3, 0.6],
+			"terrainOctaveThresholds": [  0, 0, 0,   0, 0,  0, 0, 0, 0.25],
+			"terrainYKeyPositions":    [0.000, 0.360, 0.410, 0.430, 0.440, 0.471, 0.497, 0.540],
+			"terrainYKeyThresholds":   [1.000, 1.000, 0.805, 0.300, 0.192, 0.105, 0.016, 0.000]
+		},
+		{
+			"code":  "cliffy rolling hills",
+			"comment": "cliffy rolling hills",
+			"hexcolor": "#5BC184",
+			"weight": 0.5,
+			"terrainOctaves":          [0.9, 0.81, 0.729, 0.6561, 0, 0, 0.5, 0.3, 0.1],
+			"terrainOctaveThresholds": [  0,    0,     0,      0, 0, 0,   0,   0, 0],
+			"terrainYKeyPositions":    [0, 0.43, 0.45, 0.74, 0.75],
+			"terrainYKeyThresholds":   [1,    1,  0.8,  0.2, 0]
+		},
+		{
+			"code":  "superflatrarebumps",
+			"comment": "very flat lands with occasional bumps",
+			"hexcolor": "#79E02E",
+			"weight": 12,
+			"terrainOctaves":          [  0, 0, 0, 0.2, 0.3, 0,  1, 0.25, 0],
+			"terrainOctaveThresholds": [  0,    0,     0,   0,   0, 0,0.4, 0.1, 0],
+			"terrainYKeyPositions":    [0, 0.425, 0.45, 0.56, 0.6],
+			"terrainYKeyThresholds":   [1,    1, 0.4, 0.3, 0]
+		},
+		{
+			"code":  "flatmanybumps",
+			"comment": "Flat land with many bumps",
+			"hexcolor": "#5BC184",
+			"weight": 15,
+			"terrainOctaves": [0, 0, 0, 0, 0.59049, 0.531441, 0.4, 0.6, 0.25],
+			"terrainOctaveThresholds": [  0,    0,     0,   0,   0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.4, 0.43, 0.55],
+			"terrainYKeyThresholds": [1,      1, 0.8, 0],
+			"mutations": [
+					{
+						"chance": 0.3,
+						"code":  "rollinghillssubstract",
+						"hexcolor": "#79E02E",
+						"terrainYKeyPositions":    [0, 0.4, 0.43, 0.45],
+						"terrainYKeyThresholds": [1,      1, 0.8, 0],
+					}
+			]
+		},
+		{
+			"code":  "veryflatmanybumps",
+			"comment": "Very flat land with many bumps",
+			"hexcolor": "#5BC184",
+			"weight": 8,
+			"terrainOctaves": [0, 0, 0, 0, 0.59049, 0.531441, 0.4, 0.6, 0.25],
+			"terrainOctaveThresholds": [  0,    0,     0,   0,   0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.000, 0.400, 0.430, 0.498],
+			"terrainYKeyThresholds":   [1.000, 1.000, 0.800, 0.000],
+			"mutations": [
+					{
+						"chance": 0.3,
+						"code":  "rollinghillssubstract",
+						"hexcolor": "#79E02E",
+						"terrainYKeyPositions":    [0, 0.4, 0.43, 0.45],
+						"terrainYKeyThresholds": [1,      1, 0.8, 0],
+					}
+			]
+		},
+		{
+			"code":  "singlestep near-sea level flat grasslands",
+			"comment": "near-sea level flat grasslands with a single step",
+			"hexcolor": "#79E02E",
+			"weight": 4,
+			"terrainOctaves":          [  1, 0.81, 0.729, 0.5, 0.3, 0,  1, 0.25, 0],
+			"terrainOctaveThresholds": [  0,    0,     0,   0, 0.1, 0,0.4, 0.1, 0],
+			"terrainYKeyPositions":    [0, 0.44, 0.5, 0.52,   0.6, 0.7],
+			"terrainYKeyThresholds":   [1,    1, 0.5, 0.48,  0.15, 0.0]
+		},
+		{
+			"code":  "rollinghills",
+			"comment": "near sealevel rolling hills",
+			"hexcolor": "#5BC184",
+			"weight": 2,
+			"terrainOctaves": [0.9, 0.81, 0.729, 0.6561, 0.59049, 0.531441, 0.2, 0.2, 0.1],
+			"terrainOctaveThresholds": [  0,    0,     0,   0,   0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.41, 0.42, 0.5, 0.65],
+			"terrainYKeyThresholds": [1,      1, 0.8, 0.8, 0]
+		},
+		{
+			"code":  "lowrollinghills",
+			"comment": "near sealevel low rolling hills",
+			"hexcolor": "#5BC184",
+			"weight": 15,
+			"terrainOctaves": [0.9, 0.81, 0.729, 0.6561, 0.59049, 0.531441, 0.2, 0.4, 0],
+			"terrainOctaveThresholds": [  0,    0,     0,   0,   0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.41, 0.43, 0.55],
+			"terrainYKeyThresholds": [1,      1, 0.8, 0],
+			"mutations": [
+					{
+						"chance": 0.15,
+						"code":  "rollinghillssubstract",
+						"hexcolor": "#79E02E",
+						"terrainYKeyPositions":    [0, 0.41, 0.43, 0.45],
+						"terrainYKeyThresholds": [1,      1, 0.8, 0],
+					}
+			]
+		},
+		{
+			"code":  "cliffislands",
+			"comment": "Islands with tall cliffs",
+			"hexcolor": "#5BC184",
+			"weight": 3,
+			"terrainOctaves": [0.9, 0.81, 0.729, 0.6561, 0.59049, 0.531441, 1, 0.2, 0.1],
+			"terrainOctaveThresholds": [  0,    0,     0,   0,   0, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.000, 0.410, 0.432, 0.440, 0.498, 0.547, 0.650],
+			"terrainYKeyThresholds":   [1.000, 1.000, 0.432, 0.402, 0.393, 0.167, 0.000],
+			"mutations": [
+				{
+					"chance": 0.4,
+					"code":  "sharp cliff islands",
+					"hexcolor": "#79E02E",
+		
+					"terrainOctaves": [0.9, 0.81, 0.729, 0.6561, 0.59049, 0.531441, 1, 0.3, 0.4],
+				}
+			]
+		},
+		{
+			"code":  "cliffislands",
+			"comment": "Islands with many small cliffs",
+			"hexcolor": "#5BC184",
+			"weight": 6,
+			"terrainOctaves": [0, 0, 0, 0.4, 0.6, 0.5, 1, 0.3, 0.9],
+			"terrainOctaveThresholds": [  0,    0.2,     0.2,   0.2,   0.2, 0.2, 0.2, 0.2, 0.2],
+			"terrainYKeyPositions":    [0.188, 0.355, 0.391, 0.427, 0.433, 0.460, 0.486, 0.542],
+			"terrainYKeyThresholds":   [1.000, 1.000, 0.900, 0.527, 0.398, 0.393, 0.167, 0.000]
+		},
+		{
+			"code":  "bumplands",
+			"comment": "flat with small and big bumps",
+			"hexcolor": "#5BC184",
+			"weight": 16,
+			"terrainOctaves":          [0, 0, 0, 0, 0, 1.0, 0, 0.2, 0],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0.3, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.43, 0.45, 0.7, 0.75, 0.76],
+			"terrainYKeyThresholds":   [1,  0.7, 0.5, 0.2, 0.02, 0]
+		},
+		{
+			"code":  "roundclifflandshilly",
+			"comment": "round clifflands (more hilly, less easily traversable)",
+			"hexcolor": "#5BC184",
+			"weight": 4,
+			"terrainOctaves":          [0, 0, 0, 0, 0.3, 1.0, 0, 0.2, 0],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0.3, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.42, 0.43, 0.45, 0.7, 0.75, 0.76],
+			"terrainYKeyThresholds":   [1,  0.9, 0.7, 0.5, 0.2, 0.02, 0]
+		},
+		{
+			"code":  "sparsecliffyswamplands",
+			"comment": "Swamp lands with sparse short 2-stepped cliffs",
+			"hexcolor": "#5BC184",
+			"weight": 6,
+			"terrainOctaves":          [0, 0.1, 0.2, 0.3, 1.0, 0.4, 0.4, 0.5, 0.1],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0.3, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0.154, 0.401, 0.430, 0.446, 0.465, 0.470, 0.488, 0.498, 0.521],
+			"terrainYKeyThresholds":   [1.000, 0.990, 0.682, 0.303, 0.297, 0.225, 0.222, 0.170, 0.000]
+		},
+		{
+			"code":  "densecliffyswamplands",
+			"comment": "Swamp lands with dense tall cliffs",
+			"hexcolor": "#5BC184",
+			"weight": 5,
+			"terrainOctaves":          [0, 0.1, 0.2, 0.3, 1.0, 0.4, 0.4, 0.5, 0],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0.3, 0, 0, 0, 0],
+			"terrainYKeyPositions":    [0, 0.42, 0.43, 0.45, 0.7, 0.75],
+			"terrainYKeyThresholds":   [1,  0.9, 0.7, 0.4, 0.1, 0]
+		},
+		{
+			"code":  "deep water step mountains",
+			"comment": "Step mountains in deep water",
+			"hexcolor": "#84A878",
+			"weight": 1,
+			"terrainOctaves": [0, 0.81, 0.729, 0.6561, 0.59049, 0.531441, 0.4, 0.2, 0],
+			"terrainYKeyPositions":  [0, 0.45,   0.5,   0.6, 0.62,  0.68,  0.7],
+			"terrainYKeyThresholds": [1,  0.65,  0.39,   0.2, 0.2,   0.05, 0.0],
+		},
+		{
+			"code":  "step mountains",
+			"comment": "Raised terrain with mountains that have several steps in them",
+			"hexcolor": "#84A878",
+			"weight": 1,
+			"terrainOctaves": [0, 0.81, 0.729, 0.6561, 0, 0.531441, 0.4, 0.2, 0],
+			"terrainYKeyPositions":  [0, 0.43,   0.5,   0.6, 0.62,  0.68,  0.7,  0.8, 0.84, 0.9],
+			"terrainYKeyThresholds": [1,  1,  0.41,   0.3, 0.30,   0.2, 0.20, 0.08, 0.08, 0.0],
+		},
+		{
+			"code":  "flathillvalley",
+			"comment": "Flat lands with occasional hills and valleys",
+			"hexcolor": "#84A878",
+			"weight": 8,
+			"terrainOctaves":          [0, 0, 0, 0, 0.2, 0.2,   1, 0.5, 0.3],
+			"terrainOctaveThresholds": [0, 0, 0, 0.3, 0.3, 0.3, 0.3, 0.3, 0.2],
+			"terrainYKeyPositions":    [0.443, 0.463, 0.508, 0.548, 0.556, 0.598, 0.699, 0.800],
+			"terrainYKeyThresholds":   [1.000, 0.573, 0.373, 0.300, 0.272, 0.260, 0.110, 0.000]
+		},
+		{
+			"code":  "hillsflatsandislands",
+			"comment": "A colorful mix of flats, hillgroups and islands",
+			"hexcolor": "#84A878",
+			"weight": 18,
+			"terrainOctaves": [0, 0.81, 1, 1, 1, 0.5, 0.2, 0.4, 0.3],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0],
+			"terrainYKeyPositions":    [0.397, 0.415, 0.438, 0.459, 0.548, 0.602, 0.684, 0.711, 0.752],
+			"terrainYKeyThresholds":   [1.000, 0.770, 0.517, 0.287, 0.197, 0.117, 0.047, 0.047, 0.000]
+		},
+		{
+			"code":  "smallsealevelplateus",
+			"comment": "Small many near sea level plateus",
+			"hexcolor": "#84A878",
+			"weight": 5,
+			"terrainOctaves":          [0, 0, 0, 0.25, 0.3, 1, 1, 0.7, 0.15],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"terrainYKeyPositions":  [0, 0.4, 0.43, 0.45, 0.455, 0.495, 0.505, 0.525, 0.535],
+			"terrainYKeyThresholds": [1,   1,    1, 0.63, 0.27, 0.27, 0.09, 0.09, 0],
+		},
+		{
+			"code":  "mediumseapillars",
+			"comment": "medium stepped pillars in the sea",
+			"hexcolor": "#79E02E",
+			"weight": 3,
+			"terrainOctaves":          [0, 0, 0, 0, 0, 0.2, 1, 0.7, 0.2],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0,   0, 0,   0, 0.15],
+			"terrainYKeyPositions":    [0, 0.365, 0.43, 0.46, 0.51, 0.52, 0.56, 0.57, 0.65],
+			"terrainYKeyThresholds":   [1,    1,  0.4, 0.22, 0.21, 0.17, 0.16, 0.13, 0]
+		},
+		{
+			"code":  "mediumlandpillars",
+			"comment": "medium stepped pillars on flat land",
+			"hexcolor": "#79E02E",
+			"weight": 4,
+			"terrainOctaves":          [0, 0, 0, 0, 0.2, 0.4, 1, 0.7, 0],
+			"terrainOctaveThresholds": [0, 0, 0, 0, 0, 0, 0, 0, 0.3],
+			"terrainYKeyPositions":    [0, 0.435, 0.45, 0.5, 0.54, 0.55, 0.59, 0.6, 0.64, 0.66],
+			"terrainYKeyThresholds":   [1,    1, 0.4, 0.22, 0.21, 0.18, 0.17, 0.14, 0.13, 0]
+		},
+		{
+			"code":  "marsh",
+			"comment": "very flat lands with small rough hills",
+			"hexcolor": "#79E02E",
+			"weight": 13,
+			"terrainOctaves":          [  0, 0, 0, 0, 0.2, 0.2,  1, 0.5, 0],
+			"terrainOctaveThresholds": [  0, 0, 0, 0, 0, 0,0.4, 0.1, 0],
+			"terrainYKeyPositions":    [0, 0.4, 0.44, 0.51, 0.7],
+			"terrainYKeyThresholds":   [1,   1, 0.4, 0.2, 0]
+		},
+		{
+			"code":  "bumpy marsh",
+			"comment": "Near sea lavel lakes with small round hills",
+			"hexcolor": "#79E02E",
+			"weight": 5,
+			"terrainOctaves":          [0, 0, 0, 0, 0.2, 0.2,  1, 0.5, 0],
+			"terrainOctaveThresholds": [0, 0, 0, 0,   0,   0,0.4, 0.1, 0],
+			"terrainYKeyPositions":    [0, 0.4, 0.44, 0.51, 0.7],
+			"terrainYKeyThresholds":   [1,   1, 0.4, 0.2, 0]
+		},
+		{
+			"code":  "flatmarsh",
+			"comment": "very flat lands with rare small bumps",
+			"hexcolor": "#79E02E",
+			"weight": 9,
+			"terrainOctaves":          [  0, 0, 0, 0, 0.2, 0.2,  1, 0.5, 0],
+			"terrainOctaveThresholds": [  0, 0, 0, 0, 0, 0,0.4, 0.1, 0],
+			"terrainYKeyPositions":    [0, 0.41, 0.44, 0.51, 0.7],
+			"terrainYKeyThresholds":   [1,   1, 0.35, 0.15, 0]
+		},
+		{
+			"code":  "deathmarsh",
+			"comment": "some strange pool here",
+			"hexcolor": "#79E02E",
+			"weight": 3,
+			"terrainOctaves":          [  0, 0, 0, 0, 0.2, 0.2,  1, 0.5, 0],
+			"terrainOctaveThresholds": [  0, 0, 0, 0, 0, 0,0.4, 0.1, 0],
+			"terrainYKeyPositions":    [0, 0.08, 0.4, 0.425, 0.43, 0.44, 0.51, 0.7],
+			"terrainYKeyThresholds":   [1, 0.66, 0.55, 0.7, 0.55, 0.35, 0.15, 0],
+			"mutations": [
+				{
+					"chance": 0.5,
+					"code":  "deathmarsh hill",
+					"hexcolor": "#79E02E",
+		
+					"terrainOctaves":          [  0, 0, 0, 0, 0.2, 0.2,  1, 0.5, 0],
+					"terrainOctaveThresholds": [  0, 0, 0, 0, 0, 0,0.4, 0.1, 0],
+					"terrainYKeyPositions":    [0, 0.08, 0.4, 0.42, 0.43, 0.44, 0.51, 0.7],
+					"terrainYKeyThresholds":   [1, 0.66, 0.55, 0.7, 0.55, 0.5, 0.4, 0],
+				}
+			]
+		},
+	]
+}

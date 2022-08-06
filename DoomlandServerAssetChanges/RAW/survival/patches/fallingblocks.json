@@ -1,0 +1,92 @@
+[
+  {
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": { "name": "UnstableFalling", properties: { fallSound: "effect/rockslide", fallSideways: true, dustIntensity : 0.25 } },
+    "file": "blocktypes/soil/soil.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": { "name": "UnstableFalling", properties: { fallSound: "effect/rockslide", fallSideways: true, dustIntensity : 0.25 } },
+    "file": "blocktypes/soil/forestfloor.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },  
+  {
+    "op": "add",
+    "path": "/behaviors/0/properties",
+    "value": { fallSound: "effect/rockslide", fallSideways: true, dustIntensity : 1, fallSidewaysChance: 0.75 },
+    "file": "blocktypes/stone/sand.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/behaviors/0/properties",
+    "value": { fallSound: "effect/rockslide", fallSideways: true, dustIntensity : 0.75 },
+    "file": "blocktypes/stone/gravel.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+  
+
+
+  {
+    "op": "add",
+    "path": "/attributes/allowUnstablePlacement",
+    "value": true,
+    "file": "blocktypes/soil/soil.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributes/allowUnstablePlacement",
+    "value": true,
+    "file": "blocktypes/soil/forestfloor.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+    
+  
+  {
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": { "name": "UnstableFalling", properties: { fallSound: "effect/rockslide", fallSideways: true, dustIntensity : 1 } },
+    "file": "blocktypes/liquid/snowblock.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributes/allowUnstablePlacement",
+    "value": true,
+    "file": "blocktypes/liquid/snowblock.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+
+
+
+
+  {
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": { "name": "UnstableFalling", properties: { fallSound: "effect/rockslide", fallSideways: true, dustIntensity : 0.25 } },
+    "file": "blocktypes/soil/peat.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributes/allowUnstablePlacement",
+    "value": true,
+    "file": "blocktypes/soil/peat.json",
+    "condition": { "when": "blockGravity", "isValue": "sandgravelsoil" },
+    "side": "Server"
+  }
+  
+]

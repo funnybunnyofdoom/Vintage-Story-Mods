@@ -1,0 +1,26 @@
+{
+	code: "armorstand",
+	class: "EntityArmorStand",
+	hitboxSize: { x: 0.7, y: 2 },
+	eyeHeight: 1.8,
+	knockbackResistance: 1,
+	attributes: { skinBaseTextureKey: "seraph" },
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/armorstand" },
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.0001 }, 
+			{ code: "interpolateposition" }
+		],
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }
+		]
+	},
+	sounds: {
+		hurt: "player/slap"
+	}
+}

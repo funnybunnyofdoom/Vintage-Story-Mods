@@ -1,0 +1,12 @@
+{
+	ingredientPattern: "GDG	DGD	GDG",
+	enabled: true,
+	ingredients: {
+		"G": { type: "item", code: "drygrass", quantity: 1  },
+		"D": { type: "block", code: "soil-*", quantity: 1  },
+	},
+	name: "cob",
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "cob-none", quantity: 10  }
+}

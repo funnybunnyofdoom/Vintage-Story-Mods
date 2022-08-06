@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "_LL	LCL	LLL",
+	ingredients: {
+		"C": { type: "item", code: "mortar" },
+		"L": { type: "item", code: "stonebrick-*", name: "rock", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite"] }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "stonebrickstairs-{rock}-up-north-free", quantity: 2 }
+}

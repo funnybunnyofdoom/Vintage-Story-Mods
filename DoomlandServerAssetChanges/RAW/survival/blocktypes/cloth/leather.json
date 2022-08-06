@@ -1,0 +1,32 @@
+{
+	code: "leather",
+	class: "Block",
+	shape: { base: "block/basic/cube" },
+	drawtype: "Cube",
+	attributes: {
+		handbook: {
+			exclude: true
+		},
+		canChisel: true
+	},
+	blockmaterial: "Cloth",
+	creativeinventory: { "general": ["*"],  "decorative": ["*"] },
+	replaceable: 700,
+	resistance: 1.5,
+	lightAbsorption: 99,
+	textures: {
+		all: { 
+			base: "block/cloth/leather/normal", 
+		}
+	},
+	combustibleProps: {
+		burnTemperature: 400,
+		burnDuration: 15,
+	},
+	sounds: {
+		place: "block/leather",
+		break: "block/leather",
+		hit: "block/leather"
+	},
+	materialDensity: 400
+}

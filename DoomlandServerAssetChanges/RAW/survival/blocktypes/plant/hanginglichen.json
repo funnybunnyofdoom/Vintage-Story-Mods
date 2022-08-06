@@ -1,0 +1,50 @@
+{
+	code: "hanginglichen",
+	class: "BlockHangingLichen",
+	variantgroups: [
+		{ code: "type", states: ["oldmans", "lace"] },
+		{ code: "part", states: ["top", "segment", "bottom", "short"] }
+	],
+	attributes: {
+		handbook: {
+			groupBy: ["hanginglichen-{type}-*"]
+		},
+	},
+	creativeinventory: { "general": ["*"] },
+	vertexFlags: {
+		zOffset: 1
+	},
+	faceCullMode: "NeverCull",
+	renderpass: "OpaqueNoCull",
+	shape: { base: "block/plant/lichen/{part}" },
+	textures: {
+		"hanging1": { base: "block/plant/lichen/{type}/hanging1" },
+		"hanging2": { base: "block/plant/lichen/{type}/hanging2" },
+		"segment": { base: "block/plant/lichen/{type}/segment" },
+		"flat": { base: "block/plant/lichen/{type}/flat" },
+		"cross": { base: "block/plant/lichen/{type}/cross" }
+	},
+	blockmaterial: "Plant",
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	sideao: { all: false },
+	replaceable: 6000,
+	lightAbsorption: 0,
+	resistance: 0.4,
+	selectionbox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 1, z2: 0.75 },
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant"
+	},
+	rainPermeable: true,
+	materialDensity: 200,
+	combustibleProps: {
+		burnTemperature: 500,
+		burnDuration: 10,
+	}
+}

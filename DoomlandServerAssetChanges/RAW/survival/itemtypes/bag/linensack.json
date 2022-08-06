@@ -1,0 +1,40 @@
+{
+	code: "linensack",
+	maxstacksize: 1,
+	shape: { base: "item/bag/linensack" },
+	behaviors: [{ name: "GroundStorable", properties: { layout: "SingleCenter", collisionBox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.375, z2: 0.75 }}}],
+	textures: {
+		"linen": { base: "item/bag/linensack/linen" },
+		"top": { base: "item/bag/linensack/top" } 
+	},
+	storageFlags: 2,
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -25, y: 23, z: 180 },
+		origin: { x: 0.5299, y: 0.23, z: 0.5 },
+		scale: 2.7,
+		rotate: true
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0.2 },
+		rotation: { x: 47, y: -80, z: 33 },
+		scale: 1.61
+	},
+	tpHandTransform: {
+		translation: { x: -0.7, y: -0.5, z: -0.6 },
+		rotation: { x: -4, y: 47, z: -17 },
+		scale: 0.81
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 180, y: 33, z: -180 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4
+	},
+	attributes: {
+		backpack: {
+			quantitySlots: 5
+		}
+	}
+}

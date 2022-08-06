@@ -1,0 +1,60 @@
+{
+	code: "forestfloor",
+	class: "BlockForestFloor",
+	variantgroups: [
+		{ code: "grass", states: ["0", "1", "2", "3", "4", "5", "6", "7"] }
+	],
+	behaviors: [{ name: "MyceliumHost" }],
+	creativeinventory: { "general": ["*"], "terrain": ["*"] },
+	shape: { base: "block/basic/cube" },
+	drawtype: "TopSoil",
+	renderpass: "TopSoil",
+	blockmaterial: "Soil",
+	textures: {
+		up: { base: "block/soil/forest/forestsoil*" },
+		all: { base: "block/soil/forest/side" },
+		snowed: {base: "block/plant/grasscoverage/snow/normal"},
+		specialSecondTextureByType: {
+			"*-0":  {base: "block/plant/grasscoverage/none"},
+		 	"*": {base: "block/soil/forest/forestoverlay{grass}"}
+		 }
+	},
+	attributes: {
+		ignoreTintInventory: true,
+		preventsDecay: true,
+		handbook: { exclude: true }
+	},
+	texturesInventory: {
+		all: { base: "block/soil/forest/side" },
+		up: {
+			base: "block/soil/forest/forestsoil11",
+			overlaysByType: {
+				"*-0": [],
+				"*": ["block/soil/forest/inventory/top{grass}"]
+			}
+		}
+	},
+	climateColorMap: "climatePlantTint",
+	seasonColorMap: "seasonalGrass",
+	frostable: true,
+	replaceable: 400,
+	fertility: 120,
+	resistance: 1.5,
+	sounds: {
+		place: "block/dirt",
+		break: "block/dirt",
+		hit: "block/dirt",
+		walk: "walk/grass"
+	},
+	drops: [ {
+		type: "block",
+		code: "soil-medium-none",
+		quantity: { avg: 1, var: 0 }
+	} ],
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

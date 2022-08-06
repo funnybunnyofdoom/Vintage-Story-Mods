@@ -1,0 +1,18 @@
+{
+	code: "regolith",
+	enabled: 0,
+	variantgroups: [
+		{ loadFromProperties: "block/rock" },
+		{ loadFromProperties: "abstract/fertility" },
+	],
+	blockmaterial: "Gravel",
+	creativeinventory: { "general": ["*"] },
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	textures: {
+		all: {
+			base: "block/soil/fert{fertility}",
+			overlays: ["block/stone/regolith/{rock}"]
+		}
+	}
+}

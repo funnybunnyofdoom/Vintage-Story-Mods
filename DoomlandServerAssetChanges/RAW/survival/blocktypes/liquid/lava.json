@@ -1,0 +1,131 @@
+{
+	code: "lava",
+	class: "BlockLava",
+	behaviors:
+	[
+		{
+			name: "FiniteSpreadingLiquid",
+			properties:
+			{
+				spreadDelay: 1000,
+				liquidCollisionSound: "hotmetal",
+				sourceReplacementCode: "rock-obsidian",
+				flowingReplacementCode: "rock-basalt",
+				collidesWith: "water"
+			}
+		},
+		{ name: "HeatSource", properties: { heatStrength: 12 } }
+	],
+	attributesByType: {
+		"lava-*": {
+			temperature: 1200,
+			tempLossPerMeter: 100,
+		}
+	},
+	shape: { base: "block/basic/cube" },
+	variantgroups: [
+		{ code: "flow", states: ["n", "ne", "e", "se", "s", "sw", "w", "nw", "d", "still"] },
+		{ code: "height", states: ["1", "2", "3", "4", "5", "6", "7"] },
+	],
+	drawtype: "liquid",
+	renderpass: "liquid",
+	matterstate: "liquid",
+	blockmaterial: "liquid",
+	faceCullMode: "liquid",
+	liquidCode: "lava",
+	materialdensity: 5000,
+	creativeinventory: { "general": ["lava-still-7"], "terrain": ["lava-still-7"] },
+	replaceable: 9000,
+	lightAbsorption: 2,
+	drops: [],
+	liquidLevelByType: {
+		"*-1": 1,
+		"*-2": 2,
+		"*-3": 3,
+		"*-4": 4,
+		"*-5": 5,
+		"*-6": 6,
+		"*-7": 7,
+	},
+	liquidLevel: 7,
+	lightHsv: [2, 5, 8],
+	vertexFlags: {
+		glowLevel: 160,
+	},
+	textures: {
+		all: { base: "block/liquid/lava" },
+		specialSecondTexture: { base: "block/liquid/lava2" }
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	collisionbox: null,
+	selectionbox: null,
+	sounds: {
+		place: "block/lava",
+		inside: "walk/lava",
+		ambient: "environment/lava"
+	},
+	particlePropertiesByType: {
+		"lava-*": [
+			{
+				hsvaColor: [{ avg: 30, var: 20 }, { avg: 255, var: 50 }, { avg: 170, var: 50 },  { avg: 255, var: 0 }],
+				gravityEffect: { avg: 0.3, var: 0 },
+				posOffset: [ { avg: 0, var: 0.2 }, { avg: -0.4, var: 0 }, { avg: 0, var: 0.2 }],
+				velocity: [ { avg: 0, var: 0.9 }, { avg: 4, var: 0, dist: "GAUSSIAN" }, { avg: 0, var: 0.9 }],
+				quantity: { avg: 0.0003, var: 0.0005 },
+				size: { avg: 0.5, var: 0.2 },
+				vertexFlags: 196,
+				sizeEvolve: { transform: "quadratic", factor: -0.7 },
+				secondaryParticles: [
+					{
+						hsvaColor: [{ avg: 0, var: 0 }, { avg: 0, var: 0 }, { avg: 40, var: 30 },  { avg: 220, var: 50 }],
+						opacityEvolve: { transform: "quadratic", factor: -16 },
+						gravityEffect: { avg: 0, var: 0 },
+						posOffset: [ { avg: 0, var: 0.1 }, { avg: 0, var: 0 }, { avg: 0, var: 0.1 }],
+						velocity: [ { avg: 0, var: 0.025 }, { avg: 0.15, var: 0.1 }, { avg: 0, var: 0.025 }],
+						quantity: { avg: 1, var: 1 },
+						size: { avg: 0.25, var: 0.1 },
+						sizeEvolve: { transform: "linear", factor: 0.5 },
+						dieInLiquid: true,
+						particleModel: "Quad",
+						secondarySpawnInterval: {avg: 0.15, var: 0}
+					}
+				]
+			},
+			{
+				hsvaColor: [{ avg: 20, var: 10 }, { avg: 200, var: 50 }, { avg: 160, var: 50 },  { avg: 255, var: 0 }],
+				gravityEffect: { avg: 0, var: 0 },
+				posOffset: [ { avg: 0, var: 0.3 }, { avg: -0.14, var: 0 }, { avg: 0, var: 0.3 }],
+				velocity: [ { avg: 0 }, { avg: 0 }, { avg: 0 }],
+				quantity: { avg: 0.0005, var: 0.0005 },
+				size: { avg: 0.1, var: 0 },
+				lifeLength: { avg: 0.9, var: 0.4 },
+				vertexFlags: 196,
+				sizeEvolve: { transform: "quadratic", factor: 1.5 },
+				deathParticles: [
+					{
+						hsvaColor: [{ avg: 30, var: 20 }, { avg: 255, var: 50 }, { avg: 255, var: 50 },  { avg: 255, var: 0 }],
+						gravityEffect: { avg: 0.3, var: 0 },
+						posOffset: [ { avg: 0, var: 0.1 }, { avg: -0.1, var: 0.1 }, { avg: 0, var: 0.1 }],
+						velocity: [ { avg: 0, var: 2 }, { avg: 3.3, var: 0.5, dist: "GAUSSIAN" }, { avg: 0, var: 2 }],
+						quantity: { avg: 10, var: 6 },
+						size: { avg: 0.4, var: 0.25 },
+						vertexFlags: 128,
+						sizeEvolve: { transform: "quadratic", factor: -0.5 },
+					}
+				]
+			}
+
+		]
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

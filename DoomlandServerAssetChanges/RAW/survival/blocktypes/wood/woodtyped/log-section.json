@@ -1,0 +1,80 @@
+{
+	code: "logsection",
+	"__comment": "BlockLogSection contains placement orientation code",
+	class: "BlockLogSection",
+	behaviorsByType: {
+		"*-grown-*": [{name: "PushEventOnBlockBroken",	properties: {eventName: "testForDecay"}}]
+	},
+	attributes: {
+		handbook: {
+			groupBy: ["logsection-*-{wood}-*"]
+		},
+		canChisel: false,
+		preventsDecay: true,
+		treeFellingGroupCodeByType: {
+			"*-grown-*": "{wood}"
+		},
+		treeFellingGroupSpreadIndex: 3
+	},
+	variantgroups: [
+		{ code: "type", states: ["grown", "placed"] },
+		{ code: "wood", states: ["redwood"] },
+		{ code: "segment", states: ["ne", "se", "sw", "nw"] },
+		{ code: "rotation", states: ["ud", "ns", "we"] },
+	],
+	creativeinventory: { "general": ["logsection-placed-*-ne-ud"], "flora": ["logsection-placed-*-ne-ud"], "construction": ["logsection-placed-*-ne-ud"] },
+	shapeByType: {
+		"*-ud": { base: "block/wood/log/section-{segment}" },
+		"*-ns": { base: "block/wood/log/section-{segment}", rotateX:90 },
+		"*-we": { base: "block/wood/log/section-{segment}", rotateX:90, rotateZ:270 }
+	},
+	blockmaterial: "Wood",
+	requiredMiningTier: 1,
+	textures: {
+		"bark": { base: "block/wood/bark/{wood}-2x2" },
+		"wood": { base: "block/wood/treetrunk/{wood}-2x2" },
+		"inside": { base: "block/wood/debarked/redwood-2x2" },
+
+		"north": { base: "block/wood/treetrunk/{wood}" },
+		"up": { base: "block/wood/treetrunk/{wood}" },
+		"down": { base: "block/wood/bark/{wood}" },
+		"east": { base: "block/wood/bark/{wood}" },
+		"south": { base: "block/wood/bark/{wood}" },
+		"west": { base: "block/wood/bark/{wood}" },
+
+		
+		"inside-north": { base: "block/wood/debarked/{wood}" },
+		"inside-east": { base: "block/wood/debarked/{wood}" },
+		"inside-south": { base: "block/wood/debarked/{wood}" },
+		"inside-west": { base: "block/wood/debarked/{wood}" },
+
+	},
+	replaceable: 500,
+	resistance: 4.5,
+	sounds: {
+		"place": "block/planks",
+		"walk": "walk/wood",
+		"hit": "block/planks",
+		"break": "block/planks",
+		byTool: {
+			"Axe": { hit: "block/chop", break: "block/planks" }
+		}
+	},
+	drops: [
+		{ type: "block", code: "logsection-placed-{wood}-ne-ud", quantity: { avg: 1 }  }
+	],
+	combustiblePropsByType: {
+		"*-redwood-*": {
+			burnTemperature: 800,
+			burnDuration: 72,
+		},
+	},
+	maxStackSize: 16,
+	materialDensity: 700,
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

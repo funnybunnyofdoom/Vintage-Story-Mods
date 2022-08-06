@@ -1,0 +1,6 @@
+{
+	code: "confession",
+	title: "lore-confession-title",
+	category: "jonas",
+	pieces: ["lore-confession-piece1"]
+}

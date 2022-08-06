@@ -1,0 +1,139 @@
+[
+	{
+		ingredientPattern: "CCC,_H_",
+		ingredients: {
+			"C": { type: "item", code: "metalchain-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-head-antique-blackguard-broken" }
+		},
+		width: 3,
+		height: 2,
+		name: "damaged blackguard helmet",
+		output: { type: "item", code: "armor-head-antique-blackguard-damaged"  }
+	},
+	{
+		ingredientPattern: "PPP,_H_",
+		ingredients: {
+			"P": { type: "item", code: "metalplate-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-head-antique-blackguard-damaged" }
+		},
+		width: 3,
+		height: 2,
+		name: "pristine blackguard helmet",
+		output: { type: "item", code: "armor-head-antique-blackguard-pristine"  }
+	},
+
+	{
+		ingredientPattern: "CCC,_H_",
+		ingredients: {
+			"C": { type: "item", code: "metalchain-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-body-antique-blackguard-broken" }
+		},
+		width: 3,
+		height: 2,
+		name: "damaged blackguard body armor",
+		output: { type: "item", code: "armor-body-antique-blackguard-damaged"  }
+	},
+	{
+		ingredientPattern: "PPP,_H_",
+		ingredients: {
+			"P": { type: "item", code: "metalplate-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-body-antique-blackguard-damaged" }
+		},
+		width: 3,
+		height: 2,
+		name: "pristine blackguard body armor",
+		output: { type: "item", code: "armor-body-antique-blackguard-pristine"  }
+	},
+
+	{
+		ingredientPattern: "CCC,_H_",
+		ingredients: {
+			"C": { type: "item", code: "metalchain-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-legs-antique-blackguard-broken" }
+		},
+		width: 3,
+		height: 2,
+		name: "damaged blackguard leg armor",
+		output: { type: "item", code: "armor-legs-antique-blackguard-damaged"  }
+	},
+	{
+		ingredientPattern: "PPP,_H_",
+		ingredients: {
+			"P": { type: "item", code: "metalplate-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-legs-antique-blackguard-damaged" }
+		},
+		width: 3,
+		height: 2,
+		name: "pristine blackguard leg armor",
+		output: { type: "item", code: "armor-legs-antique-blackguard-pristine"  }
+	},
+
+	{
+		ingredientPattern: "CCC,_H_",
+		ingredients: {
+			"C": { type: "item", code: "metalchain-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-head-antique-forlorn-broken" }
+		},
+		width: 3,
+		height: 2,
+		name: "damaged forlorn helmet",
+		output: { type: "item", code: "armor-head-antique-forlorn-damaged"  }
+	},
+	{
+		ingredientPattern: "PPP,_H_",
+		ingredients: {
+			"P": { type: "item", code: "metalplate-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-head-antique-forlorn-damaged" }
+		},
+		width: 3,
+		height: 2,
+		name: "pristine forlorn helmet",
+		output: { type: "item", code: "armor-head-antique-forlorn-pristine"  }
+	},
+
+	{
+		ingredientPattern: "CCC,_H_",
+		ingredients: {
+			"C": { type: "item", code: "metalchain-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-body-antique-forlorn-broken" }
+		},
+		width: 3,
+		height: 2,
+		name: "damaged forlorn body armor",
+		output: { type: "item", code: "armor-body-antique-forlorn-damaged"  }
+	},
+	{
+		ingredientPattern: "PPP,_H_",
+		ingredients: {
+			"P": { type: "item", code: "metalplate-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-body-antique-forlorn-damaged" }
+		},
+		width: 3,
+		height: 2,
+		name: "pristine forlorn body armor",
+		output: { type: "item", code: "armor-body-antique-forlorn-pristine"  }
+	},
+
+	{
+		ingredientPattern: "CCC,_H_",
+		ingredients: {
+			"C": { type: "item", code: "metalchain-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-legs-antique-forlorn-broken" }
+		},
+		width: 3,
+		height: 2,
+		name: "damaged forlorn leg armor",
+		output: { type: "item", code: "armor-legs-antique-forlorn-damaged"  }
+	},
+	{
+		ingredientPattern: "PPP,_H_",
+		ingredients: {
+			"P": { type: "item", code: "metalplate-iron", quantity: 1 },
+			"H": { type: "item", code: "armor-legs-antique-forlorn-damaged" }
+		},
+		width: 3,
+		height: 2,
+		name: "pristine forlorn leg armor",
+		output: { type: "item", code: "armor-legs-antique-forlorn-pristine"  }
+	}
+]

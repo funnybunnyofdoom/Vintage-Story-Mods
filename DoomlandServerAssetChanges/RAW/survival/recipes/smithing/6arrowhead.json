@@ -1,0 +1,12 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "silver", "gold", "iron", "meteoriciron", "steel"] },
+	pattern: [[
+		"##_##_##",
+		"#__#__#_",
+		"________",
+		"##_##_##",
+		"#__#__#_",
+	]],
+	name: "6 Arrowheads",
+	output: { type: "item", code: "arrowhead-{metal}", stacksize: 6  }
+}

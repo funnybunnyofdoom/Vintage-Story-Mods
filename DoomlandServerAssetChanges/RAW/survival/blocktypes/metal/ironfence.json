@@ -1,0 +1,111 @@
+{
+	code: "ironfence",
+	class: "BlockFence",
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	variantgroups: [
+		{ code: "part", states: ["base", "top"]},
+		{ code: "type", states: ["empty", "n", "e", "s", "w", "ne", "ns", "nw", "es", "ew", "sw", "nes", "new", "nsw", "esw", "nesw", "egw", "gew", "gns", "ngs"] }
+	],
+	creativeinventory: { "general": ["ironfence-base-ew", "ironfence-top-ew"], "decorative": ["ironfence-base-ew", "ironfence-top-ew"] },
+	shapebytype: {
+		"*-empty": { base: "block/metal/fence/base/empty" },
+		"*-n": { base: "block/metal/fence/{part}/w", rotateY: 270 },
+		"*-e": { base: "block/metal/fence/{part}/w", rotateY: 180 },
+		"*-s": { base: "block/metal/fence/{part}/w", rotateY: 90 },
+		"*-w": { base: "block/metal/fence/{part}/w", rotateY: 0 },
+
+		"*-ns": { base: "block/metal/fence/{part}/ew", rotateY: 90 },
+		"*-ew": { base: "block/metal/fence/{part}/ew", rotateY: 0 },
+
+		"*-ne": { base: "block/metal/fence/{part}/sw", rotateY: 180 },
+		"*-nw": { base: "block/metal/fence/{part}/sw", rotateY: 270 },
+		"*-es": { base: "block/metal/fence/{part}/sw", rotateY: 90 },
+		"*-sw": { base: "block/metal/fence/{part}/sw", rotateY: 0 },
+
+		"*-nes": { base: "block/metal/fence/{part}/nsw", rotateY: 180 },
+		"*-new": { base: "block/metal/fence/{part}/nsw", rotateY: 270 },
+		"*-nsw": { base: "block/metal/fence/{part}/nsw", rotateY: 0 },
+		"*-esw": { base: "block/metal/fence/{part}/nsw", rotateY: 90 },
+
+		"*-nesw": { base: "block/metal/fence/{part}/nesw", rotateY: 0 },
+
+		"*-egw": { base: "block/metal/fence/{part}/ew", rotateY: 0 },
+		"*-gew": { base: "block/metal/fence/{part}/ew", rotateY: 0 },
+		"*-gns": { base: "block/metal/fence/{part}/ew", rotateY: 270 },
+		"*-ngs": { base: "block/metal/fence/{part}/ew", rotateY: 270 }
+	},
+	blockmaterial: "Metal",
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	resistance: 3,
+	lightAbsorption: 0,
+	selectionboxbytype: {
+		"*-empty": { x1: 0.375, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2: 0.625 },
+		"*-n": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2:  0.625, rotateY: 270},
+		"*-e": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2:  0.625, rotateY: 180},
+		"*-s": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2:  0.625, rotateY: 90},
+		"*-w": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2:  0.625},
+
+		"*-ns": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1, z2:  0.625, rotateY: 90},
+		"*-gns": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1, z2:  0.625, rotateY: 90},
+		"*-ngs": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1, z2:  0.625, rotateY: 90},
+		"*-ew": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1, z2:  0.625},
+		"*-egw": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1, z2:  0.625},
+		"*-gew": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1, z2:  0.625},
+
+		"*-sw": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2: 1 },
+		"*-ne": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2: 1, rotateY: 180 },
+		"*-nw": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2: 1, rotateY: 270 },
+		"*-es": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1, z2: 1, rotateY: 90 },
+
+
+		"*-nes": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 180 },
+		"*-new": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 270 },
+		"*-nsw": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 0 },
+		"*-esw": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 90 }
+	},
+	collisionboxbytype: {
+		"*-empty": { x1: 0.375, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2: 0.625 },
+		"*-n": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2:  0.625, rotateY: 270},
+		"*-e": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2:  0.625, rotateY: 180},
+		"*-s": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2:  0.625, rotateY: 90},
+		"*-w": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2:  0.625},
+
+		"*-ns": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1.25, z2:  0.625, rotateY: 90},
+		"*-gns": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1.25, z2:  0.625, rotateY: 90},
+		"*-ngs": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1.25, z2:  0.625, rotateY: 90},
+		"*-ew": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1.25, z2:  0.625},
+		"*-egw": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1.25, z2:  0.625},
+		"*-gew": { x1: 0, y1: 0, z1: 0.375, x2: 1, y2: 1.25, z2:  0.625},
+
+		"*-sw": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2: 1 },
+		"*-ne": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2: 1, rotateY: 180 },
+		"*-nw": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2: 1, rotateY: 270 },
+		"*-es": { x1: 0, y1: 0, z1: 0.375, x2: 0.625, y2: 1.25, z2: 1, rotateY: 90 },
+
+		"*-nes": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 180 },
+		"*-new": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 270 },
+		"*-nsw": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 0 },
+		"*-esw": { x1: 0, y1: 0, z1: 0, x2: 0.625, z2: 1, rotateY: 90 }
+	},
+	materialDensity: 600,
+	tpHandTransform: {
+		translation: { x: -1.5, y: -1, z: -1.2 },
+		rotation: { x: 5, y: -3, z: -96 },
+		scale: 0.37
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.05, z: 0 },
+		rotation: { x: 90, y: -45, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.07
+	}
+}

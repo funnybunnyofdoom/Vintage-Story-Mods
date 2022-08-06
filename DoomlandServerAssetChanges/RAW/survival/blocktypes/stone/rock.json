@@ -1,0 +1,58 @@
+{
+	code: "rock",
+	behaviors: [{name: "BreakIfFloating"}],
+	storageFlags: 5,
+	attributes: {
+		handbook: {
+			extraSections: [
+				{ title: "handbook-item-sources", text: "Full block can be obtained by breaking all adjacent blocks." }
+			]
+		}
+	},	
+	variantgroups: [
+		{ code: "rock", loadFromProperties: "block/rockwithdeposit" },
+	],
+	creativeinventory: { "general": ["*"], "terrain": ["*"], "construction": ["*"] },
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	replaceable: 90,
+	requiredMiningTier: 2,
+	fertility: 0,
+	textures: {
+		all: { base: "block/stone/rock/{rock}*" },
+	},
+	sounds: {
+		walk: "walk/stone",
+		byTool: {
+			"Pickaxe": { hit: "block/rock-hit-pickaxe", break: "block/rock-break-pickaxe" }
+		}
+	},
+	dropsByType: {
+		"rock-suevite": [
+			{
+				type: "item", 
+				code: "stone-{rock}", 
+				quantity: { avg: 2.5, var: 0.5 } 
+			},
+			{
+				type: "item", 
+				code: "gem-diamond-rough", 
+				attributes: { potential: "low" }, 
+				quantity: { avg: 0.005, var: 0 } 
+			}
+		],
+		"*": [
+			{
+				type: "item", 
+				code: "stone-{rock}", 
+				quantity: { avg: 2.5, var: 0.5 } 
+			}
+		]
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock", 
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

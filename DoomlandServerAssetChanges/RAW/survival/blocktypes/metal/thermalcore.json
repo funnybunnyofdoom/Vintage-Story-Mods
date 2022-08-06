@@ -1,0 +1,16 @@
+{
+	code: "thermalcore",
+	enabled: false,
+	class: "BlockThermalDiff",
+	creativeinventory: { "general": ["*"], "special": ["*"] },
+	blockmaterial: "Metal",
+	textures: {
+		horizontals: { base: "block/metal/ingot/tinbronze" },
+		verticals: { base: "block/metal/ingot/copper" }
+	},
+	shape: { base: "block/basic/cube" },
+	sounds: {
+		"place": "game:block/anvil",
+		"walk": "game:walk/stone"
+	}
+}

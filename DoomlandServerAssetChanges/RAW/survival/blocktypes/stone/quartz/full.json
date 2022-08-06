@@ -1,0 +1,36 @@
+{
+	code: "quartz",
+	class: "Block",
+	variantgroups: [
+		{ code:"type", states: ["plain", "ornate"] }
+	],
+	shape: { base: "block/basic/cube" },
+	drawtype: "Cube",
+	blockmaterial: "Stone",
+	creativeinventory: { "general": ["*"], "construction": ["*"] },
+	replaceable: 700,
+	resistance: 2,
+	lightAbsorption: 99,
+	texturesByType: {
+		"quartz-plain": {
+			all: { base: "block/stone/quartz/full/plain*" }
+		},
+		"quartz-ornate": {
+			"horizontals": { base: "block/stone/quartz/full/ornate-side" },
+			"up": { base: "block/stone/quartz/full/ornate-u" },
+			"down": { base: "block/stone/quartz/full/ornate-d" },
+		}
+	},
+	sounds: {
+		walk: "walk/stone",
+		byTool: {
+			"Pickaxe": { hit: "block/rock-hit-pickaxe", break: "block/rock-break-pickaxe" }
+		}
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

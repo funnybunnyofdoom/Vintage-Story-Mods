@@ -1,0 +1,87 @@
+{
+	code: "pitkiln",
+	class: "BlockPitkiln",
+	behaviors: [{ name: "HeatSource", properties: { heatStrength: 10 } }],
+	entityClass: "PitKiln",
+	entityBehaviors: [ { name: "Burning" } ],
+	attributes: {
+		modelConfigs: {
+			"toolmold-raw-anvil": {
+				shape: { base: "block/wood/pitkiln/anvil" },
+				minHitboxY2: [ 1, 2, 4, 6, 8, 10, 11, 12.25, 16, 16, 16, 16 ],
+				buildStages: ["Grass1", "Grass2", "Grass3", "Grass4", "Grass5", "Sticklayer1/*", "Sticklayer2/*", "{eleCode}1", "{eleCode}2", "{eleCode}3", "{eleCode}4"],
+				buildMatCodes: ["grass", "grass",  "grass", "grass", "grass", "sticks", "sticks", "fuel", "fuel", "fuel", "fuel"]
+			},
+			"storagevessel-raw": {
+				shape: { base: "block/wood/pitkiln/vessel" },
+				minHitboxY2: [ 1, 2, 4, 6, 8, 10, 11, 12.25, 16, 16, 16, 16, 16, 16, 16, 16 ],
+				buildStages: ["Grass1", "Grass2", "Grass3", "Grass4", "Grass5", "Sticklayer1/*", "Sticklayer2/*", "{eleCode}1", "{eleCode}2", "{eleCode}3", "{eleCode}4", "{eleCode}5", "{eleCode}6", "{eleCode}7", "{eleCode}8"],
+				buildMatCodes: ["grass", "grass",  "grass", "grass", "grass", "sticks", "sticks", "fuel", "fuel", "fuel", "fuel", "fuel", "fuel", "fuel", "fuel"]
+			},
+			"*": {
+				shape: { base: "block/wood/pitkiln/default" },
+				minHitboxY2: [ 1, 2, 4, 6, 8, 10, 11, 12.25, 16, 16, 16, 16 ],
+				buildStages: ["Grass1", "Grass2", "Grass3", "Grass4", "Grass5", "Sticklayer1/*", "Sticklayer2/*", "{eleCode}1", "{eleCode}2", "{eleCode}3", "{eleCode}4"],
+				buildMatCodes: ["grass", "grass",  "grass", "grass", "grass", "sticks", "sticks", "fuel", "fuel", "fuel", "fuel"]
+			}
+		},
+		buildMats: {
+			"grass": [{ type: "item", code: "drygrass", quantity: 2 }],
+			"sticks": [{ type: "item", code: "stick", quantity: 4 }],
+			"fuel": [
+				{ type: "item", code: "firewood", quantity: 1, eleCode: "Logs", burnTimeHours: 20 },
+				{ type: "block", code: "peatbrick", quantity: 1, eleCode: "Coal", textureCodeReplace: { from: "coal", to: "peat" }, burnTimeHours: 16 },
+				{ type: "item", code: "charcoal", quantity: 1, eleCode: "Coal", textureCodeReplace: { from: "coal", to: "charcoal" }, burnTimeHours: 10 }, 
+				{ type: "item", code: "coke", quantity: 1, eleCode: "Coal", textureCodeReplace: { from: "coal", to: "coke" }, burnTimeHours: 10 }, 
+				{ type: "item", code: "ore-lignite", quantity: 1, eleCode: "Coal", textureCodeReplace: { from: "coal", to: "ore-lignite" }, burnTimeHours: 14 }, 
+				{ type: "item", code: "ore-bituminouscoal", quantity: 1, eleCode: "Coal", textureCodeReplace: { from: "coal", to: "ore-bituminouscoal" }, burnTimeHours: 12 }
+			]	
+		},
+		handbook: {
+			include: true,
+			createdBy: "handbook-pitkiln-createdby"
+		}
+	},
+	creativeinventory: { general: [""], decorative: [""] },
+	blockmaterial: "Wood",
+	shape: { base: "block/basic/invisible" },
+	shapeInventory: { base: "block/wood/pitkiln/default" },
+	lightAbsorption: 0,
+	faceCullMode: "NeverCull",
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	textures: {
+		bottom: { base: "block/hay/bed/bottom" },
+		wood: { base: "block/wood/oak-dark" },
+		side02: { base: "block/wood/firewood/side02" },
+		front: { base: "block/wood/firewood/front" },
+		"side": { base: "block/wood/firewood/side" },
+		wood: { base: "block/wood/oak-dark" },
+		"oak": { base: "block/wood/debarked/oak" },
+		"oak1": { base: "block/wood/planks/oak1" },
+		"charcoal": { base: "block/coal/charcoal" },
+		"coke": { base: "block/coal/coke" },
+		"peat": { base: "block/soil/peat" },
+		"ore-anthracite": { base: "block/coal/anthracite" },
+		"ore-lignite": { base: "block/coal/lignite" },
+		"ore-bituminouscoal": { base: "block/coal/bituminous" },
+		
+	},
+	combustibleProps: {
+		burnTemperature: 800,
+		burnDuration: 2000,
+	},
+	replaceable: 100,
+	resistance: 2,
+	collisionSelectionbox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 1 },
+	drops: [
+		
+	],
+	materialDensity: 600,
+	sounds: {
+		place: "block/planks",
+		break: "block/planks",
+		hit: "block/planks",
+	},
+
+}

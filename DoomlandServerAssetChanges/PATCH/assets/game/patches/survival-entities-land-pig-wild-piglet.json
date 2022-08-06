@@ -1,0 +1,8 @@
+[
+  {
+    "op": "replace",
+    "path": "/server/behaviors/9/hoursToGrow",
+    "value": 96,
+    "file": "entities/land/pig-wild-piglet.json"
+  }
+]

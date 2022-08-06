@@ -1,0 +1,28 @@
+{
+	code: "egg",
+	maxstacksize: 32,
+	variantgroups: [
+		{ code: "source", states: ["chicken" ] },
+		{ code: "state", states: ["raw"] },
+	],
+	texture: { base: "item/food/egg/chicken" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	attributes: {
+		"nutritionPropsWhenInMeal": { saturation: 200, foodcategory: "Protein" }
+	},
+	nutritionPropsByType: {
+		"*-boiled": { saturation: 160, foodcategory: "Protein" },
+	},
+	materialDensity: 200,
+	fpHandTransform: {
+		translation: { x: 0, y: -0.1, z: 0 },
+		rotation: { x: 180, y: 90, z: 22 }
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 120 },
+		transitionHours: { avg: 24 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 0.5
+	}]
+}

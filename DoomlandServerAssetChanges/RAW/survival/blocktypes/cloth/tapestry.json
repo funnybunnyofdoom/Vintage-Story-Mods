@@ -1,0 +1,199 @@
+{
+	code: "tapestry",
+	class: "BlockTapestry",
+	entityClass: "Tapestry",
+	behaviors: [{name: "HorizontalAttachable"}],
+	blockmaterial: "Cloth",
+	attributes: {
+		handbook: {
+			exclude: true
+		},
+		loreChapterIds: {
+			"ambush": 0,
+			"nightfall": 1,
+			"holy": 2,
+			"salvation": 3,
+			"rot": 4,
+			"themorning": 5,
+			"schematic-a": 6,
+			"schematic-b": 7,
+			"schematic-c": 8,
+			"schematic-c-bloody": 9,
+			"schematic-d": 10,
+			"rotbeast": 11,
+			"seraphim": 12,
+			"blackguard": 13,
+			"forlorn": 14,
+			"gate": 15,
+			"diet": 16,
+			"oldworld": 17,
+			"temporality": 18
+		},
+		sizes: {
+			"ambush": "3x1",
+			"nightfall": "3x1",
+			"holy": "1x2",
+			"salvation": "2x2",
+			"rot": "3x1",
+			"themorning": "3x1",
+			"schematic-a": "2x2",
+			"schematic-b": "2x2",
+			"schematic-c": "1x2",
+			"schematic-c-bloody": "1x2",
+			"schematic-d": "2x2",
+			"rotbeast": "2x2",
+			"seraphim": "3x1",
+			"blackguard": "2x2",
+			"forlorn": "1x2",
+			"gate": "4x1",
+			"diet": "2x1",
+			"oldworld": "1x3",
+			"temporality": "1x2"
+		}
+	},
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: {  },
+	notCreativeinventoryStacksByType: {
+		"*-north": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "tapestry-north", attributes: { type: "ambush1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "ambush2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "ambush3" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "nightfall1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "nightfall2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "nightfall3" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "holy1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "holy2" } },
+					
+					{ type: "block", code: "tapestry-north", attributes: { type: "salvation11" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "salvation12" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "salvation21" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "salvation22" } },
+					
+					{ type: "block", code: "tapestry-north", attributes: { type: "rot1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "rot2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "rot3" } },
+					
+					{ type: "block", code: "tapestry-north", attributes: { type: "themorning1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "themorning2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "themorning3" } },
+					
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-a11" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-a12" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-a21" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-a22" } },
+					
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-b11" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-b12" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-b21" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-b22" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-c1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-c2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-c-bloody1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-c-bloody2" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-d11" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-d12" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-d21" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "schematic-d22" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "rotbeast11" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "rotbeast12" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "rotbeast21" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "rotbeast22" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "seraphim1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "seraphim2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "seraphim3" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "blackguard11" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "blackguard12" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "blackguard21" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "blackguard22" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "forlorn1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "forlorn2" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "gate1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "gate2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "gate3" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "gate4" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "diet1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "diet2" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "oldworld1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "oldworld2" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "oldworld3" } },
+
+					{ type: "block", code: "tapestry-north", attributes: { type: "temporality1" } },
+					{ type: "block", code: "tapestry-north", attributes: { type: "temporality2" } }
+				]
+			}
+		]
+	},
+	shapebytype: {
+		"*-north": { base: "block/cloth/tapestry", rotateY: 0 },
+		"*-east": { base: "block/cloth/tapestry", rotateY: 270 },
+		"*-south": { base: "block/cloth/tapestry", rotateY: 180 },
+		"*-west": { base: "block/cloth/tapestry", rotateY: 90 }
+	},
+	shapeinventory: {
+		base: "block/cloth/tapestryinventory"
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	sideao: { all: true },
+	emitsideao: { all: false },
+	replaceable: 5001,
+	lightAbsorption: 0,
+	resistance: 0.1,
+	collisionbox: null,
+	selectionbox: {
+		x1: 0, y1: 0, z1: 0, 
+		x2: 1, y2: 1, z2: 0.0625,
+		rotateYByType: {
+			"*-east": 270,
+			"*-south": 180,
+			"*-west": 90,
+			"*-north": 0
+		}
+	},
+	sounds: {
+		"place": "block/cloth",
+		"break": "block/cloth",
+		"hit": "block/cloth"
+	},
+	guiTransform: {
+		rotate: false,
+		rotation: { x: -22.6, y: 25, z: 0 },
+		scale: 1.39
+	},
+	fpHandTransform: {
+		rotation: { x: 0, y: 91, z: 0 }
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 90, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: 0.52 },
+		scale: 2.75
+	},
+	tpHandTransform: {
+		translation: { x: -1.1, y: -0.69, z: -1 },
+		rotation: { x: 0, y: 12, z: -25 },
+		scale: 0.43
+	},
+	rainPermeable: true,
+	materialDensity: 600
+}

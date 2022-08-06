@@ -1,0 +1,49 @@
+{
+	code: "strawdummy",
+	class: "EntityStrawDummy",
+	hitboxSize: { x: 0.7, y: 2 },
+	eyeHeight: 1.8,
+	knockbackResistance: 1,
+	attributes: {
+		spawnDamageParticles: true
+	},
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/strawdummy" },
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "interpolateposition" }
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "bounce",
+				animationSpeed: 1.5
+			},
+			{
+				code: "die",
+				animation: "death", 
+				animationSpeed: 1.25,
+				weight: 10,
+				blendMode: "Average",
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "Average", 
+				triggeredBy: { defaultAnim: true },
+			}
+		],
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "health", currenthealth: 100, maxhealth: 100 }, 
+		]
+	},
+	sounds: {
+		hurt: "creature/strawdummy-hit"
+	}
+}

@@ -1,0 +1,196 @@
+{
+	code: "metalsheet",
+	class: "BlockSimpleCoating",
+	storageFlags: 5,
+	attributes: {
+		handbook: {
+			excludeByType: {
+				"*-chromium-*": true,
+				"*-platinum-*": true,
+				"*-rhodium-*": true,
+				"*-stainlesssteel-*": true,
+				"*-titanium-*": true,
+				"*-uranium-*": true
+			}
+		}
+	},
+	variantgroups: [
+		{ loadFromProperties: "block/metal" },
+		{ code:"side", states: ["north", "east", "south", "west", "up", "down"] }
+	],
+	shapebytype: {
+		"*-down": { base: "block/basic/layers/1voxel" },
+		"*-up": { base: "block/basic/layers/1voxel", rotateX: 180 },
+		"*-north": { base: "block/basic/layers/1voxel", rotateX: 90 },
+		"*-east": { base: "block/basic/layers/1voxel", rotateX: 90, rotateY: 180, rotateZ: 270 },
+		"*-west": { base: "block/basic/layers/1voxel", rotateX: 90, rotateY: 0, rotateZ: 270 },
+		"*-south": { base: "block/basic/layers/1voxel", rotateX: 270 },
+	},
+	sidesolidByType: {
+		"*-down": { all: false, down: true },
+		"*-up": { all: false, up: true },
+		"*-north": { all: false, north: true },
+		"*-east": { all: false, east: true },
+		"*-west": { all: false, west: true },
+		"*-south": { all: false, south: true },
+	},
+	sideopaqueByType: {
+		"*-down": { all: false, down: true },
+		"*-up": { all: false, down: true },
+		"*-north": { all: false, north: true },
+		"*-east": { all: false, east: true },
+		"*-west": { all: false, west: true },
+		"*-south": { all: false, south: true },
+	},
+	blockmaterial: "Metal",
+	creativeinventory: { "general": ["*-down"], "decorative": ["*-down"] },
+	replaceable: 300,
+	resistance: 2,
+	lightAbsorption: 1,
+	emitSideAo: {
+		all: false
+	},
+	textures: {
+		all: { 
+			base: "block/metal/sheet/{metal}1", 
+			alternates: [{ base: "block/metal/sheet/{metal}2"}, { base: "block/metal/sheet/{metal}3" }, { base: "block/metal/sheet/{metal}4" }, { base: "block/metal/sheet/{metal}5" }],
+		}
+	},
+	selectionbox: {
+		x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1,
+		rotateXByType: {
+			"*-up": 180, "*-north": 90, "*-east": 90, "*-west": 90, "*-south": 270,
+		},
+		rotateYByType: {
+			"*-east": 180, "*-west": 0,
+		},
+		rotateZByType: {
+			"*-east": 270, "*-west": 270
+		}
+	},
+	collisionbox: {
+		x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1,
+		rotateXByType: {
+			"*-up": 180, "*-north": 90, "*-east": 90, "*-west": 90, "*-south": 270,
+		},
+		rotateYByType: {
+			"*-east": 180, "*-west": 0,
+		},
+		rotateZByType: {
+			"*-east": 270, "*-west": 270
+		}
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.0625, z: 0.5 }
+	},
+	combustiblePropsByType: {
+		"metalsheet-copper": {
+			meltingPoint: 1084,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-copper" }
+		},
+		"metalsheet-brass": {
+			meltingPoint: 920,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-brass" }
+		},
+		"metalsheet-tinbronze": {
+			meltingPoint: 950,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tinbronze" }
+		},
+		"metalsheet-bismuthbronze": {
+			meltingPoint: 850,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuthbronze" }
+		},
+		"metalsheet-blackbronze": {
+			meltingPoint: 1020,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-blackbronze" }
+		},
+		"metalsheet-iron": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-iron" }
+		},
+		"metalsheet-meteoriciron": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-meteoriciron" }
+		},
+		"metalsheet-steel": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-steel" }
+		},
+		"metalsheet-gold": {
+			meltingPoint: 1063,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-gold", }
+		},
+		"metalsheet-lead": {
+			meltingPoint: 327,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-lead" }
+		},
+		"metalsheet-tin": {
+			meltingPoint: 232,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tin" }
+		},
+		"metalsheet-chromium": {
+			meltingPoint: 1907,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-chromium" }
+		},
+		"metalsheet-platinum": {
+			meltingPoint: 1770,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-platinum" }
+		},
+		"metalsheet-titanium": {
+			meltingPoint: 1668,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-titanium" }
+		},
+		"metalsheet-zinc": {
+			meltingPoint: 419,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-zinc" }
+		},
+		"metalsheet-silver": {
+			meltingPoint: 961,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-silver" }
+		},
+		"metalsheet-bismuth": {
+			meltingPoint: 271,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuth" }
+		},
+		"metalsheet-molybdochalkos": {
+			meltingPoint: 902,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-molybdochalkos" }
+		}
+	}
+}

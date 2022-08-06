@@ -1,0 +1,78 @@
+[
+	{
+		ingredientPattern: "FFF,FPF,_G_",
+		ingredients: {
+			"F": { type: "item", code: "firewood", quantity: 3 },
+			"P": { type: "item", code: "hide-pelt-*", allowedVariants: ["medium", "large", "huge"] },
+			"G": { type: "item", code: "resin", quantity: 1 }
+		},
+		width: 3,
+		height: 3,
+		name: "wood lamellar helmet",
+		output: { type: "item", code: "armor-head-lamellar-wood"  }
+	},
+	{
+		ingredientPattern: "FPF,FGF,FFF",
+		ingredients: {
+			"F": { type: "item", code: "firewood", quantity: 2 },
+			"P": { type: "item", code: "hide-pelt-*", allowedVariants: ["medium", "large", "huge"], quantity: 3 },
+			"G": { type: "item", code: "resin", quantity: 3 }
+		},
+		width: 3,
+		height: 3,
+		name: "wood lamellar armor",
+		output: { type: "item", code: "armor-body-lamellar-wood"  }
+	},
+	{
+		ingredientPattern: "PGP,FFF,F_F",
+		ingredients: {
+			"F": { type: "item", code: "firewood", quantity: 2 },
+			"P": { type: "item", code: "hide-pelt-*", allowedVariants: ["medium", "large", "huge"], quantity: 1 },
+			"G": { type: "item", code: "resin", quantity: 2 }
+		},
+		width: 3,
+		height: 3,
+		name: "wood lamellar pants",
+		output: { type: "item", code: "armor-legs-lamellar-wood"  }
+	},
+	
+	
+	
+	
+	
+	{
+		ingredientPattern: "LLL,LPL",
+		ingredients: {
+			"L": { type: "item", code: "metallamellae-*", quantity: 1, name: "metal", allowedVariants: ["copper", "tinbronze", "blackbronze", "bismuthbronze"]  },
+			"P": { type: "item", code: "hide-pelt-*", allowedVariants: ["medium", "large", "huge"] }
+		},
+		width: 3,
+		height: 2,
+		name: "metal lamellar helmet",
+		output: { type: "item", code: "armor-head-lamellar-{metal}"  }
+	},
+	{
+		ingredientPattern: "XPX,XXX,XXX",
+		ingredients: {
+			"X": { type: "item", code: "metallamellae-*", quantity: 2, name: "metal", allowedVariants: ["copper", "tinbronze", "blackbronze", "bismuthbronze"]  },
+			"P": { type: "item", code: "hide-pelt-*", allowedVariants: ["medium", "large", "huge"], quantity: 3 }
+		},
+		width: 3,
+		height: 3,
+		name: "metal lamellar body armor",
+		output: { type: "item", code: "armor-body-lamellar-{metal}"  }
+	},
+	{
+		ingredientPattern: "P_P,LLL,K_K",
+		ingredients: {
+			"K": { type: "item", code: "metallamellae-*", quantity: 1, name: "metal", allowedVariants: ["copper", "tinbronze", "blackbronze", "bismuthbronze"]  },
+			"L": { type: "item", code: "metallamellae-*", quantity: 2, name: "metal", allowedVariants: ["copper", "tinbronze", "blackbronze", "bismuthbronze"]  },
+			"P": { type: "item", code: "hide-pelt-*", allowedVariants: ["medium", "large", "huge"], quantity: 1 }
+		},
+		width: 3,
+		height: 3,
+		name: "metal lamellar pants",
+		output: { type: "item", code: "armor-legs-lamellar-{metal}"  }
+	}	
+	
+]

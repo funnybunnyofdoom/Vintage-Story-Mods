@@ -1,0 +1,42 @@
+{
+	code: "fruitpresstop",
+	class: "BlockFruitPressTop",
+	handbook: { exclude: true },
+	variantgroups: [
+		{ code:"orientation", states: ["ns", "we"] },
+	],
+	behaviors: [{name: "NWOrientable"}],
+	shape: { base: "block/basic/nothing" },	
+	drawtype: "json",
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	blockmaterial: "wood",
+	replaceable: 160,
+	resistance: 4,
+	lightAbsorption: 0,
+	drops: [],
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	sounds: {
+		"place": "block/planks",
+		"walk": "walk/wood",
+		"hit": "block/planks",
+		"break": "block/planks"
+	},
+	selectionBoxes: [
+		{ x1: 0.2326, y1: -0.25, z1: 0.2326, x2: 0.7626, y2: 0.3125, z2: 0.7626, rotateYByType: { "*-we": 90 } },
+		{ x1: 0.0625, y1: 0.25, z1: 0.375, x2: 0.9375, y2: 1, z2: 0.625, rotateYByType: { "*-we": 90 }  },
+	],
+	collisionBoxes: [
+		{ x1: 0.2515, y1: -0.2499, z1: 0.2515, x2: 0.7563, y2: 0.3125, z2: 0.7563, rotateYByType: { "*-we": 90 } },
+		{ x1: 0.0625, y1: 0.25, z1: 0.375, x2: 0.9375, y2: 1, z2: 0.625, rotateYByType: { "*-we": 90 }  },
+	],
+	guiTransform: {
+		origin: { x: 0.5, y: 1, z: 0.5 },
+		scale: .9
+	}
+}

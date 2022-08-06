@@ -1,0 +1,187 @@
+[
+	{
+		code: "focused",
+		type: "positive",
+		attributes: {
+			"rangedWeaponsDamage": 0.2,
+			"rangedWeaponsAcc": 0.3
+		}
+	},
+	{
+		code: "resourceful",
+		type: "positive",
+		attributes: {
+			"animalLootDropRate": 0.1,
+			"animalHarvestingTime": -0.25
+		}
+	},
+	{
+		code: "fleetfooted",
+		type: "positive",
+		attributes: {
+			"walkspeed": 0.1
+		}
+	},
+	{
+		code: "bowyer",
+		type: "positive",
+		attributes: {
+		}
+	},
+	{
+		code: "forager",
+		type: "positive",
+		attributes: {
+			"forageDropRate": 0.1,
+			"wildCropDropRate": 0.2
+		}
+	},
+	{
+		code: "pilferer",
+		type: "positive",
+		attributes: {
+			"vesselContentsDropRate": 0.15,
+			"rustyGearDropRate": 0.1,
+			"wholeVesselLootChance": 0.12
+		}
+	},
+	{
+		code: "furtive",
+		type: "positive",
+		attributes: {
+			"animalSeekingRange": -0.35
+		}
+	},
+	{
+		code: "precise",
+		type: "positive",
+		attributes: {
+			"mechanicalsDamage": 0.25
+		}
+	},
+	{
+		code: "technical",
+		type: "positive",
+		attributes: {
+			"temporalGearTLRepairCost": -1
+		}
+	},
+	{
+		code: "soldier",
+		type: "positive",
+		attributes: {
+			"meleeWeaponsDamage": 0.3,
+			"armorDurabilityLoss": -0.15,
+			"armorWalkSpeedAffectedness": -0.25
+		}
+	},
+	{
+		code: "hardy",
+		type: "positive",
+		attributes: {
+			"miningSpeedMul": 0.1,
+			"maxhealthExtraPoints": 5
+		}
+	},
+	{
+		code: "clothier",
+		type: "positive",
+		attributes: {
+		}
+	},
+	{
+		code: "mender",
+		type: "positive",
+		attributes: {
+			"armorDurabilityLoss": -0.1
+		}
+	},
+	{
+		code: "merciless",
+		type: "positive",
+		attributes: {
+		}
+	},
+	{
+		code: "farsighted",
+		type: "negative",
+		attributes: {
+			"meleeWeaponsDamage": -0.15
+		}
+	},
+	{
+		code: "claustrophobic",
+		type: "negative",
+		attributes: {
+			"oreDropRate": -0.15,
+			"miningSpeedMul": -0.1
+		}
+	},
+	{
+		code: "frail",
+		type: "negative",
+		attributes: {
+			"maxhealthExtraPoints": -2.5,
+			"bowDrawingStrength": -0.25
+		}
+	},
+	{
+		code: "nervous",
+		type: "negative",
+		attributes: {
+			"meleeWeaponsDamage": -0.15
+		}
+	},
+	{
+		code: "ravenous",
+		type: "negative",
+		attributes: {
+			"hungerrate": 0.3,
+		}
+	},
+	{
+		code: "nearsighted",
+		type: "negative",
+		attributes: {
+			"rangedWeaponsDamage": -0.15
+		}
+	},
+	{
+		code: "heavyhanded",
+		type: "negative",
+		attributes: {
+			"vesselContentsDropRate": -0.1,
+			"forageDropRate": -0.15,
+			"wildCropDropRate": -0.2
+		}
+	},
+	{
+		code: "kind",
+		type: "negative",
+		attributes: {
+			"animalLootDropRate": -0.1,
+			"animalHarvestingTime": 0.25
+		}
+	},
+	{
+		code: "weak",
+		type: "negative",
+		attributes: {
+			"maxhealthExtraPoints": -2,
+			"miningSpeedMul": -0.1
+		}
+	},
+	{
+		code: "civil",
+		type: "negative",
+		attributes: {
+			"forageDropRate": -0.1
+		}
+	},
+	{
+		code: "improviser",
+		type: "positive",
+		attributes: {
+		}
+	}
+]

@@ -1,0 +1,49 @@
+{
+	code: "quern",
+	class: "BlockQuern",
+	entityClass: "Quern",
+	entityBehaviors: [{ name: "MPConsumer" }],
+	behaviors: [{name: "Container"}, {name: "UnstableFalling", properties: { exceptions: ["woodenaxle-ud"] }}],
+	attributes: {
+		handbook: {
+			groupBy: ["quern-*"]
+		}
+	},
+	variantgroups: [
+		{ code:"rock", states: ["granite", "andesite", "basalt", "peridotite"] },
+	],
+	creativeinventory: { "general": ["*"], "terrain": ["*"], "mechanics": ["*"] },
+	shape: { base: "block/stone/quern/complete" },
+	blockmaterial: "Stone",
+	textures: {
+		basematerial: {
+			base: "block/stone/rock/{rock}1"
+		},
+		baseside: { 
+			base: "block/stone/rock/{rock}1",
+			overlays: ["block/stone/quern/baseside"]
+		},
+		baseup: {
+			base: "block/stone/rock/{rock}1",
+			overlays: ["block/stone/quern/grooves"]
+		},
+		grindstoneup: {
+			base: "block/stone/rock/{rock}1",
+			overlays: ["block/stone/quern/grindstoneup"]
+		}
+	},
+	sidesolid: {
+		all: false, down: true
+	},
+	sideopaque: {
+		all: false, down: true
+	},
+	lightAbsorption: 1,
+	maxStackSize: 1,
+	replaceable: 600,
+	resistance: 1.5,
+	collisionSelectionBoxes: [
+		{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.6875, z1: 1 },
+		{ x1: 0.125, y1: 0.6875, z1: 0.125, x2: 0.875, y2: 1, z2: 0.875 },
+	]
+}

@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "FF	FF",
+	ingredients: {
+		"F": { type: "item", code: "flaxtwine" }
+	},
+	width: 2,
+	height: 2,
+	output: { type: "block", code: "linen-normal-down"  }
+}

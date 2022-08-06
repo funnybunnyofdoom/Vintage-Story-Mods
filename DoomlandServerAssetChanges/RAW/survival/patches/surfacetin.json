@@ -1,0 +1,10 @@
+[
+  {
+    "op": "replace",
+    "path": "/0/triesPerChunk",
+    "value": 0.015,
+    "file": "worldgen/deposits/metalore/cassiterite.json",
+    "condition": { "when": "surfaceTinDeposits", "useValue": true },
+    "side": "Server"
+  }
+]

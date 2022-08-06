@@ -1,0 +1,14 @@
+{
+	code: "rope",
+	class: "ItemRope",
+	textures: {
+		"flat": { base: "item/resource/rope-flat" },
+		"rope": { base: "item/resource/rope" }
+	},
+	shape: {
+		voxelizeTexture: true
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 16,
+	materialDensity: 510
+}

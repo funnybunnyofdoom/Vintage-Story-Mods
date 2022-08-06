@@ -1,0 +1,81 @@
+[
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-small1-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 3  }
+	},
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-small2-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 3  }
+	},
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-small3-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 3  }
+	},
+	
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-cluster1-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 5  }
+	},
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-cluster2-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 5  }
+	},
+	
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-large1-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 7 }
+	},
+	{
+		ingredientPattern: "HC",
+		ingredients: {
+			"H": { type: "item", code: "hammer-*", isTool: true },
+			"C": { type: "block", code: "crystal-amethyst-large2-up" }
+		},
+		shapeless: true,
+		width: 2,
+		height: 1,
+		output: { type: "item", code: "amethyst", quantity: 7  }
+	}
+]

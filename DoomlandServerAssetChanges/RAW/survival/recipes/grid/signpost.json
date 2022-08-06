@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "P,S,S",
+	ingredients: {
+		"P": { type: "item", code: "plank-*" },
+		"S": { type: "item", code: "stick" }
+	},
+	width: 1,
+	height: 3,
+	output: { type: "block", code: "signpost"  }
+}

@@ -1,0 +1,36 @@
+{
+	code: "flint",
+	class: "ItemFlint",
+	attributes: {
+		knappable: true,
+		displaycaseable: true,
+		shelvable: true
+	},
+	shape: { base: "item/resource/flint" },
+	texture: { base: "block/stone/flint" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 64,
+	materialDensity: 2000,
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 171, y: 54, z: -36 },
+		origin: { x: 0.56, y: 0.04, z: 0.48 },
+		scale: 3.05
+	},
+	fpHandTransform: {
+		rotation: { x: 101, y: 92, z: -30 },
+		origin: { x: 0.6, y: 0.2, z: 0.4 },
+		scale: 1.8
+	},
+	tpHandTransform: {
+		translation: { x: -1.2, y: -0.7, z: -1.05 },
+		rotation: { x: -9, y: 3, z: -29 },
+		scale: 0.48
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.2, z: 0 },
+		rotation: { x: 1, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: 0.5299 },
+		scale: 2.04
+	}
+}

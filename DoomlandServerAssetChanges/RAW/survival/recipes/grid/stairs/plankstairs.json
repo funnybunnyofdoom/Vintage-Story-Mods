@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "P_,PP",
+	ingredients: {
+		"P": { type: "item", code: "plank-*", name: "wood" }
+	},
+	width: 2,
+	height: 2,
+	output: { type: "block", code: "plankstairs-{wood}-up-north-free", quantity: 1  }
+}

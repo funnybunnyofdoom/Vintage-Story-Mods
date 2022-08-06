@@ -1,0 +1,198 @@
+{
+	code: "clothes",
+	class: "ItemWearable",
+	variantgroups: [
+		{ code: "category",  states: ["head"] },
+		{ code: "head", combine: "SelectiveMultiply", onVariant: "category", states: [
+			"embroidered-coif", "fancy-head-dress", "fortune-tellers-scarf", "gem-encrusted-fur-hat",  "gold-coronet", "jailors-hat", "lackey-hat", 
+			"merchant-hat", "messengers-hat", "minstrel-hat", "noble-fillet", "peasent-head-scarf", "roll-hat", "shepherds-cowl", "silver-diadem", "snow-goggles",
+			"squire-hood", "hunter-cape"
+		] },
+	],
+	shapeByType: { 
+		"*-silver-diadem": {
+			base: "entity/humanoid/seraph/clothing/head/silver-diadem" 
+		},
+		"*": {
+			base: "entity/humanoid/seraph" 
+		}
+	},
+	storageFlags: 128,
+	attributesByType: {
+		"*-snow-goggles": { clothescategory: "head" },
+		"*-noble-fillet": { clothescategory: "head" },
+		"*-gold-coronet": { clothescategory: "head" },
+		"*-roll-hat": { 
+			clothescategory: "head",
+			disableElements: ["Ponytail1"]
+		},
+		"*-fortune-tellers-scarf": {
+			clothescategory: "head",
+			disableElements: ["Ponytail1"],
+			warmth: 1
+		},
+		"*-silver-diadem": {
+			wearableAttachment: true,
+			clothescategory: "head"
+		},
+		"*-squire-hood": {
+			clothescategory: "head",
+			warmth: 1
+		},
+		"*": {
+			clothescategory: "head",
+			disableElements: ["Ponytail1", "hideme"],
+			warmth: 1
+		}
+	},
+	texturesByType: {
+		"*-silver-diadem": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*": {
+			"seraph": { base: "entity/humanoid/seraphclothes/{category}/{head}" }
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	renderAlphaTest: 0.25,
+	fpHandTransformByType: {
+		"*-silver-diadem": {
+			translation: { x: 0.1, y: -1.6, z: 0.4 },
+			rotation: { x: 180, y: -108, z: -180 },
+			origin: { x: 0.5, y: -0.3, z: 0.5 },
+			scale: 2.15
+		},
+		"*": {
+			translation: { x: 0.6, y: -1.6, z: -0.5 },
+			rotation: { x: 180, y: -108, z: -180 },
+			origin: { x: 0.5, y: 1.6, z: 0.5 },
+			scale: 2.15
+		}
+	},
+	tpHandTransformByType: {
+		"*-silver-diadem": {
+			translation: { x: -1.1, y: -3.1, z: -1.1 },
+			rotation: { x: -13, y: -80, z: 29 },
+			origin: { x: 0.5, y: 1.5, z: 0.5 },
+			scale: 0.55
+		},
+		"*": {
+			translation: { x: -1, y: -3, z: -1 },
+			rotation: { x: -13, y: -80, z: 29 },
+			origin: { x: 0.5, y: 1.5, z: 0.5 },
+			scale: 0.55
+		}
+	},
+	guiTransformByType: {
+		"*-gold-coronet": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -45, z: 23 },
+			origin: { x: 0.5, y: 1.85, z: 0.55 },
+			scale: 2.3	
+		},
+		"*-fortune-tellers-scarf": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 173, y: -46, z: 27 },
+			origin: { x: 0.6, y: 1.7, z: 0.6 },
+			scale: 2.5
+		},
+		"*-peasent-head-scarf": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -45, z: 23 },
+			origin: { x: 0.5, y: 1.7, z: 0.5 },
+			scale: 2.35
+		},
+		"*-fancy-head-dress": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -36, z: 21 },
+			origin: { x: 0.8, y: 1.6, z: 0.9 },
+			scale: 2.47
+		},
+		"*-messengers-hat": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -60, z: 27 },
+			origin: { x: 0.3, y: 1.8, z: 0.4 },
+			scale: 2.43
+		},
+		"*-snow-goggles": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -45, z: 23 },
+			origin: { x: 0.46, y: 1.75, z: 0.5 },
+			scale: 2.5
+		},
+		"*-silver-diadem": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -46, z: 23 },
+			origin: { x: 0.75, y: 1.66, z: 0.9 },
+			scale: 2.9
+		},
+		"*-embroidered-coif": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -42, z: 17 },
+			origin: { x: 0.8, y: 1.6, z: 0.9 },
+			scale: 2.17
+		},
+		"*-roll-hat": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -45, z: 23 },
+			origin: { x: 0.52, y: 1.75, z: 0.5 },
+			scale: 1.99
+		},
+		"*-squire-hood": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 177, y: -15, z: 12 },
+			origin: { x: 0.7, y: 1.4, z: 0.8 },
+			scale: 2.36
+		},
+		"*-noble-fillet": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 176, y: -70, z: 19 },
+			origin: { x: 0.4, y: 1.8, z: 0.5 },
+			scale: 2.5
+		},
+		"*-hat": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 174, y: -52, z: 24 },
+			origin: { x: 0.3, y: 1.9, z: 0.4 },
+			scale: 2.5
+		},
+		"*-hunter-cape": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -45, z: 23 },
+			origin: { x: 0.52, y: 1.65, z: 0.6 },
+			scale: 1.99
+		},
+		"*": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -45, z: 23 },
+			origin: { x: 0.52, y: 1.6, z: 0.5 },
+			scale: 1.99
+		}
+	},
+	groundTransformByType: {
+		"*-silver-diadem": {
+			translation: { x: 0.05, y: -0.55, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			scale: 2
+		},
+		"*": {
+			translation: { x: 0.05, y: -0.3, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			scale: 2
+		}
+	}
+}

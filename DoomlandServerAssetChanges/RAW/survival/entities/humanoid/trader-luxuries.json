@@ -1,0 +1,1198 @@
+{
+	code: "humanoid-trader-luxuries",
+	class: "EntityTrader",
+	canClimb: true,
+	hitboxSize: { x: 0.6, y: 1.75 },
+	deadHitboxSize: { x: 0.75, y: 0.5 },
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/humanoid/trader" },
+		texture: { base: "entity/humanoid/trader", alternates: [ { base: "entity/humanoid/traderclothes/set1" }, { base: "entity/humanoid/traderclothes/set2" },
+                                                             { base: "entity/humanoid/traderclothes/set3" }, { base: "entity/humanoid/traderclothes/set4" },
+                                                             { base: "entity/humanoid/traderclothes/set5" }  ] },
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "interpolateposition" }
+		],
+		animations: [
+			{
+				code: "die",
+				animation: "die",
+				animationSpeed: 1.75,
+				weight: 10,
+				blendMode: "AddAverage"
+			},
+			{
+				code: "hurt",
+				animation: "hurt",
+				animationSpeed: 2,
+				blendMode: "AddAverage"
+			},
+            { code: "rowdywelcome", animation: "rowdywelcome", blendMode: "AddAverage" },
+            { code: "lazywelcome", animation: "lazywelcome", blendMode: "AddAverage" },
+            { code: "lazynod", animation: "lazynod", blendMode: "AddAverage" }
+		]
+	},
+    attributes: {
+        tradeProps: {
+            money: { avg: 50, var: 10 },
+
+
+
+    "selling": {
+        "maxItems": 14,
+        "list": [
+            {
+                "code": "chandelier-candle0",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 15,
+                    "var": 3.75
+                }
+            },
+            {
+                "code": "glass-green",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-blue",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-violet",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-red",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-yellow",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "glass-brown",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clothes-foot-aristocrat-shoes",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clothes-lowerbody-aristocrat-leggings",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "clothes-shoulder-aristocrat-mantle",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 14,
+                    "var": 3.5
+                }
+            },
+            {
+                "code": "clothes-upperbody-aristocrat-shirt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "clothes-waist-aristocrat-belt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clothes-upperbody-scarlet-ornate-linen-tunic",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "clothes-foot-tigh-high-boots",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "clothes-neck-bronze-gem-necklace",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "clothes-neck-pearl-necklace",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            },
+            {
+                "code": "clothes-head-silver-diadem",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "clothes-arm-silver-chain",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            },
+            {
+                "code": "clothes-arm-silver-bracelet",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "longblade-silver",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "arrow-silver",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "arrow-gold",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                }
+            },
+            {
+                "code": "spear-ornate-silver",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "spear-ornate-gold",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 18,
+                    "var": 4.5
+                }
+            },
+            {
+                "code": "lantern-up",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "attributes": {
+                    "material": "gold",
+                    "lining": "plain"
+                }
+            },
+            {
+                "code": "smallcarpet-blue",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "smallcarpet-brown",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "smallcarpet-red",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "smallcarpet-turqoise",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                }
+            },
+            {
+                "code": "echochamber-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 30,
+                    "var": 7.5
+                }
+            },
+            {
+                "code": "armor-head-antique-forlorn-broken",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 30,
+                    "var": 7.5
+                }
+            },
+            {
+                "code": "armor-body-antique-forlorn-broken",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 30,
+                    "var": 7.5
+                }
+            },
+            {
+                "code": "armor-legs-antique-forlorn-broken",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 30,
+                    "var": 7.5
+                }
+            },
+            {
+                "code": "longblade-forlorn",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 32,
+                    "var": 8
+                }
+            }
+        ]
+    },
+    "buying": {
+        "maxItems": 14,
+        "list": [
+            {
+                "code": "clothes-foot-prince-boots",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "clothes-hand-prince-gloves",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "clothes-lowerbody-prince-breeches",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 11,
+                    "var": 2.75
+                }
+            },
+            {
+                "code": "clothes-upperbody-prince-tunic",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 11,
+                    "var": 2.75
+                }
+            },
+            {
+                "code": "clothes-waist-prince-waistband",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "clothes-foot-noble-shoes",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-hand-noble-riding-gloves",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-head-noble-fillet",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clothes-lowerbody-noble-pants",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clothes-neck-noble-necklace",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-shoulder-noble-fur-collar",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clothes-upperbody-noble-shirt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clothes-waist-noble-sash",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clothes-neck-golden-necklace",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "clothes-head-gold-coronet",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "clothes-head-gem-encrusted-fur-hat",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "clothes-neck-fancy-royal-collar",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            },
+            {
+                "code": "clothes-shoulder-royal-fur",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "clothes-waist-gold-waist-chain",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                }
+            },
+            {
+                "code": "clothes-waist-fancy-royal-belt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "painting-howl-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-elk-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-underwater-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-prey-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "painting-forestdawn-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "ingot-gold",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "ingot-silver",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                }
+            },
+            {
+                "code": "gem-emerald-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "attributes": {
+                    "potential": "high"
+                }
+            },
+            {
+                "code": "gem-emerald-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 14,
+                    "var": 3.5
+                },
+                "attributes": {
+                    "potential": "medium"
+                }
+            },
+            {
+                "code": "gem-emerald-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "potential": "low"
+                }
+            },
+            {
+                "code": "ore-lapislazuli",
+                "type": "item",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "omoktabletop",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "lore-book",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "attributes": {
+                    "category": "diaries"
+                }
+            },
+            {
+                "code": "chest-east",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 14,
+                    "var": 3.5
+                },
+                "attributes": {
+                    "type": "golden"
+                }
+            },
+            {
+                "code": "storagevessel-chthonic",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "painting-fishandtherain-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 20,
+                    "var": 5
+                }
+            },
+            {
+                "code": "gem-diamond-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "potential": "high"
+                }
+            },
+            {
+                "code": "gem-diamond-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                },
+                "attributes": {
+                    "potential": "medium"
+                }
+            },
+            {
+                "code": "gem-diamond-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "potential": "low"
+                }
+            },
+            {
+                "code": "gem-olivine_peridot-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "potential": "high"
+                }
+            },
+            {
+                "code": "gem-olivine_peridot-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                },
+                "attributes": {
+                    "potential": "medium"
+                }
+            },
+            {
+                "code": "gem-olivine_peridot-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "potential": "low"
+                }
+            },
+            {
+                "code": "clothes-waist-fortune-teller-hip-scarf",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            }
+        ]
+    }
+
+
+        }
+
+    },
+	server: {
+		attributes: {
+			pathfinder: {
+				minTurnAnglePerSec: 720,
+				maxTurnAnglePerSec: 1440
+			}
+		},
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true, selectFromRandomName: ["Alfonse", "Rigby", "Marco", "Rote", "Horace", "Two Tongue", "Optal", "Veera"] },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "reviveondeath", minHours: 24, maxHours: 72 },
+			{ code: "health", currenthealth: 25, maxhealth: 25 },
+			{
+				code: "emotionstates",
+				states: [
+					{ code: "aggressiveondamage", duration: 6, chance: 0.6, slot: 0, priority: 2, accumType: "noaccum" },
+					{ code: "fleeondamage", duration: 10, chance: 0.4, slot: 0, priority: 1, accumType: "max" }
+				],
+			},
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damage: 5,
+						mincooldown: 2500,
+						maxcooldown: 3500,
+						attackDurationMs: 900,
+						damagePlayerAtMs: 300,
+						animation: "Attack",
+						animationSpeed: 2,
+						whenInEmotionState: "aggressiveondamage",
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						mincooldown: 1000,
+						maxcooldown: 1500,
+						seekingRange: 20,
+						movespeed: 0.035,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						movespeed: 0.035,
+						seekingRange: 12,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "fleeondamage"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 2000,
+						maxcooldown: 10000,
+						animation: "laugh"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 5000,
+						maxcooldown: 30000,
+						animation: "idle2"
+					},
+					{
+						code: "wander",
+						priority: 1.0,
+						movespeed: 0.01,
+						animation: "Walk",
+						wanderChance: 0.005,
+						maxDistanceToSpawn: 4,
+						wanderRangeMin: 1,
+						wanderRangeMax: 3,
+						teleportWhenOutOfRange: true,
+						teleportInGameHours: 1
+					},
+					{
+						code: "lookaround",
+						priority: 0.5
+					}
+				]
+			}
+		],
+	},
+	sounds: {
+	}
+}

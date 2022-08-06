@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "BBB	BCB		BBB",
+	ingredients: {
+		"C": { type: "item", code: "mortar" },
+		"B": { type: "item", code: "burnedbrick-*", name: "type" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "claybricks-{type}", quantity: 4  }
+}

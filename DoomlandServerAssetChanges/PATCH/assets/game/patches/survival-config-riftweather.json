@@ -1,0 +1,74 @@
+[
+  {
+    "op": "replace",
+    "path": "/patterns/0/durationHours/avg",
+    "value": 0.25,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/0/durationHours/var",
+    "value": 0.25,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/1/durationHours/avg",
+    "value": 0.3,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/1/durationHours/var",
+    "value": 0.25,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/2/durationHours/avg",
+    "value": 0.5,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/2/durationHours/var",
+    "value": 0.25,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/3/durationHours/avg",
+    "value": 0.5,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/3/durationHours/var",
+    "value": 0.5,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/4/durationHours/avg",
+    "value": 0.75,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/4/durationHours/var",
+    "value": 0.75,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/5/durationHours/avg",
+    "value": 1,
+    "file": "config/riftweather.json"
+  },
+  {
+    "op": "replace",
+    "path": "/patterns/5/durationHours/var",
+    "value": 1,
+    "file": "config/riftweather.json"
+  }
+]

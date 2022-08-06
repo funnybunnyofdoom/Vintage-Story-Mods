@@ -1,0 +1,8 @@
+[
+  {
+    "op": "replace",
+    "path": "/server/behaviors/7/hoursToGrow",
+    "value": 48,
+    "file": "entities/land/chicken-baby.json"
+  }
+]

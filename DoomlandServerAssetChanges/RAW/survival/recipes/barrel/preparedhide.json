@@ -1,0 +1,38 @@
+[
+	{
+		code: "preparedhide",
+		sealHours: 72,
+		ingredients: [
+			{ type: "item", code: "weaktanninportion", litres: 2, consumeLitres: 2 },
+			{ type: "item", code: "hide-scraped-small", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-prepared-small", stackSize: 1 }
+	},
+	{
+		code: "preparedhide",
+		sealHours: 72,
+		ingredients: [
+			{ type: "item", code: "weaktanninportion", litres: 4, consumeLitres: 4 },
+			{ type: "item", code: "hide-scraped-medium", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-prepared-medium", stackSize: 1 }
+	},
+	{
+		code: "preparedhide",
+		sealHours: 72,
+		ingredients: [
+			{ type: "item", code: "weaktanninportion", litres: 6, consumeLitres: 6 },
+			{ type: "item", code: "hide-scraped-large", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-prepared-large", stackSize: 1 }
+	},
+	{
+		code: "preparedhide",
+		sealHours: 72,
+		ingredients: [
+			{ type: "item", code: "weaktanninportion", litres: 10, consumeLitres: 10 },
+			{ type: "item", code: "hide-scraped-huge", quantity: 1 }
+		],
+		output: { type: "item", code: "hide-prepared-huge", stackSize: 1 }
+	},
+]

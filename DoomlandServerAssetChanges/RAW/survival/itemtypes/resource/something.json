@@ -1,0 +1,12 @@
+{
+	code: "something",
+	maxstacksize: 4,
+	shape: { base: "item/something" },
+	creativeinventory: { "general": [""], "items": [""] },
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -40, y: -2, z: -44 },
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 1.48
+	}	
+}

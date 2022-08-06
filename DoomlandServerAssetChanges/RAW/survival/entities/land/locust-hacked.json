@@ -1,0 +1,286 @@
+{
+	code: "locust",
+	variantgroups: [ 
+		{ code: "type", states: [ "bronze", "corrupt" ] },
+		{ code: "state", states: [ "hacked" ] },
+	],
+	class: "EntityLocust",
+	canClimb: true,
+	canClimbAnywhere: true,
+	climbTouchDistance: 0.1,
+	rotateModelOnClimb: true,
+	fallDamage: false,
+	hitboxSize: { x: 0.65, y: 0.6 },
+	deadHitboxSize: { x: 0.65, y: 0.5 },
+	eyeHeight: 0.3,
+	attributes: {
+		spawnDamageParticles: true,
+		isMechanical: true
+	},
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/locust-{type}" },
+		glowLevel: 32,
+		textures: {
+			"skin": { base: "entity/locust/{type}-hacked" }
+		},
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "interpolateposition" },
+			{ code: "commandable" }
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt",
+				animationSpeed: 2.2,
+				weight: 5,
+				blendMode: "AddAverage"
+			},
+			{
+				code: "die",
+				animation: "die", 
+				animationSpeed: 1.25,
+				weight: 10,
+				blendMode: "Average",
+				triggeredBy: { onControls: ["dead"] }
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "Average", 
+				triggeredBy: { defaultAnim: true },
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "health", 
+				currenthealthByType: {
+					"*-bronze-*": 18, 
+					"*-corrupt-*": 36,
+					"*-corrupt-sawblade-*": 140
+				},
+				maxhealthByType: {
+					"*-bronze-*": 18, 
+					"*-corrupt-*": 36,
+					"*-corrupt-sawblade-*": 140
+				}
+			},
+			{ code: "deaddecay", hoursToDecay: 24 },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "despawn", minPlayerDistance: 48, minSecondsByType: { "*-corrupt-sawblade": 900, "*": 90 } },
+			{
+				code: "emotionstates",
+				states: [ 
+					{ code: "fleeondamage", duration: 10, chance: 0.2, slot: 0, priority: 1, accumType: "max" } 
+				]
+			},
+			{ code: "commandable" },
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattacktargetingentity",
+						priority: 3,
+						entityCodes: ["*"],
+						damageByType: {
+							"*-bronze-*": 1.5,
+							"*-corrupt-*": 4,
+							"*-corrupt-sawblade-*": 16,
+						},
+						damageTierByType: {
+							"*-bronze-*": 2,
+							"*-corrupt-*": 3,
+							"*-corrupt-sawblade-*": 3,
+						},
+						mincooldown: 1000,
+						maxcooldown: 1500,
+						damageTypeByType: {
+							"*-bronze-*": "PiercingAttack",
+							"*-corrupt-*": "PiercingAttack",
+							"*-corrupt-sawblade-*": "SlashingAttack"
+						},
+						damagePlayerAtMs: 500,
+						attackDurationMs: 800,
+						animation: "attack",
+						animationSpeed: 1.8,
+						soundByType: {
+							"*-corrupt-sawblade-*": "creature/locust/saw"
+						},
+						soundStartMs: 1000
+					},
+					{
+						code: "jealousmeleeattack",
+						priority: 2.5,
+						entityCodes: ["locust-*"],
+						damageByType: {
+							"*-bronze-*": 1.5,
+							"*-corrupt-*": 4,
+							"*-corrupt-sawblade-*": 16,
+						},
+						damageTierByType: {
+							"*-bronze-*": 2,
+							"*-corrupt-*": 3,
+							"*-corrupt-sawblade-*": 3,
+						},
+						mincooldown: 1000,
+						maxcooldown: 1500,
+						damageTypeByType: {
+							"*-bronze-*": "PiercingAttack",
+							"*-corrupt-*": "PiercingAttack",
+							"*-corrupt-sawblade-*": "SlashingAttack"
+						},
+						damagePlayerAtMs: 500,
+						attackDurationMs: 800,
+						animation: "attack",
+						animationSpeed: 1.8,
+						soundByType: {
+							"*-corrupt-sawblade-*": "creature/locust/saw"
+						},
+						soundStartMs: 1000
+					},
+					{
+						code: "stayclosetoguardedentity",
+						priority: 2,
+						entityCode: "locust",
+						movespeed: 0.02,
+						maxDistance: 7,
+						searchRange: 999,
+						animation: "run",
+						animationSpeed: 6.5,
+						allowTeleport: true
+					},
+					{
+						code: "seektargetingentity",
+						entityCodes: ["*"],
+						priority: 2.2,
+						mincooldown: 500,
+						maxcooldown: 1000,
+						movespeed: 0.025,
+						seekingRange: 15,
+						maxFollowTime: 15,
+						animationSpeed: 4.5,
+						leapAtTarget: true,
+						leapAnimation: "jump",
+						animation: "rundrill"
+					},
+					{
+						code: "jealousseekentity",
+						entityCodes: ["locust-*"],
+						priority: 1.4,
+						mincooldown: 500,
+						maxcooldown: 1000,
+						movespeed: 0.025,
+						seekingRange: 15,
+						maxFollowTime: 20,
+						animationSpeed: 7,
+						leapAtTarget: true,
+						leapAnimation: "jump",
+						animation: "rundrill"
+					},					
+					{
+						code: "wander",
+						priority: 1.3,
+						priorityForCancel: 1.3,
+						movespeed: 0.016,
+						animationSpeed: 4,
+						animation: "run",
+						teleportWhenOutOfRange: true,
+						teleportInGameHours: 1,
+						maxDistanceToSpawn: 4
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 10000,
+						maxduration: 30000,
+						mincooldown: 30000,
+						maxcooldown: 60000,
+						animation: "sleep",
+						animationSpeed: 1.75
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "lookleft",
+						animationSpeed: 1.25
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "lookright",
+						animationSpeed: 1.25
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "idletwitch",
+						animationSpeed: 1.25
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.25,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "idlecalm",
+						animationSpeed: 1.25
+					},
+					{
+						code: "wander",
+						priority: 1.1,
+						priorityForCancel: 1.22,
+						movespeed: 0.006,
+						animationSpeed: 1.8,
+						animation: "run",
+						preferredLightLevel: 7
+					},
+					{
+						code: "wander",
+						priority: 1.1,
+						priorityForCancel: 1.1,
+						movespeed: 0.001,
+						animationSpeed: 1.5,
+						animation: "walk",
+						preferredLightLevel: 7
+					},
+					{
+						code: "lookaround",
+						priority: 0.5,
+						animation: "breathecalm",
+						animationSpeed: 1.25
+					}
+				]
+			}
+		]
+	},
+	sounds: {
+		hurt: "creature/locust/hurt",
+		death: "creature/locust/death",
+		idle: "creature/locust/idle"
+	},
+	idleSoundChance: 0.05
+}

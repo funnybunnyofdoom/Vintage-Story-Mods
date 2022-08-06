@@ -1,0 +1,11 @@
+{
+	ingredientPattern: "SP",
+	ingredients: {
+		"S": { type: "item", code: "saw-*", isTool: true  },
+		"P": { type: "item", code: "plank-aged" }
+	},
+	width: 2,
+	height: 1,
+	shapeless: true,
+	output: { type: "block", code: "woodenpath-ns", quantity: 2  }
+}

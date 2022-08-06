@@ -1,0 +1,95 @@
+{
+	code: "roughhewnfencegate",
+	class: "BlockFenceGateRoughHewn",
+	behaviors: [ {name: "Lockable" } ],
+	attributes: {
+		isFence: true,
+		handbook: {
+			groupBy: ["roughhewnfencegate-*"]
+		},
+		triggerSound: "sounds/block/hewnfancegate",
+	},
+	variantgroups: [
+		{ code: "wood", states: ["aged"], loadFromProperties: "block/wood" },
+		{ code: "type", states: ["n", "w"] },
+		{ code: "state", states: ["opened", "closed"] },
+		{ code: "cover", states: ["free", "snow"] }
+	],
+	"__comment": "Ebony & Purple heartwood considered too hard wood for a rough hewn fence",
+	skipVariants: [ 
+		"*-ebony-*",
+		"*-purpleheart-*"
+	],
+	creativeinventory: { "general": ["*-n-closed-free"], "decorative": ["*-n-closed-free"] },
+	shapebytype: {
+		"*-n-opened-free": { base: "block/wood/roughfence/gate-open" },
+		"*-w-opened-free": { base: "block/wood/roughfence/gate-open", rotateY: 90},
+		"*-n-closed-free": { base: "block/wood/roughfence/gate-closed"},
+		"*-w-closed-free": { base: "block/wood/roughfence/gate-closed" , rotateY: 90 },
+		
+		"*-n-opened-snow": { base: "block/wood/roughfence/gate-open-snow" },
+		"*-w-opened-snow": { base: "block/wood/roughfence/gate-open-snow", rotateY: 90},
+		"*-n-closed-snow": { base: "block/wood/roughfence/gate-closed-snow"},
+		"*-w-closed-snow": { base: "block/wood/roughfence/gate-closed-snow" , rotateY: 90 }
+	},
+	drawtypeByType: {
+		"*-free": "JSON",
+		"*-snow": "JSONAndSnowLayer",
+	},
+	blockmaterial: "Wood",
+	textures: {
+		"wattlefence": { base: "block/wood/roughfence/{wood}2" },
+		"wattlefence2": { base: "block/wood/roughfence/{wood}" }
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaqueByType: {
+		"*-snow": { all: false, down: true },
+		"*": { all: false }
+	},
+	emitsideao: {
+		all: false
+	},
+	replaceable: 900,
+	resistance: 1.5,
+	lightAbsorption: 0,
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	collisionboxbytype: {
+		"*-n-opened-*": { x1: 0, y1: 0, z1: 0, x2: 0.2, y2: 1.35, z2: 0.4 },
+		"*-w-opened-*": { x1: 0, y1: 0, z1: 0.8, x2: 0.4, y2: 1.35, z2: 1 },
+		"*-n-closed-*": { x1: 0, y1: 0, z1: 0.28, x2: 1, y2: 1.35, z2: 0.6 },
+		"*-w-closed-*": { x1: 0.28, y1: 0, z1: 0, x2: 0.6, y2: 1.35, z2: 1 }
+	},
+	selectionboxesbytype: {
+		"*-n-opened-*": [{ x1: 0, y1: 0, z1: 0.4, x2: 1, y2: 0.95, z2: 0.6 }],
+		"*-w-opened-*": [{ x1: 0.4, y1: 0, z1: 0, x2: 0.6, y2: 0.95, z2: 1 }],
+		"*-n-closed-*": [{ x1: 0, y1: 0, z1: 0.25, x2: 1, y2: 0.95, z2: 0.6 }],
+		"*-w-closed-*": [{ x1: 0.25, y1: 0, z1: 0, x2: 0.6, y2: 0.95, z2: 1 }]
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	materialDensity: 600,
+	guiTransform: {
+		origin: { x: 0.5, y: 0.45, z: 0.5 },
+		scale: 1.35
+	},
+	tpHandTransform: {
+		translation: { x: -1.5, y: -1, z: -1.2 },
+		rotation: { x: 5, y: -3, z: -96 },
+		scale: 0.37
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.05, z: 0 },
+		rotation: { x: 90, y: -45, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.07
+	}
+}

@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "A	L",
+	ingredients: {
+		"A": { type: "item", code: "knife-*", isTool: true  },
+		"L": { type: "block", code: "log-*", allowedVariants: ["placed-birch-ud", "placed-oak-ud", "placed-maple-ud", "placed-pine-ud", "placed-acacia-ud", "placed-kapok-ud", "placed-redwood-ud", "placed-larch-ud", "placed-baldcypress-ud", "placed-walnut-ud", "placed-purpleheart-ud", "placed-ebony-ud"] }
+	},
+	width: 1,
+	height: 2,
+	output: { type: "item", code: "woodenclub-normal", quantity: 1  }
+}

@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "T	S",
+	ingredients: {
+		"T": { type: "item", code: "hammerhead-*", name: "metal"  },
+		"S": { type: "item", code: "stick" }
+	},
+	width: 1,
+	height: 2,
+	output: { type: "item", code: "hammer-{metal}", quantity: 1  }
+}

@@ -1,0 +1,85 @@
+{
+	code: "ferntree",
+	class: "BlockFernTree",
+	variantgroups: [
+		{ code: "type", states: ["normal"] },
+		{ code: "part", states: ["trunk", "trunk-top-young", "trunk-top-medium", "trunk-top-old", "foliage"] },
+	],
+	attributes: {
+		treeFellingGroupCode: "ferntree-{type}",
+		treeFellingGroupSpreadIndexByType: {
+			"*-trunk": 3,
+			"*-trunk-top-young": 2,
+			"*-trunk-top-medium": 2,
+			"*-trunk-top-old": 2,
+			"*-foliage": 1,
+		},
+		canDecayByType: {
+			"leaves-grown-*": true
+		}
+	},
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	randomDrawOffset: true,
+	randomizeRotations: true,
+	randomizeAxes: "xz",
+	randomSizeAdjustByType: {
+		"*-foliage": 1.15,
+		"*-trunk": -0.15,
+		"*": 0.15
+	},
+	shape: { base: "block/plant/ferntree/{part}" },
+	blockmaterial: "Wood",
+	requiredMiningTier: 1,
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	combustibleProps: {
+		burnTemperature: 700,
+		burnDuration: 10,
+	},
+	replaceable: 600,
+	lightAbsorption: 0,
+	resistance: 2,
+	collisionSelectionBox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 1, z2: 0.75 },
+	rainPermeable: true,
+	materialDensity: 200,
+	dropsByType: {
+		"*-trunk": [ { type: "item", code: "firewood", quantity: { avg: 2.5, var: 1.5 }  } ],
+		"*-trunk-top-*": [ { type: "item", code: "firewood", quantity: { avg: 2.5, var: 1.5 }  } ],
+		"*": []
+	},
+	guitransformByType: {
+		"*-foliage": {
+			translation: { x: 0, y: 1, z: 0 },
+			rotation: { x: -22, y: -45, z: 0 },
+			origin: { x: 0.4, y: 0.9, z: 0.5 },
+			scale: 0.58
+		},
+		"*": {
+			translation: { x: 0, y: 1, z: 0 },
+			rotation: { x: -22, y: -45, z: 0 },
+			origin: { x: 0.4, y: 0.3, z: 0.5 },
+			scale: 0.76
+		}
+	},
+	fpHandTransformByType: {
+		"*-foliage": {
+			translation: { x: 0, y: -0.1, z: 0.5 },
+			rotation: { x: 0, y: -112, z: 0 },
+			scale: 0.99
+		}
+	},
+	sounds: {
+		"place": "block/planks",
+		"walk": "walk/wood",
+		"hit": "block/planks",
+		"break": "block/planks",
+		byTool: {
+			"Axe": { hit: "block/chop", break: "block/planks" }
+		}
+	},
+	frostable: true,
+}

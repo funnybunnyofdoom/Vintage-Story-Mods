@@ -1,0 +1,9 @@
+{
+	code: "curdledmilkportion",
+	sealHours: 72,
+	ingredients: [
+		{ type: "item", code: "milkportion",  litres: 20 },
+		{ type: "item", code: "pickledvegetable-*", name: "pickledvegetable", quantity: 1, allowedVariants: ["carrot", "onion", "parsnip", "pumpkin", "turnip", "cabbage", "bellpepper" ] }
+	],
+	output: { type: "item", code: "curdledmilkportion", litres: 20 }
+}

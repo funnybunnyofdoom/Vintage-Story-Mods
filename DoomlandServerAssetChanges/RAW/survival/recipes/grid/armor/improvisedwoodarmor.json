@@ -1,0 +1,14 @@
+[
+	{
+		ingredientPattern: "FKF,FGF,FFF",
+		ingredients: {
+			"K": { type: "item", code: "knife-*", isTool: true },
+			"F": { type: "item", code: "firewood", quantity: 2 },
+			"G": { type: "item", code: "drygrass", quantity: 9 }
+		},
+		width: 3,
+		height: 3,
+		name: "improvised wood armor",
+		output: { type: "item", code: "armor-body-improvised-wood"  }
+	}
+]

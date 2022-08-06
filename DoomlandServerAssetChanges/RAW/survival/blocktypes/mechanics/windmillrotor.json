@@ -1,0 +1,60 @@
+{
+	code: "windmillrotor",
+	class: "BlockWindmillRotor",
+	entityClass: "Generic",
+	entityBehaviors: [{ name: "MPWindmillRotor" }],
+	behaviors: [{name: "HorizontalOrientable"}],
+	attributes: {
+		handbook: {
+			groupBy: ["windmillrotor-*"]
+		}
+	},
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": ["*-north"], "mechanics": ["*-north"] },
+	shapebytype: {
+		"*-north": { base: "block/wood/mechanics/windmillrotor", rotateY: 90 },
+		"*-east": { base: "block/wood/mechanics/windmillrotor", rotateY: 0 },
+		"*-south": { base: "block/wood/mechanics/windmillrotor", rotateY: 270 },
+		"*-west": { base: "block/wood/mechanics/windmillrotor", rotateY: 180 }
+	},
+	blockmaterial: "Wood",
+	textures: {
+		wood: { base: "block/wood/planks/generic" },
+		cloth: { base: "block/cloth/linen/normal1" }
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	rainPermeable: true,
+	drops: [
+		{ type: "block", code: "windmillrotor-north" }
+	],
+	resistance: 3.5,
+	lightAbsorption: 0,
+	maxStackSize: 4,
+	guiTransform: {
+		origin: { x: 0.45, y: 0.5, z: 0.5 },
+		scale: 1.74
+	},
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1, z: -1 },
+		scale: 0.5
+	},
+	groundTransform: {
+		translation: { x: -0.08, y: 0.04, z: 0.2 },
+		rotation: { x: -37, y: -44, z: 21 },
+		origin: { x: 0.5, y: 0.5, z: 0.1 },
+		scale: 2.9
+	},
+	sounds: {
+		"hit": "block/planks",
+		"break": "block/planks",
+		"place": "block/planks",
+		"walk": "walk/wood"
+	}
+}

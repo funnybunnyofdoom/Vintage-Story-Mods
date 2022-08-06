@@ -1,0 +1,20 @@
+{
+	code: "peatpile",
+	class: "BlockPeatPile",
+	entityClass: "PeatPile",
+	shape: {
+		base: "block/basic/invisible"
+	},
+	"__comment": "Defining these so that they are inserted into the texture atlas and can be referenced later by the IngotPile Blockentity",
+	textures: {
+		"sides": { base: "block/soil/peatpile/sides" },
+		"peat": { base: "block/soil/peat" }
+	},
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	blockmaterial: "Soil",
+	creativeinventory: { "general": [""] },
+	replaceable: 400,
+	resistance: 3,
+	lightAbsorption: 0
+}

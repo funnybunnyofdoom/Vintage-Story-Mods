@@ -1,0 +1,50 @@
+[
+	{
+		code: "dye-yellow",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion",  litres: 4 },
+			{ type: "item", code: "vegetable-onion", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-yellow", litres: 4 }
+	},
+	{
+		code: "dye-yellow",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "item", code: "vegetable-onion", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-yellow", litres: 2 }
+	},
+	{
+		code: "dye-yellow",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "item", code: "vegetable-onion", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-yellow", litres: 3 }
+	},
+	{
+		code: "dye-yellow",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 4 },
+			{ type: "block", code: "flower-heather-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-yellow", litres: 4 }
+	},
+	{
+		code: "dye-yellow",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "block", code: "flower-heather-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-yellow", litres: 2 }
+	},
+	{
+		code: "dye-yellow",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "block", code: "flower-heather-free", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-yellow", litres: 3 }
+	}
+]

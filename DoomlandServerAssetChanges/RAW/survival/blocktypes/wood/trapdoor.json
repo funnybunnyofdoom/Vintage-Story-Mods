@@ -1,0 +1,152 @@
+{
+	code: "trapdoor",
+	class: "BlockTrapdoor",
+	behaviors: [
+		{name: "Lockable" }, 
+		{
+			name: "ExchangeOnInteract",
+			properties: {
+				exchangeStates: ["*-closed-*", "*-opened-*"],
+				sound: "block/door",
+				actionLangCode: "blockhelp-trapdoor-openclose"
+			}
+		},
+		{
+			name: "OmniRotatable",
+			properties: {
+				"rotateH": true,
+				"rotateV": true,
+				"rotateV4": true,
+				"facing": "block",
+			}
+		}
+	],
+	attributes: {
+		handbook: {
+			groupBy: ["trapdoor-*"]
+		}
+	},
+	variantgroups: [
+		{ code: "state", states: ["closed", "opened"] },
+		{ code: "v", states: ["up", "left", "down", "right"] },
+		{ code: "rot", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	shapeByType: {
+		"*-up-north": { base: "block/wood/trapdoor-{state}", rotateY: 0, rotateZ: 0 },
+		"*-up-west": { base: "block/wood/trapdoor-{state}", rotateY: 90, rotateX: 0 },
+		"*-up-south": { base: "block/wood/trapdoor-{state}", rotateY: 180, rotateZ: 0 },
+		"*-up-east": { base: "block/wood/trapdoor-{state}", rotateY: 270, rotateX: 0 },
+		"*-left-north": { base: "block/wood/trapdoor-{state}", rotateY: 0, rotateZ: 270 },
+		"*-left-west": { base: "block/wood/trapdoor-{state}", rotateY: 90, rotateX: 90 },
+		"*-left-south": { base: "block/wood/trapdoor-{state}", rotateY: 180, rotateZ: 90 },
+		"*-left-east": { base: "block/wood/trapdoor-{state}", rotateY: 270, rotateX: 90 },
+		"*-down-north": { base: "block/wood/trapdoor-{state}", rotateY: 0, rotateZ: 180 },
+		"*-down-west": { base: "block/wood/trapdoor-{state}", rotateY: 90, rotateX: 180 },
+		"*-down-south": { base: "block/wood/trapdoor-{state}", rotateY: 180, rotateZ: 180 },
+		"*-down-east": { base: "block/wood/trapdoor-{state}", rotateY: 270, rotateX: 180 },
+		"*-right-north": { base: "block/wood/trapdoor-{state}", rotateY: 0, rotateZ: 90 },
+		"*-right-west": { base: "block/wood/trapdoor-{state}", rotateY: 90, rotateX: 270 },
+		"*-right-south": { base: "block/wood/trapdoor-{state}", rotateY: 180, rotateZ: 270 },
+		"*-right-east": { base: "block/wood/trapdoor-{state}", rotateY: 270, rotateX: 270 },
+	},
+	creativeinventory: { "general": ["*-closed-up-north"], "decorative": ["*-closed-up-north"] },
+	drops: [{ code: "trapdoor-closed-up-north" }],
+	blockmaterial: "Wood",
+	replaceable: 900,
+	lightAbsorption: 2,
+	resistance: 3,
+	sideopaque: { all: false },
+	sidesolid: { all: false },
+	emitsideao: { all: false },
+	sideao: { all: true },
+	collisionboxByType: {
+		"*-closed-*": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.1875, z2: 1,
+			rotateXByType: {
+				"*-up-east": 0,
+				"*-left-east": 90,
+				"*-down-east": 180,
+				"*-right-east": 270,
+				"*-up-west": 0,
+				"*-left-west": 90,
+				"*-down-west": 180,
+				"*-right-west": 270,
+			},
+			rotateZByType: {
+				"*-up-north": 0,
+				"*-left-north": 270,
+				"*-down-north": 180,
+				"*-right-north": 90,
+				"*-up-south": 0,
+				"*-left-south": 270,
+				"*-down-south": 180,
+				"*-right-south": 90,
+			}
+		},
+		"*-opened-*-*": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.1875, 
+			rotateYByType: {
+				"*-north": 0,
+				"*-east": 270,
+				"*-south": 180,
+				"*-west": 90,
+			}
+		},
+	},
+	selectionboxByType: {
+		"*-closed-*": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.1875, z2: 1,
+			rotateXByType: {
+				"*-up-east": 0,
+				"*-left-east": 90,
+				"*-down-east": 180,
+				"*-right-east": 270,
+				"*-up-west": 0,
+				"*-left-west": 90,
+				"*-down-west": 180,
+				"*-right-west": 270,
+			},
+			rotateZByType: {
+				"*-up-north": 0,
+				"*-left-north": 270,
+				"*-down-north": 180,
+				"*-right-north": 90,
+				"*-up-south": 0,
+				"*-left-south": 270,
+				"*-down-south": 180,
+				"*-right-south": 90,
+			}
+		},
+		"*-opened-*-*": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z2: 0.1875, 
+			rotateYByType: {
+				"*-north": 0,
+				"*-east": 270,
+				"*-south": 180,
+				"*-west": 90,
+			}
+		},
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 15,
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.125, z: 0.5 },
+		scale: 1.12
+	},
+	tpHandTransform: {
+		translation: { x: -1.5, y: -0.1, z: -1.07 },
+		rotation: { x: 102, y: 7, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.4
+	},
+	fpHandTransform: {
+		translation: { x: 0.1, y: 0, z: 0.33 },
+		rotation: { x: 0, y: -50, z: 109 },
+		origin: { x: 0.5, y: 0.13, z: 0.5 },
+		scale: 1.37
+	}
+}

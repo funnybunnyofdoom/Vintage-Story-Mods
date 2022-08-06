@@ -1,0 +1,18 @@
+[
+	{
+		code: "lapis",
+		triesPerChunk: 5,
+		withOreMap: true,
+		handbookPageCode: "item-ore-lapislazuli",
+		generator: "disc-followsurface",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["limestone", "whitemarble", "redmarble", "greenmarble"] },
+			placeblock: { code: "ore-lapislazuli-{rock}" },
+			radius: { dist: "invexp", avg: 2, var: 10 },
+			surfaceBlock: { code: "looseores-lapislazuli-{rock}-free" },
+			surfaceBlockChance: 0.05,
+			yPosRel: {dist: "uniform", avg: 0.45, var: 0.4 },
+			thickness: { dist: "uniform", avg: 1, var: 0 }
+		}
+	}
+]

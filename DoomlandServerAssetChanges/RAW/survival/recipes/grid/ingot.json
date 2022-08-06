@@ -1,0 +1,72 @@
+[
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 600 },
+			"A": { type: "block", code: "anvil-copper" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-copper", quantity: 8 }
+	},
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 1000 },
+			"A": { type: "block", code: "anvil-tinbronze" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-tinbronze", quantity: 8 }
+	},
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 1200 },
+			"A": { type: "block", code: "anvil-bismuthbronze" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-bismuthbronze", quantity: 8 }
+	},
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 1400 },
+			"A": { type: "block", code: "anvil-blackbronze" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-blackbronze", quantity: 8 }
+	},
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 2000 },
+			"A": { type: "block", code: "anvil-iron" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-iron", quantity: 8 }
+	},
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 2800 },
+			"A": { type: "block", code: "anvil-meteoriciron" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-meteoriciron", quantity: 8 }
+	},
+	{
+		ingredientPattern: "C	A",
+		ingredients: {
+			"C": { type: "item", code: "chisel-*", name: "metal", isTool: true, toolDurabilityCost: 5000 },
+			"A": { type: "block", code: "anvil-steel" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "ingot-steel", quantity: 8 }
+	}
+]

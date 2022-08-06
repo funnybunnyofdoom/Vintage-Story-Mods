@@ -1,0 +1,34 @@
+{
+	"code": "cobblestone",
+	variantgroups: [
+		{ code: "rock", loadFromProperties: "block/rockwithdeposit" },
+	],
+	skipVariants: [ "*-obsidian", "*-halite", "*-scoria", "*-tuff"],
+	attributes: {
+		handbook: {
+			groupBy: ["cobblestone-*"]	
+		}
+	},
+	creativeinventory: { "general": ["*"], "construction": ["*"] },
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	blockmaterial: "Stone",
+	"textures": {
+		"all": {  base: "block/stone/cobblestone/{rock}*" }
+	},
+	"replaceable": 140,
+	"fertility": 0,
+	resistance: 2,
+	sounds: {
+		"walk": "walk/stone",
+		byTool: {
+			"Pickaxe": { hit: "block/rock-hit-pickaxe", break: "block/rock-break-pickaxe" }
+		}
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

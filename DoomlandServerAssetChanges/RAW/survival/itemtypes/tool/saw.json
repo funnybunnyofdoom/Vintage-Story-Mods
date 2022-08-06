@@ -1,0 +1,115 @@
+{
+	code: "saw",
+	tool: "saw",
+	attributes: {
+		handbook: {
+			groupBy: ["saw-*"]
+		},
+		toolrackTransform: {
+			rotation: { y: 1, z: -1 },
+			translation: { x: -0.35, y: 0.05 },
+			scale: 1.25,
+		}
+	},
+	variantgroups: [
+		{ code: "metal", states: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "gold", "silver", 
+															"iron", "meteoriciron", "steel"
+		  ] },
+	],
+	damagedby: ["blockbreaking", "attacking"],
+	shape: { base: "item/tool/saw" },
+	heldTpHitAnimation: "breaktool",
+	texturesByType: {
+		"*": {
+			"metal": { base: "block/metal/ingot/{metal}" }
+		}
+	},
+	tooltierbytype: {
+		"saw-copper": 2,
+		"saw-gold": 2,
+		"saw-silver": 2,
+		"saw-bismuthbronze": 3,
+		"saw-tinbronze": 3,
+		"saw-blackbronze": 3,
+		"saw-iron": 4,
+		"saw-meteoriciron": 4,
+		"saw-steel": 5
+	},
+	miningspeedbytype: {
+		"*-stone": {
+			"wood": 3,
+			"leaves": 1.6
+		},
+		"*-copper": {
+			"wood": 4,
+			"leaves": 2.4
+		},
+		"*-bismuthbronze": {
+			"wood": 4.4,
+			"leaves": 2.6
+		},
+		"*-tinbronze": {
+			"wood": 4.6,
+			"leaves": 3
+		},
+		"*-silver": {
+			"wood": 4.6,
+			"leaves": 3
+		},
+		"*-gold": {
+			"wood": 4.6,
+			"leaves": 3
+		},
+		"*-blackbronze": {
+			"wood": 4.7,
+			"leaves": 3.1
+		},
+		"*-iron": {
+			"wood": 5,
+			"leaves": 3.2
+		},
+		"*-meteoriciron": {
+			"wood": 5.5,
+			"leaves": 3.6
+		},
+		"*-steel": {
+			"wood": 6,
+			"leaves": 4
+		}
+	},
+	durabilitybytype: {
+		"saw-gold": 70,
+		"saw-silver": 90,
+		"saw-copper": 250,
+		"saw-tinbronze": 400,
+		"saw-bismuthbronze": 450,
+		"saw-blackbronze": 500,
+		"saw-iron": 900,
+		"saw-meteoriciron": 1200,
+		"saw-steel": 2250
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	fpHandTransform: {
+		translation: { x: 0.0468, y: 0, z: 0 },
+		rotation: { x: -161, y: 20, z: 90 },
+		scale: 2.5
+	},
+	guiTransform: {
+		rotate: false,
+		translation: { x: 1, y: 0, z: 0 },
+		rotation: { x: -77, y: 47, z: -151 },
+		origin: { x: 0.5, y: 0.5, z: 0.38 },
+		scale: 1.9
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.45, z: 0.5 },
+		scale: 3.6
+	},
+	tpHandTransform: {
+		translation: { x: -0.65, y: -0.62, z: -0.45 },
+		rotation: { x: 90, y: -174, z: 0 },
+		scale: 1
+	}
+}

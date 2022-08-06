@@ -1,0 +1,65 @@
+{
+	code: "churn",
+	handbook: { exclude: true },
+	behaviors: [
+		{name: "UnstableFalling"},
+		{name: "HorizontalOrientable", properties: {  dropBlockFace: "west" }}
+	],
+	heldTpIdleAnimation: "holdunderarm",
+	blockmaterial: "Wood",
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" },
+		{ code:"state", states: ["closed", "opened"] }
+	],
+	notcreativeinventory: { "general": ["*-south-opened", "*-south-closed"], "decorative": ["*-south-opened", "*-south-closed"] },
+	shapeByType: {
+		"*-north-closed": { base: "block/wood/mechanics/churn-closed", rotateY: 0 },
+		"*-east-closed": { base: "block/wood/mechanics/churn-closed", rotateY: 270 },
+		"*-south-closed": { base: "block/wood/mechanics/churn-closed", rotateY: 180 },
+		"*-west-closed": { base: "block/wood/mechanics/churn-closed", rotateY: 90 },
+
+		"*-north-opened": { base: "block/wood/mechanics/churn-opened", rotateY: 0 },
+		"*-east-opened": { base: "block/wood/mechanics/churn-opened", rotateY: 270 },
+		"*-south-opened": { base: "block/wood/mechanics/churn-opened", rotateY: 180 },
+		"*-west-opened": { base: "block/wood/mechanics/churn-opened", rotateY: 90 },
+	},
+	replaceable: 900,
+	resistance: 1.5,
+	lightAbsorption: 1,
+	sidesolid: {
+		all: false
+	},	
+	sideopaque: {
+		all: false
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 30,
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	materialDensity: 400,
+	selectionbox: { x1: 0.0, y1: 0, z1: 0.0, x2: 1.0, y2: 0.5625, z2: 1.0 },
+	collisionbox: { x1: 0.0, y1: 0, z1: 0.0, x2: 1.0, y2: 0.5625, z2: 1.0 },
+	guiTransform: {
+		translation: { x: 0, y: 2, z: 0 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 }
+	},
+	groundTransform: {
+		scale: 1.7
+	},
+	tpHandTransform: {
+		translation: { x: -0.8, y: -0.42, z: -0.39 },
+		rotation: { x: -8, y: 75, z: -101 },
+		scale: 0.62
+	},
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.25, z: 0.7 },
+		rotation: { x: 30, y: -42, z: 91 },
+		scale: 1.45
+	}
+}

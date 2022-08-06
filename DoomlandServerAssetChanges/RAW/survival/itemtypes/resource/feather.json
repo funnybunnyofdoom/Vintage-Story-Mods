@@ -1,0 +1,12 @@
+{
+	code: "feather",
+	texture: { base: "item/resource/feather" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 128,
+	materialDensity: 20,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 2,
+	}
+
+}

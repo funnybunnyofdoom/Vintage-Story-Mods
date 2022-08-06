@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "WW	WW	WW",
+	ingredients: {
+		"W": { type: "item", code: "metalplate-iron" }
+	},
+	width: 2,
+	height: 3,
+	output: { type: "block", code: "irondoor-north-down-closed-left"  }
+}

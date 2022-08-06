@@ -1,0 +1,17 @@
+{
+	"code": "grasscoverage",
+	"variants": [
+		{
+			"code": "none"
+		},
+		{
+			"code": "verysparse"
+		},
+		{
+			"code": "sparse"
+		},
+		{
+			"code": "normal"
+		}
+	]
+}

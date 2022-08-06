@@ -1,0 +1,105 @@
+{
+	code: "labeledchest",
+	class: "BlockLabeledChest",
+	entityclass: "LabeledChest",
+	attributes: {
+		partialAttachable: true,
+		inventoryClassName: "chest",
+		defaultType: "normal-labeled",
+		types: ["normal-labeled"],
+		drop: {
+			"normal-labeled": true,
+		},
+		quantitySlots: {
+			"normal-labeled": 16,
+		},
+		dialogTitleLangCode: {
+			"normal-labeled": "chestcontents",
+		},
+		storageType: {
+			"normal-labeled": 189,
+		},
+		retrieveOnly: {
+			"normal-labeled": false,
+		},
+		shape: {
+			"normal-labeled": "block/wood/chest/normal-labeled",
+		},
+		typedOpenSound: {
+			"normal-labeled": "sounds/block/largechestopen",
+		},
+		typedCloseSound: {
+			"normal-labeled": "sounds/block/largechestclose",
+		},
+		variantByGroup: "side",
+		variantByGroupInventory: null
+	},
+	behaviors: [{name: "Lockable" }, {name: "Container"}, {name: "HorizontalOrientable", properties: {  dropBlockFace: "east" }}],
+	entityBehaviors: [{ name: "Animatable" }],
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: {  },
+	creativeinventoryStacksByType: {
+		"*-east": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "labeledchest-east", attributes: { type: "normal-labeled" } },
+				]
+			}
+		]
+	},
+	heldTpIdleAnimation: "holdunderarm",
+	shapeInventory: { base: "block/wood/chest/normal", rotateY: 270 },
+	shapeByType: {
+		"*-north": { base: "block/wood/chest/normal", rotateY: 0 },
+		"*-east": { base: "block/wood/chest/normal", rotateY: 270 },
+		"*-west": { base: "block/wood/chest/normal", rotateY: 90 },
+		"*-south": { base: "block/wood/chest/normal", rotateY: 180 },
+	},
+	"_comment": "Must declare textures so they get added to the block texture atlas",
+	textures: {
+		"normal-labeled-lid": { base: "block/wood/trunk/lid" },
+		"normal-labeled-sides2": { base: "block/wood/trunk/sides" },
+		"normal-labeled-label": { base: "block/wood/chest/label" },
+		"normal-labeled-accessories": { base: "block/wood/trunk/accessories" },
+	},
+	blockmaterial: "Wood",
+	replaceable: 900,
+	resistance: 3,
+	lightAbsorption: 0,
+	sideAo: { all: false },
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	collisionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	selectionbox: {
+		x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.8125, z2: 0.9375
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 35,
+	},
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	materialDensity: 600,
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.5, z: -0.3 },
+		rotation: { x: 0, y: 90, z: -102 },
+		scale: 0.56
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.4, z: 0.5 },
+		scale: 1.16
+	}
+}

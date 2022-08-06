@@ -1,0 +1,63 @@
+[
+	{
+		code: "whitemarble",
+		triesPerChunk: 0.1,
+		generator: "disc-followsurface",
+		attributes: {
+			inblock: { code: "rock-phyllite" },
+			placeblock: { code: "rock-whitemarble" },
+			radius: { dist: "gaussian", avg: 24, var: 12 },
+			yPosRel: {dist: "uniform", avg: 0.4, var: 0.8 },
+			thickness: { dist: "invexp", avg: 2.5, var: 6 }
+		}
+	},
+	{
+		code: "whitemarble",
+		triesPerChunk: 0.06,
+		generator: "disc-followsurface",
+		attributes: {
+			inblock: { code: "rock-slate" },
+			placeblock: { code: "rock-whitemarble" },
+			radius: { dist: "gaussian", avg: 24, var: 12 },
+			yPosRel: {dist: "uniform", avg: 0.4, var: 0.8 },
+			thickness: { dist: "invexp", avg: 2.5, var: 6 }
+		}
+	},
+	{
+		code: "redmarble",
+		triesPerChunk: 0.03,
+		generator: "disc-followsurface",
+		attributes: {	
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["slate", "phyllite"] },
+			placeblock: { code: "rock-redmarble" },
+			
+			radius: { dist: "gaussian", avg: 24, var: 12 },
+			yPosRel: {dist: "uniform", avg: 0.4, var: 0.8 },
+			thickness: { dist: "invexp", avg: 2.5, var: 6 }
+		}
+	},
+	{
+		code: "greenmarble",
+		generator: "disc-followsurface",
+		triesPerChunk: 0.02,
+		attributes: {
+			inblock: { code: "rock-slate" },
+			placeblock: { code: "rock-greenmarble" },
+			radius: { dist: "gaussian", avg: 24, var: 12 },
+			yPosRel: {dist: "uniform", avg: 0.4, var: 0.8 },
+			thickness: { dist: "invexp", avg: 2.5, var: 6 }
+		}
+	},
+	{
+		code: "greenmarble",
+		triesPerChunk: 0.01,
+		generator: "disc-followsurface",
+		attributes: {	
+			inblock: { code: "rock-phyllite" },
+			placeblock: { code: "rock-greenmarble" },
+			radius: { dist: "gaussian", avg: 24, var: 12 },
+			yPosRel: {dist: "uniform", avg: 0.4, var: 0.8 },
+			thickness: { dist: "invexp", avg: 2.5, var: 6 }
+		}
+	}
+]

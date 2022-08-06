@@ -1,0 +1,25 @@
+{
+	code: "jam",
+	perishableProps: {
+		freshHours: { avg: 1080 },
+		transitionHours: { avg: 180 },
+		transitionRatio: 1,
+		transitionedStack: { type: "item", code: "rot" }
+	},
+	shape: { base: "block/food/meal/jam" },
+	ingredients: [
+		{ 
+			code: "honey", 
+			validStacks: [  { type: "item", code: "honeyportion",  shapeElement: "bowl/honey", cookedStack: { type: "item", code: "jamhoneyportion" } } ],
+			minQuantity: 2,
+			maxQuantity: 2,
+			portionSizeLitres: 0.2,
+		},
+		{
+			code: "fruit", 
+			validStacks: [ { type: "item", code: "fruit-*",  shapeElement: "bowl/fruit" } ],
+			minQuantity: 2,
+			maxQuantity: 2
+		}
+	]
+}

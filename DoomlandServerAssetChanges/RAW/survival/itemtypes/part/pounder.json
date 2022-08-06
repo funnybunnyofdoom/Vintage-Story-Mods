@@ -1,0 +1,34 @@
+{
+	code: "pounder",
+	variantgroups: [
+		{ code: "wood", states: ["oak" ] },
+	],
+	shape: { base: "block/wood/mechanics/pulverizer-pounder-inv" },
+	creativeinventory: { "general": ["*"], "items": ["*"], "mechanics": ["*"] },
+	heldTpIdleAnimation: "holdunderarm",
+	attackRange: 3,
+	fpHandTransform: {
+		translation: { x: -0.18, y: -0.5, z: 0.26 },
+		rotation: { x: 25, y: 1, z: 0 },
+		origin: { x: 1, y: 0.3, z: 1 },
+		scale: 2
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 134, y: -180, z: 40 },
+		origin: { x: 0.57, y: 0.35, z: 0.54 },
+		scale: 2.54
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 90 },
+		origin: { x: 0.4, y: 1.42, z: 0.4 },
+		scale: 4
+	},
+	tpHandTransform: {
+		translation: { x: -0.39, y: -0.1, z: -0.5 },
+		rotation: { x: 3, y: 6, z: -8 },
+		origin: { x: 0.4, y: -0.1, z: 0.5 },
+		scale: 0.85
+	}
+}

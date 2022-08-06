@@ -1,0 +1,16 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["copper", "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel"] },
+	pattern: [[
+		"###_###_###",
+		"###_###_###",
+		"_#___#___#_",
+		"###_###_###",
+		"###_###_###",
+		"_#___#___#_",
+		"###_###_###",
+		"###_###_###",
+		"_#___#___#_",		
+	]],
+	name: "scales",
+	output: { type: "item", code: "metalscale-{metal}", stacksize: 2  }
+}

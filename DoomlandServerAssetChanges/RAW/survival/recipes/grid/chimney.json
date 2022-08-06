@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "_B_	CBC	BBB",
+	ingredients: {
+		"C": { type: "item", code: "clay-*" },
+		"B": { type: "item", code: "burnedbrick-*", name: "type" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "claybrickchimney-{type}-unlit-ns" }
+}

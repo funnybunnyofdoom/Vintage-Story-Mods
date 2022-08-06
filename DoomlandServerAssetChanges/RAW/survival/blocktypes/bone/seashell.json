@@ -1,0 +1,61 @@
+{
+	code: "seashell",
+	class: "BlockSeashell",
+	behaviors: [{name: "UnstableFalling"}, {name: "RightClickPickup"}],
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	attributes: {
+		displaycaseable: true,
+		shelvable: true,
+		handbook: {
+			groupBy: ["seashell-{type}-*"]
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["scallop", "sundial", "turritella", "clam", "conch", "seastar", "volute"] },
+		{ code: "color", states: ["latte", "plain", "seafoam", "darkpurple", "cinnamon", "turquoise"  ] }
+	],
+	shape: {
+		base: "block/seashell/{type}",
+		alternates: [
+			{ base: "block/seashell/{type}", rotateY: 30 },
+			{ base: "block/seashell/{type}", rotateY: 90 },
+			{ base: "block/seashell/{type}", rotateY: 150 },
+			{ base: "block/seashell/{type}", rotateY: 210 },
+			{ base: "block/seashell/{type}", rotateY: 270 },
+			{ base: "block/seashell/{type}", rotateY: 330 }
+		]
+	},
+	doNotRenderAtLod2: true,
+	textures: {
+		color: { base: "block/tradegoods/seashell/{color}" }
+	},
+	grindingProps: {
+		groundStack: { type: "item", code: "lime", stacksize: 2 }
+	},
+	randomDrawOffset: true,
+	lightAbsorption: 0,
+	resistance: 0.15,
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	selectionbox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.25, z2: 0.75 },
+	collisionbox: null,
+	materialDensity: 3000,
+	guiTransform: {
+		rotation: { x: -43, y: 132, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 2.7
+	},
+	fpHandTransform: {
+		rotation: { x: 0, y: -24, z: 0 }
+	},
+	tpHandTransform: {
+		translation: { x: -0.87, y: 0.04, z: -0.8 },
+		rotation: { x: 2, y: 31, z: -25 },
+		origin: { x: 0.5, y: -0.1, z: 0.5 },
+		scale: 0.6
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3
+	}
+}

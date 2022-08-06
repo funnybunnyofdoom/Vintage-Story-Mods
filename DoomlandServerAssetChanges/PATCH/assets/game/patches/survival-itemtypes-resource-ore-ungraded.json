@@ -1,0 +1,20 @@
+[
+  {
+    "op": "replace",
+    "path": "/combustiblePropsByType/ore-anthracite/burnDuration",
+    "value": 1000,
+    "file": "itemtypes/resource/ore-ungraded.json"
+  },
+  {
+    "op": "replace",
+    "path": "/combustiblePropsByType/ore-bituminouscoal/burnDuration",
+    "value": 420,
+    "file": "itemtypes/resource/ore-ungraded.json"
+  },
+  {
+    "op": "replace",
+    "path": "/combustiblePropsByType/ore-lignite/burnDuration",
+    "value": 380,
+    "file": "itemtypes/resource/ore-ungraded.json"
+  }
+]

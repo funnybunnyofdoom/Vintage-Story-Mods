@@ -1,0 +1,50 @@
+[
+	{
+		code: "dye-purple",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 4 },
+			{ type: "item", code: "fruit-blueberry", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-purple", litres: 4 }
+	},
+	{
+		code: "dye-purple",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "item", code: "fruit-blueberry", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-purple", litres: 2 }
+	},
+	{
+		code: "dye-purple",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "item", code: "fruit-blueberry", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-purple", litres: 3 }
+	},
+	{
+		code: "dye-purple",
+		ingredients: [
+			{ type: "item", code: "dilutedalumportion", litres: 4 },
+			{ type: "item", code: "fruit-blackcurrant", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-purple", litres: 4 }
+	},
+	{
+		code: "dye-purple",
+		ingredients: [
+			{ type: "item", code: "dilutedcassiteriteportion", litres: 2 },
+			{ type: "item", code: "fruit-blackcurrant", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-purple", litres: 2 }
+	},
+	{
+		code: "dye-purple",
+		ingredients: [
+			{ type: "item", code: "dilutedchromiteportion", litres: 3 },
+			{ type: "item", code: "fruit-blackcurrant", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-purple", litres: 3 }
+	}
+]

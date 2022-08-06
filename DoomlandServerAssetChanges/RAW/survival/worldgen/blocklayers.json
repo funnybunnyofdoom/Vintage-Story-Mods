@@ -1,0 +1,178 @@
+{
+	tallgrass: {
+		rndWeight: 0.15,
+		perlinWeight: 1,
+		blockCodeByMin: [
+			{ minTemp: 20, minRain: 0.4, maxForest: 0.3, blockCode: "tallgrass-verytall-free" },
+			{ minTemp: 15, minRain: 0.4, maxForest: 0.4, blockCode: "tallgrass-tall-free" },
+			{ minTemp: 2, minRain: 0.4, maxForest: 0.6, blockCode: "tallgrass-medium-free" },
+			{ minTemp: -7, minRain: 0.4, maxForest: 0.8, blockCode: "tallgrass-mediumshort-free" },
+			{ minTemp: -13, minRain: 0.35, maxForest: 1, blockCode: "tallgrass-short-free" },
+			{ minTemp: -16, minRain: 0.2, maxForest: 1, blockCode: "tallgrass-veryshort-free" }
+		]
+	},
+	lakebedlayer: {
+		blockCodeByMin: [
+			{ minTemp: -2, minRain: 0.4, maxY:0.7, blockCode: "muddygravel" },
+			{ minTemp: 20, maxRain: 0.3, blockCode: "sand-{rocktype}" },
+			{ minTemp: -30, minY: 0, maxY: 0.9, minRain: 0, blockCode: "gravel-{rocktype}" }
+		]
+	},
+	snowlayer: {
+		maxTemp: 2,
+		transitionSize: 3,
+		blockCode: "snowlayer-1"
+	},
+	beachlayer: {
+		strength: 1,
+		blockCode: "sand-{rocktype}"
+	},
+	v1dot8blockLayerTransitionSize: 0.015625,
+	blockLayerTransitionSize: 0,
+	blocklayers: [
+		{
+			name: "L1 Soil with grass",
+			id: "l1soilwithgrass",
+			blockCodeByMin: [
+				{ minTemp: -4, minRain: 0.33, minFertility: 0.5, blockCode: "soil-medium-normal" },
+				{ minTemp: -7, minRain: 0.19, minFertility: 0.5, blockCode: "soil-medium-sparse" },
+				{ minTemp: -10, minRain: 0.12, minFertility: 0.5, blockCode: "soil-medium-verysparse" },
+
+				{ minTemp: -4, minRain: 0.33, minFertility: 0.25, blockCode: "soil-low-normal" },
+				{ minTemp: -7, minRain: 0.19, minFertility: 0.25, blockCode: "soil-low-sparse" },
+				{ minTemp: -10, minRain: 0.12, minFertility: 0.25, blockCode: "soil-low-verysparse" },
+			],
+			minFertility: 0.22,
+			minTemp: -10,
+			minRain: 0.08,
+			maxY: 0.91
+		},
+		{
+			name: "L1 Snow",
+			id: "l1snow",
+			blockCode: "snowblock",
+			minFertility: 0,
+			minTemp: -30,
+			maxTemp: -16,
+			maxY: 1,
+			maxRain: 1
+		},
+		{
+			name: "L2 Ice",
+			id: "l2ice",
+			blockCode: "glacierice",
+			minFertility: 0,
+			minTemp: -30,
+			maxTemp: -20,
+			maxY: 0.66
+		},
+		{
+			name: "L1 Infertile Soil",
+			id: "l1infertilesoil",
+			blockCodeByMin: [
+				{ minTemp: 8,  blockCode: "sand-{rocktype}" },
+				{ minTemp: -15, blockCode: "gravel-{rocktype}" },
+			],
+			minFertility: 0,
+			minTemp: -15,
+			maxFertility: 0.25,
+			maxY: 0.7
+		},
+		{
+			name: "L2 Infertile Soil",
+			id: "l2infertilesoil",
+			blockCodeByMin: [
+				{ minTemp: 10, blockCode: "sand-{rocktype}" },
+				{ minTemp: -12, blockCode: "gravel-{rocktype}" },
+			],
+			minFertility: 0,
+			minTemp: -12,
+			maxFertility: 0.25,
+			maxY: 0.5,
+			maxRain: 0.66
+		},
+		{
+			name: "L2 Subsoil",
+			id: "l2subsoil",
+			blockCodeByMin: [
+				{ minRain: 0.19, minFertility: 0.5, blockCode: "soil-medium-none" },
+				{ minRain: 0.12, minFertility: 0.3, blockCode: "soil-low-none" },
+			],
+			minFertility: 0.235,
+			minTemp: -10,
+			maxY: 0.8
+		},
+		{
+			name: "L3 Subsoil",
+			id: "l3subsoil",
+			blockCodeByMin: [
+				{ minRain: 0.19, minFertility: 0.5, blockCode: "soil-medium-none" },
+				{ minRain: 0.12, minFertility: 0.3, blockCode: "soil-low-none" },
+			],
+			minFertility: 0.25,
+			minTemp: -10,
+			maxY: 0.7
+		},
+		{
+			name: "L3 Infertile Soil",
+			id: "l3infertilesoil",
+			blockCodeByMin: [
+				{ minTemp: 12, blockCode: "sand-{rocktype}" },
+				{ minTemp: -10, blockCode: "gravel-{rocktype}" },
+			],
+			minFertility: 0,
+			minTemp: -12,
+			maxFertility: 0.25,
+			maxY: 0.4,
+			maxRain: 0.66
+		},
+		{
+			name: "L4 Infertile Soil",
+			id: "l4infertilesoil",
+			blockCodeByMin: [
+				{ minTemp: 12, blockCode: "sand-{rocktype}" },
+				{ minTemp: -10, blockCode: "gravel-{rocktype}" },
+			],
+			minFertility: 0,
+			minTemp: -12,
+			maxFertility: 0.25,
+			maxY: 0.4,
+			maxRain: 0.66
+		},
+		{
+			name: "L4 Gravel",
+			id: "l4gravel",
+			blockCode: "gravel-{rocktype}",
+			minFertility: 0,
+			minTemp: -2,
+			maxY: 0.78,
+			maxRain: 0.235
+		},
+		{
+			name: "L4 Glacier",
+			id: "l4glacier",
+			blockCode: "glacierice",
+			minFertility: 0,
+			minTemp: -30,
+			maxTemp: -12,
+		},
+		{
+			name: "L5 Glacier",
+			id: "l5glacier",
+			blockCode: "glacierice",
+			minFertility: 0,
+			minTemp: -30,
+			maxTemp: -14,
+		},
+		{
+			name: "L6 Glacier",
+			id: "l6glacier",			
+			blockCode: "glacierice",
+			minFertility: 0,
+			minTemp: -30,
+			maxTemp: -16,
+			maxY: 0.9
+		},
+
+	]
+}

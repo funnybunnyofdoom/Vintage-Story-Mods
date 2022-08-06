@@ -1,0 +1,163 @@
+{
+	code: "hoe",
+	class: "ItemHoe",
+	heldTpUseAnimation: "hoe",
+	attributes: {
+		handbook: {
+			groupBy: ["hoe-*"]
+		},
+		toolrackTransformByType: {
+			"@hoe-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+				rotation: { y: 1, z: -1 },
+				translation: { x: -0.25, y: 0.6 },
+				scale: 1.25,
+			},
+			"*": {
+				rotation: { y: 1, z: -1 },
+				translation: { x: -0.35, y: 0.6 },
+				scale: 1.25,
+			}
+		}
+	},
+	variantgroups: [
+		{ code: "material", states: ["chert", "granite", "andesite", "basalt", "obsidian", "peridotite", "flint", "copper", 
+																 "tinbronze", "bismuthbronze", "blackbronze", "gold", "silver", "iron", "meteoriciron", 
+																 "steel"
+		  ] },
+	],
+	damagedby: ["blockbreaking", "attacking"],
+	shapeByType: {
+		"*-chert": { "base": "item/tool/hoe-stone" },
+		"*-granite": { "base": "item/tool/hoe-stone" },
+		"*-andesite": { "base": "item/tool/hoe-stone" },
+		"*-basalt": { "base": "item/tool/hoe-stone" },
+		"*-obsidian": { "base": "item/tool/hoe-stone" },
+		"*-peridotite": { "base": "item/tool/hoe-stone" },
+		"*-flint": { "base": "item/tool/hoe-stone" },
+		"*-copper": { "base": "item/tool/hoe-copper" },
+		"*-tinbronze": { "base": "item/tool/hoe-copper" },
+		"*-bismuthbronze": { "base": "item/tool/hoe-copper" },
+		"*-blackbronze": { "base": "item/tool/hoe-copper" },
+		"*-gold": { "base": "item/tool/hoe-copper" },
+		"*-silver": { "base": "item/tool/hoe-copper" },
+		"*-iron": { "base": "item/tool/hoe-copper" },
+		"*-meteoriciron": { "base": "item/tool/hoe-copper" },
+		"*-steel": { "base": "item/tool/hoe-copper" }
+	},
+	heldTpHitAnimation: "breaktool",
+	texturesByType: {
+		"*-flint": {
+			"material": { "base": "block/stone/{material}" }
+		},
+		"@hoe-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+			"material": { base: "block/metal/ingot/{material}" }
+		},
+		"*": {
+			"material": { "base": "block/stone/rock/{material}1" }
+		},
+	},
+	tool: "hoe",
+	miningspeedbytype: {
+		"@hoe-(granite|andesite|basalt|obsidian|peridotite|flint)": {
+			"soil": 2.2
+		},
+		"hoe-copper": {
+			"soil": 2.6
+		},
+		"hoe-bismuthbronze": {
+			"soil": 3.2
+		},
+		"hoe-tinbronze": {
+			"soil": 3.6
+		},
+		"hoe-gold": {
+			"soil": 3.6
+		},
+		"hoe-silver": {
+			"soil": 3.6
+		},
+		"hoe-blackbronze": {
+			"soil": 3.6
+		},
+		"hoe-iron": {
+			"soil": 4
+		},
+		"hoe-meteoriciron": {
+			"soil": 4.15
+		},
+		"hoe-steel": {
+			"soil": 4.4
+		}
+	},
+	durabilitybytype: {
+		"hoe-chert": 30,
+		"hoe-granite": 30,
+		"hoe-andesite": 30,
+		"hoe-basalt": 35,
+		"hoe-obsidian": 50,
+		"hoe-peridotite": 30,
+		"hoe-flint": 40,
+		
+		"hoe-gold": 90,
+		"hoe-silver": 90,
+		"hoe-copper": 200,
+		"hoe-tinbronze": 280,
+		"hoe-bismuthbronze": 300,
+		"hoe-blackbronze": 330,
+		"hoe-iron": 500,
+		"hoe-meteoriciron": 600,
+		"hoe-steel": 1250
+	},
+	attackpowerbytype: {
+		"@hoe-(chert|granite|andesite|basalt|obsidian|peridotite|flint)": 1,
+		
+		"hoe-copper": 1.25,
+		"hoe-gold": 1.5,
+		"hoe-silver": 1.5,
+		"hoe-bismuthbronze": 1.5,
+		"hoe-tinbronze": 1.75,
+		"hoe-blackbronze": 2,
+		"hoe-iron": 2.25,
+		"hoe-metoriciron": 2.3,
+		"hoe-steel": 2.5
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.2, z: 0 },
+		rotation: { x: -7, y: 16, z: 90 },
+		scale: 2.5
+	},
+	guiTransformByType: {
+		"@hoe-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -56, y: -127, z: -180 },
+			origin: { x: 0.35, y: 0, z: 0.55 },
+			scale: 1.43
+		},
+		"*": {
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -66, y: -130, z: -180 },
+			origin: { x: 0.55, y: 0, z: 0.52 },
+			scale: 1.6
+		}
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3.6
+	},
+	tpHandTransformByType: {
+		"@hoe-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+			translation: { x: -1, y: -0.5, z: -0.08 },
+			rotation: { x: 90, y: 0, z: -5 },
+			scale: 1
+		},
+		"*": {
+			translation: { x: -0.8, y: -0.5, z: -0.1 },
+			rotation: { x: 90, y: 0, z: -10 },
+			scale: 1
+		},
+	}
+}

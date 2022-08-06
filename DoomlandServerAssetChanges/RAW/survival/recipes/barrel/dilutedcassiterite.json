@@ -1,0 +1,8 @@
+{
+	code: "dilutedcassiterite",
+	ingredients: [
+		{ type: "item", code: "waterportion",  litres: 5 },
+		{ type: "item", code: "crushed-cassiterite", quantity: 3 }
+	],
+	output: { type: "item", code: "dilutedcassiteriteportion", litres: 5 }
+}

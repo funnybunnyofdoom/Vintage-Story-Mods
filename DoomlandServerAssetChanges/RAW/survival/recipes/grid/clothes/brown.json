@@ -1,0 +1,59 @@
+[
+	{
+		ingredientPattern: "B_B,B_B",
+		ingredients: {
+			"B": { type: "item", code: "cloth-brown", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-lowerbody-workmans-gown"  }
+	},
+	{
+		ingredientPattern: "B_B",
+		ingredients: {
+			"B": { type: "item", code: "cloth-brown", quantity: 1 }
+		},
+		width: 3,
+		height: 1,
+		output: { type: "item", code: "clothes-foot-peasent-slippers"  }
+	},
+	{
+		ingredientPattern: "B_B,BCB",
+		ingredients: {
+			"B": { type: "item", code: "cloth-brown", quantity: 1 },
+			"C": { type: "item", code: "cloth-blue", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbody-earth-toned-robe"  }
+	},
+	{
+		ingredientPattern: "B_B,BHB",
+		ingredients: {
+			"B": { type: "item", code: "cloth-brown", quantity: 1 },
+			"H": { type: "item", code: "hide-raw-*", allowedVariants: ["medium", "large", "huge"] }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbodyover-warm-robe"  }
+	},
+	{
+		ingredientPattern: "B_B,BBB",
+		ingredients: {
+			"B": { type: "item", code: "cloth-brown", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-shoulder-jord-robe"  }
+	},
+	{
+		ingredientPattern: "BCB,_B_",
+		ingredients: {
+			"B": { type: "item", code: "cloth-brown", quantity: 1 },
+			"C": { type: "item", code: "cloth-blue", quantity: 1 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-shoulder-hooded-cape"  }
+	}
+]

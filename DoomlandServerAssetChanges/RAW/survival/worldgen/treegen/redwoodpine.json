@@ -1,0 +1,59 @@
+{
+	treeWorldPropertyCode: "redwoodpine",
+	sizeMultiplier: 1.82,
+	yOffset: -2,
+	trunks: [{
+		widthloss: 0.047,
+		dx: 0.5,
+		dz: 0.5,
+		segment: 4,
+		dieAt: { avg: 0.05 },
+		branchStart: { dist: "gaussian", avg: 0.45, var: 0.2 },
+		branchSpacing: { avg: 0.15, var: 0.005 },
+		branchVerticalAngle:  { dist: "gaussian", avg: 1.57, var: 0.3 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+		branchWidthMultiplier: { avg: 0.3, var: 0 },
+		branchWidthMultiplierEvolve: { transform: "linear", factor: 0.4 },
+		branchQuantity: { avg: 2, var: 0 },
+		branchQuantityEvolve: { transform: "quadratic", factor: 0.3 }
+	}, {
+		inherit: { from: 0, skip: ["dx", "dz", "dieAt", "segment"] },
+		dieAt: { avg: 0.2, var: 0.1 },
+		dx: 1.5,
+		dz: 0.5,
+		segment: 1
+	}, {
+		inherit: { from: 0, skip: ["dx", "dz", "dieAt", "segment"] },
+		dieAt: { avg: 0.2, var: 0.1 },
+		dx: 0.5,
+		dz: 1.5,
+		segment: 3,
+	}, {
+		inherit: { from: 0, skip: ["dx", "dz", "dieAt", "segment"] },
+		dieAt: { avg: 0.2, var: 0.1 },
+		dx: 1.5,
+		dz: 1.5,
+		segment: 2
+	}],
+	branches: [{
+		widthLoss: 0.04,
+		gravityDrag: 0.04,
+
+		branchStart:  { avg: 1.25, var: 0.1 },
+		branchSpacing: { avg: 0, var: 0 },
+		branchVerticalAngle: { avg: 1.57, var: 0.5 },
+		branchHorizontalAngle: { avg: 0, var: 3.1415 },
+
+		branchQuantity: { avg: 1, var: 0 },
+		branchWidthMultiplier: { avg: 0.4, var: 0 }
+	}],
+	treeBlocks: {
+		logBlockCode: "log-grown-redwood-ud",
+		leavesBlockCode: "leaves-grown-redwood",
+		leavesBranchyBlockCode: "leavesbranchy-grown-redwood",
+		vinesBlockCode: "wildvine-section-north",
+		vinesEndBlockCode: "wildvine-end-north",
+		trunkSegmentBase: "logsection-grown-redwood-",
+		trunkSegmentVariants: [ "ne", "se", "sw", "nw" ]
+	}
+}

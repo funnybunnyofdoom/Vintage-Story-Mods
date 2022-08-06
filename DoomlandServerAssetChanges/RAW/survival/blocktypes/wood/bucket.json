@@ -1,0 +1,73 @@
+{
+	code: "woodbucket",
+	class: "BlockBucket",
+	behaviors: [
+		{name: "UnstableFalling"}, 
+		{ name: "RightClickPickup"}, 
+		{ name: "MilkingContainer" } 
+	],
+	entityClass: "Bucket",
+	attributes: {
+		liquidContainerProps: {
+			capacityLitres: 10,
+			transferSizeLitres: 1,
+			emptyShapeLoc: "shapes/block/wood/bucket/empty",
+			opaqueContentShapeLoc: "shapes/block/wood/bucket/contents",
+			liquidContentShapeLoc: "shapes/block/wood/bucket/liquidcontents",
+			liquidMaxYTranslate: 0.4375
+		}
+	},
+	creativeinventoryStacks: [
+		{
+			tabs: ["general", "decorative"],
+			stacks: [
+				{ type: "block", code: "woodbucket" },
+			]
+		}
+	],
+	shape: { base: "block/wood/bucket/empty" },
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	blockmaterial: "Wood",
+	textures: {
+		wood: { base: "block/wood/planks/generic" }
+	},
+	replaceable: 500,
+	resistance: 1.5,
+	maxStackSize: 4,
+	liquidSelectable: 1,
+	lightAbsorption: 0,
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	collisionbox: {
+		x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.75, z2: 0.75
+	},
+	selectionbox: {
+		x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.75, z2: 0.75
+	},
+	materialDensity: 400,
+	tpHandTransform: {
+		translation: { x: -0.95, y: -1.06, z: -0.89 },
+		rotation: { x: 0, y: 0, z: 0 },
+		scale: 0.55
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.3, z: 0.5 },
+		scale: 1.75
+	},
+	fpHandTransform: {
+		scale: 1.5
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2
+	}
+}

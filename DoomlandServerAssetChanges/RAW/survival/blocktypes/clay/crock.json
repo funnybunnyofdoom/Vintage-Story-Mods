@@ -1,0 +1,103 @@
+{
+	code: "crock",
+	behaviors: [
+		{ name: "GroundStorable", properties: { layout: 'Quadrants', placeRemoveSound: 'sounds/player/build',	collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.3125, z2: 1 } } },
+		{ name: "Unplaceable", "__comment": "The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility" },
+		{name: "RightClickPickup" }
+	],
+	heldTpIdleAnimation: "holdbothhands",
+	heldTpUseAnimation: "twohandplaceblock",
+	classByType: {
+		"crock-burned-*": "BlockCrock",
+	},
+	entityClassByType: {
+		"crock-burned-*": "Crock",
+	},
+	variantgroups: [
+		{ code:"type", states: ["raw", "burned"] },
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	attributesByType: {
+		"crock-burned-*": {
+			shelvable: true,
+			mealContainer: true,
+			mealBlockCode: "crock-burned-{side}",
+			servingCapacity: 4,
+			bowlContents: null,
+			handleLiquidContainerInteract: true,
+			handleCookingContainerInteract: true,
+			emptiedBlockCode: "crock-burned-{side}",
+		},	
+		"*": {
+			shelvable: true,
+		}
+	},
+	combustiblePropsByType: {
+		"crock-raw-*": {
+			meltingPoint: 600,
+			meltingDuration: 45,
+			smeltedRatio: 1,
+			smeltingType: "fire",
+			smeltedStack: { type: "block", code: "crock-burned-{side}" },
+			requiresContainer: false
+		}
+	},
+	shapeByType: {
+		"*-north": { base: "block/clay/crock/base", rotateY: 0 },
+		"*-east": { base: "block/clay/crock/base", rotateY: 270 },
+		"*-west": { base: "block/clay/crock/base", rotateY: 90 },
+		"*-south": { base: "block/clay/crock/base", rotateY: 180 },
+	},
+	doNotRenderAtLod2: true,
+	blockmaterial: "Ceramic",
+	creativeinventory: { "general": ["crock-raw-east", "crock-burned-east"], "decorative": ["crock-raw-east", "crock-burned-east"] },
+	replaceable: 400,
+	resistance: 1.5,
+	maxStackSizeByType: {
+		"*-raw-*": 8,
+		"*": 1
+	},
+	lightAbsorption: 0,
+	texturesByType: {
+		"*-raw-*": { 
+			ceramic: { base: "block/clay/blueclay" },
+			label: { base: "block/transparent" },
+		},
+		"*": {
+			label: { base: "block/clay/crock/label" }
+		}
+	},
+	sounds: {
+		walk: "walk/stone",
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	emitsideao: {
+		all: false
+	},
+	collisionbox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.3125, z2: 0.75 },
+	selectionbox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.3125, z2: 0.75 },
+	guiTransform: {
+		rotation: { x: -22.6, y: -125, z: 0 },
+		origin: { x: 0.5, y: 0.18, z: 0.5 },
+		scale: 3.09
+	},
+	groundTransform: {
+		scale: 3
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0.5 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2
+	},
+	tpHandTransform: {
+		translation: { x: -0.56, y: -0.03, z: -0.52 },
+		rotation: { x: -139, y: -21, z: -118 },
+		origin: { x: 0.5, y: 0.01, z: 0.5 },
+		scale: 0.81
+	}
+}

@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "WWW,P_P,WWW",
+	ingredients: {
+		"W": { type: "item", code: "plank-*", name: "wood" },
+		"P": { type: "block", code: "planks-*-hor", name: "wood" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "crate", attributes: { lidState: "closed", type: "wood-{wood}" }  }
+}

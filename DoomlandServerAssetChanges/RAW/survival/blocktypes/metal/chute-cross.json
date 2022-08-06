@@ -1,0 +1,66 @@
+{
+	code: "chute",
+	class: "BlockChute",
+	entityclass: "ItemFlow",
+	behaviors: [
+		{ name: "Lockable" }
+	],
+	attributes: {
+		"pullFacesByType": {
+			"*-ns": ["up"],
+			"*-we": ["up"]
+		},
+		"pushFacesByType": {
+			"*-ns": ["down"],
+			"*-we": ["down"],
+			"*-ground": ["north", "east", "south", "west"]
+		},
+		"acceptFromFacesByType": {
+			"*-ns": ["north", "south"],
+			"*-we": ["west", "east"],
+			"*-ground": ["north", "east", "south", "west"]
+		},
+		"item-flowrate": 1,
+		"inventoryClassName": "chute",
+		"quantitySlots": 1,
+	},
+	variantgroups: [
+		{ code: "type", states: ["cross"] },
+		{ code: "side", states: ["ns", "we", "ground"] }
+	],
+	creativeinventory: { "general": ["*-ground"], "mechanics": ["*-ground"] },
+	shapeinventory: { base: "block/metal/chute/{type}", rotateZ: 90  },
+	shapebytype: {
+		"*-ns": { base: "block/metal/chute/{type}", rotateY: 90 },
+		"*-we": { base: "block/metal/chute/{type}", rotateY: 0 },
+		"*-ground": { base: "block/metal/chute/{type}", rotateX: 90 }
+	},
+	textures: {
+		all: { base: "block/metal/sheet/copper1" },
+	},
+	blockmaterial: "Metal",
+	lightAbsorption: 0,
+	drawtype: "json",
+	replaceable: 160,
+	resistance: 1.75,
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	sounds: {
+		"place": "block/chute",
+		"break": "block/chute",
+		"hit": "block/chute",
+		"walk": "game:walk/stone"
+	},
+	collisionselectionboxByType: {
+		"*-ns": { x1: 0.25, y1: 0, z1: 0, x2: 0.75, y2: 1, z2: 1 },
+		"*-we": { x1: 0, y1: 0, z1: 0.25, x2: 1, y2: 1, z2: 0.75 },
+		"*-ground": { x1: 0, y1: 0.25, z1: 0, x2: 1, y2: 0.75, z2: 1 },
+	},
+	guiTransform: {
+		scale: 1.22
+	}
+}

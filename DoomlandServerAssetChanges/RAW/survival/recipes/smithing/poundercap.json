@@ -1,0 +1,16 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel"] },
+	pattern: [[
+		"####",
+		"####",
+		"####",
+		"####"
+	],[
+		"####",
+		"#__#",
+		"#__#",
+		"####"
+	]],
+	name: "Pulverizer pounder cap",
+	output: { type: "item", code: "poundercap-{metal}"  }
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "op": "replace",
+    "path": "/combustibleProps/burnDuration",
+    "value": 40,
+    "file": "itemtypes/resource/stick.json"
+  }
+]

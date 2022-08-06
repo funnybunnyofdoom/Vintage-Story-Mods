@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "GS",
+	ingredients: {
+		"G": { type: "block", code: "glass-*", name: "type", allowedVariants: ["quartz", "plain", "green", "blue", "violet", "red", "yellow", "brown", "vintage"] },
+		"S": { type: "item", code: "saw-*", isTool: true  }
+	},
+	width: 2,
+	height: 1,
+	output: { type: "block", code: "glassslab-{type}-down-free", quantity: 2  }
+}

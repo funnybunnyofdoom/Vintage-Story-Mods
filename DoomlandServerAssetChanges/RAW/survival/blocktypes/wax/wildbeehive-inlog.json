@@ -1,0 +1,43 @@
+{
+	code: "wildbeehive",
+	"comment": "The block class contains code for world generation to make them spawn under branchy leaves and logs and to spawn bees upon breakage",
+	class: "BlockBeehive",
+	"comment": "The entityClass does the spreading mechanic",
+	entityClass: "Beehive",
+	attributes: {
+		treeFellingGroupCode: "{wood}",
+		treeFellingGroupSpreadIndex: 3,
+		handbook: {
+			groupBy: ["wildbeehive-inlog-*"]
+		},
+	},
+	variantgroups: [
+		{ code: "type", states: ["inlog"] },
+		{ code: "wood", loadFromProperties: "block/wood" },
+	],
+	textures: {
+		"bark": { base: "block/wood/bark/{wood}" },
+		"trunk": { base: "block/wood/treetrunk/{wood}" }
+	},
+	shape: { base: "block/beehive/wild-{type}" },
+	creativeinventory: { "general": ["*"], "flora": ["*"], "decorative": ["*"] },
+	blockmaterial: "Other",
+	replaceable: 900,
+	lightAbsorption: 0,
+	resistance: 4.5,
+	sideopaque: { all: false },
+	sidesolid: { all: false },
+	drops: [ 
+		{ type: "item", code: "honeycomb", quantity: { avg: 3 } }
+	],
+	sounds: {
+		"place": "block/planks",
+		"walk": "walk/wood",
+		"ambient": "creature/beehive-wild"
+	},
+	materialDensity: 300,
+	combustibleProps: {
+		burnTemperature: 500,
+		burnDuration: 24,
+	}
+}

@@ -1,0 +1,35 @@
+{
+	code: "compost",
+	heldTpIdleAnimation: "holdbothhands",
+	storageFlags: 5,
+	attributes: {
+		fertilizerProps: { n: 40, p: 8, k: 8 },
+		inContainerTexture: { base: "block/soil/fertcompost" },
+	},
+	shape: { base: "block/plant/dirtmound" },
+	texture: { base: "block/soil/fertcompost" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 64,
+	materialDensity: 500,
+	guiTransform: {
+		translation: { x: 3, y: 0, z: -25 },
+		rotation: { x: 155, y: 12, z: -3 },
+		origin: { x: 0.47, y: -0.1, z: 0.8 },
+		scale: 2.0
+	},
+	fpHandTransform: {
+		rotation: { x: 54, y: 99, z: -33 },
+		scale: 3
+	},
+	tpHandTransform: {
+		translation: { x: -1.15, y: -0.6, z: -0.3 },
+		rotation: { x: 70, y: 11, z: -65 },
+		scale: .8
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.41, z: 0 },
+		rotation: { x: -4, y: 8, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: 0.5299 },
+		scale: 4
+	}
+}

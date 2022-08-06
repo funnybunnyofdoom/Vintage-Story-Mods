@@ -1,0 +1,105 @@
+{
+	code: "spear",
+	class: "EntityProjectile",
+	hitboxSize: { x: 0.125, y: 0.125 },
+	variantgroups: [
+		{ code: "material", states: ["granite", "andesite", "basalt", "obsidian", "peridotite", "chert", "flint", "scrap", 
+																 "copper", "tinbronze", "bismuthbronze", "blackbronze", "ornate-gold", "ornate-silver", 
+																	"bone-granite", "bone-andesite", "bone-basalt", "bone-obsidian", "bone-peridotite", 
+																	"bone-flint", "hacking"
+		  ] },
+	],
+	client: {
+		renderer: "Shape",
+		shapeByType: {
+			"spear-scrap": { base: "item/tool/spear-scrap", offsetX: -0.8125 },
+			"spear-copper": { base: "item/tool/spear-copper", offsetX: -0.8125 },
+			
+			"spear-tinbronze": { base: "item/tool/spear-copper", offsetX: -0.8125 },
+			"spear-bismuthbronze": { base: "item/tool/spear-copper", offsetX: -0.8125 },
+			"spear-blackbronze": { base: "item/tool/spear-copper", offsetX: -0.8125 },
+			"spear-ornate-gold": { base: "item/tool/spear-ornate-gold", offsetX: -0.8125 },
+			"spear-ornate-silver": { base: "item/tool/spear-ornate-silver", offsetX: -0.8125 },
+			"spear-hacking": { base: "item/tool/spear-hacking", offsetX: -0.8125 },
+			"*": { base: "item/tool/spear-stone", offsetX: -0.8125 },
+		},
+		texturesByType: {
+			"spear-granite": {
+				"material": { base: "block/stone/rock/{material}1" },
+			},
+			"spear-chert": {
+				"material": { base: "block/stone/rock/{material}1" },
+			},
+			"spear-andesite": {
+				"material": { base: "block/stone/rock/{material}1" },
+			},
+			"spear-basalt": {
+				"material": { base: "block/stone/rock/{material}1" },
+			},
+			"spear-obsidian": {
+				"material": { base: "block/stone/rock/{material}1" },
+			},
+			"spear-peridotite": {
+				"material": { base: "block/stone/rock/{material}1" },
+			},
+			"spear-flint": {
+				"material": { base: "block/stone/{material}" },
+			},
+			"spear-bone-granite": {
+				"material": { base: "block/stone/rock/granite1" },
+				"handle": { base: "block/bone" }
+			},
+			"spear-bone-andesite": {
+				"material": { base: "block/stone/rock/andesite1" },
+				"handle": { base: "block/bone" }
+			},
+			"spear-bone-basalt": {
+				"material": { base: "block/stone/rock/basalt1" },
+				"handle": { base: "block/bone" }
+			},
+			"spear-bone-obsidian": {
+				"material": { base: "block/stone/rock/obsidian1" },
+				"handle": { base: "block/bone" }
+			},
+			"spear-bone-peridotite": {
+				"material": { base: "block/stone/rock/peridotite1" },
+				"handle": { base: "block/bone" }
+			},
+			"spear-bone-flint": {
+				"material": { base: "block/stone/flint" },
+				"handle": { base: "block/bone" }
+			},
+			"spear-ornate-*": {
+			},
+			"spear-scrap": {
+				"rusty-iron": { base: "block/currency/rusty-iron" }
+			},
+			"spear-hacking": { },
+			"*": {
+				"material": { base: "item/tool/material/{material}" },
+			}
+		},
+		behaviors: [
+			{ 
+				code: "passivephysics", 
+				groundDragFactor: 1,
+				airDragFactor: 0.25,
+				gravityFactor: 0.75
+			}, 
+			{ code: "interpolateposition" }
+		],
+	},
+	server: {
+		behaviors: [
+			{ 
+				code: "passivephysics", 
+				groundDragFactor: 1,
+				airDragFactor: 0.25,
+				gravityFactor: 0.75
+			}, 
+			{ code: "despawn", minSeconds: 600 }
+		]
+	},
+	sounds: {
+	},
+}

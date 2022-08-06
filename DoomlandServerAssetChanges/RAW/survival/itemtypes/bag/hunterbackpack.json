@@ -1,0 +1,37 @@
+{
+	code: "hunterbackpack",
+	maxstacksize: 1,
+	behaviors: [{ name: "GroundStorable", properties: { layout: "SingleCenter", collisionBox: { x1: 0.25, y1: 0, z1: 0.25, x2: 0.75, y2: 0.375, z2: 0.75 }}}],
+	attributes: {
+		wearableAttachment: true,
+		attachShape: { base: "item/bag/hunterbackpack-attached" },
+		backpack: {
+			quantitySlots: 4
+		}
+	},
+	shape: { base: "item/bag/hunterbackpack" },
+	storageFlags: 2,
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	guiTransform: {
+		translation: { x: 3, y: -1, z: 0 },
+		rotation: { x: -20, y: 21, z: 180 },
+		origin: { x: 0.5, y: 0.22, z: 0.5 },
+		scale: 3.3
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0.2 },
+		rotation: { x: 20, y: -73, z: 10 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: -0.6, y: -0.3, z: -0.5 },
+		rotation: { x: -14, y: 51, z: -21 },
+		scale: 1.07
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 180, y: 33, z: -180 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.4
+	}
+}

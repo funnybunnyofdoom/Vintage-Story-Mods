@@ -1,0 +1,29 @@
+[
+	{
+		ingredientPattern: "G_G	CSC	GLG",
+		enabled: true,
+		ingredients: {
+			"G": { type: "item", code: "drygrass", quantity: 2  },
+			"S": { type: "block", code: "sand-*" },
+			"C": { type: "item", code: "clay-*", quantity: 4  },
+			"L": { type: "block", code: "soil-*-none", name: "grade", allowedVariants: ["low", "medium"]  }
+		},
+		name: "mudbrick",
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "mudbrick-light", quantity: 4  }
+	},
+	{
+	ingredientPattern: "G_G	CLC	G_G",
+	enabled: true,
+	ingredients: {
+		"G": { type: "item", code: "drygrass", quantity: 2 },
+		"C": { type: "item", code: "clay-*", quantity: 2 },
+		"L": { type: "block", code: "soil-*-none", name: "grade", allowedVariants: ["low", "medium"]  }
+	},
+	name: "mudbrick",
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "mudbrick-dark", quantity: 4  }
+	}
+]

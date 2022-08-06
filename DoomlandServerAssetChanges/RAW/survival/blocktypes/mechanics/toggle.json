@@ -1,0 +1,67 @@
+{
+	code: "woodentoggle",
+	class: "BlockToggle",
+	entityClass: "Generic",
+	entityBehaviors: [{ name: "MPToggle" }],
+	behaviors: [{name: "NWOrientable" }],
+	attributes: {
+		handbook: {
+			groupBy: ["woddentoggle-*"]
+		}
+	},
+	creativeinventory: { "general": ["*-ns"], "mechanics": ["*-ns"] },
+	variantgroups: [
+		{ code:"orientation", states: ["ns", "we"] },
+	],
+	shapeInventory: {
+		base: "block/wood/mechanics/toggle-inventory"
+	},
+	shapeByType: {
+		"*-ns": { base: "block/wood/mechanics/toggle-moving", rotateY: 90 },
+		"*-we": { base: "block/wood/mechanics/toggle-moving", rotateY: 0 },
+	},
+	blockmaterial: "Wood",
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock", 
+	textures: {
+		wood: { base: "block/wood/planks/generic" },
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	rainPermeable: true,
+	resistance: 3.5,
+	lightAbsorption: 0,
+	maxStackSize: 1,
+	drops: [
+		{ type: "block", code: "woodentoggle-ns", quantity: { avg: 1 }  }
+	],
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -90, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.45, z: 0.38 },
+		scale: 2.7
+	},
+	guiTransform: {
+		rotation: { x: -43, y: 45, z: 1 },
+		scale: 0.96
+	},
+	tpHandTransform: {
+		translation: { x: -1.2, y: -0.4, z: -0.6 },
+		rotation: { x: -90, y: 11, z: -103 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 },
+		scale: 0.42
+	},
+	collisionSelectionBoxByType: {
+		"*-we": { x1: 0, y1: 0, z1: 0.25, x2: 1, y2: 0.875, z2: 0.75 },
+		"*-ns": { x1: 0, y1: 0, z1: 0.25, x2: 1, y2: 0.875, z2: 0.75, rotateY: 90 },
+	},
+	sounds: {
+		"hit": "block/planks",
+		"break": "block/planks",
+		"place": "block/planks",
+		"walk": "walk/wood"
+	}
+}

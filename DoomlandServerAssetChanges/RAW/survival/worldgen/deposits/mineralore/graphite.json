@@ -1,0 +1,17 @@
+[
+	{
+		code: "graphite",
+		triesPerChunk: 6,
+		withOreMap: true,
+		handbookPageCode: "item-ore-graphite",
+		generator: "disc-followsealevel",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["phyllite", "slate", "whitemarble", "redmarble", "greenmarble"] },
+			placeblock: { code: "ore-graphite-{rock}" },
+			surfaceBlock: { code: "looseores-graphite-{rock}-free" },
+			radius: { dist: "gaussian", avg: 8, var: 2 },
+			yPosRel: {dist: "uniform", avg: 0.45, var: 0.4 },
+			thickness: { dist: "uniform", avg: 1, var: 0 },
+		}
+	}
+]

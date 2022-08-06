@@ -1,0 +1,40 @@
+{
+	code: "oakbark",
+	maxstacksize: 64,
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	shape: { base: "item/oakbark" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 600,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	guiTransform: {
+		translation: { x: 3, y: 0, z: 0 },
+		rotation: { x: 44, y: 13, z: 24 },
+		origin: { x: 0.5, y: 0.43, z: 0.51 },
+		scale: 2.21
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 14, y: 15, z: 0 },
+		origin: { x: 0.9, y: 0.4, z: 0.4 },
+		scale: 1.5
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -89, y: -11, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 10, y: 36, z: 13 },
+		origin: { x: 0.12, y: -0.8, z: 0.074 },
+		scale: 0.52
+	}
+}

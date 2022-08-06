@@ -1,0 +1,8 @@
+[
+  {
+    "op": "replace",
+    "path": "/combustibleProps/burnDuration",
+    "value": 200,
+    "file": "itemtypes/resource/coke.json"
+  }
+]

@@ -1,0 +1,126 @@
+{
+	code: "storagevessel",
+	classByType: {
+		"*-raw": "Block",
+		"*": "BlockGenericTypedContainer",
+	},
+	entityclassByType: {
+		"*-raw": null,
+		"*": "GenericTypedContainer",
+	},
+	behaviorsByType: {
+		"*-raw": [ 
+			{ name: "GroundStorable", properties: { layout: 'SingleCenter' } },
+			{ name: "Unplaceable", "__comment": "The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility" }, 
+			{ name: "RightClickPickup"} 
+		],
+		"*": [{name: "Lockable" }, {name: "Container"}, {name: "UnstableFalling"}]
+	},
+	entityBehaviorsByType: {
+		"*-raw": [],
+		"*": [{ name: "Animatable" }]
+	},
+	attributes: {
+		partialAttachable: true,
+		inventoryClassName: "chest",
+		defaultType: "normal",
+		types: ["normal"],
+		drop: {
+			"normal": true
+		},
+		quantitySlots: {
+			"normal": 12
+		},
+		dialogTitleLangCode: {
+			"normal": "vesselcontents"
+		},
+		storageType: {
+			"normal": 32
+		},
+		retrieveOnly: {
+			"normal": false
+		},
+		spoilSpeedMulByFoodCat: {
+			"normal": {
+				"vegetable": 0.75,
+				"grain": 0.5
+			}
+		},
+		shape: {
+			"normal": "block/clay/storagevessel"
+		},
+		variantByGroup: "variant",
+		variantByGroupInventory: "variant",
+		openSound: "sounds/block/vesselopen",
+		closeSound: "sounds/block/vesselclose",
+	},
+	variantgroups: [
+		{ code: "variant", states: ["ashforest", "chthonic", "copper", "earthen", "rain", "raw", "burned", "cowrie", "rime", "oxblood", "loam", "undergrowth", "beehive", "harvest", "honeydew", "rutile", "seasalt", "springflowers", "volcanic"] },
+	],
+	shape: { base: "block/clay/lootvessel" },
+	texturesByType: {
+		"*-raw": {
+			all: { base: "block/clay/blueclay" },
+		},
+		"*": {
+			"normal-ceramic": { base: "block/clay/ceramic" },
+			"normal-top": { base: "block/clay/vessel/top/{variant}" },
+			"normal-sides": { base: "block/clay/vessel/sides/{variant}" },
+			"normal-inside": { base: "block/clay/vessel/inside/{variant}" }
+		},
+	},
+	blockmaterial: "Ceramic",
+	creativeinventory: {  },
+	creativeinventoryStacksByType: {
+		"*-raw": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "storagevessel-{variant}" },
+				]
+			}
+		],
+		"*": [
+			{
+				tabs: [ "general", "decorative" ],
+				stacks: [
+					{ type: "block", code: "storagevessel-{variant}", attributes: { type: "normal" } },
+				]
+			}
+		]
+	},
+	replaceable: 1000,
+	resistance: 0.8,
+	maxStackSize: 4,
+	sideAo: { all: false },
+	lightAbsorption: 0,
+	sounds: {
+		walk: "walk/stone",
+		break: "block/ceramicplace",
+		hit: "block/ceramichit",
+		place: "block/ceramicplace"
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	collisionSelectionBox: { x1: 0.125, y1: 0, z1: 0.125, x2: 0.875, y2: 1, z2: 0.875 },
+	heldTpIdleAnimation: "holdunderarm",
+	combustiblePropsByType: {
+		"*-raw": {
+			meltingPoint: 600,
+			meltingDuration: 45,
+			smeltedRatio: 1,
+			smeltingType: "fire",
+			smeltedStack: { type: "block", code: "storagevessel-burned", attributes: { type: "normal" } },
+			requiresContainer: false
+		}
+	},	
+	tpHandTransform: {
+		translation: { x: -1, y: -0.5, z: -0.5 },
+		rotation: { x: 25, y: -20, z: -99 },
+		scale: 0.56
+	}
+}

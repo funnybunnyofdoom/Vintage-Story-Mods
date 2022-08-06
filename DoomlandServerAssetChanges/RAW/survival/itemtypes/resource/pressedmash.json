@@ -1,0 +1,57 @@
+{
+	code: "pressedmash",
+	class: "ItemPressedMash",
+	maxstacksize: 64,
+	variantgroups: [
+		{ code: "fruit", loadFromProperties: "block/fruit", states: ["apple"] },
+	],
+	skipVariants: ["*-pinkapple", "*-redapple", "*-yellowapple"],
+	attributes: {
+		juiceablePropertiesByType: {
+			"@*-(pinkapple|redapple|yellowapple)": {
+				liquidStack: { type: "item", code: "juiceportion-apple", stacksize: 1 },
+				pressedStack: { type: "item", code: "pressedmash-apple", stacksize: 1 }
+			},
+			"*-olive": null,
+			"*": {
+				liquidStack: { type: "item", code: "juiceportion-{fruit}", stacksize: 1 },
+				pressedStack: { type: "item", code: "pressedmash-{fruit}", stacksize: 1 }
+			}
+		}		
+	},
+	shape: { base: "item/pressedmash" },
+	textures: {
+		"material": { base: "block/food/pie/fill-{fruit}" },
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 36 },
+		transitionHours: { avg: 12 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 1
+	}],
+	fpHandTransform: {
+		rotation: { x: 29, y: 113, z: -30 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 },
+		scale: 1.44
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -28, y: -40, z: 0 },
+		origin: { x: 0.49, y: 0.04, z: 0.53 },
+		scale: 2.3
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2
+	},
+	tpHandTransform: {
+		translation: { x: -1.1, y: -0.3, z: -0.9 },
+		rotation: { x: 1, y: -34, z: -11 },
+		origin: { x: 0.5, y: 0.25, z: 0.5 },
+		scale: 0.5
+	}
+}

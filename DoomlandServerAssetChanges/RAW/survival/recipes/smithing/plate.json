@@ -1,0 +1,16 @@
+{
+	ingredient: { type: "item", code: "ingot-*", name: "metal", allowedVariants: ["copper", "brass", "tinbronze", "bismuthbronze", "blackbronze", "silver", "gold", "iron", "lead", "tin", "zinc", "bismuth", "chromium", "platinum", "titanium", "molybdochalkos", "meteoriciron", "steel"] },
+	name: "plate",
+	pattern: [[
+		"#########",
+		"#########",
+		"#########",
+		"#########",
+		"#########",
+		"#########",
+		"#########",
+		"#########",
+		"#########",
+	]],
+	output: { type: "item", code: "metalplate-{metal}"  }
+}

@@ -1,0 +1,49 @@
+{
+	code: "bookshelves",
+	behaviors: [{name: "NWOrientable"}],	
+	variantgroups: [
+		{ code:"orientation", states: ["ns", "we"] },
+	],
+	creativeinventory: { "general": ["*-ns"], "decorative": ["*-ns"] },
+	shape: { base: "block/basic/cube" },
+	blockmaterial: "Wood",
+	drawtype: "cube",
+	texturesByType: {
+		"*-ns": {
+			verticals: { base: "block/wood/bookshelves/updown" },
+			westeast: { base: "block/wood/bookshelves/sides" },
+			north: { 
+				base: "block/wood/bookshelves/shelf1",
+				alternates: [{base: "block/wood/bookshelves/shelf2" }, {base: "block/wood/bookshelves/shelf3" }, {base: "block/wood/bookshelves/shelf4" }, {base: "block/wood/bookshelves/shelf5" }, {base: "block/wood/bookshelves/shelf6" }, {base: "block/wood/bookshelves/shelf7" }, {base: "block/wood/bookshelves/shelf8" }, {base: "block/wood/bookshelves/shelf9" }, {base: "block/wood/bookshelves/shelf10" }, {base: "block/wood/bookshelves/shelf11" }, {base: "block/wood/bookshelves/shelf12" }],
+			},
+			south: { 
+				base: "block/wood/bookshelves/shelf12",
+				alternates: [{base: "block/wood/bookshelves/shelf11" }, {base: "block/wood/bookshelves/shelf10" }, {base: "block/wood/bookshelves/shelf9" }, {base: "block/wood/bookshelves/shelf8" }, {base: "block/wood/bookshelves/shelf7" }, {base: "block/wood/bookshelves/shelf6" }, {base: "block/wood/bookshelves/shelf5" }, {base: "block/wood/bookshelves/shelf4" }, {base: "block/wood/bookshelves/shelf3" }, {base: "block/wood/bookshelves/shelf2" }, {base: "block/wood/bookshelves/shelf1" }],
+			},
+		},
+		"*-we": {
+			verticals: { base: "block/wood/bookshelves/updown" },
+			northsouth: { base: "block/wood/bookshelves/sides" },
+			west: {
+				base: "block/wood/bookshelves/shelf1",
+				alternates: [{base: "block/wood/bookshelves/shelf2" }, {base: "block/wood/bookshelves/shelf3" }, {base: "block/wood/bookshelves/shelf4" }, {base: "block/wood/bookshelves/shelf5" }, {base: "block/wood/bookshelves/shelf6" }, {base: "block/wood/bookshelves/shelf7" }, {base: "block/wood/bookshelves/shelf8" }, {base: "block/wood/bookshelves/shelf9" }, {base: "block/wood/bookshelves/shelf10" }, {base: "block/wood/bookshelves/shelf11" }, {base: "block/wood/bookshelves/shelf12" }],
+			},
+			east: { 
+				base: "block/wood/bookshelves/shelf12",
+				alternates: [{base: "block/wood/bookshelves/shelf11" }, {base: "block/wood/bookshelves/shelf10" }, {base: "block/wood/bookshelves/shelf9" }, {base: "block/wood/bookshelves/shelf8" }, {base: "block/wood/bookshelves/shelf7" }, {base: "block/wood/bookshelves/shelf6" }, {base: "block/wood/bookshelves/shelf5" }, {base: "block/wood/bookshelves/shelf4" }, {base: "block/wood/bookshelves/shelf3" }, {base: "block/wood/bookshelves/shelf2" }, {base: "block/wood/bookshelves/shelf1" }],
+			},
+		}
+	},
+	resistance: 1.2,
+	sounds: {
+		"place": "block/planks",
+		"hit": "block/planks",
+		"break": "block/planks",
+		"walk": "walk/wood"
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 20,
+	},
+	materialDensity: 600
+}

@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "H	H	S",
+	ingredients: {
+		"H": { type: "block", code: "hay-normal" },
+		"S": { type: "item", code: "stick" }
+	},
+	width: 1,
+	height: 3,
+	output: { type: "item", code: "strawdummy", quantity: 1  }
+}

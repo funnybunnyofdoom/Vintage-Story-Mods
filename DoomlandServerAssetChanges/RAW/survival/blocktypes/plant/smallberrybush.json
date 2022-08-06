@@ -1,0 +1,100 @@
+{
+	code: "smallberrybush",
+	class: "BlockBerryBush",
+	attributes: {
+		butterflyFeedByType: {
+			"*-flowering": true
+		},
+		beeFeedByType: {
+			"*-flowering": true
+		},
+		forageStatAffected: true,
+		reinforcable: true,
+		resetBelowTemperature: -1,
+		stopBelowTemperature: 4,
+		revertBlockBelowTemperature: -4,
+		
+		resetAboveTemperature: 35,
+		stopAboveTemperature: 30,
+		revertBlockAboveTemperature: 38,
+		
+		overrideRandomDrawOffset: 14
+	},
+	entityclass: "BerryBush",
+	behaviorsByType: {
+		"*-ripe": [ {name: "Harvestable", properties: { 
+			harvestTime: 0.6, 
+			harvestedStack: { type: "item", code: "fruit-{type}", quantity: { avg: 2.2 }  },
+			harvestedBlockCode: "smallberrybush-{type}-empty"
+		}} ],
+	},
+	variantgroups: [
+		{ code: "type", states: ["blueberry", "cranberry"] },
+		{ code: "state", states: ["empty", "flowering", "ripe"] },
+	],
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	renderpass: "OpaqueNoCull",
+	renderAlphaTest: 0.4,
+	randomDrawOffset: true,
+	shape: { base: "block/plant/berrybush/{type}_{state}" },
+	blockmaterial: "Plant",
+	texturesByType: {
+		"*-empty": {
+			leaves: { base: "block/plant/berrybush/leaves/{type}*" },
+			branches: { base: "block/plant/berrybush/branches/default" }
+		},
+		"*-flowering": {
+			leaves: { base: "block/plant/berrybush/leaves/{type}*" },
+			branches: { base: "block/plant/berrybush/branches/default" },
+			berries: { base: "block/plant/berrybush/flowering/{type}*" },
+			berriesup: { base: "block/plant/berrybush/flowering/{type}*" },
+		},
+		"*-blueberry-ripe": {
+			leaves: { base: "block/plant/berrybush/leaves/{type}_ripe*" },
+			branches: { base: "block/plant/berrybush/branches/default" },
+			berries: { base: "block/plant/berrybush/ripe/{type}*" },
+			berriesup: { base: "block/plant/berrybush/ripe/{type}*" },
+		},
+		"*-ripe": {
+			leaves: { base: "block/plant/berrybush/leaves/{type}*" },
+			branches: { base: "block/plant/berrybush/branches/default" },
+			berries: { base: "block/plant/berrybush/ripe/{type}*" },
+			berriesup: { base: "block/plant/berrybush/ripe/{type}*" },
+		},
+		
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 0,
+	resistance: 0.5,
+	collisionbox: null,
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	rainPermeable: false,
+	dropsByType: {
+		"*-ripe": [
+			{ type: "block", code: "smallberrybush-{type}-empty", quantity: { avg: 1 }  },
+			{ type: "item", code: "fruit-{type}", quantity: { avg: 2.2 }  },
+		],
+		"*": [
+			{ type: "block", code: "smallberrybush-{type}-empty", quantity: { avg: 1 }  }
+		]
+	},
+	materialDensity: 200,
+	vertexFlags: {
+		zOffset: 2
+	},
+	frostable: true,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	}
+}

@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "SPS,_P_,SPS",
+	ingredients: {
+		"S": { type: "item", code: "stick" },
+		"P": { type: "item", code: "plank-*" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "barrel" }
+}

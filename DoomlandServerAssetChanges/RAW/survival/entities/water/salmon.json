@@ -1,0 +1,145 @@
+{
+	code: "salmon",
+	class: "EntityFish",
+	hitboxSize: { x: 0.6, y: 0.25 },
+	eyeHeight: 0.2,
+	drops: [],
+	habitat: "Underwater",
+	enabled: false,
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/water/salmon" },
+		texture: { base: "entity/fish/salmon-pink" },
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "interpolateposition" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "harvestable" },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "swim",
+				animation: "swim"
+			},
+			{
+				code: "swimfast",
+				animation: "swim"
+			},
+			{
+				code: "die",
+				animation: "dead-floating",
+			},
+			{
+				code: "flop",
+				animation: "flopping"
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "AddAverage",
+				easeOutSpeed: 4,
+				triggeredBy: { defaultAnim: true },
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "health", currenthealth: 2, maxhealth: 2, },
+			{ code: "deaddecay", hoursToDecay: 96, decayedBlock: "carcass-tiny" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "harvestable", drops: [
+					{
+						type: "item", 
+						code: "fish-raw", 
+						quantity: { avg: 1, var: 0 } 
+					}
+				]
+			},
+			{ 
+				code: "emotionstates",
+				states: [
+					{ code: "fleeondamage", duration: 10, chance: 1, slot: 0, priority: 1, accumType: "max" }
+				]
+			},
+			{ 
+				code: "taskai",
+				aitasks: [
+					{
+						code: "fleeentity",
+						entityCodes: ["player", "wolf-male", "wolf-female", "fox-*", "hyena-male", "hyena-female"],
+						priority: 2,
+						movespeed: 0.06,
+						seekingRange: 14,
+						animation: "swim",
+						animationSpeed: 2
+					},
+					{
+						code: "idle",
+						priority: 1.1,
+						minduration: 1000,
+						maxduration: 3000,
+						mincooldown: 2000,
+						maxcooldown: 30000,
+						animation: "idle"
+					},
+					{
+						code: "wander", 
+						priority: 1.0, 
+						priorityForCancel: 1.35,
+						movespeed: 0.01,
+						animation: "swim"
+					},
+					{
+						code: "fishmovefast", 
+						priority: 1.0, 
+						priorityForCancel: 1.35,
+						movespeed: 0.03,
+						animation: "swimfast",
+						animationSpeed: 3
+					},
+					{
+						code: "fishoutofwater", 
+						priority: 1.0, 
+						priorityForCancel: 1.35,
+						movespeed: 0.005,
+						animation: "flop",
+						animationSpeed: 2
+					}
+				]
+			}
+		],
+		spawnconditions: {
+			worldgen: {
+				TriesPerChunk: { avg: 2, var: 0 },
+				tryOnlySurface: true,
+				minLightLevel: 3,
+				groupSize: { dist: "verynarrowgaussian", avg: 2, var: 3 },
+				insideBlockCodes: ["water-*"],
+				minTemp: 4,
+				maxTemp: 20
+			},
+			runtime: {
+				group: "neutral",
+				chance: 0.01,
+				tryOnlySurface: true,
+				minLightLevel: 3,
+				groupSize: { dist: "verynarrowgaussian", avg: 2, var: 3 },
+				insideBlockCodes: ["water-*"],
+				minTemp: 4,
+				maxTemp: 20
+			}
+		}
+	}
+}

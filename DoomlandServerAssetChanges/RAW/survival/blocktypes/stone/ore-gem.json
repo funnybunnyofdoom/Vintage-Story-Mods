@@ -1,0 +1,83 @@
+{
+	code: "ore",
+	blockmaterial: "Ore",
+	attributes: {
+		handbook: {
+			groupBy: ["ore-*-{type}-*"]
+		}
+	},
+	behaviors: [{name: "BreakIfFloating"}],
+	variantgroups: [
+		{ code: "potential", states: ["low", "medium", "high"] },
+		{ code: "type",  loadFromProperties: "block/ore-gem-rough" },
+		{ code: "rock", loadFromProperties: "block/rockwithdeposit" }
+	],
+	allowedVariants: [
+"ore-low-emerald-basalt",
+"ore-medium-emerald-basalt",
+"ore-low-emerald-peridotite",
+"ore-medium-emerald-peridotite",
+"ore-low-emerald-shale",
+"ore-medium-emerald-shale",
+"ore-high-emerald-shale",
+"ore-low-emerald-limestone",
+"ore-medium-emerald-limestone",
+"ore-high-emerald-limestone",
+"ore-low-emerald-phyllite",
+"ore-medium-emerald-phyllite",
+"ore-low-emerald-slate",
+"ore-medium-emerald-slate",
+"ore-low-diamond-kimberlite",
+"ore-medium-diamond-kimberlite",
+"ore-high-diamond-kimberlite",
+"ore-low-diamond-suevite",
+"ore-low-olivine_peridot-peridotite",
+"ore-medium-olivine_peridot-peridotite",
+"ore-high-olivine_peridot-peridotite"
+],
+	creativeinventory: { "general": ["ore-*"], "terrain": ["ore-*"] },
+	storageFlags: 5,
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	textures: {
+		all: {
+			base: "block/stone/rock/{rock}1",
+			overlays: [ "block/stone/ore/{type}1" ],
+			alternates: [
+				{ base: "block/stone/rock/{rock}1", overlays: [ "block/stone/ore/{type}2" ] },
+				{ base: "block/stone/rock/{rock}1", overlays: [ "block/stone/ore/{type}3" ] }
+			]
+		}
+	},
+	replaceable: 100,
+	resistance: 8,
+	sounds: {
+		walk: "walk/stone",
+		byTool: {
+			"Pickaxe": { hit: "block/rock-hit-pickaxe", break: "block/rock-break-pickaxe" }
+		}
+	},
+	requiredMiningTier: 3,
+	dropsByType: {
+		"ore-low-*": [
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "low" }, quantity: { avg: 0.5, var: 0 }, lastDrop: true  },
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "medium" }, quantity: { avg: 0.9, var: 0 }, lastDrop: true  }
+		],
+		"ore-medium-*": [
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "low" }, quantity: { avg: 0.45, var: 0 }, lastDrop: true  },
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "medium" }, quantity: { avg: 0.8, var: 0 }, lastDrop: true  },
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "high" }, quantity: { avg: 1, var: 0 }, lastDrop: true  }
+		],
+		"ore-high-*": [
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "low" }, quantity: { avg: 0.4, var: 0 }, lastDrop: true  },
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "medium" }, quantity: { avg: 0.7, var: 0 }, lastDrop: true  },
+			{ type: "item", code: "gem-{type}-rough", attributes: { potential: "high" }, quantity: { avg: 1, var: 0 }, lastDrop: true  }
+		],
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

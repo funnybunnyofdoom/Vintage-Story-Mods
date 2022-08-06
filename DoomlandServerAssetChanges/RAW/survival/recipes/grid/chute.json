@@ -1,0 +1,49 @@
+[
+	{
+		ingredientPattern: "I_,_I",
+		ingredients: {
+			"I": { type: "item", code: "chutesection-copper" }
+		},
+		width: 2,
+		height: 2,
+		output: { type: "block", code: "chute-elbow-down-east"  }
+	},
+	{
+		ingredientPattern: "I,I",
+		ingredients: {
+			"I": { type: "item", code: "chutesection-copper" }
+		},
+		width: 2,
+		height: 1,
+		output: { type: "block", code: "chute-straight-ns"  }
+	},
+	{
+		ingredientPattern: "_I_,I_I,_I_",
+		ingredients: {
+			"I": { type: "item", code: "chutesection-copper" }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "block", code: "chute-cross-ground"  }
+	},
+	{
+		ingredientPattern: "_I_,I_I",
+		ingredients: {
+			"I": { type: "item", code: "chutesection-copper" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "chute-t-ns"  }
+	},
+	{
+		ingredientPattern: "_I_,II_",
+		ingredients: {
+			"I": { type: "item", code: "chutesection-copper" },
+			"X": { type: "item", code: "chutesection-copper", quantity: 2 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "block", code: "chute-3way-down-east"  }
+	}
+	
+]

@@ -1,0 +1,106 @@
+{
+	code: "snowlayer",
+	class: "BlockSnowLayer",
+	behaviors: [{name: "UnstableFalling", properties: { impactDamageMul: 0, fallSideways: false, dustIntensity : 0.75 } } ],
+	attributes: {
+		canFallSideways: false,
+		allowStepWhenStuck: true
+	},
+	vertexFlags: {
+		zOffset: 3,
+		lowContrast: true
+	},
+	variantgroups: [
+		{ code:"height", states: ["1", "2", "3", "4", "5", "6", "7"] },
+	],
+	creativeinventory: { "general": ["snowlayer-1"], "terrain": ["snowlayer-1"] },
+	blockmaterial: "Snow",
+	faceCullMode: "MergeSnowLayer",
+	drawtypebytype: {
+		"snowlayer-1": "BlockLayer_1",
+		"snowlayer-2": "BlockLayer_2",
+		"snowlayer-3": "BlockLayer_3",
+		"snowlayer-4": "BlockLayer_4",
+		"snowlayer-5": "BlockLayer_5",
+		"snowlayer-6": "BlockLayer_6",
+		"snowlayer-7": "BlockLayer_7"
+	},
+	shapebytype: {
+		"snowlayer-1": { base: "block/basic/layers/2voxel" },
+		"snowlayer-2": { base: "block/basic/layers/4voxel" },
+		"snowlayer-3": { base: "block/basic/layers/6voxel" },
+		"snowlayer-4": { base: "block/basic/layers/8voxel" },
+		"snowlayer-5": { base: "block/basic/layers/10voxel" },
+		"snowlayer-6": { base: "block/basic/layers/12voxel" },
+		"snowlayer-7": { base: "block/basic/layers/14voxel" },
+	},
+	textures: {
+		all: { 
+			base: "block/snow/normal1",
+			alternates: [{ base: "block/snow/normal2" }, { base: "block/snow/normal3" }, { base: "block/snow/normal4" }, {base: "block/snow/normal5"}, {base: "block/snow/normal6"}]
+		}
+	},
+	resistanceByType: {
+		"*-1": 0.2,
+		"*-2": 0.3,
+		"*-3": 0.4,
+		"*-4": 0.5,
+		"*-5": 0.6,
+		"*-6": 0.7,
+		"*-7": 0.8,
+	},
+	lightabsorption: 0,
+	sideopaque: {
+		all: false,
+		down: true
+	},
+	sideao: {
+		all: true,
+	},
+	emitsideao: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	guiTransform: {
+		origin: { x: 0.5, y: 0.125, z: 0.5 }
+	},
+	walkspeedmultiplierByType: {
+		"snowlayer-1": 0.95,
+		"snowlayer-2": 0.9,
+		"snowlayer-3": 0.85,
+		"snowlayer-4": 0.8,
+		"snowlayer-5": 0.75,
+		"snowlayer-6": 0.7,
+		"snowlayer-7": 0.65,
+	},
+	replaceable: 6100,
+	collisionboxbytype: {
+		"snowlayer-1": null,
+		"snowlayer-2": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+		"snowlayer-3": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+		"snowlayer-4": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+		"snowlayer-5": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.25, z2: 1 },
+		"snowlayer-6": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.25, z2: 1 },
+		"snowlayer-7": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.25, z2: 1 }
+	},
+	selectionboxbytype: {
+		"snowlayer-1": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.125, z2: 1 },
+		"snowlayer-2": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.25, z2: 1 },
+		"snowlayer-3": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.375, z2: 1 },
+		"snowlayer-4": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.5, z2: 1 },
+		"snowlayer-5": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.625, z2: 1 },
+		"snowlayer-6": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.75, z2: 1 },
+		"snowlayer-7": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.875, z2: 1 },
+	},
+	sounds: {
+		"walk": "walk/snow",
+		"inside": "walk/snow",
+		"place": "block/snow",
+		"break": "block/snow",
+		"hit": "block/snow"
+	},
+	materialDensity: 200,
+	drops: []
+}

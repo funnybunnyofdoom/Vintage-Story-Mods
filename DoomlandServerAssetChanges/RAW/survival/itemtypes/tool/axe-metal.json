@@ -1,0 +1,192 @@
+{
+	code: "axe",
+	class: "ItemAxe",
+	attributes: {
+		handbook: {
+			groupBy: ["axe-*"]
+		},
+		toolrackTransformByType: {
+			"*-scrap":
+			{
+				translation: { x: -0.2, y: 0.65, z: 0.1 },
+				rotation: { x: 4, y: -3, z: -1 },
+				scale: 1.25
+			},
+			"*":
+			{
+				rotation: { y: 1, z: -1 },
+				translation: { x: -0.3, y: 0.6 },
+				scale: 1.25,
+			}
+		}
+	},
+	variantgroups: [
+		{ code: "material", states: ["scrap", "copper", "tinbronze", "bismuthbronze", "blackbronze", 
+																 "gold", "silver", "iron", "meteoriciron", "steel"
+		  ] }
+	],
+	tool: "axe",
+	damagedby: ["blockbreaking", "attacking"],
+	shapeByType: {
+		"*-scrap": { "base": "item/tool/axe-scrap" },
+		"*-copper": { "base": "item/tool/axe-copper" },
+		"*-tinbronze": { "base": "item/tool/axe-copper" },
+		"*-bismuthbronze": { "base": "item/tool/axe-copper" },
+		"*-blackbronze": { "base": "item/tool/axe-copper" },
+		"*-gold": { "base": "item/tool/axe-iron" },
+		"*-silver": { "base": "item/tool/axe-iron" },
+		"*-iron": { "base": "item/tool/axe-iron" },
+		"*-meteoriciron": { "base": "item/tool/axe-iron" },
+		"*-steel": { "base": "item/tool/axe-iron" }
+	},
+	heldTpHitAnimation: "axechop",
+	texturesByType: {
+		"*-scrap": { },
+		"*": {
+			"material": { base: "block/metal/ingot/{material}" }
+		}
+	},
+	attackRange: 2,
+	tooltierbytype: {
+		"*-scrap": 2,
+		"*-copper": 2,
+		"*-gold": 2,
+		"*-silver": 2,
+		"*-bismuthbronze": 3,
+		"*-tinbronze": 3,
+		"*-blackbronze": 3,
+		"*-iron": 4,
+		"*-meteoriciron": 4,
+		"*-steel": 5
+	},
+	miningspeedbytype: {
+		"axe-scrap": {
+			"wood": 4,
+			"plant": 2.6,
+			"leaves": 2.2
+		},		
+		"axe-copper": {
+			"wood": 5,
+			"plant": 2.8,
+			"leaves": 2.4
+		},
+		"axe-silver": {
+			"wood": 4,
+			"plant": 3.3,
+			"leaves": 3
+		},
+		"axe-gold": {
+			"wood": 4,
+			"plant": 3.3,
+			"leaves": 3
+		},
+		"axe-bismuthbronze": {
+			"wood": 5.4,
+			"plant": 3.5,
+			"leaves": 2.6
+		},
+		"axe-tinbronze": {
+			"wood": 5.8,
+			"plant": 3.8,
+			"leaves": 3
+		},
+		"axe-blackbronze": {
+			"wood": 6.3,
+			"plant": 4,
+			"leaves": 3.1
+		},
+		"axe-iron": {
+			"wood": 8,
+			"plant": 5,
+			"leaves": 3.2
+		},
+		"axe-meteoriciron": {
+			"wood": 9,
+			"plant": 5.5,
+			"leaves": 3.6
+		},
+		"axe-steel": {
+			"wood": 10,
+			"plant": 6,
+			"leaves": 4
+		}
+	},
+	durabilitybytype: {
+		"axe-scrap": 125,
+		"axe-gold": 125,
+		"axe-silver": 125,
+		"axe-copper": 250,
+		"axe-blackbronze": 600,
+		"axe-bismuthbronze": 500,
+		"axe-tinbronze": 400,
+		"axe-iron": 900,
+		"axe-meteoriciron": 1200,
+		"axe-steel": 1800
+	},
+	attackpowerbytype: {
+		"axe-scrap": 1.5,
+		"axe-copper": 2,
+		"axe-bismuthbronze": 2.5,
+		"axe-gold": 2.5,
+		"axe-silver": 2.5,
+		"axe-tinbronze": 2.75,
+		"axe-blackbronze": 3,
+		"axe-iron": 3,
+		"axe-meteoriciron": 3.5,
+		"axe-steel": 4
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "tools": ["*"] },
+
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.5, z: 0.3 },
+		rotation: { x: -29, y: 1, z: 88 },
+		origin: { x: 0.2, y: 0.5, z: 0.5 },
+		scale: 2.5
+	},
+	guiTransformByType: {
+		"*-scrap":
+		{
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -65, y: -127, z: -180 },
+			origin: { x: 0.65, y: 0.1, z: 0.48 },
+			scale: 1.85
+		},
+		"*":
+		{
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -63, y: -123, z: -180 },
+			origin: { x: 0.61, y: 0, z: 0.47 },
+			scale: 1.58
+		}
+	},
+	groundTransformByType: {
+		"*-scrap":
+		{
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: -0.1, z: 0.5 },
+			scale: 3.6
+		},
+		"*":
+		{
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: 0, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 3.6
+		}
+	},
+	tpHandTransformByType: {
+		"*-scrap":
+		{
+			translation: { x: -0.65, y: -0.5, z: -0.05 },
+			rotation: { x: 90, y: 0, z: -10 },
+			scale: 0.95
+		},
+		"*":
+		{
+			translation: { x: -0.89, y: -0.5, z: -0.1 },
+			rotation: { x: 90, y: 0, z: -10 },
+			scale: 0.95
+		}
+	}
+}

@@ -1,0 +1,52 @@
+{
+	code: "platepile",
+	class: "BlockPlatePile",
+	entityClass: "PlatePile",
+	shape: {
+		base: "block/basic/invisible"
+	},
+	sidesolid: { all: false },
+	sideopaque: { all: false },
+	blockmaterial: "Metal",
+	creativeinventory: { "general": [""] },
+	replaceable: 300,
+	resistance: 2,
+	lightAbsorption: 0,
+	maxStackSize: 8,
+	"__comment": "Defining these seemingly unused textures so that they are inserted into the texture atlas and are later referenced by IngotPile Blockentity",
+	textures: {
+		"bismuth": { base: "block/metal/ingot/bismuth" },
+		"bismuthbronze": { base: "block/metal/ingot/bismuthbronze" },
+		"blackbronze": { base: "block/metal/ingot/blackbronze" },
+		"brass": { base: "block/metal/ingot/brass" },
+		"chromium": { base: "block/metal/ingot/chromium" },
+		"copper": { base: "block/metal/ingot/copper" },
+		"gold": { base: "block/metal/ingot/gold" },
+		"iron": { base: "block/metal/ingot/iron" },
+		"meteoriciron": { base: "block/metal/ingot/meteoriciron" },
+		"lead": { base: "block/metal/ingot/lead" },
+		"platinum": { base: "block/metal/ingot/platinum" },
+		"rhodium": { base: "block/metal/ingot/rhodium" },
+		"silver": { base: "block/metal/ingot/silver" },
+		"stainlesssteel": { base: "block/metal/ingot/stainlesssteel" },
+		"steel": { base: "block/metal/ingot/steel" },
+		"tin": { base: "block/metal/ingot/tin" },
+		"tinbronze": { base: "block/metal/ingot/tinbronze" },
+		"titanium": { base: "block/metal/ingot/titanium" },
+		"uranium": { base: "block/metal/ingot/uranium" },
+		"zinc": { base: "block/metal/ingot/zinc" },
+		"molybdochalkos": { base: "block/metal/ingot/molybdochalkos" }
+	},
+	selectionbox: {
+		x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1,
+	},
+	collisionbox: {
+		x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1,
+	},
+	guiTransform: {
+		translation: { x: 3, y: 1, z: 0 },
+		rotation: { x: -30, y: -44, z: -180 },
+		origin: { x: 0.5, y: 0.0625, z: 0.5 },
+		scale: 1.6
+	}
+}

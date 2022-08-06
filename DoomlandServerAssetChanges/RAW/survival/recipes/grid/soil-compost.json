@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "CCC	CSC	CCC",
+	ingredients: {
+		"C": { type: "item", code: "compost" },
+		"S": { type: "block", code: "soil-medium-none" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "soil-compost-none", quantity: 1  }
+}

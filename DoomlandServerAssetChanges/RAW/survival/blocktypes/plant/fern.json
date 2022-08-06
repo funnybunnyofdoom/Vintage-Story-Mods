@@ -1,0 +1,56 @@
+{
+	code: "fern",
+	class: "BlockFern",
+	behaviors: [ { name: "DropNotSnowCovered" } ],
+	variantgroups: [
+		{ code: "type", states: ["cinnamonfern", "deerfern", "eaglefern", "hartstongue"] }
+	],
+	attributes: {
+		butterflyFeed: false,
+		beeFeed: false,
+		plantContainable: {
+			smallContainer: {
+				shape: { base: "block/plant/fern/{type}/flowerpot/var*" }
+			},
+			largeContainer: {
+				shape: { base: "block/plant/fern/{type}/planter/var*" }
+			}
+		}
+	},
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	renderpass: "OpaqueNoCull",
+	drawtype: "JSON",
+	shape: { base: "block/plant/fern/{type}/var*" },
+	randomDrawOffset: true,
+	randomizeRotations: true,
+	randomizeAxes: "xz",
+	randomSizeAdjust: 0.1,
+	blockmaterial: "Plant",
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 0,
+	randomizeRotations: true,
+	resistance: 0.5,
+	collisionbox: null,
+	selectionbox: {
+		x1: 0.125, y1: 0, z1: 0.125,
+		x2: 0.875, y2: 0.25, z2: 0.875
+	},
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	rainPermeable: false,
+	materialDensity: 200,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 5,
+	},
+	frostable: true,
+}

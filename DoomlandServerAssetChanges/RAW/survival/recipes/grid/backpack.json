@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "L_	LL	L_",
+	ingredients: {
+		"L": { type: "item", code: "leather-plain", quantity: 2 }
+	},
+	width: 2,
+	height: 3,
+	name: "backpack",
+	output: { type: "item", code: "backpack"  }
+}

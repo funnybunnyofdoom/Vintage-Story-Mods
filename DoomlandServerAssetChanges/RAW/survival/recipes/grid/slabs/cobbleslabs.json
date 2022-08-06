@@ -1,0 +1,10 @@
+{
+	ingredientPattern: "_C_	LLL",
+	ingredients: {
+		"C": { type: "item", code: "clay-*" },
+		"L": { type: "item", code: "stone-*", name: "rock", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite", "kimberlite", "suevite", "whitemarble", "redmarble", "greenmarble"] }
+	},
+	width: 3,
+	height: 2,
+	output: { type: "block", code: "cobblestoneslab-{rock}-down-free", quantity: 2 }
+}

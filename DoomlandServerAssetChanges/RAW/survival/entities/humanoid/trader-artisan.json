@@ -1,0 +1,1286 @@
+{
+	code: "humanoid-trader-artisan",
+	class: "EntityTrader",
+	canClimb: true,
+	hitboxSize: { x: 0.6, y: 1.75 },
+	deadHitboxSize: { x: 0.75, y: 0.5 },
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/humanoid/trader" },
+		texture: { base: "entity/humanoid/trader", alternates: [ { base: "entity/humanoid/traderclothes/set1" }, { base: "entity/humanoid/traderclothes/set2" },
+                                                             { base: "entity/humanoid/traderclothes/set3" }, { base: "entity/humanoid/traderclothes/set4" },
+                                                             { base: "entity/humanoid/traderclothes/set5" }  ] },
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "interpolateposition" }
+		],
+		animations: [
+			{
+				code: "die",
+				animation: "die",
+				animationSpeed: 1.75,
+				weight: 10,
+				blendMode: "AddAverage"
+			},
+			{
+				code: "hurt",
+				animation: "hurt",
+				animationSpeed: 2,
+				blendMode: "AddAverage"
+			},
+            { code: "rowdywelcome", animation: "rowdywelcome", blendMode: "AddAverage" },
+            { code: "lazywelcome", animation: "lazywelcome", blendMode: "AddAverage" },
+            { code: "lazynod", animation: "lazynod", blendMode: "AddAverage" }
+		]
+	},
+    attributes: {
+        tradeProps: {
+            money: { avg: 30, var: 10 },
+
+
+
+    "selling": {
+        "maxItems": 14,
+        "list": [
+            {
+                "code": "storagevessel-burned",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-copper",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-earthen",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-ashforest",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-rain",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-rime",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-undergrowth",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-oxblood",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-cowrie",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 11,
+                    "var": 2.75
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-seasalt",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-honeydew",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-beehive",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-harvest",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-springflowers",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-volcanic",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 14,
+                    "var": 3.5
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "storagevessel-rutile",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "crock-burned-east",
+                "type": "block",
+                "stacksize": 4,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "crock-burned-east",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                }
+            },
+            {
+                "code": "flowerpot-burnt",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 10,
+                    "var": 2.5
+                },
+                "price": {
+                    "avg": 2,
+                    "var": 0.5
+                }
+            },
+            {
+                "code": "flowerpot-amber",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "price": {
+                    "avg": 4,
+                    "var": 1
+                }
+            },
+            {
+                "code": "flowerpot-boneash",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                }
+            },
+            {
+                "code": "flowerpot-celadon",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                }
+            },
+            {
+                "code": "flowerpot-copper",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "flowerpot-earthern",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "flowerpot-moss",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "flowerpot-ochre",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "flowerpot-rutile",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "flowerpot-seasalt",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "flowerpot-tenmoku",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "clayplanter-burnt",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "price": {
+                    "avg": 3,
+                    "var": 0.75
+                }
+            },
+            {
+                "code": "clayplanter-amber",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "clayplanter-ashforest",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                }
+            },
+            {
+                "code": "clayplanter-copper",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clayplanter-earthern",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clayplanter-ochre",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clayplanter-rime",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clayplanter-seasalt",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                }
+            },
+            {
+                "code": "clayplanter-tenmoku",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "clayplanter-undergrowth",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "attributes": {
+                    "type": "ambush1"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "attributes": {
+                    "type": "ambush2"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "attributes": {
+                    "type": "ambush3"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "attributes": {
+                    "type": "nightfall1"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "attributes": {
+                    "type": "nightfall2"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 5,
+                    "var": 1.25
+                },
+                "attributes": {
+                    "type": "nightfall3"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "attributes": {
+                    "type": "themorning1"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "attributes": {
+                    "type": "themorning2"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                },
+                "attributes": {
+                    "type": "themorning3"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "type": "seraphim1"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "type": "seraphim2"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 6,
+                    "var": 1.5
+                },
+                "attributes": {
+                    "type": "seraphim3"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "salvation11"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "salvation12"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "salvation21"
+                }
+            },
+            {
+                "code": "tapestry-north",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "type": "salvation22"
+                }
+            }
+        ]
+    },
+    "buying": {
+        "maxItems": 14,
+        "list": [
+            {
+                "code": "clay-blue",
+                "type": "item",
+                "stacksize": 64,
+                "stock": {
+                    "avg": 3,
+                    "var": 0.75
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "clay-fire",
+                "type": "item",
+                "stacksize": 64,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "fat",
+                "type": "item",
+                "stacksize": 8,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "beeswax",
+                "type": "item",
+                "stacksize": 6,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "ore-lapislazuli",
+                "type": "item",
+                "stacksize": 10,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "peatbrick",
+                "type": "block",
+                "stacksize": 12,
+                "stock": {
+                    "avg": 2,
+                    "var": 0.5
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "charcoal",
+                "type": "item",
+                "stacksize": 12,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 1,
+                    "var": 0.25
+                }
+            },
+            {
+                "code": "storagevessel-chthonic",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "gem-emerald-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 16,
+                    "var": 4
+                },
+                "attributes": {
+                    "potential": "high"
+                }
+            },
+            {
+                "code": "gem-emerald-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 14,
+                    "var": 3.5
+                },
+                "attributes": {
+                    "potential": "medium"
+                }
+            },
+            {
+                "code": "gem-emerald-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "potential": "low"
+                }
+            },
+            {
+                "code": "gem-diamond-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "potential": "high"
+                }
+            },
+            {
+                "code": "gem-diamond-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                },
+                "attributes": {
+                    "potential": "medium"
+                }
+            },
+            {
+                "code": "gem-diamond-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "potential": "low"
+                }
+            },
+            {
+                "code": "gem-olivine_peridot-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                },
+                "attributes": {
+                    "potential": "high"
+                }
+            },
+            {
+                "code": "gem-olivine_peridot-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                },
+                "attributes": {
+                    "potential": "medium"
+                }
+            },
+            {
+                "code": "gem-olivine_peridot-rough",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 8,
+                    "var": 2
+                },
+                "attributes": {
+                    "potential": "low"
+                }
+            },
+            {
+                "code": "storagevessel-loam",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 9,
+                    "var": 2.25
+                },
+                "attributes": {
+                    "type": "normal"
+                }
+            },
+            {
+                "code": "clayplanter-loam",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 7,
+                    "var": 1.75
+                }
+            },
+            {
+                "code": "clayplanter-cthonic",
+                "type": "block",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 4,
+                    "var": 1
+                },
+                "price": {
+                    "avg": 10,
+                    "var": 2.5
+                }
+            },
+            {
+                "code": "clothes-upperbody-reindeer-herder-collared-shirt",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 12,
+                    "var": 3
+                }
+            },
+            {
+                "code": "clothes-upperbodyover-reindeer-herder-fur-coat",
+                "type": "item",
+                "stacksize": 1,
+                "stock": {
+                    "avg": 1,
+                    "var": 0.25
+                },
+                "price": {
+                    "avg": 14,
+                    "var": 3.5
+                }
+            }
+        ]
+    }
+
+        }
+    },
+	server: {
+		attributes: {
+			pathfinder: {
+				minTurnAnglePerSec: 720,
+				maxTurnAnglePerSec: 1440
+			},
+
+		},
+		behaviors: [
+			{ code: "nametag", "showtagonlywhentargeted": true, selectFromRandomName: ["Aphid", "Erik", "Adachi", "Farhad", "Pegalesharro", "Floyd", "Temper", "En Repos", "Zadak"] },
+			{ code: "repulseagents" },
+			{ code: "controlledphysics", stepHeight: 1.01 },
+			{ code: "reviveondeath", minHours: 24, maxHours: 72 },
+			{ code: "health", currenthealth: 25, maxhealth: 25 },
+			{
+				code: "emotionstates",
+				states: [
+					{ code: "aggressiveondamage", duration: 6, chance: 0.6, slot: 0, priority: 2, accumType: "noaccum" },
+					{ code: "fleeondamage", duration: 10, chance: 0.4, slot: 0, priority: 1, accumType: "max" }
+				],
+			},
+			{
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damage: 5,
+						mincooldown: 2500,
+						maxcooldown: 3500,
+						attackDurationMs: 900,
+						damagePlayerAtMs: 300,
+						animation: "Attack",
+						animationSpeed: 2,
+						whenInEmotionState: "aggressiveondamage",
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						mincooldown: 1000,
+						maxcooldown: 1500,
+						seekingRange: 20,
+						movespeed: 0.035,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						movespeed: 0.035,
+						seekingRange: 12,
+						animation: "Run",
+						animationSpeed: 1.75,
+						whenInEmotionState: "fleeondamage"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 2000,
+						maxcooldown: 10000,
+						animation: "laugh"
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						minduration: 2500,
+						maxduration: 2500,
+						mincooldown: 5000,
+						maxcooldown: 30000,
+						animation: "idle2"
+					},
+					{
+						code: "wander",
+						priority: 1.0,
+						movespeed: 0.01,
+						animation: "Walk",
+						wanderChance: 0.005,
+						maxDistanceToSpawn: 4,
+						wanderRangeMin: 1,
+						wanderRangeMax: 3,
+						teleportWhenOutOfRange: true,
+						teleportInGameHours: 1
+					},
+					{
+						code: "lookaround",
+						priority: 0.5
+					}
+				]
+			}
+		],
+	},
+	sounds: {
+	}
+}

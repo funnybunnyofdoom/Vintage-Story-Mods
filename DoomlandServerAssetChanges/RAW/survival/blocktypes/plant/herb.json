@@ -1,0 +1,50 @@
+{
+	code: "herb",
+	class: "BlockPlant",
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	variantgroups: [
+		{ loadFromProperties: "block/herb" }
+	],
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	renderpass: "OpaqueNoCull",
+	shape: { base: "block/basic/cross" },
+	randomDrawOffset: true,
+	blockmaterial: "Plant",
+	textures: {
+		all: { base: "block/plant/herb/{herb}" },
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 0,
+	resistance: 0.5,
+	collisionbox: null,
+	selectionbox: {
+		x1: 0.125, y1: 0, z1: 0.125,
+		x2: 0.875, y2: 0.25, z2: 0.875
+	},
+	guiTransform: {
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.53, z: 0.5 },
+		scale: 1.55
+	},
+	groundTransform: {
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 1.9
+	},
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant",
+	},
+	rainPermeable: false,
+	materialDensity: 200
+}

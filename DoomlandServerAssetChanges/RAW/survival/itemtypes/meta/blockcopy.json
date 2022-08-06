@@ -1,0 +1,17 @@
+{
+	code: "blockcopy",
+	enabled: false,
+	class: "ItemBlockCopy",
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	maxstacksize: 1,
+	shape: { base: "block/basic/cube" },
+	textures: {
+		all: { base: "item/meta/gray" },
+	},
+	creativeinventory: { "meta": ["*"] },
+	materialDensity: 600
+}

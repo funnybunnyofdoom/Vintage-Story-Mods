@@ -1,0 +1,72 @@
+{
+	code: "crop",
+	class: "BlockCrop",
+	variantgroups: [
+		{ code: "type", states: ["pumpkin"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8"] },
+	],
+	creativeinventory: { "general": [""], "flora": [""] },
+	renderpass: "OpaqueNoCull",
+	shape: { base: "block/plant/pumpkin/motherplant" },
+	blockmaterial: "Plant",
+	randomizeRotations: true,
+	attributes: {
+		butterflyFeedByType: {
+			"*-1": false,
+			"*-8": false,
+			"*": true
+		},
+		beeFeedByType: {
+			"*-1": false,
+			"*-8": false,
+			"*": true
+		},
+		sitHeight: 0.45,
+		tickGrowthProbability: 0.05
+	},
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	sideao: { all: false },
+	drops: [],
+	cropProps: {
+		behaviors: [{name: "Pumpkin", properties: {vineGrowthStage: 3, vineGrowthQuantity: { dist: "invexp", avg: 2, var: 3  } }}],
+		requiredNutrient: "P",
+		nutrientConsumption: 30,
+		growthStages: 8,
+		totalGrowthDays: 7,
+	},
+	texturesByType: {
+		"crop-pumpkin-1": {
+			"all": { base: "block/plant/pumpkin/motherplant/stage1-northandsouth" }
+		},
+		"crop-pumpkin-*": {
+			"south": { base: "block/plant/pumpkin/motherplant/stage{stage}-south" },
+			"north": { base: "block/plant/pumpkin/motherplant/stage{stage}-north" },
+		}
+	},
+	replaceable: 6001,
+	lightAbsorption: 0,
+	resistance: 1.5,
+	collisionbox: null,
+	selectionbox: {
+		x1: 0.125, y1: 0, z1: 0.125,
+		x2: 0.875, y2: 0.25, z2: 0.875
+	},
+	guitransform: {
+		rotation: { x: 0, y: 0, z: 0 }
+	},
+	sounds: {
+		place: "block/plant",
+		break: "block/plant",
+		hit: "block/plant"
+	},
+	materialDensity: 200,
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	}
+}

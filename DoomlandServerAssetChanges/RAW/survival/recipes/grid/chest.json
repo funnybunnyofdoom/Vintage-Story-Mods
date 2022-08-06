@@ -1,0 +1,9 @@
+{
+	ingredientPattern: "WWW	W_W	WWW",
+	ingredients: {
+		"W": { type: "item", code: "plank-*" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "block", code: "chest-east", attributes: { type: "normal-generic" }  }
+}

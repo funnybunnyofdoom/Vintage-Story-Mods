@@ -1,0 +1,33 @@
+{
+	code: "bellows",
+	behaviors: [{name: "HorizontalOrientable"}],
+	enabled: false,
+	attributes: {
+		handbook: {
+			exclude: true
+		}
+	},
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": ["*-north"], "mechanics": ["*-north"] },
+	shapebytype: {
+		"*-north": { base: "block/wood/mechanics/bellows", rotateY: 0 },
+		"*-east": { base: "block/wood/mechanics/bellows", rotateY: 270 },
+		"*-south": { base: "block/wood/mechanics/bellows", rotateY: 180 },
+		"*-west": { base: "block/wood/mechanics/bellows", rotateY: 90 }
+	},
+	blockmaterial: "Wood",
+	textures: {
+		wood: { base: "block/wood/planks/generic" },
+	},
+	sidesolid: {
+		all: false
+	},
+	sideopaque: {
+		all: false
+	},
+	resistance: 3.5,
+	maxStackSize: 4,
+	lightAbsorption: 0
+}

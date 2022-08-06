@@ -1,0 +1,36 @@
+{
+	code: "poundercap",
+	variantgroups: [
+		{ code: "metal", states: ["tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel"] },
+	],
+	maxstacksize: 8,
+	shape: { base: "item/tool/poundercap" },
+	textures: {
+		"material": { base: "block/metal/ingot/{metal}" },
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "mechanics": ["*"] },
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 9, y: -43, z: -132 },
+		origin: { x: 0.53, y: 0.13, z: 0.51 },
+		scale: 2.92
+	},
+	fpHandTransform: {
+		translation: { x: -0.1, y: 0.2, z: 0 },
+		rotation: { x: 90, y: 99, z: -42 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.15
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.31
+	},
+	tpHandTransform: {
+		translation: { x: -0.78, y: -0.09, z: -0.67 },
+		rotation: { x: 9, y: -1, z: -16 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 0.76
+	}
+}

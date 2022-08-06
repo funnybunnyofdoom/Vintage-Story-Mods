@@ -1,0 +1,82 @@
+[
+	{
+		ingredientPattern: "T	S",
+		ingredients: {
+			"T": { type: "item", code: "axehead-*", name: "material"  },
+			"S": { type: "item", code: "stick" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-{material}", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-granite" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-granite", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-andesite" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-andesite", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-basalt" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-basalt", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-obsidian" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-obsidian", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-flint" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-flint", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-peridotite" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-peridotite", quantity: 1  }
+	},
+	{
+		ingredientPattern: "T	B",
+		ingredients: {
+			"T": { type: "item", code: "axehead-chert" },
+			"B": { type: "item", code: "bone" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "axe-bone-chert", quantity: 1  }
+	}
+]

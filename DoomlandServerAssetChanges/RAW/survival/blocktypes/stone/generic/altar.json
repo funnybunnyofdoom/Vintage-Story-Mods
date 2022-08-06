@@ -1,0 +1,37 @@
+{
+	code: "altar",
+	behaviors: [{name: "HorizontalOrientable"}],
+	variantgroups: [
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": ["altar-north"], "decorative": ["altar-north"] },
+	shapeByType: {
+		"*-north": { base: "block/basic/cube", rotateY:0 },
+		"*-east": { base: "block/basic/cube", rotateY:90 },
+		"*-south": { base: "block/basic/cube", rotateY:180 },
+		"*-west": { base: "block/basic/cube", rotateY:270 },
+	},
+	replaceable: 500,
+	resistance: 1.5,
+	lightAbsorption: 99,
+	sidesolid: {
+		all: true,
+	},
+	sideopaque: {
+		all: true
+	},
+	textures: {
+		up: { base: "block/stone/altar/top" },
+		down: { base: "block/stone/altar/bottom" },
+		south: { base: "block/stone/altar/front" },
+		north: { base: "block/stone/altar/back" },
+		west: { base: "block/stone/altar/left" },
+		east: { base: "block/stone/altar/right" },
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	}
+}

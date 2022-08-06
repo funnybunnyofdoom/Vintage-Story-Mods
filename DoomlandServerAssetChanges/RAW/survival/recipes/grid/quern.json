@@ -1,0 +1,11 @@
+{
+	ingredientPattern: "SRS,RRR",
+	ingredients: {
+		"S": { type: "item", code: "stick" },
+		"R": { type: "block", code: "rock-*", name: "rock", allowedVariants: ["andesite", "granite", "basalt", "peridotite"]  }
+	},
+	name: "quern",
+	width: 3,
+	height: 2,
+	output: { type: "block", code: "quern-{rock}"  }
+}

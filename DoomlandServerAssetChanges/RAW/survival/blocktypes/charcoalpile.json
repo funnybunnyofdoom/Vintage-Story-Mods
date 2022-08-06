@@ -1,0 +1,82 @@
+{
+	code: "charcoalpile",
+	class: "BlockCharcoalPile",
+	variantgroups: [
+		{ code:"amount", states: ["1", "2", "3", "4", "5", "6", "7", "8"] },
+	],
+	creativeinventory: { general: [""], decorative: [""] },
+	blockmaterial: "Soil",
+	drawtypebytype: {
+		"*-1": "BlockLayer_1",
+		"*-2": "BlockLayer_2",
+		"*-3": "BlockLayer_3",
+		"*-4": "BlockLayer_4",
+		"*-5": "BlockLayer_5",
+		"*-6": "BlockLayer_6",
+		"*-7": "BlockLayer_7",
+		"*-8": "Cube"
+	},
+	shapebytype: {
+		"*-1": { base: "block/basic/layers/2voxel" },
+		"*-2": { base: "block/basic/layers/4voxel" },
+		"*-3": { base: "block/basic/layers/6voxel" },
+		"*-4": { base: "block/basic/layers/8voxel" },
+		"*-5": { base: "block/basic/layers/10voxel" },
+		"*-6": { base: "block/basic/layers/12voxel" },
+		"*-7": { base: "block/basic/layers/14voxel" },
+		"*-8": { base: "block/basic/layers/16voxel" },
+	},
+	faceCullMode: "FlushExceptTop",
+	lightAbsorption: 0,
+	sidesolidByType: {
+		"*-8": { all: true },
+		"*": { all: false, down: true }
+	},
+	sideopaqueByType: {
+		"*-8": { all: true },
+		"*": { all: false, down: true }
+	},
+	textures: {
+		north: { base: "block/wood/firewood/front10" },
+		south: { base: "block/wood/firewood/front10" },
+		east: { base: "block/wood/firewood/side10", rotation: 90 },
+		west: { base: "block/wood/firewood/side10", rotation: 90 },
+		verticals: { base: "block/wood/firewood/side10" }
+	},
+	replaceable: 100,
+	resistance: 2,
+	collisionbox: { x1: 0, y1: 0, x2: 1, y2: 0, z2: 1,
+		y2ByType: {
+			"*-1": 0.125,
+			"*-2": 0.25,
+			"*-3": 0.375,
+			"*-4": 0.5,
+			"*-5": 0.625,
+			"*-6": 0.75,
+			"*-7": 0.875,
+			"*-8": 1,
+		}
+	},
+	selectionbox: { x1: 0, y1: 0, x2: 1, y2: 0, z2: 1,
+		y2ByType: {
+			"*-1": 0.125,
+			"*-2": 0.25,
+			"*-3": 0.375,
+			"*-4": 0.5,
+			"*-5": 0.625,
+			"*-6": 0.75,
+			"*-7": 0.875,
+			"*-8": 1,
+		}
+	},
+	drops: [
+		{ type: "item", code: "charcoal" }
+	],
+	materialDensity: 600,
+	sounds: {
+		place: "block/charcoal",
+		break: "block/charcoal",
+		hit: "block/charcoal",
+	},
+
+}

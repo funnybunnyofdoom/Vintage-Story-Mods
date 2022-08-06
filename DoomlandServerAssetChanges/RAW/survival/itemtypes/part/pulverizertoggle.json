@@ -1,0 +1,31 @@
+{
+	code: "pulverizertoggle",
+	variantgroups: [
+		{ code: "wood", states: ["oak" ] },
+	],
+	shape: { base: "block/wood/mechanics/pulverizer-moving" },
+	creativeinventory: { "general": ["*"], "items": ["*"], "mechanics": ["*"] },
+	fpHandTransform: {
+		translation: { x: 0.3, y: -0.4, z: 0 },
+		rotation: { x: 15, y: 15, z: 90 },
+		scale: 2.5
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -52, y: -131, z: -180 },
+		origin: { x: 0.48, y: 0.5, z: 0.54 },
+		scale: 1.84
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0.05 },
+		rotation: { x: -40, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.33, z: 0.5 },
+		scale: 3.9
+	},
+	tpHandTransform: {
+		translation: { x: -0.65, y: -0.63, z: -0.64 },
+		rotation: { x: 52, y: 15, z: 1 },
+		scale: 0.8
+	}
+	
+}

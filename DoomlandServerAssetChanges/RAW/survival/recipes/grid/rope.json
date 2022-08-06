@@ -1,0 +1,31 @@
+[
+	{
+		ingredientPattern: "WWW",
+		ingredients: {
+			"W": { type: "block", code: "wildvine-section-north", name: "wildvine"  }
+		},
+		width: 3,
+		height: 1,
+		output: { type: "item", code: "rope", quantity: 1  }
+	},
+	
+	{
+		ingredientPattern: "LLL",
+		ingredients: {
+			"L": { type: "item", code: "cattailtops", quantity: 2 }
+		},
+		width: 3,
+		height: 1,
+		output: { type: "item", code: "rope", quantity: 1  }
+	},
+
+	{
+		ingredientPattern: "PPP",
+		ingredients: {
+			"P": { type: "item", code: "papyrustops", quantity: 2 }
+		},
+		width: 3,
+		height: 1,
+		output: { type: "item", code: "rope", quantity: 1  }
+	}
+]

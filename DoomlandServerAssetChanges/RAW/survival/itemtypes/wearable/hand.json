@@ -1,0 +1,129 @@
+{
+	code: "clothes",
+	class: "ItemWearable",
+	variantgroups: [
+		{ code: "category",  states: ["hand"] },
+		{ code: "hand", combine: "SelectiveMultiply", onVariant: "category", states: [
+			"fur-gloves", "heavy-leather-gloves", "laced-handsome-gloves", "lackey-gloves", "minstrel-gloves", "noble-riding-gloves",  "prince-gloves",
+			"clockmaker-wristguard", "hunter-gloves", "malefactor-gloves", "forlorn-bracer", "commoner-gloves", "tailor-gloves"
+		] },
+	],
+	shapeByType: {
+		"*-clockmaker-wristguard": {
+			base: "entity/humanoid/seraph/clothing/hand/clockmaker-wristguard"
+		},
+		"*-commoner-gloves": {
+			base: "entity/humanoid/seraph/clothing/hand/commoner-gloves"
+		},
+		"*": {
+			base: "entity/humanoid/seraph"
+		}
+	},
+	storageFlags: 128,
+	attributesByType: {
+		"*-clockmaker-wristguard": {
+			wearableAttachment: true,
+			clothescategory: "hand",
+			warmth: 0.5
+		},
+		"*-commoner-gloves": {
+			wearableAttachment: true,
+			clothescategory: "hand",
+			warmth: 0.5
+		},
+		"*-fur-gloves": {
+			clothescategory: "hand",
+			warmth: 1.5
+		},
+		"*": {
+			clothescategory: "hand",
+			warmth: 0.5
+		}
+	},
+	texturesByType: {
+		"*-clockmaker-wristguard": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*-commoner-gloves": {
+			"seraph": { base: "block/transparent" }
+		},
+		"*": {
+			"seraph": { base: "entity/humanoid/seraphclothes/{category}/{hand}" }
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
+	renderAlphaTest: 0.25,
+	fpHandTransform: {
+		translation: { x: 0.6, y: 0, z: -0.5 },
+		rotation: { x: 180, y: 42, z: -29 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: -0.9, y: -1, z: -1 },
+		rotation: { x: -13, y: -64, z: 49 },
+		scale: 0.55
+	},
+	guiTransformByType: {
+		"*-bronzearmlet": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.4, y: 1.4, z: 0.5 },
+			scale: 2.5
+		},
+		"*-prisonerbinds": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.52, y: 0.5, z: 0.5 },
+			scale: 1.52
+		},
+		"*-malefactor-gloves": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.52, y: 0.88, z: 0.6 },
+			scale: 2.37
+		},
+		"*-clockmaker-wristguard": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: 122, z: 27 },
+			origin: { x: 0.58, y: 0.86, z: 0.8 },
+			scale: 4.1
+		},
+		"*-forlorn-bracer": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.52, y: 0.88, z: 0.55 },
+			scale: 2.5
+		},
+		"*-heavy-leather-gloves": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.52, y: 0.88, z: 0.5 },
+			scale: 2.5
+		},
+		"*-hunter-gloves": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.52, y: 0.88, z: 0.5 },
+			scale: 2.5
+		},
+		"*": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 19 },
+			rotation: { x: 174, y: -30, z: 23 },
+			origin: { x: 0.52, y: 0.78, z: 0.5 },
+			scale: 2.5
+		}
+	},
+	groundTransform: {
+		rotation: { x: 0, y: 0, z: 90 },
+		origin: { x: 0.5, y: 0.5, z: 0.5299 },
+		scale: 3.04
+	}
+}

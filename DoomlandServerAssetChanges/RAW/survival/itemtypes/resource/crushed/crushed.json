@@ -1,0 +1,67 @@
+{
+	code: "crushed",
+	heldTpIdleAnimation: "holdbothhands",
+	variantgroups: [
+		{ code: "material", states: ["alum", "quartz", "bauxite", "olivine", "peridotite", 
+																 "ilmenite", "cassiterite", "chromite", "leadoxide", "lapislazuli", 
+																 "cinnabar"] },
+	],
+	attributes: {
+		handbook: {
+			groupBy: ["crushed-*"],
+			extraSections: [
+				{ title: "handbooktitle-crushed", text: "handbooktext-crushed" }
+			]
+		},
+		displaycaseable: true, 
+		shelvable: true,
+		dissolveInWater: true,
+		onDisplayTransform: {
+			translation: { x: 0.05, y: 0, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.65
+		}
+	},
+	shape: { base: "item/resource/crushed/crushed" },
+	texture: { base: "item/resource/crushed/{material}" },
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 64,
+	materialDensity: 500,
+	guiTransform: {
+		translation: { x: 0, y: 0, z: -25 },
+		rotation: { x: 171, y: 57, z: -20 },
+		origin: { x: 0.46, y: 0.11, z: 0.39 },
+		scale: 2.64
+	},
+	fpHandTransform: {
+		translation: { x: 0.1, y: 0.16, z: 0 },
+		rotation: { x: 37, y: 77, z: 2 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 1.95
+	},
+	tpHandTransform: {
+		translation: { x: -1.53, y: -1.1, z: -0.7 },
+		rotation: { x: 19, y: 26, z: -83 },
+		scale: 0.48
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 3, y: 1, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 2.65
+	},
+	combustiblePropsByType: {
+		"*-quartz": {
+			meltingPoint: 1350,
+			meltingDuration: 30,
+			smeltedRatio: 4,
+			smeltedStack: { type: "block", code: "glass-plain", stacksize: 2 }
+		},
+		"*-olivine": {
+			meltingPoint: 1400,
+			meltingDuration: 30,
+			smeltedRatio: 8,
+			smeltedStack: { type: "block", code: "glass-green", stacksize: 2 }
+		},
+	}
+}

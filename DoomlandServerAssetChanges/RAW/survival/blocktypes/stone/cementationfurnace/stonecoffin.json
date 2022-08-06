@@ -1,0 +1,132 @@
+	{
+	code: "stonecoffinsection",
+	class: "BlockStoneCoffinSection",
+	entityClassByType: {
+		"@(.*)-(north|east)": "StoneCoffin"
+	},
+	attributesByType: {
+		"@(.*)-(north|east)": {
+			multiblockStructure: {
+				blockNumbers: {
+					"refractorybricks-good-tier*": 1,
+					"irondoor-*": 2,
+					"stonecoffinsection-*": 3,
+					"refractorybrickgrating-tier*": 4,
+					"air": 5,
+					"@(air|refractorybrickgrating-tier.)": 6
+				},
+				offsets: [
+					{ x: 0, y: 2, z: 3, w: 1 },
+					{ x: 0, y: 2, z: -1, w: 1 },
+					{ x: 0, y: 3, z: 2, w: 1 },
+					{ x: 0, y: 3, z: 0, w: 1 },
+					{ x: 0, y: 1, z: 3, w: 2 },
+					{ x: 0, y: 1, z: -1, w: 1 },
+					{ x: 0, y: 4, z: 2, w: 1 },
+					{ x: 0, y: 4, z: 0, w: 1 },
+					{ x: 0, y: 0, z: 1, w: 3 },
+					{ x: 0, y: 0, z: 0, w: 3 },
+					{ x: 0, y: 0, z: 3, w: 2 },
+					{ x: 0, y: 0, z: -1, w: 1 },
+					{ x: 0, y: -1, z: 1, w: 4 },
+					{ x: 0, y: -1, z: 2, w: 1 },
+					{ x: 0, y: -1, z: 0, w: 4 },
+					{ x: 0, y: -1, z: 3, w: 1 },
+					{ x: 0, y: -1, z: -1, w: 1 },
+					{ x: 1, y: 2, z: 1, w: 1 },
+					{ x: 1, y: 2, z: 2, w: 1 },
+					{ x: 1, y: 2, z: 0, w: 1 },
+					{ x: 1, y: 3, z: 1, w: 1 },
+					{ x: 1, y: 1, z: 3, w: 1 },
+					{ x: 1, y: 1, z: -1, w: 1 },
+					{ x: 1, y: 4, z: 1, w: 1 },
+					{ x: 1, y: 0, z: 3, w: 1 },
+					{ x: 1, y: 0, z: -1, w: 1 },
+					{ x: 1, y: -1, z: 1, w: 4 },
+					{ x: 1, y: -1, z: 2, w: 1 },
+					{ x: 1, y: -1, z: 0, w: 4 },
+					{ x: 1, y: -1, z: 3, w: 1 },
+					{ x: 1, y: -1, z: -1, w: 1 },
+					{ x: -1, y: 2, z: 1, w: 1 },
+					{ x: -1, y: 2, z: 2, w: 1 },
+					{ x: -1, y: 2, z: 0, w: 1 },
+					{ x: -1, y: 3, z: 1, w: 1 },
+					{ x: -1, y: 1, z: 3, w: 1 },
+					{ x: -1, y: 1, z: -1, w: 1 },
+					{ x: -1, y: 4, z: 1, w: 1 },
+					{ x: -1, y: 0, z: 3, w: 1 },
+					{ x: -1, y: 0, z: -1, w: 1 },
+					{ x: -1, y: -1, z: 1, w: 4 },
+					{ x: -1, y: -1, z: 2, w: 1 },
+					{ x: -1, y: -1, z: 0, w: 4 },
+					{ x: -1, y: -1, z: 3, w: 1 },
+					{ x: -1, y: -1, z: -1, w: 1 },
+					{ x: 2, y: 1, z: 1, w: 1 },
+					{ x: 2, y: 1, z: 2, w: 1 },
+					{ x: 2, y: 1, z: 0, w: 1 },
+					{ x: 2, y: 0, z: 1, w: 1 },
+					{ x: 2, y: 0, z: 2, w: 1 },
+					{ x: 2, y: 0, z: 0, w: 1 },
+					{ x: 2, y: -1, z: 1, w: 1 },
+					{ x: 2, y: -1, z: 2, w: 1 },
+					{ x: 2, y: -1, z: 0, w: 1 },
+					{ x: -2, y: 1, z: 1, w: 1 },
+					{ x: -2, y: 1, z: 2, w: 1 },
+					{ x: -2, y: 1, z: 0, w: 1 },
+					{ x: -2, y: 0, z: 1, w: 1 },
+					{ x: -2, y: 0, z: 2, w: 1 },
+					{ x: -2, y: 0, z: 0, w: 1 },
+					{ x: -2, y: -1, z: 1, w: 1 },
+					{ x: -2, y: -1, z: 2, w: 1 },
+					{ x: -2, y: -1, z: 0, w: 1 },
+					{ x: -1, y: 0, z: 0, w: 5 },
+					{ x: -1, y: 0, z: 1, w: 5 },
+					{ x: -1, y: 0, z: 2, w: 5 },
+					{ x: 0, y: 0, z: 2, w: 5 },
+					{ x: 1, y: 0, z: 0, w: 5 },
+					{ x: 1, y: 0, z: 1, w: 5 },
+					{ x: 1, y: 0, z: 2, w: 5 },
+					{ x: -1, y: 1, z: 0, w: 5 },
+					{ x: -1, y: 1, z: 1, w: 5 },
+					{ x: -1, y: 1, z: 2, w: 5 },
+					{ x: 0, y: 1, z: 2, w: 5 },
+					{ x: 1, y: 1, z: 0, w: 5 },
+					{ x: 1, y: 1, z: 1, w: 5 },
+					{ x: 1, y: 1, z: 2, w: 5 },
+					{ x: 0, y: 2, z: 1, w: 6 },
+					{ x: 0, y: 3, z: 1, w: 6 },
+					{ x: 0, y: 4, z: 1, w: 6 }
+				]
+			}
+		}
+	},
+	behaviors: [{name: "HorizontalOrientable"}],
+	variantgroups: [
+		{ code:"rock", states: ["granite", "andesite"] },
+		{ code:"side", loadFromProperties: "abstract/horizontalorientation" }
+	],
+	creativeinventory: { "general": ["*-north"], "terrain": ["*-north"] },
+	shapeByType: {
+		"*-north": { base: "block/stone/cementationfurnace/stonecoffin", quantityElements: 4, rotateY: 0 },
+		"*-east": { base: "block/stone/cementationfurnace/stonecoffin", quantityElements: 4, rotateY: 270 },
+		"*-south": { base: "block/stone/cementationfurnace/stonecoffin", quantityElements: 4, rotateY: 180 },
+		"*-west": { base: "block/stone/cementationfurnace/stonecoffin", quantityElements: 4, rotateY: 90 },
+	},
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	blockmaterial: "Stone",
+	textures: {
+		"rock": { base: "block/stone/rock/{rock}4" }
+	},
+	sidesolid: {
+		all: false, down: true
+	},
+	sideopaque: {
+		all: false, down: true
+	},
+	lightAbsorption: 1,
+	replaceable: 600,
+	resistance: 3,
+	collisionSelectionBoxes: [
+		{ x1: 0, y1: 0, z1: 0, x2: 1, y2: 1, z1: 1 },
+	]
+}

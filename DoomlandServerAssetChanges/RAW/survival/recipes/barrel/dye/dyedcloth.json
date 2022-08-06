@@ -1,0 +1,9 @@
+{
+	code: "dyedcloth",
+	sealHours: 8,
+	ingredients: [
+		{ type: "item", code: "dye-*", name: "color", litres: 4, consumelitres: 4 },
+		{ type: "item", code: "cloth-plain", quantity: 1 }
+	],
+	output: { type: "item", code: "cloth-{color}", stackSize: 1 }
+}

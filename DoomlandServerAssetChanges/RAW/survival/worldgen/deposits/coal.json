@@ -1,0 +1,54 @@
+[
+	{
+		code: "lignite",
+		triesPerChunk: 8,
+		generator: "disc-followsurface",
+		withOreMap: true,
+		handbookPageCode: "ore-lignite",
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["claystone", "sandstone", "shale", "chalk", "limestone", "chert", "conglomerate"] },
+			placeblock: { code: "ore-lignite-{rock}" },
+			surfaceBlock: { code: "looseores-lignite-{rock}-free" },
+			
+			radius: { dist: "gaussian", avg: 10, var: 5 },
+			yPosRel: {dist: "uniform", avg: 0.7, var: 0.22 },
+			thickness: { dist: "stronginvexp", avg: 2, var: 1.8 }
+		}
+	},
+	{
+		code: "bituminouscoal",
+		triesPerChunk: 7,
+		generator: "disc-followsealevel",
+		handbookPageCode: "ore-bituminouscoal",
+		withOreMap: true,
+		attributes: {	
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["claystone", "sandstone", "shale", "chalk", "limestone", "chert", "conglomerate"] },
+			placeblock: { code: "ore-bituminouscoal-{rock}" },
+			surfaceBlock: { code: "looseores-bituminouscoal-{rock}-free" },
+			
+			radius: { dist: "gaussian", avg: 10, var: 5 },
+			yPosRel: {dist: "uniform", avg: 0.5, var: 0.4 },
+			thickness: { dist: "stronginvexp", avg: 2, var: 1.3 }
+		}
+	},
+	{
+		code: "anthracite",
+		triesPerChunk: 6,
+		generator: "disc-followsealevel",
+		handbookPageCode: "ore-anthracite",
+		withOreMap: true,
+		oreMapScale: 1.5,
+		oreMapContrast: 1.5,
+		oreMapSub: 40,
+		
+		attributes: {
+			inblock: { code: "rock-*", name: "rock", allowedVariants: ["claystone", "sandstone", "shale", "chalk", "limestone", "chert", "conglomerate"] },
+			placeblock: { code: "ore-anthracite-{rock}" },
+			surfaceBlock: { code: "looseores-anthracite-{rock}-free" },
+			
+			radius: { dist: "gaussian", avg: 8, var: 5 },
+			yPosRel: {dist: "uniform", avg: 0.4, var: 0.4 },
+			thickness: { dist: "stronginvexp", avg: 1.5, var: 0.6 }
+		}
+	}
+]

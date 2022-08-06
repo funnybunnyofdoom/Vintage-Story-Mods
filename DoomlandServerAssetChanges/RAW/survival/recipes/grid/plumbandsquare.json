@@ -1,0 +1,11 @@
+{
+	ingredientPattern: "_S_,_TS,R__",
+	ingredients: {
+		"S": { type: "item", code: "stick" },
+		"T": { type: "item", code: "flaxtwine" },
+		"R": { type: "item", code: "stone-*" }
+	},
+	width: 3,
+	height: 3,
+	output: { type: "item", code: "plumbandsquare"  }
+}

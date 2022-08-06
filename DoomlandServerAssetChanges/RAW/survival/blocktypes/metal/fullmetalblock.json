@@ -1,0 +1,32 @@
+{
+	code: "metalblock",
+	variantgroups: [
+		{ loadFromProperties: "block/metal" },
+	],
+	drawtype: "cube",
+	sidesolid: { all: true },
+	sideopaque: { all: true },
+	blockmaterial: "Metal",
+	creativeinventory: { "general": ["*"], "decorative": ["*"] },
+	replaceable: 300,
+	resistance: 2,
+	lightAbsorption: 1,
+	emitSideAo: {
+		all: false
+	},
+	textures: {
+		all: { 
+			base: "block/metal/sheet/{metal}1", 
+			alternates: [{ base: "block/metal/sheet/{metal}2"}, { base: "block/metal/sheet/{metal}3" }, { base: "block/metal/sheet/{metal}4" }, { base: "block/metal/sheet/{metal}5" }],
+		}
+	},
+	vertexFlags: {
+		reflective: true
+	},
+	sounds: {
+		"place": "block/chute",
+		"break": "block/chute",
+		"hit": "block/chute",
+		"walk": "game:walk/stone"
+	}
+}

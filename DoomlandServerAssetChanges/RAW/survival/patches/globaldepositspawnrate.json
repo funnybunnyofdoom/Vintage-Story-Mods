@@ -1,0 +1,10 @@
+[
+  {
+    "op": "replace",
+    "path": "/chanceMultiplier",
+    "value": 1,
+    "file": "worldgen/deposits.json",
+    "condition": { "when": "globalDepositSpawnRate", "useValue": true },
+    "side": "Server"
+  }
+]

@@ -1,0 +1,19 @@
+{
+	ingredient: { type: "item", code: "clay-*", name: "type", allowedVariants: ["blue", "fire"] },
+	pattern: [[
+		"#####",
+		"#####",
+		"#####",
+		"#####",
+		"#####",
+	],
+	[
+		"#####",
+		"#___#",
+		"#___#",
+		"#___#",
+		"#####",
+	]],
+	name: "Bowl",
+	output: { type: "block", code: "bowl-raw"  }
+}

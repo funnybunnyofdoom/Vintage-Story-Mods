@@ -1,0 +1,156 @@
+{
+	code: "workitem",
+	class: "ItemWorkItem",
+	maxstacksize: 1,
+	storageFlags: 5,
+	variantgroups: [
+		{ code: "metal", loadFromProperties: "block/metal", states: ["blistersteel"] },
+	],
+	attributesByType: {
+		"workitem-lead": {
+			workableTemperature: 0
+		},
+		"workitem-meteoriciron": {
+			requiresAnvilTier: 3
+		},
+		"workitem-blistersteel": {
+			requiresAnvilTier: 3
+		}
+	},
+	texture: { base: "block/metal/ingot/{metal}" },
+	creativeinventory: { "general": [""], "items": [""] },
+	combustiblePropsByType: {
+		"workitem-copper": {
+			meltingPoint: 1084,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-copper" }
+		},
+		"workitem-brass": {
+			meltingPoint: 920,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-brass" }
+		},
+		"workitem-tinbronze": {
+			meltingPoint: 950,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tinbronze" }
+		},
+		"workitem-bismuthbronze": {
+			meltingPoint: 850,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuthbronze" }
+		},
+		"workitem-blackbronze": {
+			meltingPoint: 1020,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-blackbronze" }
+		},
+		"workitem-iron": {
+			meltingPoint: 1482,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-iron" }
+		},
+		"workitem-meteoriciron": {
+			meltingPoint: 1476,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-meteoriciron" }
+		},
+		"workitem-steel": {
+			meltingPoint: 1502,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-steel" }
+		},
+		"workitem-blistersteel": {
+			meltingPoint: 1602,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-blistersteel" }
+		},
+		"workitem-gold": {
+			meltingPoint: 1063,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-gold", }
+		},
+		"workitem-lead": {
+			meltingPoint: 327,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-lead" }
+		},
+		"workitem-tin": {
+			meltingPoint: 232,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-tin" }
+		},
+		"workitem-chromium": {
+			meltingPoint: 1907,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-chromium" }
+		},
+		"workitem-platinum": {
+			meltingPoint: 1770,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-platinum" }
+		},
+		"workitem-titanium": {
+			meltingPoint: 1668,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-titanium" }
+		},
+		"workitem-zinc": {
+			meltingPoint: 419,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-zinc" }
+		},
+		"workitem-silver": {
+			meltingPoint: 961,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-silver" }
+		},
+		"workitem-bismuth": {
+			meltingPoint: 271,
+			meltingDuration: 30,
+			smeltedRatio: 1,
+			smeltedStack: { type: "item", code: "ingot-bismuth" }
+		}
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -46, y: 33, z: -1 },
+		origin: { x: 0.43, y: 0.6, z: 0.48 },
+		scale: 2.4
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 180, y: 63, z: 20 },
+		origin: { x: 0.5, y: 0.38, z: 0.5 },
+		scale: 1.47
+	},
+	tpHandTransform: {
+		translation: { x: -1.1, y: -0.85, z: -0.8 },
+		rotation: { x: -10, y: -4, z: 12 },
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 0.55
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.6, z: 0.5 },
+		scale: 3.69
+	}
+}

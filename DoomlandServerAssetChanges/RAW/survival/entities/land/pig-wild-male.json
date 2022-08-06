@@ -1,0 +1,253 @@
+{
+	code: "pig-wild-male",
+	class: "EntityAgent",
+	hitboxSize: { x: 0.99, y: 0.8 },
+	deadHitboxSize: { x: 0.99, y: 0.5 },
+	eyeHeight: 0.7,
+	drops: [],
+	client: {
+		renderer: "Shape",
+		shape: { base: "entity/land/pig-wild-male" },
+		texture: { base: "entity/pig/pig-wild-male1", alternates: [ { base: "entity/pig/pig-wild-male2" }, { base: "entity/pig/pig-wild-male3" }, { base: "entity/pig/pig-wild-male4" }, { base: "entity/pig/pig-wild-male5" } ] },
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 }, 
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "interpolateposition" },
+			{ code: "harvestable" },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "ropetieable", minGeneration: 2 }
+		],
+		animations: [
+			{
+				code: "hurt",
+				animation: "hurt", 
+				animationSpeed: 2.2,
+				weight: 10,
+				blendMode: "AddAverage" 
+			},
+			{
+				code: "die",
+				animation: "die", 
+				animationSpeed: 2,
+				weight: 10,
+				blendMode: "Average",
+				triggeredBy: { onControls: ["dead"] }
+			},
+			{ 
+				code: "idle", 
+				animation: "idle",
+				blendMode: "AddAverage",
+				easeOutSpeed: 4,
+				triggeredBy: { defaultAnim: true },
+			},
+			{
+				code: "sleep", 
+				animation: "sleep",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				blendMode: "Average", 
+			},
+			{
+				code: "sit", 
+				animation: "sit",
+				easeInSpeed: 4,
+				easeOutSpeed: 4,
+				blendMode: "Average", 
+			}
+		]
+	},
+	server: {
+		behaviors: [
+			{ code: "repulseagents" }, 
+			{ code: "controlledphysics", stepHeight: 1.1251 },
+			{ code: "despawn", minPlayerDistance: 8, belowLightLevel: 8, minSeconds: 300 },
+			{ code: "health", currenthealth: 15, maxhealth: 15, },
+			{ code: "deaddecay", hoursToDecay: 96, decayedBlock: "carcass-medium" },
+			{ code: "floatupwhenstuck", onlyWhenDead: true },
+			{ code: "harvestable", drops: [
+				{
+					type: "item", 
+					code: "redmeat-raw", 
+					quantity: { avg: 9, var: 1.5 } 
+				},
+				{
+					type: "item", 
+					code: "hide-raw-medium", 
+					quantity: { avg: 1.5, var: 0 } 
+				},
+				{
+					type: "item", 
+					code: "fat", 
+					quantity: { avg: 2, var: 0 } 
+				},
+				{
+					type: "item", 
+					code: "bone", 
+					quantity: { avg: 3.4, var: 0.5 } 
+				}
+			],
+			},
+			{ code: "breathe" },
+			{ 
+				code: "emotionstates",
+				states: [
+					{ code: "fleeondamage", duration: 60, chance: 0.8, slot: 0, priority: 5, accumType: "max", whenHealthRelBelow: 0.4 },
+					{ code: "aggressiveondamage", duration: 20, chance: 0.9, slot: 0, priority: 2, accumType: "noaccum" },
+					{ code: "fleeondamage", duration: 10, chance: 1, slot: 0, priority: 1, accumType: "max" },
+					{ code: "alarmherdondamage", chance: 1, slot: 1, priority: 1, accumType: "max" }
+				],
+			},
+			{ 
+				code: "taskai",
+				aitasks: [
+					{
+						code: "meleeattack",
+						entityCodes: ["player"],
+						priority: 2,
+						damage: 5,
+						damageTier: 1,
+						mincooldown: 2500, 
+						maxcooldown: 3500, 
+						attackDurationMs: 900,
+						damagePlayerAtMs: 300,
+						animation: "Attack",
+						animationSpeed: 2,
+						whenInEmotionState: "aggressiveondamage",
+						sound: "creature/pig/attack",
+					},
+					{
+						code: "seekentity",
+						entityCodes: ["player"],
+						priority: 1.5,
+						mincooldown: 1000, 
+						maxcooldown: 1500, 
+						seekingRange: 20,
+						movespeed: 0.037,
+						animation: "Run",
+						animationSpeed: 5,
+						whenInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "fleeentity",
+						entityCodes: ["player"],
+						priority: 1.8,
+						movespeed: 0.05,
+						seekingRange: 12,
+						animation: "Run",
+						animationSpeed: 5.5,
+						sound: "creature/pig/hurt",
+						whenInEmotionState: "fleeondamage"
+					},
+					{
+						code: "getoutofwater",
+						priority: 1.4,
+						movespeed: 0.015,
+						animation: "Walk",
+						animationSpeed: 2.2
+					},
+					{
+						code: "idle",
+						priority: 1.35,
+						minduration: 200000,
+						maxduration: 800000,
+						mincooldown: 10000,
+						maxcooldown: 30000,
+						priorityForCancel: 1.35,
+						animation: "Sleep",
+						whenNotInEmotionState: "aggressiveondamage",
+						duringDayTimeFrames: [ { fromHour: 4, toHour: 15 } ],
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 6,
+						stopOnHurt: true
+					},
+					{
+						code: "seekfoodandeat",
+						movespeed: 0.004,
+						priority: 1.3,
+						animationSpeed: 2,
+						animation: "Walk",
+						eatAnimation: "Eat",
+						eatSound: "player/eat",
+						eatTime: 1.5,
+						mincooldownHours: 1,
+						maxcooldownHours: 4,
+					},
+					{
+						code: "idle",
+						priority: 1.2,
+						priorityForCancel: 1.35,
+						minduration: 3200,
+						maxduration: 3200,
+						mincooldown: 6000,
+						maxcooldown: 20000,
+						animation: "Dig",
+						animationSpeed: 1.5,
+						whenNotInEmotionState: "aggressiveondamage"
+					},
+					{
+						code: "wander", 
+						priority: 1.0, 
+						movespeed: 0.004,
+						animationSpeed: 2,
+						animation: "Walk",
+						preferredLightLevel: 20,
+						priorityForCancel: 1.35
+					},
+					{
+						code: "idle",
+						priority: 0.9,
+						minduration: 5000,
+						maxduration: 30000,
+						mincooldown: 2000,
+						maxcooldown: 120000,
+						priorityForCancel: 1.28,
+						animation: "Sit",
+						whenNotInEmotionState: "aggressiveondamage",
+						stopOnNearbyEntityCodes: ["player"],
+						stopRange: 5
+					},
+					{
+						code: "lookaround", 
+						priority: 0.5
+					}
+				]
+			},
+			{ code: "ropetieable", minGeneration: 2 }
+		],
+		spawnconditions: {
+			worldgen: {
+				TriesPerChunk: { avg: 0.1, var: 0 },
+				tryOnlySurface: true,
+				minLightLevel: 10,
+				groupSize: { dist: "verynarrowgaussian", avg: 3, var: 4 },
+				insideBlockCodes: ["air", "tallgrass-*"],
+				minTemp: 5,
+				maxTemp: 28,
+				minRain: 0.45,
+				minForest: 0.35,
+				companions: ["pig-wild-female", "pig-wild-piglet"]
+			},
+			runtime: {
+				group: "neutral",
+				tryOnlySurface: true,
+				chance: 0.0006,
+				maxQuantity: 4,
+				minLightLevel: 10,
+				groupSize: { dist: "verynarrowgaussian", avg: 3, var: 4 },
+				insideBlockCodes: ["air", "tallgrass-*"],
+				minTemp: 5,
+				maxTemp: 28,
+				minRain: 0.45,
+				minForestOrShrubs: 0.35,
+				companions: ["pig-wild-female", "pig-wild-piglet"]
+			}
+		}
+	},
+	sounds: {
+		hurt: "creature/pig/hurt",
+		death: "creature/pig/hurt",
+		idle: "creature/pig/idle"
+	},
+	idleSoundChance: 0.01
+}

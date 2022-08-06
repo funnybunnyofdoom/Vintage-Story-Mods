@@ -1,0 +1,153 @@
+{
+	code: "leavesbranchy",
+	"__comment": "BlockLeaves contains some code for map color tinting, stuff for wind affectedness and random testForDecay server block ticks",
+	class: "BlockLeaves",
+	behaviorsByType: {
+		"*-grown-*": [{name: "PushEventOnBlockBroken",	properties: {eventName: "testForDecay"}}]
+	},
+	attributes: {
+		fenceConnect: { north: false, east: false, west: false, south: false },
+		handbook: {
+			groupBy: ["leavesbranchy-*"]
+		},
+		treeFellingGroupCodeByType: {
+			"*-grown-*": "{wood}"
+		},
+		treeFellingGroupSpreadIndex: 1,
+		canDecayByType: {
+			"*-grown-*": true
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["grown", "placed"] },
+		{ code: "wood", states: ["crimsonkingmaple"], loadFromProperties: "block/wood" }
+	],
+	creativeinventory: { "general": ["leavesbranchy-placed-*"], "flora": ["leavesbranchy-placed-*"] },
+	
+	shape: {
+		baseByType: {
+			"*-pine": "block/plant/leaves/branchy-pine",
+			"*-redwood": "block/plant/leaves/branchy-redwood",
+			"*-birch": "block/plant/leaves/branchy-birch",
+			"*-maple": "block/plant/leaves/branchy-maple",
+			"*-oak": "block/plant/leaves/branchy-oak",
+			"*-crimsonkingmaple": "block/plant/leaves/branchy-crimsonkingmaple",
+			"*-larch": "block/plant/leaves/branchy-larch",
+			"*-kapok": "block/plant/leaves/branchy-kapok",
+			"*": "block/plant/leaves/branchy"
+		},
+		alternates: [
+			{ rotateY: 10 },
+			{ rotateY: 70 },
+			{ rotateY: 130 },
+			{ rotateY: 190 },
+			{ rotateY: 250 },
+			{ rotateY: 310 }
+		]
+	},
+	lod0Shape: {
+		baseByType: {
+			"*-pine": "block/plant/leaves/branchy-pine-lod0",
+			"*-redwood": "block/plant/leaves/branchy-redwood-lod0",
+			"*-birch": "block/plant/leaves/branchy-birch-lod0",
+			"*-maple": "block/plant/leaves/branchy-maple-lod0",
+			"*-oak": "block/plant/leaves/branchy-oak-lod0",
+			"*-kapok": "block/plant/leaves/branchy-kapok-lod0",
+			"*-crimsonkingmaple": "block/plant/leaves/branchy-crimsonkingmaple-lod0",
+			"*-larch": "block/plant/leaves/branchy-larch-lod0",
+			"*": "block/plant/leaves/branchy-lod0"
+		},
+		alternates: [
+			{ rotateY: 10 },
+			{ rotateY: 70 },
+			{ rotateY: 130 },
+			{ rotateY: 190 },
+			{ rotateY: 250 },
+			{ rotateY: 310 }
+		]
+	},
+	shapeInventory: {
+		baseByType: {
+			"*-redwood": "block/plant/leaves/branchy-redwood-lod0",
+			"*-crimsonkingmaple": "block/plant/leaves/branchy-crimsonkingmaple-lod0",
+			"*": "block/plant/leaves/branchy-lod0"
+		}
+	},
+	renderpass: "OpaqueNoCull",
+	faceCullMode: "CollapseMaterial",
+	blockmaterial: "Leaves",
+	vertexFlags: {
+		zOffset: 4,
+		windMode: "Leaves"
+	},
+	textures: {
+		largeleavesByType: {
+			"*-larch": { base: "block/plant/leaves/large/pine*" },
+			"*-redwood": { base: "block/plant/leaves/large/pine*" },
+			"*-crimsonkingmaple": { base: "block/plant/leaves/large/maple*" },
+			"*": { base: "block/plant/leaves/large/{wood}*" },
+		},
+		smallleavesByType: {
+			"*-larch": { base: "block/plant/leaves/small/pine*" },
+			"*-redwood": { base: "block/plant/leaves/small/pine*" },
+			"*-crimsonkingmaple": { base: "block/plant/leaves/small/maple*" },
+			"*": { base: "block/plant/leaves/small/{wood}*" },
+		},
+		branch: { base: "block/plant/leaves/large/branch" }
+	},
+	sideopaque: {
+		all: false
+	},
+	sideao: {
+		all: true
+	},
+	emitSideAo: {
+		all: false
+	},
+	replaceable: 3000,
+	lightAbsorption: 1,
+	resistance: 0.9,
+	snowCoverage: true,
+	drops: [
+		{
+			type: "item",
+			code: "treeseed-{wood}",
+			quantityByType: {
+				"*-pine": { avg: 0.12, var: 0 },
+				"*-acacia": { avg: 0.12, var: 0 },
+				"*-larch": { avg: 0.025, var: 0 },
+				"*-crimsonkingmaple": { avg: 0.0325, var: 0 },
+				"*-redwood": { avg: 0.004, var: 0 },
+				"*-ebony": { avg: 0.01, var: 0 },
+				"*-purpleheart": { avg: 0.01, var: 0 },
+				"*": { avg: 0.05, var: 0 }
+			}
+		},
+		{
+			type: "item",
+			code: "stick",
+			quantity: { avg: 1, var: 0 },
+		}
+	],
+	sounds: {
+		break: "block/plant",
+		place: "block/plant",
+		hit: "block/plant",
+		walk: "walk/grass"
+	},
+	combustibleProps: {
+		burnTemperature: 600,
+		burnDuration: 10,
+	},
+	materialDensity: 400,
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.2, y: -1.1, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.37
+	},
+	guiTransform: {
+		scale: 0.8
+	},
+	frostable: true,
+}

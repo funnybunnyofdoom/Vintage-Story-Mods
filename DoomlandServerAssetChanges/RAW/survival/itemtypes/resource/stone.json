@@ -1,0 +1,108 @@
+{
+	code: "stone",
+	class: "ItemStone",
+	storageFlags: 5,
+	variantgroups: [
+		{ code:"rock", states: ["meteorite-iron"], loadFromProperties: "block/rockwithdeposit" },
+	],
+	maxstacksize: 64,
+	shape: { base: "item/stone" },
+	textures: {
+		"material" : { base: "block/stone/rock/{rock}1" },
+	},
+	attributesByType: {
+		"stone-chert": { knappable: true, reinforcementStrength: 50, displaycaseable: true, shelvable: true },		
+		"stone-granite": { knappable: true, reinforcementStrength: 50, displaycaseable: true, shelvable: true },
+		"stone-peridotite": { 
+			knappable: true, reinforcementStrength: 50, displaycaseable: true, shelvable: true,
+			crushedOutput: { type: "item", code: "crushed-peridotite", stacksize: 1, attributes: { "crushingtier": "tinbronze" } }
+		},
+		"stone-andesite": { knappable: true, reinforcementStrength: 50, displaycaseable: true, shelvable: true },
+		"stone-basalt": { knappable: true, reinforcementStrength: 50, displaycaseable: true, shelvable: true },
+		"stone-obsidian": { knappable: true, reinforcementStrength: 50, displaycaseable: true, shelvable: true },
+		"stone-chalk": {
+			pigment: {
+				name: "Chalk white",
+				color: { red: 237, green: 237, blue: 237 },
+			},
+			displaycaseable: true, shelvable: true,
+			handbook: {
+				extraSections: [
+					{ title: "handbook-drawing", text: "handbook-chalk-drawing" }
+				]
+			}
+		},
+		"stone-limestone": {
+			pigment: {
+				name: "Lime white",
+				color: { red: 221, green: 216, blue: 199 },
+			}, 
+			displaycaseable: true, shelvable: true
+		},
+		"*": {
+			displaycaseable: true, shelvable: true
+		}
+	},	
+	combustiblePropsByType: {
+		"*-meteorite-iron": {
+			meltingPoint: 1476,
+			meltingDuration: 30,
+			smeltedRatio: 2,
+			smeltedStack: { type: "item", code: "ingot-meteoriciron" }
+		}
+	},
+	grindingPropsByType: {
+		"*-halite": {
+			grindedStack: { type: "item", code: "salt", stacksize: 2 }
+		},
+		"*-limestone": {
+			grindedStack: { type: "item", code: "lime", stacksize: 1 }
+		},
+		"*-chalk": {
+			grindedStack: { type: "item", code: "lime", stacksize: 1 }
+		},
+		"*marble*": {
+			grindedStack: { type: "item", code: "lime", stacksize: 1 }
+		}
+	},
+	crushingPropsByType: {
+		"*-bauxite": {
+			crushedStack: { type: "item", code: "crushed-bauxite", stacksize: 1 },
+			hardnessTier: 2
+		}
+	},
+	behaviorsByType:{
+		"*-chalk": [{
+			name: "ArtPigment",
+			properties: {
+				decorBlockCodes: ["caveart-chalk-1-*"],
+				paintableOnBlockMaterials: ["Stone", "Wood", "Brick", "Ceramic", "Metal", "Meta" ]
+			}
+		}]
+	},
+	guiTransform: {
+		translation: { x: 2, y: 1, z: 0 },
+		rotation: { x: 150, y: -38, z: 0 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 2.8
+	},
+	fpHandTransform: {
+		translation: { x: 0.05, y: 0.2, z: 0 },
+		rotation: { x: 94, y: 95, z: -21 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 1.78
+	},
+	tpHandTransform: {
+		translation: { x: -0.9, y: -0.1, z: -0.7 },
+		rotation: { x: -44, y: 7, z: -9 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 0.7
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4.5
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] }
+}

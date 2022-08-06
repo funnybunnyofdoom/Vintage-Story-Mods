@@ -1,0 +1,399 @@
+[
+	{
+		blockCodes: ["mushroom-beardedtooth-normal-north"],
+		placement: "OnTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: 0,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-whiteoyster-normal-north"],
+		placement: "OnTrees",
+		treeType: "Conifer",
+		minRain: 0.4,
+		minTemp: 0,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 6.4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-pinkoyster-normal-north"],
+		placement: "OnTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: 15,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-dryadsaddle-normal-north"],
+		placement: "OnTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -15,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-tinderhoof-normal-north"],
+		placement: "OnTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -15,
+		maxTemp: 10,
+		quantity: { avg: 1, var: 0 },
+		chance: 12,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-chickenofthewoods-normal-north"],
+		placement: "OnTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -15,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	
+	{
+		blockCodes: ["mushroom-reishi-normal-north"],
+		placement: "OnTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: 10,
+		maxTemp: 50,
+		quantity: { avg: 1, var: 0 },
+		chance: 3.2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-funeralbell-normal-north"],
+		placement: "OnTrees",
+		treeType: "Conifer",
+		minRain: 0.4,
+		minTemp: -20,
+		maxTemp: 50,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-deerear-normal-north"],
+		placement: "OnTrees",
+		treeType: "Tropical",
+		minRain: 0.4,
+		minTemp: -5,
+		maxTemp: 50,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-livermushroom-normal-north"],
+		placement: "OnTrees",
+		treeType: "Tropical",
+		minRain: 0.4,
+		minTemp: 10,
+		maxTemp: 50,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-pinkbonnet-normal-north"],
+		placement: "OnTrees",
+		treeType: "Tropical",
+		minRain: 0.4,
+		minTemp: -5,
+		maxTemp: 50,
+		quantity: { avg: 1, var: 0 },
+		chance: 8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-shiitake-normal-north"],
+		placement: "OnTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -6,
+		maxTemp: 23,
+		quantity: { avg: 1, var: 0 },
+		chance: 4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	
+	
+	
+	{
+		blockCodes: ["mushroom-witchhat-normal"],
+		placement: "UnderTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -15,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.6,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-elfinsaddle-normal"],
+		placement: "UnderTrees",
+		treeType: "Conifer",
+		minRain: 0.4,
+		minTemp: -15,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-earthball-normal"],
+		placement: "UnderTrees",
+		treeType: "Conifer",
+		minRain: 0.4,
+		minTemp: -3,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.6,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-devilstooth-normal"],
+		placement: "UnderTrees",
+		treeType: "Conifer",
+		minRain: 0.4,
+		minTemp: -15,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-orangeoakbolete-normal"],
+		placement: "UnderTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: 0,
+		maxTemp: 10,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.6,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-violetwebcap-normal"],
+		placement: "UnderTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -20,
+		maxTemp: 12,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-devilbolete-normal"],
+		placement: "UnderTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: 18,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-blacktrumpet-normal"],
+		placement: "UnderTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -4,
+		maxTemp: 21,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-golddropmilkcap-normal"],
+		placement: "UnderTrees",
+		treeType: "Decidious",
+		minRain: 0.4,
+		minTemp: -2,
+		maxTemp: 22,
+		quantity: { avg: 1, var: 0 },
+		chance: 2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-puffball-normal"],
+		minRain: 0.4,
+		maxForest: 0.2,
+		minTemp: -3,
+		maxTemp: 21,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.08,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-fieldmushroom-normal"],
+		minRain: 0.4,
+		maxForest: 0.2,
+		minTemp: 0,
+		maxTemp: 10,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.08,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-redwinecap-normal"],
+		minRain: 0.4,
+		maxForest: 0.2,
+		minTemp: 0,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.08,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-bitterbolete-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -2,
+		maxTemp: 11,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-chanterelle-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -1,
+		maxTemp: 19,
+		quantity: { avg: 1, var: 0 },
+		chance: 2.4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-deathcap-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -20,
+		maxTemp: 20,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.6,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-greencrackedrussula-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -18,
+		maxTemp: 12,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-indigomilkcap-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: 3,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.64,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-jackolantern-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -3,
+		maxTemp: 25,
+		quantity: { avg: 1, var: 0 },
+		chance: 2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-kingbolete-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -5,
+		maxTemp: 24,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-lobster-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -20,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 2,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-flyagaric-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -20,
+		maxTemp: 23,
+		quantity: { avg: 1, var: 0 },
+		chance: 2.4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-almondmushroom-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: 1,
+		maxTemp: 21,
+		quantity: { avg: 1, var: 0 },
+		chance: 2.4,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-paddystraw-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: 12,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 1.6,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	},
+	{
+		blockCodes: ["mushroom-commonmorel-normal"],
+		placement: "UnderTrees",
+		treeType: "Any",
+		minRain: 0.4,
+		minTemp: -1,
+		maxTemp: 30,
+		quantity: { avg: 1, var: 0 },
+		chance: 0.8,
+		randomMapCodePool: ["mush1", "mush2", "mush3", "mush4", "mush5", "mush6", "mush7"]
+	}
+]

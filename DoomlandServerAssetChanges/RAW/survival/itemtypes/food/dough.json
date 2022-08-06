@@ -1,0 +1,81 @@
+{
+	code: "dough",
+	class: "ItemDough",
+	maxstacksize: 32,
+	attributes: {
+		displaycaseable: true,
+		shelvable: true,
+		bakingProperties: {
+			temp: 160,
+			levelFrom: 0.0,
+			levelTo: 0.25,
+			startScaleY: 0.9,
+			endScaleY: 0.95,
+			resultCode: "bread-{type}-partbaked",
+		},
+		inPieProperties: { texture: "block/food/pie/{type}{bakeLevel}", partType: 'Crust'  },
+		nutritionPropsWhenInMealByType: {
+			"*-flax": { satiety: 120, foodcategory: "Grain" }, 
+			"*-rice": { satiety: 280, foodcategory: "Grain" }, 
+			"*": { satiety: 240, foodcategory: "Grain" }	
+		}
+	},
+	variantgroups: [
+		{ code: "type", states: ["spelt", "rye", "flax", "rice", "cassava", "amaranth", "sunflower" ] },
+	],
+	shape: { base: "item/food/bread/{type}bread-dough" },
+	textures: {
+		"flaxbread-dough": {base: "item/food/grain/flaxbread" },
+		"ricebread-dough": {base: "item/food/grain/ricebread" },
+		"speltbread-dough": {base: "item/food/grain/speltbread" },
+		"ryebread-dough": {base: "item/food/grain/ryebread" },
+		"cassava": {base: "item/food/grain/cassavabread" },
+		"amaranth": {base: "item/food/grain/amaranthbread" },
+		"sunflower": {base: "item/food/grain/sunflowerbread" },
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	materialDensity: 200,
+	fpHandTransform: {
+		translation: { x: 0, y: -0.1, z: 0 },
+		rotation: { x: 180, y: 90, z: 22 }
+	},
+	combustibleProps: {
+   	     meltingPoint: 200,
+	     meltingDuration: 20,
+	     smeltedRatio: 1,
+	     smeltingType: "bake",
+	     smeltedStack: { type: "item", code: "bread-{type}-charred" },
+	     requiresContainer: false
+	},
+	guiTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -30, y: 26, z: 180 },
+		origin: { x: 0.52, y: 0.07, z: 0.5 },
+		scale: 4.9
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 1 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 4
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.22, z: 0.2 },
+		rotation: { x: 97, y: 1, z: -17 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 2.5
+	},
+	tpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 25, y: 106, z: 54 },
+		origin: { x: 0.32, y: -0.25, z: -0.06 },
+		scale: 0.8
+	},
+	transitionableProps: [{
+		type: "Perish",
+		freshHours: { avg: 48 },
+		transitionHours: { avg: 24 },
+		transitionedStack: { type: "item", code: "rot" },
+		transitionRatio: 1
+	}]
+}

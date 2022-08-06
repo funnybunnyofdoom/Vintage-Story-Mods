@@ -1,0 +1,49 @@
+{
+	code: "saguarocactus",
+	class: "BlockCactus",
+	behaviorsByType: {
+		"*-topripe": [
+			{ 
+				name: "Harvestable",
+				properties: {
+					harvestTime: 0.6, 
+					harvestedStack: { type: "item", code: "fruit-saguaro", quantity: { avg: 2, var: 1 } },
+					harvestedBlockCode: "saguarocactus-topempty"
+				}
+			}
+		]
+	},
+	variantgroups: [
+		{ code: "variants", states: ["topempty", "segment", "branchysegment", "topflowering", "topripe"] },
+	],
+	attributes: {
+		forageStatAffected: true
+	},
+	creativeinventory: { "general": ["*"], "flora": ["*"] },
+	randomDrawOffset: true,
+	shapeByType: {
+		"saguarocactus-topempty": { base: "block/plant/saguarocactus/top" },
+		"saguarocactus-topflowering": { base: "block/plant/saguarocactus/top-flowering" },
+		"saguarocactus-topripe": { base: "block/plant/saguarocactus/top-ripe" },
+		"saguarocactus-segment": { base: "block/plant/saguarocactus/segment" },
+		"saguarocactus-branchysegment": { base: "block/plant/saguarocactus/branchysgement" },
+	},
+	blockmaterial: "Plant",
+	sideopaque: {
+		all: false
+	},
+	sidesolid: {
+		all: false
+	},
+	replaceable: 600,
+	lightAbsorption: 0,
+	resistance: 1,
+	collisionbox: { x1: 0.1875, y1: 0, z1: 0.1875, x2: 0.8125, y2: 1, z2: 0.8125 },
+	selectionbox: { x1: 0.1875, y1: 0, z1: 0.1875, x2: 0.8125, y2: 1, z2: 0.8125 },
+	rainPermeable: true,
+	dropsByType: {
+		"*-topripe": [ { type: "item", code: "fruit-saguaro", quantity: { avg: 2, var: 1 }  }, ],
+		"*": []
+	},
+	materialDensity: 200
+}

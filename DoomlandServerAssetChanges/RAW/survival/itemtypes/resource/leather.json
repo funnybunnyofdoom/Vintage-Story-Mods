@@ -1,0 +1,50 @@
+{
+	code: "leather",
+	shape: { base: "item/resource/leather-heavy" },
+	attributes: {
+		displaycaseable: true, 
+		shelvable: true,
+		onDisplayTransform: {
+			translation: { x: 0.05, y: 0, z: 0 },
+			rotation: { x: 0, y: -90, z: 0 },
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.65
+		}
+	},
+	variantgroups: [
+		{ code:"color", states: ["plain", "orange", "black"] }
+	],
+	texturesByType: {
+		"*-plain": {
+			"leather": { base: "block/leather" }
+		},
+		"*": {
+			"leather": { base: "block/leather-{color}" }
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	maxstacksize: 64,
+	materialDensity: 500,
+	guiTransform: {
+		rotation: { x: -180, y: 77, z: -53 },
+		origin: { x: 0.5, y: 0.1, z: 0.52 },
+		scale: 1.87
+	},
+	fpHandTransform: {
+		translation: { x: 0.25, y: 0, z: 0 },
+		rotation: { x: 150, y: 0, z: -87 },
+		origin: { x: 0.6, y: 0.3, z: 0.5 },
+		scale: 1.82
+	},
+	tpHandTransform: {
+		translation: { x: -1, y: -1.2, z: -1.45 },
+		rotation: { x: 92, y: -180, z: 180 },
+		scale: 0.49
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0.25, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0.5, z: 0.5299 },
+		scale: 2.19
+	}
+}

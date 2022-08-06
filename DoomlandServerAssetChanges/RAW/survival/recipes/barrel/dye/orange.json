@@ -1,0 +1,10 @@
+[
+	{
+		code: "dye-orange",
+		ingredients: [
+			{ type: "item", code: "dye-yellow", litres: 2 },
+			{ type: "item", code: "vegetable-onion", quantity: 4 }
+		],
+		output: { type: "item", code: "dye-orange", litres: 2 }
+	}
+]

@@ -1,0 +1,58 @@
+[
+	{
+		ingredientPattern: "G_G,G_G",
+		ingredients: {
+			"G": { type: "item", code: "cloth-green", quantity: 2 }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-foot-minstrel-boots"  }
+	},
+	{
+		ingredientPattern: "B_B,GSG",
+		requiresTrait: "clothier",
+		ingredients: {
+			"G": { type: "item", code: "cloth-green", quantity: 1 },
+			"B": { type: "item", code: "cloth-black", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-foot-nomad-boots"  }
+	},
+	{
+		ingredientPattern: "G_G,GSG",
+		requiresTrait: "clothier",
+		ingredients: {
+			"G": { type: "item", code: "cloth-green", quantity: 2 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-lowerbody-nomad-trousers"  }
+	},
+	{
+		ingredientPattern: "PSP,GGG",
+		requiresTrait: "clothier",
+		ingredients: {
+			"G": { type: "item", code: "cloth-green", quantity: 1 },
+			"P": { type: "item", code: "cloth-plain", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbodyover-nomad-mantle"  }
+	},
+	{
+		ingredientPattern: "GSG,BGB",
+		requiresTrait: "clothier",
+		ingredients: {
+			"G": { type: "item", code: "cloth-green", quantity: 1 },
+			"B": { type: "item", code: "cloth-blue", quantity: 1 },
+			"S": { type: "item", code: "sewingkit" }
+		},
+		width: 3,
+		height: 2,
+		output: { type: "item", code: "clothes-upperbodyover-spice-merchants-coat"  }
+	}
+]

@@ -1,0 +1,15 @@
+[
+	{
+		code: "saltpeter",
+		triesPerChunk: 7,
+		generator: "disc-followsealevel",
+		withBlockCallback: true,
+		attributes: {
+			inblock: { code: "air" },
+			placeblock: { code: "saltpeter-d" },
+			radius: { dist: "gaussian", avg: 10, var: 10 },
+			yPosRel: {dist: "uniform", avg: 0, var: 0.8 },
+			thickness: { avg: 7, var: 3 }
+		}
+	}
+]

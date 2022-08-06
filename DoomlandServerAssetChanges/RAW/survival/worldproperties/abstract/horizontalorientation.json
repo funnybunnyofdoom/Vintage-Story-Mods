@@ -1,0 +1,21 @@
+{
+	"code": "horizontalorientation",
+	"variants": [
+		{
+			"code": "north",
+			"angle": "0",
+		},
+		{
+			"code": "east",
+			"angle": "90",
+		},
+		{
+			"code": "south",
+			"angle": "180",
+		},
+		{
+			"code": "west",
+			"angle": "270",
+		}
+	]
+}
