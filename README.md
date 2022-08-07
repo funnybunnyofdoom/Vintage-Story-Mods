@@ -20,7 +20,7 @@ A collection of mods for the game Vintage Story
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
 
 -Bunny Server Utilities: [FunnyBunnyofDOOM]
-  Collection of utility mods (Work In Progress)
+  Collection of utility mods
 
 -Group Random Teleport: [FunnyBunnyofDOOM]
     /grtp to teleport to a point that moves randomly at a configurable interval of time for group random teleport excursions
@@ -33,6 +33,9 @@ A collection of mods for the game Vintage Story
 
 -jpm - Just Private Message
 	Allows the player to send messages to each other. Admin can view private messages.
+	
+-Extra Juice
+	adds juices and liquid containers
 	
 -ironman
 	Puts the player in ironman mode in the doomland server
