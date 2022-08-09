@@ -1,6 +1,6 @@
 {
 	code: "tar",
-	maxstacksize: 32,
+	maxstacksize: 50,
 	shape: { base: "roadworks:item/tar" },
 	creativeinventory: { "general": ["*"], "items": ["*"] },
 	combustibleProps: {
