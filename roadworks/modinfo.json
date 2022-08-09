@@ -1,9 +1,9 @@
 {
   "type": "code",
   "modid": "roadworks",
-  "name": "road works",
+  "name": "Road Works",
   "authors": ["FunnyBunnyofDOOM"],
-  "description": "To be added",
+  "description": "Tiered roads and a road tool",
   "version": "1.0.0",
   "dependencies": {
     "game": ""

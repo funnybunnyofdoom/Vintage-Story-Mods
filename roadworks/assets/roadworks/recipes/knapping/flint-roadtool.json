@@ -1,0 +1,13 @@
+{
+	ingredient: { type: "item", code: "game:flint" },
+	pattern: [[
+		"_________",
+		"__#####__",
+		"__#####__",
+		"__#####__",
+		"__#####__",
+		"_________"
+	]],
+	name: "Road Tool",
+	output: { type: "item", code: "roadworks:roadtoolhead-flint"  }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "op": "add",
+    "path": "/combustibleProps/meltingDuration",
+    "value": 30,
+    "file": "itemtypes/resource/firewood.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustibleProps/meltingPoint",
+    "value": 1420,
+    "file": "itemtypes/resource/firewood.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustibleProps/smeltedRatio",
+    "value": 1,
+    "file": "itemtypes/resource/firewood.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustibleProps/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 1
+    },
+    "file": "itemtypes/resource/firewood.json"
+  }
+]

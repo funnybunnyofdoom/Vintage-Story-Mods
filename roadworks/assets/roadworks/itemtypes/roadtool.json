@@ -56,33 +56,33 @@
 	],
 	"damagedby": [ "blockbreaking", "attacking" ],
 	"shapeByType": {
-		"*-chert": { "base": "item/tool/hoe-stone" },
-		"*-granite": { "base": "item/tool/hoe-stone" },
-		"*-andesite": { "base": "item/tool/hoe-stone" },
-		"*-basalt": { "base": "item/tool/hoe-stone" },
-		"*-obsidian": { "base": "item/tool/hoe-stone" },
-		"*-peridotite": { "base": "item/tool/hoe-stone" },
-		"*-flint": { "base": "item/tool/hoe-stone" },
-		"*-copper": { "base": "item/tool/hoe-copper" },
-		"*-tinbronze": { "base": "item/tool/hoe-copper" },
-		"*-bismuthbronze": { "base": "item/tool/hoe-copper" },
-		"*-blackbronze": { "base": "item/tool/hoe-copper" },
-		"*-gold": { "base": "item/tool/hoe-copper" },
-		"*-silver": { "base": "item/tool/hoe-copper" },
-		"*-iron": { "base": "item/tool/hoe-copper" },
-		"*-meteoriciron": { "base": "item/tool/hoe-copper" },
-		"*-steel": { "base": "game:item/tool/hoe-copper" }
+		"*-chert": { "base": "roadworks:item/roadtool-stone" },
+		"*-granite": { "base": "roadworks:item/roadtool-stone" },
+		"*-andesite": { "base": "roadworks:item/roadtool-stone" },
+		"*-basalt": { "base": "roadworks:item/roadtool-stone" },
+		"*-obsidian": { "base": "roadworks:item/roadtool-stone" },
+		"*-peridotite": { "base": "roadworks:item/roadtool-stone" },
+		"*-flint": { "base": "roadworks:item/roadtool-stone" },
+		"*-copper": { "base": "roadworks:item/roadtool-copper" },
+		"*-tinbronze": { "base": "roadworks:item/roadtool-copper" },
+		"*-bismuthbronze": { "base": "roadworks:item/roadtool-copper" },
+		"*-blackbronze": { "base": "roadworks:item/roadtool-copper" },
+		"*-gold": { "base": "roadworks:item/roadtool-copper" },
+		"*-silver": { "base": "roadworks:item/roadtool-copper" },
+		"*-iron": { "base": "roadworks:item/roadtool-copper" },
+		"*-meteoriciron": { "base": "roadworks:item/roadtool-copper" },
+		"*-steel": { "base": "roadworks:item/roadtool-copper" }
 	},
 	"heldTpHitAnimation": "breaktool",
 	"texturesByType": {
 		"*-flint": {
-			"material": { "base": "block/stone/{material}" }
+			"material": { "base": "game:block/stone/{material}" }
 		},
 		"@roadtool-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
 			"material": { "base": "game:block/metal/ingot/{material}" }
 		},
 		"*": {
-			"material": { "base": "block/stone/rock/{material}1" }
+			"material": { "base": "game:block/stone/rock/{material}1" }
 		}
 	},
 	"tool": "hoe",

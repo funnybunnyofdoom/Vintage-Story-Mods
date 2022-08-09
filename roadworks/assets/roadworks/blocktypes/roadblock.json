@@ -15,7 +15,7 @@
     },
     {
       "code": "type",
-      "states":  ["gravel","wood","brick","concrete","asphalt"]
+      "states":  ["gravel","wood","brick","concrete","asphalt","dirt"]
     }
   ],
   "behaviorsByType": {
@@ -78,24 +78,41 @@
           { "base": "roadworks:block/roadblock-{type}-3" }
         ]
       }
+    },
+    "roadblock-*-dirt": {
+      "sides": {
+        "base": "game:block/soil/flooring/drypackeddirt1a",
+        "alternates": [
+          { "base": "game:block/soil/flooring/drypackeddirt1b" },
+          { "base": "game:block/soil/flooring/drypackeddirt1c" },
+          { "base": "game:block/soil/flooring/drypackeddirt1d" },
+          { "base": "game:block/soil/flooring/drypackeddirt2" },
+          { "base": "game:block/soil/flooring/drypackeddirt3" },
+          { "base": "game:block/soil/flooring/drypackeddirt4" },
+          { "base": "game:block/soil/flooring/drypackeddirt5" },
+          { "base": "game:block/soil/flooring/drypackeddirt6" }
+        ]
+      }
     }
   },
     "resistanceByType": {
       "*-snow-*": 0.2,
       "*-free-*": 2.4
     },
-    "walkspeedmultiplierByType": {
-      "roadblock-free-gravel": 1.15,
-      "roadblock-free-wood": 1.5,
-      "roadblock-free-brick": 2.0,
-      "roadblock-free-concrete": 3.0,
-      "roadblock-free-asphalt": 3.5,
-      "roadblock-snow-gravel": 0.8,
-      "roadblock-snow-wood": 0.9,
-      "roadblock-snow-brick": 1.3,
-      "roadblock-snow-concrete": 1.75,
-      "roadblock-snow-asphalt": 2.0
-    },
+  "walkspeedmultiplierByType": {
+    "roadblock-free-dirt": 1.2,
+    "roadblock-free-gravel": 1.4,
+    "roadblock-free-wood": 1.6,
+    "roadblock-free-brick": 2.0,
+    "roadblock-free-concrete": 2.5,
+    "roadblock-free-asphalt": 3.0,
+    "roadblock-snow-dirt": 0.7,
+    "roadblock-snow-gravel": 0.8,
+    "roadblock-snow-wood": 0.9,
+    "roadblock-snow-brick": 1.3,
+    "roadblock-snow-concrete": 1.75,
+    "roadblock-snow-asphalt": 2.0
+  },
     "faceCullMode": "FlushExceptTop",
     "sideopaque": {
       "all": false,
@@ -136,12 +153,20 @@
       },
       "scale": 0.37
     },
-    "drops": [
+  "dropsByType": {
+    "roadblock-*-dirt": [
       {
         "type": "block",
-        "code": "game:stonepath-free"
+        "code": "game:packeddirt"
       }
     ],
+    "*": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblock-free-{type}"
+      }
+    ]
+  },
     "sounds": {
       "place": "game:block/gravel",
       "breakByType": {

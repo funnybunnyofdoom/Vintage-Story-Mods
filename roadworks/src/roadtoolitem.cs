@@ -63,7 +63,7 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (block.Code.Path.StartsWith("soil"))
+            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt"))
             {
                 handling = EnumHandHandling.PreventDefault;
             }
@@ -124,11 +124,18 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (!block.Code.Path.StartsWith("soil")) return;
+            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt")) return;
 
-
+            Block topaveblock;
+            if (block.Code.Path.StartsWith("soil"))
+            {
+                topaveblock = byEntity.World.GetBlock(new AssetLocation("roadworks:roadblock-free-dirt"));
+            }
+            else
+            {
+                topaveblock = byEntity.World.GetBlock(new AssetLocation("roadworks:roadblock-free-asphalt"));
+            }
             
-            Block topaveblock = byEntity.World.GetBlock(new AssetLocation("game:glass-plain"));
 
             IPlayer byPlayer = (byEntity as EntityPlayer).Player;
             if (topaveblock == null || byPlayer == null) return;

@@ -1,0 +1,69 @@
+{
+	code: "roadtoolhead",
+	variantgroups: [
+		{ code: "material", states: ["chert", "granite", "andesite", "basalt", "obsidian", "peridotite", "flint", "copper", "tinbronze", "bismuthbronze", "blackbronze", "gold", "silver", "iron", "meteoriciron", "steel" ] },
+	],
+	maxstacksize: 4,
+	shapeByType: {
+		"*-copper": { "base": "roadworks:item/roadtool-copper" },
+		"*-tinbronze": { "base": "roadworks:item/roadtool-copper" },
+		"*-bismuthbronze": { "base": "roadworks:item/roadtool-copper" },
+		"*-blackbronze": { "base": "roadworks:item/roadtool-copper" },
+		"*-gold": { "base": "roadworks:item/roadtool-copper" },
+		"*-silver": { "base": "roadworks:item/roadtool-copper" },
+		"*-iron": { "base": "roadworks:item/roadtool-copper" },
+		"*-steel": { "base": "roadworks:item/roadtool-copper" },
+		"*-meteoriciron": { "base": "roadworks:item/roadtool-copper" },
+		"*": { "base": "roadworks:item/roadtool-stone" }
+	},
+	texturesByType: {
+		"roadtoolhead-flint": { 
+			"material": { base: "game:block/stone/flint" },
+			"string": { base: "game:block/transparent" },
+			"handle": { base: "game:block/transparent" }
+		},
+		"@roadtoolhead-(chert|granite|andesite|basalt|obsidian|peridotite)": { 
+			"material": { base: "game:block/stone/rock/{material}1" },
+			"string": { base: "game:block/transparent" },
+			"handle": { base: "game:block/transparent" }
+		},
+		"*": {
+			"material": { base: "game:block/metal/ingot/{material}" },
+			"string": { base: "game:block/transparent" },
+			"handle": { base: "game:block/transparent" }
+		}
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	fpHandTransform: {
+		translation: { x: -0.3, y: -0.6, z: -0.3 },
+		rotation: { x: 37, y: 0, z: 92 },
+		scale: 2.5
+	},
+	guiTransformByType: {
+		"@roadtoolhead-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|gold|silver|steel)": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -52, y: -131, z: -180 },
+			origin: { x: 0.93, y: 0, z: 0.5 },
+			scale: 3.76
+		},
+		"*": {
+			rotate: false,
+			translation: { x: 0, y: 0, z: 0 },
+			rotation: { x: -63, y: -128, z: -131 },
+			origin: { x: 1, y: 0, z: 0.46 },
+			scale: 3.76
+		}
+	},
+	groundTransform: {
+		translation: { x: 0, y: -0.28, z: 0 },
+		rotation: { x: 0, y: 0, z: 180 },
+		origin: { x: 0.9, y: 0.43, z: 0.37 },
+		scale: 4
+	},
+	tpHandTransform: {
+		translation: { x: -0.4, y: -1, z: -0.02 },
+		rotation: { x: 96, y: -85, z: -8 },
+		scale: 1
+	}
+}
