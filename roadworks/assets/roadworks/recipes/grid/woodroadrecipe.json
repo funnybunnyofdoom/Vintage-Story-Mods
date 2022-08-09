@@ -1,0 +1,22 @@
+{
+  "ingredientPattern": "L,C,_",
+  "ingredients": {
+    "C": {
+      "type": "block",
+      "code": "game:soil-*",
+      "quantity": 1
+    },
+    "L": {
+      "type": "item",
+      "code": "game:plank-*",
+      "quantity": 4
+    }
+  },
+  "width": 1,
+  "height": 3,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadblock-free-wood",
+    "quantity": 1
+  }
+}

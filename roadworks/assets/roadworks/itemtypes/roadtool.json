@@ -1,0 +1,256 @@
+{
+	"code": "roadtool",
+	"class": "roadtool",
+	"heldTpUseAnimation": "hoe",
+	"attributes": {
+		"handbook": {
+			"groupBy": [ "roadtool-*" ]
+		},
+		"toolrackTransformByType": {
+			"@roadtool-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+				"rotation": {
+					"y": 1,
+					"z": -1
+				},
+				"translation": {
+					"x": -0.25,
+					"y": 0.6
+				},
+				"scale": 1.25
+			},
+			"*": {
+				"rotation": {
+					"y": 1,
+					"z": -1
+				},
+				"translation": {
+					"x": -0.35,
+					"y": 0.6
+				},
+				"scale": 1.25
+			}
+		}
+	},
+	"variantgroups": [
+		{
+			"code": "material",
+			"states": [
+				"chert",
+				"granite",
+				"andesite",
+				"basalt",
+				"obsidian",
+				"peridotite",
+				"flint",
+				"copper",
+				"tinbronze",
+				"bismuthbronze",
+				"blackbronze",
+				"gold",
+				"silver",
+				"iron",
+				"meteoriciron",
+				"steel"
+			]
+		}
+	],
+	"damagedby": [ "blockbreaking", "attacking" ],
+	"shapeByType": {
+		"*-chert": { "base": "item/tool/hoe-stone" },
+		"*-granite": { "base": "item/tool/hoe-stone" },
+		"*-andesite": { "base": "item/tool/hoe-stone" },
+		"*-basalt": { "base": "item/tool/hoe-stone" },
+		"*-obsidian": { "base": "item/tool/hoe-stone" },
+		"*-peridotite": { "base": "item/tool/hoe-stone" },
+		"*-flint": { "base": "item/tool/hoe-stone" },
+		"*-copper": { "base": "item/tool/hoe-copper" },
+		"*-tinbronze": { "base": "item/tool/hoe-copper" },
+		"*-bismuthbronze": { "base": "item/tool/hoe-copper" },
+		"*-blackbronze": { "base": "item/tool/hoe-copper" },
+		"*-gold": { "base": "item/tool/hoe-copper" },
+		"*-silver": { "base": "item/tool/hoe-copper" },
+		"*-iron": { "base": "item/tool/hoe-copper" },
+		"*-meteoriciron": { "base": "item/tool/hoe-copper" },
+		"*-steel": { "base": "game:item/tool/hoe-copper" }
+	},
+	"heldTpHitAnimation": "breaktool",
+	"texturesByType": {
+		"*-flint": {
+			"material": { "base": "block/stone/{material}" }
+		},
+		"@roadtool-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+			"material": { "base": "game:block/metal/ingot/{material}" }
+		},
+		"*": {
+			"material": { "base": "block/stone/rock/{material}1" }
+		}
+	},
+	"tool": "hoe",
+	"miningspeedbytype": {
+		"@roadtool-(granite|andesite|basalt|obsidian|peridotite|flint)": {
+			"soil": 2.2
+		},
+		"roadtool-copper": {
+			"soil": 2.6
+		},
+		"roadtool-bismuthbronze": {
+			"soil": 3.2
+		},
+		"roadtool-tinbronze": {
+			"soil": 3.6
+		},
+		"roadtool-gold": {
+			"soil": 3.6
+		},
+		"roadtool-silver": {
+			"soil": 3.6
+		},
+		"roadtool-blackbronze": {
+			"soil": 3.6
+		},
+		"roadtool-iron": {
+			"soil": 4
+		},
+		"roadtool-meteoriciron": {
+			"soil": 4.15
+		},
+		"roadtool-steel": {
+			"soil": 4.4
+		}
+	},
+	"durabilitybytype": {
+		"roadtool-chert": 30,
+		"roadtool-granite": 30,
+		"roadtool-andesite": 30,
+		"roadtool-basalt": 35,
+		"roadtool-obsidian": 50,
+		"roadtool-peridotite": 30,
+		"roadtool-flint": 40,
+
+		"roadtool-gold": 90,
+		"roadtool-silver": 90,
+		"roadtool-copper": 200,
+		"roadtool-tinbronze": 280,
+		"roadtool-bismuthbronze": 300,
+		"roadtool-blackbronze": 330,
+		"roadtool-iron": 500,
+		"roadtool-meteoriciron": 600,
+		"roadtool-steel": 1250
+	},
+	"attackpowerbytype": {
+		"@roadtool-(chert|granite|andesite|basalt|obsidian|peridotite|flint)": 1,
+
+		"roadtool-copper": 1.25,
+		"roadtool-gold": 1.5,
+		"roadtool-silver": 1.5,
+		"roadtool-bismuthbronze": 1.5,
+		"roadtool-tinbronze": 1.75,
+		"roadtool-blackbronze": 2,
+		"roadtool-iron": 2.25,
+		"roadtool-metoriciron": 2.3,
+		"roadtool-steel": 2.5
+	},
+	"creativeinventory": {
+		"general": [ "*" ],
+		"items": [ "*" ],
+		"tools": [ "*" ]
+	},
+	"fpHandTransform": {
+		"translation": {
+			"x": -0.3,
+			"y": -0.2,
+			"z": 0
+		},
+		"rotation": {
+			"x": -7,
+			"y": 16,
+			"z": 90
+		},
+		"scale": 2.5
+	},
+	"guiTransformByType": {
+		"@roadtool-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+			"rotate": false,
+			"translation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"rotation": {
+				"x": -56,
+				"y": -127,
+				"z": -180
+			},
+			"origin": {
+				"x": 0.35,
+				"y": 0,
+				"z": 0.55
+			},
+			"scale": 1.43
+		},
+		"*": {
+			"translation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"rotation": {
+				"x": -66,
+				"y": -130,
+				"z": -180
+			},
+			"origin": {
+				"x": 0.55,
+				"y": 0,
+				"z": 0.52
+			},
+			"scale": 1.6
+		}
+	},
+	"groundTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"origin": {
+			"x": 0.5,
+			"y": 0,
+			"z": 0.5
+		},
+		"scale": 3.6
+	},
+	"tpHandTransformByType": {
+		"@roadtool-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+			"translation": {
+				"x": -1,
+				"y": -0.5,
+				"z": -0.08
+			},
+			"rotation": {
+				"x": 90,
+				"y": 0,
+				"z": -5
+			},
+			"scale": 1
+		},
+		"*": {
+			"translation": {
+				"x": -0.8,
+				"y": -0.5,
+				"z": -0.1
+			},
+			"rotation": {
+				"x": 90,
+				"y": 0,
+				"z": -10
+			},
+			"scale": 1
+		}
+	}
+}

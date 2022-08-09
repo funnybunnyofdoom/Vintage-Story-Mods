@@ -1,0 +1,23 @@
+{
+  "ingredientPattern": "L,C,_",
+  "ingredients": {
+    "C": {
+      "type": "block",
+      "code": "game:soil-*",
+      "quantity": 1
+    },
+    "L": {
+      "type": "block",
+      "code": "game:gravel-*",
+      "quantity": 1,
+      "allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite" ]
+    }
+  },
+  "width": 1,
+  "height": 3,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadblock-free-gravel",
+    "quantity": 1
+  }
+}

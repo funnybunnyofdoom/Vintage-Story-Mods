@@ -1,0 +1,11 @@
+{
+  "type": "code",
+  "modid": "roadworks",
+  "name": "road works",
+  "authors": ["FunnyBunnyofDOOM"],
+  "description": "To be added",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  }
+}
