@@ -65,5 +65,6 @@ A collection of mods for the game Vintage Story
 -Road Works: [FunnyBunnyofDOOM]
 	6 tiers of roads, increasing in speed as the tiers go up
 	new tool: Road Tool - Tamps down soil into dirt paths and is used in the final step for asphalt to pave it into usable road
-	
--Calendar:
+
+-Calendar: [FunnyBunnyofDOOM] with pointers from [DukePony]
+	Craftable calendar that updates depending on day/month.
