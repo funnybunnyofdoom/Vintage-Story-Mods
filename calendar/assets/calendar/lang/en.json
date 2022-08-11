@@ -1,0 +1,16 @@
+{
+  "calendar:block-calendar-*-*-*": "Calendar",
+  "calendar:december": "December",
+  "calendar:january": "January",
+  "calendar:february": "Februrary",
+  "calendar:march": "March",
+  "calendar:april": "April",
+  "calendar:may": "May",
+  "calendar:june": "June",
+  "calendar:july": "July",
+  "calendar:august": "August",
+  "calendar:september": "September",
+  "calendar:october": "October",
+  "calendar:november": "November"
+
+}

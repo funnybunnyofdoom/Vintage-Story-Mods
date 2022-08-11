@@ -1,0 +1,15 @@
+{
+  "ingredientPattern": "FF\tFF",
+  "ingredients": {
+    "F": {
+      "type": "item",
+      "code": "game:paper-parchment"
+    }
+  },
+  "width": 2,
+  "height": 2,
+  "output": {
+    "type": "block",
+    "code": "calendar:calendar-january-1-north"
+  }
+}
