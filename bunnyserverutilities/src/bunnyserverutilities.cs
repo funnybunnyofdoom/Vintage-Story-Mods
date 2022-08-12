@@ -1723,6 +1723,7 @@ namespace bunnyserverutilities.src
                     {
                         messageplace = 0;
                         sapi.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                        messageplace++;
                     }
                 }
             }
