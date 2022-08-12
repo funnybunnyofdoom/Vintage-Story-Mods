@@ -58,7 +58,7 @@ namespace simpleservermessage.src
                 api.StoreModConfig(ssmConfig.Current, "ssmconfig.json");
             }
             int broadcastFrequency = (int) ssmConfig.Current.frequency;
-            BCL = myAPI.Event.RegisterGameTickListener(broadcast, (broadcastFrequency * 100000)); //This has to be after the config try statement so that all the values are filled
+            BCL = myAPI.Event.RegisterGameTickListener(broadcast, (broadcastFrequency * 60000)); //This has to be after the config try statement so that all the values are filled
         }
 
         private void cmd_ssm(IServerPlayer player, int groupId, CmdArgs args)
@@ -114,7 +114,7 @@ namespace simpleservermessage.src
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Broadcast Message Frequency set to " + frqnum + " Minutes.", Vintagestory.API.Common.EnumChatType.Notification);
                         myAPI.Event.UnregisterGameTickListener(BCL);
                         int bcFrequency = (int)ssmConfig.Current.frequency;
-                        BCL = myAPI.Event.RegisterGameTickListener(broadcast,(bcFrequency*100000));
+                        BCL = myAPI.Event.RegisterGameTickListener(broadcast,(bcFrequency*60000));
                     }
                     else
                     {
@@ -134,8 +134,11 @@ namespace simpleservermessage.src
                         }
                         else
                         {
+                            
                             messageplace = 0;
+                            
                             myAPI.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                            messageplace++;
                         }
                     }
                     break;
@@ -173,6 +176,7 @@ namespace simpleservermessage.src
                 {
                     messageplace = 0;
                     myAPI.BroadcastMessageToAllGroups(messagelist[messageplace], Vintagestory.API.Common.EnumChatType.AllGroups);
+                    messageplace++;
                 }
             }
         }

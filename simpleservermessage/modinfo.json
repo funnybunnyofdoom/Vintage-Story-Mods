@@ -3,8 +3,8 @@
   "modid": "simpleservermessage",
   "name": "Simple Server Message",
   "authors": [ "FunnyBunnyOfDOOM" ],
-  "description": "Sends messages to players",
-  "version": "1.0.1",
+  "description": "Sends messages to players on the server",
+  "version": "1.0.2",
   "dependencies": {
     "game": ""
   },
