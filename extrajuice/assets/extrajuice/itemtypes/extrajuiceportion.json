@@ -48,7 +48,7 @@
       }
     }
   },
-  "shape": { "base": "item/liquid" },
+  "shape": { "base": "game:item/liquid" },
   "texture": {
     "base": "game:block/food/pie/fill-{type}",
     "alpha": 255

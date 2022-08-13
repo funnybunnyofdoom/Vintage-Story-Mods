@@ -1,0 +1,28 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+	},
+	"elements": [
+		{
+			"name": "Content",
+			"from": [ 6.6, 6.5, 6.6 ], 
+			"to": [ 9.4, 0.5, 9.4 ], 
+			"renderPass": 4,
+			"rotationOrigin": [ 8.0, 1.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
+				"east": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
+				"south": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
+				"west": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
+				"up": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
+				"down": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] }
+			}
+		}
+	]}
