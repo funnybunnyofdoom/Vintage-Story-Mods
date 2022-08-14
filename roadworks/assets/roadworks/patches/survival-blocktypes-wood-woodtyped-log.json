@@ -1,0 +1,282 @@
+[
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-acacia-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-acacia-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-acacia-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-acacia-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-aged-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-aged-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-aged-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-aged-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-birch-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-birch-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-birch-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-birch-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-ebony-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-ebony-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-ebony-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-ebony-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-kapok-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-kapok-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-kapok-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-kapok-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-maple-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-maple-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-maple-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-maple-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-oak-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-oak-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-oak-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-oak-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-pine-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-pine-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-pine-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-pine-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-redwood-*/meltingDuration",
+    "value": 30,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-redwood-*/meltingPoint",
+    "value": 1420,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-redwood-*/smeltedRatio",
+    "value": 1,
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/log-*-redwood-*/smeltedStack",
+    "value": {
+      "type": "item",
+      "code": "roadworks:tar",
+      "stacksize": 8
+    },
+    "file": "game:blocktypes/wood/woodtyped/log.json"
+  }
+]

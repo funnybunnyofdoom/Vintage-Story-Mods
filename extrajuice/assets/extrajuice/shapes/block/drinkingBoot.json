@@ -1,0 +1,172 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"shoes-commoner-L": [16,16],
+		"shoes-commoner-R": [16,16]
+	},
+	"textures": {
+		"shoes-commoner-L": "entity/humanoid/seraphclothes/foot/commoner-boots-l",
+		"shoes-commoner-R": "entity/humanoid/seraphclothes/foot/commoner-boots-r"
+	},
+	"elements": [
+		{
+			"name": "shoe R",
+			"stepParentName": "LowerFootR",
+			"from": [ -0.1, -0.1, -0.1 ], 
+			"to": [ 4.1, 6.4, 3.1 ], 
+			"rotationOrigin": [ -0.1, -0.1, -0.1 ],
+			"faces": {
+				"north": { "texture": "#shoes-commoner-R", "uv": [ 3.0, 9.5, 7.0, 16.0 ] },
+				"east": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 9.5, 3.0, 16.0 ] },
+				"south": { "texture": "#shoes-commoner-R", "uv": [ 10.0, 9.5, 14.0, 16.0 ] },
+				"west": { "texture": "#shoes-commoner-R", "uv": [ 7.0, 9.5, 10.0, 16.0 ] },
+				"up": { "texture": "#shoes-commoner-R", "uv": [ 4.0, 0.0, 7.0, 4.0 ], "rotation": 90 },
+				"down": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 0.0, 3.0, 4.0 ], "rotation": 90 }
+			},
+			"children": [
+				{
+					"name": "N fold 1",
+					"from": [ 0.0, 6.5, 0.0 ], 
+					"to": [ 4.2, 8.0, 0.2 ], 
+					"rotationOrigin": [ 0.0, 6.5, 0.2 ],
+					"rotationX": -4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-R", "uv": [ 3.0, 8.0, 7.0, 9.5 ] },
+						"east": { "texture": "#shoes-commoner-R", "uv": [ 3.0, 8.0, 3.5, 9.5 ] },
+						"south": { "texture": "#shoes-commoner-R", "uv": [ 9.5, 2.0, 13.5, 3.5 ] },
+						"west": { "texture": "#shoes-commoner-R", "uv": [ 6.5, 8.0, 7.0, 9.5 ] },
+						"up": { "texture": "#shoes-commoner-R", "uv": [ 3.0, 8.0, 7.0, 8.5 ], "rotation": 180 },
+						"down": { "texture": "#shoes-commoner-R", "uv": [ 4.5, 0.0, 8.5, 0.5 ] }
+					}
+				},
+				{
+					"name": "S fold 1",
+					"from": [ 0.0, 6.5, 3.0 ], 
+					"to": [ 4.2, 8.0, 3.2 ], 
+					"rotationOrigin": [ 0.0, 6.5, 3.0 ],
+					"rotationX": 4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-R", "uv": [ 9.5, 2.5, 13.5, 4.0 ] },
+						"east": { "texture": "#shoes-commoner-R", "uv": [ 13.5, 8.0, 14.0, 9.5 ] },
+						"south": { "texture": "#shoes-commoner-R", "uv": [ 10.0, 8.0, 14.0, 9.5 ] },
+						"west": { "texture": "#shoes-commoner-R", "uv": [ 10.0, 8.0, 10.5, 9.5 ] },
+						"up": { "texture": "#shoes-commoner-R", "uv": [ 10.0, 8.0, 14.0, 8.5 ] },
+						"down": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 0.0, 4.0, 0.5 ] }
+					}
+				},
+				{
+					"name": "back fold 1",
+					"from": [ 4.0, 6.5, 0.0 ], 
+					"to": [ 4.2, 8.0, 3.2 ], 
+					"rotationOrigin": [ 4.0, 6.5, 0.0 ],
+					"rotationZ": -4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-R", "uv": [ 2.5, 8.0, 3.0, 9.5 ] },
+						"east": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 8.0, 3.0, 9.5 ] },
+						"south": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 8.0, 0.5, 9.5 ] },
+						"west": { "texture": "#shoes-commoner-R", "uv": [ 7.5, 0.0, 10.5, 1.5 ] },
+						"up": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 8.0, 3.0, 8.5 ], "rotation": 270 },
+						"down": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 0.0, 0.5, 3.0 ] }
+					}
+				},
+				{
+					"name": "front fold 1",
+					"from": [ 0.0, 6.5, 0.0 ], 
+					"to": [ 0.2, 8.0, 3.2 ], 
+					"rotationOrigin": [ 0.2, 6.5, 0.0 ],
+					"rotationZ": 4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-R", "uv": [ 6.5, 8.0, 7.0, 9.5 ] },
+						"east": { "texture": "#shoes-commoner-R", "uv": [ 7.5, 1.0, 10.5, 2.5 ] },
+						"south": { "texture": "#shoes-commoner-R", "uv": [ 9.5, 8.0, 10.0, 9.5 ] },
+						"west": { "texture": "#shoes-commoner-R", "uv": [ 7.0, 8.0, 10.0, 9.5 ] },
+						"up": { "texture": "#shoes-commoner-R", "uv": [ 7.0, 8.0, 10.0, 8.5 ], "rotation": 90 },
+						"down": { "texture": "#shoes-commoner-R", "uv": [ 0.0, 0.0, 0.5, 3.0 ] }
+					}
+				}
+			]
+		},
+		{
+			"name": "shoe L",
+			"stepParentName": "LowerFootL",
+			"from": [ -0.1, -0.1, -0.1 ], 
+			"to": [ 4.1, 6.4, 3.1 ], 
+			"rotationOrigin": [ -0.1, -0.1, -0.1 ],
+			"faces": {
+				"north": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 9.5, 4.0, 16.0 ] },
+				"east": { "texture": "#shoes-commoner-L", "uv": [ 11.0, 9.5, 14.0, 16.0 ] },
+				"south": { "texture": "#shoes-commoner-L", "uv": [ 7.0, 9.5, 11.0, 16.0 ] },
+				"west": { "texture": "#shoes-commoner-L", "uv": [ 4.0, 9.5, 7.0, 16.0 ] },
+				"up": { "texture": "#shoes-commoner-L", "uv": [ 4.0, 0.0, 7.0, 4.0 ], "rotation": 90 },
+				"down": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 0.0, 3.0, 4.0 ], "rotation": 90 }
+			},
+			"children": [
+				{
+					"name": "N fold 2",
+					"from": [ 0.0, 6.5, 0.0 ], 
+					"to": [ 4.2, 8.0, 0.2 ], 
+					"rotationOrigin": [ 0.0, 6.5, 0.2 ],
+					"rotationX": -4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 8.0, 4.0, 9.5 ] },
+						"east": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 8.0, 0.5, 9.5 ] },
+						"south": { "texture": "#shoes-commoner-L", "uv": [ 10.0, 2.0, 14.0, 3.5 ] },
+						"west": { "texture": "#shoes-commoner-L", "uv": [ 3.5, 8.0, 4.0, 9.5 ] },
+						"up": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 8.0, 4.0, 8.5 ], "rotation": 180 },
+						"down": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 0.0, 4.0, 0.5 ] }
+					}
+				},
+				{
+					"name": "S fold 2",
+					"from": [ 0.0, 6.5, 3.0 ], 
+					"to": [ 4.2, 8.0, 3.2 ], 
+					"rotationOrigin": [ 0.0, 6.5, 3.0 ],
+					"rotationX": 4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-L", "uv": [ 9.5, 2.0, 13.5, 3.5 ] },
+						"east": { "texture": "#shoes-commoner-L", "uv": [ 10.5, 8.0, 11.0, 9.5 ] },
+						"south": { "texture": "#shoes-commoner-L", "uv": [ 7.0, 8.0, 11.0, 9.5 ] },
+						"west": { "texture": "#shoes-commoner-L", "uv": [ 7.0, 8.0, 7.5, 9.5 ] },
+						"up": { "texture": "#shoes-commoner-L", "uv": [ 7.0, 8.0, 11.0, 8.5 ] },
+						"down": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 0.0, 4.0, 0.5 ] }
+					}
+				},
+				{
+					"name": "back fold 2",
+					"from": [ 4.0, 6.5, 0.0 ], 
+					"to": [ 4.2, 8.0, 3.2 ], 
+					"rotationOrigin": [ 4.0, 6.5, 0.0 ],
+					"rotationZ": -4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-L", "uv": [ 13.5, 8.0, 14.0, 9.5 ] },
+						"east": { "texture": "#shoes-commoner-L", "uv": [ 11.0, 8.0, 14.0, 9.5 ] },
+						"south": { "texture": "#shoes-commoner-L", "uv": [ 11.0, 8.0, 11.5, 9.5 ] },
+						"west": { "texture": "#shoes-commoner-L", "uv": [ 8.5, 1.0, 11.5, 2.5 ] },
+						"up": { "texture": "#shoes-commoner-L", "uv": [ 11.0, 8.0, 14.0, 8.5 ], "rotation": 270 },
+						"down": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 0.0, 0.5, 3.0 ] }
+					}
+				},
+				{
+					"name": "front fold 2",
+					"from": [ 0.0, 6.5, 0.0 ], 
+					"to": [ 0.2, 8.0, 3.2 ], 
+					"rotationOrigin": [ 0.2, 6.5, 0.0 ],
+					"rotationZ": 4.0,
+					"faces": {
+						"north": { "texture": "#shoes-commoner-L", "uv": [ 4.0, 8.0, 4.5, 9.5 ] },
+						"east": { "texture": "#shoes-commoner-L", "uv": [ 7.5, 1.0, 10.5, 2.5 ] },
+						"south": { "texture": "#shoes-commoner-L", "uv": [ 6.5, 8.0, 7.0, 9.5 ] },
+						"west": { "texture": "#shoes-commoner-L", "uv": [ 4.0, 8.0, 7.0, 9.5 ] },
+						"up": { "texture": "#shoes-commoner-L", "uv": [ 4.0, 8.0, 7.0, 8.5 ], "rotation": 90 },
+						"down": { "texture": "#shoes-commoner-L", "uv": [ 0.0, 0.0, 0.5, 3.0 ] }
+					}
+				}
+			]
+		}
+	]}
