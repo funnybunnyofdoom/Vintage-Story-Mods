@@ -45,24 +45,53 @@ namespace calendar.src
 
         public override void OnBlockPlaced(ItemStack byItemStack = null)
         {
+            EnumSeason season = Api.World.Calendar.GetSeason(this.Pos); //This can get our season for the overlay
             int dayofmonth = (myapi.World.Calendar.DayOfYear % myapi.World.Calendar.DaysPerMonth) + 1;
             if (this.Block.FirstCodePart(1) != myapi.World.Calendar.MonthName.ToString() || this.Block.FirstCodePart(2).ToInt() != dayofmonth)
             {
-                string orientation = this.Block.FirstCodePart(3);
+                string material = this.Block.FirstCodePart(3);
+                string orientation = this.Block.FirstCodePart(5);
+                if (orientation == null) //This checks for blocks without the new 4th property
+                {
+                    material = "linen";
+                    if (this.Block.FirstCodePart(4) == null) {
+                        orientation = this.Block.FirstCodePart(3);
+                    }else if (this.Block.FirstCodePart(5) == null)
+                    {
+                        orientation = this.Block.FirstCodePart(4);
+                    }
+                    
+                }
 
-                Block block = myapi.World.GetBlock(new AssetLocation("calendar:calendar-" + myapi.World.Calendar.MonthName.ToString() + "-" + dayofmonth + "-" + orientation));
+                Block block = myapi.World.GetBlock(new AssetLocation("calendar:calendar-" + myapi.World.Calendar.MonthName.ToString() + "-" + dayofmonth + "-" + material + "-" + season.ToString() + "-" + orientation));
                 myapi.World.BlockAccessor.SetBlock(block.BlockId, this.Pos);
             }
         }
 
         public void OnTick(float par)
         {
+            
+            EnumSeason season = Api.World.Calendar.GetSeason(this.Pos); //This can get our season for the overlay
             int dayofmonth = (myapi.World.Calendar.DayOfYear % myapi.World.Calendar.DaysPerMonth)+1;
             if (this.Block.FirstCodePart(1) != myapi.World.Calendar.MonthName.ToString() || this.Block.FirstCodePart(2).ToInt() != dayofmonth)
             {
-                string orientation = this.Block.FirstCodePart(3);
+                string material = this.Block.FirstCodePart(3);
                 
-                Block block = myapi.World.GetBlock(new AssetLocation("calendar:calendar-"+ myapi.World.Calendar.MonthName.ToString() +"-"+ dayofmonth +"-"+ orientation));
+                string orientation = this.Block.FirstCodePart(5);
+                if (orientation == null) //This checks for blocks without the new 4th property
+                {
+                    material = "linen";
+                    if (this.Block.FirstCodePart(4) == null)
+                    {
+                        orientation = this.Block.FirstCodePart(3);
+                    }
+                    else if (this.Block.FirstCodePart(5) == null)
+                    {
+                        orientation = this.Block.FirstCodePart(4);
+                    }
+                }
+                
+                Block block = myapi.World.GetBlock(new AssetLocation("calendar:calendar-"+ myapi.World.Calendar.MonthName.ToString() +"-"+ dayofmonth +"-"+ material + "-"+ season.ToString() + "-" + orientation));
                 myapi.World.BlockAccessor.SetBlock(block.BlockId, this.Pos);
             }
         }

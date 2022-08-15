@@ -1,0 +1,16 @@
+{
+  "ingredientPattern": "FF\tFF",
+  "ingredients": {
+    "F": {
+      "type": "item",
+      "code": "game:cloth-*",
+      "name":  "color"
+    }
+  },
+  "width": 2,
+  "height": 2,
+  "output": {
+    "type": "block",
+    "code": "calendar:calendar-january-1-{color}-spring-north"
+  }
+}

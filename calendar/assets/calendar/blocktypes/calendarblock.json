@@ -13,39 +13,49 @@
       "states": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 ]
     },
     {
+      "code": "material",
+      "states": [ "linen", "leather","paper","gray","green","orange","pink","purple","red","white","yellow","reed","hay","bamboo" ]
+    },
+    {
+      "code": "season",
+      "states": [ "winter", "spring", "fall", "summer" ]
+    },
+    {
       "code": "side",
       "loadFromProperties": "abstract/horizontalorientation"
     }
   ],
   "attributes": {
-    "handbook": { "groupBy": [ "calendar-*-*-*" ] }
+    "handbook": { "groupBy": [ "calendar-*-*-*-*" ] }
   },
   "creativeinventory": {
-    "general": [ "*-january-1-north" ],
-    "decorative": [ "*-january-1-north" ]
+    "general": [ "*-january-1-{material}-spring-north" ],
+    "decorative": [ "*-january-1-{material}-spring-north" ]
   },
   "shapebytype": {
-    "*-*-*-north": {
+    "*-*-*-*-*-north": {
       "base": "calendar:block/calendar",
       "rotateY": 0
     },
-    "*-*-*-east": {
+    "*-*-*-*-*-east": {
       "base": "calendar:block/calendar",
       "rotateY": 270
     },
-    "*-*-*-south": {
+    "*-*-*-*-*-south": {
       "base": "calendar:block/calendar",
       "rotateY": 180
     },
-    "*-*-*-west": {
+    "*-*-*-*-*-west": {
       "base": "calendar:block/calendar",
       "rotateY": 90
     }
   },
   "texturesByType": {
     "*": {
-      "white1": { "base": "block/calendar-{month}" },
-      "30": { "base": "block/{day}" }
+      "white1": { "base": "block/{material}" },
+      "30": { "base": "block/{day}" },
+      "calendar-january": { "base": "block/calendar-{month}" },
+      "season-spring": { "base": "block/season-{season}" }
     }
   },
   "sidesolid": {

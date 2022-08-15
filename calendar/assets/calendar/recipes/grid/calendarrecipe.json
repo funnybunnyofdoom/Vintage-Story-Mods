@@ -1,15 +1,80 @@
-{
-  "ingredientPattern": "FF\tFF",
-  "ingredients": {
-    "F": {
-      "type": "item",
-      "code": "game:paper-parchment"
+[
+  {
+    "ingredientPattern": "FF\tFF",
+    "ingredients": {
+      "F": {
+        "type": "item",
+        "code": "game:paper-parchment"
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "output": {
+      "type": "block",
+      "code": "calendar:calendar-january-1-paper-spring-north"
     }
   },
-  "width": 2,
-  "height": 2,
-  "output": {
-    "type": "block",
-    "code": "calendar:calendar-january-1-north"
+  {
+    "ingredientPattern": "FF\tFF",
+    "ingredients": {
+      "F": {
+        "type": "block",
+        "code": "game:hay-normal"
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "output": {
+      "type": "block",
+      "code": "calendar:calendar-january-1-hay-spring-north"
+    }
+  },
+  {
+    "ingredientPattern": "FF\tFF",
+    "ingredients": {
+      "F": {
+        "type": "item",
+        "code": "game:cattailtops",
+        "quantity": 4
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "output": {
+      "type": "block",
+      "code": "calendar:calendar-january-1-reed-spring-north"
+    }
+  },
+  {
+    "ingredientPattern": "FF\tFF",
+    "ingredients": {
+      "F": {
+        "type": "item",
+        "code": "game:papyrustops",
+        "quantity": 4
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "output": {
+      "type": "block",
+      "code": "calendar:calendar-january-1-reed-spring-north"
+    }
+  },
+  {
+    "ingredientPattern": "FF\tFF",
+    "ingredients": {
+      "F": {
+        "type": "block",
+        "code": "game:stackedbamboo-ud",
+        "quantity": 4
+      }
+    },
+    "width": 2,
+    "height": 2,
+    "output": {
+      "type": "block",
+      "code": "calendar:calendar-january-1-bamboo-spring-north"
+    }
   }
-}
+]
