@@ -1,5 +1,5 @@
 {
-  "ingredientPattern": "FF\tFF",
+  "ingredientPattern": "FF\tFF\tFF",
   "ingredients": {
     "F": {
       "type": "item",
@@ -7,7 +7,7 @@
     }
   },
   "width": 2,
-  "height": 2,
+  "height": 3,
   "output": {
     "type": "item",
     "code": "game:paper-parchment"

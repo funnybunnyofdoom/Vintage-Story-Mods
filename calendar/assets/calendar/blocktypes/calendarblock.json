@@ -14,7 +14,7 @@
     },
     {
       "code": "material",
-      "states": [ "linen", "leather","paper","gray","green","orange","pink","purple","red","white","yellow","reed","hay","bamboo" ]
+      "states": [ "linen", "leather","paper","gray","green","orange","pink","purple","red","white","yellow","reed","hay","bamboo","blue","brown","black","plain" ]
     },
     {
       "code": "season",
