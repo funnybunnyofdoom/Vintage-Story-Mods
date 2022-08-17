@@ -67,4 +67,4 @@ A collection of mods for the game Vintage Story
 	new tool: Road Tool - Tamps down soil into dirt paths and is used in the final step for asphalt to pave it into usable road
 
 -Calendar: [FunnyBunnyofDOOM] with pointers from [DukePony]
-	Craftable calendar that updates depending on day/month.
+	Craftable calendar that updates depending on day/month. Working on handling this with a genmesh with the assistance of [Craluminum]
