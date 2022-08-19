@@ -1,0 +1,20 @@
+{
+  "ingredientPattern": "_FF\t_GG\t_GG",
+  "ingredients": {
+    "F": {
+      "type": "item",
+      "code": "game:metalplate-*",
+      "name": "material"
+    },
+    "G": {
+      "type": "block",
+      "code": "game:glass-plain"
+    }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "block",
+    "code": "bunnydoor:ironglassdoor-{material}-north-down-closed-left"
+  }
+}

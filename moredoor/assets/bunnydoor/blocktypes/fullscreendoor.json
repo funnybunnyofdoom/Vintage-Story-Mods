@@ -1,5 +1,5 @@
 {
-  "code": "bunnydoor",
+  "code": "fullscreendoor",
   "class": "BlockDoor",
   "behaviors": [ { "name": "Lockable" } ],
   "heldTpIdleAnimation": "holdunderarm",
@@ -13,7 +13,9 @@
     }
   },
   "textures": {
-    "all": { "base": "game:block/wood/planks/{material}*" }
+    "1": { "base": "game:block/wood/planks/{material}*" },
+    "0": { "base": "game:block/wood/planks/{material}*" },
+    "leaded": { "base": "game:block/glass/leaded" }
   },
   "variantgroups": [
     {
@@ -38,141 +40,141 @@
     "general": [ "*-{material}-north-down-closed-left" ],
     "decorative": [ "*-{material}-north-down-closed-left" ]
   },
-  "shapeinventory": { "base": "game:block/wood/door/plank/inventory" },
+  "shapeinventory": { "base": "bunnydoor:fullscreen/inventory" },
   "shapebytype": {
     "*-north-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "bunnydoor:fullscreen/down_closed_left",
       "rotateY": 90
     },
     "*-north-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "bunnydoor:fullscreen/up_closed_left",
       "rotateY": 90
     },
     "*-north-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "bunnydoor:fullscreen/down_opened_left",
       "rotateY": 90
     },
     "*-north-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "bunnydoor:fullscreen/up_opened_left",
       "rotateY": 90
     },
 
     "*-east-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "bunnydoor:fullscreen/down_closed_left",
       "rotateY": 0
     },
     "*-east-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "bunnydoor:fullscreen/up_closed_left",
       "rotateY": 0
     },
     "*-east-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "bunnydoor:fullscreen/down_opened_left",
       "rotateY": 0
     },
     "*-east-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "bunnydoor:fullscreen/up_opened_left",
       "rotateY": 0
     },
 
     "*-south-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "bunnydoor:fullscreen/down_closed_left",
       "rotateY": 270
     },
     "*-south-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "bunnydoor:fullscreen/up_closed_left",
       "rotateY": 270
     },
     "*-south-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "bunnydoor:fullscreen/down_opened_left",
       "rotateY": 270
     },
     "*-south-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "bunnydoor:fullscreen/up_opened_left",
       "rotateY": 270
     },
 
     "*-west-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "bunnydoor:fullscreen/down_closed_left",
       "rotateY": 180
     },
     "*-west-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "bunnydoor:fullscreen/up_closed_left",
       "rotateY": 180
     },
     "*-west-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "bunnydoor:fullscreen/down_opened_left",
       "rotateY": 180
     },
     "*-west-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "bunnydoor:fullscreen/up_opened_left",
       "rotateY": 180
     },
 
     "*-north-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "bunnydoor:fullscreen/down_closed_right",
       "rotateY": 90
     },
     "*-north-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "bunnydoor:fullscreen/up_closed_right",
       "rotateY": 90
     },
     "*-north-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "bunnydoor:fullscreen/down_opened_right",
       "rotateY": 90
     },
     "*-north-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "bunnydoor:fullscreen/up_opened_right",
       "rotateY": 90
     },
 
     "*-east-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "bunnydoor:fullscreen/down_closed_right",
       "rotateY": 0
     },
     "*-east-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "bunnydoor:fullscreen/up_closed_right",
       "rotateY": 0
     },
     "*-east-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "bunnydoor:fullscreen/down_opened_right",
       "rotateY": 0
     },
     "*-east-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "bunnydoor:fullscreen/up_opened_right",
       "rotateY": 0
     },
 
     "*-south-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "bunnydoor:fullscreen/down_closed_right",
       "rotateY": 270
     },
     "*-south-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "bunnydoor:fullscreen/up_closed_right",
       "rotateY": 270
     },
     "*-south-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "bunnydoor:fullscreen/down_opened_right",
       "rotateY": 270
     },
     "*-south-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "bunnydoor:fullscreen/up_opened_right",
       "rotateY": 270
     },
 
     "*-west-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "bunnydoorfull:fullscreen/down_closed_right",
       "rotateY": 180
     },
     "*-west-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "bunnydoor:fullscreen/up_closed_right",
       "rotateY": 180
     },
     "*-west-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "bunnydoor:fullscreen/down_opened_right",
       "rotateY": 180
     },
     "*-west-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "bunnydoor:fullscreen/up_opened_right",
       "rotateY": 180
     }
   },
@@ -296,10 +298,10 @@
     "burnDuration": 25
   },
   "sounds": {
-    "place": "moredoor:block/planks",
-    "hit": "moredoor:block/planks",
-    "break": "moredoor:block/planks",
-    "walk": "moredoor:walk/wood"
+    "place": "game:block/planks",
+    "hit": "game:block/planks",
+    "break": "game:block/planks",
+    "walk": "game:walk/wood"
   },
   "materialDensity": 600
 }

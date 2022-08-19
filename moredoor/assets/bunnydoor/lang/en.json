@@ -1,0 +1,7 @@
+{
+  "bunnydoor:block-bunnydoor-*": "Wooden Door",
+  "bunnydoor:block-fullscreendoor-*": "Screen Door",
+  "bunnydoor:block-ironbunnydoor-*": "Metal Door",
+  "bunnydoor:block-ironglassdoor-*": "Metal Window Door",
+  "bunnydoor:block-screendoor-*": "Screen Top Door"
+}

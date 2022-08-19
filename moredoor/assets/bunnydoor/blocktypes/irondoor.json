@@ -1,26 +1,20 @@
 {
-  "code": "bunnydoor",
+  "code": "ironbunnydoor",
   "class": "BlockDoor",
   "behaviors": [ { "name": "Lockable" } ],
   "heldTpIdleAnimation": "holdunderarm",
   "attributes": {
     "handbook": {
-      "groupBy": [ "*-{material}-*" ]
+      "groupBy": [ "ironbunnydoor-*" ]
     },
-    "triggerSound": "game:sounds/block/door",
-    "breakOnTriggerChanceByType": {
-      "*-log-*": 0.10
-    }
-  },
-  "textures": {
-    "all": { "base": "game:block/wood/planks/{material}*" }
+    "triggerSound": "game:sounds/block/metaldoor"
   },
   "variantgroups": [
     {
-      "code": "material",
-      "loadFromProperties": "game:block/wood"
+      "code": "metal",
+      "loadFromProperties": "game:block/metal"
     },
-    { "loadFromProperties": "game:abstract/horizontalorientation" },
+    { "loadFromProperties": "abstract/horizontalorientation" },
     {
       "code": "part",
       "states": [ "down", "up" ]
@@ -34,151 +28,155 @@
       "states": [ "left", "right" ]
     }
   ],
-  "creativeinventory": {
-    "general": [ "*-{material}-north-down-closed-left" ],
-    "decorative": [ "*-{material}-north-down-closed-left" ]
+  "textures": {
+    "all": { "base": "game:block/metal/sheet/{metal}1" }
   },
-  "shapeinventory": { "base": "game:block/wood/door/plank/inventory" },
+  "creativeinventory": {
+    "general": [ "*-north-down-closed-left" ],
+    "decorative": [ "*-north-down-closed-left" ]
+  },
+  "shapeinventory": { "base": "game:block/metal/iron/door/inventory" },
   "shapebytype": {
     "*-north-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "game:block/metal/iron/door/down_closed_left",
       "rotateY": 90
     },
     "*-north-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "game:block/metal/iron/door/up_closed_left",
       "rotateY": 90
     },
     "*-north-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "game:block/metal/iron/door/down_opened_left",
       "rotateY": 90
     },
     "*-north-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "game:block/metal/iron/door/up_opened_left",
       "rotateY": 90
     },
 
     "*-east-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "game:block/metal/iron/door/down_closed_left",
       "rotateY": 0
     },
     "*-east-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "game:block/metal/iron/door/up_closed_left",
       "rotateY": 0
     },
     "*-east-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "game:block/metal/iron/door/down_opened_left",
       "rotateY": 0
     },
     "*-east-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "game:block/metal/iron/door/up_opened_left",
       "rotateY": 0
     },
 
     "*-south-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "game:block/metal/iron/door/down_closed_left",
       "rotateY": 270
     },
     "*-south-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "game:block/metal/iron/door/up_closed_left",
       "rotateY": 270
     },
     "*-south-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "game:block/metal/iron/door/down_opened_left",
       "rotateY": 270
     },
     "*-south-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "game:block/metal/iron/door/up_opened_left",
       "rotateY": 270
     },
 
     "*-west-down-closed-left": {
-      "base": "bunnydoor:plank/down_closed_left",
+      "base": "game:block/metal/iron/door/down_closed_left",
       "rotateY": 180
     },
     "*-west-up-closed-left": {
-      "base": "bunnydoor:plank/up_closed_left",
+      "base": "game:block/metal/iron/door/up_closed_left",
       "rotateY": 180
     },
     "*-west-down-opened-left": {
-      "base": "bunnydoor:plank/down_opened_left",
+      "base": "game:block/metal/iron/door/down_opened_left",
       "rotateY": 180
     },
     "*-west-up-opened-left": {
-      "base": "bunnydoor:plank/up_opened_left",
+      "base": "game:block/metal/iron/door/up_opened_left",
       "rotateY": 180
     },
 
     "*-north-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "game:block/metal/iron/door/down_closed_right",
       "rotateY": 90
     },
     "*-north-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "game:block/metal/iron/door/up_closed_right",
       "rotateY": 90
     },
     "*-north-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "game:block/metal/iron/door/down_opened_right",
       "rotateY": 90
     },
     "*-north-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "game:block/metal/iron/door/up_opened_right",
       "rotateY": 90
     },
 
     "*-east-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "game:block/metal/iron/door/down_closed_right",
       "rotateY": 0
     },
     "*-east-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "game:block/metal/iron/door/up_closed_right",
       "rotateY": 0
     },
     "*-east-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "game:block/metal/iron/door/down_opened_right",
       "rotateY": 0
     },
     "*-east-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "game:block/metal/iron/door/up_opened_right",
       "rotateY": 0
     },
 
     "*-south-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "game:block/metal/iron/door/down_closed_right",
       "rotateY": 270
     },
     "*-south-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "game:block/metal/iron/door/up_closed_right",
       "rotateY": 270
     },
     "*-south-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "game:block/metal/iron/door/down_opened_right",
       "rotateY": 270
     },
     "*-south-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "game:block/metal/iron/door/up_opened_right",
       "rotateY": 270
     },
 
     "*-west-down-closed-right": {
-      "base": "bunnydoor:plank/down_closed_right",
+      "base": "game:block/metal/iron/door/down_closed_right",
       "rotateY": 180
     },
     "*-west-up-closed-right": {
-      "base": "bunnydoor:plank/up_closed_right",
+      "base": "game:block/metal/iron/door/up_closed_right",
       "rotateY": 180
     },
     "*-west-down-opened-right": {
-      "base": "bunnydoor:plank/down_opened_right",
+      "base": "game:block/metal/iron/door/down_opened_right",
       "rotateY": 180
     },
     "*-west-up-opened-right": {
-      "base": "bunnydoor:plank/up_opened_right",
+      "base": "game:block/metal/iron/door/up_opened_right",
       "rotateY": 180
     }
+
   },
-  "blockmaterial": "Wood",
+  "blockmaterial": "Metal",
   "replaceable": 500,
-  "resistance": 3.5,
+  "resistance": 2.5,
   "lightAbsorption": 0,
   "sidesolid": {
     "all": false
@@ -197,15 +195,15 @@
   "fpHandTransform": {
     "translation": {
       "x": -0.27,
-      "y": 0.18,
-      "z": 0.72
+      "y": -0.12,
+      "z": 1.12
     },
     "rotation": {
-      "x": 120,
+      "x": -44,
       "y": 42,
       "z": 0
     },
-    "scale": 1.11
+    "scale": 1.02
   },
   "tpHandTransform": {
     "translation": {
@@ -236,7 +234,7 @@
   "selectionbox": {
     "x1": 0,
     "y1": 0,
-    "z1": 0.875,
+    "z1": 0.75,
     "x2": 1,
     "y2": 1,
     "z2": 1,
@@ -291,15 +289,24 @@
       "*-south-*-closed-right": 180
     }
   },
-  "combustibleProps": {
-    "burnTemperature": 600,
-    "burnDuration": 25
-  },
+
   "sounds": {
-    "place": "moredoor:block/planks",
-    "hit": "moredoor:block/planks",
-    "break": "moredoor:block/planks",
-    "walk": "moredoor:walk/wood"
+    "place": "game:block/metaldoor-place",
+    "break": "game:block/metaldoor-place",
+    "hit": "game:block/metaldoor-place"
   },
-  "materialDensity": 600
+  "materialDensity": 600,
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.1,
+      "y": -0.7,
+      "z": -0.6
+    },
+    "rotation": {
+      "x": 14,
+      "y": 0,
+      "z": 59
+    },
+    "scale": 0.6
+  }
 }

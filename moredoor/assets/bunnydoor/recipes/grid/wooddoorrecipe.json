@@ -1,0 +1,16 @@
+{
+  "ingredientPattern": "_FF\t_FF\t_FF",
+  "ingredients": {
+    "F": {
+      "type": "item",
+      "code": "game:plank-*",
+      "name": "material"
+    }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "block",
+    "code": "bunnydoor:bunnydoor-{material}-north-down-closed-left"
+  }
+}

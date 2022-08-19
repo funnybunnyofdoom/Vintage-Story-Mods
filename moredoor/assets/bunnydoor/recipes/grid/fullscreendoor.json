@@ -1,0 +1,21 @@
+{
+  "ingredientPattern": "_FF\t_GG\t_GG",
+  "ingredients": {
+    "F": {
+      "type": "item",
+      "code": "game:plank-*",
+      "name": "material"
+    },
+    "G": {
+      "type": "item",
+      "code": "game:flaxtwine",
+      "quantity": 4
+    }
+  },
+  "width": 3,
+  "height": 3,
+  "output": {
+    "type": "block",
+    "code": "bunnydoor:fullscreendoor-{material}-north-down-closed-left"
+  }
+}
