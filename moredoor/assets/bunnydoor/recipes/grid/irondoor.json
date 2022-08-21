@@ -1,5 +1,5 @@
 {
-  "ingredientPattern": "_FF\t_FF\t_FF",
+  "ingredientPattern": "_FF,_FF,_FF",
   "ingredients": {
     "F": {
       "type": "item",
