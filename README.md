@@ -6,9 +6,10 @@ A collection of mods for the game Vintage Story
   
 -Bunny Bell: [FunnyBunnyofDOOM]
   Makes a "bing" noise when the player's name is mentioned
+Server side only. Client side mod is planned. 
   
 -Just Random Teleport: [FunnyBunnyofDOOM]
-  /rtp - Teleports the player to a random location within a 100k block radius of spawn
+  /rtp - Teleports the player to a random location within a 100k configurable radius of spawn
   
 -Just Home: [FunnyBunnyofDOOM]
   /sethome to set your home position /home to teleport to home
@@ -18,6 +19,7 @@ A collection of mods for the game Vintage Story
   
 -Rising Sun: [FunnyBunnyofDOOM]
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
+Will add a feature to progress to day whenever a player logs in. 
 
 -Bunny Server Utilities: [FunnyBunnyofDOOM]
   Collection of utility mods
@@ -66,5 +68,5 @@ A collection of mods for the game Vintage Story
 	6 tiers of roads, increasing in speed as the tiers go up
 	new tool: Road Tool - Tamps down soil into dirt paths and is used in the final step for asphalt to pave it into usable road
 
--Calendar: [FunnyBunnyofDOOM] with pointers from [DukePony]
+-Calendar: [FunnyBunnyofDOOM] with help from [DukePony]
 	Craftable calendar that updates depending on day/month. Working on handling this with a genmesh with the assistance of [Craluminum]
