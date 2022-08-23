@@ -8,6 +8,8 @@ using chronojigs.chunks;
 using chronojigs.Core;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.ServerMods;
+
 
 namespace chronojigs.chronometer
 {
@@ -20,20 +22,21 @@ namespace chronojigs.chronometer
         {
             base.OnLoaded(api);
             capi = api;
-            if (api.Side == EnumAppSide.Client) return;
+            chronojigs.Core.chronojigs coreClass = new Core.chronojigs();
+            coreClass.StartServerSide(sapi);
 
-            ICoreServerAPI sapi = api as ICoreServerAPI;
-            this.sapi = sapi;
+
         }
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
 
 
-
+            
 
             IWorldChunk chunk = capi.World.BlockAccessor.GetChunk(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z);
 
             System.Diagnostics.Debug.WriteLine("Chronometer USED");
+            sapi.BroadcastMessageToAllGroups("YO EVERYONE", Vintagestory.API.Common.EnumChatType.Notification);
             /*if (!temporalChunks.ContainsKey(chunk))
             {
                 AddChunkToDictionary(chunk);

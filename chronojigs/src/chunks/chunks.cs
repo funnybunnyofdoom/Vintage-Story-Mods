@@ -7,7 +7,8 @@ using Vintagestory.GameContent;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
-using chronojigs.chunks;
+using chronojigs.Core;
+using chronojigs.altars;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
@@ -26,7 +27,7 @@ namespace chronojigs.chunks
             api.Event.GameWorldSave += OnSaveGameSaving;
 
             api.Event.OnEntityDeath += EntityDeath;
-            //api.Event.DidUseBlock += OnUseBlock;
+            api.Event.DidUseBlock += OnUseBlock;
     }
 
         public static SimpleParticleProperties myParticles = new SimpleParticleProperties(1, 1, ColorUtil.ColorFromRgba(50, 220, 220, 220), new Vec3d(), new Vec3d(), new Vec3f(), new Vec3f());
@@ -121,6 +122,27 @@ namespace chronojigs.chunks
                 }
             }
                 ParticleTimer(temporalEnergy, entity);
+        }
+
+
+
+
+        private void OnUseBlock(IServerPlayer byPlayer, BlockSelection blockSel)
+        {
+            if (sapi.World.BlockAccessor.GetBlock(blockSel.Position).Code.FirstPathPart(1) != "energy")
+            {
+                return;
+            }
+
+            IServerChunk chunk = sapi.WorldManager.GetChunk(blockSel.Position);
+
+            if (!temporalChunks.ContainsKey(chunk))
+            {
+                AddChunkToDictionary(chunk);
+            }
+
+            int tempEnergy = temporalChunks[chunk];
+            byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Selected chunk has " + tempEnergy + " Temporal Energy.", Vintagestory.API.Common.EnumChatType.Notification);
         }
 
 

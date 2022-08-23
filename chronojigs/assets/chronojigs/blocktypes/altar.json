@@ -1,0 +1,88 @@
+{
+  "code": "altar",
+  "creativeinventory": { "general": [ "altar-{type}-north" ] },
+  "entityClass": "energyaltarentity",
+  "variantgroups": [
+    {
+      "code": "type",
+      "States": [ "energy" ]
+    },
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "behaviors": [
+    { "name": "Unstable" },
+    {
+      "name": "Multiblock",
+      "properties": {
+        "sizex": 1,
+        "sizey": 2,
+        "sizez": 1,
+        "cposition": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
+  ],
+  "shapebytype": {
+    "*-west": {
+      "base": "chronojigs:altar-time",
+      "rotateY": 0
+    },
+    "*-east": {
+      "base": "chronojigs:altar-time",
+      "rotateY": 180
+    },
+    "*-south": {
+      "base": "chronojigs:altar-time",
+      "rotateY": 90
+    },
+    "*-north": {
+      "base": "chronojigs:altar-time",
+      "rotateY": 270
+    }
+  },
+  "blockmaterial": "stone",
+  "replaceable": 160,
+  "resistance": 4,
+  "lightAbsorption": 0,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "sounds": {
+    "place": "game:block/stone",
+    "break": "game:block/stone",
+    "hit": "game:block/stone"
+  },
+  "collisionbox": {
+    "x1": 0.25,
+    "y1": 0,
+    "z1": 0.25,
+    "x2": 0.75,
+    "y2": 1,
+    "z2": 0.75
+  },
+  "selectionbox": {
+    "x1": 0.25,
+    "y1": 0,
+    "z1": 0.25,
+    "x2": 0.75,
+    "y2": 1,
+    "z2": 0.75
+  },
+  "guiTransform": {
+    "origin": {
+      "x": 0.5,
+      "y": 1,
+      "z": 0.5
+    },
+    "scale": ".8"
+  }
+}
