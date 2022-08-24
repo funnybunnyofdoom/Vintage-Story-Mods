@@ -54,8 +54,8 @@ Will add a feature to progress to day whenever a player logs in.
 -Mushroom Magic: [FunnyBunnyofDOOM][DukePony]
 	Dry mushrooms, powder them, mix into liquids. Mix mushrooms powder and liquids in barrels to make potions with different magical effects. Potions effects should be hidden until discovered if possible.
 
--Temporal Power: [FunnyBunnyofDOOM][DukePony]
-	Killing drifters and having rifts in a chunk with a "temporal collector" or "temporal antenna' or something stores temporal energy on that chunk which could be used by a machine in that chunk to "harvest" this power and use it instead of wind to power mechanics.   
+-Chronojigs: [FunnyBunnyofDOOM][DukePony]
+	Kill drifters and other mobs in a chunk to generate "temporal energy". This energy is used at altars within that chunk to manipulate time and seasons. 
 
 -Paper Craft: [FunnyBunnyofDOOM][DukePony]
 	Sawmill machine to saw logs into boards but also produce sawdust. soak sawdust in barrel with water to produce pulp. Use pulp with paper machine to make paper. Paper can be used for bookshelves, paper constructs, wall scrolls and LAND CLAIM PAPERS which will allow the user to claim more land.
