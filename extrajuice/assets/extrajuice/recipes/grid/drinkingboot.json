@@ -1,0 +1,36 @@
+[
+  {
+    "ingredientPattern": "B",
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:clothes-foot-commoner-boots",
+        "quantity": 1
+      }
+    },
+    "width": 1,
+    "height": 1,
+    "output": {
+      "type": "block",
+      "code": "extrajuice:drinkingboot",
+      "quantity": 2
+    }
+  },
+  {
+    "ingredientPattern": "B",
+    "ingredients": {
+      "B": {
+        "type": "block",
+        "code": "extrajuice:drinkingboot",
+        "quantity": 2
+      }
+    },
+    "width": 1,
+    "height": 1,
+    "output": {
+      "type": "item",
+      "code": "game:clothes-foot-commoner-boots",
+      "quantity": 1
+    }
+  }
+]

@@ -1,0 +1,64 @@
+[
+	{
+		"ingredientPattern": "HC_,_ST,_ST",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"code": "game:hammer-*",
+				"isTool": true,
+				"toolDurabilityCost": 5
+			},
+			"C": {
+				"type": "item",
+				"code": "game:chisel-*",
+				"isTool": true,
+				"toolDurabilityCost": 5
+			},
+			"S": {
+				"type": "block",
+				"code": "game:log-placed-*-ud",
+				"name": "wood"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:stick"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"output": {
+			"type": "block",
+			"code": "extrajuice:mug-handle-{wood}",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "HC_,_S_,_S_",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"code": "game:hammer-*",
+				"isTool": true,
+				"toolDurabilityCost": 5
+			},
+			"C": {
+				"type": "item",
+				"code": "game:chisel-*",
+				"isTool": true,
+				"toolDurabilityCost": 5
+			},
+			"S": {
+				"type": "block",
+				"code": "game:log-placed-*-ud",
+				"name": "wood"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"output": {
+			"type": "block",
+			"code": "extrajuice:mug-nohandle-{wood}",
+			"quantity": 1
+		}
+	}
+]

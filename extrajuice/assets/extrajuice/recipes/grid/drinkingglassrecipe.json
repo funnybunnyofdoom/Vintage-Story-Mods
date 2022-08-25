@@ -1,0 +1,21 @@
+[
+  {
+    "ingredientPattern": "G_G,G_G,GGG",
+    "ingredients": {
+      "G": {
+        "type": "block",
+        "code": "game:glass-*",
+        "name": "type",
+        "allowedVariants": [ "quartz", "plain", "green", "blue", "violet", "red", "yellow", "brown", "vintage", "pink" ],
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "extrajuice:drinkingGlass",
+      "quantity": 4
+    }
+  }
+]

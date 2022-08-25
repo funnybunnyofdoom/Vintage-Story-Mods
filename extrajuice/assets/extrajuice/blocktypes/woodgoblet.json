@@ -1,14 +1,14 @@
 {
-  "code": "metalgoblet",
+  "code": "woodgoblet",
   "creativeinventory": { "general": [ "*" ] },
   "variantgroups": [
     {
-      "code": "metal",
-      "loadFromProperties": "game:block/metal"
+      "code": "wood",
+      "loadFromProperties": "game:block/wood"
     }
   ],
   "textures": {
-    "all": { "base": "game:block/metal/ingot/{metal}*" }
+    "all": { "base": "game:block/wood/planks/{wood}*" }
   },
   "shape": {
 "base": "extrajuice:block/goblet"
@@ -54,17 +54,17 @@
     }
   },
   "doNotRenderAtLod2": true,
-  "blockmaterial": "Metal",
+  "blockmaterial": "Wood",
   "replaceable": 300,
   "liquidSelectable": 1,
   "resistance": 0.75,
   "maxStackSize": 8,
   "lightAbsorption": 0,
   "sounds": {
-    "walk": "game:block/anvil1",
-    "hit": "game:block/anvil1",
-    "place": "game:block/anvil1",
-    "break": "game:block/anvil1"
+    "walk": "game:block/planks",
+    "hit": "game:block/chop1",
+    "place": "game:block/planks",
+    "break": "game:block/planks"
   },
   "sideopaque": {
     "all": false

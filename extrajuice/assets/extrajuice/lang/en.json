@@ -22,5 +22,36 @@
   "extrajuice:item-extrapressedmash-olive-wet": "Wet Pressed olive",
   "extrajuice:item-extrapressedmash-parsnip-wet": "Wet Pressed parsnip",
   "extrajuice:item-extrapressedmash-bellpepper-wet": "Wet Pressed bellpepper",
-  "extrajuice:item-extrapressedmash-pumpkin-wet": "Wet Pressed pumpkin"
+  "extrajuice:item-extrapressedmash-pumpkin-wet": "Wet Pressed pumpkin",
+
+  "extrajuice:incontainer-item-berrymilkportion-blackcurrant": "Black Currant Milk",
+  "extrajuice:incontainer-item-berrymilkportion-blueberry": "Blueberry Milk",
+  "extrajuice:incontainer-item-berrymilkportion-breadfruit": "Breadfruit Milk",
+  "extrajuice:incontainer-item-berrymilkportion-cherry": "Cherry Milk",
+  "extrajuice:incontainer-item-berrymilkportion-cranberry": "Cranberry Milk",
+  "extrajuice:incontainer-item-berrymilkportion-lychee": "Lychee Milk",
+  "extrajuice:incontainer-item-berrymilkportion-mango": "Mango Milk",
+  "extrajuice:incontainer-item-berrymilkportion-orange": "Orange Milk",
+  "extrajuice:incontainer-item-berrymilkportion-peach": "Peach Milk",
+  "extrajuice:incontainer-item-berrymilkportion-pear": "Pear Milk",
+  "extrajuice:incontainer-item-berrymilkportion-pineapple": "Pineapple Milk",
+  "extrajuice:incontainer-item-berrymilkportion-pinkapple": "Pink Apple Milk",
+  "extrajuice:incontainer-item-berrymilkportion-pomegranate": "Pomegranate Milk",
+  "extrajuice:incontainer-item-berrymilkportion-redapple": "Red Apple Milk",
+  "extrajuice:incontainer-item-berrymilkportion-redcurrant": "Red Currant Milk",
+  "extrajuice:incontainer-item-berrymilkportion-saguaro": "Saguaro Milk",
+  "extrajuice:incontainer-item-berrymilkportion-whitecurrant": "White Currant Milk",
+  "extrajuice:incontainer-item-berrymilkportion-yellowapple": "Yellow Apple Milk",
+
+  "extrajuice:item-berrymilkportion-cherry": "Cherry Milk",
+
+  "extrajuice:block-drinkingboot": "Drinking Boot",
+  "extrajuice:block-drinkingglass": "Drinking Glass",
+  "extrajuice:block-gobletmold-*-*": "Goblet Mold",
+  "extrajuice:block-mugmold-*-nohandle": "Mug Mold",
+  "extrajuice:block-mugmold-*-handle": "Handled Mug Mold",
+  "extrajuice:block-metalgoblet-*": "Metal Goblet",
+  "extrajuice:block-woodgoblet-*": "Wooden Goblet",
+  "extrajuice:block-metalmug-*-*": "Metal Mug",
+  "extrajuice:block-mug-*-*": "Wooden Mug"
 }

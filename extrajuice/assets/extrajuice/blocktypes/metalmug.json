@@ -1,17 +1,22 @@
 {
-  "code": "metalgoblet",
+  "code": "metalmug",
   "creativeinventory": { "general": [ "*" ] },
   "variantgroups": [
+    {
+      "code": "handle",
+      "states": [ "handle", "nohandle" ]
+    },
     {
       "code": "metal",
       "loadFromProperties": "game:block/metal"
     }
   ],
   "textures": {
-    "all": { "base": "game:block/metal/ingot/{metal}*" }
+    "all": { "base": "game:block/metal/sheet/{metal}1" }
   },
-  "shape": {
-"base": "extrajuice:block/goblet"
+  "shapebytype": {
+    "metalmug-handle-*": { "base": "extrajuice:block/mug-handle" },
+    "metalmug-nohandle-*": { "base": "extrajuice:block/mug-nohandle" }
   },
   "classByType": {
     "*": "BlockLiquidContainerTopOpened"
@@ -43,18 +48,18 @@
       "liquidContainerProps": {
         "capacityLitres": 2,
         "transferSizeLitres": 1,
-        "emptyShapeLoc": "extrajuice:block/goblet",
-        "opaqueContentShapeLoc": "extrajuice:block/goblet-liquidcontents",
-        "liquidContentShapeLoc": "extrajuice:block/goblet-liquidcontents"
+        "emptyShapeLoc": "extrajuice:block/mug-{handle}",
+        "opaqueContentShapeLoc": "extrajuice:block/drinkingglass-contents",
+        "liquidContentShapeLoc": "extrajuice:block/drinkingglass-liquidcontents"
       },
       "mealContainer": true,
-      "mealBlockCode": "extrajuice:block/goblet-liquidcontents",
+      "mealBlockCode": "extrajuice:block/drinkingGlass-meal",
       "servingCapacity": 2,
       "bowlContents": null
     }
   },
   "doNotRenderAtLod2": true,
-  "blockmaterial": "Metal",
+  "blockmaterial": "Wood",
   "replaceable": 300,
   "liquidSelectable": 1,
   "resistance": 0.75,

@@ -1,0 +1,27 @@
+[
+	{
+		ingredientPattern: "H,C,S",
+		ingredients: {
+			"H": {
+				"type": "item",
+				"code": "game:hammer-*",
+				"isTool": true,
+				"toolDurabilityCost": 5
+			},
+			"C": {
+				"type": "item",
+				"code": "game:chisel-*",
+				"isTool": true,
+				"toolDurabilityCost": 5
+			},
+			"S": {
+				"type": "block",
+				"code": "game:log-placed-*-ud",
+				"name": "wood"
+			}
+		},
+		width: 1,
+		height: 3,
+		output: { type: "block", code: "extrajuice:woodgoblet-{wood}", quantity: 1  }
+	}
+]
