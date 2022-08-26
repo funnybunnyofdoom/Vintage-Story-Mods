@@ -70,3 +70,6 @@ Will add a feature to progress to day whenever a player logs in.
 
 -Calendar: [FunnyBunnyofDOOM] with help from [DukePony]
 	Craftable calendar that updates depending on day/month. Working on handling this with a genmesh with the assistance of [Craluminum]
+
+-More Seals: [FunnyBunnyofDOOM]
+	
