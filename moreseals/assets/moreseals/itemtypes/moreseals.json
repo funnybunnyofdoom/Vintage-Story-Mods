@@ -1,0 +1,171 @@
+{
+	"code": "moreseals",
+	"class": "ItemWearable",
+	"variantgroups": [
+		{
+			"code": "color",
+			"states": [ "red", "cyan", "orange", "purple", "yellow", "pink", "green" ]
+		},
+		{
+			"code": "type",
+			"states": [ "broch", "seal" ]
+		}
+	],
+	"shapeByType": {
+		"*-broch": {
+			"base": "game:entity/humanoid/seraph/clothing/emblem/brass-ruby-brooch"
+		},
+		"*": {
+			"base": "game:entity/humanoid/seraph"
+		}
+	},
+	"storageFlags": 128,
+	"attributesByType": {
+		"*-broch": {
+			"wearableAttachment": true,
+			"clothescategory": "emblem",
+			"warmth": 0
+		},
+		"*": {
+			"clothescategory": "emblem",
+			"warmth": 0
+		}
+	},
+	"texturesByType": {
+		"*-broch": {
+			"seraph": { "base": "moreseals:{color}-broch" }
+		},
+		"*": {
+			"seraph": { "base": "moreseals:{color}-{type}" }
+		}
+	},
+	"creativeinventory": {
+		"general": [ "*" ],
+		"items": [ "*" ],
+		"clothing": [ "*" ]
+	},
+	"renderAlphaTest": 0.25,
+	"fpHandTransformByType": {
+		"*-broch": {
+			"translation": {
+				"x": 0.9,
+				"y": -0.4,
+				"z": -0.3
+			},
+			"rotation": {
+				"x": 180,
+				"y": 42,
+				"z": -29
+			},
+			"scale": 2.5
+		},
+		"*": {
+			"translation": {
+				"x": 0.6,
+				"y": 0,
+				"z": -0.5
+			},
+			"rotation": {
+				"x": 180,
+				"y": 42,
+				"z": -29
+			},
+			"scale": 2.5
+		}
+	},
+	"tpHandTransformByType": {
+		"*-broch": {
+			"translation": {
+				"x": -0.7,
+				"y": -0.35,
+				"z": -1.2
+			},
+			"rotation": {
+				"x": -13,
+				"y": -64,
+				"z": 49
+			},
+			"scale": 0.55
+		},
+		"*": {
+			"translation": {
+				"x": -0.9,
+				"y": -1,
+				"z": -1
+			},
+			"rotation": {
+				"x": -13,
+				"y": -64,
+				"z": 49
+			},
+			"scale": 0.55
+		}
+	},
+	"guiTransformByType": {
+		"*-broch": {
+			"translation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"rotation": {
+				"x": 174,
+				"y": 54,
+				"z": 27
+			},
+			"origin": {
+				"x": 0.38,
+				"y": 1.3,
+				"z": 0.48
+			},
+			"scale": 4.04
+		},
+		"*": {
+			"rotate": false,
+			"translation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"rotation": {
+				"x": 174,
+				"y": 90,
+				"z": 5
+			},
+			"origin": {
+				"x": 0.4,
+				"y": 1.3,
+				"z": 0.35
+			},
+			"scale": 2.5
+		}
+	},
+	"groundTransformByType": {
+		"*-broch": {
+			"translation": {
+				"x": 0.05,
+				"y": -0.2,
+				"z": 0
+			},
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": -101
+			},
+			"scale": 2
+		},
+		"*": {
+			"translation": {
+				"x": 0.05,
+				"y": -0.3,
+				"z": 0
+			},
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"scale": 2
+		}
+	}
+}
