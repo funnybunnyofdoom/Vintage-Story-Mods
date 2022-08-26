@@ -57,11 +57,9 @@
 		walk: "game:walk/stone",
 	},
 	collisionboxByType: {
-		"*-anvil": { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.6875, z2: 0.9375 },
 		"*": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.1875, z2: 1 },
 	},
 	selectionboxByType: {
-		"*-anvil": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.6875, z2: 1 },
 		"*": { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.1875, z2: 1 },
 	},
 	sideopaque: {
@@ -69,14 +67,6 @@
 	},
 	sidesolid: {
 		all: false
-	},
-	heldTpIdleAnimationByType: {
-		"*-anvil": "holdbothhands",
-		"*-helvehammer": "holdbothhands"
-	},
-	heldTpUseAnimationByType: {
-		"*-anvil": "twohandplaceblock",
-		"*-helvehammer": "twohandplaceblock"
 	},
 	guiTransformByType: {
 		"*": {

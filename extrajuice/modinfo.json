@@ -3,7 +3,7 @@
   "modid": "extrajuice",
   "name": "extra juice",
   "authors": ["funnybunnyofdoom"],
-  "description": "adds various juices",
+  "description": "adds various juices and containers",
   "version": "1.0.1",
   "dependencies": {
     "game": ""
