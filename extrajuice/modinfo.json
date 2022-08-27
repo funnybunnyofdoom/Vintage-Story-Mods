@@ -4,7 +4,7 @@
   "name": "extra juice",
   "authors": ["funnybunnyofdoom"],
   "description": "adds various juices and containers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "game": ""
   }

@@ -1,0 +1,120 @@
+{
+  "code": "teaportion",
+  "variantGroups": [
+    {
+      "code": "type",
+      "loadFromProperties": "block/flower"
+    }
+  ],
+  "skipVariants": [ "*-lilyofthevalley", "*-edelweiss"],
+  "class": "ItemLiquidPortion",
+  "matterState": "liquid",
+  "attributes": {
+    "handbook": {
+      "ignoreCreativeInvStacks": true
+    },
+    "waterTightContainerProps": {
+      "nutritionPropsPerLitreByType": {
+        "*-horsetail": {
+          "satiety": 30,
+          "foodcategory": "NoNutrition",
+          "health": 0.1
+        },
+        "*": {
+          "satiety": 30,
+          "foodcategory": "NoNutrition"
+        }   
+      },
+      "containable": true,
+      "itemsPerLitre": 100,
+      "texture": {
+          "base": "extrajuice:{type}",
+          "alpha": 60
+      },
+      "allowSpill": true,
+      "whenSpilled": {
+        "action": "DropContents",
+        "stack": {
+          "type": "item",
+          "code": "extrajuice:teaportion-{type}"
+        }
+      }
+    }
+  },
+  "shape": { "base": "game:item/liquid" },
+  "texture": {
+    "base": "extrajuice:{type}",
+    "alpha": 60
+  },
+  "creativeinventoryStacks": [
+    {
+      "tabs": [ "general", "liquids" ],
+      "stacks": [
+        {
+          "type": "block",
+          "code": "game:woodbucket",
+          "attributes": {
+            "ucontents": [
+              {
+                "type": "item",
+                "code": "extrajuice:teaportion-{type}",
+                "makefull": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "maxstacksize": 5000,
+  "materialDensity": 200,
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 1,
+      "z": 0
+    },
+    "rotation": {
+      "x": 123,
+      "y": -33,
+      "z": -13
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 1.4
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 25,
+      "y": 157,
+      "z": -5
+    }
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.5,
+      "y": -1,
+      "z": -1.4
+    }
+  },
+  "transitionableProps": [
+    {
+      "type": "Perish",
+      "freshHours": { "avg": 168 },
+      "transitionHours": { "avg": 48 },
+      "transitionedStack": {
+        "type": "item",
+        "code": "game:rot"
+      },
+      "transitionRatio": 0.005
+    }
+  ]
+}
