@@ -17,10 +17,10 @@
 			"renderPass": 4,
 			"rotationOrigin": [ 8.0, 1.0, 8.0 ],
 			"faces": {
-				"north": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
-				"east": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
-				"south": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
-				"west": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 0.5 ] },
+				"north": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
+				"east": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
+				"south": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
+				"west": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
 				"up": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
 				"down": { "texture": "#content", "uv": [ 0.0, 0.0, 2.5, 2.5 ] }
 			}
