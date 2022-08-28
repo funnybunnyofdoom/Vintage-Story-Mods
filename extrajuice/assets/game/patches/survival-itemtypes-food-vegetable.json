@@ -1,4 +1,4 @@
-  [{
+  /*[{
     "op": "add",
     "path": "/attributesByType",
     "value": {
@@ -207,4 +207,4 @@
       },
       "file": "itemtypes/food/vegetable.json"
     }
-]
+]*/
