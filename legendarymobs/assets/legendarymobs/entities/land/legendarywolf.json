@@ -105,7 +105,7 @@
       { "code": "repulseagents" },
       {
         "code": "controlledphysics",
-        "stepHeight": 1.1251
+        "stepHeight": 2
       },
       {
         "code": "despawn",
@@ -194,11 +194,11 @@
       {
         "code": "multiply",
         "quantityPerDay": 0,
-        "spawnEntityCode": "wolf-pup",
+        "spawnEntityCode": "game:wolf-pup",
         "growthCapQuantity": 10,
         "growthCapRange": 15,
-        "growthCapEntityCodes": [ "wolf-pup", "wolf-female", "wolf-male" ],
-        "requiresNearbyEntityCode": "wolf-male",
+        "growthCapEntityCodes": [ "game:wolf-pup", "game:wolf-female", "game:wolf-male", "legendarymobs:legendary-wolf" ],
+        "requiresNearbyEntityCode": "game:wolf-male",
         "requiresNearbyEntityRange": 10
       },
       {
@@ -245,19 +245,19 @@
         "aitasks": [
           {
             "code": "meleeattack",
-            "entityCodes": [ "player", "chicken-rooster", "chicken-hen", "chicken-baby", "hare-*" ],
+            "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*" , "game:pig-wild-*"],
             "priority": 2,
-            "damage": 8,
-            "damageTier": 2,
+            "damage": 12,
+            "damageTier": 4,
             "damageType": "SlashingAttack",
             "slot": 1,
             "mincooldown": 1500,
-            "maxcooldown": 1500,
+            "maxcooldown": 2000,
             "attackDurationMs": 800,
             "damagePlayerAtMs": 500,
             "animation": "Attack",
             "animationSpeed": 2.5,
-            "sound": "creature/wolf/attack"
+            "sound": "game:creature/wolf/attack"
           },
 
           {
@@ -286,7 +286,7 @@
             "leapAtTarget": true,
             "leapAnimation": null,
             "leapChance": 0.01,
-            "sound": "creature/wolf/growl",
+            "sound": "game:creature/wolf/growl",
             "whenNotInEmotionState": "saturated"
           },
           {
@@ -304,7 +304,7 @@
             "leapAtTarget": true,
             "leapAnimation": null,
             "leapChance": 0.01,
-            "sound": "creature/wolf/growl",
+            "sound": "game:creature/wolf/growl",
             "whenNotInEmotionState": "saturated"
           },
           {
@@ -318,7 +318,7 @@
             "leapAtTarget": true,
             "leapAnimation": null,
             "leapChance": 0.01,
-            "sound": "creature/wolf/growl",
+            "sound": "game:creature/wolf/growl",
             "whenInEmotionState": "aggressiveondamage"
           },
 
@@ -358,7 +358,7 @@
           {
             "code": "stayclosetoentity",
             "priority": 1.35,
-            "entityCode": "wolf-male",
+            "entityCode": "game:wolf-male",
             "movespeed": 0.04,
             "maxDistance": 10,
             "searchRange": 25,
@@ -375,7 +375,7 @@
             "maxcooldown": 500000,
             "animation": "Howl",
             "animationSpeed": 0.5,
-            "sound": "creature/wolf/howl",
+            "sound": "game:creature/wolf/howl",
             "soundRange": 330
           },
           {
@@ -420,7 +420,29 @@
         "code": "ropetieable",
         "minGeneration": 2
       }
-    ]
+    ],
+    "spawnconditions": {
+      "runtime": {
+        "group": "hostile",
+        "tryOnlySurface": true,
+        "chance": 0.0002,
+        "maxQuantity": 1,
+        "__comment": "",
+        "maxLightLevel": 7,
+        "lightLevelType": "onlyBlockLight",
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 3
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
+        "minTemp": -15,
+        "maxTemp": 15,
+        "minRain": 0.25,
+        "minForest": 0.5,
+        "companions": [ "game:wolf-female", "game:wolf-pup", "game:wolf-male" ]
+      }
+    }
   },
   "sounds": {
     "hurt": "game:creature/wolf/hurt",

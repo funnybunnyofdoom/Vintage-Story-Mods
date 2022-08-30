@@ -28,5 +28,7 @@
   "legendarymobs:item-creature-legendary-wolf-9-swift": "Zinix the Swift",
   "legendarymobs:item-creature-legendary-wolf-10-great": "Lamalla the Great",
   "legendarymobs:item-creature-legendary-wolf-10-wise": "Lamalla the Wise",
-  "legendarymobs:item-creature-legendary-wolf-10-swift": "Lamalla the Swift"
+  "legendarymobs:item-creature-legendary-wolf-10-swift": "Lamalla the Swift",
+
+  "legendarymobs:deathmsg-item-creature-legendary-wolf-1-*": "Player {0} was slain by legendary creature Gresag."
 }
