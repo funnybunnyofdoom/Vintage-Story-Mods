@@ -1,8 +1,0 @@
-{
-	code: "limewater",
-	ingredients: [
-		{ type: "item", code: "waterportion", litres: 1 },
-		{ type: "item", code: "lime", quantity: 1 }
-	],
-	output: { type: "item", code: "limewaterportion", litres: 1 }
-}

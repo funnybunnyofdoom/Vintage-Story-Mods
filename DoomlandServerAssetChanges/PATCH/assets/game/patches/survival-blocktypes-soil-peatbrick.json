@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/combustibleProps/burnDuration",
-    "value": 125,
-    "file": "blocktypes/soil/peatbrick.json"
-  }
-]

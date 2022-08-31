@@ -1,9 +1,0 @@
-{
-	code: "weaktannin",
-	sealHours: 24,
-	ingredients: [
-		{ type: "block", code: "log-placed-oak-ud",  quantity: 1 },
-		{ type: "item", code: "waterportion",  litres: 10 },
-	],
-	output: { type: "item", code: "weaktanninportion", litres: 10 }
-}

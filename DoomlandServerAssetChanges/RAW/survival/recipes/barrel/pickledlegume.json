@@ -1,9 +1,0 @@
-{
-	code: "legume",
-	sealHours: 168,
-	ingredients: [
-		{ type: "item", code: "brineportion", litres: 1, consumeLitres: 1 },
-		{ type: "item", code: "legume-*", name: "legume", quantity: 1, allowedVariants: ["soybean" ] }
-	],
-	output: { type: "item", code: "pickledlegume-{legume}", stackSize: 1 }
-}

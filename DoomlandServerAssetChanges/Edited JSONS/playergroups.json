@@ -1,0 +1,56 @@
+[
+  {
+    "Uid": 10,
+    "Name": "ArchNinja",
+    "CreatedDate": "Friday, 24 June 2022",
+    "OwnerUID": "etql9roPhIIEuUGOEMDmDBBc",
+    "ChatHistory": [],
+    "Md5Identifier": "37d8b601579e304bec77f16259c04cd0",
+    "CreatedByPrivateMessage": false
+  },
+  {
+    "Uid": 12,
+    "Name": "Regulars",
+    "CreatedDate": "Sunday, 26 June 2022",
+    "OwnerUID": "79BirsvtAs1kQ4tvbBLii5tS",
+    "ChatHistory": [],
+    "Md5Identifier": "8645e896415f3e442565debe64ce9ff2",
+    "CreatedByPrivateMessage": false
+  },
+  {
+    "Uid": 13,
+    "Name": "SPL",
+    "CreatedDate": "Monday, 11 July 2022",
+    "OwnerUID": "bxo+0j1F1Qkd+2kxJkZqyb36",
+    "ChatHistory": [],
+    "Md5Identifier": "240592785e228b96db853dc44ce9d711",
+    "CreatedByPrivateMessage": false
+  },
+  {
+    "Uid": 15,
+    "Name": "BlackEarth",
+    "CreatedDate": "Tuesday, 12 July 2022",
+    "OwnerUID": "O2lMM4VjC1FbMfLURoR0JFDx",
+    "ChatHistory": [],
+    "Md5Identifier": "36e2798408ebb9796b35ad0229b9859b",
+    "CreatedByPrivateMessage": false
+  },
+  {
+    "Uid": 17,
+    "Name": "ZakonSiedmiuSwiec",
+    "CreatedDate": "Monday, 22 August 2022",
+    "OwnerUID": "vJTXp24cRk2HPDj6cK0PxrdG",
+    "ChatHistory": [],
+    "Md5Identifier": "1ebfa7437819f1544850a38a59a62038",
+    "CreatedByPrivateMessage": false
+  },
+  {
+    "Uid": 18,
+    "Name": "dogmangue",
+    "CreatedDate": "Thursday, 25 August 2022",
+    "OwnerUID": "f9viabJ5BbtxH0ctPku2mzTa",
+    "ChatHistory": [],
+    "Md5Identifier": "b1f027f809a1980d4a3deadf003c4192",
+    "CreatedByPrivateMessage": false
+  }
+]

@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "GGG	GGG	GGG",
-	ingredients: {
-		"G": { type: "item", code: "stick" }
-	},
-	width: 3,
-	height: 3,
-	output: { type: "block", code: "stickslayer-wooden-ew-free", quantity: 1  }
-}

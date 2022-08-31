@@ -1,4 +1,0 @@
-{
-	chanceMultiplier: { dist: "uniform", avg: 2.5, var: 2 },
-	patches: []
-}

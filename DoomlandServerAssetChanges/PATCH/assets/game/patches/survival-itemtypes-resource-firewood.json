@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/combustibleProps/burnDuration",
-    "value": 112,
-    "file": "itemtypes/resource/firewood.json"
-  }
-]

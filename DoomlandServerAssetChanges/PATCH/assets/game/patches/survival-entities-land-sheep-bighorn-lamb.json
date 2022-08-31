@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/server/behaviors/9/hoursToGrow",
-    "value": 168,
-    "file": "entities/land/sheep-bighorn-lamb.json"
-  }
-]

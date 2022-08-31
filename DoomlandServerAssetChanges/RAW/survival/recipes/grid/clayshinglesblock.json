@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "SS,SS",
-	ingredients: {
-		"S": { type: "item", name: "type", code: "shingle-burned-*" }
-	},
-	width: 2,
-	height: 2,
-	output: { type: "block", code: "clayshingleblock-{type}", quantity: 2  }
-}

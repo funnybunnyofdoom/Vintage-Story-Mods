@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "DD	DD",
-	ingredients: {
-		"D": { type: "item", code: "clay-*", name: "type" },
-	},
-	width: 2,
-	height: 2,
-	output: { type: "item", code: "rawbrick-{type}", quantity: 1  }
-}

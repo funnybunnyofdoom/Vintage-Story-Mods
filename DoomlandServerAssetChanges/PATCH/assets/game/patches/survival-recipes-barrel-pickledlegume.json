@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/sealHours",
-    "value": 168,
-    "file": "recipes/barrel/pickledlegume.json"
-  }
-]

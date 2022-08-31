@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/cropProps/totalGrowthDays",
-    "value": 14,
-    "file": "blocktypes/plant/crop/amaranth.json"
-  }
-]

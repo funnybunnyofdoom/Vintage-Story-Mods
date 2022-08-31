@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "B,B,B",
-	ingredients: {
-		"B": { type: "item", code: "beeswax" }
-	},
-	width: 1,
-	height: 3,
-	output: { type: "item", code: "candle" }
-}

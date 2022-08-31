@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/combustibleProps/burnDuration",
-    "value": 150,
-    "file": "itemtypes/resource/plank.json"
-  }
-]

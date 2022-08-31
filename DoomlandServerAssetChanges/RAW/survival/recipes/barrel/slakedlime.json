@@ -1,8 +1,0 @@
-{
-	code: "slakedlime",
-	ingredients: [
-		{ type: "item", code: "waterportion", litres: 1 },
-		{ type: "item", code: "quicklime", quantity: 4 }
-	],
-	output: { type: "item", code: "slakedlimeportion", litres: 4 }
-}

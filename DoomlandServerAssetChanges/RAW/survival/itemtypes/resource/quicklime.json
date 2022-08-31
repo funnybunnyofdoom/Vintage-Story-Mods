@@ -1,7 +1,0 @@
-{
-	code: "quicklime",
-	texture: { base: "item/resource/quicklime" },
-	creativeinventory: { "general": ["*"], "items": ["*"] },
-	maxstacksize: 64,
-	materialDensity: 500
-}

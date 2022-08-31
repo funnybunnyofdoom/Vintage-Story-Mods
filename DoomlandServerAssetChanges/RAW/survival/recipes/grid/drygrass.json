@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "H",
-	ingredients: {
-		"H": { type: "block", code: "hay-normal" }
-	},
-	width: 1,
-	height: 1,
-	output: { type: "item", code: "drygrass", quantity: 8  }
-}

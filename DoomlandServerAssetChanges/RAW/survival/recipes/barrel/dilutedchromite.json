@@ -1,8 +1,0 @@
-{
-	code: "dilutedchromite",
-	ingredients: [
-		{ type: "item", code: "waterportion",  litres: 5 },
-		{ type: "item", code: "crushed-chromite", quantity: 4 }
-	],
-	output: { type: "item", code: "dilutedchromiteportion", litres: 5 }
-}

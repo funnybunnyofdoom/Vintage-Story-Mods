@@ -1,8 +1,0 @@
-{
-	code: "mortar",
-	ingredients: [
-		{ type: "item", code: "slakedlimeportion", litres: 1 },
-		{ type: "block", code: "sand-*", quantity: 1, name: "sand", allowedVariants: ["andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate"] }
-	],
-	output: { type: "item", code: "mortar", stackSize: 8 }
-}

@@ -1,8 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/server/behaviors/8/pregnancyDays",
-    "value": 5,
-    "file": "entities/land/sheep-bighorn-female.json"
-  }
-]

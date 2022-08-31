@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "SSS	___	SSS",
-	ingredients: {
-		"S": { type: "item", code: "stick" },
-	},
-	width: 3,
-	height: 3,
-	output: { type: "block", code: "toolrack-north"  }
-}

@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "_B_	BBB",
-	ingredients: {
-		"B": { type: "item", code: "burnedbrick-fire", name: "type" }
-	},
-	width: 3,
-	height: 2,
-	output: { type: "block", code: "bloomerychimney" }
-}

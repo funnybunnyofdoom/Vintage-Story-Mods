@@ -1,9 +1,0 @@
-{
-	ingredientPattern: "P_P,_P_",
-	ingredients: {
-		"P": { type: "item", code: "plank-*" }
-	},
-	width: 3,
-	height: 2,
-	output: { type: "block", code: "trough-genericwood-small-ns"  }
-}

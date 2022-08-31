@@ -1,9 +1,0 @@
-{
-	code: "cassava",
-	sealHours: 24,
-	ingredients: [
-		{ type: "item", code: "waterportion", litres: 1, consumeLitres: 1 },
-		{ type: "item", code: "rawcassava-raw", name: "raw-cassava", quantity: 1 }
-	],
-	output: { type: "item", code: "rawcassava-soaked", stackSize: 1 }
-}
