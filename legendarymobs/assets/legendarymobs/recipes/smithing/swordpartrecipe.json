@@ -1,0 +1,48 @@
+[
+  {
+    "ingredient": {
+      "type": "item",
+      "code": "legendarymobs:legendary-bloom-1"
+    },
+    "pattern": [
+      [
+        "_______",
+        "#######",
+        "_______"
+      ],
+      [
+        "_______",
+        "#######",
+        "_______"
+      ]
+    ],
+    "name": "Sword Blade 1",
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-blade-1"
+    }
+  },
+  {
+    "ingredient": {
+      "type": "item",
+      "code": "legendarymobs:legendary-bloom-2"
+    },
+    "pattern": [
+      [
+        "____###",
+        "#######",
+        "_______"
+      ],
+      [
+        "____###",
+        "#######",
+        "_______"
+      ]
+    ],
+    "name": "Sword Blade 2",
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-blade-2"
+    }
+  }
+]

@@ -1,0 +1,104 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"string": [16,16],
+		"rusty-iron": [32,32]
+	},
+	"textures": {
+		"string": "game:item/tool/material/string",
+		"rusty-iron": "legendarymobs:legendary-sword"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ -7.1, 0.0, 0.0 ], 
+			"to": [ -7.1, 0.0, 0.0 ], 
+			"rotationOrigin": [ 0.9, 0.0, 8.0 ],
+			"rotationX": 180.0,
+			"faces": {
+				"north": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"east": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"south": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"west": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"up": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"down": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "blade",
+					"from": [ 8.0, -0.1, 7.6 ], 
+					"to": [ 22.5, 0.1, 8.6 ], 
+					"rotationOrigin": [ 8.0, 0.0, 8.1 ],
+					"faces": {
+						"north": { "texture": "#rusty-iron", "uv": [ 0.0, 10.0, 14.5, 10.5 ] },
+						"east": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+						"south": { "texture": "#rusty-iron", "uv": [ 1.0, 4.5, 15.5, 5.0 ] },
+						"west": { "texture": "#rusty-iron", "uv": [ 1.5, 3.5, 2.5, 4.0 ] },
+						"up": { "texture": "#rusty-iron", "uv": [ 1.5, 6.0, 16.0, 7.0 ] },
+						"down": { "texture": "#rusty-iron", "uv": [ 1.5, 7.5, 16.0, 8.5 ] }
+					}
+				},
+				{
+					"name": "blade4",
+					"from": [ 12.0, -0.1, 7.3 ], 
+					"to": [ 22.5, 0.1, 7.6 ], 
+					"rotationOrigin": [ 12.0, 0.0, 7.7 ],
+					"faces": {
+						"north": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 10.5, 0.5 ] },
+						"east": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+						"south": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 10.5, 0.5 ], "enabled": false },
+						"west": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 0.5, 0.5 ] },
+						"up": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 10.5, 0.5 ] },
+						"down": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 10.5, 0.5 ] }
+					}
+				},
+				{
+					"name": "blade5",
+					"from": [ 12.0, -0.1, 8.6 ], 
+					"to": [ 18.0, 0.1, 8.9 ], 
+					"rotationOrigin": [ 12.0, 0.0, 9.1 ],
+					"faces": {
+						"north": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 6.0, 0.5 ], "enabled": false },
+						"east": { "texture": "#rusty-iron", "uv": [ 3.0, 3.5, 3.5, 4.0 ] },
+						"south": { "texture": "#rusty-iron", "uv": [ 3.0, 3.5, 9.0, 4.0 ] },
+						"west": { "texture": "#rusty-iron", "uv": [ 4.0, 4.0, 4.5, 4.5 ] },
+						"up": { "texture": "#rusty-iron", "uv": [ 2.5, 2.5, 8.5, 3.0 ] },
+						"down": { "texture": "#rusty-iron", "uv": [ 2.0, 2.5, 8.0, 3.0 ] }
+					}
+				},
+				{
+					"name": "blade6",
+					"from": [ 16.9, -0.1, 8.6 ], 
+					"to": [ 22.5, 0.1, 9.1 ], 
+					"rotationOrigin": [ 17.0, 0.0, 8.7 ],
+					"faces": {
+						"north": { "texture": "#rusty-iron", "uv": [ 0.0, 0.0, 5.5, 0.5 ], "enabled": false },
+						"east": { "texture": "#rusty-iron", "uv": [ 5.5, 6.0, 6.0, 6.5 ] },
+						"south": { "texture": "#rusty-iron", "uv": [ 3.0, 3.0, 8.5, 3.5 ] },
+						"west": { "texture": "#rusty-iron", "uv": [ 5.0, 3.0, 5.5, 3.5 ] },
+						"up": { "texture": "#rusty-iron", "uv": [ 5.5, 6.5, 11.0, 7.0 ] },
+						"down": { "texture": "#rusty-iron", "uv": [ 5.5, 4.0, 11.0, 4.5 ] }
+					}
+				},
+				{
+					"name": "blade7",
+					"from": [ 20.0, -0.1, 7.1 ], 
+					"to": [ 22.5, 0.1, 7.6 ], 
+					"rotationOrigin": [ 20.0, 0.0, 7.6 ],
+					"faces": {
+						"north": { "texture": "#rusty-iron", "uv": [ 2.0, 4.5, 4.5, 5.0 ] },
+						"east": { "texture": "#rusty-iron", "uv": [ 3.5, 4.5, 4.0, 5.0 ] },
+						"south": { "texture": "#rusty-iron", "uv": [ 3.0, 4.5, 5.5, 5.0 ] },
+						"west": { "texture": "#rusty-iron", "uv": [ 3.5, 5.5, 4.0, 6.0 ] },
+						"up": { "texture": "#rusty-iron", "uv": [ 2.0, 5.0, 4.5, 5.5 ] },
+						"down": { "texture": "#rusty-iron", "uv": [ 4.0, 4.5, 6.5, 5.0 ] }
+					}
+				}
+			]
+		}
+	]}

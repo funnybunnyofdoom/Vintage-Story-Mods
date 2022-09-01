@@ -1,0 +1,482 @@
+{
+  "code": "legendary-hare",
+  "class": "EntityAgent",
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "arctic", "ashgrey", "darkbrown", "desert", "gold", "lightbrown", "lightgrey", "silver", "smokegrey" ]
+    },
+    {
+      "code": "name",
+      "states": [ "1", "2", "3", "4", "5" ]
+    },
+    {
+      "code": "stattype",
+      "states": [ "great", "wise", "swift" ]
+    }
+  ],
+  "hitboxSize": {
+    "x": 2.25,
+    "y": 1.5
+  },
+  "attributes": {
+    "blockDiet": [
+      "game:crop-cabbage*",
+      "game:crop-carrot*",
+      "game:crop-flax*",
+      "game:crop-parsnip*",
+      "game:crop-rye*",
+      "game:crop-soybean*",
+      "game:crop-spelt*",
+      "game:crop-turnip*",
+      "game:crop-cassava-1",
+      "game:crop-cassava-2",
+      "game:crop-cassava-3",
+      "game:crop-cassava-4",
+      "game:crop-sunflower-1",
+      "game:crop-sunflower-2",
+      "game:crop-sunflower-3",
+      "game:crop-sunflower-4",
+      "game:crop-peanut*",
+      "game:crop-rice-1",
+      "game:crop-rice-2",
+      "game:crop-rice-3",
+      "game:crop-amaranth-1",
+      "game:crop-amaranth-2",
+      "game:crop-amaranth-3"
+    ]
+  },
+  "eyeHeight": 1.8,
+  "drops": [
+
+  ],
+  "client": {
+    "renderer": "Shape",
+    "shape": { "base": "game:entity/land/hare-female" },
+    "textures": {
+      "skin": { "base": "game:entity/hare/female-{type}" }
+    },
+    "behaviors": [
+      { "code": "repulseagents" },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 2
+      },
+      {
+        "code": "floatupwhenstuck",
+        "onlyWhenDead": true
+      },
+      { "code": "interpolateposition" },
+      { "code": "harvestable" },
+      {
+        "code": "despawn",
+        "minPlayerDistance": 8,
+        "belowLightLevel": 8,
+        "minSeconds": 1200
+      }
+    ],
+    "size": 3,
+    "animations": [
+      {
+        "code": "hurt",
+        "animation": "hurt",
+        "animationSpeed": 2.2,
+        "weight": 10,
+        "blendMode": "AddAverage"
+      },
+      {
+        "code": "dig",
+        "animation": "dig",
+        "animationSpeed": 1
+      },
+      {
+        "code": "longdig",
+        "animation": "longdig",
+        "animationSpeed": 1
+      },
+      {
+        "code": "die",
+        "animation": "death",
+        "animationSpeed": 1.25,
+        "weight": 10,
+        "blendMode": "Average",
+        "triggeredBy": { "onControls": [ "dead" ] }
+      },
+      {
+        "code": "idle",
+        "animation": "idle",
+        "blendMode": "AddAverage",
+        "easeOutSpeed": 4,
+        "triggeredBy": { "defaultAnim": true }
+      },
+      {
+        "code": "sleep",
+        "animation": "sleep",
+        "easeInSpeed": 4,
+        "easeOutSpeed": 4,
+        "blendMode": "Average"
+      },
+      {
+        "code": "sit",
+        "animation": "sit",
+        "easeInSpeed": 4,
+        "easeOutSpeed": 4,
+        "blendMode": "Average"
+      }
+    ]
+  },
+  "server": {
+    "behaviors": [
+      { "code": "repulseagents" },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 2
+      },
+      {
+        "code": "despawn",
+        "minPlayerDistance": 8,
+        "belowLightLevel": 8,
+        "minSeconds": 300
+      },
+      {
+        "code": "health",
+        "currenthealth": 100,
+        "maxhealth": 100
+      },
+      {
+        "code": "deaddecay",
+        "hoursToDecay": 96,
+        "decayedBlock": "game:carcass-large"
+      },
+      {
+        "code": "floatupwhenstuck",
+        "onlyWhenDead": true
+      },
+      {
+        "code": "harvestable",
+        "drops": [
+          {
+            "type": "item",
+            "code": "game:redmeat-raw",
+            "quantity": {
+              "avg": 32,
+              "var": 32
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:hide-raw-huge",
+            "quantity": {
+              "avg": 15,
+              "var": 15
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:fat",
+            "quantity": {
+              "avg": 12,
+              "var": 12
+            }
+          },
+          {
+            "type": "item",
+            "code": "legendarymobs:legendary-bloom-1",
+            "quantity": {
+              "avg": 0.03,
+              "var": 0.75
+            }
+          },
+          {
+            "type": "item",
+            "code": "legendarymobs:legendary-bloom-2",
+            "quantity": {
+              "avg": 0.03,
+              "var": 0.75
+            }
+          },
+          {
+            "type": "item",
+            "code": "legendarymobs:legendarysword-hilt-worn",
+            "quantity": {
+              "avg": 0.03,
+              "var": 0.75
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:gear-temporal",
+            "quantity": {
+              "avg": 0.03,
+              "var": 0.75
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:gear-rusty",
+            "dropModbyStat": "rustyGearDropRate",
+            "quantity": {
+              "avg": 0.05,
+              "var": 32
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:blade-falx-steel",
+            "quantity": {
+              "avg": 0.1,
+              "var": 1
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:armor-body-chain-steel",
+            "quantity": {
+              "avg": 0.025,
+              "var": 1
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:armor-head-chain-steel",
+            "quantity": {
+              "avg": 0.04,
+              "var": 1
+            }
+          },
+          {
+            "type": "item",
+            "code": "game:armor-legs-chain-steel",
+            "quantity": {
+              "avg": 0.03,
+              "var": 1
+            }
+          }
+        ]
+      },
+      { "code": "breathe" },
+      {
+        "code": "emotionstates",
+        "states": [
+          {
+            "code": "saturated",
+            "duration": 1200,
+            "chance": 1,
+            "slot": 0,
+            "priority": 1,
+            "accumType": "sum"
+          },
+          {
+            "code": "aggressiveondamage",
+            "duration": 5,
+            "chance": 1,
+            "slot": 2,
+            "priority": 2,
+            "accumType": "noaccum"
+          }
+        ]
+      },
+      {
+        "code": "taskai",
+        "aitasks": [
+          {
+            "code": "meleeattack",
+            "entityCodes": [ "player" ],
+            "priority": 3,
+            "damage": 10,
+            "slot": 1,
+            "damageTier": 4,
+            "mincooldown": 1500,
+            "maxcooldown": 1500,
+            "attackDurationMs": 800,
+            "damagePlayerAtMs": 500,
+            "animation": "Attack",
+            "animationSpeed": 2.5,
+            "whenInEmotionState": "aggressiveondamage"
+          },
+          {
+            "code": "getoutofwater",
+            "priority": 1.4,
+            "movespeed": 0.015,
+            "animation": "Walk",
+            "animationSpeed": 2.2
+          },
+          {
+            "code": "idle",
+            "priority": 1.38,
+            "minduration": 200000,
+            "maxduration": 800000,
+            "mincooldown": 10000,
+            "maxcooldown": 30000,
+            "priorityForCancel": 1.38,
+            "animation": "Sleep",
+            "whenNotInEmotionState": "aggressiveondamage",
+            "duringDayTimeFrames": [
+              {
+                "fromHour": 10,
+                "toHour": 18
+              },
+              {
+                "fromHour": 1,
+                "toHour": 4
+              }
+            ],
+            "stopOnNearbyEntityCodes": [ "player", "game:wolf-male", "game:wolf-female", "game:fox-*", "game:hyena-male", "game:hyena-female" ],
+            "stopRange": 8,
+            "stopOnHurt": true
+          },
+          {
+            "code": "seekfoodandeat",
+            "movespeed": 0.010,
+            "priority": 1.25,
+            "eatTime": 2.3,
+            "eatLooseItems": true,
+            "eatItemCategories": [ "Vegetable", "Grain" ],
+            "animationSpeed": 1.4,
+            "animation": "Walk",
+            "eatAnimation": "longdig",
+            "mincooldownHours": 1,
+            "maxcooldownHours": 4
+          },
+          {
+            "code": "idle",
+            "priority": 1.2,
+            "priorityForCancel": 1.35,
+            "minduration": 2500,
+            "maxduration": 2500,
+            "mincooldown": 6000,
+            "maxcooldown": 20000,
+            "animation": "Sniff",
+            "animationSpeed": 1.25
+          },
+          {
+            "code": "idle",
+            "priority": 1.1,
+            "priorityForCancel": 1.35,
+            "minduration": 2500,
+            "maxduration": 2500,
+            "mincooldown": 6000,
+            "maxcooldown": 20000,
+            "animation": "Dig",
+            "animationSpeed": 1
+          },
+          {
+            "code": "idle",
+            "priority": 1.1,
+            "minduration": 1000,
+            "maxduration": 3000,
+            "mincooldown": 2000,
+            "maxcooldown": 30000,
+            "animation": "Idle"
+          },
+          {
+            "code": "wander",
+            "priority": 1.0,
+            "priorityForCancel": 1.35,
+            "movespeed": 0.01,
+            "animation": "Walk",
+            "preferredLightLevel": 20
+          },
+          {
+            "code": "idle",
+            "priority": 0.9,
+            "minduration": 5000,
+            "maxduration": 30000,
+            "mincooldown": 2000,
+            "maxcooldown": 120000,
+            "priorityForCancel": 1.29,
+            "animation": "Sit"
+          },
+          {
+            "code": "lookaround",
+            "priority": 0.5
+          }
+        ]
+      }
+    ]
+  },
+  "spawnconditionsByType": {
+    "*-arctic-*": {
+      "runtime": {
+        "group": "neutral",
+        "chance": 0.001,
+        "tryOnlySurface": true,
+        "maxQuantity": 3,
+        "__comment": "Make them spawn avoid from block light so they don't spawn inside farmland",
+        "maxLightLevel": 8,
+        "lightLevelType": "onlyBlockLight",
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 3
+        },
+        "insideBlockCodes": [ "tallgrass-*", "snowlayer-1" ],
+        "minTemp": -70,
+        "maxTemp": -8,
+        "minRain": 0.25,
+        "minForestOrShrubs": 0.25,
+        "maxForest": 0.75,
+        "maxShrubs": 0.75,
+        "companions": [ "hare-female-arctic", "hare-baby", "hare-baby" ]
+      }
+    },
+
+    "*-desert-*": {
+      "runtime": {
+        "group": "neutral",
+        "chance": 0.00015,
+        "tryOnlySurface": true,
+        "__comment": "Make them spawn in dark places so they don't spawn inside farmland",
+        "maxLightLevel": 8,
+        "maxQuantity": 3,
+        "lightLevelType": "maxTimeOfDayLight",
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:tallgrass-*", "game:snowlayer-1" ],
+        "minTemp": 22,
+        "maxTemp": 40,
+        "minRain": 0.2,
+        "maxRain": 0.45,
+        "minForestOrShrubs": 0.25,
+        "maxForest": 0.75,
+        "maxShrubs": 0.75,
+        "companions": [ "game:hare-female-desert", "game:hare-baby", "game:hare-baby" ]
+      }
+    },
+
+    "*": {
+      "runtime": {
+        "group": "neutral",
+        "tryOnlySurface": true,
+        "chance": 0.001,
+        "maxQuantity": 3,
+        "__comment": "Make them spawn away from artifical light so they don't spawn inside farmland",
+        "maxLightLevel": 6,
+        "lightLevelType": "onlyBlockLight",
+        "groupSize": {
+          "dist": "uniform",
+          "avg": 1,
+          "var": 3
+        },
+        "insideBlockCodes": [ "game:tallgrass-*", "game:snowlayer-1" ],
+        "minTemp": -5,
+        "maxTemp": 25,
+        "minRain": 0.3,
+        "maxRain": 0.9,
+        "minForestOrShrubs": 0.25,
+        "maxForest": 0.75,
+        "maxShrubs": 0.75,
+        "companions": [ "game:hare-female-{type}", "game:hare-baby" ]
+      }
+    }
+},
+  "sounds": {
+    "hurt": "game:creature/hare-hurt",
+    "death": "game:creature/hare-hurt",
+    "idle": "game:creature/hare-idle"
+  },
+  "idleSoundChance": 0.03
+}

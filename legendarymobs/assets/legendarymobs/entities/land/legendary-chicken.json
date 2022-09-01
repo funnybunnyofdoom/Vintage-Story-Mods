@@ -1,0 +1,416 @@
+{
+	"code": "legendary-chicken",
+	"class": "EntityAgent",
+	"variantgroups": [
+		{
+			"code": "name",
+			"states": [ "1", "2", "3", "4", "5"]
+		},
+		{
+			"code": "type",
+			"states": [ "great", "wise", "swift" ]
+		}
+	],
+	"hitboxSize": {
+		"x": 1.5,
+		"y": 1.08
+	},
+	"deadHitboxSize": {
+		"x": 1.5,
+		"y": 0.75
+	},
+	"eyeHeight": 1.5,
+	"weight": 15,
+	"drops": [],
+	"client": {
+		"renderer": "Shape",
+		"shape": { "base": "game:entity/land/chicken-rooster" },
+		"texture": {
+			"base": "game:entity/chicken/rooster1",
+			"alternates": [
+				{ "base": "game:entity/chicken/rooster2" },
+				{ "base": "game:entity/chicken/rooster3" },
+				{ "base": "game:entity/chicken/rooster4" },
+				{ "base": "game:entity/chicken/rooster5" }
+			]
+		},
+		"size": 3,
+		"behaviors": [
+			{ "code": "repulseagents" },
+			{
+				"code": "controlledphysics",
+				"stepHeight": 2
+			},
+			{
+				"code": "floatupwhenstuck",
+				"onlyWhenDead": true
+			},
+			{ "code": "interpolateposition" },
+			{ "code": "harvestable" },
+			{
+				"code": "despawn",
+				"minPlayerDistance": 8,
+				"belowLightLevel": 8,
+				"minSeconds": 900
+			},
+			{
+				"code": "ropetieable",
+				"minGeneration": 2
+			}
+		],
+		"animations": [
+			{
+				"code": "hurt",
+				"animation": "hurt",
+				"animationSpeed": 2.2,
+				"weight": 10,
+				"blendMode": "AddAverage"
+			},
+			{
+				"code": "roostercall",
+				"animation": "roostercall",
+				"animationSpeed": 1.3,
+				"weight": 10,
+				"blendMode": "AddAverage"
+			},
+			{
+				"code": "die",
+				"animation": "death",
+				"animationSpeed": 1.25,
+				"weight": 10,
+				"blendMode": "Average",
+				"triggeredBy": { "onControls": [ "dead" ] }
+			},
+			{
+				"code": "idle",
+				"animation": "idle",
+				"blendMode": "AddAverage",
+				"easeOutSpeed": 4,
+				"triggeredBy": { "defaultAnim": true }
+			},
+			{
+				"code": "sleep",
+				"animation": "sleep",
+				"easeInSpeed": 4,
+				"easeOutSpeed": 4,
+				"blendMode": "Average"
+			},
+			{
+				"code": "sit",
+				"animation": "sit",
+				"easeInSpeed": 4,
+				"easeOutSpeed": 4,
+				"blendMode": "Average"
+			}
+		]
+	},
+	"server": {
+		"attributes": {
+			"pathfinder": {
+				"minTurnAnglePerSec": 720,
+				"maxTurnAnglePerSec": 1440
+			}
+		},
+		"behaviors": [
+			{ "code": "repulseagents" },
+			{
+				"code": "controlledphysics",
+				"stepHeight": 2
+			},
+			{
+				"code": "despawn",
+				"minPlayerDistance": 8,
+				"belowLightLevel": 8,
+				"minSeconds": 900
+			},
+			{
+				"code": "health",
+				"currenthealth": 100,
+				"maxhealth": 100
+			},
+			{
+				"code": "deaddecay",
+				"hoursToDecay": 96,
+				"decayedBlock": "game:carcass-large"
+			},
+			{
+				"code": "floatupwhenstuck",
+				"onlyWhenDead": true
+			},
+			{
+				"code": "harvestable",
+				"drops": [
+					{
+						"type": "item",
+						"code": "game:redmeat-raw",
+						"quantity": {
+							"avg": 32,
+							"var": 32
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:hide-raw-huge",
+						"quantity": {
+							"avg": 15,
+							"var": 15
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:fat",
+						"quantity": {
+							"avg": 12,
+							"var": 12
+						}
+					},
+					{
+						"type": "item",
+						"code": "legendarymobs:legendary-bloom-1",
+						"quantity": {
+							"avg": 0.03,
+							"var": 0.75
+						}
+					},
+					{
+						"type": "item",
+						"code": "legendarymobs:legendary-bloom-2",
+						"quantity": {
+							"avg": 0.03,
+							"var": 0.75
+						}
+					},
+					{
+						"type": "item",
+						"code": "legendarymobs:legendarysword-hilt-worn",
+						"quantity": {
+							"avg": 0.03,
+							"var": 0.75
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:gear-temporal",
+						"quantity": {
+							"avg": 0.03,
+							"var": 0.75
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:gear-rusty",
+						"dropModbyStat": "rustyGearDropRate",
+						"quantity": {
+							"avg": 0.05,
+							"var": 32
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:blade-falx-steel",
+						"quantity": {
+							"avg": 0.1,
+							"var": 1
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:armor-body-chain-steel",
+						"quantity": {
+							"avg": 0.025,
+							"var": 1
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:armor-head-chain-steel",
+						"quantity": {
+							"avg": 0.04,
+							"var": 1
+						}
+					},
+					{
+						"type": "item",
+						"code": "game:armor-legs-chain-steel",
+						"quantity": {
+							"avg": 0.03,
+							"var": 1
+						}
+					}
+				]
+			},
+			{ "code": "breathe" },
+			{
+				"code": "emotionstates",
+				"states": [
+					{
+						"code": "aggressiveondamage",
+						"duration": 30,
+						"chance": 1,
+						"slot": 2,
+						"priority": 2,
+						"accumType": "noaccum"
+					}
+				]
+			},
+			{
+				"code": "taskai",
+				"aitasks": [
+					{
+						"code": "meleeattack",
+						"entityCodes": [ "player", "game:wolf-male", "game:wolf-female", "fox-*" ],
+						"priority": 2,
+						"damage": 10,
+						"damageTier": 4,
+						"mincooldown": 2500,
+						"maxcooldown": 3500,
+						"attackDurationMs": 2000,
+						"damagePlayerAtMs": 600,
+						"animation": "Attack",
+						"animationSpeed": 1.5,
+						"damageType": "PiercingAttack",
+						"whenInEmotionState": "aggressiveondamage",
+						"sound": "game:creature/chicken/rooster-alarm2"
+					},
+					{
+						"code": "seekentity",
+						"entityCodes": [ "player" ],
+						"priority": 1.49,
+						"movespeed": 0.045,
+						"seekingRange": 15,
+						"animation": "Run",
+						"animationSpeed": 2.2,
+						"leapAtTarget": true,
+						"leapAnimation": null,
+						"leapChance": 0.01,
+						"sound": "game:creature/chicken/rooster-alarm",
+						"whenInEmotionState": "aggressiveondamage"
+					},
+					{
+						"code": "getoutofwater",
+						"priority": 1.4,
+						"movespeed": 0.02,
+						"animation": "Run",
+						"sound": "game:creature/chicken/hen-flee"
+					},
+					{
+						"code": "seekfoodandeat",
+						"priority": 1.3,
+						"eatSound": "game:player/eat",
+						"eatTime": 1.5,
+						"movespeed": 0.0025,
+						"animation": "Walk",
+						"mincooldownHours": 1,
+						"maxcooldownHours": 4
+					},
+					{
+						"code": "idle",
+						"priority": 1.27,
+						"minduration": 5000000,
+						"maxduration": 5000000,
+						"mincooldown": 5000,
+						"maxcooldown": 15000,
+						"priorityForCancel": 1.38,
+						"animation": "Sleep",
+						"whenNotInEmotionState": "aggressiveondamage",
+						"duringDayTimeFrames": [
+							{
+								"fromHour": 20,
+								"toHour": 24
+							},
+							{
+								"fromHour": 0,
+								"toHour": 6
+							}
+						],
+						"stopOnNearbyEntityCodes": [ "player", "game:wolf-male", "game:wolf-female", "game:fox-*" ],
+						"stopRange": 8,
+						"stopOnHurt": true
+					},
+					{
+						"code": "idle",
+						"priority": 1.25,
+						"minduration": 3120,
+						"maxduration": 3120,
+						"mincooldown": 50000,
+						"maxcooldown": 400000,
+						"animation": "RoosterCall",
+						"animationSpeed": 1.5,
+						"sound": "game:creature/chicken/rooster-call",
+						"soundRange": 150,
+						"priorityForCancel": 1.35
+					},
+					{
+						"code": "idle",
+						"priority": 1.2,
+						"minduration": 2500,
+						"maxduration": 2500,
+						"mincooldown": 1000,
+						"maxcooldown": 10000,
+						"priorityForCancel": 1.29,
+						"animation": "Eat"
+					},
+					{
+						"code": "idle",
+						"priority": 1.1,
+						"minduration": 1000,
+						"maxduration": 3000,
+						"mincooldown": 2000,
+						"maxcooldown": 30000,
+						"priorityForCancel": 1.29,
+						"animation": "Idle"
+					},
+					{
+						"code": "wander",
+						"priority": 1.0,
+						"movespeed": 0.006,
+						"animation": "Walk",
+						"wanderChance": 0.02,
+						"preferredLightLevel": 19
+					},
+					{
+						"code": "idle",
+						"priority": 0.9,
+						"minduration": 6000,
+						"maxduration": 40000,
+						"mincooldown": 2000,
+						"maxcooldown": 120000,
+						"priorityForCancel": 1.29,
+						"animation": "Sit"
+					},
+					{
+						"code": "lookaround",
+						"priority": 0.5
+					}
+				]
+			},
+			{
+				"code": "ropetieable",
+				"minGeneration": 2
+			}
+		],
+		"spawnconditions": {
+			"runtime": {
+				"group": "passive",
+				"tryOnlySurface": true,
+				"chance": 0.000025,
+				"maxQuantity": 1,
+				"minLightLevel": 12,
+				"groupSize": {
+					"dist": "verynarrowgaussian",
+					"avg": 1,
+					"var": 0
+				},
+				"insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+				"minTemp": -2,
+				"minRain": 0.32,
+				"minShrubs": 0.5,
+				"companions": [ "game:chicken-hen", "game:chicken-baby" ]
+			}
+		}
+	},
+	"sounds": {
+		"hurt": "game:creature/chicken/hurt",
+		"death": "game:creature/chicken/hurt"
+	}
+}
