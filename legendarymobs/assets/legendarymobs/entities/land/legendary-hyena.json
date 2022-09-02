@@ -1,6 +1,12 @@
 {
   "code": "legendary-hyena",
   "class": "EntityAgent",
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "great", "wise", "swift" ]
+    }
+  ],
   "hitboxSize": {
     "x": 1.2,
     "y": 1
