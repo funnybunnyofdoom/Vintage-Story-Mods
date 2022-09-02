@@ -1,9 +1,9 @@
 {
   "type": "content",
   "modid": "legendarymobs",
-  "name": "legendarymobs",
-  "authors": ["Unknown"],
-  "description": "To be added",
+  "name": "Legendary Mobs",
+  "authors": ["FunnyBunnyofDOOM"],
+  "description": "large legendary Animals and legendary rewards",
   "version": "1.0.0",
   "dependencies": {
     "game": ""
