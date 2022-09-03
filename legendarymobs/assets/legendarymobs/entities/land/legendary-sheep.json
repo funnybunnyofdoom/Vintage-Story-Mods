@@ -137,8 +137,8 @@
             "type": "item",
             "code": "game:hide-raw-huge",
             "quantity": {
-              "avg": 15,
-              "var": 15
+              "avg": 4,
+              "var": 4
             }
           },
           {
@@ -155,7 +155,8 @@
             "quantity": {
               "avg": 0.03,
               "var": 0.75
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -163,7 +164,8 @@
             "quantity": {
               "avg": 0.03,
               "var": 0.75
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -171,7 +173,8 @@
             "quantity": {
               "avg": 0.03,
               "var": 0.75
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -179,7 +182,8 @@
             "quantity": {
               "avg": 0.03,
               "var": 0.75
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -188,7 +192,8 @@
             "quantity": {
               "avg": 0.05,
               "var": 32
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -196,7 +201,8 @@
             "quantity": {
               "avg": 0.1,
               "var": 1
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -204,7 +210,8 @@
             "quantity": {
               "avg": 0.025,
               "var": 1
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -212,7 +219,8 @@
             "quantity": {
               "avg": 0.04,
               "var": 1
-            }
+            },
+            "lastDrop": true
           },
           {
             "type": "item",
@@ -220,7 +228,8 @@
             "quantity": {
               "avg": 0.03,
               "var": 1
-            }
+            },
+            "lastDrop": true
           }
         ]
       },
@@ -401,11 +410,12 @@
       }
     ],
     "spawnconditions": {
-      "runtime": {
-        "group": "neutral",
+      "worldgen": {
+        "TriesPerChunk": {
+          "avg": 0.08,
+          "var": 0
+        },
         "tryOnlySurface": true,
-        "chance": 0.00015,
-        "maxQuantity": 1,
         "minLightLevel": 10,
         "groupSize": {
           "dist": "verynarrowgaussian",

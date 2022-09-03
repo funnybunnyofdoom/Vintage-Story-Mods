@@ -142,7 +142,7 @@
 				"drops": [
 					{
 						"type": "item",
-						"code": "game:redmeat-raw",
+						"code": "game:poultry-raw",
 						"quantity": {
 							"avg": 32,
 							"var": 32
@@ -170,7 +170,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -178,7 +179,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -186,7 +188,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -194,7 +197,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -203,7 +207,8 @@
 						"quantity": {
 							"avg": 0.05,
 							"var": 32
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -211,7 +216,8 @@
 						"quantity": {
 							"avg": 0.1,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -219,7 +225,8 @@
 						"quantity": {
 							"avg": 0.025,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -227,7 +234,8 @@
 						"quantity": {
 							"avg": 0.04,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -235,7 +243,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					}
 				]
 			},
@@ -390,16 +399,17 @@
 			}
 		],
 		"spawnconditions": {
-			"runtime": {
-				"group": "passive",
+			"worldgen": {
+				"TriesPerChunk": {
+					"avg": 0.01,
+					"var": 0
+				},
 				"tryOnlySurface": true,
-				"chance": 0.000025,
-				"maxQuantity": 1,
 				"minLightLevel": 12,
 				"groupSize": {
 					"dist": "verynarrowgaussian",
-					"avg": 1,
-					"var": 0
+					"avg": 4,
+					"var": 5
 				},
 				"insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
 				"minTemp": -2,

@@ -268,5 +268,14 @@
   "legendarymobs:item-dead-creature-legendary-sheep-5-swift": "Slain Chaschunka the Swift",
 
   //Gazelle needs names
-  "legendarymobs:legendary-gazelle-*-*-*": "Legendary Gazelle"
+  "legendarymobs:legendary-gazelle-*": "Legendary Gazelle",
+
+  //items
+  "legendarymobs:item-legendary-bloom-1": "Ruined Legendary Bloom Blade Shaft",
+  "legendarymobs:item-legendary-bloom-2": "Ruined Legendary Bloom Blade tip",
+  "legendarymobs:item-legendarysword-hilt-worn": "Ruined Legendary Hilt",
+  "legendarymobs:item-legendarysword-hilt-fixed": "Legendary Sword Hilt",
+  "legendarymobs:item-legendary-sword": "Legendary Sword",
+  "legendarymobs:item-legendarysword-blade-1": "Ruinied Legendary Bloom Blade Shaft",
+  "legendarymobs:item-legendarysword-blade-2": "Ruined Legendary Bloom Blade tip"
 }
