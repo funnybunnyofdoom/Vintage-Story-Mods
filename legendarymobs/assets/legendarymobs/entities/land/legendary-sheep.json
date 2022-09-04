@@ -130,7 +130,7 @@
             "code": "game:redmeat-raw",
             "quantity": {
               "avg": 32,
-              "var": 32
+              "var": 16
             }
           },
           {
@@ -206,7 +206,7 @@
           },
           {
             "type": "item",
-            "code": "game:armor-body-chain-steel",
+            "code": "game:metalchain-steel",
             "quantity": {
               "avg": 0.025,
               "var": 1
@@ -215,18 +215,9 @@
           },
           {
             "type": "item",
-            "code": "game:armor-head-chain-steel",
+            "code": "game:metalplate-steel",
             "quantity": {
               "avg": 0.04,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:armor-legs-chain-steel",
-            "quantity": {
-              "avg": 0.03,
               "var": 1
             },
             "lastDrop": true

@@ -122,7 +122,7 @@
 						"code": "game:redmeat-raw",
 						"quantity": {
 							"avg": 32,
-							"var": 32
+							"var": 16
 						}
 					},
 					{
@@ -147,7 +147,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -155,7 +156,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -163,7 +165,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -171,7 +174,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -180,7 +184,8 @@
 						"quantity": {
 							"avg": 0.05,
 							"var": 32
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -192,27 +197,21 @@
 					},
 					{
 						"type": "item",
-						"code": "game:armor-body-chain-steel",
+						"code": "game:metalchain-steel",
 						"quantity": {
 							"avg": 0.025,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
-						"code": "game:armor-head-chain-steel",
+						"code": "game:metalplate-steel",
 						"quantity": {
 							"avg": 0.04,
 							"var": 1
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:armor-legs-chain-steel",
-						"quantity": {
-							"avg": 0.03,
-							"var": 1
-						}
+						},
+						"lastDrop": true
 					}
 				]
 			},
@@ -398,11 +397,12 @@
 			}
 		],
 		"spawnconditions": {
-			"runtime": {
-				"group": "neutral",
+			"worldgen": {
+				"TriesPerChunk": {
+					"avg": 0.015,
+					"var": 0
+				},
 				"tryOnlySurface": true,
-				"chance": 0.00005,
-				"maxQuantity": 1,
 				"minLightLevel": 10,
 				"groupSize": {
 					"dist": "verynarrowgaussian",
@@ -414,7 +414,7 @@
 				"maxTemp": -10,
 				"minRain": 0.25,
 				"minForest": 0.5,
-				"companions": [ "game:fox-arctic-female", "game:fox-arctic-pup"]
+				"companions": [ "game:fox-arctic-female", "game:fox-arctic-pup" ]
 			}
 		}
 	},

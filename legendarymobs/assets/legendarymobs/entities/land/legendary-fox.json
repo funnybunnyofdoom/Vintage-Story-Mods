@@ -122,7 +122,7 @@
 						"code": "game:redmeat-raw",
 						"quantity": {
 							"avg": 32,
-							"var": 32
+							"var": 16
 						}
 					},
 					{
@@ -139,7 +139,7 @@
 						"quantity": {
 							"avg": 12,
 							"var": 12
-						}
+						},
 					},
 					{
 						"type": "item",
@@ -147,7 +147,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -155,7 +156,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -163,7 +165,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -171,7 +174,8 @@
 						"quantity": {
 							"avg": 0.03,
 							"var": 0.75
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -180,7 +184,8 @@
 						"quantity": {
 							"avg": 0.05,
 							"var": 32
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
@@ -188,31 +193,26 @@
 						"quantity": {
 							"avg": 0.1,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
-						"code": "game:armor-body-chain-steel",
+						"code": "game:metalchain-steel",
 						"quantity": {
 							"avg": 0.025,
 							"var": 1
-						}
+						},
+						"lastDrop": true
 					},
 					{
 						"type": "item",
-						"code": "game:armor-head-chain-steel",
+						"code": "game:metalplate-steel",
 						"quantity": {
 							"avg": 0.04,
 							"var": 1
-						}
-					},
-					{
-						"type": "item",
-						"code": "game:armor-legs-chain-steel",
-						"quantity": {
-							"avg": 0.03,
-							"var": 1
-						}
+						},
+						"lastDrop": true
 					}
 				]
 			},
@@ -398,18 +398,16 @@
 			}
 		],
 		"spawnconditions": {
-			"runtime": {
-				"group": "neutral",
+			"worldgen": {
+				"TriesPerChunk": {
+					"avg": 0.0075,
+					"var": 0
+				},
 				"tryOnlySurface": true,
-				"chance": 0.00005,
-				"maxQuantity": 1,
-				"__comment": "Make them spawn away from artifical light so they don't spawn inside farmland",
-				"maxLightLevel": 7,
-				"lightLevelType": "onlyBlockLight",
 				"groupSize": {
 					"dist": "verynarrowgaussian",
-					"avg": 1,
-					"var": 0
+					"avg": 2,
+					"var": 3
 				},
 				"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
 				"minTemp": -15,
@@ -418,7 +416,7 @@
 				"minForestOrShrubs": 0.25,
 				"maxForest": 0.75,
 				"maxShrubs": 0.75,
-				"companions": [ "game:fox-female", "game:fox-forest-pup"]
+				"companions": [ "game:fox-female", "game:fox-forest-pup" ]
 			}
 		}
 	},
