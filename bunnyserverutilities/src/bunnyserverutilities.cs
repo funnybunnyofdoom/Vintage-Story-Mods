@@ -39,7 +39,7 @@ namespace bunnyserverutilities.src
         List<IServerPlayer> joinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
 
         //Rising Sun Initialization
-        List<IServerPlayer> rsjoinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
+        List<IServerPlayer> rsjoinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game[ppppppppppppppppppppppppppppppppppppppppppppppppp7
 
         //Simple Server Message initialization
         int messageplace = 0;
@@ -159,7 +159,7 @@ namespace bunnyserverutilities.src
             //Simple Server message privileges
             ipm.RegisterPrivilege("ssm", "Simple Server Messages");
 
-            //Teleport To privileges
+            //Teleport To privileges 
             ipm.RegisterPrivilege("tpt", "Teleport To");
 
             //Random Teleport Privileges
@@ -238,6 +238,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.frequency = bsuconfig.getDefault().frequency;
                 if (bsuconfig.Current.tptDict == null)
                     bsuconfig.Current.tptDict = bsuconfig.getDefault().tptDict;
+                if (bsuconfig.Current.tptPlayerCooldown == null)
+                    bsuconfig.Current.tptPlayerCooldown = bsuconfig.getDefault().tptPlayerCooldown;
                 if (bsuconfig.Current.waitDict == null)
                     bsuconfig.Current.waitDict = bsuconfig.getDefault().waitDict;
                 if (bsuconfig.Current.rtpradius == null)
@@ -990,44 +992,12 @@ namespace bunnyserverutilities.src
         {
             string cmdname = "tpt";
             string cmd = args.PopWord();
-            if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable")
+            if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable" & cmd != "playercooldown")
             {
                 if (bsuconfig.Current.enabletpt == true)
                 {
-                    IServerPlayerData pdata = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
-                    if (pdata == null)
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player could not be found. Please check your spelling and try again.", Vintagestory.API.Common.EnumChatType.Notification);
-                        return;
-                    }
-
-
-                    if (bsuconfig.Current.tptDict.ContainsKey(player.PlayerUID) == false)
-                    {
-
-                        if (bsuconfig.Current.waitDict.ContainsKey(pdata.PlayerUID) == false)
-                        {
-                            tptinfo info = new tptinfo();
-                            info.toplayer = pdata.PlayerUID;
-                            info.haspermission = false;
-                            info.waiting = true;
-                            info.timer = count;
-                            bsuconfig.Current.tptDict.Add(player.PlayerUID, info);
-                            bsuconfig.Current.waitDict.Add(pdata.PlayerUID, player.PlayerUID);
-                            sapi.StoreModConfig(bsuconfig.Current, "tptconfig.json");
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Stand by. You will be teleported when the other player accepts the teleport", Vintagestory.API.Common.EnumChatType.Notification);
-                            setbackteleport(player);
-                            sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, player.PlayerName + " would like to teleport to you. Please type /tpaccept to accept.", Vintagestory.API.Common.EnumChatType.Notification);
-                        }
-                        else
-                        {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Destination player already has another active TP request. Try again shortly.", Vintagestory.API.Common.EnumChatType.Notification);
-                        }
-                    }
-                    else
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You already have a pending teleport request.", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
+                    Action<IServerPlayer> a = (IServerPlayer) => teleportTo(player,cmd);
+                    checkCooldown(player, cmdname, a, bsuconfig.Current.tptPlayerCooldown);
                 }
                 else
                 {
@@ -1053,6 +1023,9 @@ namespace bunnyserverutilities.src
                 bsuconfig.Current.enabletpt = false;
                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To Player has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+            }else if(cmd == "playercooldown")
+            {
+                    setplayercooldown(player, args.PopInt(), cmdname);
             }
             else
             {
@@ -1369,7 +1342,8 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home enable - enable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home disable - disable the /home command", Vintagestory.API.Common.EnumChatType.Notification);
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/importOldHomes - moves saved homes from jhome 1.05 and earlier to the new save type. Run this only once if you are updating to this mod from 1.0.5 or earlier.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home playercooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/importOldHomes - moves saved homes from jhome 1.05 and earlier to the new save type. Run this only once if you are updating to this mod from Bunny's Just Home 1.0.5 or earlier.", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
@@ -1392,6 +1366,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back enable - enable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back disable - disable the /back command", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back playercooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
@@ -1414,6 +1389,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "admin Commands:", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn enable - enable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn disable - disable the /spawn command", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn playercooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
@@ -1445,6 +1421,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp now - Sets the GRTP to update on the next 1 minute tick", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp enable - enables the GRTP module", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp disable - disables the GRTP module", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp playercooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
@@ -1516,6 +1493,7 @@ namespace bunnyserverutilities.src
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt enable - enables tpt", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt disable - disables tpt", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/tpt playercooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
@@ -1547,6 +1525,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp cooldown <i>number</i> - Sets the cooldown timer in minutes", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp enable - enables Random Teleport", Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp disable - disables Random Teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/rtp playercooldown <i>number</i> - sets the cooldown timer", Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
@@ -1658,6 +1637,9 @@ namespace bunnyserverutilities.src
                     else if (cmd == "grtp")
                     {
                         bsuconfig.Current.grtpPlayerCooldown = cdnum;
+                    }else if (cmd == "tpt")
+                    {
+                        bsuconfig.Current.tptPlayerCooldown = cdnum;
                     }
 
 
@@ -1667,6 +1649,46 @@ namespace bunnyserverutilities.src
             }
         }
 
+        //teleport to function
+        private void teleportTo(IServerPlayer Splayer,string CMD)
+        {
+            IServerPlayer player = Splayer;
+            string cmd = CMD;
+            IServerPlayerData pdata = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
+            if (pdata == null)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player could not be found. Please check your spelling and try again.", Vintagestory.API.Common.EnumChatType.Notification);
+                return;
+            }
+
+
+            if (bsuconfig.Current.tptDict.ContainsKey(player.PlayerUID) == false)
+            {
+
+                if (bsuconfig.Current.waitDict.ContainsKey(pdata.PlayerUID) == false)
+                {
+                    tptinfo info = new tptinfo();
+                    info.toplayer = pdata.PlayerUID;
+                    info.haspermission = false;
+                    info.waiting = true;
+                    info.timer = count;
+                    bsuconfig.Current.tptDict.Add(player.PlayerUID, info);
+                    bsuconfig.Current.waitDict.Add(pdata.PlayerUID, player.PlayerUID);
+                    sapi.StoreModConfig(bsuconfig.Current, "tptconfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Stand by. You will be teleported when the other player accepts the teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                    setbackteleport(player);
+                    sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, player.PlayerName + " would like to teleport to you. Please type /tpaccept to accept.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Destination player already has another active TP request. Try again shortly.", Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You already have a pending teleport request.", Vintagestory.API.Common.EnumChatType.Notification);
+            }
+        }
         private void checkCooldown(IServerPlayer player, string cmdname, Action<IServerPlayer> function, int? modPlayerCooldown)
         {
             int playersactivecooldowntime;
@@ -1729,6 +1751,9 @@ namespace bunnyserverutilities.src
             }
 
         }
+
+        //Teleport To function
+
 
         //========================//
         //Event Listener Functions//
@@ -2019,6 +2044,7 @@ namespace bunnyserverutilities.src
             //Teleport To Properties
             public Dictionary<String, tptinfo> tptDict;
             public Dictionary<String, String> waitDict;
+            public int? tptPlayerCooldown;
 
             //Random Teleport Properties
             //public int? rtpcooldownminutes; //How long the player must wait to teleport
@@ -2096,6 +2122,7 @@ namespace bunnyserverutilities.src
                 //Teleport To player defaults
                 config.tptDict = tptdictionary;
                 config.waitDict = waitdictionary;
+                config.tptPlayerCooldown = 1;
 
                 //Random Teleport defaults
                 config.rtpradius = 100000;
