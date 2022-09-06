@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "southspawn",
+  "name": "south spawn",
+  "authors": ["FunnyBunnyofDOOM"],
+  "description": "To be added",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  },
+  "requiredonclient": false
+}
