@@ -10,7 +10,10 @@
         "type": "item",
         "code": "game:gem-*-rough",
         "name": "gem",
-        "allowedVariants": [ "diamond", "emerald", "olivine_peridot" ]
+        "allowedVariants": [ "diamond", "emerald", "olivine_peridot" ],
+        "attributes": {
+          "potential": "high"
+        }
       },
       "G": {
         "type": "item",
