@@ -1,0 +1,38 @@
+[
+  {
+    "ingredientPattern": "MCM,GLG,SSS",
+    "ingredients": {
+      "M": {
+        "type": "block",
+        "code": "game:metal-scraps"
+      },
+      "C": {
+        "type": "item",
+        "code": "game:gem-*-rough",
+        "name": "gem",
+        "allowedVariants": [ "diamond", "emerald", "olivine_peridot" ]
+      },
+      "G": {
+        "type": "item",
+        "code": "game:gear-rusty",
+        "quantity": 20
+      },
+      "L": {
+        "type": "block",
+        "code": "game:glassslab-*-down-free",
+        "name": "glass",
+        "allowedVariants": [ "quartz", "plain", "green", "blue", "violet", "red", "yellow", "brown", "vintage", "pink" ]
+      },
+      "S": {
+        "type": "item",
+        "code": "game:metalplate-iron"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "game:statictranslocator-broken-north"
+    }
+  }
+]

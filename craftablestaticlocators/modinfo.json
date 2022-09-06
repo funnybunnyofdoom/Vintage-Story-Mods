@@ -1,0 +1,12 @@
+{
+  "type": "content",
+  "modid": "craftablestaticlocators",
+  "name": "craftable static translocators",
+  "authors": [ "FunnyBunnyofDOOM" ],
+  "description": "Recipe for static translocators",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  },
+  "requiredonclient": false
+}
