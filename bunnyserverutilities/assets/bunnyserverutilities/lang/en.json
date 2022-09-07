@@ -1,0 +1,37 @@
+{
+
+  // back messages
+  "disabled-back": "Back is disabled. an admin must use /back enable to enable",
+  "enable-back": "/back has been enabled",
+  "disable-back": "/back has been disabled",
+
+  //home messages
+  "home-sethome": "New home has been saved.",
+  "disabled-home": "Home is disabled. an admin must use /home enable to enable",
+  "enable-home": "/home has been enabled",
+  "disable-home": "/home has been disabled",
+
+  //GRTP messages
+  "chunkloading-grtp": "Chunk is loading. Please try again in a few seconds",
+  "notset-grtp": "GRTP has not been set yet. Did the server just start?",
+  "cooldown-set-grtp": "GRTP cooldown has been updated to {0} minutes.", //{0} = cooldown value
+  "set-radius-grtp": "GRTP radius has been updated to {0} blocks.", //{0} = radius value
+  "wait-now-grtp": "GRTP now issued. Please wait up to a couple minutes for the location to be updated.",
+
+  //re-usable messages
+  "greater-than": "Please enter a number greater than {0} in minutes.", //{0} = number
+  "non-negative-number": "Please enter a non-negative number.",
+  "disabled": "{0} is disabled. An admin must use /{0} enable to enable this command.", //{0} = command string
+  "enable": "{0} has been enabled.", //{0} = command string
+  "disable": "{0} has been disabled." //{0} = command string
+
+  //Import Old Homes
+  "importing": "Importing old homes",
+  "old-home-config-size": "Size of Home config: ",
+  "old-home-player": ":player: "
+
+
+
+
+
+}

@@ -362,7 +362,7 @@ namespace bunnyserverutilities.src
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Back is disabled. an admin must use /back enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-back"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "enable":
@@ -370,15 +370,15 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableBack = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
-                    }
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable-back"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }   
                     break;
                 case "disable":
                     if (player.Role.Code == "admin")
                     {
                         bsuconfig.Current.enableBack = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/back has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable-back"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "help":
@@ -400,11 +400,11 @@ namespace bunnyserverutilities.src
                     homeSave.Remove(player.Entity.PlayerUID);
                 }
                 homeSave.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "New home has been saved.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
             }
             else
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home is disabled. an admin must use /home enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
             }
 
 
@@ -427,7 +427,7 @@ namespace bunnyserverutilities.src
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home is disabled. an admin must use /home enable to enable", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
                     }
                     break;
                 case "enable":
@@ -435,7 +435,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableHome = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home and /sethome has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable-home"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "disable":
@@ -443,7 +443,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableHome = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home and /sethome has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable-home"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "help":
@@ -474,19 +474,19 @@ namespace bunnyserverutilities.src
                             }
                             else
                             {
-                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Chunk is loading. Please try again in a few seconds", Vintagestory.API.Common.EnumChatType.Notification);
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:chunkloading-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the chunk is still loading
                                 sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
                             }
                         }
                         else
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP has not been set yet. Did the server just start?", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:notset-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that GRTP location is not yet set
                         }
 
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Grtp is disabled. an admin must use /grtp enable to enable this command.", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled","grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that GRTP is disabled
                     }
                     break;
                 case "help":
@@ -498,17 +498,17 @@ namespace bunnyserverutilities.src
                         int? cdnum = args.PopInt();
                         if (cdnum == null | cdnum == 0)
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number greater than 0 in minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than",0), Vintagestory.API.Common.EnumChatType.Notification); //Enter a number greater than 0
                         }
                         else if (cdnum < 0)
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a non-negative number
                         }
                         else
                         {
                             bsuconfig.Current.cooldownminutes = cdnum;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cooldown-set-grtp",cdnum), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the cooldown for GRTP locations have been set
                         }
                     }
                     break;
@@ -518,17 +518,17 @@ namespace bunnyserverutilities.src
                         int? cdnum = args.PopInt();
                         if (cdnum == null | cdnum < 10)
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number 10 or greater.", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than", 10), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a number greater than 10
                         }
                         else if (cdnum < 0)
                         {
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a non-negative number
                         }
                         else
                         {
                             bsuconfig.Current.teleportradius = cdnum;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP radius has been updated to " + cdnum + " blocks.", Vintagestory.API.Common.EnumChatType.Notification);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:set-radius-grtp",cdnum), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the radius was set
                         }
                     }
                     break;
@@ -536,7 +536,7 @@ namespace bunnyserverutilities.src
                     if (player.Role.Code == "admin")
                     {
                         grtptimer = 0 - (int)bsuconfig.Current.cooldownminutes;
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "GRTP now issued. Please wait up to a couple minutes to take effect.", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wait-now-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user to wait while the GRTP teleport location is updated
                     }
                     break;
                 case "enable":
@@ -544,7 +544,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableGrtp = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable","grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user that GRTP has been enabled
                     }
                     break;
                 case "disable":
@@ -552,7 +552,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableGrtp = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/grtp has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable","grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user that GRTP has been disabled
                     }
                     break;
                 case "playercooldown":
@@ -592,7 +592,7 @@ namespace bunnyserverutilities.src
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/Spawn is currently disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled","spawn"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "enable":
@@ -600,7 +600,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableSpawn = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable","spawn"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "disable":
@@ -608,7 +608,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableSpawn = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/spawn has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable","spawn"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "help":
@@ -629,7 +629,7 @@ namespace bunnyserverutilities.src
                 {
                     if (HomeConfig.Current.homeDict != null)
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Importing old homes", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:importing"), Vintagestory.API.Common.EnumChatType.Notification);
                         homeSave.Clear();
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Size of Home Config: " + HomeConfig.Current.homeDict.Count(), Vintagestory.API.Common.EnumChatType.Notification);
                         int configsize = HomeConfig.Current.homeDict.Count();
@@ -683,7 +683,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableJoinAnnounce = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Join Announce has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Join Announce"), Vintagestory.API.Common.EnumChatType.Notification); //inform the player that join announce is now disabled
                     }
                     break;
                 case "disable":
@@ -691,7 +691,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableJoinAnnounce = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Join Announce has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Join Announce"), Vintagestory.API.Common.EnumChatType.Notification); //inform the user that joina nnounce is now enabled
                     }
                     break;
             }
@@ -760,7 +760,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableRisingSun = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Rising Sun has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Rising Sun"), Vintagestory.API.Common.EnumChatType.Notification); // Inform the user that Rising Sun has been enabled
                     }
                     break;
                 case "disable":
@@ -768,7 +768,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableRisingSun = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Rising Sun has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Rising Sun"), Vintagestory.API.Common.EnumChatType.Notification); // Inform the user that Rising Sun has been disabled
                     }
                     break;
                 case null:
@@ -837,7 +837,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enablejpm = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "dm"), Vintagestory.API.Common.EnumChatType.Notification); // inform the user that /dm has been enabled
                     }
                     break;
                 case "disable":
@@ -845,7 +845,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enablejpm = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/dm has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "dm"), Vintagestory.API.Common.EnumChatType.Notification); // inform the user that /dm has been disabled
                     }
                     break;
             }
@@ -923,7 +923,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableSimpleServerMessages = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Server Messages have been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Server Messages"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that server messagess are enabled
                     }
                     break;
                 case "disable":
@@ -931,7 +931,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableSimpleServerMessages = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Server Messages have been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Server Messages"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that server messages are disabled
                     }
                     break;
 
@@ -1001,7 +1001,7 @@ namespace bunnyserverutilities.src
                 }
                 else
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "TPT is disabled by admin", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "tpt"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
 
             }
@@ -1015,14 +1015,14 @@ namespace bunnyserverutilities.src
                 {
                     bsuconfig.Current.enabletpt = true;
                     sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To Player has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Teleport To"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
             else if (cmd == "disable")
             {
                 bsuconfig.Current.enabletpt = false;
                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleport To Player has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Teleport To"), Vintagestory.API.Common.EnumChatType.Notification);
             }else if(cmd == "playercooldown")
             {
                     setplayercooldown(player, args.PopInt(), cmdname);
@@ -1035,7 +1035,7 @@ namespace bunnyserverutilities.src
                 }
                 else
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "TPT is disabled by admin.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "tpt"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
         }
@@ -1057,7 +1057,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableBunnyBell = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Bunny Bell"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that bunny bell is enabled
                     }
                     break;
                 case "disable":
@@ -1065,7 +1065,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enableBunnyBell = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Bunny Bell"), Vintagestory.API.Common.EnumChatType.Notification); //Inforn user that bunny bell is disabled
                     }
                     break;
             }
@@ -1152,7 +1152,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enablejrtp = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Random Teleport has been enabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "rtp"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "disable":
@@ -1160,7 +1160,7 @@ namespace bunnyserverutilities.src
                     {
                         bsuconfig.Current.enablejrtp = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Random Teleport has been disabled", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "rtp"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "radius":
@@ -1614,11 +1614,11 @@ namespace bunnyserverutilities.src
                 //int? cdnum = args.PopInt();
                 if (cdnum == null | cdnum == 0)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a number greater than 0 in minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than",0), Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else if (cdnum < 0)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please enter a non-negative number.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else
                 {
