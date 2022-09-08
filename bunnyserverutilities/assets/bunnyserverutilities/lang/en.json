@@ -27,6 +27,8 @@
   "no-permission": "You do not have permission to use this command.",
   "player": "player",
   "player-not-found": "Player could not be found. Please check your spelling and try again.",
+  "number-or-greater": "Please enter a number {0} or greater.",
+  "number-between": "Please enter a number between {0} and {1}.",
 
   //Import Old Homes
   "importing": "Importing old homes",
@@ -61,9 +63,24 @@
   "no-tp-accept": "You have no active requests to accept",
   "teleport-accepted": "Your teleport request has been accepted. Stand by while you are teleported.",
   "teleport-accepted-user": "Teleport To accepted",
-  "need-playername-tpt": "Please enter the name of the player you would like to teleport to." 
+  "need-playername-tpt": "Please enter the name of the player you would like to teleport to.",
 
+  //Random Teleport
+  "rtp-cooldown-set": "RTP cooldown timer set to ",
+  "rtp-wait": "Please wait while destination chunks are loaded",
+  "rtp-wait-2": "The chunks are still being generated, please wait.",
+  "rtp-cooldown-timer": "You can teleport again in {0} minutes",
+  "set-radius-rtp": "RTP radius has been updated to {0} blocks.", //{0} = radius value
 
+  //Remove Denial
+  "remove-denial": "Removing denial of {0} from {1}.",
+
+  //warn
+  "warn-player": "Player: ",
+  "warn-warnings": "Warnings: ",
+  "warn-warning": "Warning: ",
+  "warn-reasons": "Reasons: ",
+  "warn-help": "Use /warn list num to see the warnings for that player"
 
 
 
