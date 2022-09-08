@@ -23,15 +23,48 @@
   "non-negative-number": "Please enter a non-negative number.",
   "disabled": "{0} is disabled. An admin must use /{0} enable to enable this command.", //{0} = command string
   "enable": "{0} has been enabled.", //{0} = command string
-  "disable": "{0} has been disabled." //{0} = command string
+  "disable": "{0} has been disabled.", //{0} = command string
+  "no-permission": "You do not have permission to use this command.",
+  "player": "player",
+  "player-not-found": "Player could not be found. Please check your spelling and try again.",
 
   //Import Old Homes
   "importing": "Importing old homes",
   "old-home-config-size": "Size of Home config: ",
-  "old-home-player": ":player: "
+  "old-home-imported": "Old homes imported",
+  "no-old-homes": "No valid home configs to import.",
+  "home-already-imported": "Old homes have already been imported. This command should only be used once.",
+
+  //Rising Sun messages
+  "between-hours": "Please enter an hour between 1 and 23.",
+  "smaller-dusk": "Please enter a number smaller than dusk: ",
+  "larger-dawn": "Please enter a number larger than dawn: ",
+  "dawn-updated": "Dawn time has been updated to ",
+  "dusk-updated": "Dust time has been updated to ",
+
+  //Private Message messages
+  "include-message": "Please include a message.",
+  "include-player": "Please include a player name.",
+
+  //Simple Server Message
+  "add-message": "Added message",
+  "remove-message": "Removed message",
+  "remove-message-help": "Please use /ssm list and then use /ssm remove number to delete the message",
+  "remove-message-help-2": "Please use /ssm remove Number to remove a message",
+  "list-of-messages": "List of current server messages: ",
+  "message-frequency": "Messages will be broadcast every {0} minutes",
+
+  //Teleport To
+  "tp-deny-player": "Your teleport request has been denied.",
+  "tp-deny-target": "Teleport To denied",
+  "no-tp-deny": "You have no active requests to deny",
+  "no-tp-accept": "You have no active requests to accept",
+  "teleport-accepted": "Your teleport request has been accepted. Stand by while you are teleported.",
+  "teleport-accepted-user": "Teleport To accepted",
+  "need-playername-tpt": "Please enter the name of the player you would like to teleport to." 
 
 
 
 
 
-}
+} 
