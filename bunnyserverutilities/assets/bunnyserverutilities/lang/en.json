@@ -10,6 +10,11 @@
   "disabled-home": "Home is disabled. an admin must use /home enable to enable",
   "enable-home": "/home has been enabled",
   "disable-home": "/home has been disabled",
+  "teleporting-home": "Teleporting to your saved home",
+  "no-home-saved": "No home saved. Teleporting to world center. Use /sethome to set a home. ",
+  "teleporting-back": "Returning to your last location.",
+  "no-back-saved": "No back location. Use /home to create a back location.",
+  "on-death-back": "Use /back to return to your death point.",
 
   //GRTP messages
   "chunkloading-grtp": "Chunk is loading. Please try again in a few seconds",
@@ -17,6 +22,9 @@
   "cooldown-set-grtp": "GRTP cooldown has been updated to {0} minutes.", //{0} = cooldown value
   "set-radius-grtp": "GRTP radius has been updated to {0} blocks.", //{0} = radius value
   "wait-now-grtp": "GRTP now issued. Please wait up to a couple minutes for the location to be updated.",
+  "teleporting-grtp": "Teleporting to a random location. A new location will be generated within 1 minute",
+  "teleporting-grtp-2": "Teleporting to a random location. Others can join you for {0} minutes.",
+  "new-grtp": "New /grtp coordinates generated. New location will be available in {0} minutes.",
 
   //re-usable messages
   "greater-than": "Please enter a number greater than {0} in minutes.", //{0} = number
@@ -29,6 +37,8 @@
   "player-not-found": "Player could not be found. Please check your spelling and try again.",
   "number-or-greater": "Please enter a number {0} or greater.",
   "number-between": "Please enter a number between {0} and {1}.",
+  "cooldown-reusable": "{0} cooldown has been updated to {1} minutes.", // {0} = command name {1} = number of minutes
+  "cooldown-player-reusable": "Please wait for {0} minutes.",
 
   //Import Old Homes
   "importing": "Importing old homes",
@@ -43,6 +53,7 @@
   "larger-dawn": "Please enter a number larger than dawn: ",
   "dawn-updated": "Dawn time has been updated to ",
   "dusk-updated": "Dust time has been updated to ",
+  "welcome-rs": "The sun has risen on a new player! Welcome {0}",
 
   //Private Message messages
   "include-message": "Please include a message.",
@@ -64,13 +75,19 @@
   "teleport-accepted": "Your teleport request has been accepted. Stand by while you are teleported.",
   "teleport-accepted-user": "Teleport To accepted",
   "need-playername-tpt": "Please enter the name of the player you would like to teleport to.",
+  "wait-for-tp": "Stand by. You will be teleported when the other player accepts the teleport",
+  "tp-to-you": "{0} would like to teleport to you. Please type /tpaccept to accept.", //{0} = player's name
+  "active-tp": "Destination player already has another active TP request. Try again shortly.",
+  "pending-tp": "You already have a pending teleport request.",
+  "expired-tp": "Your TP to player has expired",
 
   //Random Teleport
   "rtp-cooldown-set": "RTP cooldown timer set to ",
-  "rtp-wait": "Please wait while destination chunks are loaded",
+  "rtp-wait": "Please wait while destination chunks are loaded.",
   "rtp-wait-2": "The chunks are still being generated, please wait.",
-  "rtp-cooldown-timer": "You can teleport again in {0} minutes",
+  "rtp-cooldown-timer": "You can teleport again in {0} minutes.",
   "set-radius-rtp": "RTP radius has been updated to {0} blocks.", //{0} = radius value
+  "new-rtp": "Teleporting to a random location.",
 
   //Remove Denial
   "remove-denial": "Removing denial of {0} from {1}.",
@@ -80,8 +97,19 @@
   "warn-warnings": "Warnings: ",
   "warn-warning": "Warning: ",
   "warn-reasons": "Reasons: ",
-  "warn-help": "Use /warn list num to see the warnings for that player"
+  "warn-help": "Use /warn list num to see the warnings for that player",
 
+  //spawn
+  "teleporting-spawn": "You are teleporting to spawn.",
+
+  //Default welcome message: 
+  "default-welcome": "Welcome to the server", //This is the welcome displayed by Simple Server Messages if not configured.
+
+  "welcome-player": "Please welcome <font color=\"white\"><strong>{0}</strong></font> to the server!",
+
+  //Player list on join
+  "players-online": "Players Online: ",
+  "player-divider": "|"
 
 
 } 

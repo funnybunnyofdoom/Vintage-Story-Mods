@@ -1552,11 +1552,11 @@ namespace bunnyserverutilities.src
         {
             if (bsuconfig.Current.cooldownminutes - (count - grtptimer) <= 0)
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. A new location will be generated within 1 minute", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleporting-grtp"), Vintagestory.API.Common.EnumChatType.Notification);
             }
             else
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location. Others can join you for " + (bsuconfig.Current.cooldownminutes - (count - grtptimer)) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleporting-grtp-2", (bsuconfig.Current.cooldownminutes - (count - grtptimer))), Vintagestory.API.Common.EnumChatType.Notification);
             }
             setbackteleport(player);
             player.Entity.TeleportTo(randx, height + 2, randz);
@@ -1567,13 +1567,13 @@ namespace bunnyserverutilities.src
             setbackteleport(player);
             if (homeSave.ContainsKey(player.Entity.PlayerUID))
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to your saved home", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleporting-home"), Vintagestory.API.Common.EnumChatType.Notification);
                 sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
                 player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
             }
             else
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No Home Saved. Teleporting to world center. Use /sethome to set a home.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-home-saved"), Vintagestory.API.Common.EnumChatType.Notification);
                 sapi.WorldManager.LoadChunkColumnPriority(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Z);
                 player.Entity.TeleportTo(sapi.World.DefaultSpawnPosition.XYZInt.X, sapi.World.DefaultSpawnPosition.XYZInt.Y, sapi.World.DefaultSpawnPosition.XYZInt.Z);
             }
@@ -1583,7 +1583,7 @@ namespace bunnyserverutilities.src
         {
             setbackteleport(player);
             EntityPlayer byEntity = player.Entity; //Get the player
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You are teleporting to spawn", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleporting-spawn"), Vintagestory.API.Common.EnumChatType.Notification);
             EntityPos spawnpoint = byEntity.World.DefaultSpawnPosition;
             byEntity.TeleportTo(spawnpoint);
         }
@@ -1593,7 +1593,7 @@ namespace bunnyserverutilities.src
             BlockPos newPos = player.Entity.Pos.AsBlockPos;
             if (backSave.ContainsKey(player.Entity.PlayerUID))
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Returning to your last location", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleporting-back"), Vintagestory.API.Common.EnumChatType.Notification);
                 sapi.WorldManager.LoadChunkColumnPriority(backSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, backSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
                 player.Entity.TeleportTo(backSave[player.Entity.PlayerUID].X, backSave[player.Entity.PlayerUID].Y, backSave[player.Entity.PlayerUID].Z);
                 backSave.Remove(player.Entity.PlayerUID);
@@ -1601,7 +1601,7 @@ namespace bunnyserverutilities.src
             }
             else
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No back location. Use /home to create a back location.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-back-saved"), Vintagestory.API.Common.EnumChatType.Notification);
             }
         }
 
@@ -1644,7 +1644,7 @@ namespace bunnyserverutilities.src
 
 
                     sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, cmd + " cooldown has been updated to " + cdnum + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cooldown-reusable",cmd,cdnum), Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
         }
@@ -1657,7 +1657,7 @@ namespace bunnyserverutilities.src
             IServerPlayerData pdata = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
             if (pdata == null)
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Player could not be found. Please check your spelling and try again.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:player-not-found"), Vintagestory.API.Common.EnumChatType.Notification);
                 return;
             }
 
@@ -1675,18 +1675,18 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.tptDict.Add(player.PlayerUID, info);
                     bsuconfig.Current.waitDict.Add(pdata.PlayerUID, player.PlayerUID);
                     sapi.StoreModConfig(bsuconfig.Current, "tptconfig.json");
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Stand by. You will be teleported when the other player accepts the teleport", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wait-for-tp"), Vintagestory.API.Common.EnumChatType.Notification);
                     setbackteleport(player);
-                    sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, player.PlayerName + " would like to teleport to you. Please type /tpaccept to accept.", Vintagestory.API.Common.EnumChatType.Notification);
+                    sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup,Lang.Get("bunnyserverutilities:tp-to-you", player.PlayerName), Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Destination player already has another active TP request. Try again shortly.", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:active-tp"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
             else
             {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "You already have a pending teleport request.", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:pending-tp"), Vintagestory.API.Common.EnumChatType.Notification);
             }
         }
         private void checkCooldown(IServerPlayer player, string cmdname, Action<IServerPlayer> function, int? modPlayerCooldown)
@@ -1708,7 +1708,7 @@ namespace bunnyserverutilities.src
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Please wait for " + ((playersactivecooldowntime + modPlayerCooldown) - count) + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cooldown-player-reusable", ((playersactivecooldowntime + modPlayerCooldown) - count)), Vintagestory.API.Common.EnumChatType.Notification);
                         return;
                     }
                 }
@@ -1800,7 +1800,7 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.tptDict.TryGetValue(keyvalue, out value);
                     if ((count - value.timer) >= 2)
                     {
-                        sapi.SendMessage(sapi.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Your TP to player has expired", Vintagestory.API.Common.EnumChatType.Notification);
+                        sapi.SendMessage(sapi.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:expired-tp"), Vintagestory.API.Common.EnumChatType.Notification);
                         bsuconfig.Current.tptDict.Remove(keyvalue); //player that is teleporting
                         bsuconfig.Current.waitDict.Remove(value.toplayer); //player that is being teleported to
 
@@ -1841,7 +1841,7 @@ namespace bunnyserverutilities.src
                 height = sapi.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
                 if (loaded == false)
                 {
-                    sapi.BroadcastMessageToAllGroups("New /grtp coordinates generated. New location will be available in " + bsuconfig.Current.cooldownminutes + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                    sapi.BroadcastMessageToAllGroups(Lang.Get("bunnyserverutilities:new-grtp", bsuconfig.Current.cooldownminutes), Vintagestory.API.Common.EnumChatType.Notification);
 
                 }
 
@@ -1850,7 +1850,7 @@ namespace bunnyserverutilities.src
             //rtp check chunk
             if (rtprandx / sapi.WorldManager.ChunkSize == chunkCoord.X & (rtprandz / sapi.WorldManager.ChunkSize == chunkCoord.Y) & (teleporting == true))
             {
-                Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Teleporting to a random location.", Vintagestory.API.Common.EnumChatType.Notification);
+                Splayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:new-rtp"), Vintagestory.API.Common.EnumChatType.Notification);
                 BlockPos checkheight = new BlockPos();
                 checkheight.X = rtprandx;
                 checkheight.Y = 1;
@@ -1885,7 +1885,7 @@ namespace bunnyserverutilities.src
                     backSave.Remove(player.PlayerUID);
                 }
                 backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Use /back to return to your death point", Vintagestory.API.Common.EnumChatType.Notification);
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:on-death-back"), Vintagestory.API.Common.EnumChatType.Notification);
             }
         }
 
@@ -1897,7 +1897,7 @@ namespace bunnyserverutilities.src
                 {
                     if (joinedPlayers.Contains(byPlayer))
                     {
-                        sapi.BroadcastMessageToAllGroups("Please welcome <font color=\"white\"><strong>" + byPlayer.PlayerName + "</strong></font> to the server!", Vintagestory.API.Common.EnumChatType.AllGroups);
+                        sapi.BroadcastMessageToAllGroups(Lang.Get("bunnyserverutilities:welcome-player",byPlayer.PlayerName), Vintagestory.API.Common.EnumChatType.AllGroups);
                         joinedPlayers.Remove(byPlayer);
                     }
                 }
@@ -1908,7 +1908,7 @@ namespace bunnyserverutilities.src
                 {
                     if (rsjoinedPlayers.Contains(byPlayer))
                     {
-                        sapi.BroadcastMessageToAllGroups("The sun has risen on a new player! Welcome " + byPlayer.PlayerName, Vintagestory.API.Common.EnumChatType.AllGroups);
+                        sapi.BroadcastMessageToAllGroups(Lang.Get("bunnyserverutilities:welcome-rs", byPlayer.PlayerName), Vintagestory.API.Common.EnumChatType.AllGroups);
                         int hour = byPlayer.Entity.World.Calendar.FullHourOfDay;
                         if (hour < bsuconfig.Current.dawn)
                         {
@@ -1926,11 +1926,11 @@ namespace bunnyserverutilities.src
             if(bsuconfig.Current.enablejoinmessage == true)
             {
                 IPlayer[] aoplayers = sapi.World.AllOnlinePlayers;
-                byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Players Online: " + aoplayers.Length.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
+                byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:players-online") + aoplayers.Length.ToString(), Vintagestory.API.Common.EnumChatType.Notification);
                 string players = " ";
                 for (int i = 0;i < aoplayers.Length; i++)
                 {
-                    players = players + aoplayers[i].PlayerName + " | ";
+                    players = players + aoplayers[i].PlayerName + " "+Lang.Get("bunnyserverutilities:player-divider")+" ";
                 }
                 byPlayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, players, Vintagestory.API.Common.EnumChatType.Notification);
             }
@@ -2063,7 +2063,7 @@ namespace bunnyserverutilities.src
                 bool perms = false;
                 List<String> dmessages = new List<string> //SSM default dmessages
                 {
-                    "Welcome to the server!"
+                    Lang.Get("bunnyserverutilities:default-welcome")
                 };
                 Dictionary<String, tptinfo> tptdictionary = new Dictionary<string, tptinfo> //Dictionary to hold Teleport To info
                 {
