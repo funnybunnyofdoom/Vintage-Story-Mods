@@ -30,6 +30,7 @@
   "greater-than": "Please enter a number greater than {0} in minutes.", //{0} = number
   "non-negative-number": "Please enter a non-negative number.",
   "disabled": "{0} is disabled. An admin must use /{0} enable to enable this command.", //{0} = command string
+  "disabled-2": "{0} is disabled by admin.",
   "enable": "{0} has been enabled.", //{0} = command string
   "disable": "{0} has been disabled.", //{0} = command string
   "no-permission": "You do not have permission to use this command.",
@@ -109,7 +110,47 @@
 
   //Player list on join
   "players-online": "Players Online: ",
-  "player-divider": "|"
+  "player-divider": "|",
 
+  //Help command
+  "bsu-commands": "Bunny's Server Utility commands:",
+  "bsu-help": "-Use /bsu help to see help for all Bunny Server utility commands",
+  "bsu-version": "Use {0} for mod version",
+  "help-removedeny": "- remove a privilege denial from a player.",
+  "module-commands": "---{0} Commands---", //{0} = module name
+  "help-sethome": "- Sets your location as your home teleport",
+  "help-home": "- teleports you to your set home location",
+  "admin-commands": "{0} admin commands:", //{0} = module name
+  "module-disable": "{0} disable - disable the {0} command",
+  "module-dissable-2": "{0} disable - disables the {1} module.",
+  "module-enable": "{0} enable - enable the {0} command",
+  "module-enable-2": "{0} enable - enables the {1} module",
+  "ja-enable": "/joinannounce enable - enables sending a message to players the first time they join",
+  "ja-disable": "/joinannounce disable - disables sending a message to players the first time they join",
+  "module-cooldown": "{0} playercooldown <i>number</i> - sets the cooldown timer",
+  "grtp-cooldown": "/grtp cooldown <i>number</i> - Set the frequency the GRTP location moves in minutes",
+  "rtp-cooldown": "/rtp cooldown <i>number</i> - Sets the cooldown timer in minutes",
+  "old-home-help": "/importOldHomes - moves saved homes from jhome 1.05 and earlier to the new save type. Run this only once if you are updating to this mod from Bunny's Just Home 1.0.5 or earlier.",
+  "back-help": "/back - return to the last place you used /home, /back or died",
+  "spawn-help": "/spawn - return to the server set spawn point",
+  "grtp-update": "GRTP location updates every {0} minutes.",
+  "grtp-radius": "Teleport Radius: {0} blocks",
+  "grtp-cmd-help": "/grtp - teleports the player to the group teleport point",
+  "grtp-help-radius": "/grtp radius <i>number</i> - sets the teleport radius",
+  "grtp-help-now": "/grtp now - Sets the GRTP to update on the next 1 minute tick",
+
+  "dawn-help": "/rs dawn <i>number</i> - Sets the hour Rising Sun will advance the night to",
+  "dusk-help": "/rs dusk <i>number</i> - Sets the hour that Rising Sun considers Night",
+  "dm-help": "/dm <i>playername messageToPlayer</i> - sends a message to a player.",
+  "ssm-add-help": "/ssm add <i>Server Message</i> - adds a message to the list of server messages",
+  "ssm-list-help": "/ssm list - lists the existing server messages",
+  "ssm-remove-help": "/ssm remove <i>number from /ssm list</i> - remove the message from the number in the list",
+  "ssm-freq-help": "/ssm frequency <i>number in minutes</i> - changes the duration of minutes between messages",
+  "ssm-now-help": "/ssm now - broadcasts the next server message in line",
+  "tpt-help": "/tpt playername - Asks a player if you can teleport to them",
+  "tpaccept-help": "/tpaccept - accepts a tpt request and teleports player to you",
+  "tpdeny-help": "/tpdeny - denies a tpt request",
+  "bunny-bell-help": "Bunny bell creates a -ding- when your name is typed",
+  "rtp-help": "/rtp - Teleports the player to a random location"
 
 } 
