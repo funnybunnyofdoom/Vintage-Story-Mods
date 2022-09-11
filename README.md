@@ -21,7 +21,7 @@ Server side only. Client side mod is planned.
   When a new player joins for the first time, the in game calendar advances to 8:00 AM
 Will add a feature to progress to day whenever a player logs in. 
 
--Bunny Server Utilities: [FunnyBunnyofDOOM]
+-Bunny Server Utilities: [FunnyBunnyofDOOM] | Translated by: [ShadowPotion]
   Collection of utility mods
 
 -Group Random Teleport: [FunnyBunnyofDOOM]
