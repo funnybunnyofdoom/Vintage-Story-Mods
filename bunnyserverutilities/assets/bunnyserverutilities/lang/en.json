@@ -53,7 +53,7 @@
   "smaller-dusk": "Please enter a number smaller than dusk: ",
   "larger-dawn": "Please enter a number larger than dawn: ",
   "dawn-updated": "Dawn time has been updated to ",
-  "dusk-updated": "Dust time has been updated to ",
+  "dusk-updated": "Dusk time has been updated to ",
   "welcome-rs": "The sun has risen on a new player! Welcome {0}",
 
   //Private Message messages
@@ -151,6 +151,17 @@
   "tpaccept-help": "/tpaccept - accepts a tpt request and teleports player to you",
   "tpdeny-help": "/tpdeny - denies a tpt request",
   "bunny-bell-help": "Bunny bell creates a -ding- when your name is typed",
-  "rtp-help": "/rtp - Teleports the player to a random location"
+  "rtp-help": "/rtp - Teleports the player to a random location",
+
+  //Iron Man
+  "ironman-use-confirm": "Use /ironman confirm to start iron man mode. <font color=red><strong>WARNING: You will lose all items on your character.</strong></font> If you die while in Iron Man mode you will lose your progress.",
+  "ironman-already-joined": "You are already an ironman.",
+  "ironman-confirmed": "You have activated Ironman mode. You will leave Ironman mode upon death.",
+  "ironman-ended": "Ironman {0} has died. Check the leaderboards to see their score.",
+  "ironman-teleporting": "You are now teleporting to your ironman location.",
+  "ironman-teleport-wait": "Please wait while your Ironman chunks are loaded",
+  "ironman-new-personal-highscore": "Ironman {0} has reached a new personal high score! /ironman highscores to see the leaderboard.",
+  "ironman-no-new-score": "You did not beat your high score of {0} days. Try again!",
+  "ironman-first": "You have completed your first Ironman!"
 
 } 

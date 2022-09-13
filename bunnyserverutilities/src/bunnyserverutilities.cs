@@ -11,6 +11,7 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Common.Entities;
 using privileges;
+using System.Drawing;
 
 namespace bunnyserverutilities.src
 {
@@ -21,7 +22,6 @@ namespace bunnyserverutilities.src
         int count; //Variable to check against for timing and cooldowns
         public Dictionary<string, Dictionary<string, int>> cooldownDict = new Dictionary<string, Dictionary<string, int>>(); //dictionary to hold mod cooldown lists
         IPermissionManager ipm;
-
 
         //jHome variable initialization
         Dictionary<string, BlockPos> backSave; //Dictionary to hold our /back locations
@@ -39,7 +39,7 @@ namespace bunnyserverutilities.src
         List<IServerPlayer> joinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
 
         //Rising Sun Initialization
-        List<IServerPlayer> rsjoinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game[ppppppppppppppppppppppppppppppppppppppppppppppppp7
+        List<IServerPlayer> rsjoinedPlayers = new List<IServerPlayer>(); //Holds players names between joining for the first time and being loaded into the game
 
         //Simple Server Message initialization
         int messageplace = 0;
@@ -60,6 +60,16 @@ namespace bunnyserverutilities.src
         int rtprandx, rtprandz = 0;
         bool teleporting = false;
         int cooldowntimer;
+
+        //Iron Man Initialization
+        public List<string> ironManPlayerList; //List to hold our players in ironman mode
+        public List<string> TempironManList = new List<string>{"default"}; //Holds the players names before they confirm
+        int imx, imz = 0;
+        int imheight=0;
+        bool imteleporting = false;
+        IServerPlayer implayer;
+        Dictionary<string,double> currentironmandict = new Dictionary<string,double>();
+        Dictionary<string, int> ironmanhighscores = new Dictionary<string, int>();
 
         public override void StartServerSide(ICoreServerAPI api)
         {
@@ -139,6 +149,9 @@ namespace bunnyserverutilities.src
             api.RegisterCommand("rtp", "Randomly Teleports the player", "[rtp|help|cooldown|enable|disable]",
             cmd_rtp, privileges.src.HPrivilege.rtp);
 
+            //Ironman Commands
+            api.RegisterCommand("ironman", "Sets the player to ironman mode", "",cmd_ironman,privileges.src.JPrivilege.ironman);
+
             //===================//
             //Register Privileges//
             //===================//
@@ -164,6 +177,10 @@ namespace bunnyserverutilities.src
 
             //Random Teleport Privileges
             ipm.RegisterPrivilege("rtp", "Random Teleport");
+
+            //Ironman privileges
+            ipm.RegisterPrivilege("ironman","Iron Man");
+
 
             //Check config for nulls
 
@@ -330,6 +347,10 @@ namespace bunnyserverutilities.src
                 ipm.RemovePrivilegeFromGroup("doplayer", privileges.src.FPrivilege.ssm);
                 //add /warn permissions to ADMIN ONLY:
                 ipm.AddPrivilegeToGroup("admin", privileges.src.IPrivilege.warn);
+                //Add ironman permissions to all standard groups
+                ipm.AddPrivilegeToGroup("admin",privileges.src.JPrivilege.ironman);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.JPrivilege.ironman);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.JPrivilege.ironman);
             }
 
             //GRTP count and event listener set at server startup
@@ -337,8 +358,9 @@ namespace bunnyserverutilities.src
             count = (int)bsuconfig.Current.cooldownminutes;//grtp cooldown timer
             CID = api.Event.RegisterGameTickListener(CoolDown, 60000); //Check the cooldown timer every 1 minute
             int broadcastFrequency = (int)bsuconfig.Current.frequency; //SSM cooldown timer
-
         }
+
+        
 
 
 
@@ -354,7 +376,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    if (bsuconfig.Current.enableBack == true)
+                    if (bsuconfig.Current.enableBack == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         Action<IServerPlayer> a = (IServerPlayer) => backteleport(player);
                         checkCooldown(player, cmdname, a, bsuconfig.Current.backPlayerCooldown);
@@ -393,7 +415,7 @@ namespace bunnyserverutilities.src
         //Set Home command
         private void cmd_sethome(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (bsuconfig.Current.enableHome == true)
+            if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
             {
                 if (homeSave.ContainsKey(player.Entity.PlayerUID))
                 {
@@ -419,7 +441,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    if (bsuconfig.Current.enableHome == true)
+                    if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         Action<IServerPlayer> a = (IServerPlayer) => homeTeleport(player);
                         checkCooldown(player, cmdname, a, bsuconfig.Current.homePlayerCooldown);
@@ -463,7 +485,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    if (bsuconfig.Current.enableGrtp == true)
+                    if (bsuconfig.Current.enableGrtp == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         if (randx != 0 & randz != 0)
                         {
@@ -584,7 +606,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    if (bsuconfig.Current.enableSpawn == true)
+                    if (bsuconfig.Current.enableSpawn == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         Action<IServerPlayer> a = (IServerPlayer) => spawnTeleport(player);
                         checkCooldown(player, cmdname, a, bsuconfig.Current.spawnPlayerCooldown);
@@ -994,7 +1016,7 @@ namespace bunnyserverutilities.src
             string cmd = args.PopWord();
             if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable" & cmd != "playercooldown")
             {
-                if (bsuconfig.Current.enabletpt == true)
+                if (bsuconfig.Current.enabletpt == true && !ironManPlayerList.Contains(player.PlayerUID))
                 {
                     Action<IServerPlayer> a = (IServerPlayer) => teleportTo(player,cmd);
                     checkCooldown(player, cmdname, a, bsuconfig.Current.tptPlayerCooldown);
@@ -1105,7 +1127,7 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case null:
-                    if (bsuconfig.Current.enablejrtp == true)
+                    if (bsuconfig.Current.enablejrtp == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         ICoreServerAPI api = sapi; //get the server api
                         Splayer = player;
@@ -1303,10 +1325,76 @@ namespace bunnyserverutilities.src
             }
         }
 
+        private void cmd_ironman(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "ironman";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case null:
+                    if (!ironManPlayerList.Contains(player.PlayerUID) && !TempironManList.Contains(player.PlayerUID))
+                    {
+                        TempironManList.Add(player.PlayerUID);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-use-confirm"), Vintagestory.API.Common.EnumChatType.Notification); 
+                    }
+                    else if (TempironManList.Contains(player.PlayerUID))
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-use-confirm"), Vintagestory.API.Common.EnumChatType.Notification); 
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-already-joined"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "confirm":
+                    if (TempironManList.Contains(player.PlayerUID))
+                    {
+                        TempironManList.Remove(player.PlayerUID);
+                        ironManPlayerList.Add(player.PlayerUID);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-confirmed"), Vintagestory.API.Common.EnumChatType.Notification);
+                        player.InventoryManager.DiscardAll();
+                        PlayerSpawnPos oldspawn = new PlayerSpawnPos();
+                        oldspawn.x = (((int)sapi.World.DefaultSpawnPosition.X));
+                        oldspawn.y = (((int)sapi.World.DefaultSpawnPosition.Y));
+                        oldspawn.z = (((int)sapi.World.DefaultSpawnPosition.X));
+                        player.SetSpawnPosition(oldspawn);
+                        implayer = player;
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-teleport-wait"), Vintagestory.API.Common.EnumChatType.Notification);
+                        int startradius = 190000;
+                        int radius = 20000;
+                        int worldx = sapi.WorldManager.MapSizeX;
+                        int worldz = sapi.WorldManager.MapSizeZ;
+                        int rawxmin = (worldx / 2) + startradius + radius;
+                        int rawxmax = (worldx / 2) + startradius + (radius*2);
+                        int rawzmin = (worldz / 2) + startradius + radius;
+                        int rawzmax = (worldz / 2) + startradius + (radius*2);
+                        imx = sapi.World.Rand.Next(rawxmin, rawxmax);
+                        imz = sapi.World.Rand.Next(rawzmin, rawzmax);
+                        sapi.WorldManager.LoadChunkColumnPriority(imx / sapi.WorldManager.ChunkSize, imz / sapi.WorldManager.ChunkSize);
+
+                        //add player to current ironman score list
+                        currentironmandict.Add(player.PlayerUID, sapi.World.Calendar.TotalDays);
+                        imteleporting = true;
+
+
+
+                    }
+                    break;
+                case "highscores":
+                    System.Diagnostics.Debug.WriteLine("SORTING LIST");
+                    Dictionary<int, string> reverseDict = new Dictionary<int, string>();
+                    for (int i = 0; i < ironmanhighscores.Count; i++)
+                    {
+                        reverseDict.Add(ironmanhighscores.ElementAt(i).Value, ironmanhighscores.ElementAt(i).Key);
+                        System.Diagnostics.Debug.WriteLine(ironmanhighscores.ElementAt(i).Key);
+                    }
+                    break;
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
-
         private void displayhelp(IServerPlayer player, string helpType = "all")
         {
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:bsu-commands"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -1859,20 +1947,42 @@ namespace bunnyserverutilities.src
                 teleporting = false;
             }
 
+            if (imx / sapi.WorldManager.ChunkSize == chunkCoord.X & (imz / sapi.WorldManager.ChunkSize == chunkCoord.Y) & (imteleporting == true))
+            {
+                implayer.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-teleporting"), Vintagestory.API.Common.EnumChatType.Notification);
+                BlockPos checkheight = new BlockPos();
+                checkheight.X = imx;
+                checkheight.Y = 1;
+                checkheight.Z = imz;
+                int imheight = sapi.World.BlockAccessor.GetTerrainMapheightAt(checkheight);
+                implayer.Entity.TeleportTo(imx, imheight + 1, imz);
+                imteleporting = false;
+                implayer.InventoryManager.DiscardAll();
+            }
+
         }
         private void OnSaveGameSaving()
         {
             sapi.WorldManager.SaveGame.StoreData("bsuBack", SerializerUtil.Serialize(backSave));
             sapi.WorldManager.SaveGame.StoreData("bsuHome", SerializerUtil.Serialize(homeSave));
+            sapi.WorldManager.SaveGame.StoreData("ironman", SerializerUtil.Serialize(ironManPlayerList));
+            sapi.WorldManager.SaveGame.StoreData("ironmancurrent", SerializerUtil.Serialize(currentironmandict));
+            sapi.WorldManager.SaveGame.StoreData("ironmanhighscores", SerializerUtil.Serialize(ironmanhighscores));
         }
 
         private void OnSaveGameLoading()
         {
             byte[] backdata = sapi.WorldManager.SaveGame.GetData("bsuBack");
             byte[] homedata = sapi.WorldManager.SaveGame.GetData("bsuHome");
+            byte[] ironmandata = sapi.WorldManager.SaveGame.GetData("ironman");
+            byte[] currentironmandata = sapi.WorldManager.SaveGame.GetData("ironmancurrent");
+            byte[] ironmanhighscoredata = sapi.WorldManager.SaveGame.GetData("ironmanhighscores");
 
             backSave = backdata == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(backdata);
             homeSave = homedata == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(homedata);
+            ironManPlayerList = ironmandata == null ? new List<string>() : SerializerUtil.Deserialize<List<string>>(ironmandata);
+            currentironmandict = currentironmandata == null ? new Dictionary<string, double>() : SerializerUtil.Deserialize<Dictionary<string, double>>(currentironmandata);
+            ironmanhighscores = ironmanhighscoredata == null ? new Dictionary<string, int>() : SerializerUtil.Deserialize<Dictionary<string, int>>(ironmanhighscoredata);
         }
 
         private void OnPlayerDeath(IServerPlayer player, DamageSource damageSource)
@@ -1885,6 +1995,41 @@ namespace bunnyserverutilities.src
                 }
                 backSave.Add(player.PlayerUID, player.Entity.Pos.AsBlockPos);
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:on-death-back"), Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            if(ironManPlayerList.Contains(player.PlayerUID)){
+                ironManPlayerList.Remove(player.PlayerUID);
+                sapi.BroadcastMessageToAllGroups(Lang.Get("bunnyserverutilities:ironman-ended", player.PlayerName), Vintagestory.API.Common.EnumChatType.AllGroups);
+                PlayerSpawnPos oldspawn = new PlayerSpawnPos();
+                oldspawn.x = (((int)sapi.World.DefaultSpawnPosition.X));
+                oldspawn.y = (((int)sapi.World.DefaultSpawnPosition.Y));
+                oldspawn.z = (((int)sapi.World.DefaultSpawnPosition.X));
+                player.SetSpawnPosition(oldspawn);
+
+                double value;
+                currentironmandict.TryGetValue(player.PlayerUID, out value);
+                Double elapsedDays = sapi.World.Calendar.TotalDays - value;
+                if (ironmanhighscores.ContainsKey(player.PlayerUID))
+                {
+                    int highscore;
+                    ironmanhighscores.TryGetValue(player.PlayerUID, out highscore);
+                    if ((int)elapsedDays > highscore)
+                    {
+                        sapi.BroadcastMessageToAllGroups(Lang.Get("bunnyserverutilities:ironman-new-personal-highscore", player.PlayerName), Vintagestory.API.Common.EnumChatType.AllGroups);
+                        ironmanhighscores.Remove(player.PlayerUID);
+                        currentironmandict.Remove(player.PlayerUID);
+                        ironmanhighscores.Add(player.PlayerUID, (int)elapsedDays);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-no-new-score",highscore), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-first"), Vintagestory.API.Common.EnumChatType.Notification);
+                    currentironmandict.Remove(player.PlayerUID);
+                    ironmanhighscores.Add(player.PlayerUID, (int)elapsedDays);
+                }
             }
         }
 
@@ -1967,6 +2112,8 @@ namespace bunnyserverutilities.src
             }
 
         }
+       
+
         //=======//
         //Classes//
         //=======//
@@ -1992,9 +2139,12 @@ namespace bunnyserverutilities.src
 
         }
 
+
         //===========//
         //Config file//
         //===========//
+
+        
 
         public class bsuconfig
         {

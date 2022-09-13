@@ -1,0 +1,154 @@
+{
+  // (BACK) komendy
+  "disabled-back": "Komenda powrotu jest wyłączona. Admin musi wykorzystać komendę /back enable w celu jej przywrócenia.",
+  "enable-back": "Komenda /back została przywrócona.",
+  "disable-back": "Komenda /back została zablokowana.",
+
+  // (HOME) komendy
+  "home-sethome": "Nowa lokalizacja domu została zapisana.",
+  "disabled-home": "Komenda Home jest wyłączona. Admin musi wykorzystać komendę /home enable w celu jej przywrócenia.",
+  "enable-home": "Komenda /home została przywrócona.",
+  "disable-home": "Komenda /home została zablokowana.",
+  "teleporting-home": "Powrót do domu.",
+  "no-home-saved": "Lokalizacja domu nie istnieje. Teleportowanie do centrum świata. Użyj /sethome aby zapisać lokalizację domu.",
+  "teleporting-back": "Powrót do ostatniej lokacji.",
+  "no-back-saved": "Brak ostatniej lokacji. Wykorzystaj komendę /home aby utworzyć lokację powrotną.",
+  "on-death-back": "Użyj /back aby powrócić do miejsca ostatniej śmierci.",
+
+  // (GRTP) komendy
+  "chunkloading-grtp": "Ładowanie chunka. Spróbuj ponownie za kilka sekund.",
+  "notset-grtp": "Teleport grupowy nie został jeszcze ustalony. Czy serwer właśnie się uruchomił?",
+  "cooldown-set-grtp": "Czas odnowienia teleportu grupowego został zaktualizowany do {0} minut.", //{0} = wartość czasu odnowienia teleportu grupowego
+  "set-radius-grtp": "Zakres teleportu grupowego został zaktualizowany do {0} bloków.", //{0} = wartość zekresu teleportu grupowego
+  "wait-now-grtp": "Trwa tworzenie nowego teleportu grupowego. Poczekaj do kilku minut na aktualizację lokacji.",
+  "teleporting-grtp": "Teleportacja do losowej lokacji. Nowa lokacja zostanie wygenerowana w ciągu 1 minuty.",
+  "teleporting-grtp-2": "Teleportacja do losowego miejsca. Inni mogą dołączyć do Ciebie jeszcze przez {0} minut.",
+  "new-grtp": "Wygenerowano nowe współrzędne teleportu grupowego. Nowa lokacji będzie dostępna przez {0} minut.",
+
+  // (RE_USABLE) komendy
+  "greater-than": "Wpisz liczbę większą niż {0} w minutach.", //{0} = wartość
+  "non-negative-number": "Wpisz liczbę nieujemną.",
+  "disabled": "{0} jest wyłączona. Administrator musi użyć /{0} enable, aby włączyć tą komendę.", //{0} = ciąg znaków komendy
+  "disabled-2": "{0} jest wyłączona przez administratora.",
+  "enable": "{0} została przywrócona.", //{0} = ciąg znaków komendy
+  "disable": "{0} została zablokowana.", //{0} = ciąg znaków komendy
+  "no-permission": "Nie masz uprawnień do używania tej komendy.",
+  "player": "gracz",
+  "player-not-found": "Nie można znaleźć takiego gracza. Proszę sprawdź czy podany nick jest poprawny.",
+  "number-or-greater": "Wpisz liczbę {0} lub większą.",
+  "number-between": "Wpisz liczbę z przedziału od {0} do {1}.",
+  "cooldown-reusable": "{0} czas odnowienia został zaktualizowany do {1} minut.", // {0} = nazwa komendy {1} = liczba minut
+  "cooldown-player-reusable": "Poczekaj {0} minut.",
+
+  // (Importuj stare domy) komendy
+  "importing": "Importowanie starych domów",
+  "old-home-config-size": "Rozmiar pliku konfiguracyjnego: ",
+  "old-home-imported": "Stare domy zaimportowane.",
+  "no-old-homes": "Brak prawidłowego pliku konfiguracyjnego do zaimportowania.",
+  "home-already-imported": "Stare domy zostały już zaimportowane. Ta komenda powinna być użyta tylko raz.",
+
+  // (Rising Sun) komendy
+  "between-hours": "Podaj godzinę. Wartości od 1 do 23.",
+  "smaller-dusk": "Wpisz liczbę mniejszą niż zmierzch: ",
+  "larger-dawn": "Wpisz liczbę większą niż świt: ",
+  "dawn-updated": "Godzina świtu została ustalona na godzinę ",
+  "dusk-updated": "Godzina zmierzchu została ustalona na godzinę ",
+  "welcome-rs": "Słońce wzeszło nad nowym graczem! Witamy {0}",
+
+  // (Private Message) komendy
+  "include-message": "Proszę dołączyć wiadomość.",
+  "include-player": "Podaj nazwę gracza.",
+
+  // (Simple Server) komendy
+  "add-message": "Dodano wiadomość.",
+  "remove-message": "Usunięto wiadomość.",
+  "remove-message-help": "Użyj /ssm list, następnie /ssm remove (liczba) aby usunąć wiadomość.",
+  "remove-message-help-2": "Użyj /ssm remove (Liczba) aby usunąć wiadomość.",
+  "list-of-messages": "Lista aktualnych wiadomości serwera: ",
+  "message-frequency": "Wiadomości będą nadawane co {0} minut.",
+
+  // (Teleport To) komendy
+  "tp-deny-player": "Twoje żądanie teleportacji zostało odrzucone.",
+  "tp-deny-target": "Teleportacja odrzucona.",
+  "no-tp-deny": "Nie masz aktywnych próśb do odrzucenia.",
+  "no-tp-accept": "Nie masz aktywnych próśb do zaakceptowania.",
+  "teleport-accepted": "Twoja prośba o teleportację została zaakceptowana. Nie poruszaj się.",
+  "teleport-accepted-user": "Prośba zaakceptowana.",
+  "need-playername-tpt": "Podaj nazwę gracza, do którego chcesz się teleportować.",
+  "wait-for-tp": "Oczekiwanie na zaakceptowanie twojej prośby przez drugiego gracza.",
+  "tp-to-you": "{0} chciałby się do ciebie teleportować. Użyj /tpaccept aby zaakceptować.", //{0} = nazwa gracza
+  "active-tp": "Gracz docelowy ma już inne aktywne żądanie. Spróbuj ponownie za chwilę.",
+  "pending-tp": "Masz już oczekujące żądanie teleportacji.",
+  "expired-tp": "Twoja prośba wygasła.",
+
+  // (Random Teleport) komendy
+  "rtp-cooldown-set": "Czas odnowienia losowego teleportu został ustawiony na ",
+  "rtp-wait": "Poczekaj, aż chunki zostaną załadowane.",
+  "rtp-wait-2": "Chunki są nadal generowane, proszę czekać.",
+  "rtp-cooldown-timer": "Możesz się ponownie teleportować za {0} minut.",
+  "set-radius-rtp": "Promień losowego teleportu został zaktualizowany do {0} bloków.", //{0} = zakres RTP
+  "new-rtp": "Teleportacja do losowej lokalizacji.",
+
+  // (Remove Denial) Komendy
+  "remove-denial": "Usuwanie odmów {0} z {1}.",
+
+  // (warn) komendy
+  "warn-player": "Gracz: ",
+  "warn-warnings": "Ostrzeżenia: ",
+  "warn-warning": "Ostrzeżenie: ",
+  "warn-reasons": "Powód: ",
+  "warn-help": "Użyj /warn list (liczba) aby zobaczyć ostrzeżenia gracza",
+
+  // (spawn) komendy
+  "teleporting-spawn": "Teleportujesz się na spawn.",
+
+  // (Default welcome message)  
+  "default-welcome": "Witamy na serwerze", //To jest powitanie wyświetlane przez Simple Server Messages, jeśli nie jest skonfigurowane.
+
+  "welcome-player": "Powitajmy nowego gracza: <font color=\"white\"><strong>{0}</strong></font> na serwerze!",
+
+  // (Player list on join) 
+  "players-online": "Gracze online: ",
+  "player-divider": "|",
+
+  // (Help command) komendy
+  "bsu-commands": "Komendy (Bunny's Server Utility):",
+  "bsu-help": "-Użyj /bsu help aby zobaczyć opisy wszystkich dostępnych komend.",
+  "bsu-version": "Użyj {0} aby zobaczyć wersję modyfikacji.",
+  "help-removedeny": "- Usuń przywilej odmowy gracza.",
+  "module-commands": "---{0} Komendy---", //{0} = nazwa modyfikacji
+  "help-sethome": "- Ustawia aktualną lokalizację jako lokalizację domu.",
+  "help-home": "- Teleportuje gracza do ustawionej lokalizacji domu.",
+  "admin-commands": "{0} Komendy Administratora:", //{0} = nazwa modyfikacji
+  "module-disable": "{0} disable - Wyłącz komendę {0}.",
+  "module-dissable-2": "{0} disable - Wyłącza moduł {1}.",
+  "module-enable": "{0} enable - Włącz komendę {0}.",
+  "module-enable-2": "{0} enable - Włącza moduł {1}",
+  "ja-enable": "/joinannounce enable - Włącza wysłanie wiadomości do graczy przy pierwszym dołączeniu",
+  "ja-disable": "/joinannounce disable - Wyłącza wysyłanie wiadomości do graczy przy pierwszym dołączeniu",
+  "module-cooldown": "{0} playercooldown <i>Liczba</i> - Ustawia timer gracza.",
+  "grtp-cooldown": "/grtp cooldown <i>Liczba</i> - Ustaw czas zmiany lokalizacji GRTP w minutach.",
+  "rtp-cooldown": "/rtp cooldown <i>Liczba</i> - Ustawia czas zmiany lokalizacji RTP w minutach",
+  "old-home-help": "/importOldHomes - Przenosi zapisane domy z wersji 1.05 i wcześniejszej do nowego typu zapisu. Uruchom to tylko raz, jeśli aktualizujesz ten mod z Bunny's Just Home 1.0.5 lub wcześniejszej.",
+  "back-help": "/back - Wróć do ostatniego miejsca, z którego użyłeś /home lub /back. Powrót do miejsca ostatniej śmierci.",
+  "spawn-help": "/spawn - Powrót do punktu odrodzenia ustawionego na serwerze.",
+  "grtp-update": "Lokalizacja GRTP aktualizuje się co {0} minut.",
+  "grtp-radius": "Promień teleportacji: {0} bloków",
+  "grtp-cmd-help": "/grtp - Teleportuje gracza do grupowego punktu teleportacji.",
+  "grtp-help-radius": "/grtp radius <i>Liczba</i> - Ustawia promień teleportacji komendy GRTP.",
+  "grtp-help-now": "/grtp now - Ustawia nową lokalizację grupowego teleportu.",
+
+  "dawn-help": "/rs dawn <i>Liczba</i> - Ustawia godzinę, o której słońce zachodzi.",
+  "dusk-help": "/rs dusk <i>Liczba</i> - Ustawia godzinę, o której wschodzi słońce.",
+  "dm-help": "/dm <i>NazwaGracza  Wiadomość</i> - Wysyła wiadomość do gracza.",
+  "ssm-add-help": "/ssm add <i>Wiadomość Serwerowa</i> - Dodaje wiadomość do listy wiadomości serwerowej.",
+  "ssm-list-help": "/ssm list - Wyświetla listę istniejących wiadomości serwera.",
+  "ssm-remove-help": "/ssm remove <i>Liczba z /ssm list</i> - Usuń wiadomość o numerze z listy /ssm.",
+  "ssm-freq-help": "/ssm frequency <i>wartość w minutach</i> - Ustawia czas między wiadomościami serwerowymi.",
+  "ssm-now-help": "/ssm now - Wysyła następną wiadomość serwerową z listy.",
+  "tpt-help": "/tpt playername - Wysyła zapytanie do gracza z prośbą o teleportację.",
+  "tpaccept-help": "/tpaccept - Akceptuje żądanie tpt i teleportuje gracza do ciebie.",
+  "tpdeny-help": "/tpdeny - Odrzuca żądanie tpt.",
+  "bunny-bell-help": "Bunny bell tworzy -ding- po wpisaniu twojego imienia.",
+  "rtp-help": "/rtp - Teleportuje do losowej lokalizacji."
+} 

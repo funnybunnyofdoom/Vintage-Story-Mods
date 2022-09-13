@@ -76,4 +76,12 @@ namespace privileges.src
         /// </summary>
         public static string warn = "warn";
     }
+
+    public class JPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use /ironman
+        /// </summary>
+        public static string ironman = "ironman";
+    }
 }
