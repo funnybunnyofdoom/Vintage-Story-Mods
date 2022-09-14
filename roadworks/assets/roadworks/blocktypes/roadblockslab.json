@@ -1,0 +1,215 @@
+{
+  "code": "roadblockslab",
+  "shape": { "base": "game:block/basic/slab/slab-{rot}" },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "decorative": [ "*" ]
+  },
+  "blockmaterial": "Gravel",
+  "replaceable": 900,
+  "lightAbsorption": 99,
+  "variantgroups": [
+    {
+      "code": "rot",
+      "states": [ "north", "east", "south", "west", "up", "down" ]
+    },
+    {
+      "code": "cover",
+      "states": [ "free", "snow" ]
+    },
+    {
+      "code": "type",
+      "states": [ "gravel", "wood", "brick", "concrete", "asphalt", "dirt" ]
+    }
+  ],
+  "behaviorsByType": {
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ],
+    "*": [
+      {
+        "name": "OmniRotatable",
+        "properties": {
+          "rotateSides": true,
+          "facing": "block"
+        }
+      }
+    ]
+  },
+  "texturesByType": {
+    "*-*-*-asphalt": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" }
+        ]
+      }
+    },
+    "*-*-*-wood": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-7",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-1" },
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" },
+          { "base": "roadworks:block/roadblock-{type}-5" },
+          { "base": "roadworks:block/roadblock-{type}-6" }
+        ]
+      }
+    },
+    "*-*-*-gravel": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" }
+        ]
+      }
+    },
+    "*-*-*-concrete": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-1" },
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" },
+          { "base": "roadworks:block/roadblock-{type}-5" },
+          { "base": "roadworks:block/roadblock-{type}-6" },
+          { "base": "roadworks:block/roadblock-{type}-7" },
+          { "base": "roadworks:block/roadblock-{type}-8" }
+        ]
+      }
+    },
+    "*-*-*-brick": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" }
+        ]
+      }
+    },
+    "*-*-*-dirt": {
+      "sides": {
+        "base": "game:block/soil/flooring/drypackeddirt1a",
+        "alternates": [
+          { "base": "game:block/soil/flooring/drypackeddirt1b" },
+          { "base": "game:block/soil/flooring/drypackeddirt1c" },
+          { "base": "game:block/soil/flooring/drypackeddirt1d" },
+          { "base": "game:block/soil/flooring/drypackeddirt2" },
+          { "base": "game:block/soil/flooring/drypackeddirt3" },
+          { "base": "game:block/soil/flooring/drypackeddirt4" },
+          { "base": "game:block/soil/flooring/drypackeddirt5" },
+          { "base": "game:block/soil/flooring/drypackeddirt6" }
+        ]
+      }
+    }
+  },
+  "resistanceByType": {
+    "*-snow-*": 0.2,
+    "*-free-*": 2.4
+  },
+  "walkspeedmultiplierByType": {
+    "*-free-dirt": 1.2,
+    "*-free-gravel": 1.4,
+    "*-free-wood": 1.6,
+    "*-free-brick": 2.0,
+    "*-free-concrete": 2.5,
+    "*-free-asphalt": 3.0,
+    "*-snow-dirt": 0.7,
+    "*-snow-gravel": 0.8,
+    "*-snow-wood": 0.9,
+    "*-snow-brick": 1.3,
+    "*-snow-concrete": 1.75,
+    "*-snow-asphalt": 2.0
+  },
+  "faceCullMode": "FlushExceptTop",
+  "sideopaque": {
+    "all": false,
+    "down": true
+  },
+  "sidesolid": {
+    "all": false,
+    "down": true
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.5,
+    "z2": 1,
+    "rotateXByType": {
+      "*-north-*": 90,
+      "*-south-*": 270,
+      "*-up-*": 180,
+      "*-down-*": 0
+    },
+    "rotateZByType": {
+      "*-east-*": 90,
+      "*-west-*": 270
+    }
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 0.5,
+    "z2": 1,
+    "rotateXByType": {
+      "*-north-*": 90,
+      "*-south-*": 270,
+      "*-up-*": 180,
+      "*-down-*": 0
+    },
+    "rotateZByType": {
+      "*-east-*": 90,
+      "*-west-*": 270
+    }
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.2,
+      "y": -1.1,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -2,
+      "y": 25,
+      "z": -78
+    },
+    "scale": 0.37
+  },
+  "dropsByType": {
+    "*-*-dirt": [
+      {
+        "type": "block",
+        "code": "game:packeddirt"
+      }
+    ],
+    "*": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblock-free-{type}"
+      }
+    ]
+  },
+  "sounds": {
+    "place": "game:block/gravel",
+    "breakByType": {
+      "*-snow-*": "game:block/snow",
+      "*-free-*": "game:block/gravel"
+    },
+    "hitByType": {
+      "*-snow-*": "game:block/snow",
+      "*-free-*": "game:block/gravel"
+    },
+    "walk": "game:walk/gravel"
+  }
+}
