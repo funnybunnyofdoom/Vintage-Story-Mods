@@ -162,6 +162,8 @@
   "ironman-teleport-wait": "Please wait while your Ironman chunks are loaded",
   "ironman-new-personal-highscore": "Ironman {0} has reached a new personal high score! /ironman highscores to see the leaderboard.",
   "ironman-no-new-score": "You did not beat your high score of {0} days. Try again!",
-  "ironman-first": "You have completed your first Ironman!"
+  "ironman-first": "You have completed your first Ironman!",
+  "ironman-highscores-title": "Ironman Leaderboard",
+  "ironman-commands-disabled": "All teleport commands are disabled in Iron Man mode."
 
 } 
