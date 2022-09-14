@@ -2101,7 +2101,7 @@ namespace bunnyserverutilities.src
                 PlayerSpawnPos oldspawn = new PlayerSpawnPos();
                 oldspawn.x = (((int)sapi.World.DefaultSpawnPosition.X));
                 oldspawn.y = (((int)sapi.World.DefaultSpawnPosition.Y));
-                oldspawn.z = (((int)sapi.World.DefaultSpawnPosition.X));
+                oldspawn.z = (((int)sapi.World.DefaultSpawnPosition.Z));
                 player.SetSpawnPosition(oldspawn);
 
                 double value;
