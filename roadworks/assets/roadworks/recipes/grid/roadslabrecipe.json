@@ -1,0 +1,19 @@
+{
+  "ingredientPattern": "LLL",
+  "ingredients": {
+    "L": {
+      "type": "block",
+      "code": "roadworks:roadblock-free-*",
+      "name": "road",
+      "quantity": 1,
+      "allowedVariants": [ "gravel", "wood", "brick", "concrete", "asphalt" ]
+    }
+  },
+  "width": 3,
+  "height": 1,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadblockslab-down-free-{road}",
+    "quantity": 6
+  }
+}

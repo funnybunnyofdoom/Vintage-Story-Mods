@@ -2,8 +2,8 @@
   "code": "roadblockslab",
   "shape": { "base": "game:block/basic/slab/slab-{rot}" },
   "creativeinventory": {
-    "general": [ "*" ],
-    "decorative": [ "*" ]
+    "general": [ "*-down-free-*" ],
+    "decorative": [ "*-down-free-*" ]
   },
   "blockmaterial": "Gravel",
   "replaceable": 900,
