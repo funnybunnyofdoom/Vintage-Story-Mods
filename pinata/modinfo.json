@@ -1,0 +1,11 @@
+{
+  "type": "content",
+  "modid": "pinata",
+  "name": "pinata",
+  "authors": [ "Funnybunnyofdoom","Kialia" ],
+  "description": "Pinatas that drop food when broken",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  }
+}

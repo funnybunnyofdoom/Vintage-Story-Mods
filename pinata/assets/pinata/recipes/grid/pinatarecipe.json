@@ -1,0 +1,32 @@
+[
+  {
+    "ingredientPattern": "__S,SSS,S_S",
+    "ingredients": {
+      "S": {
+        "type": "item",
+        "code": "game:paper-parchment"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "pinata:pinata-sheep"
+    }
+  },
+  {
+    "ingredientPattern": "SSS,SSS,S_S",
+    "ingredients": {
+      "S": {
+        "type": "item",
+        "code": "game:paper-parchment"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "pinata:pinata-bee"
+    }
+  }
+]

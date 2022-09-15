@@ -1,0 +1,128 @@
+{
+  "code": "pinata",
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "sheep","bee" ]
+    }
+  ],
+  "heldTpIdleAnimation": "holdbothhands",
+  "maxstacksize": 1,
+  "shapeByType": {
+    "*-sheep": { "base": "game:entity/land/sheep-bighorn-female" },
+    "*-bee": { "base": "game:block/beehive/skep-empty" }
+  },
+  "creativeinventory": { "general": [ "*" ] },
+  "blockmaterial": "Wood",
+  "sounds": {
+    "break": "game:effect/clothrip",
+    "hit": "game:block/stickhit"
+  },
+  "drops": [
+    {
+      "type": "item",
+      "code": "game:honeycomb",
+      "quantity": {
+        "avg": 2,
+        "var": 2,
+        "dist": "invexp"
+      }
+    },
+    {
+      "type": "item",
+      "code": "game:fruit-blueberry",
+      "quantity": {
+        "avg": 16,
+        "var": 16,
+        "dist": "invexp"
+      }
+    },
+    {
+      "type": "item",
+      "code": "game:fruit-cranberry",
+      "quantity": {
+        "avg": 16,
+        "var": 16,
+        "dist": "invexp"
+      }
+    },
+    {
+      "type": "item",
+      "code": "game:fruit-orange",
+      "quantity": {
+        "avg": 16,
+        "var": 16,
+        "dist": "invexp"
+      }
+    }
+  ],
+  "resistance": 0.5,
+  "selectionboxByType": {
+    "*-bee": {
+      "x1": 0.25,
+      "y1": 0,
+      "z1": 0.25,
+      "x2": 0.75,
+      "y2": 0.5625,
+      "z2": 0.75
+    },
+    "*-sheep": {
+      "x1": 0,
+      "y1": 0,
+      "z1": 0,
+      "x2": 1.0,
+      "y2": 1.5,
+      "z2": 1.0
+    } 
+  },
+  "collisionboxByType": {
+    "*-bee": {
+      "x1": 0.25,
+      "y1": 0,
+      "z1": 0.25,
+      "x2": 0.75,
+      "y2": 0.5625,
+      "z2": 0.75
+    },
+    "*-sheep": {
+      "x1": 0,
+      "y1": 0,
+      "z1": 0,
+      "x2": 1.0,
+      "y2": 1.5,
+      "z2": 1.0
+    }
+  },
+  "guiTransform": {
+    "origin": {
+      "x": 0.5,
+      "y": 0.3,
+      "z": 0.5
+    },
+    "scale": 1.0
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -0.9,
+      "y": -0.4,
+      "z": -0.7
+    },
+    "rotation": {
+      "x": 51,
+      "y": 13,
+      "z": -84
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.2,
+      "z": 0.5
+    },
+    "scale": 0.59
+  },
+  "groundTransform": {
+    "scale": 2.0
+  },
+  "textures": { "all": { "base": "pinata:block/pinata" } },
+  "sideopaque": { "all": false },
+  "sidesolid": { "all": false }
+}
