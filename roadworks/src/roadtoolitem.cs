@@ -59,11 +59,16 @@ namespace roadworks.src
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
             if (blockSel == null) return;
+            if (byEntity.Controls.ShiftKey && byEntity.Controls.CtrlKey)
+            {
+                base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handling);
+                return;
+            }
 
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt"))
+            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob"))
             {
                 handling = EnumHandHandling.PreventDefault;
             }
@@ -72,6 +77,9 @@ namespace roadworks.src
         public override bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             if (blockSel == null) return false;
+
+
+
             IPlayer byPlayer = (byEntity as EntityPlayer).Player;
 
             if (byEntity.World is IClientWorldAccessor)
@@ -124,10 +132,10 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt")) return;
+            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt") && !block.Code.Path.StartsWith("forestfloor") && !block.Code.Path.Contains("packeddirt") && !block.Code.Path.StartsWith("cob")) return;
 
             Block topaveblock;
-            if (block.Code.Path.StartsWith("soil"))
+            if (block.Code.Path.StartsWith("soil") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob"))
             {
                 topaveblock = byEntity.World.GetBlock(new AssetLocation("roadworks:roadblock-free-dirt"));
             }
