@@ -72,4 +72,7 @@ Will add a feature to progress to day whenever a player logs in.
 	Craftable calendar that updates depending on day/month. Working on handling this with a genmesh with the assistance of [Craluminum]
 
 -More Seals: [FunnyBunnyofDOOM]
+
+-Pinata: [FunnyBunnyofDOOM][KialiaTheSweeper]
+	Example mod that is a pinata texture over shapes of vanilla objects that drops fruit+honeycombs
 	
