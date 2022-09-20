@@ -196,7 +196,7 @@
     "*": [
       {
         "type": "block",
-        "code": "roadworks:roadblock-free-{type}"
+        "code": "roadworks:roadblockslab-north-free-{type}"
       }
     ]
   },
