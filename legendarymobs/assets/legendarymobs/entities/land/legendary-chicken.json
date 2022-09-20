@@ -3,10 +3,6 @@
 	"class": "EntityAgent",
 	"variantgroups": [
 		{
-			"code": "name",
-			"states": [ "1", "2", "3", "4", "5"]
-		},
-		{
 			"code": "type",
 			"states": [ "great", "wise", "swift" ]
 		}
@@ -54,8 +50,8 @@
 				"minSeconds": 900
 			},
 			{
-				"code": "ropetieable",
-				"minGeneration": 2
+				"selectFromRandomName": [ "Gemabar", "Delotos", "Modas", "Vomaio", "Rious", "Volba", "Goowk", "Skrook" ]
+
 			}
 		],
 		"animations": [
@@ -388,27 +384,7 @@
 				"code": "ropetieable",
 				"minGeneration": 2
 			}
-		],
-		"spawnconditions": {
-			"worldgen": {
-				"TriesPerChunk": {
-					"avg": 0.01,
-					"var": 0
-				},
-				"tryOnlySurface": true,
-				"minLightLevel": 12,
-				"groupSize": {
-					"dist": "verynarrowgaussian",
-					"avg": 4,
-					"var": 5
-				},
-				"insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-				"minTemp": -2,
-				"minRain": 0.32,
-				"minShrubs": 0.5,
-				"companions": [ "game:chicken-hen", "game:chicken-baby" ]
-			}
-		}
+		]
 	},
 	"sounds": {
 		"hurt": "game:creature/chicken/hurt",
