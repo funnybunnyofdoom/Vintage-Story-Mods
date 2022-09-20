@@ -127,13 +127,31 @@
     "*-snow-asphalt": 2.0
   },
   "faceCullMode": "FlushExceptTop",
-  "sideopaque": {
-    "all": false,
-    "down": true
-  },
-  "sidesolid": {
-    "all": false,
-    "down": true
+  "sideSolidOpaqueAoByType": {
+    "*-north-*": {
+      "all": false,
+      "north": true
+    },
+    "*-east-*": {
+      "all": false,
+      "east": true
+    },
+    "*-south-*": {
+      "all": false,
+      "south": true
+    },
+    "*-west-*": {
+      "all": false,
+      "west": true
+    },
+    "*-up-*": {
+      "all": false,
+      "up": true
+    },
+    "*-down-*": {
+      "all": false,
+      "down": true
+    }
   },
   "collisionbox": {
     "x1": 0,
