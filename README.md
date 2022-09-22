@@ -76,3 +76,6 @@ Will add a feature to progress to day whenever a player logs in.
 
 -Craftable Static Translocators: [FunnyBunnyofDOOM]
 	Allows static translocators to be crafted by the player
+	
+-South Spawn: [FunnyBunnyofDOOM]
+	Server specific mod to teleport our players to the southern hemisphere spawn point.
