@@ -38,9 +38,6 @@ Will add a feature to progress to day whenever a player logs in.
 	
 -Extra Juice
 	adds juices and liquid containers
-	
--ironman
-	Puts the player in ironman mode in the doomland server
 
 -Just Light Jars: [FunnyBunnyofDOOM][DukePony]
   harvest glow worms and craft them with a glass jar to get glowing jars  
@@ -65,9 +62,10 @@ Will add a feature to progress to day whenever a player logs in.
         Should check for on grass placement and under skylight. Traps should not work indoors.
 	
 -Road Works: [FunnyBunnyofDOOM]
-	6 tiers of roads, increasing in speed as the tiers go up
-	new tool: Road Tool - Tamps down soil into dirt paths and is used in the final step for asphalt to pave it into usable road
-
+	- 6 tiers of roads, Slabs, Stairs increasing in speed as the tiers go up
+	- new tool: Road Tool - Tamps down soil into dirt paths and is used in the final step for asphalt to pave it into usable road
+	- Road trader with new generated structure. 
+ 
 -Calendar: [FunnyBunnyofDOOM] with help from [DukePony]
 	Craftable calendar that updates depending on day/month. Working on handling this with a genmesh with the assistance of [Craluminum]
 
@@ -75,4 +73,6 @@ Will add a feature to progress to day whenever a player logs in.
 
 -Pinata: [FunnyBunnyofDOOM][KialiaTheSweeper]
 	Example mod that is a pinata texture over shapes of vanilla objects that drops fruit+honeycombs
-	
+
+-Craftable Static Translocators: [FunnyBunnyofDOOM]
+	Allows static translocators to be crafted by the player
