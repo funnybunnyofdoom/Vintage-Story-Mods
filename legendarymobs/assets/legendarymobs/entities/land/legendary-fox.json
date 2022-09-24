@@ -406,8 +406,8 @@
 					"tryOnlySurface": true,
 					"groupSize": {
 						"dist": "verynarrowgaussian",
-						"avg": 2,
-						"var": 3
+						"avg": 1,
+						"var": 0
 					},
 					"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
 					"minTemp": -15,
@@ -422,14 +422,14 @@
 					"group": "neutral",
 					"tryOnlySurface": true,
 					"chance": 0.000003,
-					"maxQuantity": 4,
+					"maxQuantity": 1,
 					"__comment": "Make them spawn away from artifical light so they don't spawn inside farmland",
 					"maxLightLevel": 7,
 					"lightLevelType": "onlyBlockLight",
 					"groupSize": {
 						"dist": "verynarrowgaussian",
 						"avg": 1,
-						"var": 2
+						"var": 0
 					},
 					"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
 					"minTemp": -15,
