@@ -1,11 +1,7 @@
-s{
+{
   "code": "legendary-pig",
   "class": "EntityAgent",
   "variantgroups": [
-    {
-      "code": "name",
-      "states": [ "1", "2", "3", "4", "5" ]
-    },
     {
       "code": "type",
       "states": [ "great", "wise", "swift" ]
@@ -54,6 +50,9 @@ s{
       {
         "code": "ropetieable",
         "minGeneration": 2
+      },
+      {
+        "selectFromRandomName": [ "Azog", "Mudpie", "BlackJack", "Samson", "Warthog", "Lago", "Elgor", "Naga", "Rorin", "Putric", "Jorgo", "Forlon", "Morkaroth", "Gorgor" ]
       }
     ],
     "size": 3,
@@ -362,7 +361,46 @@ s{
         "code": "ropetieable",
         "minGeneration": 2
       }
-    ]
+    ],
+    "spawnconditions": {
+      "worldgen": {
+        "TriesPerChunk": {
+          "avg": 0.0005,
+          "var": 0
+        },
+        "tryOnlySurface": true,
+        "minLightLevel": 10,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+        "minTemp": 5,
+        "maxTemp": 28,
+        "minRain": 0.45,
+        "minForest": 0.35,
+        "companions": []
+      },
+      "runtime": {
+        "group": "neutral",
+        "tryOnlySurface": true,
+        "chance": 0.000003,
+        "maxQuantity": 1,
+        "minLightLevel": 10,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+        "minTemp": 5,
+        "maxTemp": 28,
+        "minRain": 0.45,
+        "minForestOrShrubs": 0.35,
+        "companions": []
+      }
+    }
   },
   "sounds": {
     "hurt": "game:creature/pig/hurt",
