@@ -3,10 +3,6 @@
   "class": "EntityAgent",
   "variantgroups": [
     {
-      "code": "name",
-      "states": [ "1", "2", "3", "4", "5" ]
-    },
-    {
       "code": "type",
       "states": [ "great", "wise", "swift" ]
     }
@@ -47,6 +43,9 @@
       {
         "code": "ropetieable",
         "minGeneration": 2
+      },
+      {
+        "selectFromRandomName": [ "Vipponah", "Ahote", "Honaw", "Wematin", "Wynono", "Tahkeome", "Makya", "Kele", "Heuste", "Nahale","Orenda","Chianna","Rosine","Mongwau","Chaschunka"]
       }
     ],
     "size": 2,
@@ -399,7 +398,44 @@
         "code": "pettable",
         "minGeneration": 1
       }
-    ]
+    ],
+    "spawnconditions": {
+      "worldgen": {
+        "TriesPerChunk": {
+          "avg": 0.0004,
+          "var": 0
+        },
+        "tryOnlySurface": true,
+        "minLightLevel": 10,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
+        "minTemp": -10,
+        "maxTemp": 20,
+        "minRain": 0.43,
+        "companions": []
+      },
+      "runtime": {
+        "group": "neutral",
+        "tryOnlySurface": true,
+        "chance": 0.000003,
+        "maxQuantity": 1,
+        "minLightLevel": 10,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 3,
+          "var": 4
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
+        "minTemp": -10,
+        "maxTemp": 20,
+        "minRain": 0.43,
+        "companions": []
+      }
+    }
   },
   "sounds": {
     "hurt": "game:creature/sheep/hurt",
