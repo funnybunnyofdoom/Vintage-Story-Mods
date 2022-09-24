@@ -3,10 +3,6 @@
 	"class": "EntityAgent",
 	"variantgroups": [
 		{
-			"code": "name",
-			"states": [ "1", "2", "3", "4", "5" ]
-		},
-		{
 			"code": "type",
 			"states": [ "great", "wise", "swift" ]
 		}
@@ -46,6 +42,10 @@
 				"minPlayerDistance": 8,
 				"belowLightLevel": 8,
 				"minSeconds": 1200
+			},
+			{
+				"selectFromRandomName": [ "Hyohide", "Kyutsuna", "Shuhito", "Kasono", "Chiyuki", "Saitsune", "Hanaga", "Najio" ]
+
 			}
 		],
 		"animations": [
@@ -395,7 +395,46 @@
 				"code": "pettable",
 				"minGeneration": 1
 			}
-		]
+		],
+		"spawnconditions": {
+			"worldgen": {
+				"TriesPerChunk": {
+					"avg": 0.00075,
+					"var": 0
+				},
+				"tryOnlySurface": true,
+				"minLightLevel": 10,
+				"groupSize": {
+					"dist": "verynarrowgaussian",
+					"avg": 2,
+					"var": 3
+				},
+				"insideBlockCodes": [ "game:air", " game:snowlayer-1" ],
+				"minTemp": -70,
+				"maxTemp": -10,
+				"minRain": 0.25,
+				"minForest": 0.5,
+				"companions": []
+			},
+			"runtime": {
+				"group": "neutral",
+				"tryOnlySurface": true,
+				"chance": 0.000003,
+				"maxQuantity": 4,
+				"minLightLevel": 10,
+				"groupSize": {
+					"dist": "verynarrowgaussian",
+					"avg": 2,
+					"var": 3
+				},
+				"insideBlockCodes": [ "game:air", "game:snowlayer-1" ],
+				"minTemp": -70,
+				"maxTemp": -10,
+				"minRain": 0.25,
+				"minForest": 0.5,
+				"companions": []
+			}
+		}
 	},
 	"sounds": {
 		"hurt": "game:creature/fox/hurt",
