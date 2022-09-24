@@ -8,12 +8,12 @@
     }
   ],
   "hitboxSize": {
-    "x": 1.2,
-    "y": 1
+    "x": 2.4,
+    "y": 2
   },
   "deadHitboxSize": {
-    "x": 1.2,
-    "y": 0.5
+    "x": 2.4,
+    "y": 1.0
   },
   "eyeHeight": 0.9,
   "attributes": {
@@ -43,10 +43,10 @@
         "code": "despawn",
         "minPlayerDistance": 8,
         "belowLightLevel": 8,
-        "minSeconds": 1200,
-        {
-          "selectFromRandomName": [ "Azizi","Madoa","Shenzi" ]
-        }
+        "minSeconds": 1200
+      },
+      {
+        "selectFromRandomName": [ "Azizi", "Madoa", "Shenzi" ]
       }
     ],
     "size": 2,

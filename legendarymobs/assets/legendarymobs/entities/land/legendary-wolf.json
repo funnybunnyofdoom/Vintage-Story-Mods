@@ -3,10 +3,6 @@
   "class": "EntityAgent",
   "variantgroups": [
     {
-      "code": "name",
-      "states": [ "1", "2", "3", "4", "5"]
-    },
-    {
       "code": "type",
       "states": [ "great","wise","swift" ]
     }
@@ -58,6 +54,9 @@
       {
         "code": "ropetieable",
         "minGeneration": 2
+      },
+      {
+        "selectFromRandomName": ["Gresag","Lamalla","Zinix","Khudra","Thogriff","Strimull","Chena","Selzarim","Thelope","Ulor","Agal","Elote","Avock","Acthabo","Elod"]
       }
     ],
     "size": 2,
@@ -275,7 +274,7 @@
         "aitasks": [
           {
             "code": "meleeattack",
-            "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*" , "game:pig-wild-*"],
+            "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*", "game:pig-wild-*" ],
             "priority": 2,
             "damage": 12,
             "damageTier": 4,
@@ -438,7 +437,47 @@
         "code": "ropetieable",
         "minGeneration": 2
       }
-    ]
+    ],
+    "spawnconditions": {
+      "worldgen": {
+        "TriesPerChunk": {
+          "avg": 0.00035,
+          "var": 0
+        },
+        "tryOnlySurface": true,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+        "minTemp": -15,
+        "maxTemp": 15,
+        "minRain": 0.25,
+        "minForest": 0.5,
+        "companions": []
+      },
+      "runtime": {
+        "group": "hostile",
+        "tryOnlySurface": true,
+        "chance": 0.000001,
+        "maxQuantity": 5,
+        "__comment": "Make them spawn away from artifical light so they don't spawn inside farmland",
+        "maxLightLevel": 7,
+        "lightLevelType": "onlyBlockLight",
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+        "minTemp": -15,
+        "maxTemp": 15,
+        "minRain": 0.25,
+        "minForest": 0.5,
+        "companions": []
+      }
+    }
   },
   "sounds": {
     "hurt": "game:creature/wolf/hurt",

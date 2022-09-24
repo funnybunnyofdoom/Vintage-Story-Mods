@@ -48,7 +48,7 @@
 				"minGeneration": 2
 			},
 			{
-				"selectFromRandomName": ["Cernunos","Lance","Giselle","Gerenuk","Dorcas","Cuviere","Sahara","Hazel"]
+				"selectFromRandomName": [ "Cernunos", "Lance", "Giselle", "Gerenuk", "Dorcas", "Cuviere", "Sahara", "Hazel" ]
 			}
 		],
 		"animations": [
