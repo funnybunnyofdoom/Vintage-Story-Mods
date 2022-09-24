@@ -395,28 +395,7 @@
 				"code": "pettable",
 				"minGeneration": 1
 			}
-		],
-		"spawnconditions": {
-			"worldgen": {
-				"TriesPerChunk": {
-					"avg": 0.015,
-					"var": 0
-				},
-				"tryOnlySurface": true,
-				"minLightLevel": 10,
-				"groupSize": {
-					"dist": "verynarrowgaussian",
-					"avg": 1,
-					"var": 0
-				},
-				"insideBlockCodes": [ "game:air", "game:snowlayer-1" ],
-				"minTemp": -70,
-				"maxTemp": -10,
-				"minRain": 0.25,
-				"minForest": 0.5,
-				"companions": [ "game:fox-arctic-female", "game:fox-arctic-pup" ]
-			}
-		}
+		]
 	},
 	"sounds": {
 		"hurt": "game:creature/fox/hurt",

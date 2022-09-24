@@ -399,27 +399,7 @@
         "code": "pettable",
         "minGeneration": 1
       }
-    ],
-    "spawnconditions": {
-      "worldgen": {
-        "TriesPerChunk": {
-          "avg": 0.08,
-          "var": 0
-        },
-        "tryOnlySurface": true,
-        "minLightLevel": 10,
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
-        "minTemp": -10,
-        "maxTemp": 20,
-        "minRain": 0.43,
-        "companions": [ "game:sheep-bighorn-female", "game:sheep-bighorn-lamb" ]
-      }
-    }
+    ]
   },
   "sounds": {
     "hurt": "game:creature/sheep/hurt",

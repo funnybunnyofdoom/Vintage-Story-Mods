@@ -368,27 +368,7 @@
           }
         ]
       }
-    ],
-    "spawnconditions": {
-      "runtime": {
-        "group": "neutral",
-        "tryOnlySurface": true,
-        "chance": 0.000005,
-        "maxQuantity": 1,
-        "groupSize": {
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
-        "minTemp": -4,
-        "maxTemp": 15,
-        "minRain": 0.4,
-        "minForestOrShrubs": 0.5,
-        "maxForest": 1,
-        "maxShrubs": 1,
-        "companions": []
-      }
-    }
+    ]
   },
   "sounds": {
     "hurt": "game:creature/raccoon/hurt",

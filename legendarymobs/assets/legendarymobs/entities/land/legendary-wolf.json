@@ -438,29 +438,7 @@
         "code": "ropetieable",
         "minGeneration": 2
       }
-    ],
-    "spawnconditions": {
-      "runtime": {
-        "group": "hostile",
-        "tryOnlySurface": true,
-        "chance": 0.00005,
-        "maxQuantity": 1,
-        "__comment": "",
-        "maxLightLevel": 7,
-        "lightLevelType": "onlyBlockLight",
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
-        "minTemp": -15,
-        "maxTemp": 15,
-        "minRain": 0.25,
-        "minForest": 0.5,
-        "companions": [ "game:wolf-female", "game:wolf-pup" ]
-      }
-    }
+    ]
   },
   "sounds": {
     "hurt": "game:creature/wolf/hurt",

@@ -396,29 +396,7 @@
 				"code": "pettable",
 				"minGeneration": 1
 			}
-		],
-		"spawnconditions": {
-			"worldgen": {
-				"TriesPerChunk": {
-					"avg": 0.0075,
-					"var": 0
-				},
-				"tryOnlySurface": true,
-				"groupSize": {
-					"dist": "verynarrowgaussian",
-					"avg": 2,
-					"var": 3
-				},
-				"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
-				"minTemp": -15,
-				"maxTemp": 15,
-				"minRain": 0.25,
-				"minForestOrShrubs": 0.25,
-				"maxForest": 0.75,
-				"maxShrubs": 0.75,
-				"companions": [ "game:fox-female", "game:fox-forest-pup" ]
-			}
-		}
+		]
 	},
 	"sounds": {
 		"hurt": "game:creature/fox/hurt",
