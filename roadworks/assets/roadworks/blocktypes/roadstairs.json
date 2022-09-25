@@ -96,7 +96,12 @@
 		"*-*-snow-asphalt": 2.0
 	},
 	"faceCullMode": "NeverCull",
-	"blockmaterial": "Gravel",
+	"blockmaterialByType": {
+		"*-gravel": "Gravel",
+		"*-wood": "Wood",
+		"*-dirt": "Soil",
+		"*": "Stone"
+	},
 	"texturesByType": {
 		"roadstairs-*-*-asphalt": {
 			"sides": {

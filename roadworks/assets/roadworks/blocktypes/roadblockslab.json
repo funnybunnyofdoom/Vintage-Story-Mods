@@ -1,18 +1,19 @@
 {
   "code": "roadblockslab",
-  "shape": { "base": "game:block/basic/slab/slab-{rot}" },
+  "shape": { "base": "game:block/basic/slab/slab-lowered-{cover}" },
   "creativeinventory": {
-    "general": [ "*-down-free-*" ],
-    "decorative": [ "*-down-free-*" ]
+    "general": [ "*-free-*" ],
+    "decorative": [ "*-free-*" ]
   },
-  "blockmaterial": "Gravel",
+  "blockmaterialByType": {
+    "*-gravel-*": "Gravel",
+    "*-wood-*": "Wood",
+    "*-dirt-*": "Soil",
+    "*": "Stone"
+  },
   "replaceable": 900,
   "lightAbsorption": 99,
   "variantgroups": [
-    {
-      "code": "rot",
-      "states": [ "north", "east", "south", "west", "up", "down" ]
-    },
     {
       "code": "cover",
       "states": [ "free", "snow" ]

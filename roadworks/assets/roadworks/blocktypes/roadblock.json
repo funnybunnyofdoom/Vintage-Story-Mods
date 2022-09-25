@@ -5,7 +5,12 @@
     "general": [ "*-free-*" ],
     "decorative": [ "*-free-*" ]
   },
-  "blockmaterial": "Gravel",
+  "blockmaterialByType": {
+    "*-gravel": "Gravel",
+    "*-wood": "Wood",
+    "*-dirt": "Soil",
+    "*": "Stone"
+  },
   "replaceable": 900,
   "lightAbsorption": 99,
   "variantgroups": [
@@ -15,7 +20,7 @@
     },
     {
       "code": "type",
-      "states":  ["gravel","wood","brick","concrete","asphalt","dirt"]
+      "states": [ "gravel", "wood", "brick", "concrete", "asphalt", "dirt" ]
     }
   ],
   "behaviorsByType": {
@@ -95,10 +100,10 @@
       }
     }
   },
-    "resistanceByType": {
-      "*-snow-*": 0.2,
-      "*-free-*": 2.4
-    },
+  "resistanceByType": {
+    "*-snow-*": 0.2,
+    "*-free-*": 2.4
+  },
   "walkspeedmultiplierByType": {
     "roadblock-free-dirt": 1.2,
     "roadblock-free-gravel": 1.4,
@@ -113,46 +118,46 @@
     "roadblock-snow-concrete": 1.75,
     "roadblock-snow-asphalt": 2.0
   },
-    "faceCullMode": "FlushExceptTop",
-    "sideopaque": {
-      "all": false,
-      "down": true
+  "faceCullMode": "FlushExceptTop",
+  "sideopaque": {
+    "all": false,
+    "down": true
+  },
+  "sidesolid": {
+    "all": false,
+    "down": true
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.2,
+      "y": -1.1,
+      "z": -0.8
     },
-    "sidesolid": {
-      "all": false,
-      "down": true
+    "rotation": {
+      "x": -2,
+      "y": 25,
+      "z": -78
     },
-    "selectionbox": {
-      "x1": 0,
-      "y1": 0,
-      "z1": 0,
-      "x2": 1,
-      "y2": 1,
-      "z2": 1
-    },
-    "collisionbox": {
-      "x1": 0,
-      "y1": 0,
-      "z1": 0,
-      "x2": 1,
-      "y2": 1,
-      "z2": 1
-    },
-    "heldTpIdleAnimation": "holdbothhandslarge",
-    "heldTpUseAnimation": "twohandplaceblock",
-    "tpHandTransform": {
-      "translation": {
-        "x": -1.2,
-        "y": -1.1,
-        "z": -0.8
-      },
-      "rotation": {
-        "x": -2,
-        "y": 25,
-        "z": -78
-      },
-      "scale": 0.37
-    },
+    "scale": 0.37
+  },
   "dropsByType": {
     "roadblock-*-dirt": [
       {
@@ -167,16 +172,16 @@
       }
     ]
   },
-    "sounds": {
-      "place": "game:block/gravel",
-      "breakByType": {
-        "*-snow-*": "game:block/snow",
-        "*-free-*": "game:block/gravel"
-      },
-      "hitByType": {
-        "*-snow-*": "game:block/snow",
-        "*-free-*": "game:block/gravel"
-      },
-      "walk": "game:walk/gravel"
-    }
+  "sounds": {
+    "place": "game:block/gravel",
+    "breakByType": {
+      "*-snow-*": "game:block/snow",
+      "*-free-*": "game:block/gravel"
+    },
+    "hitByType": {
+      "*-snow-*": "game:block/snow",
+      "*-free-*": "game:block/gravel"
+    },
+    "walk": "game:walk/gravel"
   }
+}
