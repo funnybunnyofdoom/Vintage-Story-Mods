@@ -17,11 +17,11 @@
   "roadworks:block-roadstairs-*-*-concrete": "Ступени из бетона",
   "roadworks:block-roadstairs-*-*-asphalt": "Ступени из асфальта",
 
-  "roadworks:block-roadblockslab-*-*-gravel": "Плита из гравия",
-  "roadworks:block-roadblockslab-*-*-wood": "Плита из дерева",
-  "roadworks:block-roadblockslab-*-*-brick": "Плита из кирпича",
-  "roadworks:block-roadblockslab-*-*-concrete": "Плита из бетона",
-  "roadworks:block-roadblockslab-*-*-asphalt": "Плита из асфальта",
+  "roadworks:block-roadblockslab-*-gravel": "Плита из гравия",
+  "roadworks:block-roadblockslab-*-wood": "Плита из дерева",
+  "roadworks:block-roadblockslab-*-brick": "Плита из кирпича",
+  "roadworks:block-roadblockslab-*-concrete": "Плита из бетона",
+  "roadworks:block-roadblockslab-*-asphalt": "Плита из асфальта",
 
   "roadworks:block-roadblock-*-gravel": "Дорога из гравия",
   "roadworks:block-roadblock-*-dirt": "Дорога из земли",

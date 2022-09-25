@@ -231,9 +231,27 @@
 		"scale": 0.37
 	},
 	"sounds": {
-		"place": "block/gravel",
-		"break": "block/gravel",
-		"hit": "block/gravel",
-		"walk": "walk/gravel"
-	}
+    "place": "game:block/gravel",
+    "breakByType": {
+      "*-snow-*": "game:block/snow",
+      "*-free-wood": "game:block/chop1",
+      "*-free-gravel": "game:block/gravel",
+      "*-free-dirt": "game:block/dirt1",
+      "*": "game:block/stone1"
+    },
+    "hitByType": {
+      "*-snow-*": "game:block/snow",
+      "*-free-wood": "game:block/chop1",
+      "*-free-gravel": "game:block/gravel",
+      "*-free-dirt": "game:block/dirt1",
+      "*": "game:block/stone1"
+    },
+    "walkByType": {
+      "*-snow-*": "game:walk/snow1",
+      "*-free-wood": "game:walk/wood1",
+      "*-free-gravel": "game:walk/gravel1",
+      "*-free-dirt": "game:walk/gravel1",
+      "*": "game:walk/stone1"
+    }
+  }
 }

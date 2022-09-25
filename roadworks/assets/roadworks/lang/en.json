@@ -17,11 +17,11 @@
   "roadworks:block-roadstairs-*-*-concrete": "Concrete Stairs",
   "roadworks:block-roadstairs-*-*-asphalt": "Asphalt Stairs",
 
-  "roadworks:block-roadblockslab-*-*-gravel": "Gravel Slab",
-  "roadworks:block-roadblockslab-*-*-wood": "Wood Slab",
-  "roadworks:block-roadblockslab-*-*-brick": "Brick Slab",
-  "roadworks:block-roadblockslab-*-*-concrete": "Concrete Slab",
-  "roadworks:block-roadblockslab-*-*-asphalt": "Asphalt Slab",
+  "roadworks:block-roadblockslab-*-gravel": "Gravel Slab",
+  "roadworks:block-roadblockslab-*-wood": "Wood Slab",
+  "roadworks:block-roadblockslab-*-brick": "Brick Slab",
+  "roadworks:block-roadblockslab-*-concrete": "Concrete Slab",
+  "roadworks:block-roadblockslab-*-asphalt": "Asphalt Slab",
 
   "roadworks:block-roadblock-*-gravel": "Gravel Road",
   "roadworks:block-roadblock-*-dirt": "Dirt Road",

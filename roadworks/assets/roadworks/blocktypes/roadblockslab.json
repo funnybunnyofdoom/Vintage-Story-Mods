@@ -11,6 +11,9 @@
     "*-dirt-*": "Soil",
     "*": "Stone"
   },
+  "attributes": {
+    "liquidBarrierOnSides": [ 0.5, 0.5, 0.5, 0.5 ]
+  },
   "replaceable": 900,
   "lightAbsorption": 99,
   "variantgroups": [
@@ -24,19 +27,10 @@
     }
   ],
   "behaviorsByType": {
-    "*-snow-*": [ { "name": "BreakSnowFirst" } ],
-    "*": [
-      {
-        "name": "OmniRotatable",
-        "properties": {
-          "rotateSides": true,
-          "facing": "block"
-        }
-      }
-    ]
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ]
   },
   "texturesByType": {
-    "*-*-*-asphalt": {
+    "*-asphalt": {
       "sides": {
         "base": "roadworks:block/roadblock-{type}-1",
         "alternates": [
@@ -46,7 +40,7 @@
         ]
       }
     },
-    "*-*-*-wood": {
+    "*-wood": {
       "sides": {
         "base": "roadworks:block/roadblock-{type}-7",
         "alternates": [
@@ -59,7 +53,7 @@
         ]
       }
     },
-    "*-*-*-gravel": {
+    "*-gravel": {
       "sides": {
         "base": "roadworks:block/roadblock-{type}-1",
         "alternates": [
@@ -69,7 +63,7 @@
         ]
       }
     },
-    "*-*-*-concrete": {
+    "*-concrete": {
       "sides": {
         "base": "roadworks:block/roadblock-{type}-1",
         "alternates": [
@@ -84,7 +78,7 @@
         ]
       }
     },
-    "*-*-*-brick": {
+    "*-brick": {
       "sides": {
         "base": "roadworks:block/roadblock-{type}-1",
         "alternates": [
@@ -93,7 +87,7 @@
         ]
       }
     },
-    "*-*-*-dirt": {
+    "*-dirt": {
       "sides": {
         "base": "game:block/soil/flooring/drypackeddirt1a",
         "alternates": [
@@ -129,27 +123,7 @@
   },
   "faceCullMode": "FlushExceptTop",
   "sideSolidOpaqueAoByType": {
-    "*-north-*": {
-      "all": false,
-      "north": true
-    },
-    "*-east-*": {
-      "all": false,
-      "east": true
-    },
-    "*-south-*": {
-      "all": false,
-      "south": true
-    },
-    "*-west-*": {
-      "all": false,
-      "west": true
-    },
-    "*-up-*": {
-      "all": false,
-      "up": true
-    },
-    "*-down-*": {
+    "*": {
       "all": false,
       "down": true
     }
@@ -159,18 +133,8 @@
     "y1": 0,
     "z1": 0,
     "x2": 1,
-    "y2": 0.5,
-    "z2": 1,
-    "rotateXByType": {
-      "*-north-*": 90,
-      "*-south-*": 270,
-      "*-up-*": 180,
-      "*-down-*": 0
-    },
-    "rotateZByType": {
-      "*-east-*": 90,
-      "*-west-*": 270
-    }
+    "y2": 0.75,
+    "z2": 1
   },
   "selectionbox": {
     "x1": 0,
@@ -178,24 +142,14 @@
     "z1": 0,
     "x2": 1,
     "y2": 0.5,
-    "z2": 1,
-    "rotateXByType": {
-      "*-north-*": 90,
-      "*-south-*": 270,
-      "*-up-*": 180,
-      "*-down-*": 0
-    },
-    "rotateZByType": {
-      "*-east-*": 90,
-      "*-west-*": 270
-    }
+    "z2": 1
   },
   "heldTpIdleAnimation": "holdbothhandslarge",
   "heldTpUseAnimation": "twohandplaceblock",
   "tpHandTransform": {
     "translation": {
-      "x": -1.2,
-      "y": -1.1,
+      "x": -1.23,
+      "y": -0.91,
       "z": -0.8
     },
     "rotation": {
@@ -203,7 +157,7 @@
       "y": 25,
       "z": -78
     },
-    "scale": 0.37
+    "scale": 0.4
   },
   "dropsByType": {
     "*-*-dirt": [
@@ -215,7 +169,7 @@
     "*": [
       {
         "type": "block",
-        "code": "roadworks:roadblockslab-north-free-{type}"
+        "code": "roadworks:roadblockslab-free-{type}"
       }
     ]
   },
@@ -223,12 +177,24 @@
     "place": "game:block/gravel",
     "breakByType": {
       "*-snow-*": "game:block/snow",
-      "*-free-*": "game:block/gravel"
+      "*-free-wood": "game:block/chop1",
+      "*-free-gravel": "game:block/gravel",
+      "*-free-dirt": "game:block/dirt1",
+      "*": "game:block/stone1"
     },
     "hitByType": {
       "*-snow-*": "game:block/snow",
-      "*-free-*": "game:block/gravel"
+      "*-free-wood": "game:block/chop1",
+      "*-free-gravel": "game:block/gravel",
+      "*-free-dirt": "game:block/dirt1",
+      "*": "game:block/stone1"
     },
-    "walk": "game:walk/gravel"
+    "walkByType": {
+      "*-snow-*": "game:walk/snow1",
+      "*-free-wood": "game:walk/wood1",
+      "*-free-gravel": "game:walk/gravel1",
+      "*-free-dirt": "game:walk/gravel1",
+      "*": "game:walk/stone1"
+    }
   }
 }
