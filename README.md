@@ -18,7 +18,7 @@ Server side only. Client side mod is planned.
   Sends a message to all players when a new player joins
   
 -Rising Sun: [FunnyBunnyofDOOM]
-  When a new player joins for the first time, the in game calendar advances to 8:00 AM
+  When a new player joins for the first time after dusk, the in game calendar advances to the configured dawn time
 Will add a feature to progress to day whenever a player logs in. 
 
 -Bunny Server Utilities: [FunnyBunnyofDOOM] | Translated by: [ShadowPotion]
