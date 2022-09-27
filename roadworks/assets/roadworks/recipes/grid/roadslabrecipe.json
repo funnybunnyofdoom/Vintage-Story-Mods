@@ -13,7 +13,7 @@
   "height": 1,
   "output": {
     "type": "block",
-    "code": "roadworks:roadblockslab-down-free-{road}",
+    "code": "roadworks:roadblockslab-free-{road}",
     "quantity": 6
   }
 }
