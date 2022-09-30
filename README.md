@@ -23,6 +23,7 @@ Will add a feature to progress to day whenever a player logs in.
 
 -Bunny Server Utilities: [FunnyBunnyofDOOM] | Translated by: [ShadowPotion]
   Collection of utility mods
+  Translated by [ShadowPotion] [Gazelutza] [Mimarz]
 
 -Group Random Teleport: [FunnyBunnyofDOOM]
     /grtp to teleport to a point that moves randomly at a configurable interval of time for group random teleport excursions
