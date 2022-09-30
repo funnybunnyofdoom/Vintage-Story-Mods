@@ -16,9 +16,17 @@
       "*-dirt-*": "Soil",
       "*": "Stone"
     },
-    "attributes": {
+  "attributesByType": {
+    "*-small-*": {
+      "liquidBarrierOnSides": [ 0.25, 0.25, 0.25, 0.25 ]
+    },
+    "*-mid-*": {
       "liquidBarrierOnSides": [ 0.5, 0.5, 0.5, 0.5 ]
     },
+    "*-big-*": {
+      "liquidBarrierOnSides": [ 0.75, 0.75, 0.75, 0.75 ]
+    }
+  },
     "replaceable": 900,
     "lightAbsorption": 99,
     "variantgroups": [
