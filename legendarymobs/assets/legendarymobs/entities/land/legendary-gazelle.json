@@ -353,8 +353,8 @@
 				"minLightLevel": 10,
 				"groupSize": {
 					"dist": "verynarrowgaussian",
-					"avg": 6,
-					"var": 6
+					"avg": 1,
+					"var": 0
 				},
 				"insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
 				"minTemp": 20,
