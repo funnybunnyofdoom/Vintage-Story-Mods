@@ -1,10 +1,9 @@
 {
   "code": "roadblockslab",
   "shapeByType": {
-    "*-big-*": { "base": "roadworks:block/threequarterslab-free" },
-    "*-small-*": { "base": "roadworks:block/quarterslab-free" },
-    "*-mid-*": { "base": "game:block/basic/slab/slab-lowered-{cover}" },
-    "roadblockslab-free-asphalt": { "base":"game:block/basic/slab/slab-lowered-{cover}" }
+    "*-big-*": { "base": "roadworks:block/threequarterslab-{cover}" },
+    "*-small-*": { "base": "roadworks:block/quarterslab-{cover}" },
+    "*-mid-*": { "base": "game:block/basic/slab/slab-lowered-{cover}" }
   },
     "creativeinventory": {
       "general": [ "*-free-*" ],
@@ -46,80 +45,80 @@
     "behaviorsByType": {
       "*-snow-*": [ { "name": "BreakSnowFirst" } ]
     },
-    "texturesByType": {
-      "*-asphalt": {
-        "sides": {
-          "base": "roadworks:block/roadblock-{type}-1",
-          "alternates": [
-            { "base": "roadworks:block/roadblock-{type}-2" },
-            { "base": "roadworks:block/roadblock-{type}-3" },
-            { "base": "roadworks:block/roadblock-{type}-4" }
-          ]
-        }
-      },
-      "*-wood": {
-        "sides": {
-          "base": "roadworks:block/roadblock-{type}-7",
-          "alternates": [
-            { "base": "roadworks:block/roadblock-{type}-1" },
-            { "base": "roadworks:block/roadblock-{type}-2" },
-            { "base": "roadworks:block/roadblock-{type}-3" },
-            { "base": "roadworks:block/roadblock-{type}-4" },
-            { "base": "roadworks:block/roadblock-{type}-5" },
-            { "base": "roadworks:block/roadblock-{type}-6" }
-          ]
-        }
-      },
-      "*-gravel": {
-        "sides": {
-          "base": "roadworks:block/roadblock-{type}-1",
-          "alternates": [
-            { "base": "roadworks:block/roadblock-{type}-2" },
-            { "base": "roadworks:block/roadblock-{type}-3" },
-            { "base": "roadworks:block/roadblock-{type}-4" }
-          ]
-        }
-      },
-      "*-concrete": {
-        "sides": {
-          "base": "roadworks:block/roadblock-{type}-1",
-          "alternates": [
-            { "base": "roadworks:block/roadblock-{type}-1" },
-            { "base": "roadworks:block/roadblock-{type}-2" },
-            { "base": "roadworks:block/roadblock-{type}-3" },
-            { "base": "roadworks:block/roadblock-{type}-4" },
-            { "base": "roadworks:block/roadblock-{type}-5" },
-            { "base": "roadworks:block/roadblock-{type}-6" },
-            { "base": "roadworks:block/roadblock-{type}-7" },
-            { "base": "roadworks:block/roadblock-{type}-8" }
-          ]
-        }
-      },
-      "*-brick": {
-        "sides": {
-          "base": "roadworks:block/roadblock-{type}-1",
-          "alternates": [
-            { "base": "roadworks:block/roadblock-{type}-2" },
-            { "base": "roadworks:block/roadblock-{type}-3" }
-          ]
-        }
-      },
-      "*-dirt": {
-        "sides": {
-          "base": "game:block/soil/flooring/drypackeddirt1a",
-          "alternates": [
-            { "base": "game:block/soil/flooring/drypackeddirt1b" },
-            { "base": "game:block/soil/flooring/drypackeddirt1c" },
-            { "base": "game:block/soil/flooring/drypackeddirt1d" },
-            { "base": "game:block/soil/flooring/drypackeddirt2" },
-            { "base": "game:block/soil/flooring/drypackeddirt3" },
-            { "base": "game:block/soil/flooring/drypackeddirt4" },
-            { "base": "game:block/soil/flooring/drypackeddirt5" },
-            { "base": "game:block/soil/flooring/drypackeddirt6" }
-          ]
-        }
+  "texturesByType": {
+    "*-asphalt": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" }
+        ]
       }
     },
+    "*-wood": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-7",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-1" },
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" },
+          { "base": "roadworks:block/roadblock-{type}-5" },
+          { "base": "roadworks:block/roadblock-{type}-6" }
+        ]
+      }
+    },
+    "*-gravel": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" }
+        ]
+      }
+    },
+    "*-concrete": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-1" },
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" },
+          { "base": "roadworks:block/roadblock-{type}-4" },
+          { "base": "roadworks:block/roadblock-{type}-5" },
+          { "base": "roadworks:block/roadblock-{type}-6" },
+          { "base": "roadworks:block/roadblock-{type}-7" },
+          { "base": "roadworks:block/roadblock-{type}-8" }
+        ]
+      }
+    },
+    "*-brick": {
+      "sides": {
+        "base": "roadworks:block/roadblock-{type}-1",
+        "alternates": [
+          { "base": "roadworks:block/roadblock-{type}-2" },
+          { "base": "roadworks:block/roadblock-{type}-3" }
+        ]
+      }
+    },
+    "*-dirt": {
+      "sides": {
+        "base": "game:block/soil/flooring/drypackeddirt1a",
+        "alternates": [
+          { "base": "game:block/soil/flooring/drypackeddirt1b" },
+          { "base": "game:block/soil/flooring/drypackeddirt1c" },
+          { "base": "game:block/soil/flooring/drypackeddirt1d" },
+          { "base": "game:block/soil/flooring/drypackeddirt2" },
+          { "base": "game:block/soil/flooring/drypackeddirt3" },
+          { "base": "game:block/soil/flooring/drypackeddirt4" },
+          { "base": "game:block/soil/flooring/drypackeddirt5" },
+          { "base": "game:block/soil/flooring/drypackeddirt6" }
+        ]
+      }
+    }
+  },
     "resistanceByType": {
       "*-snow-*": 0.2,
       "*-free-*": 2.4
@@ -195,7 +194,7 @@
       "scale": 0.4
     },
     "dropsByType": {
-      "*-*-dirt": [
+      "*-dirt": [
         {
           "type": "block",
           "code": "game:packeddirt"
@@ -204,7 +203,7 @@
       "*": [
         {
           "type": "block",
-          "code": "roadworks:roadblockslab-free-{type}"
+          "code": "roadworks:roadblockslab-{size}-free-{type}"
         }
       ]
     },
