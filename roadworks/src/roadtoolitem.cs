@@ -68,7 +68,7 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob"))
+            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob-"))
             {
                 handling = EnumHandHandling.PreventDefault;
             }
@@ -132,10 +132,10 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt") && !block.Code.Path.StartsWith("forestfloor") && !block.Code.Path.Contains("packeddirt") && !block.Code.Path.StartsWith("cob")) return;
+            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt") && !block.Code.Path.StartsWith("forestfloor") && !block.Code.Path.Contains("packeddirt") && !block.Code.Path.StartsWith("cob-")) return;
 
             Block topaveblock;
-            if (block.Code.Path.StartsWith("soil") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob"))
+            if (block.Code.Path.StartsWith("soil") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob-"))
             {
                 topaveblock = byEntity.World.GetBlock(new AssetLocation("roadworks:roadblock-free-dirt"));
             }

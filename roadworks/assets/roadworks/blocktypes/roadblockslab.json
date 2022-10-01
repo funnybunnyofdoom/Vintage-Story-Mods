@@ -10,9 +10,9 @@
       "decorative": [ "*-free-*" ]
     },
     "blockmaterialByType": {
-      "*-gravel-*": "Gravel",
-      "*-wood-*": "Wood",
-      "*-dirt-*": "Soil",
+      "*-gravel": "Gravel",
+      "*-wood": "Wood",
+      "*-dirt": "Soil",
       "*": "Stone"
     },
   "attributesByType": {
@@ -39,7 +39,7 @@
       },
       {
         "code": "type",
-        "states": [ "gravel", "wood", "brick", "concrete", "asphalt", "dirt" ]
+        "states": [ "gravel", "wood", "brick", "concrete", "asphalt"]
       }
     ],
     "behaviorsByType": {
@@ -214,14 +214,14 @@
         "*-free-wood": "game:block/chop1",
         "*-free-gravel": "game:block/gravel",
         "*-free-dirt": "game:block/dirt1",
-        "*": "game:block/stone1"
+        "*": "game:block/rock-break-pickaxe"
       },
       "hitByType": {
         "*-snow-*": "game:block/snow",
         "*-free-wood": "game:block/chop1",
         "*-free-gravel": "game:block/gravel",
         "*-free-dirt": "game:block/dirt1",
-        "*": "game:block/stone1"
+        "*": "game:block/rock-hit-pickaxe"
       },
       "walkByType": {
         "*-snow-*": "game:walk/snow1",
