@@ -3,8 +3,8 @@
 	class: "BlockCrop",
 	behaviors: [{name: "Unstable"}],
 	variantgroups: [
-		{ code: "type", states: ["flax"] },
-		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9"] },
+		{ code: "type", states: ["rice"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
 	],
 	creativeinventory: { "general": [""], "plants": [""] },
 	renderpass: "OpaqueNoCull",
@@ -16,12 +16,12 @@
 	attributes: {
 		butterflyFeedByType: {
 			"*-1": false,
-			"*-9": false,
+			"*-10": false,
 			"*": true
 		},
 		beeFeedByType: {
 			"*-1": false,
-			"*-9": false,
+			"*-10": false,
 			"*": true
 		},
 		sitHeight: 0.55,
@@ -46,21 +46,22 @@
 	},
 	rainPermeable: false,
 	dropsByType: {
-		"*-9": [
-			{ type: "item", code: "seeds-flax", quantity: { avg: 1.2 }  },
-			{ type: "item", code: "grain-flax", quantity: { avg: 6, var: 1 }  },
-			{ type: "item", code: "flaxfibers", quantity: { avg: 8, var: 1 }  },
+		"*-10": [
+			{ type: "item", code: "seeds-rice", quantity: { avg: 1.2 }  },
+			{ type: "item", code: "grain-rice", quantity: { avg: 13, var: 2 }  },
 		],
 		"*": [
-			{ type: "item", code: "seeds-flax", quantity: { avg: 0.7 }  },
+			{ type: "item", code: "seeds-rice", quantity: { avg: 0.7 }  },
 		]
 	},
 	cropProps: {
 		"__comment": "http://www.haifa-group.com/knowledge_center/crop_guides/rice/fertilization_practices/",
 		requiredNutrient: "K",
 		nutrientConsumption: 50,
-		growthStages: 9,
-		totalGrowthMonths: 0.25,
+		growthStages: 10,
+		totalGrowthMonths: 1.5,
+		coldDamageBelow: 8,
+		heatDamageAbove: 46
 	},
 	collisionbox: null,
 	selectionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.25, z2: 0.9375 },

@@ -69,7 +69,7 @@
 		requiredNutrient: "K",
 		nutrientConsumption: 40,
 		growthStages: 7,
-		totalGrowthMonths: 0.2,
+		totalGrowthMonths: 0.8,
 		coldDamageBelow: -10,
 		damageGrowthStuntMul: 0.75,
 		coldDamageRipeMul: 0.5,

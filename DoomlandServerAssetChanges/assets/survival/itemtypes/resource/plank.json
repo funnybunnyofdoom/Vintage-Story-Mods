@@ -34,7 +34,7 @@
 	},
 	combustibleProps: {
 		burnTemperature: 700,
-		burnDuration: 18,
+		burnDuration: 30,
 	},
 	materialDensity: 700,
 	

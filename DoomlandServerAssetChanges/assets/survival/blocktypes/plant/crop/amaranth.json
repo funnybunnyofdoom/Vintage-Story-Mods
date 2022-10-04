@@ -85,7 +85,7 @@
 		requiredNutrient: "N",
 		nutrientConsumption: 15,
 		growthStages: 9,
-		totalGrowthMonths: 0.5,
+		totalGrowthMonths: 2,
 		coldDamageBelow: 6,
 		heatDamageAbove: 42,
 	},
@@ -104,6 +104,6 @@
 	materialDensity: 200,
 	combustibleProps: {
 		burnTemperature: 600,
-		burnDuration: 50,
+		burnDuration: 10,
 	}
 }

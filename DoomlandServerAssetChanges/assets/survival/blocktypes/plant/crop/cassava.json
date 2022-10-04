@@ -56,7 +56,7 @@
 		requiredNutrient: "K",
 		nutrientConsumption: 25,
 		growthStages: 9,
-		totalGrowthMonths: 0.5,
+		totalGrowthMonths: 2,
 		coldDamageBelow: 4,
 		heatDamageAbove: 44,
 	},

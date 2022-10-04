@@ -10,7 +10,7 @@
 	attackRange: 2.5,
 	combustibleProps: {
 		burnTemperature: 700,
-		burnDuration: 24,
+		burnDuration: 40,
 	},
 	fpHandTransform: {
 		translation: { x: 0, y: 0, z: 0 },

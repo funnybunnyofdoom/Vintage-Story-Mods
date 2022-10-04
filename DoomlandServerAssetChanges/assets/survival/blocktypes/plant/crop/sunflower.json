@@ -3,28 +3,31 @@
 	class: "BlockCrop",
 	behaviors: [{name: "Unstable"}],
 	variantgroups: [
-		{ code: "type", states: ["rye"] },
-		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9"] },
+		{ code: "type", states: ["sunflower"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
 	],
 	creativeinventory: { "general": [""], "plants": [""] },
 	renderpass: "OpaqueNoCull",
-	shape: { base: "block/plant/crop/default*" },
+	shape: { base: "block/plant/crop/sunflower/stage{stage}" },
 	blockmaterial: "Plant",
-	textures: {
-		crop: { base: "block/plant/crop/{type}/normal{stage}" },
-	},
+	faceCullMode: "NeverCull",
+	randomizeRotations: true,
 	attributes: {
 		butterflyFeedByType: {
 			"*-1": false,
-			"*-9": false,
+			"*-2": false,
+			"*-3": false,
+			"*-12": false,
 			"*": true
 		},
 		beeFeedByType: {
 			"*-1": false,
-			"*-9": false,
+			"*-2": false,
+			"*-3": false,
+			"*-12": false,
 			"*": true
 		},
-		sitHeight: 0.55,
+		sitHeight: 0.9,
 		tickGrowthProbability: 0.05,
 		handbook: {
 			include: true
@@ -46,24 +49,20 @@
 	},
 	rainPermeable: false,
 	dropsByType: {
-		"*-9": [
-			{ type: "item", code: "seeds-rye", quantity: { avg: 1.2 }  },
-			{ type: "item", code: "grain-rye", quantity: { avg: 11, var: 2 }  },
+		"*-12": [
+			{ type: "item", code: "seeds-sunflower", quantity: { avg: 1.2 }  },
+			{ type: "item", code: "grain-sunflower", quantity: { avg: 13, var: 2 }  },
 		],
 		"*": [
-			{ type: "item", code: "seeds-rye", quantity: { avg: 0.7 }  },
+			{ type: "item", code: "seeds-sunflower", quantity: { avg: 0.7 }  },
 		]
 	},
 	cropProps: {
 		"__comment": "Common rates of nutrients to be applied are 50 to 60 lb/acre N, 25 lb/acre P2O5 and 30 lb/acre K2O. - http://www.heirloom-organics.com/guide/va/guidetogrowingspelt.html",
 		requiredNutrient: "N",
 		nutrientConsumption: 40,
-		growthStages: 9,
-		totalGrowthMonths: 0.5,
-		coldDamageBelow: -12,
-		damageGrowthStuntMul: 0.75,
-		coldDamageRipeMul: 0.5,
-		heatDamageAbove: 27
+		growthStages: 12,
+		totalGrowthMonths: 1,
 	},
 	collisionbox: null,
 	selectionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.25, z2: 0.9375 },

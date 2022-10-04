@@ -65,7 +65,7 @@
 	],
 	combustibleProps: {
 		burnTemperature: 900,
-		burnDuration: 250,
+		burnDuration: 50,
 	},
 	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
 	tpHandTransform: {

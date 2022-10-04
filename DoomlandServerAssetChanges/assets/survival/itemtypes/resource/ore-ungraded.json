@@ -96,7 +96,7 @@
 	combustiblePropsByType: {
 		"ore-lignite": {
 			burnTemperature: 1100,
-			burnDuration: 380,
+			burnDuration: 360,
 		},
 		"ore-bituminouscoal": {
 			burnTemperature: 1200,

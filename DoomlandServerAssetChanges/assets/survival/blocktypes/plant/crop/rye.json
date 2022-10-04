@@ -3,8 +3,8 @@
 	class: "BlockCrop",
 	behaviors: [{name: "Unstable"}],
 	variantgroups: [
-		{ code: "type", states: ["rice"] },
-		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+		{ code: "type", states: ["rye"] },
+		{ code: "stage", states: ["1", "2", "3", "4", "5", "6", "7", "8", "9"] },
 	],
 	creativeinventory: { "general": [""], "plants": [""] },
 	renderpass: "OpaqueNoCull",
@@ -16,12 +16,12 @@
 	attributes: {
 		butterflyFeedByType: {
 			"*-1": false,
-			"*-10": false,
+			"*-9": false,
 			"*": true
 		},
 		beeFeedByType: {
 			"*-1": false,
-			"*-10": false,
+			"*-9": false,
 			"*": true
 		},
 		sitHeight: 0.55,
@@ -46,22 +46,24 @@
 	},
 	rainPermeable: false,
 	dropsByType: {
-		"*-10": [
-			{ type: "item", code: "seeds-rice", quantity: { avg: 1.2 }  },
-			{ type: "item", code: "grain-rice", quantity: { avg: 13, var: 2 }  },
+		"*-9": [
+			{ type: "item", code: "seeds-rye", quantity: { avg: 1.2 }  },
+			{ type: "item", code: "grain-rye", quantity: { avg: 11, var: 2 }  },
 		],
 		"*": [
-			{ type: "item", code: "seeds-rice", quantity: { avg: 0.7 }  },
+			{ type: "item", code: "seeds-rye", quantity: { avg: 0.7 }  },
 		]
 	},
 	cropProps: {
-		"__comment": "http://www.haifa-group.com/knowledge_center/crop_guides/rice/fertilization_practices/",
-		requiredNutrient: "K",
-		nutrientConsumption: 50,
-		growthStages: 10,
-		totalGrowthMonths: 0.55,
-		coldDamageBelow: 8,
-		heatDamageAbove: 46
+		"__comment": "Common rates of nutrients to be applied are 50 to 60 lb/acre N, 25 lb/acre P2O5 and 30 lb/acre K2O. - http://www.heirloom-organics.com/guide/va/guidetogrowingspelt.html",
+		requiredNutrient: "N",
+		nutrientConsumption: 40,
+		growthStages: 9,
+		totalGrowthMonths: 1.5,
+		coldDamageBelow: -12,
+		damageGrowthStuntMul: 0.75,
+		coldDamageRipeMul: 0.5,
+		heatDamageAbove: 27
 	},
 	collisionbox: null,
 	selectionbox: { x1: 0.0625, y1: 0, z1: 0.0625, x2: 0.9375, y2: 0.25, z2: 0.9375 },

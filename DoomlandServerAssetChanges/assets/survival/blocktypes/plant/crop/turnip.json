@@ -72,7 +72,7 @@
 		requiredNutrient: "N",
 		nutrientConsumption: 30,
 		growthStages: 5,
-		totalGrowthMonths: 0.25,
+		totalGrowthMonths: 0.8,
 		heatDamageAbove: 27
 	},
 	collisionbox: null,
