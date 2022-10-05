@@ -4,7 +4,7 @@
   "name": "Legendary Mobs",
   "authors": ["FunnyBunnyofDOOM"],
   "description": "large legendary Animals and legendary rewards",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "dependencies": {
     "game": ""
   }
