@@ -38,7 +38,7 @@ Will add a feature to progress to day whenever a player logs in.
 	Allows the player to send messages to each other. Admin can view private messages.
 	
 -Extra Juice
-	adds juices and liquid containers
+	adds juices and liquid containers. Need to remove veggie juice from this. Added fruit milk and flower teas.
 
 -Just Light Jars: [FunnyBunnyofDOOM][DukePony]
   harvest glow worms and craft them with a glass jar to get glowing jars  
