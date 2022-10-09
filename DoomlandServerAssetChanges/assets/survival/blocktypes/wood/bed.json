@@ -1,5 +1,6 @@
 {
 	code: "bed",
+	class: "BlockBed",
 	attributes: {
 		sleepEfficiencyByType: {
 			"bed-wood-*": 0.70833333,
