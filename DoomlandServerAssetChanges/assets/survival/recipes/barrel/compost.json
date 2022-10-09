@@ -1,0 +1,8 @@
+{
+	code: "compost",
+	sealHours: 168,
+	ingredients: [
+		{ type: "item", code: "rot", litres: 64 },
+	],
+	output: { type: "item", code: "compost", stackSize: 16 }
+}
