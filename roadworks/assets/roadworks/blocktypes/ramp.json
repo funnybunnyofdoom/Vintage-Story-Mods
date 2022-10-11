@@ -63,6 +63,7 @@
 			"rotateY": 270
 		}
 	},
+	"shapeinventory": { "base":"roadworks:block/ramp" },
 	"walkspeedmultiplierByType": {
 		"*-gravel": 1.4,
 		"*-wood": 1.6,
