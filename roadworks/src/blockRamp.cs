@@ -48,19 +48,21 @@ namespace roadworks.src
 
                 string code = horVer[0].Opposite.Code;
 
-                Block orientedBlock = world.BlockAccessor.GetBlock(CodeWithParts("1", code, "asphalt"));//hardcoded asphalt for testing
+                string roadType = byPlayer.InventoryManager.ActiveHotbarSlot.Itemstack.Block.LastCodePart();
+
+                Block orientedBlock = world.BlockAccessor.GetBlock(CodeWithParts("1", code, roadType));//hardcoded asphalt for testing
                 orientedBlock.DoPlaceBlock(world, byPlayer, blockSel, itemstack);
 
-                AssetLocation secondCode = CodeWithParts("2", code,"asphalt");
+                AssetLocation secondCode = CodeWithParts("2", code, roadType);
                 orientedBlock = world.BlockAccessor.GetBlock(secondCode);
                 orientedBlock.DoPlaceBlock(world, byPlayer, secondBlockSel, itemstack);
                
 
-                AssetLocation thirdCode = CodeWithParts("3", code, "asphalt");
+                AssetLocation thirdCode = CodeWithParts("3", code, roadType);
                 orientedBlock = world.BlockAccessor.GetBlock(thirdCode);
                 orientedBlock.DoPlaceBlock(world, byPlayer, thirdBlockSel, itemstack);
 
-                AssetLocation fourthCode = CodeWithParts("4", code, "asphalt");
+                AssetLocation fourthCode = CodeWithParts("4", code, roadType);
                 orientedBlock = world.BlockAccessor.GetBlock(fourthCode);
                 orientedBlock.DoPlaceBlock(world, byPlayer, fourthBlockSel, itemstack);
                 return true;
