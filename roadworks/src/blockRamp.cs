@@ -197,8 +197,16 @@ namespace roadworks.src
                 base.OnBlockRemoved(world, thirdPos);
                 base.OnBlockRemoved(world, fourthPos);
             }
+        }
+        public override BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
+        {
+            return GetHandbookDropsFromBreakDrops(handbookStack, forPlayer);
+        }
 
-
+        public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)
+        {
+            string roadtype = world.BlockAccessor.GetBlock(pos).LastCodePart();
+            return new ItemStack[] { new ItemStack(world.BlockAccessor.GetBlock(CodeWithParts("1", "north", roadtype))) };
         }
     }
 }
