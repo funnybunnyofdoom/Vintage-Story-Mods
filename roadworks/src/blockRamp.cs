@@ -69,5 +69,136 @@ namespace roadworks.src
             }
             return false;
         }
+
+        public override void OnBlockRemoved(IWorldAccessor world, BlockPos pos)
+        {
+            string rampPosition = LastCodePart(2);
+
+            BlockFacing facing = BlockFacing.FromCode(LastCodePart(1)).Opposite;
+            if (LastCodePart(2) == "1")
+            {
+                Block firstBlock = world.BlockAccessor.GetBlock(pos);
+                BlockPos secondPos = pos.AddCopy(facing);
+                Block secondBlock = world.BlockAccessor.GetBlock(secondPos);
+                BlockPos thirdPos = secondPos.AddCopy(facing);
+                Block thirdBlock = world.BlockAccessor.GetBlock(thirdPos);
+                BlockPos fourthPos = thirdPos.AddCopy(facing);
+                Block fourthBlock = world.BlockAccessor.GetBlock(fourthPos);
+                if (firstBlock is blockRamp && firstBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, pos);
+                }
+                if (secondBlock is blockRamp && secondBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, secondPos);
+                }
+                if (thirdBlock is blockRamp && thirdBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, thirdPos);
+                }
+                if (fourthBlock is blockRamp && fourthBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, fourthPos);
+                }
+
+                base.OnBlockRemoved(world, pos);
+                base.OnBlockRemoved(world, secondPos);
+                base.OnBlockRemoved(world, thirdPos);
+                base.OnBlockRemoved(world, fourthPos);
+            }else if (LastCodePart(2) == "2")
+            {
+                Block firstBlock = world.BlockAccessor.GetBlock(pos);
+                BlockPos secondPos = pos.AddCopy(facing);
+                Block secondBlock = world.BlockAccessor.GetBlock(secondPos);
+                BlockPos thirdPos = secondPos.AddCopy(facing);
+                Block thirdBlock = world.BlockAccessor.GetBlock(thirdPos);
+                BlockPos fourthPos = pos.AddCopy(facing.Opposite);
+                Block fourthBlock = world.BlockAccessor.GetBlock(fourthPos);
+                if (firstBlock is blockRamp && firstBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, pos);
+                }
+                if (secondBlock is blockRamp && secondBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, secondPos);
+                }
+                if (thirdBlock is blockRamp && thirdBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, thirdPos);
+                }
+                if (fourthBlock is blockRamp && fourthBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, fourthPos);
+                }
+
+                base.OnBlockRemoved(world, pos);
+                base.OnBlockRemoved(world, secondPos);
+                base.OnBlockRemoved(world, thirdPos);
+                base.OnBlockRemoved(world, fourthPos);
+            }else if (LastCodePart(2) == "3")
+            {
+                Block firstBlock = world.BlockAccessor.GetBlock(pos);
+                BlockPos secondPos = pos.AddCopy(facing);
+                Block secondBlock = world.BlockAccessor.GetBlock(secondPos);
+                BlockPos thirdPos = pos.AddCopy(facing.Opposite);
+                Block thirdBlock = world.BlockAccessor.GetBlock(thirdPos);
+                BlockPos fourthPos = thirdPos.AddCopy(facing.Opposite);
+                Block fourthBlock = world.BlockAccessor.GetBlock(fourthPos);
+                if (firstBlock is blockRamp && firstBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, pos);
+                }
+                if (secondBlock is blockRamp && secondBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, secondPos);
+                }
+                if (thirdBlock is blockRamp && thirdBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, thirdPos);
+                }
+                if (fourthBlock is blockRamp && fourthBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, fourthPos);
+                }
+
+                base.OnBlockRemoved(world, pos);
+                base.OnBlockRemoved(world, secondPos);
+                base.OnBlockRemoved(world, thirdPos);
+                base.OnBlockRemoved(world, fourthPos);
+            }else if (LastCodePart(2) == "4")
+            {
+                facing = facing.Opposite;
+                Block firstBlock = world.BlockAccessor.GetBlock(pos);
+                BlockPos secondPos = pos.AddCopy(facing);
+                Block secondBlock = world.BlockAccessor.GetBlock(secondPos);
+                BlockPos thirdPos = secondPos.AddCopy(facing);
+                Block thirdBlock = world.BlockAccessor.GetBlock(thirdPos);
+                BlockPos fourthPos = thirdPos.AddCopy(facing);
+                Block fourthBlock = world.BlockAccessor.GetBlock(fourthPos);
+                if (firstBlock is blockRamp && firstBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, pos);
+                }
+                if (secondBlock is blockRamp && secondBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, secondPos);
+                }
+                if (thirdBlock is blockRamp && thirdBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, thirdPos);
+                }
+                if (fourthBlock is blockRamp && fourthBlock.LastCodePart(2) != rampPosition)
+                {
+                    world.BlockAccessor.SetBlock(0, fourthPos);
+                }
+
+                base.OnBlockRemoved(world, pos);
+                base.OnBlockRemoved(world, secondPos);
+                base.OnBlockRemoved(world, thirdPos);
+                base.OnBlockRemoved(world, fourthPos);
+            }
+
+
+        }
     }
 }
