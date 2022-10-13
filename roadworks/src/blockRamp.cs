@@ -205,7 +205,7 @@ namespace roadworks.src
 
         public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)
         {
-            string roadtype = world.BlockAccessor.GetBlock(pos).LastCodePart();
+            string roadtype = this.LastCodePart();;
             return new ItemStack[] { new ItemStack(world.BlockAccessor.GetBlock(CodeWithParts("1", "north", roadtype))) };
         }
     }

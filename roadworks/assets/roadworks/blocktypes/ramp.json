@@ -2,7 +2,9 @@
 	"code": "ramp",
 	"class": "blockRamp",
 	"attributes": {
-		"noDownVariant": true
+		"handbook": {
+			"groupBy": [ "*-{type}" ]
+		}
 	},
 	"variantgroups": [
 		{
