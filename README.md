@@ -81,3 +81,6 @@ Will add a feature to progress to day whenever a player logs in.
 	
 -South Spawn: [FunnyBunnyofDOOM]
 	Server specific mod to teleport our players to the southern hemisphere spawn point.
+
+-Animal Trader: [funnyBunnyofDoom]
+        Simple trader addition that sells animals
