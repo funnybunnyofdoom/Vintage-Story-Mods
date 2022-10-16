@@ -9,18 +9,18 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
-namespace bunnybell.src
+namespace bunnybellclient.src
 {
-    class bunnybell : ModSystem
+    class bunnybellclient : ModSystem
     {
-        ICoreClientAPI sapi;
+        ICoreClientAPI capi;
         Dictionary<string, BlockPos> location;
         AssetLocation sound = new AssetLocation("game", "sounds/effect/receptionbell");
 
         public override void StartClientSide(ICoreClientAPI api)
         {
             base.StartClientSide(api);
-            sapi = api;
+            capi = api;
             api.Event.ChatMessage += onPlayerChat;
             //api.RegisterCommand("bb", "Bunny Bell configuration", "[volume|mute|help|version]", cmd_bb, Privilege.controlserver);
 
@@ -54,6 +54,14 @@ namespace bunnybell.src
         }
 
        
+
+        public override void AssetsLoaded(ICoreAPI api)
+        {
+            sound = new AssetLocation("game", "sounds/effect/receptionbell");
+            base.AssetsLoaded(api);
+        }
+
+
 
         /*private void cmd_bb(IClientPlayer player, int groupId, CmdArgs args)
         {
@@ -121,35 +129,26 @@ namespace bunnybell.src
         }
         private void onPlayerChat(int groupId, string message, EnumChatType chattype, string data)
         {
-            string checklist = data;
-            IPlayer[] playerList = sapi.World.AllOnlinePlayers;
+            //string checklist = data; //assign the chat data to a string
+
+            //IPlayer[] playerList = capi.World.AllOnlinePlayers;
             int volume = 1;
-            for (var i = 0; i < playerList.Count(); i++)
-            {
-                string templist = checklist;
-                IPlayer templayer = playerList[i];
-                if (templist.CaseInsensitiveContains(templayer.PlayerName))
+            // for (var i = 0; i < playerList.Count(); i++)
+            //{
+            //string templist = checklist;
+            IPlayer templayer = capi.World.Player;
+            System.Diagnostics.Debug.WriteLine(message);
+            System.Diagnostics.Debug.WriteLine(data);
+            System.Diagnostics.Debug.WriteLine(templayer.PlayerName);
+            
+                if (data.CaseInsensitiveContains(templayer.PlayerName))
                 {
-                    List<soundSettings> stlist = bbConfig.Current.settings;
-                    for (var j = 0;j < stlist.Count; j++)
-                    {
-                        soundSettings usersound = stlist[j];
-                        if (usersound.user == templayer.PlayerUID)
-                        {
-                            volume = usersound.volume;
-                        }
-                    }
-                    System.Diagnostics.Debug.WriteLine(volume);
-                    if (volume > 0)
-                    {
-                        templayer.Entity.World.PlaySoundFor(sound, templayer, true, 32, volume);//volume);
-                    }
-                    
+                    templayer.Entity.World.PlaySoundFor(sound, templayer, true, 32, volume);//volume);
                 }
-            }
+            //}
         }
 
-        /*private void displayhelp(IServerPlayer player)
+        /*private void displayhelp(IPlayer player)
         {
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell Commands:", Vintagestory.API.Common.EnumChatType.Notification);
             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb volume <i>number</i> - Sets your notification volume", Vintagestory.API.Common.EnumChatType.Notification);
