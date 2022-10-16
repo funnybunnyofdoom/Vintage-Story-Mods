@@ -3,10 +3,10 @@
   "modid": "bunnybellclient",
   "name": "Bunny Bell Client Side",
   "authors": [ "FunnyBunnyofDOOM" ],
-  "description": "To be added",
+  "description": "Makes a bell tone when the player's name is mentioned'",
   "version": "1.0.0",
+  "side": "Client",
   "dependencies": {
     "game": ""
-  },
-  "side": "Client"
+  }
 }
