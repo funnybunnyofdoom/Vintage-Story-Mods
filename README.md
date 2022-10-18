@@ -6,7 +6,10 @@ A collection of mods for the game Vintage Story
   
 -Bunny Bell: [FunnyBunnyofDOOM]
   Makes a "bing" noise when the player's name is mentioned
-Server side only. Client side mod is planned. 
+Server side only.
+
+-Bunny Bell Client-side
+	Clientside version of bunny bell
   
 -Just Random Teleport: [FunnyBunnyofDOOM]
   /rtp - Teleports the player to a random location within a 100k configurable radius of spawn
