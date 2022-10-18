@@ -1,0 +1,23 @@
+{
+  "ingredient": {
+    "type": "item",
+    "code": "legendarymobs:legendary-bloom-*"
+  },
+  "pattern": [
+    [
+      "#######",
+      "#######",
+      "#######"
+    ],
+    [
+      "#######",
+      "#######",
+      "#######"
+    ]
+  ],
+  "name": "Legendary Ingot",
+  "output": {
+    "type": "item",
+    "code": "game:ingot-legendary"
+  }
+}

@@ -72,7 +72,7 @@
   },
   "attackRange": 3.5,
   "tooltierbytype": {
-    "*": 4
+    "*": 5
   },
   "miningspeedbytype": {
     "*": {

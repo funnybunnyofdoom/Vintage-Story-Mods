@@ -2,7 +2,7 @@
   {
     "ingredient": {
       "type": "item",
-      "code": "legendarymobs:legendary-bloom-1"
+      "code": "game:ingot-legendary"
     },
     "pattern": [
       [
@@ -25,7 +25,7 @@
   {
     "ingredient": {
       "type": "item",
-      "code": "legendarymobs:legendary-bloom-2"
+      "code": "game:ingot-legendary"
     },
     "pattern": [
       [

@@ -1,0 +1,25 @@
+{
+  "ingredient": {
+    "type": "item",
+    "code": "game:ingot-legendary"
+  },
+  "pattern": [
+    [
+      "#####",
+      "#####",
+      "#####",
+      "#####"
+    ],
+    [
+      "#####",
+      "#####",
+      "#####",
+      "#####"
+    ]
+  ],
+  "name": "Legendary Hammer",
+  "output": {
+    "type": "item",
+    "code": "legendarymobs:legendary-hammerhead"
+  }
+}
