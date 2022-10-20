@@ -13,7 +13,7 @@
     "workableTemperature": 700,
     "displaycaseable": true,
     "shelvable": true,
-    "requiresAnvilTier": 2
+    "requiresAnvilTier": 3
   },
   "creativeinventory": {
     "general": [ "*" ],
