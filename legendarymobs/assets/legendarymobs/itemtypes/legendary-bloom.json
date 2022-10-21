@@ -19,7 +19,7 @@
     "displaycaseable": true,
     "shelvable": true,
     "mergeUnitsInBloomery": true,
-    "requiresAnvilTier": 4
+    "requiresAnvilTier": 3
   },
   "materialDensity": 900,
   "heldTpHitAnimation": "breaktool",

@@ -402,7 +402,7 @@
     "spawnconditions": {
       "worldgen": {
         "TriesPerChunk": {
-          "avg": 0.0004,
+          "avg": 0.00004,
           "var": 0
         },
         "tryOnlySurface": true,
