@@ -1,0 +1,10 @@
+[
+  {
+    "op": "add",
+    "path": "/textures/legendary",
+    "value": {
+      "base": "block/metal/ingot/legendary"
+    },
+    "file": "game:blocktypes/metal/ingotpile.json"
+  }
+]

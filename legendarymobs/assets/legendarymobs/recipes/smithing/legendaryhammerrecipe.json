@@ -1,7 +1,7 @@
 {
   "ingredient": {
     "type": "item",
-    "code": "legendarymobs:legendary2-ingot"
+    "code": "game:ingot-legendary"
   },
   "pattern": [
     [

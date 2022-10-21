@@ -1,0 +1,40 @@
+[
+  {
+    "op": "add",
+    "path": "/attributes/reinforcementStrengthByType/*-legendary",
+    "value": 1400,
+    "file": "game:itemtypes/resource/ingot.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributes/requiresAnvilTierByType/ingot-legendary",
+    "value": 3,
+    "file": "game:itemtypes/resource/ingot.json"
+  },
+  {
+    "op": "add",
+    "path": "/attributes/workableTemperatureByType/ingot-legendary",
+    "value": 700,
+    "file": "game:itemtypes/resource/ingot.json"
+  },
+  {
+    "op": "add",
+    "path": "/combustiblePropsByType/ingot-legendary",
+    "value": {
+      "meltingPoint": 1482,
+      "meltingDuration": 30,
+      "smeltedRatio": 1,
+      "smeltedStack": {
+        "type": "item",
+        "code": "ingot-legendary"
+      }
+    },
+    "file": "game:itemtypes/resource/ingot.json"
+  },
+  {
+    "op": "add",
+    "path": "/materialDensityByType/*-legendary",
+    "value": 7840,
+    "file": "game:itemtypes/resource/ingot.json"
+  }
+]

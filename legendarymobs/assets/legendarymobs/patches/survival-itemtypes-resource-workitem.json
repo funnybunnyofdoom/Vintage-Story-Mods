@@ -1,0 +1,11 @@
+[
+  {
+    "op": "add",
+    "path": "/attributesByType/workitem-legendary",
+    "value": {
+      "requiresAnvilTier": 3,
+      "workableTemperature": 700
+    },
+    "file": "game:itemtypes/resource/workitem.json"
+  }
+]

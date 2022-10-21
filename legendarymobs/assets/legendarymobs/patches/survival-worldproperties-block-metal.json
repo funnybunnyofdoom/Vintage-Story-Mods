@@ -1,0 +1,16 @@
+[
+  {
+    "op": "add",
+    "path": "/variants/8",
+    "value": {
+      "code": "legendary",
+      "meltPoint": 1538.0,
+      "boilPoint": 2862.0,
+      "density": 7870,
+      "specificHeatCapacity": 0.45,
+      "elemental": false,
+      "tier": 3
+    },
+    "file": "game:worldproperties/block/metal.json"
+  }
+]
