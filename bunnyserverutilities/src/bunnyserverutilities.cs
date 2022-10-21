@@ -1988,8 +1988,10 @@ namespace bunnyserverutilities.src
                     {
                         sapi.SendMessage(sapi.World.PlayerByUid(keyvalue), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:expired-tp"), Vintagestory.API.Common.EnumChatType.Notification);
                         bsuconfig.Current.tptDict.Remove(keyvalue); //player that is teleporting
-                        bsuconfig.Current.waitDict.Remove(value.toplayer); //player that is being teleported to
-
+                        if (bsuconfig.Current.waitDict.ContainsValue(value.toplayer))
+                        {
+                            bsuconfig.Current.waitDict.Remove(value.toplayer); //player that is being teleported to
+                        }
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         return;
                     }

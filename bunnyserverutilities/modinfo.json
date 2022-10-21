@@ -5,7 +5,7 @@
   "authors": [ "FunnyBunnyofDOOM" ],
   "contributors": [ "ShadowPotion","MiMaRz" ],
   "description": "A suite of server-side features",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": {
     "game": ""
   },
