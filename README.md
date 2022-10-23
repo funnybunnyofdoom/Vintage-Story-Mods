@@ -87,3 +87,6 @@ Will add a feature to progress to day whenever a player logs in.
 
 -Animal Trader: [funnyBunnyofDoom]
         Simple trader addition that sells animals
+
+-Legendary Mobs: [Funnybunnyofdoom]
+ 
