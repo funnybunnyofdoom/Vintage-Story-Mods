@@ -81,7 +81,7 @@
     }
   },
   "attackpowerbytype": {
-    "*": 10
+    "*": 8
   },
   "durabilitybytype": {
     "*": 4000
