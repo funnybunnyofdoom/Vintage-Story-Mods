@@ -398,44 +398,7 @@
         "code": "pettable",
         "minGeneration": 1
       }
-    ],
-    "spawnconditions": {
-      "worldgen": {
-        "TriesPerChunk": {
-          "avg": 0.00004,
-          "var": 0
-        },
-        "tryOnlySurface": true,
-        "minLightLevel": 10,
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
-        "minTemp": -10,
-        "maxTemp": 20,
-        "minRain": 0.43,
-        "companions": []
-      },
-      "runtime": {
-        "group": "neutral",
-        "tryOnlySurface": true,
-        "chance": 0.000003,
-        "maxQuantity": 1,
-        "minLightLevel": 10,
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*", "game:snowlayer-1" ],
-        "minTemp": -10,
-        "maxTemp": 20,
-        "minRain": 0.43,
-        "companions": []
-      }
-    }
+    ]
   },
   "sounds": {
     "hurt": "game:creature/sheep/hurt",
