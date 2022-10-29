@@ -1,0 +1,41 @@
+{
+  "code": "magicProjectile",
+  "class": "EntityThrownStone",
+  "hitboxSize": {
+    "x": 0.4,
+    "y": 0.2
+  },
+  "deadHitboxSize": {
+    "x": 0.25,
+    "y": 0.125
+  },
+  "client": {
+    "renderer": "Shape",
+    "textures": {
+      "material": { "base": "game:block/stone/rock/granite1" }
+    },
+    "shape": { "base": "game:item/stone" },
+    "size": 1,
+    "behaviors": [
+      { "code": "passivephysics" },
+      { "code": "interpolateposition" }
+    ]
+  },
+  "server": {
+    "behaviors": [
+      { "code": "passivephysics" },
+      {
+        "code": "despawn",
+        "minSeconds": 300
+      }
+    ]
+  },
+  "sounds": {
+  },
+  "attributes": {
+    "physics": {
+      "groundDragFactor": 1,
+      "airDragFactor": 0.25
+    }
+  }
+}

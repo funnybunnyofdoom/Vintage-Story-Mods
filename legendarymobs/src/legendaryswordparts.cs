@@ -6,6 +6,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 
@@ -17,6 +18,12 @@ namespace legendarymobs.src
         {
             base.Start(api);
             api.RegisterItemClass("legendaryswordparts", typeof(legendaryswordparts));
+            AiTaskRegistry.Register("magicAttack", typeof(AiTaskLegendaryRanged));
+        }
+        public override void StartServerSide(ICoreServerAPI api)
+        {
+            base.StartServerSide(api);
+            AiTaskRegistry.Register<AiTaskLegendaryRanged>("magicAttack");
         }
     }
     
