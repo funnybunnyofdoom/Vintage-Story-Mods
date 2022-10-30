@@ -89,5 +89,5 @@ Will add a feature to progress to day whenever a player logs in.
         Simple trader addition that sells animals
 
 -Legendary Mobs: [Funnybunnyofdoom]
-	Giant versions of mobs, and legendary versions of other resources. Will Spawn in shrines randomly generated around the world. Legendary bloom smiths to legendary ingot, then into legendary items. 
+	Giant versions of mobs, and legendary versions of other resources. Will Spawn in shrines randomly generated around the world. Legendary bloom smiths to legendary ingot, then into legendary items. Working on projectiles and fat qenching
  
