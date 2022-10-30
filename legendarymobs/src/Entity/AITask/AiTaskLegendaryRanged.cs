@@ -139,13 +139,11 @@ namespace legendarymobs.src
                 didThrow = true;
 
                 EntityProperties type = entity.World.GetEntityType(new AssetLocation("legendarymobs:magicProjectile"));
-                System.Diagnostics.Debug.WriteLine("type: "+type); //TESTING
                 Entity entitypr = entity.World.ClassRegistry.CreateEntity(type);
                 ((EntityThrownStone)entitypr).FiredBy = entity;
                 ((EntityThrownStone)entitypr).Damage = 1;
                 ((EntityThrownStone)entitypr).ProjectileStack = new ItemStack(entity.World.GetItem(new AssetLocation("stone-granite")));
                 ((EntityThrownStone)entitypr).NonCollectible = true;
-
                 Vec3d pos = entity.ServerPos.XYZ.Add(0, entity.LocalEyePos.Y, 0);
                 Vec3d aheadPos = targetEntity.ServerPos.XYZ.Add(0, targetEntity.LocalEyePos.Y, 0);
 
@@ -161,6 +159,7 @@ namespace legendarymobs.src
                 entitypr.Pos.SetFrom(entitypr.ServerPos);
                 entitypr.World = entity.World;
                 entity.World.SpawnEntity(entitypr);
+                entitypr.StartAnimation("magic");
             }
 
             return accum < durationMs / 1000f;

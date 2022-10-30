@@ -138,5 +138,73 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Cube1",
+			"from": [ 4.0, -1.9, 7.5 ], 
+			"to": [ 5.0, -0.9, 8.5 ], 
+			"rotationOrigin": [ 4.0, -1.9, 7.0 ],
+			"faces": {
+				"north": { "texture": "#col56", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"east": { "texture": "#col56", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"south": { "texture": "#col56", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"west": { "texture": "#col56", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"up": { "texture": "#col56", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"down": { "texture": "#col56", "uv": [ 0.0, 0.0, 1.0, 1.0 ] }
+			}
+		},
+		{
+			"name": "Cube10",
+			"from": [ 11.0, -1.9, 7.5 ], 
+			"to": [ 12.0, -0.9, 8.5 ], 
+			"rotationOrigin": [ 11.0, -1.9, 7.0 ],
+			"faces": {
+				"north": { "texture": "#col53", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"east": { "texture": "#col53", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"south": { "texture": "#col53", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"west": { "texture": "#col53", "uv": [ 0.5, -1.0, 1.5, 0.0 ] },
+				"up": { "texture": "#col53", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+				"down": { "texture": "#col53", "uv": [ 0.0, 0.0, 1.0, 1.0 ] }
+			}
 		}
-	]}
+	],
+	"animations": [
+		{
+			"name": "Animation 1",
+			"code": "magic",
+			"quantityframes": 60,
+			"onActivityStopped": "Stop",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"Cube1": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 },
+						"Cube10": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 }
+					}
+				},
+				{
+					"frame": 15,
+					"elements": {
+						"Cube1": { "offsetX": 3.5, "offsetY": 3.0, "offsetZ": 0.0 },
+						"Cube10": { "offsetX": -3.5, "offsetY": 0.0, "offsetZ": 4.0 }
+					}
+				},
+				{
+					"frame": 30,
+					"elements": {
+						"Cube1": { "offsetX": 7.0, "offsetY": 0.0, "offsetZ": 0.0 },
+						"Cube10": { "offsetX": -7.0, "offsetY": 0.0, "offsetZ": 0.0 }
+					}
+				},
+				{
+					"frame": 45,
+					"elements": {
+						"Cube1": { "offsetX": 3.5, "offsetY": -3.0, "offsetZ": 0.0 },
+						"Cube10": { "offsetX": -3.5, "offsetY": 0.0, "offsetZ": -3.0 }
+					}
+				}
+			]
+		}
+	]
+}
