@@ -141,7 +141,7 @@ namespace legendarymobs.src
                 EntityProperties type = entity.World.GetEntityType(new AssetLocation("legendarymobs:magicProjectile"));
                 Entity entitypr = entity.World.ClassRegistry.CreateEntity(type);
                 ((EntityThrownStone)entitypr).FiredBy = entity;
-                ((EntityThrownStone)entitypr).Damage = 1;
+                ((EntityThrownStone)entitypr).Damage = 3;
                 ((EntityThrownStone)entitypr).ProjectileStack = new ItemStack(entity.World.GetItem(new AssetLocation("stone-granite")));
                 ((EntityThrownStone)entitypr).NonCollectible = true;
                 Vec3d pos = entity.ServerPos.XYZ.Add(0, entity.LocalEyePos.Y, 0);
