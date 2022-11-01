@@ -182,15 +182,6 @@
           },
           {
             "type": "item",
-            "code": "legendarymobs:legendary-bloom-2",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
             "code": "legendarymobs:legendarysword-hilt-worn",
             "quantity": {
               "avg": 0.03,
