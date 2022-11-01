@@ -391,7 +391,7 @@
           {
             "code": "magicAttack",
             "entityCodes": [ "player" ],
-            "priority": 1.5,
+            "priority": 1.9,
             "priorityForCancel": 9,
             "mincooldown": 1000,
             "maxcooldown": 6000,
