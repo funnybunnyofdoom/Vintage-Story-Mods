@@ -79,11 +79,18 @@
   "legendarymobs:item-dead-creature-legendary-gazelle-swift": "Slain Swift Legendary Gazelle",
 
   //items
-  "legendarymobs:item-legendary-bloom-1": "Ruined Legendary Bloom Blade Shaft",
-  "legendarymobs:item-legendary-bloom-2": "Ruined Legendary Bloom Blade tip",
+  "legendarymobs:item-legendary-bloom-1": "Legendary Bloom",
+  "legendarymobs:item-legendary-bloom-2": "Legendary Bloom",
   "legendarymobs:item-legendarysword-hilt-worn": "Ruined Legendary Hilt",
   "legendarymobs:item-legendarysword-hilt-fixed": "Legendary Sword Hilt",
   "legendarymobs:item-legendary-sword": "Legendary Sword",
   "legendarymobs:item-legendarysword-blade-1": "Ruinied Legendary Bloom Blade Shaft",
-  "legendarymobs:item-legendarysword-blade-2": "Ruined Legendary Bloom Blade tip"
+  "legendarymobs:item-legendarysword-blade-2": "Ruined Legendary Bloom Blade tip",
+
+  "legendarymobs:item-legendary-hammerhead": "Legendary Hammerhead",
+  "legendarymobs:item-legendary-hammer": "Legendary Hammer",
+  "legendarymobs:item-legendary-amber-swordhilt": "Fossilized Amber",
+
+  "legendarymobs:incontainer-item-liquid-fat": "Melted Fat",
+  "legendarymobs:item-liquid-fat": "Melted Fat"
 }
