@@ -201,7 +201,7 @@
           },
           {
             "type": "item",
-            "code": "game:blade-falx-steel",
+            "code": "game:blade-falx-iron",
             "quantity": {
               "avg": 0.1,
               "var": 1
@@ -210,7 +210,7 @@
           },
           {
             "type": "item",
-            "code": "game:metalchain-steel",
+            "code": "game:metalchain-iron",
             "quantity": {
               "avg": 0.025,
               "var": 1
@@ -219,7 +219,7 @@
           },
           {
             "type": "item",
-            "code": "game:metalplate-steel",
+            "code": "game:metalplate-iron",
             "quantity": {
               "avg": 0.04,
               "var": 1
