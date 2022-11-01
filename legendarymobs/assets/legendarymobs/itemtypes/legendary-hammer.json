@@ -1,6 +1,6 @@
 {
   "code": "legendary-hammer",
-  "class": "ItemHammer",
+  "class": "legendaryhammer",
   "storageFlags": 257,
   "attributes": {
     "toolrackTransform": {
@@ -65,6 +65,13 @@
     }
   },
   "tooltier": 5,
+  "miningspeed": {
+    "ceramic": 3.25,
+    "stone": 9,
+    "ore": 9,
+    "metal": 9,
+    "ice": 4.25
+  },
   "durability": 4500,
   "attackpower": 3,
   "creativeinventory": {
