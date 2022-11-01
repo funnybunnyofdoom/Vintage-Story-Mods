@@ -209,7 +209,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:blade-falx-steel",
+							"code": "game:blade-falx-iron",
 							"quantity": {
 								"avg": 0.1,
 								"var": 1
@@ -218,7 +218,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalchain-steel",
+							"code": "game:metalchain-iron",
 							"quantity": {
 								"avg": 0.025,
 								"var": 1
@@ -227,7 +227,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalplate-steel",
+							"code": "game:metalplate-iron",
 							"quantity": {
 								"avg": 0.04,
 								"var": 1
@@ -500,7 +500,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:blade-falx-steel",
+							"code": "game:blade-falx-iron",
 							"quantity": {
 								"avg": 0.1,
 								"var": 1
@@ -509,7 +509,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalchain-steel",
+							"code": "game:metalchain-iron",
 							"quantity": {
 								"avg": 0.025,
 								"var": 1
@@ -518,7 +518,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalplate-steel",
+							"code": "game:metalplate-iron",
 							"quantity": {
 								"avg": 0.04,
 								"var": 1
@@ -669,6 +669,19 @@
 						{
 							"code": "lookaround",
 							"priority": 0.5
+						},
+						{
+							"code": "magicAttack",
+							"entityCodes": [ "player" ],
+							"priority": 1.5,
+							"priorityForCancel": 9,
+							"mincooldown": 1000,
+							"maxcooldown": 6000,
+							"durationMs": 1200,
+							"releaseAtMs": 300,
+							"seekingRange": 20,
+							"animationSpeed": 1.5,
+							"animation": "Attack"
 						}
 					]
 				},
@@ -778,7 +791,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:blade-falx-steel",
+							"code": "game:blade-falx-iron",
 							"quantity": {
 								"avg": 0.1,
 								"var": 1
@@ -787,7 +800,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalchain-steel",
+							"code": "game:metalchain-iron",
 							"quantity": {
 								"avg": 0.025,
 								"var": 1
@@ -796,7 +809,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalplate-steel",
+							"code": "game:metalplate-iron",
 							"quantity": {
 								"avg": 0.04,
 								"var": 1
@@ -947,6 +960,19 @@
 						{
 							"code": "lookaround",
 							"priority": 0.5
+						},
+						{
+							"code": "magicAttack",
+							"entityCodes": [ "player" ],
+							"priority": 1.5,
+							"priorityForCancel": 9,
+							"mincooldown": 1000,
+							"maxcooldown": 6000,
+							"durationMs": 1200,
+							"releaseAtMs": 300,
+							"seekingRange": 20,
+							"animationSpeed": 1.5,
+							"animation": "Attack"
 						}
 					]
 				},
@@ -1056,7 +1082,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:blade-falx-steel",
+							"code": "game:blade-falx-iron",
 							"quantity": {
 								"avg": 0.1,
 								"var": 1
@@ -1065,7 +1091,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalchain-steel",
+							"code": "game:metalchain-iron",
 							"quantity": {
 								"avg": 0.025,
 								"var": 1
@@ -1074,7 +1100,7 @@
 						},
 						{
 							"type": "item",
-							"code": "game:metalplate-steel",
+							"code": "game:metalplate-iron",
 							"quantity": {
 								"avg": 0.04,
 								"var": 1
@@ -1225,6 +1251,19 @@
 						{
 							"code": "lookaround",
 							"priority": 0.5
+						},
+						{
+							"code": "magicAttack",
+							"entityCodes": [ "player" ],
+							"priority": 1.5,
+							"priorityForCancel": 9,
+							"mincooldown": 1000,
+							"maxcooldown": 6000,
+							"durationMs": 1200,
+							"releaseAtMs": 300,
+							"seekingRange": 20,
+							"animationSpeed": 1.5,
+							"animation": "Attack"
 						}
 					]
 				},

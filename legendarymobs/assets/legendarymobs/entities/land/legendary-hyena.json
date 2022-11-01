@@ -329,6 +329,19 @@
           {
             "code": "lookaround",
             "priority": 0.5
+          },
+          {
+            "code": "magicAttack",
+            "entityCodes": [ "player" ],
+            "priority": 1.5,
+            "priorityForCancel": 9,
+            "mincooldown": 1000,
+            "maxcooldown": 6000,
+            "durationMs": 1200,
+            "releaseAtMs": 300,
+            "seekingRange": 20,
+            "animationSpeed": 1.5,
+            "animation": "Attack"
           }
         ],
         "spawnconditions": {
