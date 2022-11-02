@@ -4,9 +4,16 @@
 		{
 			"code": "type",
 			"states": [ "1", "2" ]
+		},
+		{
+			"code": "finished",
+			"states": [ "rough", "finished" ]
 		}
 	],
 	"shape": { "base": "legendarymobs:item/legendary-sword-blade-{type}" },
+	"textures": {
+		"rusty-iron": { "base": "legendarymobs:legendary-{finished}" }
+	},
 	"creativeinventory": {
 		"general": [ "*" ],
 		"items": [ "*" ]

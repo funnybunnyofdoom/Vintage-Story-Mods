@@ -19,7 +19,7 @@
     "name": "Sword Blade 1",
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendarysword-blade-1"
+      "code": "legendarymobs:legendarysword-blade-1-rough"
     }
   },
   {
@@ -42,7 +42,7 @@
     "name": "Sword Blade 2",
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendarysword-blade-2"
+      "code": "legendarymobs:legendarysword-blade-2-rough"
     }
   }
 ]

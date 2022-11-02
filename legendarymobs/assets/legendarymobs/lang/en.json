@@ -84,8 +84,10 @@
   "legendarymobs:item-legendarysword-hilt-worn": "Ruined Legendary Hilt",
   "legendarymobs:item-legendarysword-hilt-fixed": "Legendary Sword Hilt",
   "legendarymobs:item-legendary-sword": "Legendary Sword",
-  "legendarymobs:item-legendarysword-blade-1": "Ruinied Legendary Bloom Blade Shaft",
-  "legendarymobs:item-legendarysword-blade-2": "Ruined Legendary Bloom Blade tip",
+  "legendarymobs:item-legendarysword-blade-1-rough": "Ruined Legendary Blade Shaft",
+  "legendarymobs:item-legendarysword-blade-2-rough": "Ruined Legendary Blade tip",
+  "legendarymobs:item-legendarysword-blade-1-finished": "Restored Legendary Blade Shaft",
+  "legendarymobs:item-legendarysword-blade-2-finished": "Restored Legendary Blade tip",
 
   "legendarymobs:item-legendary-hammerhead-rough": "Unfinished Legendary Hammerhead",
   "legendarymobs:item-legendary-hammerhead-finished": "Refined Legendary Hammerhead",

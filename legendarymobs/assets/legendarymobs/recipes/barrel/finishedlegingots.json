@@ -1,6 +1,6 @@
 [
   {
-    "code": "legendaryingot",
+    "code": "legendaryhammerheadrefine",
     "sealHours": 72,
     "ingredients": [
       {
@@ -18,6 +18,50 @@
     "output": {
       "type": "item",
       "code": "legendarymobs:legendary-hammerhead-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryswordparts",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-blade-1-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-blade-1-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryswordparts2",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-blade-2-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-blade-2-finished",
       "stackSize": 1
     }
   }
