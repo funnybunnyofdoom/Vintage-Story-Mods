@@ -3,7 +3,7 @@
     "ingredients": {
       "H": {
         "type": "item",
-        "code": "legendarymobs:legendary-hammerhead"
+        "code": "legendarymobs:legendary-hammerhead-finished"
       },
       "S": {
         "type": "item",

@@ -16,7 +16,6 @@ namespace legendarymobs.src
         {
             if (blockSel.Block.Code.Path.StartsWith("rock")) //Check that the block begins with the prefix "rock"
             {
-                //string rocktype = blockSel.Block.LastCodePart(); //Store the rocktype, this gets the last code part from the block code
                 Vec3d position = blockSel.Position.ToVec3d(); //Save the position of the block broken
                 ItemStack item = new ItemStack(blockSel.Block); //Create an itemstack of the broken block
                 item.StackSize = 1; //Make the itemstack only contain 1 block

@@ -1,0 +1,24 @@
+[
+  {
+    "code": "legendaryingot",
+    "sealHours": 72,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendary-hammerhead-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendary-hammerhead-finished",
+      "stackSize": 1
+    }
+  }
+]

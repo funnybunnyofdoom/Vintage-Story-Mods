@@ -20,6 +20,6 @@
   "name": "Legendary Hammer",
   "output": {
     "type": "item",
-    "code": "legendarymobs:legendary-hammerhead"
+    "code": "legendarymobs:legendary-hammerhead-rough"
   }
 }
