@@ -1,5 +1,6 @@
 {
   "code": "legendary-pickaxe",
+  "class": "legendarypickaxe",
   "storageFlags": 5,
   "attributes": {
     "toolrackTransform": {

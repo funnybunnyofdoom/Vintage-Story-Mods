@@ -19,6 +19,7 @@ namespace legendarymobs.src
             base.Start(api);
             AiTaskRegistry.Register("magicAttack", typeof(AiTaskLegendaryRanged));
             api.RegisterItemClass("legendaryhammer", typeof(legendaryhammer));
+            api.RegisterItemClass("legendarypickaxe", typeof(legendarypickaxe));
         }
         public override void StartServerSide(ICoreServerAPI api)
         {
