@@ -1,0 +1,133 @@
+{
+  "code": "legendary-hoe",
+  "attributes": {
+    "toolrackTransform": {
+      "rotation": {
+        "y": 1,
+        "z": -1
+      },
+      "translation": {
+        "x": -0.25,
+        "y": 0.6
+      },
+      "scale": 1.25
+    },
+    "groundStorageTransform": {
+      "translation": {
+        "x": 0,
+        "y": 0.04,
+        "z": -0.23
+      },
+      "rotation": {
+        "x": 23,
+        "y": 87,
+        "z": -90
+      },
+      "scale": 0.88
+    }
+  },
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "WallHalves",
+        "wallOffY": 1,
+        "sprintKey": true,
+        "selectionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 1,
+          "y2": 0.1,
+          "z2": 1
+        },
+        "collisionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 0,
+          "y2": 0,
+          "z2": 0
+        }
+      }
+    }
+  ],
+  "tool": "hoe",
+  "damagedby": [ "blockbreaking", "attacking" ],
+  "heldTpHitAnimation": "hoe",
+  "shape": { "base": "legendarymobs:item/legendary-hoe" },
+  "tooltier": 5,
+  "miningspeed": {
+    "soil": 8
+  },
+  "durability": 4500,
+  "attackpower": 3,
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "tools": [ "*" ]
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": -0.3,
+      "y": -0.2,
+      "z": 0
+    },
+    "rotation": {
+      "x": -7,
+      "y": 16,
+      "z": 90
+    },
+    "scale": 2.5
+  },
+  "guiTransform": {
+    "rotate": false,
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": -56,
+      "y": -127,
+      "z": -180
+    },
+    "origin": {
+      "x": 0.35,
+      "y": 0,
+      "z": 0.55
+    },
+    "scale": 1.43
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 3.6
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1,
+      "y": -0.5,
+      "z": -0.08
+    },
+    "rotation": {
+      "x": 90,
+      "y": 0,
+      "z": -5
+    },
+    "scale": 1
+  }
+}

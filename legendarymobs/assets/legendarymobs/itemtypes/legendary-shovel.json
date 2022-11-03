@@ -1,0 +1,135 @@
+{
+  "code": "legendary-shovel",
+  "attributes": {
+    "toolrackTransform": {
+      "rotation": {
+        "y": 1,
+        "z": -1
+      },
+      "translation": {
+        "x": -0.47,
+        "y": 0.6
+      },
+      "scale": 1.25
+    },
+    "groundStorageTransform": {
+      "translation": {
+        "x": 0,
+        "y": 0.70,
+        "z": -0.18
+      },
+      "rotation": {
+        "x": 13,
+        "y": 88,
+        "z": -87
+      },
+      "scale": 0.88
+    }
+  },
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "WallHalves",
+        "wallOffY": 2,
+        "sprintKey": true,
+        "selectionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 1,
+          "y2": 0.1,
+          "z2": 1
+        },
+        "collisionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 0,
+          "y2": 0,
+          "z2": 0
+        }
+      }
+    }
+  ],
+  "tool": "shovel",
+  "damagedby": [ "blockbreaking", "attacking" ],
+  "heldTpHitAnimation": "shoveldig",
+  "shape": { "base": "legendarymobs:item/legendary-shovel" },
+  "tooltier": 5,
+  "miningspeed": {
+    "soil": 7,
+    "sand": 7,
+    "gravel": 4.4,
+    "snow": 4.4
+  },
+  "durability": 4500,
+  "attackpower": 3,
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "tools": [ "*" ]
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0.0468,
+      "y": -0.2,
+      "z": 0
+    },
+    "rotation": {
+      "x": -15,
+      "y": 15,
+      "z": 100
+    },
+    "scale": 2
+  },
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": -113,
+      "y": -147,
+      "z": 139
+    },
+    "origin": {
+      "x": 0.2,
+      "y": 0.7,
+      "z": 0.8
+    },
+    "scale": 1.18
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 3.6
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.04,
+      "y": -0.24,
+      "z": -0.61
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": -10
+    },
+    "scale": 0.8
+  }
+}
