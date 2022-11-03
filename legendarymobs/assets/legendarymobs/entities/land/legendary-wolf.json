@@ -100,348 +100,1034 @@
     ]
   },
   "server": {
-    "behaviors": [
-      { "code": "repulseagents" },
-      {
-        "code": "controlledphysics",
-        "stepHeight": 2
-      },
-      {
-        "code": "despawn",
-        "minPlayerDistance": 8,
-        "belowLightLevel": 8,
-        "minSeconds": 1800
-      },
-      {
-        "code": "health",
-        "currenthealth": 140,
-        "maxhealth": 140
-      },
-      {
-        "code": "deaddecay",
-        "hoursToDecay": 96,
-        "decayedBlock": "game:carcass-large"
-      },
-      {
-        "code": "floatupwhenstuck",
-        "onlyWhenDead": true
-      },
-      {
-        "code": "harvestable",
-        "drops": [
-          {
-            "type": "item",
-            "code": "game:redmeat-raw",
-            "quantity": {
-              "avg": 32,
-              "var": 16
-            }
-          },
-          {
-            "type": "item",
-            "code": "game:hide-raw-huge",
-            "quantity": {
-              "avg": 4,
-              "var": 4
-            }
-          },
-          {
-            "type": "item",
-            "code": "game:fat",
-            "quantity": {
-              "avg": 12,
-              "var": 12
-            }
-          },
-          {
-            "type": "item",
-            "code": "legendarymobs:legendary-bloom-1",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "legendarymobs:legendarysword-hilt-worn",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:gear-temporal",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:gear-rusty",
-            "dropModbyStat": "rustyGearDropRate",
-            "quantity": {
-              "avg": 0.05,
-              "var": 32
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:blade-falx-iron",
-            "quantity": {
-              "avg": 0.1,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:metalchain-iron",
-            "quantity": {
-              "avg": 0.025,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:metalplate-iron",
-            "quantity": {
-              "avg": 0.04,
-              "var": 1
-            },
-            "lastDrop": true
-          }
-        ]
-      },
-      { "code": "breathe" },
-      {
-        "code": "multiply",
-        "quantityPerDay": 0,
-        "spawnEntityCode": "game:wolf-pup",
-        "growthCapQuantity": 10,
-        "growthCapRange": 15,
-        "growthCapEntityCodes": [ "game:wolf-pup", "game:wolf-female", "game:wolf-male", "legendarymobs:legendary-wolf" ],
-        "requiresNearbyEntityCode": "game:wolf-male",
-        "requiresNearbyEntityRange": 10
-      },
-      {
-        "code": "emotionstates",
-        "states": [
-          {
-            "code": "saturated",
-            "duration": 1200,
-            "chance": 1,
-            "slot": 0,
-            "priority": 1,
-            "accumType": "sum",
-            "belowTempDuration": 600,
-            "belowTempThreshold": -5
-          },
-          {
-            "code": "aggressiveondamage",
-            "duration": 30,
-            "chance": 1,
-            "slot": 2,
-            "priority": 2,
-            "accumType": "noaccum"
-          },
-          {
-            "code": "alarmherdondamage",
-            "chance": 1,
-            "slot": 1,
-            "priority": 1,
-            "accumType": "max"
-          }
-        ]
-      },
-      {
-        "code": "taskai",
-        "aitasks": [
-          {
-            "code": "meleeattack",
-            "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*", "game:pig-wild-*" ],
-            "priority": 2,
-            "damage": 12,
-            "damageTier": 4,
-            "damageType": "SlashingAttack",
-            "slot": 1,
-            "mincooldown": 1500,
-            "maxcooldown": 2000,
-            "attackDurationMs": 800,
-            "damagePlayerAtMs": 500,
-            "animation": "Attack",
-            "animationSpeed": 2.5,
-            "sound": "game:creature/wolf/attack"
-          },
-          {
-            "code": "seekentity",
-            "entityCodes": [ "player" ],
-            "priority": 1.51,
-            "movespeed": 0.045,
-            "seekingRange": 9,
-
-            "belowTempSeekingRange": 25,
-            "belowTempThreshold": -5,
-
-            "animation": "Run",
-            "animationSpeed": 2.2,
-            "leapAtTarget": true,
-            "leapAnimation": null,
-            "leapChance": 0.01,
-            "sound": "game:creature/wolf/growl",
-            "whenNotInEmotionState": "saturated"
-          },
-          {
-            "code": "seekentity",
-            "entityCodes": [ "player", "chicken-rooster", "chicken-hen", "chicken-baby", "hare-*" ],
-            "priority": 1.5,
-            "movespeed": 0.045,
-            "seekingRange": 15,
-
-            "belowTempSeekingRange": 25,
-            "belowTempThreshold": -5,
-
-            "animation": "Run",
-            "animationSpeed": 2.2,
-            "leapAtTarget": true,
-            "leapAnimation": null,
-            "leapChance": 0.01,
-            "sound": "game:creature/wolf/growl",
-            "whenNotInEmotionState": "saturated"
-          },
-          {
-            "code": "seekentity",
-            "entityCodes": [ "player" ],
-            "priority": 1.49,
-            "movespeed": 0.045,
-            "seekingRange": 15,
-            "animation": "Run",
-            "animationSpeed": 2.2,
-            "leapAtTarget": true,
-            "leapAnimation": null,
-            "leapChance": 0.01,
-            "sound": "game:creature/wolf/growl",
-            "whenInEmotionState": "aggressiveondamage"
-          },
-
-
-          {
-            "code": "idle",
-            "priority": 1.45,
-            "priorityForCancel": 1.55,
-            "minduration": 200000,
-            "maxduration": 800000,
-            "mincooldown": 10000,
-            "maxcooldown": 30000,
-            "animation": "Sleep",
-            "whenNotInEmotionState": "aggressiveondamage",
-            "duringDayTimeFrames": [
-              {
-                "fromHour": 10,
-                "toHour": 18
-              },
-              {
-                "fromHour": 1,
-                "toHour": 3
+    "behaviorsByType": {
+      "*-great": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1800
+        },
+        {
+          "code": "health",
+          "currenthealth": 140,
+          "maxhealth": 140
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 16
               }
-            ],
-            "stopOnNearbyEntityCodes": [ "player" ],
-            "stopRange": 10,
-            "stopOnHurt": true
-          },
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "multiply",
+          "quantityPerDay": 0,
+          "spawnEntityCode": "game:wolf-pup",
+          "growthCapQuantity": 10,
+          "growthCapRange": 15,
+          "growthCapEntityCodes": [ "game:wolf-pup", "game:wolf-female", "game:wolf-male", "legendarymobs:legendary-wolf" ],
+          "requiresNearbyEntityCode": "game:wolf-male",
+          "requiresNearbyEntityRange": 10
+        },
+        {
+          "code": "emotionstates",
+          "states": [
+            {
+              "code": "saturated",
+              "duration": 1200,
+              "chance": 1,
+              "slot": 0,
+              "priority": 1,
+              "accumType": "sum",
+              "belowTempDuration": 600,
+              "belowTempThreshold": -5
+            },
+            {
+              "code": "aggressiveondamage",
+              "duration": 30,
+              "chance": 1,
+              "slot": 2,
+              "priority": 2,
+              "accumType": "noaccum"
+            },
+            {
+              "code": "alarmherdondamage",
+              "chance": 1,
+              "slot": 1,
+              "priority": 1,
+              "accumType": "max"
+            }
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*", "game:pig-wild-*" ],
+              "priority": 2,
+              "damage": 17,
+              "damageTier": 4,
+              "damageType": "SlashingAttack",
+              "slot": 1,
+              "mincooldown": 1500,
+              "maxcooldown": 2000,
+              "attackDurationMs": 800,
+              "damagePlayerAtMs": 500,
+              "animation": "Attack",
+              "animationSpeed": 2.5,
+              "sound": "game:creature/wolf/attack"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.51,
+              "movespeed": 0.045,
+              "seekingRange": 9,
 
-          {
-            "code": "getoutofwater",
-            "priority": 1.4,
-            "movespeed": 0.015,
-            "animation": "Walk",
-            "animationSpeed": 2.2
-          },
-          {
-            "code": "stayclosetoentity",
-            "priority": 1.35,
-            "entityCode": "game:wolf-male",
-            "movespeed": 0.04,
-            "maxDistance": 10,
-            "searchRange": 25,
-            "animationSpeed": 2,
-            "animation": "Run"
-          },
-          {
-            "code": "idle",
-            "priority": 1.3,
-            "priorityForCancel": 1.35,
-            "minduration": 4667,
-            "maxduration": 4667,
-            "mincooldown": 80000,
-            "maxcooldown": 500000,
-            "animation": "Howl",
-            "animationSpeed": 0.5,
-            "sound": "game:creature/wolf/howl",
-            "soundRange": 330
-          },
-          {
-            "code": "idle",
-            "priority": 1.2,
-            "priorityForCancel": 1.35,
-            "minduration": 2500,
-            "maxduration": 2500,
-            "mincooldown": 6000,
-            "maxcooldown": 20000,
-            "animation": "Sniff",
-            "animationSpeed": 1.25
-          },
-          {
-            "code": "wander",
-            "priority": 1.0,
-            "priorityForCancel": 1.3,
-            "movespeed": 0.006,
-            "animation": "Walk",
-            "preferredLightLevel": 20
-          },
-          {
-            "code": "idle",
-            "priority": 0.9,
-            "minduration": 5000,
-            "maxduration": 30000,
-            "mincooldown": 2000,
-            "maxcooldown": 120000,
-            "priorityForCancel": 1.33,
-            "animation": "Sit",
-            "whenNotInEmotionState": "aggressiveondamage",
-            "stopOnNearbyEntityCodes": [ "player" ],
-            "stopRange": 5
-          },
-          {
-            "code": "lookaround",
-            "priority": 0.5
-          },
-          {
-            "code": "magicAttack",
-            "entityCodes": [ "player" ],
-            "priority": 1.9,
-            "priorityForCancel": 9,
-            "mincooldown": 1000,
-            "maxcooldown": 6000,
-            "durationMs": 1200,
-            "releaseAtMs": 300,
-            "seekingRange": 20,
-            "animationSpeed": 1.5,
-            "animation": "Attack"
-          }
-        ]
-      },
-      {
-        "code": "ropetieable",
-        "minGeneration": 2
-      }
-    ],
+              "belowTempSeekingRange": 25,
+              "belowTempThreshold": -5,
+
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenNotInEmotionState": "saturated"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player", "chicken-rooster", "chicken-hen", "chicken-baby", "hare-*" ],
+              "priority": 1.5,
+              "movespeed": 0.045,
+              "seekingRange": 15,
+
+              "belowTempSeekingRange": 25,
+              "belowTempThreshold": -5,
+
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenNotInEmotionState": "saturated"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.49,
+              "movespeed": 0.045,
+              "seekingRange": 15,
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenInEmotionState": "aggressiveondamage"
+            },
+
+
+            {
+              "code": "idle",
+              "priority": 1.45,
+              "priorityForCancel": 1.55,
+              "minduration": 200000,
+              "maxduration": 800000,
+              "mincooldown": 10000,
+              "maxcooldown": 30000,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 10,
+                  "toHour": 18
+                },
+                {
+                  "fromHour": 1,
+                  "toHour": 3
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 10,
+              "stopOnHurt": true
+            },
+
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.015,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "stayclosetoentity",
+              "priority": 1.35,
+              "entityCode": "game:wolf-male",
+              "movespeed": 0.04,
+              "maxDistance": 10,
+              "searchRange": 25,
+              "animationSpeed": 2,
+              "animation": "Run"
+            },
+            {
+              "code": "idle",
+              "priority": 1.3,
+              "priorityForCancel": 1.35,
+              "minduration": 4667,
+              "maxduration": 4667,
+              "mincooldown": 80000,
+              "maxcooldown": 500000,
+              "animation": "Howl",
+              "animationSpeed": 0.5,
+              "sound": "game:creature/wolf/howl",
+              "soundRange": 330
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 2500,
+              "maxduration": 2500,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Sniff",
+              "animationSpeed": 1.25
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "priorityForCancel": 1.3,
+              "movespeed": 0.006,
+              "animation": "Walk",
+              "preferredLightLevel": 20
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.33,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.4,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        },
+        {
+          "code": "ropetieable",
+          "minGeneration": 2
+        }
+      ],
+      "*-wise": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1800
+        },
+        {
+          "code": "health",
+          "currenthealth": 190,
+          "maxhealth": 190
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 16
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "multiply",
+          "quantityPerDay": 0,
+          "spawnEntityCode": "game:wolf-pup",
+          "growthCapQuantity": 10,
+          "growthCapRange": 15,
+          "growthCapEntityCodes": [ "game:wolf-pup", "game:wolf-female", "game:wolf-male", "legendarymobs:legendary-wolf" ],
+          "requiresNearbyEntityCode": "game:wolf-male",
+          "requiresNearbyEntityRange": 10
+        },
+        {
+          "code": "emotionstates",
+          "states": [
+            {
+              "code": "saturated",
+              "duration": 1200,
+              "chance": 1,
+              "slot": 0,
+              "priority": 1,
+              "accumType": "sum",
+              "belowTempDuration": 600,
+              "belowTempThreshold": -5
+            },
+            {
+              "code": "aggressiveondamage",
+              "duration": 30,
+              "chance": 1,
+              "slot": 2,
+              "priority": 2,
+              "accumType": "noaccum"
+            },
+            {
+              "code": "alarmherdondamage",
+              "chance": 1,
+              "slot": 1,
+              "priority": 1,
+              "accumType": "max"
+            }
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*", "game:pig-wild-*" ],
+              "priority": 2,
+              "damage": 12,
+              "damageTier": 4,
+              "damageType": "SlashingAttack",
+              "slot": 1,
+              "mincooldown": 1500,
+              "maxcooldown": 2000,
+              "attackDurationMs": 800,
+              "damagePlayerAtMs": 500,
+              "animation": "Attack",
+              "animationSpeed": 2.5,
+              "sound": "game:creature/wolf/attack"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.51,
+              "movespeed": 0.045,
+              "seekingRange": 9,
+
+              "belowTempSeekingRange": 25,
+              "belowTempThreshold": -5,
+
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenNotInEmotionState": "saturated"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player", "chicken-rooster", "chicken-hen", "chicken-baby", "hare-*" ],
+              "priority": 1.5,
+              "movespeed": 0.045,
+              "seekingRange": 15,
+
+              "belowTempSeekingRange": 25,
+              "belowTempThreshold": -5,
+
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenNotInEmotionState": "saturated"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.49,
+              "movespeed": 0.045,
+              "seekingRange": 15,
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenInEmotionState": "aggressiveondamage"
+            },
+
+
+            {
+              "code": "idle",
+              "priority": 1.45,
+              "priorityForCancel": 1.55,
+              "minduration": 200000,
+              "maxduration": 800000,
+              "mincooldown": 10000,
+              "maxcooldown": 30000,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 10,
+                  "toHour": 18
+                },
+                {
+                  "fromHour": 1,
+                  "toHour": 3
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 10,
+              "stopOnHurt": true
+            },
+
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.015,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "stayclosetoentity",
+              "priority": 1.35,
+              "entityCode": "game:wolf-male",
+              "movespeed": 0.04,
+              "maxDistance": 10,
+              "searchRange": 25,
+              "animationSpeed": 2,
+              "animation": "Run"
+            },
+            {
+              "code": "idle",
+              "priority": 1.3,
+              "priorityForCancel": 1.35,
+              "minduration": 4667,
+              "maxduration": 4667,
+              "mincooldown": 80000,
+              "maxcooldown": 500000,
+              "animation": "Howl",
+              "animationSpeed": 0.5,
+              "sound": "game:creature/wolf/howl",
+              "soundRange": 330
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 2500,
+              "maxduration": 2500,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Sniff",
+              "animationSpeed": 1.25
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "priorityForCancel": 1.3,
+              "movespeed": 0.006,
+              "animation": "Walk",
+              "preferredLightLevel": 20
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.33,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        },
+        {
+          "code": "ropetieable",
+          "minGeneration": 2
+        }
+      ],
+      "*-swift": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1800
+        },
+        {
+          "code": "health",
+          "currenthealth": 140,
+          "maxhealth": 140
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 16
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "multiply",
+          "quantityPerDay": 0,
+          "spawnEntityCode": "game:wolf-pup",
+          "growthCapQuantity": 10,
+          "growthCapRange": 15,
+          "growthCapEntityCodes": [ "game:wolf-pup", "game:wolf-female", "game:wolf-male", "legendarymobs:legendary-wolf" ],
+          "requiresNearbyEntityCode": "game:wolf-male",
+          "requiresNearbyEntityRange": 10
+        },
+        {
+          "code": "emotionstates",
+          "states": [
+            {
+              "code": "saturated",
+              "duration": 1200,
+              "chance": 1,
+              "slot": 0,
+              "priority": 1,
+              "accumType": "sum",
+              "belowTempDuration": 600,
+              "belowTempThreshold": -5
+            },
+            {
+              "code": "aggressiveondamage",
+              "duration": 30,
+              "chance": 1,
+              "slot": 2,
+              "priority": 2,
+              "accumType": "noaccum"
+            },
+            {
+              "code": "alarmherdondamage",
+              "chance": 1,
+              "slot": 1,
+              "priority": 1,
+              "accumType": "max"
+            }
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "game:player", "game:chicken-rooster", "game:chicken-hen", "game:chicken-baby", "game:hare-*", "game:sheep-bighorn-*", "game:racoon-*", "game:pig-wild-*" ],
+              "priority": 2,
+              "damage": 12,
+              "damageTier": 4,
+              "damageType": "SlashingAttack",
+              "slot": 1,
+              "mincooldown": 1500,
+              "maxcooldown": 2000,
+              "attackDurationMs": 800,
+              "damagePlayerAtMs": 500,
+              "animation": "Attack",
+              "animationSpeed": 2.5,
+              "sound": "game:creature/wolf/attack"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.51,
+              "movespeed": 0.09,
+              "seekingRange": 9,
+
+              "belowTempSeekingRange": 25,
+              "belowTempThreshold": -5,
+
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenNotInEmotionState": "saturated"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player", "chicken-rooster", "chicken-hen", "chicken-baby", "hare-*" ],
+              "priority": 1.5,
+              "movespeed": 0.09,
+              "seekingRange": 15,
+
+              "belowTempSeekingRange": 25,
+              "belowTempThreshold": -5,
+
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenNotInEmotionState": "saturated"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.49,
+              "movespeed": 0.09,
+              "seekingRange": 15,
+              "animation": "Run",
+              "animationSpeed": 2.2,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "sound": "game:creature/wolf/growl",
+              "whenInEmotionState": "aggressiveondamage"
+            },
+
+
+            {
+              "code": "idle",
+              "priority": 1.45,
+              "priorityForCancel": 1.55,
+              "minduration": 200000,
+              "maxduration": 800000,
+              "mincooldown": 10000,
+              "maxcooldown": 30000,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 10,
+                  "toHour": 18
+                },
+                {
+                  "fromHour": 1,
+                  "toHour": 3
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 10,
+              "stopOnHurt": true
+            },
+
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.03,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "stayclosetoentity",
+              "priority": 1.35,
+              "entityCode": "game:wolf-male",
+              "movespeed": 0.08,
+              "maxDistance": 10,
+              "searchRange": 25,
+              "animationSpeed": 2,
+              "animation": "Run"
+            },
+            {
+              "code": "idle",
+              "priority": 1.3,
+              "priorityForCancel": 1.35,
+              "minduration": 4667,
+              "maxduration": 4667,
+              "mincooldown": 80000,
+              "maxcooldown": 500000,
+              "animation": "Howl",
+              "animationSpeed": 0.5,
+              "sound": "game:creature/wolf/howl",
+              "soundRange": 330
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 2500,
+              "maxduration": 2500,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Sniff",
+              "animationSpeed": 1.25
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "priorityForCancel": 1.3,
+              "movespeed": 0.012,
+              "animation": "Walk",
+              "preferredLightLevel": 20
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.33,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        },
+        {
+          "code": "ropetieable",
+          "minGeneration": 2
+        }
+      ]
+    },
     "spawnconditions": {
       "worldgen": {
         "TriesPerChunk": {

@@ -96,276 +96,818 @@
     ]
   },
   "server": {
-    "behaviors": [
-      { "code": "repulseagents" },
-      {
-        "code": "controlledphysics",
-        "stepHeight": 2
-      },
-      {
-        "code": "despawn",
-        "minPlayerDistance": 8,
-        "belowLightLevel": 8,
-        "minSeconds": 1200
-      },
-      {
-        "code": "health",
-        "currenthealth": 180,
-        "maxhealth": 180
-      },
-      {
-        "code": "deaddecay",
-        "hoursToDecay": 96,
-        "decayedBlock": "game:carcass-large"
-      },
-      {
-        "code": "floatupwhenstuck",
-        "onlyWhenDead": true
-      },
-      {
-        "code": "harvestable",
-        "drops": [
-          {
-            "type": "item",
-            "code": "game:redmeat-raw",
-            "quantity": {
-              "avg": 32,
-              "var": 32
-            }
-          },
-          {
-            "type": "item",
-            "code": "game:hide-raw-huge",
-            "quantity": {
-              "avg": 4,
-              "var": 4
-            }
-          },
-          {
-            "type": "item",
-            "code": "game:fat",
-            "quantity": {
-              "avg": 12,
-              "var": 12
-            }
-          },
-          {
-            "type": "item",
-            "code": "legendarymobs:legendary-bloom-1",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "legendarymobs:legendarysword-hilt-worn",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:gear-temporal",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:gear-rusty",
-            "dropModbyStat": "rustyGearDropRate",
-            "quantity": {
-              "avg": 0.05,
-              "var": 32
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:blade-falx-iron",
-            "quantity": {
-              "avg": 0.1,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:metalchain-iron",
-            "quantity": {
-              "avg": 0.025,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:metalplate-iron",
-            "quantity": {
-              "avg": 0.04,
-              "var": 1
-            },
-            "lastDrop": true
-          }
-        ]
-      },
-      { "code": "breathe" },
-      {
-        "code": "emotionstates",
-        "states": [
-          {
-            "code": "aggressiveondamage",
-            "duration": 30,
-            "chance": 1,
-            "slot": 2,
-            "priority": 2,
-            "accumType": "noaccum"
-          },
-          {
-            "code": "alarmherdondamage",
-            "chance": 1,
-            "slot": 1,
-            "priority": 1,
-            "accumType": "max"
-          }
-        ]
-      },
-      {
-        "code": "taskai",
-        "aitasks": [
-          {
-            "code": "meleeattack",
-            "entityCodes": [ "player" ],
-            "priority": 2,
-            "damage": 12,
-            "damageTier": 4,
-            "mincooldown": 2500,
-            "maxcooldown": 3500,
-            "attackDurationMs": 900,
-            "damagePlayerAtMs": 300,
-            "animation": "Attack",
-            "animationSpeed": 2,
-            "whenInEmotionState": "aggressiveondamage",
-            "sound": "game:creature/pig/attack"
-          },
-          {
-            "code": "seekentity",
-            "entityCodes": [ "player" ],
-            "priority": 1.5,
-            "mincooldown": 1000,
-            "maxcooldown": 1500,
-            "seekingRange": 20,
-            "movespeed": 0.037,
-            "animation": "Run",
-            "animationSpeed": 5,
-            "leapAtTarget": true,
-            "leapAnimation": null,
-            "leapChance": 0.01,
-            "whenInEmotionState": "aggressiveondamage"
-          },
-          {
-            "code": "getoutofwater",
-            "priority": 1.4,
-            "movespeed": 0.015,
-            "animation": "Walk",
-            "animationSpeed": 2.2
-          },
-          {
-            "code": "idle",
-            "priority": 1.35,
-            "minduration": 200000,
-            "maxduration": 800000,
-            "mincooldown": 10000,
-            "maxcooldown": 30000,
-            "priorityForCancel": 1.35,
-            "animation": "Sleep",
-            "whenNotInEmotionState": "aggressiveondamage",
-            "duringDayTimeFrames": [
-              {
-                "fromHour": 4,
-                "toHour": 15
+    "behaviorsByType": {
+      "*-great": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1200
+        },
+        {
+          "code": "health",
+          "currenthealth": 180,
+          "maxhealth": 180
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 32
               }
-            ],
-            "stopOnNearbyEntityCodes": [ "player" ],
-            "stopRange": 6,
-            "stopOnHurt": true
-          },
-          {
-            "code": "seekfoodandeat",
-            "movespeed": 0.004,
-            "priority": 1.3,
-            "animationSpeed": 2,
-            "animation": "Walk",
-            "eatAnimation": "Eat",
-            "eatSound": "game:player/eat",
-            "eatTime": 1.5,
-            "mincooldownHours": 1,
-            "maxcooldownHours": 4
-          },
-          {
-            "code": "idle",
-            "priority": 1.2,
-            "priorityForCancel": 1.35,
-            "minduration": 3200,
-            "maxduration": 3200,
-            "mincooldown": 6000,
-            "maxcooldown": 20000,
-            "animation": "Dig",
-            "animationSpeed": 1.5,
-            "whenNotInEmotionState": "aggressiveondamage"
-          },
-          {
-            "code": "wander",
-            "priority": 1.0,
-            "movespeed": 0.004,
-            "animationSpeed": 2,
-            "animation": "Walk",
-            "preferredLightLevel": 20,
-            "priorityForCancel": 1.35
-          },
-          {
-            "code": "idle",
-            "priority": 0.9,
-            "minduration": 5000,
-            "maxduration": 30000,
-            "mincooldown": 2000,
-            "maxcooldown": 120000,
-            "priorityForCancel": 1.28,
-            "animation": "Sit",
-            "whenNotInEmotionState": "aggressiveondamage",
-            "stopOnNearbyEntityCodes": [ "player" ],
-            "stopRange": 5
-          },
-          {
-            "code": "lookaround",
-            "priority": 0.5
-          },
-          {
-            "code": "magicAttack",
-            "entityCodes": [ "player" ],
-            "priority": 1.9,
-            "priorityForCancel": 9,
-            "mincooldown": 1000,
-            "maxcooldown": 6000,
-            "durationMs": 1200,
-            "releaseAtMs": 300,
-            "seekingRange": 20,
-            "animationSpeed": 1.5,
-            "animation": "Attack"
-          }
-        ]
-      },
-      {
-        "code": "ropetieable",
-        "minGeneration": 2
-      }
-    ],
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "emotionstates",
+          "states": [
+            {
+              "code": "aggressiveondamage",
+              "duration": 30,
+              "chance": 1,
+              "slot": 2,
+              "priority": 2,
+              "accumType": "noaccum"
+            },
+            {
+              "code": "alarmherdondamage",
+              "chance": 1,
+              "slot": 1,
+              "priority": 1,
+              "accumType": "max"
+            }
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "player" ],
+              "priority": 2,
+              "damage": 17,
+              "damageTier": 4,
+              "mincooldown": 2500,
+              "maxcooldown": 3500,
+              "attackDurationMs": 900,
+              "damagePlayerAtMs": 300,
+              "animation": "Attack",
+              "animationSpeed": 2,
+              "whenInEmotionState": "aggressiveondamage",
+              "sound": "game:creature/pig/attack"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.5,
+              "mincooldown": 1000,
+              "maxcooldown": 1500,
+              "seekingRange": 20,
+              "movespeed": 0.037,
+              "animation": "Run",
+              "animationSpeed": 5,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "whenInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.015,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "idle",
+              "priority": 1.35,
+              "minduration": 200000,
+              "maxduration": 800000,
+              "mincooldown": 10000,
+              "maxcooldown": 30000,
+              "priorityForCancel": 1.35,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 4,
+                  "toHour": 15
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 6,
+              "stopOnHurt": true
+            },
+            {
+              "code": "seekfoodandeat",
+              "movespeed": 0.004,
+              "priority": 1.3,
+              "animationSpeed": 2,
+              "animation": "Walk",
+              "eatAnimation": "Eat",
+              "eatSound": "game:player/eat",
+              "eatTime": 1.5,
+              "mincooldownHours": 1,
+              "maxcooldownHours": 4
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 3200,
+              "maxduration": 3200,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Dig",
+              "animationSpeed": 1.5,
+              "whenNotInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "movespeed": 0.004,
+              "animationSpeed": 2,
+              "animation": "Walk",
+              "preferredLightLevel": 20,
+              "priorityForCancel": 1.35
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.28,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        },
+        {
+          "code": "ropetieable",
+          "minGeneration": 2
+        }
+      ],
+      "*-wise": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1200
+        },
+        {
+          "code": "health",
+          "currenthealth": 230,
+          "maxhealth": 230
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 32
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "emotionstates",
+          "states": [
+            {
+              "code": "aggressiveondamage",
+              "duration": 30,
+              "chance": 1,
+              "slot": 2,
+              "priority": 2,
+              "accumType": "noaccum"
+            },
+            {
+              "code": "alarmherdondamage",
+              "chance": 1,
+              "slot": 1,
+              "priority": 1,
+              "accumType": "max"
+            }
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "player" ],
+              "priority": 2,
+              "damage": 12,
+              "damageTier": 4,
+              "mincooldown": 2500,
+              "maxcooldown": 3500,
+              "attackDurationMs": 900,
+              "damagePlayerAtMs": 300,
+              "animation": "Attack",
+              "animationSpeed": 2,
+              "whenInEmotionState": "aggressiveondamage",
+              "sound": "game:creature/pig/attack"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.5,
+              "mincooldown": 1000,
+              "maxcooldown": 1500,
+              "seekingRange": 20,
+              "movespeed": 0.037,
+              "animation": "Run",
+              "animationSpeed": 5,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "whenInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.015,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "idle",
+              "priority": 1.35,
+              "minduration": 200000,
+              "maxduration": 800000,
+              "mincooldown": 10000,
+              "maxcooldown": 30000,
+              "priorityForCancel": 1.35,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 4,
+                  "toHour": 15
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 6,
+              "stopOnHurt": true
+            },
+            {
+              "code": "seekfoodandeat",
+              "movespeed": 0.004,
+              "priority": 1.3,
+              "animationSpeed": 2,
+              "animation": "Walk",
+              "eatAnimation": "Eat",
+              "eatSound": "game:player/eat",
+              "eatTime": 1.5,
+              "mincooldownHours": 1,
+              "maxcooldownHours": 4
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 3200,
+              "maxduration": 3200,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Dig",
+              "animationSpeed": 1.5,
+              "whenNotInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "movespeed": 0.004,
+              "animationSpeed": 2,
+              "animation": "Walk",
+              "preferredLightLevel": 20,
+              "priorityForCancel": 1.35
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.28,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        },
+        {
+          "code": "ropetieable",
+          "minGeneration": 2
+        }
+      ],
+      "*-swift": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1200
+        },
+        {
+          "code": "health",
+          "currenthealth": 180,
+          "maxhealth": 180
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 32
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "emotionstates",
+          "states": [
+            {
+              "code": "aggressiveondamage",
+              "duration": 30,
+              "chance": 1,
+              "slot": 2,
+              "priority": 2,
+              "accumType": "noaccum"
+            },
+            {
+              "code": "alarmherdondamage",
+              "chance": 1,
+              "slot": 1,
+              "priority": 1,
+              "accumType": "max"
+            }
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "player" ],
+              "priority": 2,
+              "damage": 12,
+              "damageTier": 4,
+              "mincooldown": 2500,
+              "maxcooldown": 3500,
+              "attackDurationMs": 900,
+              "damagePlayerAtMs": 300,
+              "animation": "Attack",
+              "animationSpeed": 2,
+              "whenInEmotionState": "aggressiveondamage",
+              "sound": "game:creature/pig/attack"
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.5,
+              "mincooldown": 1000,
+              "maxcooldown": 1500,
+              "seekingRange": 20,
+              "movespeed": 0.06,
+              "animation": "Run",
+              "animationSpeed": 5,
+              "leapAtTarget": true,
+              "leapAnimation": null,
+              "leapChance": 0.01,
+              "whenInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.03,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "idle",
+              "priority": 1.35,
+              "minduration": 200000,
+              "maxduration": 800000,
+              "mincooldown": 10000,
+              "maxcooldown": 30000,
+              "priorityForCancel": 1.35,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 4,
+                  "toHour": 15
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 6,
+              "stopOnHurt": true
+            },
+            {
+              "code": "seekfoodandeat",
+              "movespeed": 0.008,
+              "priority": 1.3,
+              "animationSpeed": 2,
+              "animation": "Walk",
+              "eatAnimation": "Eat",
+              "eatSound": "game:player/eat",
+              "eatTime": 1.5,
+              "mincooldownHours": 1,
+              "maxcooldownHours": 4
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 3200,
+              "maxduration": 3200,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Dig",
+              "animationSpeed": 1.5,
+              "whenNotInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "movespeed": 0.008,
+              "animationSpeed": 2,
+              "animation": "Walk",
+              "preferredLightLevel": 20,
+              "priorityForCancel": 1.35
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.28,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        },
+        {
+          "code": "ropetieable",
+          "minGeneration": 2
+        }
+      ]
+    },
     "spawnconditions": {
       "worldgen": {
         "TriesPerChunk": {

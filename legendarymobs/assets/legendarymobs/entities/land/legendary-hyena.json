@@ -90,292 +90,788 @@
     ]
   },
   "server": {
-    "behaviors": [
-      { "code": "repulseagents" },
-      {
-        "code": "controlledphysics",
-        "stepHeight": 2
-      },
-      {
-        "code": "despawn",
-        "minPlayerDistance": 8,
-        "belowLightLevel": 8,
-        "minSeconds": 1200
-      },
-      {
-        "code": "health",
-        "currenthealth": 160,
-        "maxhealth": 160
-      },
-      {
-        "code": "deaddecay",
-        "hoursToDecay": 96,
-        "decayedBlock": "game:carcass-large"
-      },
-      {
-        "code": "floatupwhenstuck",
-        "onlyWhenDead": true
-      },
-      {
-        "code": "harvestable",
-        "drops": [
-          {
-            "type": "item",
-            "code": "game:redmeat-raw",
-            "quantity": {
-              "avg": 32,
-              "var": 16
-            }
-          },
-          {
-            "type": "item",
-            "code": "game:hide-raw-huge",
-            "quantity": {
-              "avg": 4,
-              "var": 4
-            }
-          },
-          {
-            "type": "item",
-            "code": "game:fat",
-            "quantity": {
-              "avg": 12,
-              "var": 12
-            }
-          },
-          {
-            "type": "item",
-            "code": "legendarymobs:legendary-bloom-1",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "legendarymobs:legendarysword-hilt-worn",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:gear-temporal",
-            "quantity": {
-              "avg": 0.03,
-              "var": 0.75
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:gear-rusty",
-            "dropModbyStat": "rustyGearDropRate",
-            "quantity": {
-              "avg": 0.05,
-              "var": 32
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:blade-falx-iron",
-            "quantity": {
-              "avg": 0.1,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:metalchain-iron",
-            "quantity": {
-              "avg": 0.025,
-              "var": 1
-            },
-            "lastDrop": true
-          },
-          {
-            "type": "item",
-            "code": "game:metalplate-iron",
-            "quantity": {
-              "avg": 0.04,
-              "var": 1
-            },
-            "lastDrop": true
-          }
-        ]
-      },
-      { "code": "breathe" },
-      {
-        "code": "emotionstates",
-        "states": [
-        ]
-      },
-      {
-        "code": "taskai",
-        "aitasks": [
-          {
-            "code": "meleeattack",
-            "entityCodes": [ "player" ],
-            "priority": 2,
-            "damage": 12,
-            "damageType": "SlashingAttack",
-            "slot": 1,
-            "mincooldown": 1500,
-            "maxcooldown": 1500,
-            "attackDurationMs": 800,
-            "damagePlayerAtMs": 500,
-            "animation": "Attack",
-            "animationSpeed": 2.5,
-            "sound": "game:creature/hyena/attack"
-          },
-          {
-            "code": "idle",
-            "priority": 1.6,
-            "minduration": 5000000,
-            "maxduration": 5000000,
-            "mincooldown": 5000,
-            "maxcooldown": 15000,
-            "priorityForCancel": 1.6,
-            "animation": "Sleep",
-            "whenNotInEmotionState": "aggressiveondamage",
-            "duringDayTimeFrames": [
-              {
-                "fromHour": 20,
-                "toHour": 24
-              },
-              {
-                "fromHour": 0,
-                "toHour": 7
+    "behaviorsByType": {
+      "*-wise": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1200
+        },
+        {
+          "code": "health",
+          "currenthealth": 210,
+          "maxhealth": 210
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 16
               }
-            ],
-            "stopOnNearbyEntityCodes": [ "player" ],
-            "stopRange": 6,
-            "stopOnHurt": true
-          },
-          {
-            "code": "seekentity",
-            "entityCodes": [ "player" ],
-            "priority": 1.5,
-            "movespeed": 0.04,
-            "seekingRange": 10,
-            "animation": "Run",
-            "animationSpeed": 2,
-            "sound": "game:creature/hyena/growl"
-          },
-          {
-            "code": "getoutofwater",
-            "priority": 1.4,
-            "movespeed": 0.015,
-            "animation": "Walk",
-            "animationSpeed": 2.2
-          },
-          {
-            "code": "stayclosetoentity",
-            "priority": 1.35,
-            "entityCode": "game:hyena-male",
-            "movespeed": 0.02,
-            "maxDistance": 10,
-            "searchRange": 25,
-            "animationSpeed": 1.5,
-            "animation": "Run"
-          },
-          {
-            "code": "idle",
-            "priority": 1.2,
-            "priorityForCancel": 1.35,
-            "minduration": 2500,
-            "maxduration": 2500,
-            "mincooldown": 6000,
-            "maxcooldown": 20000,
-            "animation": "Sniff",
-            "animationSpeed": 1.25,
-            "whenNotInEmotionState": "aggressiveondamage"
-          },
-          {
-            "code": "wander",
-            "priority": 1.0,
-            "priorityForCancel": 1.3,
-            "movespeed": 0.006,
-            "animation": "Walk",
-            "preferredLightLevel": 24
-          },
-          {
-            "code": "idle",
-            "priority": 0.9,
-            "minduration": 5000,
-            "maxduration": 30000,
-            "mincooldown": 2000,
-            "maxcooldown": 120000,
-            "priorityForCancel": 1.28,
-            "animation": "Sit",
-            "whenNotInEmotionState": "aggressiveondamage",
-            "stopOnNearbyEntityCodes": [ "player" ],
-            "stopRange": 5
-          },
-          {
-            "code": "lookaround",
-            "priority": 0.5
-          },
-          {
-            "code": "magicAttack",
-            "entityCodes": [ "player" ],
-            "priority": 1.9,
-            "priorityForCancel": 9,
-            "mincooldown": 1000,
-            "maxcooldown": 6000,
-            "durationMs": 1200,
-            "releaseAtMs": 300,
-            "seekingRange": 20,
-            "animationSpeed": 1.5,
-            "animation": "Attack"
-          }
-        ],
-        "spawnconditions": {
-          "worldgen": {
-            "TriesPerChunk": {
-              "avg": 0.0015,
-              "var": 0
             },
-            "tryOnlySurface": true,
-            "minLightLevel": 10,
-            "groupSize": {
-              "dist": "verynarrowgaussian",
-              "avg": 1,
-              "var": 0
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
             },
-            "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-            "minTemp": 25,
-            "maxTemp": 40,
-            "minRain": 0.1,
-            "maxRain": 0.39,
-            "companions": []
-          },
-          "runtime": {
-            "group": "hostile",
-            "tryOnlySurface": true,
-            "chance": 0.000004,
-            "maxQuantity": 1,
-            "minLightLevel": 10,
-            "groupSize": {
-              "dist": "verynarrowgaussian",
-              "avg": 1,
-              "var": 0
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
             },
-            "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-            "minTemp": 25,
-            "maxTemp": 40,
-            "minRain": 0.1,
-            "maxRain": 0.39,
-            "companions": []
-          }
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "emotionstates",
+          "states": [
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "player" ],
+              "priority": 2,
+              "damage": 12,
+              "damageType": "SlashingAttack",
+              "slot": 1,
+              "mincooldown": 1500,
+              "maxcooldown": 1500,
+              "attackDurationMs": 800,
+              "damagePlayerAtMs": 500,
+              "animation": "Attack",
+              "animationSpeed": 2.5,
+              "sound": "game:creature/hyena/attack"
+            },
+            {
+              "code": "idle",
+              "priority": 1.6,
+              "minduration": 5000000,
+              "maxduration": 5000000,
+              "mincooldown": 5000,
+              "maxcooldown": 15000,
+              "priorityForCancel": 1.6,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 20,
+                  "toHour": 24
+                },
+                {
+                  "fromHour": 0,
+                  "toHour": 7
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 6,
+              "stopOnHurt": true
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.5,
+              "movespeed": 0.04,
+              "seekingRange": 10,
+              "animation": "Run",
+              "animationSpeed": 2,
+              "sound": "game:creature/hyena/growl"
+            },
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.015,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "stayclosetoentity",
+              "priority": 1.35,
+              "entityCode": "game:hyena-male",
+              "movespeed": 0.02,
+              "maxDistance": 10,
+              "searchRange": 25,
+              "animationSpeed": 1.5,
+              "animation": "Run"
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 2500,
+              "maxduration": 2500,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Sniff",
+              "animationSpeed": 1.25,
+              "whenNotInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "priorityForCancel": 1.3,
+              "movespeed": 0.006,
+              "animation": "Walk",
+              "preferredLightLevel": 24
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.28,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
         }
+      ],
+      "*-great": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1200
+        },
+        {
+          "code": "health",
+          "currenthealth": 160,
+          "maxhealth": 160
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 16
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "emotionstates",
+          "states": [
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "player" ],
+              "priority": 2,
+              "damage": 17,
+              "damageType": "SlashingAttack",
+              "slot": 1,
+              "mincooldown": 1500,
+              "maxcooldown": 1500,
+              "attackDurationMs": 800,
+              "damagePlayerAtMs": 500,
+              "animation": "Attack",
+              "animationSpeed": 2.5,
+              "sound": "game:creature/hyena/attack"
+            },
+            {
+              "code": "idle",
+              "priority": 1.6,
+              "minduration": 5000000,
+              "maxduration": 5000000,
+              "mincooldown": 5000,
+              "maxcooldown": 15000,
+              "priorityForCancel": 1.6,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 20,
+                  "toHour": 24
+                },
+                {
+                  "fromHour": 0,
+                  "toHour": 7
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 6,
+              "stopOnHurt": true
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.5,
+              "movespeed": 0.04,
+              "seekingRange": 10,
+              "animation": "Run",
+              "animationSpeed": 2,
+              "sound": "game:creature/hyena/growl"
+            },
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.015,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "stayclosetoentity",
+              "priority": 1.35,
+              "entityCode": "game:hyena-male",
+              "movespeed": 0.02,
+              "maxDistance": 10,
+              "searchRange": 25,
+              "animationSpeed": 1.5,
+              "animation": "Run"
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 2500,
+              "maxduration": 2500,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Sniff",
+              "animationSpeed": 1.25,
+              "whenNotInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "priorityForCancel": 1.3,
+              "movespeed": 0.006,
+              "animation": "Walk",
+              "preferredLightLevel": 24
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.28,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        }
+      ],
+      "*-swift": [
+        { "code": "repulseagents" },
+        {
+          "code": "controlledphysics",
+          "stepHeight": 2
+        },
+        {
+          "code": "despawn",
+          "minPlayerDistance": 8,
+          "belowLightLevel": 8,
+          "minSeconds": 1200
+        },
+        {
+          "code": "health",
+          "currenthealth": 160,
+          "maxhealth": 160
+        },
+        {
+          "code": "deaddecay",
+          "hoursToDecay": 96,
+          "decayedBlock": "game:carcass-large"
+        },
+        {
+          "code": "floatupwhenstuck",
+          "onlyWhenDead": true
+        },
+        {
+          "code": "harvestable",
+          "drops": [
+            {
+              "type": "item",
+              "code": "game:redmeat-raw",
+              "quantity": {
+                "avg": 32,
+                "var": 16
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:hide-raw-huge",
+              "quantity": {
+                "avg": 4,
+                "var": 4
+              }
+            },
+            {
+              "type": "item",
+              "code": "game:fat",
+              "quantity": {
+                "avg": 12,
+                "var": 12
+              }
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendary-bloom-1",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "legendarymobs:legendarysword-hilt-worn",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-temporal",
+              "quantity": {
+                "avg": 0.03,
+                "var": 0.75
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:gear-rusty",
+              "dropModbyStat": "rustyGearDropRate",
+              "quantity": {
+                "avg": 0.05,
+                "var": 32
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:blade-falx-iron",
+              "quantity": {
+                "avg": 0.1,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalchain-iron",
+              "quantity": {
+                "avg": 0.025,
+                "var": 1
+              },
+              "lastDrop": true
+            },
+            {
+              "type": "item",
+              "code": "game:metalplate-iron",
+              "quantity": {
+                "avg": 0.04,
+                "var": 1
+              },
+              "lastDrop": true
+            }
+          ]
+        },
+        { "code": "breathe" },
+        {
+          "code": "emotionstates",
+          "states": [
+          ]
+        },
+        {
+          "code": "taskai",
+          "aitasks": [
+            {
+              "code": "meleeattack",
+              "entityCodes": [ "player" ],
+              "priority": 2,
+              "damage": 12,
+              "damageType": "SlashingAttack",
+              "slot": 1,
+              "mincooldown": 1500,
+              "maxcooldown": 1500,
+              "attackDurationMs": 800,
+              "damagePlayerAtMs": 500,
+              "animation": "Attack",
+              "animationSpeed": 2.5,
+              "sound": "game:creature/hyena/attack"
+            },
+            {
+              "code": "idle",
+              "priority": 1.6,
+              "minduration": 5000000,
+              "maxduration": 5000000,
+              "mincooldown": 5000,
+              "maxcooldown": 15000,
+              "priorityForCancel": 1.6,
+              "animation": "Sleep",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "duringDayTimeFrames": [
+                {
+                  "fromHour": 20,
+                  "toHour": 24
+                },
+                {
+                  "fromHour": 0,
+                  "toHour": 7
+                }
+              ],
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 6,
+              "stopOnHurt": true
+            },
+            {
+              "code": "seekentity",
+              "entityCodes": [ "player" ],
+              "priority": 1.5,
+              "movespeed": 0.08,
+              "seekingRange": 10,
+              "animation": "Run",
+              "animationSpeed": 2,
+              "sound": "game:creature/hyena/growl"
+            },
+            {
+              "code": "getoutofwater",
+              "priority": 1.4,
+              "movespeed": 0.03,
+              "animation": "Walk",
+              "animationSpeed": 2.2
+            },
+            {
+              "code": "stayclosetoentity",
+              "priority": 1.35,
+              "entityCode": "game:hyena-male",
+              "movespeed": 0.04,
+              "maxDistance": 10,
+              "searchRange": 25,
+              "animationSpeed": 1.5,
+              "animation": "Run"
+            },
+            {
+              "code": "idle",
+              "priority": 1.2,
+              "priorityForCancel": 1.35,
+              "minduration": 2500,
+              "maxduration": 2500,
+              "mincooldown": 6000,
+              "maxcooldown": 20000,
+              "animation": "Sniff",
+              "animationSpeed": 1.25,
+              "whenNotInEmotionState": "aggressiveondamage"
+            },
+            {
+              "code": "wander",
+              "priority": 1.0,
+              "priorityForCancel": 1.3,
+              "movespeed": 0.012,
+              "animation": "Walk",
+              "preferredLightLevel": 24
+            },
+            {
+              "code": "idle",
+              "priority": 0.9,
+              "minduration": 5000,
+              "maxduration": 30000,
+              "mincooldown": 2000,
+              "maxcooldown": 120000,
+              "priorityForCancel": 1.28,
+              "animation": "Sit",
+              "whenNotInEmotionState": "aggressiveondamage",
+              "stopOnNearbyEntityCodes": [ "player" ],
+              "stopRange": 5
+            },
+            {
+              "code": "lookaround",
+              "priority": 0.5
+            },
+            {
+              "code": "magicAttack",
+              "entityCodes": [ "player" ],
+              "priority": 1.9,
+              "priorityForCancel": 9,
+              "mincooldown": 1000,
+              "maxcooldown": 6000,
+              "durationMs": 1200,
+              "releaseAtMs": 300,
+              "seekingRange": 20,
+              "animationSpeed": 1.5,
+              "animation": "Attack"
+            }
+          ]
+        }
+      ]
+    },
+    "spawnconditions": {
+      "worldgen": {
+        "TriesPerChunk": {
+          "avg": 0.0015,
+          "var": 0
+        },
+        "tryOnlySurface": true,
+        "minLightLevel": 10,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+        "minTemp": 25,
+        "maxTemp": 40,
+        "minRain": 0.1,
+        "maxRain": 0.39,
+        "companions": []
+      },
+      "runtime": {
+        "group": "hostile",
+        "tryOnlySurface": true,
+        "chance": 0.000004,
+        "maxQuantity": 1,
+        "minLightLevel": 10,
+        "groupSize": {
+          "dist": "verynarrowgaussian",
+          "avg": 1,
+          "var": 0
+        },
+        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
+        "minTemp": 25,
+        "maxTemp": 40,
+        "minRain": 0.1,
+        "maxRain": 0.39,
+        "companions": []
       }
-    ]
+    }
   },
   "sounds": {
     "hurt": "game:creature/hyena/hurt",
