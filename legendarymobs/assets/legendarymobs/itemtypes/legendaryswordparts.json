@@ -3,7 +3,7 @@
 	"variantgroups": [
 		{
 			"code": "tool",
-			"states": ["blade","hammer"]
+			"states": ["blade","hammer", "pickaxe"]
 		},
 		{
 			"code": "type",
