@@ -3,7 +3,7 @@
 	"variantgroups": [
 		{
 			"code": "tool",
-			"states": ["blade","hammer", "pickaxe"]
+			"states": ["blade","hammer", "pickaxe","shovel","hoe"]
 		},
 		{
 			"code": "type",
@@ -17,7 +17,8 @@
 	"shape": { "base": "legendarymobs:item/legendary-{tool}-{type}" },
 	"textures": {
 		"rusty-iron": { "base": "legendarymobs:legendary-{finished}" },
-		"metal": { "base": "legendarymobs:legendary-{finished}" }
+		"metal": { "base": "legendarymobs:legendary-{finished}" },
+		"material": { "base": "legendarymobs:legendary-{finished}" }
 	},
 	"creativeinventory": {
 		"general": [ "*" ],
