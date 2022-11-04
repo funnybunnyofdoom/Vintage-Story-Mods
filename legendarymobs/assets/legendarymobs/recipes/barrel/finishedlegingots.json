@@ -11,13 +11,35 @@
       },
       {
         "type": "item",
-        "code": "legendarymobs:legendary-hammerhead-rough",
+        "code": "legendarymobs:legendarysword-hammer-1-rough",
         "quantity": 1
       }
     ],
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendary-hammerhead-finished",
+      "code": "legendarymobs:legendarysword-hammer-1-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryhammerheadrefine2",
+    "sealHours": 72,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-hammer-2-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-hammer-2-finished",
       "stackSize": 1
     }
   },
@@ -62,6 +84,138 @@
     "output": {
       "type": "item",
       "code": "legendarymobs:legendarysword-blade-2-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryshovelparts1",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-shovel-1-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-shovel-1-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryshovelparts2",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-shovel-2-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-shovel-2-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryhoeparts1",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-hoe-1-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-hoe-1-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendaryhoeparts2",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-hoe-2-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-hoe-2-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendarypickaxeparts1",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-pickaxe-1-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-pickaxe-1-finished",
+      "stackSize": 1
+    }
+  },
+  {
+    "code": "legendarypickaxeparts2",
+    "sealHours": 36,
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "legendarymobs:liquid-fat",
+        "litres": 10,
+        "consumeLitres": 5
+      },
+      {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-pickaxe-2-rough",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-pickaxe-2-finished",
       "stackSize": 1
     }
   }

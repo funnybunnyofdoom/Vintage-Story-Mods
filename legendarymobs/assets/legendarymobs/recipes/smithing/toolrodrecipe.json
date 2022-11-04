@@ -1,0 +1,26 @@
+
+  {
+    "ingredient": {
+      "type": "item",
+      "code": "game:ingot-iron"
+    },
+    "pattern": [
+      [
+        "_______",
+        "#######",
+        "_______",
+        "_______"
+      ],
+      [
+        "_______",
+        "#######",
+        "_______",
+        "_______"
+      ]
+    ],
+    "name": "Tool Rod",
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:toolrod"
+    }
+  }

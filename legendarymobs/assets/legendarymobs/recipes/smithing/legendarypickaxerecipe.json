@@ -7,21 +7,27 @@
     "pattern": [
       [
         "#####",
-        "#####",
-        "#####",
-        "#####"
+        "_____",
+        "_____",
+        "_____"
       ],
       [
         "#####",
+        "###__",
+        "##___",
+        "#____"
+      ],
+      [
         "#####",
-        "#####",
-        "#####"
+        "_____",
+        "_____",
+        "_____"
       ]
     ],
-    "name": "Legendary Hammer",
+    "name": "Legendary Pickaxe",
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendarysword-hammer-1-rough"
+      "code": "legendarymobs:legendarysword-pickaxe-1-rough"
     }
   },
   {
@@ -31,22 +37,16 @@
     },
     "pattern": [
       [
-        "#####",
-        "#####",
-        "#####",
-        "#####"
-      ],
-      [
-        "#####",
-        "#####",
-        "#####",
-        "#####"
+        "_####",
+        "__###",
+        "___##",
+        "____#"
       ]
     ],
-    "name": "Legendary Hammer",
+    "name": "Legendary Pickaxe",
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendarysword-hammer-2-rough"
+      "code": "legendarymobs:legendarysword-pickaxe-2-rough"
     }
   }
 ]

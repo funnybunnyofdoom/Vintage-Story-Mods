@@ -3,11 +3,11 @@
     "ingredients": {
       "H": {
         "type": "item",
-        "code": "legendarymobs:legendary-hammerhead-finished"
+        "code": "legendarymobs:legendary-hammerhead"
       },
       "S": {
         "type": "item",
-        "code": "game:stick"
+        "code": "legendarymobs:toolrod"
       },
       "L": {
         "type": "block",

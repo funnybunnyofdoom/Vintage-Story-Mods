@@ -1,0 +1,23 @@
+{
+    "ingredientPattern": "HLS,_L_,_L_",
+    "ingredients": {
+      "H": {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-shovel-1-finished"
+      },
+      "S": {
+        "type": "item",
+        "code": "legendarymobs:legendarysword-shovel-2-finished"
+      },
+      "L": {
+        "type": "item",
+        "code": "legendarymobs:toolrod"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendary-shovel"
+    }
+}

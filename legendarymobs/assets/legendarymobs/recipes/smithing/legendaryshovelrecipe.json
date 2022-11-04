@@ -1,0 +1,52 @@
+[
+  {
+    "ingredient": {
+      "type": "item",
+      "code": "game:ingot-legendary"
+    },
+    "pattern": [
+      [
+        "####_",
+        "###__",
+        "##___",
+        "#____"
+      ],
+      [
+        "####_",
+        "###__",
+        "##___",
+        "#____"
+      ]
+    ],
+    "name": "Legendary Shovel",
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-shovel-1-rough"
+    }
+  },
+  {
+    "ingredient": {
+      "type": "item",
+      "code": "game:ingot-legendary"
+    },
+    "pattern": [
+      [
+        "_####",
+        "__###",
+        "___##",
+        "____#"
+      ],
+      [
+        "_####",
+        "__###",
+        "___##",
+        "____#"
+      ]
+    ],
+    "name": "Legendary Shovel",
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-shovel-2-rough"
+    }
+  }
+]

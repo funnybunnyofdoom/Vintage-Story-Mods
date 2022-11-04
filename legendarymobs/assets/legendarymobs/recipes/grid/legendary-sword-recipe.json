@@ -7,11 +7,11 @@
       },
       "B": {
         "type": "item",
-        "code": "legendarymobs:legendarysword-blade-1"
+        "code": "legendarymobs:legendarysword-blade-1-finished"
       },
       "T": {
         "type": "item",
-        "code": "legendarymobs:legendarysword-blade-2"
+        "code": "legendarymobs:legendarysword-blade-2-finished"
       }
     },
     "width": 1,

@@ -1,16 +1,10 @@
 {
   "code": "legendary-hammerhead",
-  "variantgroups": [
-    {
-      "code": "type",
-      "states": [ "rough", "finished" ]
-    }
-  ],
   "heldTpUseAnimation": "interactstatic",
   "maxstacksize": 1,
   "shape": { "base": "legendarymobs:item/legendary-hammer" },
   "textures": {
-    "metal": { "base": "legendarymobs:legendary-{type}" },
+    "metal": { "base": "legendarymobs:legendary-finished" },
     "wood": { "base": "game:block/transparent" },
     "white": { "base": "game:block/transparent" }
   },

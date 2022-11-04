@@ -1,0 +1,61 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"string": "item/tool/material/string",
+		"handle": "legendarymobs:legendary-sword"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 24.0, 0.5, 8.0 ], 
+			"to": [ 24.0, 0.5, 8.0 ], 
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#string", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"east": { "texture": "#string", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"south": { "texture": "#string", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"west": { "texture": "#string", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"up": { "texture": "#string", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"down": { "texture": "#string", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "handle 1",
+					"from": [ -21.0, -0.5, -0.5 ], 
+					"to": [ -5.0, 1.0, 1.0 ], 
+					"rotationOrigin": [ -20.5, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#handle", "uv": [ 0.0, 5.5, 16.0, 7.0 ] },
+						"east": { "texture": "#handle", "uv": [ 0.5, 0.5, 2.0, 2.0 ] },
+						"south": { "texture": "#handle", "uv": [ 0.0, 10.5, 16.0, 12.0 ] },
+						"west": { "texture": "#handle", "uv": [ 14.0, 10.0, 15.5, 11.5 ], "enabled": false },
+						"up": { "texture": "#handle", "uv": [ 0.0, 4.5, 16.0, 6.0 ] },
+						"down": { "texture": "#handle", "uv": [ 0.0, 5.0, 16.0, 6.5 ] }
+					},
+					"children": [
+						{
+							"name": "handle 2",
+							"from": [ -10.0, 0.0, 0.0 ], 
+							"to": [ 0.0, 1.5, 1.5 ], 
+							"rotationOrigin": [ -9.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#handle", "uv": [ 1.0, 8.5, 11.0, 10.0 ] },
+								"east": { "texture": "#handle", "uv": [ 3.5, 0.5, 5.0, 2.0 ], "enabled": false },
+								"south": { "texture": "#handle", "uv": [ 1.5, 3.5, 11.5, 5.0 ] },
+								"west": { "texture": "#handle", "uv": [ 11.0, 10.0, 12.5, 11.5 ] },
+								"up": { "texture": "#handle", "uv": [ 4.0, 2.5, 14.0, 4.0 ] },
+								"down": { "texture": "#handle", "uv": [ 1.5, 5.0, 11.5, 6.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

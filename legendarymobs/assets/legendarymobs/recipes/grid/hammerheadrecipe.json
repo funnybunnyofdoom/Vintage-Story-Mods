@@ -1,0 +1,19 @@
+{
+  "ingredientPattern": "HE",
+  "ingredients": {
+    "H": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-hammer-1-finished"
+    },
+    "E": {
+      "type": "item",
+      "code": "legendarymobs:legendarysword-hammer-2-finished"
+    }
+  },
+  "width": 2,
+  "height": 1,
+  "output": {
+    "type": "item",
+    "code": "legendarymobs:legendary-hammerhead"
+  }
+}

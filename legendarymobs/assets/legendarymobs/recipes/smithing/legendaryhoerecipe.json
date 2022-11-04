@@ -8,20 +8,20 @@
       [
         "#####",
         "#####",
-        "#####",
-        "#####"
+        "_###_",
+        "__#__"
       ],
       [
         "#####",
-        "#####",
-        "#####",
-        "#####"
+        "_###_",
+        "__#__",
+        "_____"
       ]
     ],
-    "name": "Legendary Hammer",
+    "name": "Legendary Hoe",
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendarysword-hammer-1-rough"
+      "code": "legendarymobs:legendarysword-hoe-2-rough"
     }
   },
   {
@@ -31,22 +31,22 @@
     },
     "pattern": [
       [
-        "#####",
-        "#####",
-        "#####",
+        "#_#_#",
+        "#_#_#",
+        "#_#_#",
         "#####"
       ],
       [
-        "#####",
-        "#####",
-        "#####",
+        "_____",
+        "_____",
+        "_____",
         "#####"
       ]
     ],
-    "name": "Legendary Hammer",
+    "name": "Legendary Hoe",
     "output": {
       "type": "item",
-      "code": "legendarymobs:legendarysword-hammer-2-rough"
+      "code": "legendarymobs:legendarysword-hoe-1-rough"
     }
   }
 ]
