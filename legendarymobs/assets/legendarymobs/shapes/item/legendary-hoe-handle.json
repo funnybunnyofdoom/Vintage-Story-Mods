@@ -8,10 +8,8 @@
 	"textureSizes": {
 	},
 	"textures": {
-		"string": "item/tool/material/string",
-		"material": "block/metal/ingot/copper",
-		"longstiches": "block/cloth/leather/longstiches",
-		"handle": "item/tool/material/handle"
+		"longstiches": "game:block/cloth/leather/longstiches",
+		"handle": "game:block/metal/sheet/iron1"
 	},
 	"elements": [
 		{

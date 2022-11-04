@@ -9,8 +9,8 @@
 	},
 	"textures": {
 		"white": "game:block/cloth/linen/white",
-		"metal": "game:item/tool/material/iron",
-		"wood": "game:item/tool/material/wood"
+		"metal": "legendarymobs:legendary-finished",
+		"wood": "game:block/metal/sheet/iron1"
 	},
 	"elements": [
 		{

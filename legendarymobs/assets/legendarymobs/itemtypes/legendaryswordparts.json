@@ -1,6 +1,10 @@
 {
-	"code": "legendarysword-blade",
+	"code": "legendarysword",
 	"variantgroups": [
+		{
+			"code": "tool",
+			"states": ["blade","hammer"]
+		},
 		{
 			"code": "type",
 			"states": [ "1", "2" ]
@@ -10,9 +14,10 @@
 			"states": [ "rough", "finished" ]
 		}
 	],
-	"shape": { "base": "legendarymobs:item/legendary-sword-blade-{type}" },
+	"shape": { "base": "legendarymobs:item/legendary-{tool}-{type}" },
 	"textures": {
-		"rusty-iron": { "base": "legendarymobs:legendary-{finished}" }
+		"rusty-iron": { "base": "legendarymobs:legendary-{finished}" },
+		"metal": { "base": "legendarymobs:legendary-{finished}" }
 	},
 	"creativeinventory": {
 		"general": [ "*" ],
