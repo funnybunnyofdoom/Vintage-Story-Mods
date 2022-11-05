@@ -53,7 +53,6 @@ namespace legendarymobs.src
 
         public override bool ShouldExecute()
         {
-            System.Diagnostics.Debug.WriteLine("Throw should execute"); //TESTING
             // React immediately on hurt, otherwise only 1/10 chance of execution
             if (bhEmo != null) { 
             if (rand.NextDouble() > 0.1f && (whenInEmotionState == null || bhEmo.IsInEmotionState(whenInEmotionState) != true)) return false;
@@ -75,7 +74,6 @@ namespace legendarymobs.src
 
         public override void StartExecute()
         {
-            System.Diagnostics.Debug.WriteLine("Throw did execute"); //TESTING
             accum = 0;
             didThrow = false;
 
@@ -108,7 +106,6 @@ namespace legendarymobs.src
 
         public override bool ContinueExecute(float dt)
         {
-            System.Diagnostics.Debug.WriteLine("Throw Continues to execute"); //TESTING
             Vec3f targetVec = new Vec3f();
 
             targetVec.Set(
@@ -160,6 +157,7 @@ namespace legendarymobs.src
                 entitypr.World = entity.World;
                 entity.World.SpawnEntity(entitypr);
                 entitypr.StartAnimation("magic");
+                entity.World.PlaySoundAt(new AssetLocation("legendarymobs:sounds/cast"), entitypr.Pos.X, entitypr.Pos.Y, entitypr.Pos.Z, null, false, 32, 1);
             }
 
             return accum < durationMs / 1000f;

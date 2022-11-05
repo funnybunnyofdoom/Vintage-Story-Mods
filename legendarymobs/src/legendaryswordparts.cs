@@ -22,6 +22,7 @@ namespace legendarymobs.src
             api.RegisterItemClass("legendarypickaxe", typeof(legendarypickaxe));
             api.RegisterItemClass("legendaryshovel",typeof(legendaryshovel));
             api.RegisterItemClass("legendaryhoe", typeof(legendaryhoe));
+            api.RegisterEntity("entitycastmagic", typeof(EntityCastMagic));
         }
         public override void StartServerSide(ICoreServerAPI api)
         {

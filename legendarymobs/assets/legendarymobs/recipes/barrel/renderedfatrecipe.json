@@ -1,0 +1,15 @@
+{
+    "code": "renderedfat",
+    "ingredients": [
+      {
+        "type": "item",
+        "code": "game:fat",
+        "quantity": 1
+      }
+    ],
+    "output": {
+      "type": "item",
+      "code": "legendarymobs:liquid-fat",
+      "litres": 1
+    }
+  }
