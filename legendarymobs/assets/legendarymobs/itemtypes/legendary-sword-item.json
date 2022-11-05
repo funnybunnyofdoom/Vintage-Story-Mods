@@ -19,12 +19,12 @@
         "scale": 1.66
     },
     "groundStorageTransform": {
-      
-        "translation": {
-          "x": 0,
-          "y": 0.06,
-          "z": -0.025
-        },
+
+      "translation": {
+        "x": 0,
+        "y": 0.9,
+        "z": -0.025
+      },
         "rotation": {
           "x": 26,
           "y": 90,

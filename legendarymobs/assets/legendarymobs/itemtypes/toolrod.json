@@ -14,8 +14,49 @@
     "workableTemperature": 700,
     "displaycaseable": true,
     "shelvable": true,
-    "requiresAnvilTier": 2
+    "requiresAnvilTier": 2,
+    "groundStorageTransform": {
+      "translation": {
+        "x": 0,
+        "y": 0.2,
+        "z": -0.025
+      },
+      "rotation": {
+        "x": 26,
+        "y": 90,
+        "z": -90
+      },
+      "scale": 0.88
+    }
   },
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "WallHalves",
+        "wallOffYByType": {
+          "*": 1
+        },
+        "sprintKey": true,
+        "selectionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 1,
+          "y2": 0.1,
+          "z2": 1
+        },
+        "collisionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 0,
+          "y2": 0,
+          "z2": 0
+        }
+      }
+    }
+  ],
   "materialDensity": 900,
   "heldTpHitAnimation": "breaktool",
   "fpHandTransform": {
