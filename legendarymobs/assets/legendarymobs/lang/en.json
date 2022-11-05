@@ -128,6 +128,9 @@
   "game:item-metalplate-legendary": "Legendary Metal Bits",
 
   "game:incontainer-item-liquid-fat": "Liquid Fat",
-  "legendarymobs:incontainer-item-liquid-fat": "Liquid Fat"
+  "legendarymobs:incontainer-item-liquid-fat": "Liquid Fat",
+
+  "legendarymobs:craftinginfo-legblock-title": "Crafting Mechanic: Legendary Items",
+  "legendarymobs:craftinginfo-legblock-text": "<strong>Legendary Items</strong><br><br>Legendary ingots can be found as drops by legendary creatures.<br>Legendary creatures spawn at shrines that can be found around the world. <br><br>Legendary tool parts are made on an iron anvil. You must seal the unfinished parts in a barrel of liquid fat before they can be combined into a tool.<br><br><strong>Legendary Tools:</strong><br>Legendary Sword - Extra Damage, longer reach<br>Legendary Pickaxe - Mines a 3x3 area of rock<br>Legendary Hoe - Tills a 3x3 area of soil<br>Legendary Shovel - Digs a 3x3 area of dirt gravel or snow"
 
 }
