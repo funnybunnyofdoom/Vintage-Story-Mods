@@ -95,5 +95,8 @@
   "legendarymobs:item-legendary-amber-swordhilt": "Fossilized Amber",
 
   "legendarymobs:incontainer-item-liquid-fat": "Melted Fat",
-  "legendarymobs:item-liquid-fat": "Melted Fat"
+  "legendarymobs:item-liquid-fat": "Melted Fat",
+
+  "game:item-ingot-legendary": "Legendary Ingot",
+  "game:item-workitem-legendary": "Legendary Work Item"
 }

@@ -1,0 +1,14 @@
+[
+  {
+    "op": "add",
+    "path": "/attributes",
+    "value": {
+      "handbook": {
+        "excludeByType": {
+          "*-legendary": true
+        }
+      }
+    },
+    "file": "game:blocktypes/metal/fullmetalblock.json"
+  }
+]

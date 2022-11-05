@@ -1,0 +1,8 @@
+[
+  {
+    "op": "add",
+    "path": "/attributes/handbook/excludeByType/*-legendary",
+    "value": true,
+    "file": "game:itemtypes/resource/metalscale.json"
+  }
+]
