@@ -89,14 +89,45 @@
   "legendarymobs:item-legendarysword-blade-1-finished": "Restored Legendary Blade Shaft",
   "legendarymobs:item-legendarysword-blade-2-finished": "Restored Legendary Blade tip",
 
-  "legendarymobs:item-legendary-hammerhead-rough": "Unfinished Legendary Hammerhead",
-  "legendarymobs:item-legendary-hammerhead-finished": "Refined Legendary Hammerhead",
+  "legendarymobs:item-legendary-hammerhead": "Legendary Hammerhead",
+  "legendarymobs:item-legendarysword-hammer-1-rough": "Unfinished Legendary Hammerhead Piece",
+  "legendarymobs:item-legendarysword-hammer-2-rough": "Unfinished Legendary Hammerhead Piece",
+  "legendarymobs:item-legendarysword-hammer-1-finished": "Refined Legendary Hammerhead Piece",
+  "legendarymobs:item-legendarysword-hammer-2-finished": "Refined Legendary Hammerhead Piece",
+
+
+  "legendarymobs:item-legendarysword-pickaxe-1-rough": "Unfinished Legendary Pickaxe Piece",
+  "legendarymobs:item-legendarysword-pickaxe-2-rough": "Unfinished Legendary Pickaxe Piece",
+  "legendarymobs:item-legendarysword-pickaxe-1-finished": "Refined Legendary Pickaxe Piece",
+  "legendarymobs:item-legendarysword-pickaxe-2-finished": "Refined Legendary Pickaxe Piece",
+
+
+  "legendarymobs:item-legendarysword-shovel-1-rough": "Unfinished Legendary Shovel Piece",
+  "legendarymobs:item-legendarysword-shovel-2-rough": "Unfinished Legendary Shovel Piece",
+  "legendarymobs:item-legendarysword-shovel-1-finished": "Refined Legendary Shovel Piece",
+  "legendarymobs:item-legendarysword-shovel-2-finished": "Refined Legendary Shovel Piece",
+
+
+  "legendarymobs:item-legendarysword-hoe-1-rough": "Unfinished Legendary Hoe Piece",
+  "legendarymobs:item-legendarysword-hoe-2-rough": "Unfinished Legendary Hoe Piece",
+  "legendarymobs:item-legendarysword-hoe-1-finished": "Refined Legendary Hoe Piece",
+  "legendarymobs:item-legendarysword-hoe-2-finished": "Refined Legendary Hoe Piece",
+
   "legendarymobs:item-legendary-hammer": "Legendary Hammer",
-  "legendarymobs:item-legendary-amber-swordhilt": "Fossilized Amber",
+  "legendarymobs:item-legendary-pickaxe": "Legendary Pickaxe",
+  "legendarymobs:item-legendary-shovel": "Legendary Shovel",
+  "legendarymobs:item-legendary-hoe": "Legendary Hoe",
 
   "legendarymobs:incontainer-item-liquid-fat": "Melted Fat",
   "legendarymobs:item-liquid-fat": "Melted Fat",
+  "legendarymobs:item-toolrod": "Tool Rod",
 
   "game:item-ingot-legendary": "Legendary Ingot",
-  "game:item-workitem-legendary": "Legendary Work Item"
+  "game:item-workitem-legendary": "Legendary Work Item",
+  "game:item-metalbit-legendary": "Legendary Metal Bits",
+  "game:item-metalplate-legendary": "Legendary Metal Bits",
+
+  "game:incontainer-item-liquid-fat": "Liquid Fat",
+  "legendarymobs:incontainer-item-liquid-fat": "Liquid Fat"
+
 }
