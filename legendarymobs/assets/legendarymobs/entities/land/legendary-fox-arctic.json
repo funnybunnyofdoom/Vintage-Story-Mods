@@ -1043,46 +1043,7 @@
 				"minGeneration": 1
 			}
 		]
-	},
-		"spawnconditions": {
-			"worldgen": {
-				"TriesPerChunk": {
-					"avg": 0.00075,
-					"var": 0
-				},
-				"tryOnlySurface": true,
-				"minLightLevel": 10,
-				"groupSize": {
-					"dist": "verynarrowgaussian",
-					"avg": 1,
-					"var": 0
-				},
-				"insideBlockCodes": [ "game:air", " game:snowlayer-1" ],
-				"minTemp": -70,
-				"maxTemp": -10,
-				"minRain": 0.25,
-				"minForest": 0.5,
-				"companions": []
-			},
-			"runtime": {
-				"group": "neutral",
-				"tryOnlySurface": true,
-				"chance": 0.000003,
-				"maxQuantity": 1,
-				"minLightLevel": 10,
-				"groupSize": {
-					"dist": "verynarrowgaussian",
-					"avg": 1,
-					"var": 0
-				},
-				"insideBlockCodes": [ "game:air", "game:snowlayer-1" ],
-				"minTemp": -70,
-				"maxTemp": -10,
-				"minRain": 0.25,
-				"minForest": 0.5,
-				"companions": []
-			}
-		}
+	}
 	},
 	"sounds": {
 		"hurt": "game:creature/fox/hurt",

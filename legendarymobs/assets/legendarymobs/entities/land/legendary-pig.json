@@ -907,45 +907,6 @@
           "minGeneration": 2
         }
       ]
-    },
-    "spawnconditions": {
-      "worldgen": {
-        "TriesPerChunk": {
-          "avg": 0.0005,
-          "var": 0
-        },
-        "tryOnlySurface": true,
-        "minLightLevel": 10,
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-        "minTemp": 5,
-        "maxTemp": 28,
-        "minRain": 0.45,
-        "minForest": 0.35,
-        "companions": []
-      },
-      "runtime": {
-        "group": "neutral",
-        "tryOnlySurface": true,
-        "chance": 0.000003,
-        "maxQuantity": 1,
-        "minLightLevel": 10,
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-        "minTemp": 5,
-        "maxTemp": 28,
-        "minRain": 0.45,
-        "minForestOrShrubs": 0.35,
-        "companions": []
-      }
     }
   },
   "sounds": {

@@ -1127,46 +1127,6 @@
           "minGeneration": 2
         }
       ]
-    },
-    "spawnconditions": {
-      "worldgen": {
-        "TriesPerChunk": {
-          "avg": 0.00035,
-          "var": 0
-        },
-        "tryOnlySurface": true,
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-        "minTemp": -15,
-        "maxTemp": 15,
-        "minRain": 0.25,
-        "minForest": 0.5,
-        "companions": []
-      },
-      "runtime": {
-        "group": "hostile",
-        "tryOnlySurface": true,
-        "chance": 0.000001,
-        "maxQuantity": 5,
-        "__comment": "Make them spawn away from artifical light so they don't spawn inside farmland",
-        "maxLightLevel": 7,
-        "lightLevelType": "onlyBlockLight",
-        "groupSize": {
-          "dist": "verynarrowgaussian",
-          "avg": 1,
-          "var": 0
-        },
-        "insideBlockCodes": [ "game:air", "game:tallgrass-*" ],
-        "minTemp": -15,
-        "maxTemp": 15,
-        "minRain": 0.25,
-        "minForest": 0.5,
-        "companions": []
-      }
     }
   },
   "sounds": {
