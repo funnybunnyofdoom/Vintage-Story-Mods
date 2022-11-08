@@ -271,6 +271,28 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.enablejoinmessage = bsuconfig.getDefault().enablejoinmessage;
                 if (bsuconfig.Current.enableironman == null)
                     bsuconfig.Current.enableironman = bsuconfig.getDefault().enableironman;
+                if (bsuconfig.Current.backcostitem == null)
+                    bsuconfig.Current.backcostitem = bsuconfig.getDefault().backcostitem;
+                if (bsuconfig.Current.backcostqty == null)
+                    bsuconfig.Current.backcostqty = bsuconfig.getDefault().backcostqty;
+                if (bsuconfig.Current.homecostitem == null)
+                    bsuconfig.Current.homecostitem = bsuconfig.getDefault().homecostitem;
+                if (bsuconfig.Current.homecostqty == null)
+                    bsuconfig.Current.homecostqty = bsuconfig.getDefault().homecostqty;
+                if (bsuconfig.Current.spawncostitem == null)
+                    bsuconfig.Current.spawncostitem = bsuconfig.getDefault().spawncostitem;
+                if (bsuconfig.Current.spawncostqty == null)
+                    bsuconfig.Current.spawncostqty = bsuconfig.getDefault().spawncostqty;
+                if (bsuconfig.Current.rtpcostitem == null)
+                    bsuconfig.Current.rtpcostitem = bsuconfig.getDefault().rtpcostitem;
+                if (bsuconfig.Current.rtpcostqty == null)
+                    bsuconfig.Current.rtpcostqty = bsuconfig.getDefault().rtpcostqty;
+                if (bsuconfig.Current.grtpcostitem == null)
+                    bsuconfig.Current.grtpcostitem = bsuconfig.getDefault().grtpcostitem;
+                if (bsuconfig.Current.grtpcostqty == null)
+                    bsuconfig.Current.grtpcostqty = bsuconfig.getDefault().grtpcostqty;
+
+
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
 
@@ -1991,7 +2013,7 @@ namespace bunnyserverutilities.src
                         if (bsuconfig.Current.waitDict.ContainsValue(value.toplayer))
                         {
                             bsuconfig.Current.waitDict.Remove(value.toplayer); //player that is being teleported to
-                        }
+                        }  
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         return;
                     }
@@ -2305,10 +2327,23 @@ namespace bunnyserverutilities.src
 
             //userwarning properties
             public Dictionary<String, userwarning> warningDict;
+            
 
             //ironman properties
             public bool? enableironman;
 
+            //Teleport cost configs
+            public bool teleportcostenabled;
+            public string homecostitem;
+            public int homecostqty;
+            public string backcostitem;
+            public int backcostqty;
+            public string spawncostitem;
+            public int spawncostqty;
+            public string rtpcostitem;
+            public int rtpcostqty;
+            public string grtpcostitem;
+            public int grtpcostqty;
 
             public static bsuconfig getDefault()
             {
@@ -2389,6 +2424,23 @@ namespace bunnyserverutilities.src
 
                 //user warning defaults
                 config.warningDict = warningdictionary;
+
+                //Teleport Costs
+                config.teleportcostenabled = false;
+                config.homecostitem = "game:gear-rusty";
+                config.homecostqty = 1;
+                config.backcostitem = "game:gear-rusty";
+                config.backcostqty = 1;
+                config.spawncostitem = "game:gear-rusty";
+                config.spawncostqty = 1;
+                config.rtpcostitem = "game:gear-rusty";
+                config.rtpcostqty = 1;
+                config.grtpcostitem = "game:gear-rusty";
+                config.grtpcostqty = 1;
+
+
+
+
 
                 return config;
             }
