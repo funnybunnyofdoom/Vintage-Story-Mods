@@ -164,6 +164,11 @@
   "ironman-no-new-score": "You did not beat your high score of {0} days. Try again!",
   "ironman-first": "You have completed your first Ironman!",
   "ironman-highscores-title": "Ironman Leaderboard",
-  "ironman-commands-disabled": "All teleport commands are disabled in Iron Man mode."
+  "ironman-commands-disabled": "All teleport commands are disabled in Iron Man mode.",
+
+  //Teleport Costs
+  "empty-slot": "Hand is empty. Please place {1}x {0} in your active hotbar slot and try again. ",
+  "wrong-item": "Incorrect item. Please hold {1}x {0} in your hand and try again.",
+  "not-enough":  "This teleport costs {1} and you have {0} in your hand."
 
 } 

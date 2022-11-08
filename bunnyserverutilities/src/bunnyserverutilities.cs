@@ -1960,6 +1960,32 @@ namespace bunnyserverutilities.src
 
         }
 
+        //Check for cost and take payment function
+        private bool processPayment(string item, int cost, IServerPlayer player)
+        {
+            Item itemstack = player.Entity.World.GetItem(new AssetLocation(item)); //Get our Item from the item name provided to the function
+            if (itemstack == null) { return false; } //End function if item doesn't exist, we should check for this in the config commands
+            if (player.InventoryManager.ActiveHotbarSlot == null){return false;} //Check if the hotbar slot is null
+            if (player.InventoryManager.ActiveHotbarSlot.Empty) //Check for an empty hotbar slot
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:empty-slot",item,cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player their hand is empty, and what the cost is
+                return false; //end function is hotbar slot is empty
+            }
+            if (player.InventoryManager.ActiveHotbarSlot.Itemstack.Item.Code != itemstack.Code) //Check if the held item matches
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wrong-item", item, cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player the item is wrong, and what the cost is
+                return false;
+            }
+            if (player.InventoryManager.ActiveHotbarSlot.Itemstack.StackSize < cost)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough", player.InventoryManager.ActiveHotbarSlot.Itemstack.StackSize, cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player the item is wrong, and what the cost is
+                return false;
+            }
+
+            player.InventoryManager.ActiveHotbarSlot.TakeOut(cost);
+            return true; //Tell the calling function that the payment was sucessful
+        }
+
         //Teleport To function
 
 
