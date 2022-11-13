@@ -169,6 +169,7 @@
   //Teleport Costs
   "empty-slot": "Hand is empty. Please place {1}x {0} in your active hotbar slot and try again. ",
   "wrong-item": "Incorrect item. Please hold {1}x {0} in your hand and try again.",
-  "not-enough":  "This teleport costs {1} and you have {0} in your hand."
+  "not-enough": "This teleport costs {1} and you have {0} in your hand.",
+  "cost-qty-updated":  "The cost quantity for {0} has been set to {1}"
 
 } 

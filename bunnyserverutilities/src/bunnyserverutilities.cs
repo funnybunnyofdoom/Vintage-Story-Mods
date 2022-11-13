@@ -152,6 +152,9 @@ namespace bunnyserverutilities.src
             //Ironman Commands
             api.RegisterCommand("ironman", "Sets the player to ironman mode", "",cmd_ironman,privileges.src.JPrivilege.ironman);
 
+            //telport cost commands
+            api.RegisterCommand("tpcost", "enables/disables teleport costs", "", cmd_tpcost, privileges.src.JPrivilege.ironman);
+
             //===================//
             //Register Privileges//
             //===================//
@@ -401,11 +404,18 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
+                    Action<IServerPlayer> a = (IServerPlayer) => backteleport(player);
                     if (bsuconfig.Current.enableBack == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        Action<IServerPlayer> a = (IServerPlayer) => backteleport(player);
-                        checkCooldown(player, cmdname, a, bsuconfig.Current.backPlayerCooldown);
-
+                        string cooldownstate = checkCooldown(player, cmdname, a, bsuconfig.Current.backPlayerCooldown);
+                        if(cooldownstate != "wait")
+                        {
+                            if (processPayment(bsuconfig.Current.backcostitem, bsuconfig.Current.backcostqty, player))
+                            {
+                                backteleport(player);
+                                addcooldown(cmdname, player, cooldownstate);
+                            }
+                        }
                     }else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -433,6 +443,21 @@ namespace bunnyserverutilities.src
                     break;
                 case "help":
                     displayhelp(player, cmdname);
+                    break;
+                case "costitem":
+                    break;
+                case "costqty":
+                    int? num = args.PopInt();
+                    if (num != null && num >= 0)
+                    {
+                        bsuconfig.Current.backcostqty = (int)num;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated",cmdname,num), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
@@ -1513,6 +1538,30 @@ namespace bunnyserverutilities.src
             }
         }
 
+        //cost command
+        private void cmd_tpcost(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "tpcost";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case "help":
+                    displayhelp(player, cmdname);
+                    break;
+                case "enable":
+                    bsuconfig.Current.teleportcostenabled = true;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    break;
+                case "disable":
+                    bsuconfig.Current.teleportcostenabled = false;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    break;
+                case "test":
+                    processPayment(bsuconfig.Current.backcostitem,bsuconfig.Current.backcostqty,player);
+                    break;
+            }
+        }
+
         //=============//
         //Help Function//
         //=============//
@@ -1897,7 +1946,7 @@ namespace bunnyserverutilities.src
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:pending-tp"), Vintagestory.API.Common.EnumChatType.Notification);
             }
         }
-        private void checkCooldown(IServerPlayer player, string cmdname, Action<IServerPlayer> function, int? modPlayerCooldown)
+        private string checkCooldown(IServerPlayer player, string cmdname, Action<IServerPlayer> function, int? modPlayerCooldown)
         {
             int playersactivecooldowntime;
             string modname = cmdname;
@@ -1909,28 +1958,44 @@ namespace bunnyserverutilities.src
                     dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
                     if (count >= playersactivecooldowntime + modPlayerCooldown)
                     {
-                        function(player);
-
-                        cooldownDict[modname].Remove(player.PlayerUID);
-                        cooldownDict[modname].Add(player.PlayerUID, count);
+                        return "cooldownover";
                     }
                     else
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cooldown-player-reusable", ((playersactivecooldowntime + modPlayerCooldown) - count)), Vintagestory.API.Common.EnumChatType.Notification);
-                        return;
+                        return "wait";
                     }
                 }
                 else
                 {
-                    function(player);
-                    cooldownDict[modname].Add(player.PlayerUID, count);
+                    return "newplayer";
                 }
             }
             else
             {
-                function(player);
-                cooldownDict.Add(modname, new Dictionary<string, int>());
-                cooldownDict[modname].Add(player.PlayerUID, count);
+                return "newdictionary";
+            }
+        }
+
+    //add user to cooldown list
+    private void addcooldown(string modname,IServerPlayer player,string cdaction)
+        {
+            switch (cdaction)
+            {
+                case "newdictionary":
+                    cooldownDict.Add(modname, new Dictionary<string, int>());
+                    cooldownDict[modname].Add(player.PlayerUID, count);
+                    break;
+                case "newplayer":
+                    cooldownDict[modname].Add(player.PlayerUID, count);
+                    break;
+                case "wait":
+                    break;
+                case "cooldownover":
+                    cooldownDict[modname].Remove(player.PlayerUID);
+                    cooldownDict[modname].Add(player.PlayerUID, count);
+                    break;
+
             }
         }
 
@@ -1963,6 +2028,8 @@ namespace bunnyserverutilities.src
         //Check for cost and take payment function
         private bool processPayment(string item, int cost, IServerPlayer player)
         {
+            if (bsuconfig.Current.teleportcostenabled == false) { return true; }
+            if (cost <= 0) { return true; } //skip check if there is no cost
             Item itemstack = player.Entity.World.GetItem(new AssetLocation(item)); //Get our Item from the item name provided to the function
             if (itemstack == null) { return false; } //End function if item doesn't exist, we should check for this in the config commands
             if (player.InventoryManager.ActiveHotbarSlot == null){return false;} //Check if the hotbar slot is null
@@ -1976,13 +2043,15 @@ namespace bunnyserverutilities.src
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wrong-item", item, cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player the item is wrong, and what the cost is
                 return false;
             }
-            if (player.InventoryManager.ActiveHotbarSlot.Itemstack.StackSize < cost)
+            if (player.InventoryManager.ActiveHotbarSlot.Itemstack.StackSize < cost)//Check if the player has enough items
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough", player.InventoryManager.ActiveHotbarSlot.Itemstack.StackSize, cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player the item is wrong, and what the cost is
                 return false;
             }
-
-            player.InventoryManager.ActiveHotbarSlot.TakeOut(cost);
+            
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Removing "+ itemstack.GetHeldItemName(player.InventoryManager.ActiveHotbarSlot.Itemstack)+" quantity: "+cost, Vintagestory.API.Common.EnumChatType.Notification);
+            player.InventoryManager.ActiveHotbarSlot.TakeOut(cost); //Remove the items from the inventory
+            player.InventoryManager.ActiveHotbarSlot.MarkDirty(); //Update the client
             return true; //Tell the calling function that the payment was sucessful
         }
 
@@ -2454,15 +2523,15 @@ namespace bunnyserverutilities.src
                 //Teleport Costs
                 config.teleportcostenabled = false;
                 config.homecostitem = "game:gear-rusty";
-                config.homecostqty = 1;
+                config.homecostqty = 0;
                 config.backcostitem = "game:gear-rusty";
-                config.backcostqty = 1;
+                config.backcostqty = 0;
                 config.spawncostitem = "game:gear-rusty";
-                config.spawncostqty = 1;
+                config.spawncostqty = 0;
                 config.rtpcostitem = "game:gear-rusty";
-                config.rtpcostqty = 1;
+                config.rtpcostqty = 0;
                 config.grtpcostitem = "game:gear-rusty";
-                config.grtpcostqty = 1;
+                config.grtpcostqty = 0;
 
 
 
