@@ -501,7 +501,15 @@ namespace bunnyserverutilities.src
                     if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         Action<IServerPlayer> a = (IServerPlayer) => homeTeleport(player);
-                        checkCooldown(player, cmdname, a, bsuconfig.Current.homePlayerCooldown);
+                        string cooldownstate = checkCooldown(player, cmdname, a, bsuconfig.Current.homePlayerCooldown);
+                        if (cooldownstate != "wait")
+                        {
+                            if (processPayment(bsuconfig.Current.homecostitem, bsuconfig.Current.homecostqty, player))
+                            {
+                                homeTeleport(player);
+                                addcooldown(cmdname, player, cooldownstate);
+                            }
+                        }
 
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
@@ -527,6 +535,21 @@ namespace bunnyserverutilities.src
                         bsuconfig.Current.enableHome = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable-home"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "costitem":
+                    break;
+                case "costqty":
+                    int? num = args.PopInt();
+                    if (num != null && num >= 0)
+                    {
+                        bsuconfig.Current.homecostqty = (int)num;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "help":
@@ -2038,6 +2061,7 @@ namespace bunnyserverutilities.src
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:empty-slot",item,cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player their hand is empty, and what the cost is
                 return false; //end function is hotbar slot is empty
             }
+            if(player.InventoryManager.ActiveHotbarSlot.Itemstack.Item == null || itemstack.Code == null) { return false; }
             if (player.InventoryManager.ActiveHotbarSlot.Itemstack.Item.Code != itemstack.Code) //Check if the held item matches
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wrong-item", item, cost), Vintagestory.API.Common.EnumChatType.Notification); //Inform player the item is wrong, and what the cost is
