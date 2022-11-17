@@ -576,7 +576,15 @@ namespace bunnyserverutilities.src
                             if (loaded == true)
                             {
                                 Action<IServerPlayer> a = (IServerPlayer) => grtpteleport(player);
-                                checkCooldown(player, cmdname, a, bsuconfig.Current.grtpPlayerCooldown);
+                                string cooldownstate = checkCooldown(player, cmdname, a, bsuconfig.Current.grtpPlayerCooldown);
+                                if (cooldownstate != "wait")
+                                {
+                                    if (processPayment(bsuconfig.Current.grtpcostitem, bsuconfig.Current.grtpcostqty, player))
+                                    {
+                                        grtpteleport(player);
+                                        addcooldown(cmdname, player, cooldownstate);
+                                    }
+                                }
                             }
                             else
                             {
@@ -667,6 +675,21 @@ namespace bunnyserverutilities.src
                     break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
+                    break;
+                case "costitem":
+                    break;
+                case "costqty":
+                    int? num = args.PopInt();
+                    if (num != null && num >= 0)
+                    {
+                        bsuconfig.Current.grtpcostqty = (int)num;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     break;
             }
         }
