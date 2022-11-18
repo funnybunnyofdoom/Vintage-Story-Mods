@@ -720,7 +720,15 @@ namespace bunnyserverutilities.src
                     if (bsuconfig.Current.enableSpawn == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
                         Action<IServerPlayer> a = (IServerPlayer) => spawnTeleport(player);
-                        checkCooldown(player, cmdname, a, bsuconfig.Current.spawnPlayerCooldown);
+                        string cooldownstate = checkCooldown(player, cmdname, a, bsuconfig.Current.spawnPlayerCooldown);
+                        if (cooldownstate != "wait")
+                        {
+                            if (processPayment(bsuconfig.Current.spawncostitem, bsuconfig.Current.spawncostqty, player))
+                            {
+                                spawnTeleport(player);
+                                addcooldown(cmdname, player, cooldownstate);
+                            }
+                        }
 
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
@@ -753,6 +761,21 @@ namespace bunnyserverutilities.src
                     break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
+                    break;
+                case "costitem":
+                    break;
+                case "costqty":
+                    int? num = args.PopInt();
+                    if (num != null && num >= 0)
+                    {
+                        bsuconfig.Current.spawncostqty = (int)num;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     break;
             }
 
