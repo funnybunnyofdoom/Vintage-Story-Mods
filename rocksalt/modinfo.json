@@ -1,0 +1,11 @@
+{
+  "type": "code",
+  "modid": "rocksalt",
+  "name": "rocksalt",
+  "authors": ["Funnybunnyofdoom"],
+  "description": "Rock salt to melt snow and ice",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  }
+}
