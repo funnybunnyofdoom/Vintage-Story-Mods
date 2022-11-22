@@ -1,5 +1,5 @@
 {
-  "ingredientPattern": "L,C,_",
+  "ingredientPattern": "L,C",
   "ingredients": {
     "C": {
       "type": "block",
@@ -13,8 +13,9 @@
       "allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite" ]
     }
   },
+  "shapeless": true,
   "width": 1,
-  "height": 3,
+  "height": 2,
   "output": {
     "type": "block",
     "code": "roadworks:roadblock-free-gravel",

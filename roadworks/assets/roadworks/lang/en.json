@@ -80,5 +80,8 @@
   "roadworks:block-ramp-*-*-brick": "Brick Ramp",
   "roadworks:block-ramp-*-*-concrete": "Concrete Ramp",
   "roadworks:block-ramp-*-*-asphalt": "Asphalt Ramp",
-  "roadworks:block-ramp-*-*-dirt": "Dirt Ramp"
+  "roadworks:block-ramp-*-*-dirt": "Dirt Ramp",
+
+  "game:handbooktitle-roadblock-free-asphalt": "Crafting:",
+  "game:handbooktext-roadblock-free-asphalt": "Use a road tool on Unpaved Asphalt to turn it into Asphalt Roads. "
 }

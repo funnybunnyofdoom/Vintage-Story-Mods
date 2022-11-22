@@ -11,6 +11,18 @@
     "*-dirt": "Soil",
     "*": "Stone"
   },
+  "attributesByType": {
+    "*-asphalt": {
+      "handbook": {
+        "extraSections": [
+          {
+            "title": "handbooktitle-roadblock-free-asphalt",
+            "text": "handbooktext-roadblock-free-asphalt"
+          }
+        ]
+      }
+    }
+  },
   "replaceable": 900,
   "lightAbsorption": 99,
   "variantgroups": [

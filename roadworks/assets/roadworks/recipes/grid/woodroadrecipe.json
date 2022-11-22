@@ -1,5 +1,5 @@
 {
-  "ingredientPattern": "L,C,_",
+  "ingredientPattern": "L,C",
   "ingredients": {
     "C": {
       "type": "block",
@@ -12,8 +12,9 @@
       "quantity": 4
     }
   },
+  "shapeless": true,
   "width": 1,
-  "height": 3,
+  "height": 2,
   "output": {
     "type": "block",
     "code": "roadworks:roadblock-free-wood",

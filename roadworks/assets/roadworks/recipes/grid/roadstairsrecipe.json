@@ -9,6 +9,7 @@
       "allowedVariants": [ "gravel", "wood", "brick", "concrete", "asphalt" ]
     }
   },
+  "shapeless": true,
   "width": 1,
   "height": 1,
   "output": {

@@ -38,7 +38,7 @@
     }
   },
   {
-    "ingredientPattern": "L",
+    "ingredientPattern": "LLL",
     "ingredients": {
       "L": {
         "type": "block",

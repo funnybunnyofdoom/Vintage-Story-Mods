@@ -1,19 +1,57 @@
-{
-  "ingredientPattern": "__L,_LL,LLL",
-  "ingredients": {
-    "L": {
+[
+  {
+    "ingredientPattern": "__L,_LL,LLL",
+    "ingredients": {
+      "L": {
+        "type": "block",
+        "code": "roadworks:roadblock-free-*",
+        "name": "road",
+        "quantity": 1,
+        "allowedVariants": [ "gravel", "wood", "brick", "concrete", "asphalt" ]
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
       "type": "block",
-      "code": "roadworks:roadblock-free-*",
-      "name": "road",
-      "quantity": 1,
-      "allowedVariants": [ "gravel", "wood", "brick", "concrete", "asphalt" ]
+      "code": "roadworks:ramp-1-north-{road}",
+      "quantity": 6
     }
   },
-  "width": 3,
-  "height": 3,
-  "output": {
-    "type": "block",
-    "code": "roadworks:ramp-1-north-{road}",
-    "quantity": 6
+  {
+    "ingredientPattern": "__L,_LL,LLL",
+    "ingredients": {
+      "L": {
+        "type": "block",
+        "code": "game:packeddirt",
+        "name": "road",
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "roadworks:ramp-1-north-dirt",
+      "quantity": 6
+    }
+  },
+  {
+    "ingredientPattern": "__L,_LL,LLL",
+    "ingredients": {
+      "L": {
+        "type": "block",
+        "code": "game:drypackeddirt",
+        "name": "road",
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "roadworks:ramp-1-north-dirt",
+      "quantity": 6
+    }
   }
-}
+]
