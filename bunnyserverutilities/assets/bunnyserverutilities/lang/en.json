@@ -122,7 +122,7 @@
   "help-home": "- teleports you to your set home location",
   "admin-commands": "{0} admin commands:", //{0} = module name
   "module-disable": "{0} disable - disable the {0} command",
-  "module-dissable-2": "{0} disable - disables the {1} module.",
+  "module-disable-2": "{0} disable - disables the {1} module.",
   "module-enable": "{0} enable - enable the {0} command",
   "module-enable-2": "{0} enable - enables the {1} module",
   "ja-enable": "/joinannounce enable - enables sending a message to players the first time they join",
@@ -170,6 +170,18 @@
   "empty-slot": "Hand is empty. Please place {1}x {0} in your active hotbar slot and try again. ",
   "wrong-item": "Incorrect item. Please hold {1}x {0} in your hand and try again.",
   "not-enough": "This teleport costs {1} and you have {0} in your hand.",
-  "cost-qty-updated":  "The cost quantity for {0} has been set to {1}"
+  "cost-qty-updated": "The cost quantity for {0} has been set to {1}",
+  "tp-dont-move": "Do not move your payment from the hotbar until the TP is accepted, or you will cancel the TP.",
+  "tp-need-item": "Please enter the full item code. Example: game:gear-rusty or roadworks:roadblock-free-asphalt",
+  "cost-itm-updated": "The cost item for {0} has been updated to {1}",
+  "cost-remove": "Removing {1} {0} from inventory.",
+
+  "module-costqty": "{0} costqty <i>number</i> - sets the teleport cost for {0}",
+  "module-costitm": "{0} costitem <i>itemcode</i> - sets item consumed to use {0}. Example itemcode: game:gear-rusty",
+
+  //cooldown commamnd
+  "cooldown-command": "{0}: {1} Remaining minutes.",
+  "cooldowns": "Cooldowns:",
+  "no-cooldowns": "No Active Cooldowns"
 
 } 
