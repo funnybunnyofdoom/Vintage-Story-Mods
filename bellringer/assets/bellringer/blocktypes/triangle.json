@@ -1,0 +1,49 @@
+{
+  "code": "triangle",
+  "behaviors": [ { "name": "HorizontalOrientable" } ],
+  "attributes": {
+    "handbook": {
+    }
+  },
+  "variantgroups": [
+    {
+      "code": "side",
+      "loadFromProperties": "abstract/horizontalorientation"
+    }
+  ],
+  "creativeinventory": {
+    "general": [ "*-north" ],
+    "mechanics": [ "*-north" ]
+  },
+  "shapebytype": {
+    "*-north": {
+      "base": "bellringer:block/triangle",
+      "rotateY": 0
+    },
+    "*-east": {
+      "base": "bellringer:block/triangle",
+      "rotateY": 270
+    },
+    "*-south": {
+      "base": "bellringer:block/triangle",
+      "rotateY": 180
+    },
+    "*-west": {
+      "base": "bellringer:block/triangle",
+      "rotateY": 90
+    }
+  },
+  "blockmaterial": "Wood",
+  "textures": {
+    "wood": { "base": "block/wood/planks/generic" }
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "resistance": 3.5,
+  "maxStackSize": 8,
+  "lightAbsorption": 0
+}

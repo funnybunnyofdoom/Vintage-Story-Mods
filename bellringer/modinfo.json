@@ -1,0 +1,11 @@
+{
+  "type": "code",
+  "modid": "bellringer",
+  "name": "bellringer",
+  "authors": ["Funnybunnyofdoom"],
+  "description": "Various bells",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": ""
+  }
+}
