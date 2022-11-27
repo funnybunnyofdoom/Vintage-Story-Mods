@@ -1,0 +1,50 @@
+{
+  "code": "pinatasheep",
+  "class": "EntityStrawDummy",
+  "hitboxSize": {
+    "x": 0.7,
+    "y": 2
+  },
+  "eyeHeight": 1.8,
+  "knockbackResistance": 1,
+  "attributes": {
+    "spawnDamageParticles": true
+  },
+  "client": {
+    "renderer": "Shape",
+    "shape": { "base": "pinata:entity/sheeppinata" },
+    "textures": { "all": { "base": "pinata:block/pinata" } },
+    "behaviors": [
+      { "code": "repulseagents" },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 1.1251
+      },
+      { "code": "interpolateposition" }
+    ],
+    "animations": [
+      {
+        "code": "hurt",
+        "animation": "animation1",
+        "animationSpeed": 1.5
+      }
+    ]
+  },
+  "server": {
+    "behaviors": [
+      { "code": "repulseagents" },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 1.1251
+      },
+      {
+        "code": "health",
+        "currenthealth": 100,
+        "maxhealth": 100
+      }
+    ]
+  },
+  "sounds": {
+    "hurt": "pinata:creature/strawdummy-hit"
+  }
+}

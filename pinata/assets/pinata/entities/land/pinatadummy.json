@@ -1,0 +1,101 @@
+{
+  "code": "pinatadummy",
+  "class": "EntityStrawDummy",
+  "hitboxSize": {
+    "x": 0.7,
+    "y": 2
+  },
+  "eyeHeight": 1.8,
+  "knockbackResistance": 1,
+  "attributes": {
+    "spawnDamageParticles": true
+  },
+  "drops": [
+    {
+      "type": "item",
+      "code": "game:honeycomb",
+      "quantity": {
+        "avg": 2,
+        "var": 2,
+        "dist": "invexp"
+      }
+    },
+    {
+      "type": "item",
+      "code": "game:fruit-blueberry",
+      "quantity": {
+        "avg": 16,
+        "var": 16,
+        "dist": "invexp"
+      }
+    },
+    {
+      "type": "item",
+      "code": "game:fruit-cranberry",
+      "quantity": {
+        "avg": 16,
+        "var": 16,
+        "dist": "invexp"
+      }
+    },
+    {
+      "type": "item",
+      "code": "game:fruit-orange",
+      "quantity": {
+        "avg": 16,
+        "var": 16,
+        "dist": "invexp"
+      }
+    }
+  ],
+  "client": {
+    "renderer": "Shape",
+    "textures": { "all": { "base": "pinata:block/pinata" } },
+    "shape": { "base": "game:entity/land/strawdummy" },
+    "behaviors": [
+      { "code": "repulseagents" },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 1.1251
+      },
+      { "code": "interpolateposition" }
+    ],
+    "animations": [
+      {
+        "code": "hurt",
+        "animation": "bounce",
+        "animationSpeed": 1.5
+      },
+      {
+        "code": "die",
+        "animation": "death",
+        "animationSpeed": 1.25,
+        "weight": 10,
+        "blendMode": "Average"
+      },
+      {
+        "code": "idle",
+        "animation": "idle",
+        "blendMode": "Average",
+        "triggeredBy": { "defaultAnim": true }
+      }
+    ]
+  },
+  "server": {
+    "behaviors": [
+      { "code": "repulseagents" },
+      {
+        "code": "controlledphysics",
+        "stepHeight": 1.1251
+      },
+      {
+        "code": "health",
+        "currenthealth": 100,
+        "maxhealth": 100
+      }
+    ]
+  },
+  "sounds": {
+    "hurt": "game:creature/strawdummy-hit"
+  }
+}

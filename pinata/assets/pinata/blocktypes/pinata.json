@@ -1,128 +1,127 @@
 {
   "code": "pinata",
+
+  "heldTpIdleAnimation": "holdbothhands",
+
+  "maxstacksize": 1,
+
+  "shapeByType": {
+    "*-bee": { "base": "game:block/beehive/skep-empty" },
+    "*-sheep": { "base": "game:entity/land/sheep-bighorn-female" },
+    "*-rooster": { "base": "game:entity/land/chicken-rooster" },
+    "*-drifter-surface": { "base": "game:entity/land/drifter/surface" },
+    "*-drifter-knife": { "base": "game:entity/land/drifter/knife" },
+    "*-dumdums": { "base": "game:entity/land/strawdummy" }
+
+  },
+
   "variantgroups": [
     {
       "code": "type",
-      "states": [ "sheep","bee" ]
+      "states": [
+        "bee",
+        "sheep",
+        "rooster",
+        "drifter-surface",
+        "drifter-knife",
+        "dumdums"
+      ]
     }
   ],
-  "heldTpIdleAnimation": "holdbothhands",
-  "maxstacksize": 1,
-  "shapeByType": {
-    "*-sheep": { "base": "game:entity/land/sheep-bighorn-female" },
-    "*-bee": { "base": "game:block/beehive/skep-empty" }
-  },
+
   "creativeinventory": { "general": [ "*" ] },
+
   "blockmaterial": "Wood",
-  "sounds": {
-    "break": "game:effect/clothrip",
-    "hit": "game:block/stickhit"
-  },
-  "drops": [
-    {
-      "type": "item",
-      "code": "game:honeycomb",
-      "quantity": {
-        "avg": 2,
-        "var": 2,
-        "dist": "invexp"
-      }
+
+    "sounds": {
+        "break": "game:effect/clothrip",
+        "hit": "game:block/dirt1"
     },
-    {
-      "type": "item",
-      "code": "game:fruit-blueberry",
-      "quantity": {
-        "avg": 16,
-        "var": 16,
-        "dist": "invexp"
-      }
+    "drops": [
+        {
+            "type": "item",
+            "code": "game:honeycomb",
+            "quantity": {   
+                "avg": 2,
+                "var": 2,
+                "dist": "invexp"
+            }
+        },
+        {
+            "type": "item",
+            "code": "game:fruit-blueberry",
+            "quantity": {
+                "avg": 16,
+                "var": 16,
+                "dist": "invexp"
+            }
+        },
+        {
+            "type": "item",
+            "code": "game:fruit-cranberry",
+            "quantity": {
+                "avg": 16,
+                "var": 16,
+                "dist": "invexp"
+            }
+        },
+        {
+            "type": "item",
+            "code": "game:fruit-orange",
+            "quantity": {
+                "avg": 16,
+                "var": 16,
+                "dist": "invexp"
+            }
+        }
+    ],
+    "resistance": 0.5,
+    "selectionbox": {
+        "x1": 0.25,
+        "y1": 0,
+        "z1": 0.25,
+        "x2": 0.75,
+        "y2": 0.5625,
+        "z2": 0.75
     },
-    {
-      "type": "item",
-      "code": "game:fruit-cranberry",
-      "quantity": {
-        "avg": 16,
-        "var": 16,
-        "dist": "invexp"
-      }
+    "collisionbox": {
+        "x1": 0.25,
+        "y1": 0,
+        "z1": 0.25,
+        "x2": 0.75,
+        "y2": 0.5625,
+        "z2": 0.75
     },
-    {
-      "type": "item",
-      "code": "game:fruit-orange",
-      "quantity": {
-        "avg": 16,
-        "var": 16,
-        "dist": "invexp"
-      }
-    }
-  ],
-  "resistance": 0.5,
-  "selectionboxByType": {
-    "*-bee": {
-      "x1": 0.25,
-      "y1": 0,
-      "z1": 0.25,
-      "x2": 0.75,
-      "y2": 0.5625,
-      "z2": 0.75
+    "guiTransform": {
+        "origin": {
+            "x": 0.5,
+            "y": 0.3,
+            "z": 0.5
+        },
+        "scale": 1.85
     },
-    "*-sheep": {
-      "x1": 0,
-      "y1": 0,
-      "z1": 0,
-      "x2": 1.0,
-      "y2": 1.5,
-      "z2": 1.0
-    } 
-  },
-  "collisionboxByType": {
-    "*-bee": {
-      "x1": 0.25,
-      "y1": 0,
-      "z1": 0.25,
-      "x2": 0.75,
-      "y2": 0.5625,
-      "z2": 0.75
+    "tpHandTransform": {
+        "translation": {
+            "x": -0.9,
+            "y": -0.4,
+            "z": -0.7
+        },
+        "rotation": {
+            "x": 51,
+            "y": 13,
+            "z": -84
+        },
+        "origin": {
+            "x": 0.5,
+            "y": 0.2,
+            "z": 0.5
+        },
+        "scale": 0.59
     },
-    "*-sheep": {
-      "x1": 0,
-      "y1": 0,
-      "z1": 0,
-      "x2": 1.0,
-      "y2": 1.5,
-      "z2": 1.0
-    }
-  },
-  "guiTransform": {
-    "origin": {
-      "x": 0.5,
-      "y": 0.3,
-      "z": 0.5
+    "groundTransform": {
+        "scale": 2.01
     },
-    "scale": 1.0
-  },
-  "tpHandTransform": {
-    "translation": {
-      "x": -0.9,
-      "y": -0.4,
-      "z": -0.7
-    },
-    "rotation": {
-      "x": 51,
-      "y": 13,
-      "z": -84
-    },
-    "origin": {
-      "x": 0.5,
-      "y": 0.2,
-      "z": 0.5
-    },
-    "scale": 0.59
-  },
-  "groundTransform": {
-    "scale": 2.0
-  },
-  "textures": { "all": { "base": "pinata:block/pinata" } },
-  "sideopaque": { "all": false },
-  "sidesolid": { "all": false }
+    "textures": { "all": { "base": "pinata:block/pinata" } },
+    "sideopaque": { "all": false },
+    "sidesolid": { "all": false }
 }
