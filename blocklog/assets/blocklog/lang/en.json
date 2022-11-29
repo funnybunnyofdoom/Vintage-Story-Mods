@@ -1,0 +1,6 @@
+{
+  "blocklog:break-player": "Player {0} broke block:",
+  "blocklog:break-block": "{0}",
+  "blocklog:break-location": "Location: {0}, {2}, {1}",
+  "blocklog:break-date": "Date: {0}"
+}
