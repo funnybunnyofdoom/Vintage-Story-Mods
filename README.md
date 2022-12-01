@@ -90,3 +90,7 @@ Will add a feature to progress to day whenever a player logs in.
 
 -Legendary Mobs: [Funnybunnyofdoom]
 	Giant versions of mobs, and legendary versions of other resources. Will Spawn in shrines randomly generated around the world. Legendary bloom smiths to legendary ingot, then into legendary items.
+
+-Bunny's Block Log
+
+-Bunny's Bellringer
