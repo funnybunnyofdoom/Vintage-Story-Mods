@@ -1,11 +1,12 @@
 {
   "type": "code",
   "modid": "blocklog",
-  "name": "blocklog",
-  "authors": ["FunnyBunnyofDOOM"],
-  "description": "To be added",
+  "name": "bunnys blocklog",
+  "authors": [ "FunnyBunnyofDOOM" ],
+  "description": "Tracks blocks placed and broken",
   "version": "1.0.0",
   "dependencies": {
     "game": ""
-  }
+  },
+  "requiredonclient": false
 }
