@@ -49,17 +49,30 @@ namespace blocklog.src
         //Command functions
         private void cmd_blocklog(IServerPlayer player, int groupId, CmdArgs args)
         {
-            BlockPos selection = player.CurrentBlockSelection.Position.Up(); //Get the block above the selection
+            if (player.CurrentBlockSelection == null) return;
+            BlockPos selection = player.CurrentBlockSelection.Position.UpCopy(1); //Get the block above the selection
+            BlockPos placeselection = player.CurrentBlockSelection.Position;
             blockdata bdata; //initiliaze the variable to hold our class
             bool state = blockbreaksave.TryGetValue(selection,out bdata); //Try to get the value from blockbreaksave
             blockdata Pdata; //initiliaze the variable to hold our class
-            bool Pstate = blockplacesave.TryGetValue(selection.Down(), out Pdata); //Try to get the value from blockplacesave
+            bool Pstate = blockplacesave.TryGetValue(placeselection, out Pdata); //Try to get the value from blockplacesave
             if (state != false)
             {
-                BlockPos bselection = selection.Up();
+                
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-player", bdata.player), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-block", bdata.block), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-location", (bselection.X - (sapi.WorldManager.MapSizeX / 2)).ToString(), (bselection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString(), (bselection.Y+1).ToString()), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
+                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-location", (selection.X - (sapi.WorldManager.MapSizeX / 2)).ToString(), (selection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString(), (selection.Y).ToString()), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
+                /*System.Diagnostics.Debug.WriteLine("selection x: "+selection.X);
+                System.Diagnostics.Debug.WriteLine("mapsize x: " + sapi.WorldManager.MapSizeX);
+                System.Diagnostics.Debug.WriteLine("mapsize x /2: " + sapi.WorldManager.MapSizeX / 2);
+                System.Diagnostics.Debug.WriteLine(selection.X+"-"+(sapi.WorldManager.MapSizeX / 2));
+                System.Diagnostics.Debug.WriteLine((selection.X - (sapi.WorldManager.MapSizeX / 2)).ToString());
+
+                System.Diagnostics.Debug.WriteLine("selection z: " + player.CurrentBlockSelection.Position.Z);
+                System.Diagnostics.Debug.WriteLine("mapsize z: " + sapi.WorldManager.MapSizeZ);
+                System.Diagnostics.Debug.WriteLine("mapsize z /2: " + sapi.WorldManager.MapSizeZ / 2);
+                System.Diagnostics.Debug.WriteLine(selection.Z + "-" + (sapi.WorldManager.MapSizeZ / 2));
+                System.Diagnostics.Debug.WriteLine((selection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString());*/
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-date", bdata.date), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
 
             }
@@ -67,7 +80,7 @@ namespace blocklog.src
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-player", Pdata.player), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-block", Pdata.block), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-location", (selection.X - (sapi.WorldManager.MapSizeX / 2)).ToString(), (selection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString(), selection.Y.ToString()), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
+                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-location", (placeselection.X - (sapi.WorldManager.MapSizeX / 2)).ToString(), (placeselection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString(), placeselection.Y.ToString()), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-date", Pdata.date), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
             }
                 

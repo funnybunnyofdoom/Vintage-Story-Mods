@@ -4,7 +4,7 @@
   "blocklog:break-location": "Location: {0}, {2}, {1}",
   "blocklog:break-date": "Date: {0}",
 
-  "blocklog:place-player": "Player {0} placed block:",
+  "blocklog:place-player": "Player {0} placed a block:",
   "blocklog:place-location": "Location: {0}, {2}, {1}",
   "blocklog:place-date": "Date: {0}"
 }
