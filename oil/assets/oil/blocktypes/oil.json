@@ -1,6 +1,5 @@
 {
   "code": "oil",
-  "__comment": "BlockWaterfall and BlockWaterflowing merely contain some extra code for particle spawning, BlockWater contains code for extra checks on ambient sounds",
   "classByType": {
     "oil-d-*": "BlockWaterfall",
     "oil-still-*": "BlockWater",
@@ -95,7 +94,7 @@
   "materialdensity": 800,
   "creativeinventory": {
     "general": [ "oil:oil-still-7" ],
-    "terrain": [ "oil:water-still-7" ]
+    "terrain": [ "oil:oil-still-7" ]
   },
   "replaceable": 9500,
   "lightAbsorption": 2,

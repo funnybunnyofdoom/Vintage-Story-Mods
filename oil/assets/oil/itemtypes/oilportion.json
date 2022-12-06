@@ -12,18 +12,11 @@
       "texture": { "base": "game:block/coal/bituminous" },
       "tintIndex": 2,
       "whenSpilled": {
-        "action": "PlaceBlock",
+        "action": "DropContents",
         "stack": {
           "type": "block",
           "code": "oil:oil-still-3"
-        },
-        "stackByFillLevel": {
-          "10": {
-            "type": "block",
-            "code": "oil:oil-still-7"
-          }
         }
-      }
     }
   },
   "shape": { "base": "game:item/liquid" },
