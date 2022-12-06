@@ -94,3 +94,6 @@ Will add a feature to progress to day whenever a player logs in.
 -Bunny's Block Log
 
 -Bunny's Bellringer
+
+-Bunny's Oil
+	liquid oil resource used for crude crafting and refinement
