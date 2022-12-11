@@ -28,6 +28,7 @@ namespace blocklog.src
         ICoreServerAPI sapi; //Initialize our server API
         public Dictionary<BlockPos, blockdata> blockbreaksave = new Dictionary<BlockPos, blockdata>();
         public Dictionary<BlockPos, blockdata> blockplacesave = new Dictionary<BlockPos, blockdata>();
+        public Dictionary<string, creaturedata[]> creaturedeathsave = new Dictionary<string, creaturedata[]>();
 
         public override void StartServerSide(ICoreServerAPI api)
         {
@@ -36,15 +37,15 @@ namespace blocklog.src
             
             //event listeners
             api.Event.BreakBlock += onBreakBlock; //detect each block broken this calls onBreakBlock function
-            api.Event.DidPlaceBlock += onPlaceBlock;
+            api.Event.DidPlaceBlock += onPlaceBlock; //Detect each time a block is placed
+            api.Event.OnEntityDeath += onEntityDeath; //Detect each time an entity dies
+
             api.Event.SaveGameLoaded += OnSaveGameLoading; // Load our data each game load
             api.Event.GameWorldSave += OnSaveGameSaving; // Save our data each game save
 
             //register commands
             api.RegisterCommand("blocklog", "Tracks block broken/placed", "", cmd_blocklog, Privilege.controlserver); //Register the /blocklog command
         }
-
-        
 
         //Command functions
         private void cmd_blocklog(IServerPlayer player, int groupId, CmdArgs args)
@@ -116,10 +117,66 @@ namespace blocklog.src
             }
             blockplacesave.Add(pos, bdata);  //Add the data to our dictionary to be saved
         }
+
+        private void onEntityDeath(Entity entity, DamageSource damageSource)
+        {
+            
+            creaturedata cdata = new creaturedata();
+            
+            //System.Diagnostics.Debug.WriteLine(entity.FirstCodePart()); //Uncomment this to check for new projectiles to filter out
+            if (entity.FirstCodePart() == "arrow" || entity.FirstCodePart() == "stone" || entity.FirstCodePart() == "thrownstone" || entity.FirstCodePart() == "magicprojectile") { return; } //Add projectiles from other mods here
+            string killedname = entity.GetName();
+            DateTime date = System.DateTime.Now;
+            string killedbyname;
+            BlockPos deathposition = entity.Pos.AsBlockPos;
+            LandClaim[] lc = entity.World.Claims.Get(entity.Pos.AsBlockPos);
+            if (damageSource != null)
+            {
+                if (damageSource.SourceEntity == null)
+                {
+                    if (damageSource.SourceBlock == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        killedbyname = damageSource.SourceBlock.GetPlacedBlockName(entity.World, damageSource.SourcePos.AsBlockPos);
+                    }
+                }
+                else
+                {
+                    killedbyname = damageSource.SourceEntity.GetName();
+                }
+            }
+            else
+            {
+                killedbyname = "Killed by a block";
+            }
+            
+           
+
+            System.Diagnostics.Debug.WriteLine(killedname);
+            System.Diagnostics.Debug.WriteLine(killedbyname);
+            System.Diagnostics.Debug.WriteLine(date.ToString());
+            if (lc != null)
+            {
+                if (lc.Length > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("Claim owner: " + lc[0].LastKnownOwnerName);
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Not in a claim");
+            }
+
+
+        }
         private void OnSaveGameSaving() //This function is called when the game saves
         {
             sapi.WorldManager.SaveGame.StoreData("blockbreaksave", SerializerUtil.Serialize(blockbreaksave)); //Serialize and store our block break dictionary
             sapi.WorldManager.SaveGame.StoreData("blockplacesave", SerializerUtil.Serialize(blockplacesave)); //Serialize and store our block place dictionary
+            sapi.WorldManager.SaveGame.StoreData("creaturedeathsave", SerializerUtil.Serialize(creaturedeathsave)); //Serialize and store our block place dictionary
         }
 
         private void OnSaveGameLoading() //This is called when the game loads
@@ -128,9 +185,11 @@ namespace blocklog.src
 
             byte[] blockbreaksavedata = sapi.WorldManager.SaveGame.GetData("blockbreaksave");  //Get the data in bytes
             byte[] blockplacesavedata = sapi.WorldManager.SaveGame.GetData("blockplacesave");  //Get the data in bytes
+            byte[] creaturedeathsavedata = sapi.WorldManager.SaveGame.GetData("creaturedeathsave");  //Get the data in bytes
 
             blockbreaksave = blockbreaksavedata == null ? new Dictionary<BlockPos, blockdata>() : SerializerUtil.Deserialize<Dictionary<BlockPos, blockdata>>(blockbreaksavedata); //deserialize our data and place it into blockbreaksave
             blockplacesave = blockplacesavedata == null ? new Dictionary<BlockPos, blockdata>() : SerializerUtil.Deserialize<Dictionary<BlockPos, blockdata>>(blockplacesavedata); //deserialize our data and place it into blockbreaksave
+            creaturedeathsave = creaturedeathsavedata == null ? new Dictionary<string, creaturedata[]>() : SerializerUtil.Deserialize<Dictionary<string, creaturedata[]>>(creaturedeathsavedata); //deserialize our data and place it into blockbreaksave
         }
 
         //classes//
@@ -141,6 +200,16 @@ namespace blocklog.src
             public string player;//Player who did the action
             public string block; //Block the action was done to
             public string date; //Date the block was broken
+        }
+
+        [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
+        public class creaturedata//This class holds our killed creature data
+        {
+            public string killed;//Entity that got killed
+            public string killedby; //thing that killed the entity
+            public DateTime date; //Date the entity was killed
+            public string claimowner; //Owner of the claim this creature was killed in
+            public BlockPos pos; //Position of the death
         }
 
     }
