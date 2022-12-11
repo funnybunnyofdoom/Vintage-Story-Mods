@@ -27,7 +27,7 @@
     "shapeless": true,
     "output": {
       "type": "block",
-      "code": "game:torch-basic-extinct-up",
+      "code": "oil:oiltorch-basic-extinct-up",
       "quantity":  1
     }
   }
