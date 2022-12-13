@@ -95,6 +95,7 @@ Will add a feature to progress to day whenever a player logs in.
 	Tracks the blocks broken and placed by users
 
 -Bunny's Bellringer
+	Hand bell, dinner bell and belltower
 
 -Bunny's Oil
 	liquid oil resource used for crude crafting and refinement
