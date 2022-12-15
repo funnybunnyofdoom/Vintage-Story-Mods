@@ -92,7 +92,7 @@ Will add a feature to progress to day whenever a player logs in.
 	Giant versions of mobs, and legendary versions of other resources. Will Spawn in shrines randomly generated around the world. Legendary bloom smiths to legendary ingot, then into legendary items.
 
 -Bunny's Block Log
-	Tracks the blocks broken and placed by users
+	Tracks the blocks broken and placed by users, working on animal tracking
 
 -Bunny's Bellringer
 	Hand bell, dinner bell and belltower
