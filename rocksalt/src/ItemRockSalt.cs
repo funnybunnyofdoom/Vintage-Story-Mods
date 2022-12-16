@@ -69,7 +69,7 @@ namespace rocksalt.src
             }
             if (blockSel.Block == null) { return; }
             //System.Diagnostics.Debug.WriteLine(blockSel);
-            if (blockSel.Block.FirstCodePart() == "snowlayer" || blockSel.Block.FirstCodePart() == "snowblock" || blockSel.Block.FirstCodePart() == "lakeice" || blockSel.Block.FirstCodePart() == "glacierice")
+            if (blockSel.Block.FirstCodePart() == "snowlayer" || blockSel.Block.FirstCodePart() == "snowblock" || blockSel.Block.FirstCodePart() == "lakeice" || blockSel.Block.FirstCodePart() == "glacierice" || blockSel.Block.FirstCodePart() == "stonepath" /*|| blockSel.Block.FirstCodePart() == "roadblock"*/)
             {
                 IPlayer byPlayer = null;
                 if (byEntity is EntityPlayer) byPlayer = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
@@ -93,10 +93,37 @@ namespace rocksalt.src
                 if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z, BlockLayersAccess.Fluid).FirstCodePart() =="lakeice")
                 {
                     api.World.BlockAccessor.SetBlock(0, blockSel.Position, BlockLayersAccess.Fluid);
+                    if (api.World.BlockAccessor.GetBlock(blockSel.Position.Up()).FirstCodePart() == "snowlayer")//remove snowlayer above the block you're removing (no floating snow)
+                    {
+                        api.World.BlockAccessor.SetBlock(0, blockSel.Position);
+                    }
+                }else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X,blockSel.Position.Y,blockSel.Position.Z).FirstCodePart() == "stonepath")
+                {
+                    if(api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart(1) == "snow")
+                    {
+                        api.World.BlockAccessor.SetBlock(api.World.GetBlock(new AssetLocation("stonepath-free")).BlockId, blockSel.Position);
+                    }
+                    
                 }
+                /*else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart() == "roadblock")
+                {
+                    Block block = api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z);
+                    string prefix = "roadworks:";
+                    string first = "roadblock";
+                    string second = "free";
+                    string third = block.FirstCodePart(2);
+                    string code = prefix + "-"+first + "-"+second+"-" + third;
+                    System.Diagnostics.Debug.WriteLine(code);
+                    api.World.BlockAccessor.SetBlock(api.World.GetBlock(new AssetLocation(code)).BlockId, blockSel.Position);
+
+                }*/
                 else
                 {
                     api.World.BlockAccessor.SetBlock(0, blockSel.Position);
+                    if (api.World.BlockAccessor.GetBlock(blockSel.Position.Up()).FirstCodePart() == "snowlayer")//remove snowlayer above the block you're removing (no floating snow)
+                    {
+                        api.World.BlockAccessor.SetBlock(0, blockSel.Position);
+                    }
                 }
             }
             else
