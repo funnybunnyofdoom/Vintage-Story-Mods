@@ -69,7 +69,7 @@ namespace rocksalt.src
             }
             if (blockSel.Block == null) { return; }
             //System.Diagnostics.Debug.WriteLine(blockSel);
-            if (blockSel.Block.FirstCodePart() == "snowlayer" || blockSel.Block.FirstCodePart() == "snowblock" || blockSel.Block.FirstCodePart() == "lakeice" || blockSel.Block.FirstCodePart() == "glacierice" || blockSel.Block.FirstCodePart() == "stonepath" /*|| blockSel.Block.FirstCodePart() == "roadblock"*/)
+            if (blockSel.Block.FirstCodePart() == "snowlayer" || blockSel.Block.FirstCodePart() == "snowblock" || blockSel.Block.FirstCodePart() == "lakeice" || blockSel.Block.FirstCodePart() == "glacierice" || blockSel.Block.FirstCodePart() == "stonepath" || blockSel.Block.FirstCodePart() == "roadblock")
             {
                 IPlayer byPlayer = null;
                 if (byEntity is EntityPlayer) byPlayer = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
@@ -105,18 +105,15 @@ namespace rocksalt.src
                     }
                     
                 }
-                /*else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart() == "roadblock")
+                else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart() == "roadblock")
                 {
                     Block block = api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z);
-                    string prefix = "roadworks:";
-                    string first = "roadblock";
-                    string second = "free";
-                    string third = block.FirstCodePart(2);
-                    string code = prefix + "-"+first + "-"+second+"-" + third;
-                    System.Diagnostics.Debug.WriteLine(code);
-                    api.World.BlockAccessor.SetBlock(api.World.GetBlock(new AssetLocation(code)).BlockId, blockSel.Position);
+                    string code = "roadworks:roadblock-free-"+block.FirstCodePart(2);
+                    Block gb = api.World.GetBlock(new AssetLocation(code));
+                    if (gb == null) return;
+                    api.World.BlockAccessor.SetBlock(gb.BlockId, blockSel.Position);
 
-                }*/
+                }
                 else
                 {
                     api.World.BlockAccessor.SetBlock(0, blockSel.Position);
