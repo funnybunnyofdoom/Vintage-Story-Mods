@@ -38,9 +38,9 @@ namespace legendarymobs.src
             {
                 if (base.OnBlockBrokenWith(world, byEntity, itemslot, blockSel))
                 {
-                EnumBlockMaterial material = byEntity.World.GetBlock(2604).BlockMaterial; //Dirt
-                EnumBlockMaterial material2 = byEntity.World.GetBlock(5026).BlockMaterial; //Gravel
-                EnumBlockMaterial material3 = byEntity.World.GetBlock(1102).BlockMaterial; //Snow
+                EnumBlockMaterial material = byEntity.World.GetBlock(new AssetLocation("game:soil-medium-none")).BlockMaterial; //Dirt
+                EnumBlockMaterial material2 = byEntity.World.GetBlock(new AssetLocation("game:gravel-granite")).BlockMaterial; //Gravel
+                EnumBlockMaterial material3 = byEntity.World.GetBlock(new AssetLocation("game:snowblock")).BlockMaterial; //Snow
                 if (byEntity is EntityPlayer && (blockSel.Block.BlockMaterial == material || blockSel.Block.BlockMaterial == material2 || blockSel.Block.BlockMaterial == material3))
                     {
                         IPlayer player = world.PlayerByUid((byEntity as EntityPlayer).PlayerUID);

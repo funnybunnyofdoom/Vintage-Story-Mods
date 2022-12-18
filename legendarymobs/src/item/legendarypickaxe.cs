@@ -38,7 +38,7 @@ namespace legendarymobs.src
             {
                 if (base.OnBlockBrokenWith(world, byEntity, itemslot, blockSel))
                 {
-                EnumBlockMaterial stoneMaterial = byEntity.World.GetBlock(6098).BlockMaterial;
+                EnumBlockMaterial stoneMaterial = byEntity.World.GetBlock(new AssetLocation("game:rock-granite")).BlockMaterial;
                     if (byEntity is EntityPlayer && blockSel.Block.BlockMaterial == stoneMaterial)
                     {
                         IPlayer player = world.PlayerByUid((byEntity as EntityPlayer).PlayerUID);
