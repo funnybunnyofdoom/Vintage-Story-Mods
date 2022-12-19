@@ -1,0 +1,44 @@
+{
+  "code": "urn",
+  "creativeinventory": {
+    "general": [ "*" ],
+    "flora": [ "*" ],
+    "terrain": [ "*" ]
+  },
+  "shape": { "base": "legendarymobs:block/urn" },
+  "blockmaterial": "stone",
+  "textures": {
+    "all": { "base": "game:block/clay/ceramic" }
+  },
+  "replaceable": 400,
+  "fertility": 30,
+  "resistance": 2.2,
+  "sounds": {
+    "place": "game:block/dirt",
+    "break": "game:block/dirt",
+    "hit": "game:block/dirt",
+    "walk": "game:walk/grass"
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.23,
+      "y": -0.91,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -2,
+      "y": 25,
+      "z": -78
+    },
+    "scale": 0.4
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "sidesolid": {
+    "all": false
+  },
+  "sideAo": { "all": false }
+}

@@ -1,0 +1,89 @@
+{
+  "code": "legendarywand",
+  "attributes": {
+    "handbook": {
+      "exclude": true
+    }
+  },
+  "maxstacksize": 1,
+  "shape": {
+    "base": "legendarymobs:item/legendarywand"
+  },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "meta": [ "*" ]
+  },
+  "materialDensity": 600,
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": -6,
+      "y": 30,
+      "z": -42
+    },
+    "origin": {
+      "x": 0.7,
+      "y": 0,
+      "z": 0.3
+    },
+    "scale": 1.6
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0.1,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 98,
+      "y": 90,
+      "z": -30
+    },
+    "origin": {
+      "x": 0.6,
+      "y": 0.5,
+      "z": 0.8
+    },
+    "scale": 1.38
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.5,
+      "y": 0.2,
+      "z": -1.1
+    },
+    "rotation": {
+      "x": 0,
+      "y": -17,
+      "z": 18
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 0.49
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 90,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5299
+    },
+    "scale": 2
+  }
+}
