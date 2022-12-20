@@ -5,7 +5,16 @@
     "flora": [ "*" ],
     "terrain": [ "*" ]
   },
-  "shape": { "base": "legendarymobs:block/urn" },
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "empty", "sheep", "hyena", "chicken", "wolf", "gazelle", "fox", "pig" ]
+    }
+  ],
+  "shapebytype": {
+    "*-empty": { "base": "legendarymobs:block/urn-open" },
+    "*": { "base": "legendarymobs:block/urn-closed" }
+  },
   "blockmaterial": "stone",
   "textures": {
     "all": { "base": "game:block/clay/ceramic" }
@@ -14,10 +23,10 @@
   "fertility": 30,
   "resistance": 2.2,
   "sounds": {
-    "place": "game:block/dirt",
-    "break": "game:block/dirt",
-    "hit": "game:block/dirt",
-    "walk": "game:walk/grass"
+    "walk": "game:walk/stone",
+    "break": "game:block/ceramicplace",
+    "hit": "game:block/ceramichit",
+    "place": "game:block/ceramicplace"
   },
   "heldTpIdleAnimation": "holdbothhandslarge",
   "heldTpUseAnimation": "twohandplaceblock",
