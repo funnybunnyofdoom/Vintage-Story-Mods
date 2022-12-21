@@ -1,5 +1,5 @@
 {
-  "code": "urn",
+  "code": "reagent",
   "creativeinventory": {
     "general": [ "*" ],
     "flora": [ "*" ],
@@ -8,16 +8,17 @@
   "variantgroups": [
     {
       "code": "type",
-      "states": [ "empty", "sheep", "hyena", "chicken", "wolf", "gazelle", "fox", "pig", "rabbit" ]
+      "states": ["sheep", "hyena", "chicken", "wolf", "gazelle", "fox", "pig", "rabbit" ]
     }
   ],
-  "shapebytype": {
-    "*-empty": { "base": "legendarymobs:block/urn-open" },
-    "*": { "base": "legendarymobs:block/urn-closed" }
+  "shape": {
+    "base": "game:block/basic/cube"
   },
   "blockmaterial": "stone",
-  "textures": {
-    "all": { "base": "game:block/clay/ceramic" }
+  "texturesbytype": {
+    "*-rabbit":{
+      "all": { "base": "game:block/clay/ceramic" }
+    }
   },
   "replaceable": 400,
   "fertility": 30,
@@ -42,12 +43,5 @@
       "z": -78
     },
     "scale": 0.4
-  },
-  "sideopaque": {
-    "all": false
-  },
-  "sidesolid": {
-    "all": false
-  },
-  "sideAo": { "all": false }
+  }
 }
