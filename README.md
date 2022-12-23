@@ -44,7 +44,8 @@ Will add a feature to progress to day whenever a player logs in.
 	adds juices and liquid containers. Need to remove veggie juice from this. Added fruit milk and flower teas.
 
 -Just Light Jars: [FunnyBunnyofDOOM][DukePony]
-  harvest glow worms and craft them with a glass jar to get glowing jars  
+  harvest glow worms and craft them with a glass jar to get glowing jars 
+	add ability to plant glow worms 
 
 -Trash Drop: [FunnyBunnyofDOOM][DukePony]
 	Instead of despawning, non-compostable items will turn into a Trash block, forcing the player to deal with trash on their land.
