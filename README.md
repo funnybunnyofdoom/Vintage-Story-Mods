@@ -5,7 +5,12 @@ A collection of mods for the game Vintage Story
   /spawn - telports the player to world spawn
   
 -Bunny Bell: [FunnyBunnyofDOOM]
-  Makes a "bing" noise when the player's name is mentioned
+  Makes a "bing" noise when the player's name is;
+  mentioned,
+  Login,
+  Logout,
+  Death,
+  PVP death
 Server side only.
 
 -Bunny Bell Client-side
