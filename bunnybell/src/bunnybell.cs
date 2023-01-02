@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -43,6 +44,7 @@ namespace bunnybell.src
             api.Event.PlayerChat += onPlayerChat; //Event listener for when a player chats
             api.Event.PlayerNowPlaying += onPlayerJoined; //Event Listener for when a player logs in
             api.Event.PlayerDisconnect += onPlayerLogout; //Event Listener for when a players logs out
+            api.Event.OnEntityDeath += onPlayerDeath;
             api.RegisterCommand("bb", "Bunny Bell configuration", "[volume|mute|help|version]", cmd_bb, Privilege.controlserver);
 
             try
@@ -75,12 +77,16 @@ namespace bunnybell.src
                     bbConfig.Current.globallogin = bbConfig.getDefault().globallogin;
                 if (bbConfig.Current.globallogout == null)
                     bbConfig.Current.globallogout = bbConfig.getDefault().globallogout;
+                if (bbConfig.Current.globaldeath == null)
+                    bbConfig.Current.globaldeath = bbConfig.getDefault().globaldeath;
+                if (bbConfig.Current.globalPVPdeath == null)
+                    bbConfig.Current.globalPVPdeath = bbConfig.getDefault().globalPVPdeath;
 
                 api.StoreModConfig(bbConfig.Current, "bbconfig.json");
             }
         }
 
-       
+        
 
         private void cmd_bb(IServerPlayer player, int groupId, CmdArgs args)
         {
@@ -98,6 +104,92 @@ namespace bunnybell.src
                     //Add configuration logic| not larger than dusk
                     break;
                 case "mute":
+                    break;
+                case "sound":
+                    var num = args.PopWord();
+                    if (num == null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:need-number",soundList.Count), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        int result;
+                        if (int.TryParse(num, out result))
+                        {
+                            if (result > -1 && result <= soundList.Count()-1)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:play-sound",result), Vintagestory.API.Common.EnumChatType.Notification);
+                                player.Entity.World.PlaySoundFor(soundList[result], player);
+                            }
+                            else
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:need-number", soundList.Count-1), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:need-number", soundList.Count-1), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }                   
+                    break;
+                case "set":
+                    string scope = args.PopWord();
+                    string action = args.PopWord();
+                    int? sound = args.PopWord().ToInt();
+                    if (scope == null || action == null || sound == null ||)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:set-sound-help-1", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+                    }else if (sound < 0 || sound > soundList.Count - 1)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:set-sound-help-2", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        if (scope == "global")
+                        {
+                            if (player.Role.Code != "admin")
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:admin", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+                                return;
+                            }
+                            soundSettings tempSettings = bbConfig.Current.soundsettings;
+                            if (action == "mention")
+                            {
+                                tempSettings.mention = soundList[(int)sound];
+                                bbConfig.Current.soundsettings = tempSettings;
+                                sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "login")
+                            {
+                                tempSettings.login = soundList[(int)sound];
+                                bbConfig.Current.soundsettings = tempSettings;
+                                sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "logout")
+                            {
+                                tempSettings.logout = soundList[(int)sound];
+                                bbConfig.Current.soundsettings = tempSettings;
+                                sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "death")
+                            {
+                                tempSettings.death = soundList[(int)sound];
+                                bbConfig.Current.soundsettings = tempSettings;
+                                sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "PVPdeath")
+                            {
+                                tempSettings.PVPdeath = soundList[(int)sound];
+                                bbConfig.Current.soundsettings = tempSettings;
+                                sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                        }
+                    }
                     break;
                 case "enablemention": //Enables the global sound 
                     if (args.PopWord() == "global")
@@ -147,6 +239,38 @@ namespace bunnybell.src
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-logout-global"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
+                case "enabledeath": //Enables the global sound 
+                    if (args.PopWord() == "global")
+                    {
+                        bbConfig.Current.globaldeath = true;
+                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-death-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disabledeath":
+                    if (args.PopWord() == "global")
+                    {
+                        bbConfig.Current.globaldeath = false;
+                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-death-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "enablePVPdeath": //Enables the global sound 
+                    if (args.PopWord() == "global")
+                    {
+                        bbConfig.Current.globalPVPdeath = true;
+                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-PVPdeath-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disablePVPdeath":
+                    if (args.PopWord() == "global")
+                    {
+                        bbConfig.Current.globalPVPdeath = false;
+                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-PVPdeath-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
                 case null:
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb volume|mute|help|version", Vintagestory.API.Common.EnumChatType.Notification);
                     break;
@@ -161,6 +285,8 @@ namespace bunnybell.src
             public bool? globalmention;
             public bool? globallogin;
             public bool? globallogout;
+            public bool? globaldeath;
+            public bool? globalPVPdeath;
 
             public static bbConfig getDefault()
             {
@@ -169,6 +295,8 @@ namespace bunnybell.src
                 config.globalmention = true;
                 config.globallogin = true;
                 config.globallogout = true;
+                config.globaldeath = true;
+                config.globalPVPdeath = true;
 
                 soundSettings tempsettings = new soundSettings();
                 tempsettings.user = "server";
@@ -210,8 +338,10 @@ namespace bunnybell.src
             IPlayer[] allPlayers =  sapi.World.AllOnlinePlayers; // Get a list of all the online players
             for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
             {
-                if (allPlayers[i].PlayerUID == byPlayer.PlayerUID) return; //Don't make a sound for the player joining
-                byPlayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.login,allPlayers[i]); //Make a sound for all the online players
+                if (allPlayers[i].PlayerUID != byPlayer.PlayerUID)
+                { //Don't make a sound for the player joining
+                    byPlayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.login, allPlayers[i]);
+                }//Make a sound for all the online players
             }
             
         }
@@ -223,8 +353,46 @@ namespace bunnybell.src
             IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
             for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
             {
-                if (allPlayers[i].PlayerUID == byPlayer.PlayerUID) return; //Don't make a sound for the player logging out
-                byPlayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.logout, allPlayers[i]); //Make a sound for all the online players
+                if (allPlayers[i].PlayerUID != byPlayer.PlayerUID) {
+                    byPlayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.logout, allPlayers[i]); //Make a sound for all the online players
+                } //Don't make a sound for the player logging out
+                
+            }
+        }
+
+        private void onPlayerDeath(Entity entity, DamageSource damageSource)
+        {
+            
+            if (entity.Code.FirstCodePart() == "player")//Check for player death
+            {
+                string fcp;
+                if (damageSource.SourceEntity == null)
+                {
+                    fcp = "notPlayer";
+                }
+                else
+                {
+                    fcp = damageSource.SourceEntity.FirstCodePart();
+                }
+                if (fcp == "player")//Check for PVP
+                {
+                    if (bbConfig.Current.globalPVPdeath == false) return;//exit function if sounds are disabled
+                    IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
+                    for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
+                    {
+                        entity.World.PlaySoundFor(bbConfig.Current.soundsettings.PVPdeath, allPlayers[i]); //Make a sound for all the online players
+                    }
+                }
+                else
+                {
+                    //not PVP
+                    if (bbConfig.Current.globaldeath == false) return;//exit function if sounds are disabled
+                    IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
+                    for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
+                    {
+                        entity.World.PlaySoundFor(bbConfig.Current.soundsettings.death, allPlayers[i]); //Make a sound for all the online players
+                    }
+                }
             }
         }
 

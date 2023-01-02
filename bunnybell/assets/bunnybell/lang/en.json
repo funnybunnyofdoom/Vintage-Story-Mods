@@ -4,5 +4,16 @@
   "bunnybell:enable-login-global": "Global login sounds have been enabled.",
   "bunnybell:disable-login-global": "Global login sounds have been disabled.",
   "bunnybell:enable-logout-global": "Global logout sounds have been enabled.",
-  "bunnybell:disable-logout-global": "Global logout sounds have been disabled."
+  "bunnybell:disable-logout-global": "Global logout sounds have been disabled.",
+  "bunnybell:enable-death-global": "Global logout sounds have been enabled.",
+  "bunnybell:disable-death-global": "Global logout sounds have been disabled.",
+  "bunnybell:enable-PVPdeath-global": "Global logout sounds have been enabled.",
+  "bunnybell:disable-PVPdeath-global": "Global logout sounds have been disabled.",
+  "bunnybell:set-sound-help-1": "use /bb set [global|personal] [mention|login|logout|death|PVPdeath] [0-{0}] - use /bb sound [0-{0}] to listen to the sound options.",
+  "bunnybell:set-sound-help-2": "Please enter a number between 0-{0} to select a sound.",
+  "bunnybell:admin": "You must be an admin to use this command",
+  "bunnybell:sound-set": "You have set {0} {1} to the sound in slot {2}",
+
+  "bunnybell:need-number": "Please enter a number between 0 and {0} to play a sound.",
+  "bunnybell:play-sound": "Playing sound number {0}."
 }
