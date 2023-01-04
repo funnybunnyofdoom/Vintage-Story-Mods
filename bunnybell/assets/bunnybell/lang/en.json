@@ -12,7 +12,8 @@
   "bunnybell:set-sound-help-1": "use /bb set [global|personal] [mention|login|logout|death|PVPdeath] [0-{0}] - use /bb sound [0-{0}] to listen to the sound options.",
   "bunnybell:set-sound-help-2": "Please enter a number between 0-{0} to select a sound.",
   "bunnybell:admin": "You must be an admin to use this command",
-  "bunnybell:sound-set": "You have set {0} {1} to the sound in slot {2}",
+  "bunnybell:sound-set": "You have set {0} {1} to the default sound in slot {2} for all players",
+  "bunnybell:personal-sound-set": "You have set {0} {1} to the sound in slot {2} for yourself. This will override the global default sounds.",
 
   "bunnybell:need-number": "Please enter a number between 0 and {0} to play a sound.",
   "bunnybell:play-sound": "Playing sound number {0}."

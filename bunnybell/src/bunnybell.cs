@@ -81,6 +81,8 @@ namespace bunnybell.src
                     bbConfig.Current.globaldeath = bbConfig.getDefault().globaldeath;
                 if (bbConfig.Current.globalPVPdeath == null)
                     bbConfig.Current.globalPVPdeath = bbConfig.getDefault().globalPVPdeath;
+                if (bbConfig.Current.personalSoundList == null)
+                    bbConfig.Current.personalSoundList = bbConfig.getDefault().personalSoundList;
 
                 api.StoreModConfig(bbConfig.Current, "bbconfig.json");
             }
@@ -136,7 +138,7 @@ namespace bunnybell.src
                     string scope = args.PopWord();
                     string action = args.PopWord();
                     int? sound = args.PopWord().ToInt();
-                    if (scope == null || action == null || sound == null ||)
+                    if (scope == null || action == null || sound == null)
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:set-sound-help-1", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
                     }else if (sound < 0 || sound > soundList.Count - 1)
@@ -188,6 +190,55 @@ namespace bunnybell.src
                                 sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
                                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
                             }
+                        }else if(scope == "personal")
+                        {
+                            soundSettings tempSettings;
+                            if (bbConfig.Current.personalSoundList.ContainsKey(player.PlayerUID) == false) //Check if the player has an entry in the config
+                            {
+                                System.Diagnostics.Debug.Write("Player is not in settings");
+                                tempSettings = bbConfig.Current.soundsettings; //Clone the server's sound settings
+                                //tempSettings.death = soundList[0];
+                                //tempSettings.login = soundList[0];
+                                //tempSettings.logout = soundList[0];
+                                //tempSettings.mention = soundList[0];
+                                //tempSettings.PVPdeath = soundList[0];
+                                
+                                
+                            }else
+                            {
+                                System.Diagnostics.Debug.Write("Getting player info from config");
+                                bbConfig.Current.personalSoundList.TryGetValue(player.PlayerUID, out tempSettings);//Get the personal settings for this player from the config
+                            }
+                            
+                             
+                            if (action == "mention")
+                            {
+                                tempSettings.mention = soundList[(int)sound];
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:personal-sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "login")
+                            {
+                                tempSettings.login = soundList[(int)sound];
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:personal-sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "logout")
+                            {
+                                tempSettings.logout = soundList[(int)sound];
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:personal-sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "death")
+                            {
+                                tempSettings.death = soundList[(int)sound];
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:personal-sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (action == "PVPdeath")
+                            {
+                                tempSettings.PVPdeath = soundList[(int)sound];
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:personal-sound-set", scope, action, sound), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            bbConfig.Current.personalSoundList.Remove(player.PlayerUID);
+                            bbConfig.Current.personalSoundList.Add(player.PlayerUID, tempSettings);
+                            sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
                         }
                     }
                     break;
@@ -287,6 +338,7 @@ namespace bunnybell.src
             public bool? globallogout;
             public bool? globaldeath;
             public bool? globalPVPdeath;
+            public Dictionary<string,soundSettings> personalSoundList; //This dict holds our personal sound selections for each player
 
             public static bbConfig getDefault()
             {
@@ -297,9 +349,10 @@ namespace bunnybell.src
                 config.globallogout = true;
                 config.globaldeath = true;
                 config.globalPVPdeath = true;
+                config.personalSoundList = new Dictionary<string, soundSettings>();
 
                 soundSettings tempsettings = new soundSettings();
-                tempsettings.user = "server";
+                //tempsettings.user = "server";
                 tempsettings.mention = new AssetLocation("game", "sounds/effect/crusher-impact1");
                 tempsettings.login = new AssetLocation("game", "sounds/effect/receptionbell");
                 tempsettings.logout = new AssetLocation("game", "sounds/effect/receptionbell");
@@ -406,7 +459,7 @@ namespace bunnybell.src
 
         public class soundSettings
         {
-            public string user;
+            //public string user;
             public AssetLocation mention;
             public AssetLocation login;
             public AssetLocation logout;
