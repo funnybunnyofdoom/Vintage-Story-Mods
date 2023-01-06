@@ -375,6 +375,13 @@ namespace bunnybell.src
                 IPlayer templayer = playerList[i];
                 if (templist.CaseInsensitiveContains(templayer.PlayerName))
                 {
+                    if (bbConfig.Current.personalSoundList.ContainsKey(templayer.PlayerUID))
+                    {
+                        soundSettings outputValue;
+                        bbConfig.Current.personalSoundList.TryGetValue(templayer.PlayerUID, out outputValue);
+                        templayer.Entity.World.PlaySoundFor(outputValue.mention, templayer, true, 32, volume);
+                        return;
+                    }
                     if (bbConfig.Current.globalmention == true) //Check to see if mention is enabled. This is where we will check if a player has overriding settings
                     {
                         templayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.mention, templayer, true, 32, volume);
@@ -387,13 +394,20 @@ namespace bunnybell.src
         private void onPlayerJoined(IServerPlayer byPlayer)
         {
             if (bbConfig.Current.globallogin == false) return;//exit function if sounds are disabled
-            
             IPlayer[] allPlayers =  sapi.World.AllOnlinePlayers; // Get a list of all the online players
+            AssetLocation joinSound = bbConfig.Current.soundsettings.login;
+            soundSettings outputValue;
+            
+
             for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
             {
                 if (allPlayers[i].PlayerUID != byPlayer.PlayerUID)
                 { //Don't make a sound for the player joining
-                    byPlayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.login, allPlayers[i]);
+                    if (bbConfig.Current.personalSoundList.TryGetValue(allPlayers[i].PlayerUID, out outputValue))
+                    {
+                        joinSound = outputValue.login; //Get's the player's personal login sound
+                    }
+                    byPlayer.Entity.World.PlaySoundFor(joinSound, allPlayers[i]);
                 }//Make a sound for all the online players
             }
             
