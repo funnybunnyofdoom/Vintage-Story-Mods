@@ -1,6 +1,6 @@
 {
-  "bunnybell:enable-mention-global": "Global mention sounds have been enabled.",
-  "bunnybell:disable-mention-global": "Global mention sounds have been disabled.",
+  "bunnybell:enable-mention-global": "{0} {1} sounds have been enabled.",
+  "bunnybell:disable-mention-global": "{0} {1} sounds have been disabled.",
   "bunnybell:enable-login-global": "Global login sounds have been enabled.",
   "bunnybell:disable-login-global": "Global login sounds have been disabled.",
   "bunnybell:enable-logout-global": "Global logout sounds have been enabled.",

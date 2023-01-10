@@ -71,8 +71,8 @@ namespace bunnybell.src
 
                 if (bbConfig.Current.soundsettings == null)
                     bbConfig.Current.soundsettings = bbConfig.getDefault().soundsettings;
-                if (bbConfig.Current.globalmention == null)
-                    bbConfig.Current.globalmention = bbConfig.getDefault().globalmention;
+                //if (bbConfig.Current.globalmention == null)
+                //    bbConfig.Current.globalmention = bbConfig.getDefault().globalmention;
                 if (bbConfig.Current.globallogin == null)
                     bbConfig.Current.globallogin = bbConfig.getDefault().globallogin;
                 if (bbConfig.Current.globallogout == null)
@@ -242,88 +242,165 @@ namespace bunnybell.src
                         }
                     }
                     break;
-                case "enablemention": //Enables the global sound 
-                    if (args.PopWord() == "global")
+                case "enable": //Enables the global sound 
+                    string gloper = args.PopWord();
+                    string gaction = args.PopWord();
+                    if (gloper == "global")
                     {
-                        bbConfig.Current.globalmention = true;
+                        if (gaction == "mention")
+                        {
+                            bbConfig.Current.soundsettings.enablemention = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "login")
+                        {
+                            bbConfig.Current.soundsettings.enablelogin = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "logout")
+                        {
+                            bbConfig.Current.soundsettings.enablelogout = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "death")
+                        {
+                            bbConfig.Current.soundsettings.enabledeath = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "PVPdeath")
+                        {
+                            bbConfig.Current.soundsettings.enablePVPdeath = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
                         sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }else if (gloper == "personal")
+                    {
+                        soundSettings tempSettings;
+                        if (bbConfig.Current.personalSoundList.ContainsKey(player.PlayerUID) == false) //Check if the player has an entry in the config
+                        {
+                            System.Diagnostics.Debug.Write("Player is not in settings");
+                            tempSettings = bbConfig.Current.soundsettings; //Clone the server's sound settings
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.Write("Getting player info from config");
+                            bbConfig.Current.personalSoundList.TryGetValue(player.PlayerUID, out tempSettings);//Get the personal settings for this player from the config
+                        }
+
+
+                        if (gaction == "mention")
+                        {
+                            tempSettings.enablemention = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "login")
+                        {
+                            tempSettings.enablelogin = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "logout")
+                        {
+                            tempSettings.enablelogout = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "death")
+                        {
+                            tempSettings.enabledeath = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (gaction == "PVPdeath")
+                        {
+                            tempSettings.enablePVPdeath = true;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global", gloper, gaction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        bbConfig.Current.personalSoundList.Remove(player.PlayerUID);
+                        bbConfig.Current.personalSoundList.Add(player.PlayerUID, tempSettings);
+                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
+
                     }
                     break;
-                case "disablemention":
-                    if (args.PopWord() == "global")
+                case "disable":
+                    string dloper = args.PopWord();
+                    string daction = args.PopWord();
+                    if (dloper == "global")
                     {
-                        bbConfig.Current.globalmention = false;
+                        if (daction == "mention")
+                        {
+                            bbConfig.Current.soundsettings.enablemention = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "login")
+                        {
+                            bbConfig.Current.soundsettings.enablelogin = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "logout")
+                        {
+                            bbConfig.Current.soundsettings.enablelogout = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "death")
+                        {
+                            bbConfig.Current.soundsettings.enabledeath = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "PVPdeath")
+                        {
+                            bbConfig.Current.soundsettings.enablePVPdeath = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
                         sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global"), Vintagestory.API.Common.EnumChatType.Notification);
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-mention-global"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
-                    break;
-                case "enablelogin": //Enables the global sound 
-                    if (args.PopWord() == "global")
+                    else if (dloper == "personal")
                     {
-                        bbConfig.Current.globallogin = true;
+                        soundSettings tempSettings;
+                        if (bbConfig.Current.personalSoundList.ContainsKey(player.PlayerUID) == false) //Check if the player has an entry in the config
+                        {
+                            System.Diagnostics.Debug.Write("Player is not in settings");
+                            tempSettings = bbConfig.Current.soundsettings; //Clone the server's sound settings
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.Write("Getting player info from config");
+                            bbConfig.Current.personalSoundList.TryGetValue(player.PlayerUID, out tempSettings);//Get the personal settings for this player from the config
+                        }
+
+
+                        if (daction == "mention")
+                        {
+                            tempSettings.enablemention = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "login")
+                        {
+                            tempSettings.enablelogin = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "logout")
+                        {
+                            tempSettings.enablelogout = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "death")
+                        {
+                            tempSettings.enabledeath = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (daction == "PVPdeath")
+                        {
+                            tempSettings.enablePVPdeath = false;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-mention-global", dloper, daction), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        bbConfig.Current.personalSoundList.Remove(player.PlayerUID);
+                        bbConfig.Current.personalSoundList.Add(player.PlayerUID, tempSettings);
                         sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-login-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "disablelogin":
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globallogin = false;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-login-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "enablelogout": //Enables the global sound 
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globallogout = true;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-logout-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "disablelogout":
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globallogout = false;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-logout-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "enabledeath": //Enables the global sound 
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globaldeath = true;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-death-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "disabledeath":
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globaldeath = false;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-death-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "enablePVPdeath": //Enables the global sound 
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globalPVPdeath = true;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:enable-PVPdeath-global"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    break;
-                case "disablePVPdeath":
-                    if (args.PopWord() == "global")
-                    {
-                        bbConfig.Current.globalPVPdeath = false;
-                        sapi.StoreModConfig(bbConfig.Current, "bbconfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:disable-PVPdeath-global"), Vintagestory.API.Common.EnumChatType.Notification);
+
                     }
                     break;
                 case null:
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb volume|mute|help|version", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb volume|mute|help|version|set|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
                     break;
             }
         }
@@ -333,7 +410,7 @@ namespace bunnybell.src
             public static bbConfig Current { get; set; }
 
             public soundSettings soundsettings = new soundSettings();
-            public bool? globalmention;
+            //public bool? globalmention;
             public bool? globallogin;
             public bool? globallogout;
             public bool? globaldeath;
@@ -344,7 +421,7 @@ namespace bunnybell.src
             {
                 var config = new bbConfig();
 
-                config.globalmention = true;
+                //config.globalmention = true;
                 config.globallogin = true;
                 config.globallogout = true;
                 config.globaldeath = true;
@@ -353,11 +430,16 @@ namespace bunnybell.src
 
                 soundSettings tempsettings = new soundSettings();
                 //tempsettings.user = "server";
-                tempsettings.mention = new AssetLocation("game", "sounds/effect/crusher-impact1");
+                tempsettings.mention = new AssetLocation("game", "sounds/effect/receptionbell");
                 tempsettings.login = new AssetLocation("game", "sounds/effect/receptionbell");
                 tempsettings.logout = new AssetLocation("game", "sounds/effect/receptionbell");
                 tempsettings.death = new AssetLocation("game", "sounds/effect/receptionbell");
                 tempsettings.PVPdeath = new AssetLocation("game", "sounds/effect/receptionbell");
+                tempsettings.enabledeath = true;
+                tempsettings.enablelogin = true;
+                tempsettings.enablelogout = true;
+                tempsettings.enablemention = true;
+                tempsettings.enablePVPdeath = true;
 
                 config.soundsettings = tempsettings;
 
@@ -379,11 +461,17 @@ namespace bunnybell.src
                     {
                         soundSettings outputValue;
                         bbConfig.Current.personalSoundList.TryGetValue(templayer.PlayerUID, out outputValue);
-                        templayer.Entity.World.PlaySoundFor(outputValue.mention, templayer, true, 32, volume);
+                        if(outputValue.enablemention == true)
+                        {
+                            templayer.Entity.World.PlaySoundFor(outputValue.mention, templayer, true, 32, volume);
+                        }
+                        System.Diagnostics.Debug.WriteLine("Returning function");
                         return;
+                        System.Diagnostics.Debug.WriteLine("Returned function");
                     }
-                    if (bbConfig.Current.globalmention == true) //Check to see if mention is enabled. This is where we will check if a player has overriding settings
+                    if (bbConfig.Current.soundsettings.enablemention == true) //Check to see if mention is enabled. This is where we will check if a player has overriding settings
                     {
+                        System.Diagnostics.Debug.WriteLine("Global step");
                         templayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.mention, templayer, true, 32, volume);
                     }
                     
@@ -479,6 +567,12 @@ namespace bunnybell.src
             public AssetLocation logout;
             public AssetLocation death;
             public AssetLocation PVPdeath;
+
+            public bool enablemention;
+            public bool enablelogin;
+            public bool enablelogout;
+            public bool enabledeath;
+            public bool enablePVPdeath;
         }
     }
 }
