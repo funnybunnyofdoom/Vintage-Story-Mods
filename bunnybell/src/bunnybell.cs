@@ -30,7 +30,7 @@ namespace bunnybell.src
             new AssetLocation("game", "sounds/effect/woodswitch"),
             new AssetLocation("game", "sounds/creature/beesting"),
             new AssetLocation("game", "sounds/creature/wolf/pup-bark"),
-            new AssetLocation("game", "sounds/creature/racoon/hurt"),
+            new AssetLocation("game", "sounds/creature/raccoon/hurt"),
             new AssetLocation("game", "sounds/creature/pig/hurt"),
             new AssetLocation("game", "sounds/creature/chicken/rooster-call")
 
@@ -77,10 +77,10 @@ namespace bunnybell.src
                     bbConfig.Current.globallogin = bbConfig.getDefault().globallogin;
                 if (bbConfig.Current.globallogout == null)
                     bbConfig.Current.globallogout = bbConfig.getDefault().globallogout;
-                if (bbConfig.Current.globaldeath == null)
-                    bbConfig.Current.globaldeath = bbConfig.getDefault().globaldeath;
-                if (bbConfig.Current.globalPVPdeath == null)
-                    bbConfig.Current.globalPVPdeath = bbConfig.getDefault().globalPVPdeath;
+                //if (bbConfig.Current.globaldeath == null)
+                    //bbConfig.Current.globaldeath = bbConfig.getDefault().globaldeath;
+                //if (bbConfig.Current.globalPVPdeath == null)
+                    //bbConfig.Current.globalPVPdeath = bbConfig.getDefault().globalPVPdeath;
                 if (bbConfig.Current.personalSoundList == null)
                     bbConfig.Current.personalSoundList = bbConfig.getDefault().personalSoundList;
 
@@ -196,13 +196,7 @@ namespace bunnybell.src
                             if (bbConfig.Current.personalSoundList.ContainsKey(player.PlayerUID) == false) //Check if the player has an entry in the config
                             {
                                 System.Diagnostics.Debug.Write("Player is not in settings");
-                                tempSettings = bbConfig.Current.soundsettings; //Clone the server's sound settings
-                                //tempSettings.death = soundList[0];
-                                //tempSettings.login = soundList[0];
-                                //tempSettings.logout = soundList[0];
-                                //tempSettings.mention = soundList[0];
-                                //tempSettings.PVPdeath = soundList[0];
-                                
+                                tempSettings = bbConfig.Current.soundsettings; //Clone the server's sound settings         
                                 
                             }else
                             {
@@ -413,8 +407,8 @@ namespace bunnybell.src
             //public bool? globalmention;
             public bool? globallogin;
             public bool? globallogout;
-            public bool? globaldeath;
-            public bool? globalPVPdeath;
+            //public bool? globaldeath;
+            //public bool? globalPVPdeath;
             public Dictionary<string,soundSettings> personalSoundList; //This dict holds our personal sound selections for each player
 
             public static bbConfig getDefault()
@@ -424,8 +418,8 @@ namespace bunnybell.src
                 //config.globalmention = true;
                 config.globallogin = true;
                 config.globallogout = true;
-                config.globaldeath = true;
-                config.globalPVPdeath = true;
+                //config.globaldeath = true;
+                //config.globalPVPdeath = true;
                 config.personalSoundList = new Dictionary<string, soundSettings>();
 
                 soundSettings tempsettings = new soundSettings();
@@ -517,7 +511,8 @@ namespace bunnybell.src
 
         private void onPlayerDeath(Entity entity, DamageSource damageSource)
         {
-            
+
+            IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
             if (entity.Code.FirstCodePart() == "player")//Check for player death
             {
                 string fcp;
@@ -530,22 +525,47 @@ namespace bunnybell.src
                     fcp = damageSource.SourceEntity.FirstCodePart();
                 }
                 if (fcp == "player")//Check for PVP
-                {
-                    if (bbConfig.Current.globalPVPdeath == false) return;//exit function if sounds are disabled
-                    IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
+                {   
                     for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
                     {
-                        entity.World.PlaySoundFor(bbConfig.Current.soundsettings.PVPdeath, allPlayers[i]); //Make a sound for all the online players
+                        if (bbConfig.Current.personalSoundList.ContainsKey(allPlayers[i].PlayerUID))
+                        {
+                            soundSettings outputValue;
+                            bbConfig.Current.personalSoundList.TryGetValue(allPlayers[i].PlayerUID, out outputValue);
+                            if (outputValue.enablePVPdeath == true)
+                            {
+                                entity.World.PlaySoundFor(outputValue.PVPdeath, allPlayers[i]); //Make a sound for all the online players
+                            }
+
+                        }else if (bbConfig.Current.soundsettings.enablePVPdeath == true)
+                        {
+                            
+                            entity.World.PlaySoundFor(bbConfig.Current.soundsettings.PVPdeath, allPlayers[i]); //Make a sound for all the online players
+                        }
+                            
                     }
                 }
                 else
                 {
                     //not PVP
-                    if (bbConfig.Current.globaldeath == false) return;//exit function if sounds are disabled
-                    IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
                     for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
                     {
-                        entity.World.PlaySoundFor(bbConfig.Current.soundsettings.death, allPlayers[i]); //Make a sound for all the online players
+                        if (bbConfig.Current.personalSoundList.ContainsKey(allPlayers[i].PlayerUID))
+                        {
+                            soundSettings outputValue;
+                            bbConfig.Current.personalSoundList.TryGetValue(allPlayers[i].PlayerUID, out outputValue);
+                            if (outputValue.enabledeath == true)
+                            {
+                                entity.World.PlaySoundFor(outputValue.death, allPlayers[i]); //Make a sound for all the online players
+                            }
+
+                        }
+                        else if (bbConfig.Current.soundsettings.enabledeath == true)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Try fire global death");
+                            entity.World.PlaySoundFor(bbConfig.Current.soundsettings.death, allPlayers[i]); //Make a sound for all the online players
+                        }
+
                     }
                 }
             }
