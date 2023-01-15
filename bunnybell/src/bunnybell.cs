@@ -459,13 +459,10 @@ namespace bunnybell.src
                         {
                             templayer.Entity.World.PlaySoundFor(outputValue.mention, templayer, true, 32, volume);
                         }
-                        System.Diagnostics.Debug.WriteLine("Returning function");
                         return;
-                        System.Diagnostics.Debug.WriteLine("Returned function");
                     }
                     if (bbConfig.Current.soundsettings.enablemention == true) //Check to see if mention is enabled. This is where we will check if a player has overriding settings
                     {
-                        System.Diagnostics.Debug.WriteLine("Global step");
                         templayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.mention, templayer, true, 32, volume);
                     }
                     
@@ -475,7 +472,7 @@ namespace bunnybell.src
 
         private void onPlayerJoined(IServerPlayer byPlayer)
         {
-            if (bbConfig.Current.globallogin == false) return;//exit function if sounds are disabled
+
             IPlayer[] allPlayers =  sapi.World.AllOnlinePlayers; // Get a list of all the online players
             AssetLocation joinSound = bbConfig.Current.soundsettings.login;
             soundSettings outputValue;
@@ -485,11 +482,21 @@ namespace bunnybell.src
             {
                 if (allPlayers[i].PlayerUID != byPlayer.PlayerUID)
                 { //Don't make a sound for the player joining
-                    if (bbConfig.Current.personalSoundList.TryGetValue(allPlayers[i].PlayerUID, out outputValue))
+                    if(bbConfig.Current.personalSoundList.ContainsKey(allPlayers[i].PlayerUID))
                     {
-                        joinSound = outputValue.login; //Get's the player's personal login sound
+                        bbConfig.Current.personalSoundList.TryGetValue(allPlayers[i].PlayerUID, out outputValue);
+                        if (outputValue.enablelogin == true)
+                        {
+                            joinSound = outputValue.login; //Get's the player's personal login sound
+                            byPlayer.Entity.World.PlaySoundFor(joinSound, allPlayers[i]);
+                        }
                     }
-                    byPlayer.Entity.World.PlaySoundFor(joinSound, allPlayers[i]);
+                    else {
+                        if(bbConfig.Current.globallogin == true)
+                        {
+                            byPlayer.Entity.World.PlaySoundFor(joinSound, allPlayers[i]);
+                        }
+                    }
                 }//Make a sound for all the online players
             }
             
@@ -497,15 +504,32 @@ namespace bunnybell.src
 
         private void onPlayerLogout(IServerPlayer byPlayer)
         {
-            if (bbConfig.Current.globallogout == false) return;//exit function if sounds are disabled
 
             IPlayer[] allPlayers = sapi.World.AllOnlinePlayers; // Get a list of all the online players
+            AssetLocation logoutSound = bbConfig.Current.soundsettings.logout;
+            soundSettings outputValue;
+
             for (int i = 0; i < allPlayers.Length; i++) //Iterate through the players online
             {
-                if (allPlayers[i].PlayerUID != byPlayer.PlayerUID) {
-                    byPlayer.Entity.World.PlaySoundFor(bbConfig.Current.soundsettings.logout, allPlayers[i]); //Make a sound for all the online players
-                } //Don't make a sound for the player logging out
-                
+                if (allPlayers[i].PlayerUID != byPlayer.PlayerUID)
+                { //Don't make a sound for the player joining
+                    if (bbConfig.Current.personalSoundList.ContainsKey(allPlayers[i].PlayerUID))
+                    {
+                        bbConfig.Current.personalSoundList.TryGetValue(allPlayers[i].PlayerUID, out outputValue);
+                        if (outputValue.enablelogout == true)
+                        {
+                            logoutSound = outputValue.logout; //Get's the player's personal login sound
+                            byPlayer.Entity.World.PlaySoundFor(logoutSound, allPlayers[i]);
+                        }
+                    }
+                    else
+                    {
+                        if (bbConfig.Current.globallogout == true)
+                        {
+                            byPlayer.Entity.World.PlaySoundFor(logoutSound, allPlayers[i]);
+                        }
+                    }
+                }//Make a sound for all the online players
             }
         }
 
