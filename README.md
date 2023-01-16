@@ -11,7 +11,7 @@ A collection of mods for the game Vintage Story
   Logout,
   Death,
   PVP death
-Server side only.
+Server side only. Player can overide global sounds/mutes with personal
 
 -Bunny Bell Client-side
 	Clientside version of bunny bell
