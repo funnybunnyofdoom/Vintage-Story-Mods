@@ -16,7 +16,7 @@ namespace bunnybell.src
     class bunnybell : ModSystem
     {
         ICoreServerAPI sapi;
-        List<AssetLocation> soundList = new List<AssetLocation>()
+        List<AssetLocation> soundList = new List<AssetLocation>() //Create a list of sounds for the user to choose from. You can just append to this list to add more sounds. 
         {
             new AssetLocation("game", "sounds/effect/receptionbell"),
             new AssetLocation("game", "sounds/effect/anvilhit1"),
@@ -45,7 +45,7 @@ namespace bunnybell.src
             api.Event.PlayerNowPlaying += onPlayerJoined; //Event Listener for when a player logs in
             api.Event.PlayerDisconnect += onPlayerLogout; //Event Listener for when a players logs out
             api.Event.OnEntityDeath += onPlayerDeath;
-            api.RegisterCommand("bb", "Bunny Bell configuration", "[volume|mute|help|version]", cmd_bb, Privilege.controlserver);
+            api.RegisterCommand("bb", "Bunny Bell configuration", "[volume|mute|help|version]", cmd_bb);
 
             try
             {
@@ -149,7 +149,7 @@ namespace bunnybell.src
                     {
                         if (scope == "global")
                         {
-                            if (player.Role.Code != "admin")
+                            if (!player.HasPrivilege(APrivilege.bbadmin) && player.Role.Code != "admin")
                             {
                                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:admin", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
                                 return;
@@ -236,11 +236,16 @@ namespace bunnybell.src
                         }
                     }
                     break;
-                case "enable": //Enables the global sound 
+                case "enable": //Enables the sounds 
                     string gloper = args.PopWord();
                     string gaction = args.PopWord();
                     if (gloper == "global")
                     {
+                        if (!player.HasPrivilege(APrivilege.bbadmin) && player.Role.Code != "admin")
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:admin", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+                            return;
+                        }
                         if (gaction == "mention")
                         {
                             bbConfig.Current.soundsettings.enablemention = true;
@@ -319,6 +324,11 @@ namespace bunnybell.src
                     string daction = args.PopWord();
                     if (dloper == "global")
                     {
+                        if (!player.HasPrivilege(APrivilege.bbadmin) && player.Role.Code != "admin")
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:admin", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+                            return;
+                        }
                         if (daction == "mention")
                         {
                             bbConfig.Current.soundsettings.enablemention = false;
@@ -617,6 +627,14 @@ namespace bunnybell.src
             public bool enablelogout;
             public bool enabledeath;
             public bool enablePVPdeath;
+        }
+
+        public class APrivilege : Privilege
+        {
+            /// <summary>
+            /// Ability to use global commands for BunnyBell
+            /// </summary>
+            public static string bbadmin = "bbadmin";
         }
     }
 }
