@@ -102,11 +102,6 @@ namespace bunnybell.src
                     var modinfo = Mod.Info;
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Mod Name: " + modinfo.Name + " | Author: FunnyBunnyofDOOM | Version: " + modinfo.Version, Vintagestory.API.Common.EnumChatType.Notification);
                     break;
-                case "volume":
-                    //Add configuration logic| not larger than dusk
-                    break;
-                case "mute":
-                    break;
                 case "sound":
                     var num = args.PopWord();
                     if (num == null)
@@ -239,6 +234,10 @@ namespace bunnybell.src
                 case "enable": //Enables the sounds 
                     string gloper = args.PopWord();
                     string gaction = args.PopWord();
+                    if (gloper == null || gaction == null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-enable"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     if (gloper == "global")
                     {
                         if (!player.HasPrivilege(APrivilege.bbadmin) && player.Role.Code != "admin")
@@ -322,6 +321,10 @@ namespace bunnybell.src
                 case "disable":
                     string dloper = args.PopWord();
                     string daction = args.PopWord();
+                    if (dloper == null || daction == null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-disable"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     if (dloper == "global")
                     {
                         if (!player.HasPrivilege(APrivilege.bbadmin) && player.Role.Code != "admin")
@@ -404,7 +407,7 @@ namespace bunnybell.src
                     }
                     break;
                 case null:
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb volume|mute|help|version|set|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb [help|version|set|enable|disable|sound]", Vintagestory.API.Common.EnumChatType.Notification);
                     break;
             }
         }
@@ -596,7 +599,6 @@ namespace bunnybell.src
                         }
                         else if (bbConfig.Current.soundsettings.enabledeath == true)
                         {
-                            System.Diagnostics.Debug.WriteLine("Try fire global death");
                             entity.World.PlaySoundFor(bbConfig.Current.soundsettings.death, allPlayers[i]); //Make a sound for all the online players
                         }
 
@@ -607,10 +609,12 @@ namespace bunnybell.src
 
         private void displayhelp(IServerPlayer player)
         {
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Bunny Bell Commands:", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb volume <i>number</i> - Sets your notification volume", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/bb mute - turns off your notification sound", Vintagestory.API.Common.EnumChatType.Notification);
-            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home version - Displays the version information of Bunny Bell", Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-title"), Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-sound",soundList.Count-1), Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-set", soundList.Count - 1), Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-enable"), Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-disable"), Vintagestory.API.Common.EnumChatType.Notification);
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnybell:help-version"), Vintagestory.API.Common.EnumChatType.Notification);
         }
 
         public class soundSettings

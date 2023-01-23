@@ -16,5 +16,12 @@
   "bunnybell:personal-sound-set": "You have set {0} {1} to the sound in slot {2} for yourself. This will override the global default sounds.",
 
   "bunnybell:need-number": "Please enter a number between 0 and {0} to play a sound.",
-  "bunnybell:play-sound": "Playing sound number {0}."
+  "bunnybell:play-sound": "Playing sound number {0}.",
+
+  "bunnybell:help-title": "Bunny Bell Commands:",
+  "bunnybell:help-sound": "/bb sound [0-{0}] - Plays the sound of the number you choose",
+  "bunnybell:help-set": "/bb set [personal|global] [mention|login|logout|death|PVPdeath] [0-{0}]",
+  "bunnybell:help-enable": "/bb enable [personal|global] [mention|login|logout|death|PVPdeath]",
+  "bunnybell:help-disable": "/bb disable [personal|global] [mention|login|logout|death|PVPdeath]",
+  "bunnybell:help-version": "/bb version - Displays the version information of Bunny Bell"
 }
