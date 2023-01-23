@@ -3,8 +3,8 @@
   "modid": "bunnybellclient",
   "name": "Bunny Bell Client Side",
   "authors": [ "FunnyBunnyofDOOM" ],
-  "description": "Makes a bell tone when the player's name is mentioned'",
-  "version": "1.0.0",
+  "description": "Makes a sound when a player is mentioned,login,logout,death or pvpdeath - Client Side",
+  "version": "1.0.1",
   "side": "Client",
   "dependencies": {
     "game": ""
