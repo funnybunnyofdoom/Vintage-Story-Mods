@@ -164,26 +164,125 @@ namespace bunnybellclient.src
                             capi.StoreModConfig(bbConfig.Current, "bbclient.json");
                     }
                     break;
+                case "enable": //Enables the sounds 
+                    string gaction = args.PopWord();
+                    if (gaction == null)
+                    {
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:help-enable"));
+                    }
+                    
+
+                        if (gaction == "mention")
+                        {
+                            bbConfig.Current.soundsettings.enablemention = true;
+                            capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:enable-mention-global", gaction));
+                        }
+                        else if (gaction == "login")
+                        {
+                            bbConfig.Current.soundsettings.enablelogin = true;
+                            capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:enable-mention-global", gaction));
+                        }
+                        else if (gaction == "logout")
+                        {
+                            bbConfig.Current.soundsettings.enablelogout = true;
+                            capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:enable-mention-global", gaction));
+                        }
+                        else if (gaction == "death")
+                        {
+                            bbConfig.Current.soundsettings.enabledeath = true;
+                            capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:enable-mention-global", gaction));
+                        }
+                        else if (gaction == "PVPdeath")
+                        {
+                            bbConfig.Current.soundsettings.enablePVPdeath = true;
+                            capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:enable-mention-global", gaction));
+                        }
+                        capi.StoreModConfig(bbConfig.Current, "bbclient.json");
+                    break;
+                case "disable":
+                    string daction = args.PopWord();
+                    if (daction == null)
+                    {
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:help-disable"));
+                    }
+
+
+                    if (daction == "mention")
+                    {
+                        bbConfig.Current.soundsettings.enablemention = false;
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:disable-mention-global", daction));
+                    }
+                    else if (daction == "login")
+                    {
+                        bbConfig.Current.soundsettings.enablelogin = false;
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:disable-mention-global", daction));
+                    }
+                    else if (daction == "logout")
+                    {
+                        bbConfig.Current.soundsettings.enablelogout = false;
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:disable-mention-global", daction));
+                    }
+                    else if (daction == "death")
+                    {
+                        bbConfig.Current.soundsettings.enabledeath = false;
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:disable-mention-global", daction));
+                    }
+                    else if (daction == "PVPdeath")
+                    {
+                        bbConfig.Current.soundsettings.enablePVPdeath = false;
+                        capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:disable-mention-global", daction));
+                    }
+                    capi.StoreModConfig(bbConfig.Current, "bbclient.json");
+                    break;
             }
         }
 
         private void onPlayerDeath(Entity entity, DamageSource damageSource)
         {
-            //throw new NotImplementedException();
+            
+            if (entity.Code.FirstCodePart() == "player")
+            {
+                string fcp;
+                if (damageSource.SourceEntity == null)
+                {
+                    fcp = "notPlayer";
+                }
+                else
+                {
+                    fcp = damageSource.SourceEntity.FirstCodePart();
+                }
+                if (fcp == "player")//Check for PVP
+                {
+                    if (bbConfig.Current.soundsettings.enablePVPdeath == false) { return; }
+                    capi.World.PlaySoundFor(bbConfig.Current.soundsettings.PVPdeath, capi.World.Player);
+                }
+                else
+                {
+                    if (bbConfig.Current.soundsettings.enabledeath == false) { return; }
+                        capi.World.PlaySoundFor(bbConfig.Current.soundsettings.death, capi.World.Player);
+                }
+            }
         }
 
         private void onPlayerLogout(IClientPlayer byPlayer)
         {
-            //throw new NotImplementedException();
+            if (bbConfig.Current.soundsettings.enablelogout == true)
+            {
+                capi.World.PlaySoundFor(bbConfig.Current.soundsettings.logout, capi.World.Player);
+            }
         }
 
         private void onPlayerJoined(IClientPlayer byPlayer)
         {
-            //throw new NotImplementedException();
+            if (bbConfig.Current.soundsettings.enablelogin == true)
+            {
+                capi.World.PlaySoundFor(bbConfig.Current.soundsettings.login, capi.World.Player);
+            }
         }
 
         private void onPlayerChat(int groupId, string message, EnumChatType chattype, string data)
         {
+            if (bbConfig.Current.soundsettings.enablemention == false) { return; }
             IPlayer templayer = capi.World.Player; //Get the player
             if (templayer != null && templayer.PlayerName != null && data != null)//Make sure player is loaded and message is from a player
             {
