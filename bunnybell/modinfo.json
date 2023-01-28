@@ -3,8 +3,8 @@
   "modid": "bunnybell",
   "name": "bunny bell",
   "authors": [ "FunnyBunnyofDOOM" ],
-  "description": "Makes a bing sound when the user is mentioned - Server Side",
-  "version": "1.0.1",
+  "description": "Makes a sound when a player is mentioned,login,logout,death or pvpdeath - Server Side",
+  "version": "1.0.2",
   "dependencies": {
     "game": ""
   },
