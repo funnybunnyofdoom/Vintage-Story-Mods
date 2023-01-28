@@ -49,7 +49,8 @@ namespace bunnybellclient.src
             api.Event.ChatMessage += onPlayerChat; //Register the chat message listener
             api.Event.PlayerJoin += onPlayerJoined; //Event Listener for when a player logs in
             api.Event.PlayerLeave += onPlayerLogout; //Event Listener for when a players logs out
-            api.Event.OnEntityDeath += onPlayerDeath; // Event listener for when a player dies
+            api.Event.OnEntityDeath += test;//onPlayerDeath; // Event listener for when a player dies
+            api.Event.OnEntityDespawn += test2;
             api.RegisterCommand("bb", "Bunny Bell configuration", "[volume|mute|help|version]", cmd_bb);
 
             try
@@ -79,6 +80,16 @@ namespace bunnybellclient.src
 
                 api.StoreModConfig(bbConfig.Current, "bbclient.json");
             }
+        }
+
+        private void test2(Entity entity, EntityDespawnReason reason)
+        {
+            capi.Logger.Debug("Side: {0}", capi.Side);
+        }
+
+        private void test(Entity entity, DamageSource damageSource)
+        {
+            capi.Logger.Debug("Side: {0}", capi.Side);
         }
 
         private void cmd_bb(int groupId, CmdArgs args)
@@ -139,27 +150,27 @@ namespace bunnybellclient.src
                             if (action == "mention")
                             {
                                 tempSettings.mention = soundList[(int)sound];
-                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:personal-sound-set", action, sound));
+                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:global-sound-set", action, sound));
                             }
                             else if (action == "login")
                             {
                                 tempSettings.login = soundList[(int)sound];
-                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:personal-sound-set", action, sound));
+                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:global-sound-set", action, sound));
                             }
                             else if (action == "logout")
                             {
                                 tempSettings.logout = soundList[(int)sound];
-                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:personal-sound-set", action, sound));
+                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:global-sound-set", action, sound));
                             }
                             else if (action == "death")
                             {
                                 tempSettings.death = soundList[(int)sound];
-                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:personal-sound-set", action, sound));
+                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:global-sound-set", action, sound));
                             }
                             else if (action == "PVPdeath")
                             {
                                 tempSettings.PVPdeath = soundList[(int)sound];
-                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:personal-sound-set", action, sound));
+                                capi.World.Player.ShowChatNotification(Lang.Get("bunnybell:global-sound-set", action, sound));
                             }
                             capi.StoreModConfig(bbConfig.Current, "bbclient.json");
                     }
@@ -239,27 +250,35 @@ namespace bunnybellclient.src
 
         private void onPlayerDeath(Entity entity, DamageSource damageSource)
         {
-            
+            capi.Logger.Debug("Side: {0}", capi.Side);
+            System.Diagnostics.Debug.Write("An entity has died");
             if (entity.Code.FirstCodePart() == "player")
             {
+                System.Diagnostics.Debug.Write("The dead entity is a player");
                 string fcp;
                 if (damageSource.SourceEntity == null)
                 {
                     fcp = "notPlayer";
+                    System.Diagnostics.Debug.Write("The killer is not a player");
                 }
                 else
                 {
                     fcp = damageSource.SourceEntity.FirstCodePart();
+                    System.Diagnostics.Debug.Write("Checking to be sure the killer was a player");
                 }
                 if (fcp == "player")//Check for PVP
                 {
+                    System.Diagnostics.Debug.Write("The killer was a player");
                     if (bbConfig.Current.soundsettings.enablePVPdeath == false) { return; }
+                    System.Diagnostics.Debug.Write("PVPdeath is enabled");
                     capi.World.PlaySoundFor(bbConfig.Current.soundsettings.PVPdeath, capi.World.Player);
                 }
                 else
                 {
+                    System.Diagnostics.Debug.Write("The killer was not a player");
                     if (bbConfig.Current.soundsettings.enabledeath == false) { return; }
-                        capi.World.PlaySoundFor(bbConfig.Current.soundsettings.death, capi.World.Player);
+                    System.Diagnostics.Debug.Write("death is enabled");
+                    capi.World.PlaySoundFor(bbConfig.Current.soundsettings.death, capi.World.Player);
                 }
             }
         }
