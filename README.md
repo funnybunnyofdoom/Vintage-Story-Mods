@@ -8,7 +8,7 @@ A collection of mods for the game Vintage Story
   Makes a "bing" noise when the player's name is;mentioned,Login,Logout,Death,PVP death
 Server side only. Player can overide global sounds/mutes with personal
 
--Bunny Bell Client-side
+-Bunny Bell Client-side (blocked)
 	Clientside version of bunny bell
   
 -Just Random Teleport: [FunnyBunnyofDOOM]
