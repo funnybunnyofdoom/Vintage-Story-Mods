@@ -28,7 +28,7 @@ namespace blocklog.src
         ICoreServerAPI sapi; //Initialize our server API
         public Dictionary<BlockPos, blockdata> blockbreaksave = new Dictionary<BlockPos, blockdata>();
         public Dictionary<BlockPos, blockdata> blockplacesave = new Dictionary<BlockPos, blockdata>();
-        public Dictionary<string, creaturedata[]> creaturedeathsave = new Dictionary<string, creaturedata[]>();
+        public Dictionary<string, List<creaturedata>> creaturedeathsave = new Dictionary<string, List<creaturedata>>();
 
         public override void StartServerSide(ICoreServerAPI api)
         {
@@ -62,26 +62,12 @@ namespace blocklog.src
                 
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-player", bdata.player), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-block", bdata.block), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
-                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-location", (selection.X - (sapi.WorldManager.MapSizeX / 2)).ToString(), (selection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString(), (selection.Y).ToString()), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
-                /*System.Diagnostics.Debug.WriteLine("selection x: "+selection.X);
-                System.Diagnostics.Debug.WriteLine("mapsize x: " + sapi.WorldManager.MapSizeX);
-                System.Diagnostics.Debug.WriteLine("mapsize x /2: " + sapi.WorldManager.MapSizeX / 2);
-                System.Diagnostics.Debug.WriteLine(selection.X+"-"+(sapi.WorldManager.MapSizeX / 2));
-                System.Diagnostics.Debug.WriteLine((selection.X - (sapi.WorldManager.MapSizeX / 2)).ToString());
-
-                System.Diagnostics.Debug.WriteLine("selection z: " + player.CurrentBlockSelection.Position.Z);
-                System.Diagnostics.Debug.WriteLine("mapsize z: " + sapi.WorldManager.MapSizeZ);
-                System.Diagnostics.Debug.WriteLine("mapsize z /2: " + sapi.WorldManager.MapSizeZ / 2);
-                System.Diagnostics.Debug.WriteLine(selection.Z + "-" + (sapi.WorldManager.MapSizeZ / 2));
-                System.Diagnostics.Debug.WriteLine((selection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString());*/
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-date", bdata.date), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
 
             }
             if (Pstate != false)
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-player", Pdata.player), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
-                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-block", Pdata.block), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
-                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-location", (placeselection.X - (sapi.WorldManager.MapSizeX / 2)).ToString(), (placeselection.Z - (sapi.WorldManager.MapSizeZ / 2)).ToString(), placeselection.Y.ToString()), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-date", Pdata.date), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
             }
                 
@@ -122,21 +108,25 @@ namespace blocklog.src
         {
             
             creaturedata cdata = new creaturedata();
-            
+            LandClaim[] lc = entity.World.Claims.Get(entity.Pos.AsBlockPos);
+            if(lc == null)
+            {
+                return; //End function if dead creature isn't on a claim. We'll only be tracking creatures killed within a claim.
+            }
             //System.Diagnostics.Debug.WriteLine(entity.FirstCodePart()); //Uncomment this to check for new projectiles to filter out
             if (entity.FirstCodePart() == "arrow" || entity.FirstCodePart() == "stone" || entity.FirstCodePart() == "thrownstone" || entity.FirstCodePart() == "magicprojectile") { return; } //Add projectiles from other mods here
-            string killedname = entity.GetName();
-            DateTime date = System.DateTime.Now;
+            cdata.killed = entity.GetName();
+            cdata.date = System.DateTime.Now;
             string killedbyname;
-            BlockPos deathposition = entity.Pos.AsBlockPos;
-            LandClaim[] lc = entity.World.Claims.Get(entity.Pos.AsBlockPos);
+            cdata.pos = entity.Pos.AsBlockPos;
+            
             if (damageSource != null)
             {
                 if (damageSource.SourceEntity == null)
                 {
                     if (damageSource.SourceBlock == null)
                     {
-                        return;
+                        killedbyname = "Unknown";
                     }
                     else
                     {
@@ -152,24 +142,59 @@ namespace blocklog.src
             {
                 killedbyname = "Killed by a block";
             }
-            
+            cdata.killedby = killedbyname;
            
 
-            System.Diagnostics.Debug.WriteLine(killedname);
-            System.Diagnostics.Debug.WriteLine(killedbyname);
-            System.Diagnostics.Debug.WriteLine(date.ToString());
+            //System.Diagnostics.Debug.WriteLine(cdata.killed);
+            //.Diagnostics.Debug.WriteLine(cdata.killedby);
+            //System.Diagnostics.Debug.WriteLine(cdata.date.ToString());
             if (lc != null)
             {
                 if (lc.Length > 0)
                 {
-                    System.Diagnostics.Debug.WriteLine("Claim owner: " + lc[0].LastKnownOwnerName);
+                    //System.Diagnostics.Debug.WriteLine("Claim owner: " + lc[0].LastKnownOwnerName);
                 }
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Not in a claim");
             }
+            cdata.claimowner = lc[0].LastKnownOwnerName;
+            //System.Diagnostics.Debug.WriteLine(cdata.claimowner);
 
+            //add this new creature data to the list
+            Dictionary<string, List<creaturedata>> tempdictionary = creaturedeathsave;
+            
+            if (tempdictionary.ContainsKey(cdata.claimowner))
+            {
+                List<creaturedata> tempcreaturedata;
+                tempdictionary.TryGetValue(cdata.claimowner, out tempcreaturedata);
+                if (tempcreaturedata == null)
+                {
+                    tempcreaturedata = new List<creaturedata>(); //initialize the list
+                }
+                tempcreaturedata.Add(cdata);
+                creaturedeathsave[cdata.claimowner] = tempcreaturedata;
+            }
+            else
+            {
+                List<creaturedata> tempcreaturedata = new List<creaturedata>();
+                tempcreaturedata.Add(cdata);
+                creaturedeathsave[cdata.claimowner] = tempcreaturedata;
+            }
+            
+
+            //Check save file DEBUG
+            List<creaturedata> testcreaturedata = new List<creaturedata>();
+            creaturedeathsave.TryGetValue(cdata.claimowner, out testcreaturedata);
+            for (int i = 0; i < testcreaturedata.Count; i++)
+            {
+                System.Diagnostics.Debug.WriteLine("name:"+ testcreaturedata[i].killed);
+                System.Diagnostics.Debug.WriteLine("killed by:" + testcreaturedata[i].killedby);
+                System.Diagnostics.Debug.WriteLine("Claim Owner:" + testcreaturedata[i].claimowner);
+                System.Diagnostics.Debug.WriteLine("death date:" + testcreaturedata[i].date.ToString());
+                System.Diagnostics.Debug.WriteLine("Position:" + testcreaturedata[i].pos.ToString());
+            }
 
         }
         private void OnSaveGameSaving() //This function is called when the game saves
@@ -181,15 +206,14 @@ namespace blocklog.src
 
         private void OnSaveGameLoading() //This is called when the game loads
         {
-            //Dictionary<BlockPos,blockdata> blockbreaksavedata = sapi.WorldManager.SaveGame.GetData<Dictionary<BlockPos,blockdata>>("blockbreaksave");  //Get the data in bytes
-
+            
             byte[] blockbreaksavedata = sapi.WorldManager.SaveGame.GetData("blockbreaksave");  //Get the data in bytes
             byte[] blockplacesavedata = sapi.WorldManager.SaveGame.GetData("blockplacesave");  //Get the data in bytes
             byte[] creaturedeathsavedata = sapi.WorldManager.SaveGame.GetData("creaturedeathsave");  //Get the data in bytes
 
             blockbreaksave = blockbreaksavedata == null ? new Dictionary<BlockPos, blockdata>() : SerializerUtil.Deserialize<Dictionary<BlockPos, blockdata>>(blockbreaksavedata); //deserialize our data and place it into blockbreaksave
             blockplacesave = blockplacesavedata == null ? new Dictionary<BlockPos, blockdata>() : SerializerUtil.Deserialize<Dictionary<BlockPos, blockdata>>(blockplacesavedata); //deserialize our data and place it into blockbreaksave
-            creaturedeathsave = creaturedeathsavedata == null ? new Dictionary<string, creaturedata[]>() : SerializerUtil.Deserialize<Dictionary<string, creaturedata[]>>(creaturedeathsavedata); //deserialize our data and place it into blockbreaksave
+            creaturedeathsave = creaturedeathsavedata == null ? new Dictionary<string, List<creaturedata>>() : SerializerUtil.Deserialize<Dictionary<string, List<creaturedata>>>(creaturedeathsavedata); //deserialize our data and place it into blockbreaksave
         }
 
         //classes//
