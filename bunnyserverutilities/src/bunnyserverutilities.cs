@@ -12,6 +12,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.Common.Entities;
 using privileges;
 using System.Drawing;
+using System.Diagnostics;
+using System.IO;
 
 namespace bunnyserverutilities.src
 {
@@ -222,6 +224,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.enableBack = bsuconfig.getDefault().enableBack;
                 if (bsuconfig.Current.enableHome == null)
                     bsuconfig.Current.enableHome = bsuconfig.getDefault().enableHome;
+                if (bsuconfig.Current.enableSetHome == null)
+                    bsuconfig.Current.enableSetHome = bsuconfig.getDefault().enableHome;
                 if (bsuconfig.Current.homesImported == null)
                     bsuconfig.Current.homesImported = bsuconfig.getDefault().homesImported;
                 if (bsuconfig.Current.enableSpawn == null)
@@ -340,6 +344,7 @@ namespace bunnyserverutilities.src
                 api.StoreModConfig(HomeConfig.Current, "homeconfig.json");
             }
 
+            
 
             //If enable permissions is false, we will give the standard groups all low-level privileges
             if (bsuconfig.Current.enablePermissions == false)
@@ -499,25 +504,94 @@ namespace bunnyserverutilities.src
         //Set Home command
         private void cmd_sethome(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
+            string cmdname = "sethome";
+            string cmd = args.PopWord();
+            switch (cmd)
             {
-                if (homeSave.ContainsKey(player.Entity.PlayerUID))
-                {
-                    homeSave.Remove(player.Entity.PlayerUID);
-                }
-                homeSave.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
-            }
-            else if (ironManPlayerList.Contains(player.PlayerUID))
-            {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
-            }
-            else
-            {
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
-            }
+                case null:
+                    if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        if (processPayment(bsuconfig.Current.sethomecostitem, bsuconfig.Current.sethomecostqty, player, null))
+                        {
+                            if (homeSave.ContainsKey(player.Entity.PlayerUID))
+                            {
+                                homeSave.Remove(player.Entity.PlayerUID);
+                            }
+                            homeSave.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
+                        }
 
 
+                    }
+                    else if (ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
+                    }
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSetHome = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enabled",cmdname), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin")
+                    {
+                        bsuconfig.Current.enableSetHome = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled",cmdname), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "costitem":
+                    if (player.Role.Code == "admin")
+                    {
+                        string code = args.PopWord();
+                        if (code == null)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bool outcome = checkcostitem(code);
+                            if (outcome == false)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else
+                            {
+                                bsuconfig.Current.sethomecostitem = code;
+                                sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                        }
+                    }
+                    break;
+                case "costqty":
+                    if (player.Role.Code == "admin")
+                    {
+                        int? num = args.PopInt();
+                        if (num != null && num >= 0)
+                        {
+                            bsuconfig.Current.sethomecostqty = (int)num;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    break;
+                case "help":
+                    displayhelp(player, cmdname);
+                    break;
+            }
 
         }
 
@@ -2921,6 +2995,7 @@ namespace bunnyserverutilities.src
             //enable/disable properties
             public bool? enableBack;
             public bool? enableHome;
+            public bool? enableSetHome;
             public bool? enableSpawn;
             public bool? enableGrtp;
             public bool? enableBunnyBell;
@@ -2990,6 +3065,8 @@ namespace bunnyserverutilities.src
             public int grtpcostqty;
             public string tptcostitem;
             public int tptcostqty;
+            public string sethomecostitem;
+            public int sethomecostqty;
 
             public static bsuconfig getDefault()
             {
@@ -3026,6 +3103,7 @@ namespace bunnyserverutilities.src
                 //enable/disable module defaults
                 config.enableBack = true;
                 config.enableHome = true;
+                config.enableSetHome = true;
                 config.enableSpawn = true;
                 config.enableGrtp = true;
                 config.enableJoinAnnounce = true;
@@ -3120,5 +3198,6 @@ namespace bunnyserverutilities.src
             }
 
         }
+        
     }
 }

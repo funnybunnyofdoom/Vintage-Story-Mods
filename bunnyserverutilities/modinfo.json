@@ -3,9 +3,9 @@
   "modid": "bunnyserverutilities",
   "name": "Bunny Server Utilities",
   "authors": [ "FunnyBunnyofDOOM" ],
-  "contributors": [ "ShadowPotion","MiMaRz", "Boolystudy" ],
+  "contributors": [ "ShadowPotion","MiMaRz" ],
   "description": "A suite of server-side features",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "dependencies": {
     "game": ""
   },
