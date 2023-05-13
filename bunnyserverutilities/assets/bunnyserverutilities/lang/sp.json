@@ -1,0 +1,190 @@
+{
+  // mensajes de retroceso
+  "disabled-back": "Atrás está desactivado. un administrador debe usar /back enable para habilitarlo",
+  "enable-back": "/back ha sido habilitado",
+  "disable-back": "/back ha sido deshabilitado",
+
+  // mensajes de inicio
+  "home-sethome": "Nuevo hogar ha sido guardado.",
+  "disabled-home": "Home está deshabilitado. un administrador debe usar /home enable para habilitarlo",
+  "enable-home": "/home ha sido habilitado",
+  "disable-home": "/home ha sido deshabilitado",
+  "teleporting-home": "Teletransportándote a tu hogar guardado",
+  "no-home-saved": "No hay hogar guardado. Teletransportándote al centro del mundo. Usa /sethome para guardar un hogar. ",
+  "teleporting-back": "Volviendo a tu última ubicación.",
+  "no-back-saved": "No hay ubicación anterior. Usa /home para crear una ubicación anterior.",
+  "on-death-back": "Usa /back para volver al punto de muerte.",
+
+  // mensajes de GRTP
+  "chunkloading-grtp": "El trozo se está cargando. Por favor, inténtalo de nuevo en unos segundos",
+  "notset-grtp": "GRTP aún no se ha establecido. ¿Acaba de iniciar el servidor?",
+  "cooldown-set-grtp": "El enfriamiento de GRTP se ha actualizado a {0} minutos.", //{0} = valor de enfriamiento
+  "set-radius-grtp": "El radio GRTP se ha actualizado a {0} bloques.", //{0} = valor del radio
+  "wait-now-grtp": "GRTP emitido ahora. Espere hasta un par de minutos para que se actualice la ubicación.",
+  "teleporting-grtp": "Teleportándote a una ubicación aleatoria. Una nueva ubicación se generará dentro de 1 minuto",
+  "teleporting-grtp-2": "Teleportándote a una ubicación aleatoria. Otros pueden unirse a ti durante {0} minutos.",
+  "new-grtp": "Nuevas coordenadas /grtp generadas. La nueva ubicación estará disponible en {0} minutos.",
+
+  // mensajes reutilizables
+  "greater-than": "Por favor ingresa un número mayor que {0} en minutos.", //{0} = número
+  "non-negative-number": "Por favor ingresa un número no negativo.",
+  "disabled": "{0} está desactivado. Un administrador debe usar /{0} enable para habilitar este comando.", //{0} = cadena de comando
+  "disabled-2": "{0} está desactivado por el administrador.",
+  "enable": "{0} ha sido habilitado.", //{0} = cadena de comando
+  "disable": "{0} ha sido deshabilitado.", //{0} = cadena de comando
+  "no-permission": "No tienes permiso para usar este comando.",
+  "player": "jugador",
+  "player-not-found": "No se pudo encontrar al jugador. Por favor verifica tu ortografía e intenta nuevamente.",
+  "number-or-greater": "Por favor ingresa un número {0} o mayor.",
+  "number-between": "Por favor ingresa un número entre {0} y {1}.",
+  "cooldown-reusable": "El tiempo de reutilización de {0} se ha actualizado a {1} minutos.", // {0} = nombre del comando {1} = número de minutos
+  "cooldown-player-reusable": "Por favor, espera {0} minutos.",
+
+  //Importar hogares antiguos
+  "importing": "Importando hogares antiguos",
+  "old-home-config-size": "Tamaño de la configuración del hogar: ",
+  "old-home-imported": "Hogares antiguos importados",
+  "no-old-homes": "No hay configuraciones de hogar válidas para importar.",
+  "home-already-imported": "Los hogares antiguos ya se han importado. Este comando solo debe usarse una vez.",
+
+  //Mensajes Rising Sun
+  "between-hours": "Por favor, introduce una hora entre 1 y 23.",
+  "smaller-dusk": "Por favor, introduce un número menor que el anochecer: ",
+  "larger-dawn": "Por favor, introduce un número mayor que el amanecer: ",
+  "dawn-updated": "La hora del amanecer se ha actualizado a ",
+  "dusk-updated": "La hora del anochecer se ha actualizado a ",
+  "welcome-rs": "¡El sol ha salido para un nuevo jugador! Bienvenido {0}",
+
+  //Mensajes de Mensajes Privados
+  "include-message": "Por favor, incluye un mensaje.",
+  "include-player": "Por favor, incluye un nombre de jugador.",
+
+  //Mensaje de servidor simple
+  "add-message": "Mensaje añadido",
+  "remove-message": "Mensaje eliminado",
+  "remove-message-help": "Por favor, utiliza /ssm lista y luego utiliza /ssm eliminar número para eliminar el mensaje",
+  "remove-message-help-2": "Por favor, utiliza /ssm eliminar número para eliminar un mensaje",
+  "list-of-messages": "Lista de mensajes actuales del servidor: ",
+  "message-frequency": "Los mensajes se transmitirán cada {0} minutos",
+
+  //Teleportarse a
+  "tp-deny-player": "Se ha denegado tu solicitud de teletransporte.",
+  "tp-deny-target": "Teleport To denegado",
+  "no-tp-deny": "No tienes solicitudes activas para denegar",
+  "no-tp-accept": "No tienes solicitudes activas para aceptar",
+  "teleport-accepted": "Se ha aceptado tu solicitud de teletransporte. Espera mientras te teletransportamos.",
+  "teleport-accepted-user": "Teleport To aceptado",
+  "need-playername-tpt": "Por favor, introduce el nombre del jugador al que te gustaría teletransportarte.",
+  "wait-for-tp": "Espera. Te teletransportaremos cuando el otro jugador acepte el teletransporte",
+  "tp-to-you": "{0} desea teletransportarse a ti. Por favor, escribe /tpaccept para aceptar.", //{0} = nombre del jugador
+  "active-tp": "El jugador de destino ya tiene otra solicitud de TP activa. Intente nuevamente en breve.",
+  "pending-tp": "Ya tiene una solicitud de teletransporte pendiente.",
+  "expired-tp": "Su TP al jugador ha caducado",
+
+  //Teletransporte aleatorio
+  "rtp-cooldown-set": "El tiempo de enfriamiento de RTP se ha establecido en",
+  "rtp-wait": "Espere mientras se cargan los fragmentos de destino.",
+  "rtp-wait-2": "Los fragmentos aún se están generando, por favor espere.",
+  "rtp-cooldown-timer": "Puede teletransportarse de nuevo en {0} minutos.",
+  "set-radius-rtp": "El radio RTP se ha actualizado a {0} bloques.", //{0} = valor del radio
+  "new-rtp": "Teletransportándose a una ubicación aleatoria.",
+
+  //Quitar la denegación
+  "remove-denial": "Eliminando la denegación de {0} de {1}.",
+
+  //advertir
+  "warn-player": "Jugador: ",
+  "warn-warnings": "Advertencias: ",
+  "warn-warning": "Advertencia: ",
+  "warn-reasons": "Motivos: ",
+  "warn-help": "Use /warn list num para ver las advertencias para ese jugador",
+
+  //spawn
+  "teleporting-spawn": "Se está teletransportando al punto de aparición.",
+
+  //Mensaje de bienvenida predeterminado:
+  "default-welcome": "¡Bienvenido al servidor!", //Este es el mensaje de bienvenida que muestra Simple Server Messages si no está configurado.
+
+  "welcome-player": "¡Por favor da la bienvenida a <font color=",
+  "white\"><strong>{0}</strong></font> al servidor!\"",
+
+
+  //Lista de jugadores al unirse
+  "players-online": "Jugadores en línea: ",
+  "player-divider": "|",
+
+  //Comando de ayuda
+  "bsu-commands": "Comandos de la utilidad del servidor de Bunny:",
+  "bsu-help": "- Use /bsu help para ver la ayuda de todos los comandos de utilidad del servidor de Bunny",
+  "bsu-version": "Use {0} para la versión del mod",
+  "help-removedeny": "- elimina la denegación de privilegios de un jugador.",
+  "module-commands": "---Comandos de {0}---", //{0} = nombre del módulo
+  "admin-commands": "{0} comandos de administración:", //{0} = nombre del módulo
+  "module-disable": "{0} disable - desactiva el comando {0}",
+  "module-disable-2": "{0} disable - desactiva el módulo {1}.",
+  "module-enable": "{0} enable - habilita el comando {0}",
+  "module-enable-2": "{0} enable - habilita el módulo {1}",
+  "ja-enable": "/joinannounce enable - habilita el envío de un mensaje a los jugadores la primera vez que se unen",
+  "ja-disable": "/joinannounce disable - desactiva el envío de un mensaje a los jugadores la primera vez que se unen",
+  "module-cooldown": "{0} playercooldown <i>número</i> - establece el temporizador de enfriamiento",
+  "grtp-cooldown": "/grtp cooldown <i>número</i> - Establece la frecuencia en minutos en que se mueve la ubicación GRTP",
+  "rtp-cooldown": "/rtp cooldown <i>número</i> - Establece el tiempo de enfriamiento en minutos",
+  "old-home-help": "/importOldHomes - mueve las casas guardadas de jhome 1.05 o anteriores al nuevo tipo de guardado. Ejecute esto solo una vez si está actualizando a este mod desde Bunny's Just Home 1.0.5 o anterior.",
+  "back-help": "/back - regresa al último lugar donde usó /home, /back o murió",
+  "spawn-help": "/spawn - regresa al punto de generación predeterminado del servidor",
+  "grtp-update": "La ubicación GRTP se actualiza cada {0} minutos.",
+  "grtp-radius": "Radio de teletransportación: {0} bloques",
+  "grtp-cmd-help": "/grtp - teletransporta al jugador al punto de teletransportación grupal",
+  "grtp-help-radius": "/grtp radius <i>número</i> - establece el radio de teletransportación",
+  "grtp-help-now": "/grtp now - Establece la GRTP para actualizarse en el siguiente ciclo de 1 minuto",
+
+  "dawn-help": "/rs dawn <i>número</i> - Establece la hora en que Rising Sun avanzará la noche",
+  "dusk-help": "/rs dusk <i>número</i> - Establece la hora que Rising Sun considera como noche",
+  "dm-help": "/dm <i>nombreDeJugador mensajeAlJugador</i> - envía un mensaje a un jugador",
+  "ssm-add-help": "/ssm add <i>MensajeDelServidor</i> - agrega un mensaje a la lista de mensajes del servidor",
+  "ssm-list-help": "/ssm list - lista los mensajes actuales del servidor",
+  "ssm-remove-help": "/ssm remove <i>número de /ssm list</i> - elimina el mensaje del número correspondiente de la lista",
+  "ssm-freq-help": "/ssm frequency <i>número en minutos</i> - cambia la duración en minutos entre los mensajes",
+  "ssm-now-help": "/ssm now - emite el siguiente mensaje del servidor en la lista",
+  "tpt-help": "/tpt nombreDeJugador - pregunta a un jugador si puedes teletransportarte a él",
+  "tpaccept-help": "/tpaccept - acepta una solicitud de teletransporte y teletransporta al jugador hacia ti",
+  "tpdeny-help": "/tpdeny - rechaza una solicitud de teletransporte",
+  "bunny-bell-help": "Bunny Bell crea un -ding- cuando se escribe tu nombre",
+  "rtp-help": "/rtp - Teletransporta al jugador a una ubicación aleatoria",
+
+  //Iron Man
+  "ironman-use-confirm": "Usa /ironman confirm para iniciar el modo Ironman. <font color=red><strong>ADVERTENCIA: Perderás todos los objetos en tu personaje.</strong></font> Si mueres mientras estás en modo Ironman, perderás tu progreso.",
+  "ironman-already-joined": "Ya eres un Ironman.",
+
+  "ironman-confirmed": "Has activado el modo Ironman. Saldrás del modo Ironman al morir.",
+  "ironman-ended": "El Ironman {0} ha muerto. Revisa la clasificación para ver su puntuación.",
+  "ironman-teleporting": "Ahora te estás teletransportando a tu ubicación de Ironman.",
+  "ironman-teleport-wait": "Por favor espera mientras se cargan los bloques de tu Ironman.",
+  "ironman-new-personal-highscore": "El Ironman {0} ha alcanzado una nueva puntuación personal alta. Usa /ironman highscores para ver la clasificación.",
+  "ironman-no-new-score": "No has superado tu puntuación alta de {0} días. ¡Inténtalo de nuevo!",
+  "ironman-first": "¡Has completado tu primer Ironman!",
+  "ironman-highscores-title": "Tabla de clasificación de Ironman",
+  "ironman-commands-disabled": "Todos los comandos de teletransporte están desactivados en el modo Ironman.",
+
+  //Costes de teletransporte
+  "empty-slot": "La mano está vacía. Por favor coloca {1}x {0} en el slot activo de tu barra de acceso rápido e inténtalo de nuevo.",
+  "wrong-item": "Objeto incorrecto. Por favor sostén {1}x {0} en tu mano e inténtalo de nuevo.",
+  "not-enough": "Este teletransporte cuesta {1} y tienes {0} en tu mano.",
+  "cost-qty-updated": "La cantidad de coste para {0} se ha establecido en {1}.",
+  "tp-dont-move": "No muevas el pago de tu barra de acceso rápido hasta que se acepte el teletransporte, o se cancelará el teletransporte.",
+  "tp-need-item": "Por favor ingresa el código completo del objeto. Ejemplo: game:gear-rusty o roadworks:roadblock-free-asphalt",
+  "cost-itm-updated": "El objeto de coste para {0} se ha actualizado a {1}.",
+  "cost-remove": "Eliminando {1} {0} del inventario.",
+
+  "module-costqty": "{0} costqty <i>número</i> - establece el costo de teletransporte para {0}.",
+  "module-costitm": "{0} costitem <i>código de objeto</i> - establece el objeto consumido para usar {0}. Ejemplo de código de objeto: game:gear-rusty",
+
+  //Comando de enfriamiento
+  "cooldown-command": "{0}: {1} minutos restantes.",
+  "cooldowns": "Enfriamientos:",
+  "no-cooldowns": "No hay enfriamientos activos.",
+
+  //Versión 1.0.6
+  "home-number": "Por favor ingresa el número de la casa a la que te gustaría teletransportarte.",
+  "home-save": "Por favor ingresa el número de la casa que te gustaría guardar."
+}

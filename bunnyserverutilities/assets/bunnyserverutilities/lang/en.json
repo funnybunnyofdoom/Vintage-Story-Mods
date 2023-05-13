@@ -182,6 +182,11 @@
   //cooldown commamnd
   "cooldown-command": "{0}: {1} Remaining minutes.",
   "cooldowns": "Cooldowns:",
-  "no-cooldowns": "No Active Cooldowns"
+  "no-cooldowns": "No Active Cooldowns",
+
+  //version 1.0.6
+  "home-number": "Please enter the number of the home you would like to teleport to.",
+  "home-save": "Please enter the number of the home you would like save to.",
+  "wiped": "tptDict and waitDict has been cleared."
 
 } 

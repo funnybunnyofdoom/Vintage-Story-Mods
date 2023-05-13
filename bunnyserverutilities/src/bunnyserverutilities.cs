@@ -27,7 +27,7 @@ namespace bunnyserverutilities.src
 
         //jHome variable initialization
         Dictionary<string, BlockPos> backSave; //Dictionary to hold our /back locations
-        Dictionary<string, BlockPos> homeSave; //Dictionary to hold our /home locations
+        Dictionary<string, List<BlockPos>> homeSave; //Dictionary to hold our /home locations
 
         //GRTP variable initialization
 
@@ -108,7 +108,7 @@ namespace bunnyserverutilities.src
 
             //home commands
             api.RegisterCommand("sethome", "Set your current position as home", " ",
-                cmd_sethome, privileges.src.CPrivilege.home);
+                cmd_sethome, privileges.src.KPrivilege.sethome);
             api.RegisterCommand("home", "Teleport to your /sethome location", " ",
                 cmd_home, privileges.src.CPrivilege.home);
             api.RegisterCommand("importOldHomes", "Imports homes from version 1.0.5 and earlier", " ",
@@ -308,6 +308,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.tptcostitem = bsuconfig.getDefault().tptcostitem;
                 if (bsuconfig.Current.tptcostqty == null)
                     bsuconfig.Current.tptcostqty = bsuconfig.getDefault().tptcostqty;
+                if (bsuconfig.Current.homelimit == null)
+                    bsuconfig.Current.homelimit = bsuconfig.getDefault().homelimit;
 
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
@@ -392,6 +394,10 @@ namespace bunnyserverutilities.src
                 ipm.AddPrivilegeToGroup("admin",privileges.src.JPrivilege.ironman);
                 ipm.AddPrivilegeToGroup("suplayer", privileges.src.JPrivilege.ironman);
                 ipm.AddPrivilegeToGroup("doplayer", privileges.src.JPrivilege.ironman);
+                //Add sethome permissions to all standard groups
+                ipm.AddPrivilegeToGroup("admin", privileges.src.KPrivilege.sethome);
+                ipm.AddPrivilegeToGroup("suplayer", privileges.src.KPrivilege.sethome);
+                ipm.AddPrivilegeToGroup("doplayer", privileges.src.KPrivilege.sethome);
             }
 
             //GRTP count and event listener set at server startup
@@ -415,19 +421,19 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    
-                    if (bsuconfig.Current.enableBack == true && !ironManPlayerList.Contains(player.PlayerUID))
+
+                    if (bsuconfig.Current.enableBack == true && !ironManPlayerList.Contains(player.PlayerUID))//Check to see if back is enabled, or if the user is in ironman mode
                     {
                         string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.backPlayerCooldown);
-                        if(cooldownstate != "wait")
+                        if (cooldownstate != "wait")
                         {
-                            if (processPayment(bsuconfig.Current.backcostitem, bsuconfig.Current.backcostqty, player,null))
+                            if (processPayment(bsuconfig.Current.backcostitem, bsuconfig.Current.backcostqty, player, null))
                             {
                                 backteleport(player);
                                 addcooldown(cmdname, player, cooldownstate);
                             }
                         }
-                    }else if (ironManPlayerList.Contains(player.PlayerUID))
+                    } else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
@@ -437,7 +443,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname+"admin"))
                     {
                         bsuconfig.Current.enableBack = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -445,7 +451,7 @@ namespace bunnyserverutilities.src
                     }   
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableBack = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -456,7 +462,7 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case "costitem":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         string code = args.PopWord();
                         if (code == null)
@@ -480,7 +486,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costqty":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? num = args.PopInt();
                         if (num != null && num >= 0)
@@ -509,31 +515,10 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
-                    {
-                        if (processPayment(bsuconfig.Current.sethomecostitem, bsuconfig.Current.sethomecostqty, player, null))
-                        {
-                            if (homeSave.ContainsKey(player.Entity.PlayerUID))
-                            {
-                                homeSave.Remove(player.Entity.PlayerUID);
-                            }
-                            homeSave.Add(player.Entity.PlayerUID, player.Entity.Pos.AsBlockPos);
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
-                        }
-
-
-                    }
-                    else if (ironManPlayerList.Contains(player.PlayerUID))
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
-                    }
-                    else
-                    {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
-                    }
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-save"), Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableSetHome = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -541,7 +526,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableSetHome = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -549,7 +534,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costitem":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         string code = args.PopWord();
                         if (code == null)
@@ -573,7 +558,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costqty":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? num = args.PopInt();
                         if (num != null && num >= 0)
@@ -591,29 +576,63 @@ namespace bunnyserverutilities.src
                 case "help":
                     displayhelp(player, cmdname);
                     break;
-            }
-
-        }
-
-        //home command
-        private void cmd_home(IServerPlayer player, int groupId, CmdArgs args)
-        {
-            string cmdname = "home";
-            string cmd = args.PopWord();
-            switch (cmd)
-            {
-                case null:
+                default:
                     if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        
-                        string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.homePlayerCooldown);
-                        if (cooldownstate != "wait")
+
+
+                        string inputString = cmd;
+                        int input;
+                        System.Diagnostics.Debug.WriteLine(inputString);
+                        if (int.TryParse(inputString, out input))
                         {
-                            if (processPayment(bsuconfig.Current.homecostitem, bsuconfig.Current.homecostqty, player,null))
+                            System.Diagnostics.Debug.WriteLine(input);
+
+                            string playerID = player.Entity.PlayerUID; //get the using player's player ID
+                            int homecount;
+                            List<BlockPos> homelist = new List<BlockPos>();
+                            if (homeSave.ContainsKey(playerID))
                             {
-                                homeTeleport(player);
-                                addcooldown(cmdname, player, cooldownstate);
+                                homeSave.TryGetValue(playerID, out homelist);
+                                homecount = homelist.Count();
                             }
+                            else
+                            {
+                                homecount = 0;
+                            }
+
+                            if (input > homecount + 1)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount + 1), Vintagestory.API.Common.EnumChatType.Notification);
+                            }else if (input > bsuconfig.Current.homelimit)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, bsuconfig.Current.homelimit), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (input > 0)
+                            {
+                                if (processPayment(bsuconfig.Current.sethomecostitem, bsuconfig.Current.sethomecostqty, player, null))
+                                {
+                                    if (homeSave.ContainsKey(player.Entity.PlayerUID))
+                                    {
+                                        homeSave.Remove(player.Entity.PlayerUID);
+                                    }
+                                    if (input - 1 < homelist.Count)
+                                    {
+                                        homelist[input - 1] = player.Entity.Pos.AsBlockPos;
+                                    }
+                                    else
+                                    {
+                                        homelist.Add(player.Entity.Pos.AsBlockPos);
+                                    }
+                                    homeSave.Add(player.Entity.PlayerUID, homelist);
+                                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
+                                }
+                            }
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine(input);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                         }
 
                     }
@@ -626,8 +645,23 @@ namespace bunnyserverutilities.src
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
                     }
                     break;
+            }
+
+        }
+
+        //home command
+        private void cmd_home(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            string cmdname = "home";
+            string cmd = args.PopWord();
+            switch (cmd)
+            {
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    
+                    break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableHome = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -635,7 +669,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableHome = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -643,7 +677,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costitem":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         string code = args.PopWord();
                         if (code == null)
@@ -667,7 +701,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costqty":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? num = args.PopInt();
                         if (num != null && num >= 0)
@@ -687,6 +721,61 @@ namespace bunnyserverutilities.src
                     break;
                 case "playercooldown":
                     setplayercooldown(player, args.PopInt(), cmdname);
+                    break;
+                default:
+                    if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        string inputString = cmd;
+                        int input;
+                        System.Diagnostics.Debug.WriteLine(inputString);
+                        if (int.TryParse(inputString, out input))
+                        {
+                            string playerID = player.Entity.PlayerUID; //get the using player's player ID
+                            int homecount;
+                            List<BlockPos> homelist = new List<BlockPos>();
+                            if (homeSave.ContainsKey(playerID))
+                            {
+                                homeSave.TryGetValue(playerID, out homelist);
+                                homecount = homelist.Count();
+                            }
+                            else
+                            {
+                                homecount = 0;
+                            }
+
+                            if (input > homecount)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else if (input > 0)
+                            {
+                                string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.homePlayerCooldown);
+                                if (cooldownstate != "wait")
+                                {
+                                    if (processPayment(bsuconfig.Current.homecostitem, bsuconfig.Current.homecostqty, player, null))
+                                    {
+
+                                        homeTeleport(player, input - 1);
+                                        addcooldown(cmdname, player, cooldownstate);
+                                    }
+                                }
+                            }       
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine(input);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+
+                    }
+                    else if (ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
+                    }
                     break;
             }
         }
@@ -741,7 +830,7 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case "cooldown":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? cdnum = args.PopInt();
                         if (cdnum == null | cdnum == 0)
@@ -761,7 +850,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "radius":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? cdnum = args.PopInt();
                         if (cdnum == null | cdnum < 10)
@@ -781,14 +870,14 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "now":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         grtptimer = 0 - (int)bsuconfig.Current.cooldownminutes;
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wait-now-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user to wait while the GRTP teleport location is updated
                     }
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableGrtp = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -796,7 +885,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableGrtp = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -807,7 +896,7 @@ namespace bunnyserverutilities.src
                     setplayercooldown(player, args.PopInt(), cmdname);
                     break;
                 case "costitem":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         string code = args.PopWord();
                         if (code == null)
@@ -831,7 +920,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costqty":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? num = args.PopInt();
                         if (num != null && num >= 0)
@@ -896,7 +985,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableSpawn = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -904,7 +993,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableSpawn = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -918,7 +1007,7 @@ namespace bunnyserverutilities.src
                     setplayercooldown(player, args.PopInt(), cmdname);
                     break;
                 case "costitem":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         string code = args.PopWord();
                         if (code == null)
@@ -942,7 +1031,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costqty":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? num = args.PopInt();
                         if (num != null && num >= 0)
@@ -963,7 +1052,7 @@ namespace bunnyserverutilities.src
         //Import Old Homes Command
         private void cmd_importOldHomes(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (bsuconfig.Current.homesImported == false)
+            /*if (bsuconfig.Current.homesImported == false)
             {
                 if (player.Role.Code == "admin")
                 {
@@ -1003,7 +1092,8 @@ namespace bunnyserverutilities.src
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-already-imported"), Vintagestory.API.Common.EnumChatType.Notification);//inform the user that their homes have already been imported
             }
-
+*/
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No Longer Supported", Vintagestory.API.Common.EnumChatType.Notification);
         }
 
         private void cmd_joinannounce(IServerPlayer player, int groupId, CmdArgs args)
@@ -1019,7 +1109,7 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableJoinAnnounce = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1027,7 +1117,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableJoinAnnounce = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1048,7 +1138,7 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case "dawn":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? cdnum = args.PopInt();
                         if (cdnum < 1 | cdnum > 23)
@@ -1072,7 +1162,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "dusk":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? cdnum = args.PopInt();
                         if (cdnum < 1 | cdnum > 23)
@@ -1096,7 +1186,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableRisingSun = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1104,7 +1194,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableRisingSun = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1173,7 +1263,7 @@ namespace bunnyserverutilities.src
                     displayhelp(player, cmdname);
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enablejpm = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1181,7 +1271,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enablejpm = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1259,7 +1349,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableSimpleServerMessages = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1267,7 +1357,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableSimpleServerMessages = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1342,25 +1432,26 @@ namespace bunnyserverutilities.src
         {
             string cmdname = "tpt";
             string cmd = args.PopWord();
-            if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable" & cmd != "playercooldown" & cmd != "costqty" & cmd != "costitem")
+            if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable" & cmd != "playercooldown" & cmd != "costqty" & cmd != "costitem" & cmd != "wipe")
             {
                 if (bsuconfig.Current.enabletpt == true && !ironManPlayerList.Contains(player.PlayerUID))
                 {
-                    
+
                     string actions = checkCooldown(player, cmdname, bsuconfig.Current.tptPlayerCooldown);
                     if (actions != "wait")
                     {
                         if (bsuconfig.Current.teleportcostenabled == true)
                         {
-                            bool outcome = prepay(bsuconfig.Current.tptcostitem,bsuconfig.Current.tptcostqty,player);
+                            bool outcome = prepay(bsuconfig.Current.tptcostitem, bsuconfig.Current.tptcostqty, player);
                             if (outcome == true) { teleportTo(player, cmd); }
                         }
-                        else {
+                        else
+                        {
                             teleportTo(player, cmd);
                         }
-                        
+
                     }
-                    
+
                 }
                 else if (ironManPlayerList.Contains(player.PlayerUID))
                 {
@@ -1378,7 +1469,7 @@ namespace bunnyserverutilities.src
             }
             else if (cmd == "enable")
             {
-                if (player.Role.Code == "admin")
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                 {
                     bsuconfig.Current.enabletpt = true;
                     sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1387,15 +1478,20 @@ namespace bunnyserverutilities.src
             }
             else if (cmd == "disable")
             {
-                bsuconfig.Current.enabletpt = false;
-                sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Teleport To"), Vintagestory.API.Common.EnumChatType.Notification);
-            }else if(cmd == "playercooldown")
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    bsuconfig.Current.enabletpt = false;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Teleport To"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "playercooldown")
             {
-                    setplayercooldown(player, args.PopInt(), cmdname);
-            }else if(cmd == "costqty")
+                setplayercooldown(player, args.PopInt(), cmdname);
+            }
+            else if (cmd == "costqty")
             {
-                if (player.Role.Code == "admin")
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                 {
                     int? num = args.PopInt();
                     if (num != null && num >= 0)
@@ -1409,9 +1505,10 @@ namespace bunnyserverutilities.src
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                 }
-            }else if (cmd == "costitem")
+            }
+            else if (cmd == "costitem")
             {
-                if (player.Role.Code == "admin")
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                 {
                     string code = args.PopWord();
                     if (code == null)
@@ -1429,9 +1526,22 @@ namespace bunnyserverutilities.src
                         {
                             bsuconfig.Current.tptcostitem = code;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
                         }
                     }
+                }
+            }
+            else if (cmd == "wipe")
+            {
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    bsuconfig.Current.tptDict = new Dictionary<string, tptinfo>{
+                    { "Default",new tptinfo() }
+                };
+                    bsuconfig.Current.waitDict = new Dictionary<string, string>
+                    {
+                        { "Default", "Default" }
+                    };
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wipe"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
             else
@@ -1460,7 +1570,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb [help|enable|disable]", Vintagestory.API.Common.EnumChatType.Notification);
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableBunnyBell = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1468,7 +1578,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableBunnyBell = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1485,7 +1595,7 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case "cooldown":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? cdnum = args.PopInt();
                         if (cdnum == null)
@@ -1563,7 +1673,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enablejrtp = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1571,7 +1681,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enablejrtp = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1579,7 +1689,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "radius":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? cdnum = args.PopInt();
                         if (cdnum == null | cdnum < 10)
@@ -1599,7 +1709,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costitem":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         string code = args.PopWord();
                         if (code == null)
@@ -1623,7 +1733,7 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "costqty":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int? num = args.PopInt();
                         if (num != null && num >= 0)
@@ -1783,7 +1893,7 @@ namespace bunnyserverutilities.src
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "ironman"), Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                     }
 
                     break;
@@ -1876,19 +1986,19 @@ namespace bunnyserverutilities.src
                     }
                     break;
                 case "enable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableironman = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "ironman"), Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
                 case "disable":
-                    if (player.Role.Code == "admin")
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableironman = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "ironman"), Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
             }
@@ -1897,7 +2007,7 @@ namespace bunnyserverutilities.src
         //cost command
         private void cmd_tpcost(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (player.Role.Code == "admin")
+            if (player.Role.Code == "admin" || player.HasPrivilege("tptadmin"))
             {
                 string cmdname = "tpcost";
                 string cmd = args.PopWord();
@@ -2232,14 +2342,19 @@ namespace bunnyserverutilities.src
             player.Entity.TeleportTo(randx, height + 2, randz);
         }
 
-        private void homeTeleport(IServerPlayer player)
+        private void homeTeleport(IServerPlayer player,int homenum)
         {
             setbackteleport(player);
             if (homeSave.ContainsKey(player.Entity.PlayerUID))
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleporting-home"), Vintagestory.API.Common.EnumChatType.Notification);
-                sapi.WorldManager.LoadChunkColumnPriority(homeSave[player.Entity.PlayerUID].X / sapi.WorldManager.ChunkSize, homeSave[player.Entity.PlayerUID].Z / sapi.WorldManager.ChunkSize);
-                player.Entity.TeleportTo(homeSave[player.Entity.PlayerUID].X, homeSave[player.Entity.PlayerUID].Y, homeSave[player.Entity.PlayerUID].Z);
+                List<BlockPos> homelist = new List<BlockPos>();
+                homeSave.TryGetValue(player.Entity.PlayerUID,out homelist);
+                int X = homelist[homenum].X;
+                int Y = homelist[homenum].Y;
+                int Z = homelist[homenum].Z;
+                sapi.WorldManager.LoadChunkColumnPriority(X / sapi.WorldManager.ChunkSize, Z / sapi.WorldManager.ChunkSize);
+                player.Entity.TeleportTo(X, Y, Z);
             }
             else
             {
@@ -2282,7 +2397,7 @@ namespace bunnyserverutilities.src
             if (player.Role.Code == "admin")
             {
                 //int? cdnum = args.PopInt();
-                if (cdnum == null | cdnum == 0)
+                if (cdnum == null )//|cdnum == 0)
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than",0), Vintagestory.API.Common.EnumChatType.Notification);
                 }
@@ -2805,6 +2920,7 @@ namespace bunnyserverutilities.src
 
         private void OnSaveGameLoading()
         {
+
             byte[] backdata = sapi.WorldManager.SaveGame.GetData("bsuBack");
             byte[] homedata = sapi.WorldManager.SaveGame.GetData("bsuHome");
             byte[] ironmandata = sapi.WorldManager.SaveGame.GetData("ironman");
@@ -2812,7 +2928,7 @@ namespace bunnyserverutilities.src
             byte[] ironmanhighscoredata = sapi.WorldManager.SaveGame.GetData("ironmanhighscores");
 
             backSave = backdata == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(backdata);
-            homeSave = homedata == null ? new Dictionary<string, BlockPos>() : SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(homedata);
+            homeSave = homedata == null ? new Dictionary<string, List<BlockPos>>() : SerializerUtil.Deserialize<Dictionary<string, List<BlockPos>>>(homedata);
             ironManPlayerList = ironmandata == null ? new List<string>() : SerializerUtil.Deserialize<List<string>>(ironmandata);
             currentironmandict = currentironmandata == null ? new Dictionary<string, double>() : SerializerUtil.Deserialize<Dictionary<string, double>>(currentironmandata);
             ironmanhighscores = ironmanhighscoredata == null ? new Dictionary<string, int>() : SerializerUtil.Deserialize<Dictionary<string, int>>(ironmanhighscoredata);
@@ -3010,6 +3126,7 @@ namespace bunnyserverutilities.src
             public Dictionary<String, BlockPos> homeDict { get; set; }//Must be preserved to pull old homes to the new save
             public int? homePlayerCooldown; //How often the player can use /home
             public int? backPlayerCooldown;//How often the player can use /back
+            public int? homelimit; //How many homes a player can set
             public bool? enablePermissions;
             public bool? homesImported;
 
@@ -3099,6 +3216,7 @@ namespace bunnyserverutilities.src
                 config.homesImported = false;
                 config.homePlayerCooldown = 1;
                 config.backPlayerCooldown = 1;
+                config.homelimit = 1;
 
                 //enable/disable module defaults
                 config.enableBack = true;

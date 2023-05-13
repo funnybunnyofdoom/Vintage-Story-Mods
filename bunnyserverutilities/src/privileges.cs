@@ -14,6 +14,7 @@ namespace privileges.src
         /// Ability to use /grtp
         /// </summary>
         public static string grtp = "grtp";
+        public static string admin = "grtpadmin";
     }
     public class BPrivilege : Privilege
     {
@@ -21,6 +22,7 @@ namespace privileges.src
         /// Ability to use /spawn
         /// </summary>
         public static string spawn = "spawn";
+        public static string admin = "spawnadmin";
     }
     public class CPrivilege : Privilege
     {
@@ -29,13 +31,16 @@ namespace privileges.src
         /// </summary>
 
         public static string home = "home";
+        public static string admin = "homeadmin";
     }
+
     public class DPrivilege : Privilege
     {
         /// <summary>
         /// Ability to use /back
         /// </summary>
         public static string back = "back";
+        public static string admin = "backadmin";
     }
 
     public class EPrivilege : Privilege
@@ -53,6 +58,7 @@ namespace privileges.src
         /// Ability to use Simple Server Message commands
         /// </summary>
         public static string ssm = "ssm";
+        public static string admin = "ssmadmin";
     }
 
     public class GPrivilege : Privilege
@@ -60,21 +66,21 @@ namespace privileges.src
         /// <summary>
         /// Ability to use /tpt
         /// </summary>
-        public static string tpt = "tpt";
+        public static string tpt = "tpt"; public static string admin = "tptadmin";
     }
     public class HPrivilege : Privilege
     {
         /// <summary>
         /// Ability to use /rtp
         /// </summary>
-        public static string rtp = "rtp";
+        public static string rtp = "rtp"; public static string admin = "rtpadmin";
     }
     public class IPrivilege : Privilege
     {
         /// <summary>
         /// Ability to use /warn
         /// </summary>
-        public static string warn = "warn";
+        public static string warn = "warn"; public static string admin = "warnadmin";
     }
 
     public class JPrivilege : Privilege
@@ -82,6 +88,14 @@ namespace privileges.src
         /// <summary>
         /// Ability to use /ironman
         /// </summary>
-        public static string ironman = "ironman";
+        public static string ironman = "ironman"; public static string admin = "ironmanadmin";
+    }
+    public class KPrivilege : Privilege
+    {
+        /// <summary>
+        /// Ability to use /home
+        /// </summary>
+
+        public static string sethome = "sethome"; public static string admin = "sethomeadmin";
     }
 }
