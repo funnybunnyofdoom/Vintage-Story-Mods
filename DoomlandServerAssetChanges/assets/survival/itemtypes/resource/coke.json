@@ -17,7 +17,7 @@
 	materialDensity: 300,
 	combustibleProps: {
 		burnTemperature: 1340,
-		burnDuration: 200,
+		burnDuration: 600,
 	},
 	fpHandTransform: {
 		translation: { x: 0, y: 0, z: 0 },

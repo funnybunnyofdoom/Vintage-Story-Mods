@@ -1,0 +1,150 @@
+{
+	code: "log",
+	"__comment": "BlockLog contains only contains code for OnPickBlock",
+	class: "BlockLog",
+	behaviorsByType: {
+		"*-grown-*": [{name: "PushEventOnBlockBroken",	properties: {eventName: "testForDecay"}}, { name: "MyceliumHost" }],
+		"*": [{name: "Pillar"}, { name: "MyceliumHost" }, { name: "WrenchOrientable", properties: { baseCode: "log-placed-{wood}"  } }]
+	},
+	variantgroups: [
+		{ code: "type", states: ["grown", "placed"] },
+		{ code: "wood", states: ["aged"], loadFromProperties: "block/wood" },
+		{ code: "rotation", states: ["ud", "ns", "we"] },
+	],
+	creativeinventory: { "general": ["log-placed-*-ud"], "flora": ["log-placed-*-ud"], "construction": ["log-placed-*-ud"] },
+	shape: { base: "block/basic/cube" },
+	drawtype: "cube",
+	blockmaterial: "Wood",
+	requiredMiningTier: 1,
+	attributes: {
+		handbook: {
+			groupBy: ["log-*-{wood}-*"]
+		},
+		treeFellingGroupCodeByType: {
+			"log-grown-*": "{wood}"
+		},
+		treeFellingGroupSpreadIndexByType: {
+		"*-birch-*": 4,
+		"*-oak-*": 4,
+		"*-maple-*": 4,
+		"*-pine-*": 3,
+		"*-acacia-*": 4,
+		"*-kapok-*": 3,
+		"*-baldcypress-*": 3,
+		"*-larch-*": 3,
+		"*-redwood-*": 3,
+		"*-ebony-*": 6,
+		"*-walnut-*": 4,
+		"*-purpleheart-*": 5,
+		"*-aged-*": 3,
+		"*": 4
+		},
+		preventsDecayByType: {
+			"log-grown-*": true
+		}
+	},
+	texturesByType: {
+		"*-ud": {
+			"all": { base: "block/wood/bark/{wood}" },
+			"inside-north": { base: "block/wood/debarked/{wood}", rotation: 90 },
+			"inside-east": { base: "block/wood/debarked/{wood}", rotation: 90 },
+			"inside-south": { base: "block/wood/debarked/{wood}", rotation: 90 },
+			"inside-west": { base: "block/wood/debarked/{wood}", rotation: 90 },
+
+			"up": { base: "block/wood/treetrunk/{wood}" },
+			"down": { base: "block/wood/treetrunk/{wood}" }
+		},
+		"*-ns": {
+			"all": { base: "block/wood/bark/{wood}-h" },
+			"up": { base: "block/wood/bark/{wood}" },
+			"down": { base: "block/wood/bark/{wood}" },
+
+
+			"inside-up": { base: "block/wood/debarked/{wood}", rotation: 90 },
+			"inside-down": { base: "block/wood/debarked/{wood}", rotation: 90 },
+			"inside-west": { base: "block/wood/debarked/{wood}" },
+			"inside-east": { base: "block/wood/debarked/{wood}" },
+
+
+			"north": { base: "block/wood/treetrunk/{wood}" },
+			"south": { base: "block/wood/treetrunk/{wood}" }
+		},
+		"*-we": {
+			"all": { base: "block/wood/bark/{wood}-h" },
+			"up": { base: "block/wood/bark/{wood}-h" },
+
+			"inside-up": { base: "block/wood/debarked/{wood}" },
+			"inside-down": { base: "block/wood/debarked/{wood}" },
+			"inside-north": { base: "block/wood/debarked/{wood}" },
+			"inside-south": { base: "block/wood/debarked/{wood}" },
+
+
+			"west": { base: "block/wood/treetrunk/{wood}" },
+			"east": { base: "block/wood/treetrunk/{wood}" }
+		},
+	},
+	replaceable: 500,
+	resistance: 4.5,
+	sounds: {
+		"place": "block/planks",
+		"walk": "walk/wood",
+		"hit": "block/planks",
+		"break": "block/planks",
+		byTool: {
+			"Axe": { hit: "block/chop", break: "block/planks" }
+		}
+	},
+	drops: [
+		{ type: "block", code: "log-placed-{wood}-ud", quantity: { avg: 1 }  }
+	],
+	combustiblePropsByType: {
+		"log-*-birch-*": {
+			burnTemperature: 800,
+			burnDuration: 1170,
+		},
+		"log-*-oak-*": {
+			burnTemperature: 800,
+			burnDuration: 1370,
+		},
+		"log-*-ebony-*": {
+			burnTemperature: 800,
+			burnDuration: 1600,
+		},
+		"log-*-pine-*": {
+			burnTemperature: 800,
+			burnDuration: 9000,
+		},
+		"log-*-acacia-*": {
+			burnTemperature: 800,
+			burnDuration: 1335,
+		},
+		"log-*-kapok-*": {
+			burnTemperature: 800,
+			burnDuration: 705,
+		},
+		"log-*-maple-*": {
+			burnTemperature: 800,
+			burnDuration: 1170,
+		},
+		"log-*-redwood-*": {
+			burnTemperature: 800,
+			burnDuration: 1080,
+		},
+		"log-*-aged-*": {
+			burnTemperature: 700,
+			burnDuration: 600,
+		},
+		"*": {
+			burnTemperature: 800,
+			burnDuration: 1080,
+		}
+	},
+	maxStackSize: 16,
+	materialDensity: 700,
+	heldTpIdleAnimation: "holdbothhandslarge", heldTpUseAnimation: "twohandplaceblock",
+	tpHandTransform: {
+		translation: { x: -1.23, y: -0.91, z: -0.8 },
+		rotation: { x: -2, y: 25, z: -78 },
+		scale: 0.4
+	}
+}

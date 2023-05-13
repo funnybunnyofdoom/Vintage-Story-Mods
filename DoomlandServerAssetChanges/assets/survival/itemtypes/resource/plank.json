@@ -10,7 +10,7 @@
 			stackingTextures: {
 				wood: "block/wood/planks/{wood}1"
 			},
-			tessQuantityElements: 1,
+			modelItemsToStackSizeRatio: 1,
 			stackingCapacity: 48,
 			collisionBox: { x1: 0, y1: 0, z1: 0, x2: 1, y2: 0.0625, z2: 1 },
 			cbScaleYByLayer: 0.33333333333333333333333333333333,
@@ -24,7 +24,12 @@
 	maxstacksize: 64,
 	shape: { base: "item/plank" },
 	textures: {
-		wood: { base: "block/wood/planks/{wood}1" }
+		wood: { baseByType: {
+				"*-aged": "block/wood/planks/aged/generic1",
+				"*-agedebony": "block/wood/planks/aged/ebony1" ,
+				"*": "block/wood/planks/{wood}1" 
+			}
+		}
 	},
 	creativeinventory: { "general": ["*"], "items": ["*"] },
 	attributes: {
@@ -34,7 +39,7 @@
 	},
 	combustibleProps: {
 		burnTemperature: 700,
-		burnDuration: 30,
+		burnDuration: 90,
 	},
 	materialDensity: 700,
 	

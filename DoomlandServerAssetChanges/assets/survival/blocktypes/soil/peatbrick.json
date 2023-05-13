@@ -22,7 +22,7 @@
 	maxStackSize: 32,
 	combustibleProps: {
 		burnTemperature: 900,
-		burnDuration: 125,
+		burnDuration: 375,
 	},
 	guiTransform: {
 		origin: { x: 0.5, y: 0.125, z: 0.5 },

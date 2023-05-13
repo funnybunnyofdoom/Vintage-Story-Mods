@@ -1,5 +1,5 @@
 {
-	code: "firewood",
+	code: "agedfirewood",
 	class: "ItemFirewood",
 	maxstacksize: 32,
 	behaviors: [{ 
@@ -23,6 +23,11 @@
 		placeSound: "block/planks"
 	},
 	shape: { base: "item/firewood" },
+	textures: {
+		"side": { base: "block/wood/firewood/aged/side" },
+		"south": { base: "block/wood/firewood/aged/south" },
+		"bark": { base: "block/wood/firewood/aged/bark" }
+	},
 	creativeinventory: { "general": ["*"], "items": ["*"] },
 	guiTransform: {
 		translation: { x: 3, y: 0, z: 0 },
