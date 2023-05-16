@@ -187,6 +187,9 @@
   //version 1.0.6
   "home-number": "Please enter the number of the home you would like to teleport to.",
   "home-save": "Please enter the number of the home you would like save to.",
-  "wiped": "tptDict and waitDict has been cleared."
+  "wiped": "tptDict and waitDict has been cleared.",
+  "home-limit-updated": "The number of homes a player can set has been updated to {0}.",
+  "reply-help": "/reply - sends a message to the last player to send you a message",
+  "no-reply": "You have not received a message that you can reply to."
 
 } 
