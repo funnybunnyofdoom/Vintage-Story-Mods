@@ -118,8 +118,8 @@
   "bsu-version": "Use {0} for mod version",
   "help-removedeny": "- remove a privilege denial from a player.",
   "module-commands": "---{0} Commands---", //{0} = module name
-  "help-sethome": "- Sets your location as your home teleport",
-  "help-home": "- teleports you to your set home location",
+  "help-sethome": "<i>number</i>- Sets your location as your home teleport for the number provided",
+  "help-home": "<i>number</i> - teleports you to your set home location for the number provided",
   "admin-commands": "{0} admin commands:", //{0} = module name
   "module-disable": "{0} disable - disable the {0} command",
   "module-disable-2": "{0} disable - disables the {1} module.",
@@ -190,6 +190,7 @@
   "wiped": "tptDict and waitDict has been cleared.",
   "home-limit-updated": "The number of homes a player can set has been updated to {0}.",
   "reply-help": "/reply - sends a message to the last player to send you a message",
-  "no-reply": "You have not received a message that you can reply to."
+  "no-reply": "You have not received a message that you can reply to.",
+  "home-limit-help": "/home limit <i>number</i> - sets the number of homes each player can set"
 
 } 

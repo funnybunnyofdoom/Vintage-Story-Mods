@@ -661,8 +661,36 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-number"), Vintagestory.API.Common.EnumChatType.Notification);
-                    
+                    string playerID2 = player.Entity.PlayerUID; //get the using player's player ID
+                    int homecount2;
+                    List<BlockPos> homelist2 = new List<BlockPos>();
+                    if (homeSave.ContainsKey(playerID2))
+                    {
+                        homeSave.TryGetValue(playerID2, out homelist2);
+                        homecount2 = homelist2.Count();
+                    }
+                    else
+                    {
+                        homecount2 = 0;
+                    }
+
+                    if ((bsuconfig.Current.homelimit == 1 && homecount2 > 0)|| homecount2 == 1)
+                    {
+                            string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.homePlayerCooldown);
+                            if (cooldownstate != "wait")
+                            {
+                                if (processPayment(bsuconfig.Current.homecostitem, bsuconfig.Current.homecostqty, player, null))
+                                {
+
+                                    homeTeleport(player, 1 - 1);
+                                    addcooldown(cmdname, player, cooldownstate);
+                                }
+                            }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
                     break;
                 case "enable":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
@@ -731,7 +759,6 @@ namespace bunnyserverutilities.src
                     {
                         string inputString = cmd;
                         int input;
-                        System.Diagnostics.Debug.WriteLine(inputString);
                         if (int.TryParse(inputString, out input))
                         {
                             string playerID = player.Entity.PlayerUID; //get the using player's player ID
@@ -2152,6 +2179,7 @@ namespace bunnyserverutilities.src
                 }
             }
             //BSU help
+
             //home help
             if (helpType == "home" || helpType == "all")
             {
@@ -2175,6 +2203,7 @@ namespace bunnyserverutilities.src
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:module-costqty", "/home"), Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:module-costitm", "/home"), Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:old-home-help"), Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-limit-help"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
             }
 
