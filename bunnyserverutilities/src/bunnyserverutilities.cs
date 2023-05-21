@@ -519,7 +519,39 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-save"), Vintagestory.API.Common.EnumChatType.Notification);
+                    if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        string playerID = player.Entity.PlayerUID; //get the using player's player ID
+                        int homecount;
+                        List<BlockPos> homelist = new List<BlockPos>();
+                        if (homeSave.ContainsKey(playerID))
+                        {
+                            homeSave.TryGetValue(playerID, out homelist);
+                            homecount = homelist.Count();
+                        }
+                        else
+                        {
+                            homecount = 0;
+                        }
+
+                        if ((bsuconfig.Current.homelimit == 1 && homecount < 2) || homecount == 0)
+                        {
+                            if (processPayment(bsuconfig.Current.sethomecostitem, bsuconfig.Current.sethomecostqty, player, null))
+                            {
+                                if (homeSave.ContainsKey(player.Entity.PlayerUID))
+                                {
+                                    homeSave.Remove(player.Entity.PlayerUID);
+                                }
+                                homelist.Add(player.Entity.Pos.AsBlockPos);
+                                homeSave.Add(player.Entity.PlayerUID, homelist);
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
+                            }
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-save"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        }                     
                     break;
                 case "enable":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
@@ -632,6 +664,10 @@ namespace bunnyserverutilities.src
                                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
                                 }
                             }
+                            else
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
                         }
                         else
                         {
@@ -661,21 +697,23 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-                    string playerID2 = player.Entity.PlayerUID; //get the using player's player ID
-                    int homecount2;
-                    List<BlockPos> homelist2 = new List<BlockPos>();
-                    if (homeSave.ContainsKey(playerID2))
+                    if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        homeSave.TryGetValue(playerID2, out homelist2);
-                        homecount2 = homelist2.Count();
-                    }
-                    else
-                    {
-                        homecount2 = 0;
-                    }
+                        string playerID2 = player.Entity.PlayerUID; //get the using player's player ID
+                        int homecount2;
+                        List<BlockPos> homelist2 = new List<BlockPos>();
+                        if (homeSave.ContainsKey(playerID2))
+                        {
+                            homeSave.TryGetValue(playerID2, out homelist2);
+                            homecount2 = homelist2.Count();
+                        }
+                        else
+                        {
+                            homecount2 = 0;
+                        }
 
-                    if ((bsuconfig.Current.homelimit == 1 && homecount2 > 0)|| homecount2 == 1)
-                    {
+                        if ((bsuconfig.Current.homelimit == 1 && homecount2 > 0) || homecount2 == 1)
+                        {
                             string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.homePlayerCooldown);
                             if (cooldownstate != "wait")
                             {
@@ -686,10 +724,23 @@ namespace bunnyserverutilities.src
                                     addcooldown(cmdname, player, cooldownstate);
                                 }
                             }
+                        }
+                        else if (homecount2 == 0)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-home"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else if (ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     else
                     {
-                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
                     }
                     break;
                 case "enable":
@@ -774,11 +825,11 @@ namespace bunnyserverutilities.src
                                 homecount = 0;
                             }
 
-                            if (input > homecount)
+                            if (input > homecount && homecount > 0)
                             {
                                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount), Vintagestory.API.Common.EnumChatType.Notification);
                             }
-                            else if (input > 0)
+                            else if (input > 0 && input <= bsuconfig.Current.homelimit && homecount != 0)
                             {
                                 string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.homePlayerCooldown);
                                 if (cooldownstate != "wait")
@@ -790,6 +841,17 @@ namespace bunnyserverutilities.src
                                         addcooldown(cmdname, player, cooldownstate);
                                     }
                                 }
+                            }
+                            else if (homecount == 0)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-home"), Vintagestory.API.Common.EnumChatType.Notification);
+                            }else if (input < 1)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, bsuconfig.Current.homelimit), Vintagestory.API.Common.EnumChatType.Notification); //Tell player to use a number lower than the homelimit
                             }       
                         }
                         else
@@ -822,6 +884,35 @@ namespace bunnyserverutilities.src
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                         }
+                    }
+                    break;
+                case "delete":
+                    int? numb = args.PopInt();
+                    string playerID3 = player.Entity.PlayerUID; //get the using player's player ID
+                    int homecount3;
+                    List<BlockPos> homelist3 = new List<BlockPos>();
+                    if (homeSave.ContainsKey(playerID3))
+                    {
+                        homeSave.TryGetValue(playerID3, out homelist3);
+                        homecount3 = homelist3.Count();
+                    }
+                    else
+                    {
+                        homecount3 = 0;
+                    }
+
+                    if (homecount3 == 0 || homecount3 < numb || numb <= 0)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-homes", numb), Vintagestory.API.Common.EnumChatType.Notification);
+                    }else if(numb == null){
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        homelist3.RemoveAt((int)numb - 1);
+                        homeSave.Remove(playerID3);
+                        homeSave.Add(playerID3, homelist3);
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-removed", numb), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     break;
             }
@@ -2188,6 +2279,8 @@ namespace bunnyserverutilities.src
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/sethome " + Lang.Get("bunnyserverutilities:help-sethome"), Vintagestory.API.Common.EnumChatType.Notification);
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home " + Lang.Get("bunnyserverutilities:help-home"), Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "/home delete " + Lang.Get("bunnyserverutilities:help-home-delete"), Vintagestory.API.Common.EnumChatType.Notification);
+
                 }
                 else
                 {

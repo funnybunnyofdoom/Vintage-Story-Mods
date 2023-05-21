@@ -191,6 +191,9 @@
   "home-limit-updated": "The number of homes a player can set has been updated to {0}.",
   "reply-help": "/reply - sends a message to the last player to send you a message",
   "no-reply": "You have not received a message that you can reply to.",
-  "home-limit-help": "/home limit <i>number</i> - sets the number of homes each player can set"
-
+  "home-limit-help": "/home limit <i>number</i> - sets the number of homes each player can set",
+  "no-homes": "You have no homes in slot {0} to delete.",
+  "home-removed": "Home number {0} has been removed.",
+  "no-home": "You have no set homes. use /sethome to set a home",
+  "help-home-delete":"<number> - Deletes the home set at the number provided"
 } 
