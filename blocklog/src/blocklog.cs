@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.GameContent;
 using Vintagestory.API.Server;
 using Vintagestory.API.Common;
-using Vintagestory.API;
-using Vintagestory.Essentials;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Util;
 using Vintagestory.API.Config;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using ProtoBuf;
 
 namespace blocklog.src
@@ -45,12 +37,22 @@ namespace blocklog.src
 
             //register commands
             api.RegisterCommand("blocklog", "Tracks block broken/placed", "", cmd_blocklog, Privilege.controlserver); //Register the /blocklog command
+            api.RegisterCommand("animallog", "Tracks killed animals", "", cmd_animallog, Privilege.controlserver); //Register the /blocklog command
+        }
+
+        private void cmd_animallog(IServerPlayer player, int groupId, CmdArgs args)
+        {
+            //
         }
 
         //Command functions
         private void cmd_blocklog(IServerPlayer player, int groupId, CmdArgs args)
         {
-            if (player.CurrentBlockSelection == null) return;
+            if (player.CurrentBlockSelection == null)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:no-block"), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
+                return;
+            }
             BlockPos selection = player.CurrentBlockSelection.Position.UpCopy(1); //Get the block above the selection
             BlockPos placeselection = player.CurrentBlockSelection.Position;
             blockdata bdata; //initiliaze the variable to hold our class
@@ -64,13 +66,20 @@ namespace blocklog.src
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-block", bdata.block), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:break-date", bdata.date), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
 
+            }else if (state == false)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:no-break-info"), Vintagestory.API.Common.EnumChatType.Notification); //Display the lack of information to the player
             }
             if (Pstate != false)
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-player", Pdata.player), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:place-date", Pdata.date), Vintagestory.API.Common.EnumChatType.Notification); //Display information to the player
             }
-                
+            else if (Pstate == false)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:no-place-info"), Vintagestory.API.Common.EnumChatType.Notification); //Display the lack of information to the player
+            }
+
 
         }
 
@@ -144,10 +153,6 @@ namespace blocklog.src
             }
             cdata.killedby = killedbyname;
            
-
-            //System.Diagnostics.Debug.WriteLine(cdata.killed);
-            //.Diagnostics.Debug.WriteLine(cdata.killedby);
-            //System.Diagnostics.Debug.WriteLine(cdata.date.ToString());
             if (lc != null)
             {
                 if (lc.Length > 0)
