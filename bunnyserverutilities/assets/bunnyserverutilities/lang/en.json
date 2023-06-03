@@ -1,5 +1,4 @@
 {
-
   // back messages
   "disabled-back": "Back is disabled. an admin must use /back enable to enable",
   "enable-back": "/back has been enabled",
@@ -198,4 +197,4 @@
   "help-home-delete": "<number> - Deletes the home set at the number provided",
   "tpt-help-wipe": "/tpt wipe - Wipes all players from TptDict and WaitDict. Try this if a player can't TPT or can't be TPTed to.",
   "not-enough-permissions": "You do not have enough permissions to perform this command. Privilege: {0}"
-} 
+}

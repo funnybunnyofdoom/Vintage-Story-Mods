@@ -9,5 +9,5 @@
   "dependencies": {
     "game": ""
   },
-  "requiredonclient": false
+  "side": "server"
 }

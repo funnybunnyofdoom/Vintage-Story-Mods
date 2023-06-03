@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.API.MathTools;
@@ -10,10 +8,6 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Common.Entities;
-using privileges;
-using System.Drawing;
-using System.Diagnostics;
-using System.IO;
 
 namespace bunnyserverutilities.src
 {
@@ -24,11 +18,12 @@ namespace bunnyserverutilities.src
         int count; //Variable to check against for timing and cooldowns
         public Dictionary<string, Dictionary<string, int>> cooldownDict = new Dictionary<string, Dictionary<string, int>>(); //dictionary to hold mod cooldown lists
         IPermissionManager ipm;
+        
 
         //jHome variable initialization
         Dictionary<string, BlockPos> backSave; //Dictionary to hold our /back locations
         Dictionary<string, List<BlockPos>> homeSave; //Dictionary to hold our /home locations
-
+        Dictionary<string, BlockPos> oldHomeSave; //Dictionary to hold our old home locations
         //GRTP variable initialization
 
         int? grtptimer;
@@ -314,7 +309,8 @@ namespace bunnyserverutilities.src
                     bsuconfig.Current.tptcostqty = bsuconfig.getDefault().tptcostqty;
                 if (bsuconfig.Current.homelimit == null)
                     bsuconfig.Current.homelimit = bsuconfig.getDefault().homelimit;
-
+                if (bsuconfig.Current.multihomemigration == null)
+                    bsuconfig.Current.multihomemigration = bsuconfig.getDefault().multihomemigration;
                 api.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
             }
 
@@ -425,7 +421,6 @@ namespace bunnyserverutilities.src
             switch (cmd)
             {
                 case null:
-
                     if (bsuconfig.Current.enableBack == true && !ironManPlayerList.Contains(player.PlayerUID))//Check to see if back is enabled, or if the user is in ironman mode
                     {
                         string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.backPlayerCooldown);
@@ -2789,11 +2784,11 @@ namespace bunnyserverutilities.src
                 //int? cdnum = args.PopInt();
                 if (cdnum == null )//|cdnum == 0)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than",0), Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-or-greater",0), Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else if (cdnum < 0)
                 {
-                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-or-greater",0), Vintagestory.API.Common.EnumChatType.Notification);
                 }
                 else
                 {
@@ -3182,6 +3177,47 @@ namespace bunnyserverutilities.src
 
         }
 
+        private void MigrateHomeSave()
+        {
+            // Check if migration is needed
+            if (!bsuconfig.Current.multihomemigration.HasValue || !bsuconfig.Current.multihomemigration.Value)
+            {
+                // Get the old data
+                byte[] oldHomedata = sapi.WorldManager.SaveGame.GetData("bsuHome");
+                if (oldHomedata != null)
+                {
+                    // Deserialize the old data
+                    var oldHomeSave = SerializerUtil.Deserialize<Dictionary<string, BlockPos>>(oldHomedata);
+
+                    // Prepare a new dictionary
+                    Dictionary<string, List<BlockPos>> newHomeSave = new Dictionary<string, List<BlockPos>>();
+
+                    // Convert old data to the new format
+                    foreach (var pair in oldHomeSave)
+                    {
+                        // If for some reason there's an existing entry in the new dictionary, append to it, else create new list
+                        if (newHomeSave.ContainsKey(pair.Key))
+                        {
+                            newHomeSave[pair.Key].Add(pair.Value);
+                        }
+                        else
+                        {
+                            newHomeSave[pair.Key] = new List<BlockPos> { pair.Value };
+                        }
+                    }
+
+                    // Update the homeSave variable
+                    homeSave = newHomeSave;
+
+                    // Serialize and save the new data
+                    byte[] newHomedata = SerializerUtil.Serialize(newHomeSave);
+                    sapi.WorldManager.SaveGame.StoreData("bsuHome", newHomedata);
+
+                    // Set multihomemigration to true after migration
+                    bsuconfig.Current.multihomemigration = true;
+                }
+            }
+        }
 
         //========================//
         //Event Listener Functions//
@@ -3335,6 +3371,7 @@ namespace bunnyserverutilities.src
             sapi.WorldManager.SaveGame.StoreData("ironmancurrent", SerializerUtil.Serialize(currentironmandict));
             sapi.WorldManager.SaveGame.StoreData("ironmanhighscores", SerializerUtil.Serialize(ironmanhighscores));
             sapi.WorldManager.SaveGame.StoreData("bsuReply", SerializerUtil.Serialize(replySave));
+            
         }
 
         private void OnSaveGameLoading()
@@ -3550,6 +3587,7 @@ namespace bunnyserverutilities.src
             public int? homelimit; //How many homes a player can set
             public bool? enablePermissions;
             public bool? homesImported;
+            public bool? multihomemigration;
 
 
             //grtp properties
@@ -3638,6 +3676,7 @@ namespace bunnyserverutilities.src
                 config.homePlayerCooldown = 1;
                 config.backPlayerCooldown = 1;
                 config.homelimit = 1;
+                config.multihomemigration = false;
 
                 //enable/disable module defaults
                 config.enableBack = true;

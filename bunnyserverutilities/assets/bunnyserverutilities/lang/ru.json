@@ -1,156 +1,200 @@
 {
-
   // back messages
-  "disabled-back": "Команда Back отключена. Администратор должен использовать /back enable чтобы включить",
-  "enable-back": "Команда /back включена",
-  "disable-back": "Команда /back отключена",
+  "disabled-back": "Возврат отключен. Администратор должен использовать /back enable для включения",
+  "enable-back": "/back был включен",
+  "disable-back": "/back был отключен",
 
   //home messages
   "home-sethome": "Новый дом сохранен.",
-  "disabled-home": "Команда Home отключена. Администратор должен использовать /home enable чтобы включить",
-  "enable-home": "Команда /home включена",
-  "disable-home": "Команда /home отключена",
-  "teleporting-home": "Телепорт на точку дома",
-  "no-home-saved": "Точка дома не сохранена. Телепорт в центр мира. Используйте /sethome для создания точки дома. ",
-  "teleporting-back": "Возврат на предыдущую локацию.",
-  "no-back-saved": "Предыдущая локация отсутсвует. Используйте /home для создания точки возврата.",
-  "on-death-back": "Используйте /back для возврата на точку смерти.",
+  "disabled-home": "Дом отключен. Администратор должен использовать /home enable для включения",
+  "enable-home": "/home был включен",
+  "disable-home": "/home был отключен",
+  "teleporting-home": "Телепортация в ваш сохраненный дом",
+  "no-home-saved": "Нет сохраненного дома. Телепортация в центр мира. Используйте /sethome, чтобы установить дом.",
+  "teleporting-back": "Возвращение на последнюю позицию.",
+  "no-back-saved": "Нет сохраненной позиции для возврата. Используйте /home, чтобы создать позицию для возврата.",
+  "on-death-back": "Используйте /back, чтобы вернуться к месту смерти.",
 
   //GRTP messages
-  "chunkloading-grtp": "Чанк загружается. Пожалуйста попробуйте еще раз через несколько секунд",
-  "notset-grtp": "Точка GRTP еще не установлена. Сервер только запустился?",
-  "cooldown-set-grtp": "Откат GRTP изменен на {0} минут.", //{0} = cooldown value
-  "set-radius-grtp": "Радиус GRTP изменен на {0} блоков.", //{0} = radius value
-  "wait-now-grtp": "точка GRTP создана. Пожалуйста подождите несколько минут для загрузки локации.",
-  "teleporting-grtp": "Телепорт в случайную локацию. Новая локация будет создана в течении 1 минуты",
-  "teleporting-grtp-2": "Телепорт в случайную локацию. Другие игроки могут присоединиться к вам в течении {0} минут.",
-  "new-grtp": "Новые координаты для /grtp сгенерированы. Новая локация будет доступна в течении {0} минут.",
+  "chunkloading-grtp": "Чанк загружается. Пожалуйста, повторите попытку через несколько секунд",
+  "notset-grtp": "GRTP еще не установлен. Сервер только что запустился?",
+  "cooldown-set-grtp": "Время отката GRTP обновлено до {0} минут.", //{0} = значение времени отката
+  "set-radius-grtp": "Радиус GRTP обновлен до {0} блоков.", //{0} = значение радиуса
+  "wait-now-grtp": "GRTP выпущен. Пожалуйста, подождите несколько минут, чтобы местоположение обновилось.",
+  "teleporting-grtp": "Телепортация в случайное место. Новое местоположение будет сгенерировано в течение 1 минуты",
+  "teleporting-grtp-2": "Телепортация в случайное место. Другие могут присоединиться к вам в течение {0} минут.",
+  "new-grtp": "Сгенерированы новые координаты /grtp. Новое местоположение будет доступно через {0} минут.",
 
   //re-usable messages
-  "greater-than": "Пожалуйста введите число больше чем {0} в минутах.", //{0} = number 
-  "non-negative-number": "Пожалуйста введите не отрицательное число.",
-  "disabled": "Команда {0} отключена. Администратор должен использовать /{0} enable для включения.", //{0} = command string
-  "disabled-2": "Команда {0} отключена администратором.",
-  "enable": "Команда {0} включена.", //{0} = command string
-  "disable": "Команда {0} отключена.", //{0} = command string
-  "no-permission": "Недостаточно прав для использования команды.",
+  "greater-than": "Пожалуйста, введите число больше {0} в минутах.", //{0} = число
+  "non-negative-number": "Пожалуйста, введите неотрицательное число.",
+  "disabled": "{0} отключено. Администратор должен использовать /{0} enable для включения этой команды.", //{0} = строка команды
+  "disabled-2": "{0} отключено администратором.",
+  "enable": "{0} был включен.", //{0} = строка команды
+  "disable": "{0} был отключен.", //{0} = строка команды
+  "no-permission": "У вас нет разрешения на использование этой команды.",
   "player": "игрок",
-  "player-not-found": "Игрок не найден. Проверьте написание и попробуйте еще раз.",
-  "number-or-greater": "Пожалуйста введите число {0} или выше.",
-  "number-between": "Пожалуйста введите число между {0} и {1}.",
-  "cooldown-reusable": "Откат команды {0} изменен на {1} минут.", // {0} = command name {1} = number of minutes
-  "cooldown-player-reusable": "Пожалуйста подождите {0} минут.",
+  "player-not-found": "Игрок не найден. Проверьте правильность написания и попробуйте еще раз.",
+  "number-or-greater": "Пожалуйста, введите число {0} или больше.",
+  "number-between": "Пожалуйста, введите число между {0} и {1}.",
+  "cooldown-reusable": "Время отката {0} обновлено до {1} минут.", // {0} = название команды {1} = количество минут
+  "cooldown-player-reusable": "Пожалуйста, подождите {0} минут.",
 
   //Import Old Homes
-  "importing": "Импортирование старых точек дома",
-  "old-home-config-size": "Размер файла конфигурации точек дома: ",
-  "old-home-imported": "Старые точки дома импортированы",
-  "no-old-homes": "Нет подходящих точек дома для импорта.",
-  "home-already-imported": "Старые точки дома уже были импортированы. Эту команду нужно использовать единожды.",
+  "importing": "Импорт старых домов",
+  "old-home-config-size": "Размер файла старого дома: ",
+  "old-home-imported": "Старые дома импортированы",
+  "no-old-homes": "Нет действительных файлов конфигурации домов для импорта.",
+  "home-already-imported": "Старые дома уже импортированы. Эту команду следует использовать только один раз.",
 
   //Rising Sun messages
-  "between-hours": "Пожалуйста введите час между 1 и 23.",
-  "smaller-dusk": "Пожалуйста введите число меньше чем время наступления сумерек: ",
-  "larger-dawn": "Пожалуйста введите число больше чем время наступления рассвета: ",
-  "dawn-updated": "Время наступления рассвета изменено на ",
-  "dusk-updated": "время наступления сумерек изменено на ",
-  "welcome-rs": "Солнце взошло над новым игроком! Добро пожаловать {0}",
+  "between-hours": "Please enter an hour between 1 and 23.",
+  "smaller-dusk": "Please enter a number smaller than dusk: ",
+  "larger-dawn": "Please enter a number larger than dawn: ",
+  "dawn-updated": "Dawn time has been updated to ",
+  "dusk-updated": "Dusk time has been updated to ",
+  "welcome-rs": "The sun has risen on a new player! Welcome {0}",
 
   //Private Message messages
-  "include-message": "Пожалуйста введите сообщение.",
-  "include-player": "Пожалуйста введите имя игрока.",
+  "include-message": "Please include a message.",
+  "include-player": "Please include a player name.",
 
   //Simple Server Message
-  "add-message": "Сообщение добавлено",
-  "remove-message": "Сообщение удалено",
-  "remove-message-help": "Пожалуйста используйте /ssm list и затем /ssm remove number для удаления сообщения",
-  "remove-message-help-2": "Пожалуйста используйте /ssm remove Number для удаления сообщения",
-  "list-of-messages": "Список текущих серверных сообщений: ",
-  "message-frequency": "Сообщение будет транслировано каждые {0} минут",
+  "add-message": "Added message",
+  "remove-message": "Removed message",
+  "remove-message-help": "Please use /ssm list and then use /ssm remove number to delete the message",
+  "remove-message-help-2": "Please use /ssm remove Number to remove a message",
+  "list-of-messages": "List of current server messages: ",
+  "message-frequency": "Messages will be broadcast every {0} minutes",
 
   //Teleport To
-  "tp-deny-player": "Ваш запрос на телепорт был отменен.",
-  "tp-deny-target": "Телепорт к отменен",
-  "no-tp-deny": "У вас нет входящих запросов для отмены",
-  "no-tp-accept": "У вас нет входящих запросов для принятия",
-  "teleport-accepted": "Ваш запрос на телепорт был принят. Ожидайте телепортации.",
-  "teleport-accepted-user": "Телепорт к принят",
-  "need-playername-tpt": "Пожалуйста введите имя игрока для телепортации.",
-  "wait-for-tp": "Ожидайте. Вы будете телепортированы когда другой игрок примет запрос",
-  "tp-to-you": "{0} хочет телепортироваться к вам. Пожалуйста введите /tpaccept для принтия.", //{0} = player's name
-  "active-tp": "У выбранного игрока уже есть другой запрос на телепорт. Попробуйте еще раз через несколько секунд.",
-  "pending-tp": "У вас уже имеется запрос на телепорт.",
-  "expired-tp": "Ваш запрос на телепорт истёк",
+  "tp-deny-player": "Your teleport request has been denied.",
+  "tp-deny-target": "Teleport To denied",
+  "no-tp-deny": "You have no active requests to deny",
+  "no-tp-accept": "You have no active requests to accept",
+  "teleport-accepted": "Your teleport request has been accepted. Stand by while you are teleported.",
+  "teleport-accepted-user": "Teleport To accepted",
+  "need-playername-tpt": "Please enter the name of the player you would like to teleport to.",
+  "wait-for-tp": "Stand by. You will be teleported when the other player accepts the teleport",
+  "tp-to-you": "{0} would like to teleport to you. Please type /tpaccept to accept.", //{0} = player's name
+  "active-tp": "Destination player already has another active TP request. Try again shortly.",
+  "pending-tp": "You already have a pending teleport request.",
+  "expired-tp": "Your TP to player has expired",
 
   //Random Teleport
-  "rtp-cooldown-set": "Таймер отката RTP изменен на ",
-  "rtp-wait": "Пожалуйста подождите загрузки чанков.",
-  "rtp-wait-2": "Чанки все еще генерируются, пожалуйста подождите.",
-  "rtp-cooldown-timer": "Вы сможете снова телепортироваться через {0} минут.",
-  "set-radius-rtp": "Радиус RTP изменен на {0} блоков.", //{0} = radius value
-  "new-rtp": "Телепорт в случайную локацию.",
+  "rtp-cooldown-set": "RTP cooldown timer set to ",
+  "rtp-wait": "Please wait while destination chunks are loaded.",
+  "rtp-wait-2": "The chunks are still being generated, please wait.",
+  "rtp-cooldown-timer": "You can teleport again in {0} minutes.",
+  "set-radius-rtp": "RTP radius has been updated to {0} blocks.", //{0} = radius value
+  "new-rtp": "Teleporting to a random location.",
 
   //Remove Denial
-  "remove-denial": "Убран отказ {0} от {1}.",
+  "remove-denial": "Removing denial of {0} from {1}.",
 
   //warn
-  "warn-player": "Игрок: ",
-  "warn-warnings": "Предупреждения: ",
-  "warn-warning": "Предупреждение: ",
-  "warn-reasons": "Причины: ",
-  "warn-help": "Используйте /warn list num для просмотра предупреждений для этого игрока",
+  "warn-player": "Player: ",
+  "warn-warnings": "Warnings: ",
+  "warn-warning": "Warning: ",
+  "warn-reasons": "Reasons: ",
+  "warn-help": "Use /warn list num to see the warnings for that player",
 
   //spawn
-  "teleporting-spawn": "Вы телепортируетесь на спавн.",
+  "teleporting-spawn": "Вы телепортируетесь в точку возрождения.",
 
-  //Default welcome message: 
+  //Default welcome message:
   "default-welcome": "Добро пожаловать на сервер", //This is the welcome displayed by Simple Server Messages if not configured.
 
-  "welcome-player": "Пожалуйста поприветствуйте <font color=\"white\"><strong>{0}</strong></font> на сервере!",
+  "welcome-player": "Добро пожаловать на сервер, <font color=\"white\"><strong>{0}</strong></font>!\"",
 
   //Player list on join
   "players-online": "Игроки в сети: ",
   "player-divider": "|",
 
   //Help command
-  "bsu-commands": "Команды Bunny's Server Utility:",
-  "bsu-help": "-Используйте /bsu help для просмотра всех команд Bunny Server utility",
-  "bsu-version": "Используйте {0} для просмотра версии мода",
-  "help-removedeny": "- отключить возможность удаления привелегий для игрока.",
-  "module-commands": "---{0} Команды---", //{0} = module name
-  "help-sethome": "- Создает точку дома в текущем месте",
-  "help-home": "- телепортирует на точку дома",
-  "admin-commands": "{0} команды администратора:", //{0} = module name
-  "module-disable": "{0} отключить - отключить команду {0}",
-  "module-dissable-2": "{0} отключить - отключает модуль {1}.",
-  "module-enable": "{0} включить - включает команду {0}",
-  "module-enable-2": "{0} включить - включает модуль {1}",
-  "ja-enable": "/joinannounce enable - включает отправку сообщения игроку при первом входе",
-  "ja-disable": "/joinannounce disable - отключает отправку сообщения игроку при первом входе",
-  "module-cooldown": "{0} откатигрока <i>число</i> - устанавливает таймер отката",
-  "grtp-cooldown": "/grtp cooldown <i>число</i> - устанавливает частоту с которой точка GRTP изменяется в минутах",
-  "rtp-cooldown": "/rtp cooldown <i>число</i> - устанавливает таймер отката в минутах",
-  "old-home-help": "/importOldHomes - перемещает старые точки дома из jhome 1.05 и ранее в сохранения новой версии. Запускайте только один раз если вы обновляетесь на этот мод с Bunny's Just Home 1.0.5 и ранее.",
-  "back-help": "/back - возврат на предыдущую точку где вы использовали /home, /back или умерли",
-  "spawn-help": "/spawn - возврат на установленную сервером точку спавна",
-  "grtp-update": "локация для GRTP обновляется каждые {0} минут.",
+  "bsu-commands": "Команды для серверной утилиты Bunny:",
+  "bsu-help": "- Используйте /bsu help для просмотра помощи по всем командам утилиты Bunny",
+  "bsu-version": "Используйте {0} для версии мода",
+  "help-removedeny": "- удалить запрет привилегии у игрока.",
+  "module-commands": "---Команды {0}---", //{0} = название модуля
+  "help-sethome": "<i>число</i>- Устанавливает ваше текущее местоположение как точку домашней телепортации для указанного числа",
+  "help-home": "<i>число</i> - телепортирует вас в вашу сохраненную точку дома для указанного числа",
+  "admin-commands": "Администраторские команды {0}:", //{0} = название модуля
+  "module-disable": "{0} disable - отключает команду {0}",
+  "module-disable-2": "{0} disable - отключает модуль {1}.",
+  "module-enable": "{0} enable - включает команду {0}",
+  "module-enable-2": "{0} enable - включает модуль {1}",
+  "ja-enable": "/joinannounce enable - включает отправку сообщения игрокам при первом подключении",
+  "ja-disable": "/joinannounce disable - отключает отправку сообщения игрокам при первом подключении",
+  "module-cooldown": "{0} playercooldown <i>число</i> - устанавливает время отката",
+  "grtp-cooldown": "/grtp cooldown <i>число</i> - устанавливает частоту перемещения GRTP в минутах",
+  "rtp-cooldown": "/rtp cooldown <i>число</i> - устанавливает время отката в минутах",
+  "old-home-help": "/importOldHomes - перемещает сохраненные дома из jhome 1.05 и более ранних версий в новый тип сохранения. Запустите это только один раз, если вы обновляетесь на этот мод с Bunny's Just Home 1.0.5 или более ранних версий.",
+  "back-help": "/back - возвращение на последнее место использования команды /home, /back или место смерти",
+  "spawn-help": "/spawn - возвращение к точке спавна на сервере",
+  "grtp-update": "Местоположение GRTP обновляется каждые {0} минут.",
   "grtp-radius": "Радиус телепортации: {0} блоков",
-  "grtp-cmd-help": "/grtp - телепортирует игрока на точку GRTP",
-  "grtp-help-radius": "/grtp radius <i>число</i> - устанавливает радиус телепорта",
-  "grtp-help-now": "/grtp now - Заставляет точку GRTP обновиться на следущий тик минуты",
+  "grtp-cmd-help": "/grtp - телепортирует игрока к точке групповой телепортации",
+  "grtp-help-radius": "/grtp radius <i>число</i> - устанавливает радиус телепортации",
+  "grtp-help-now": "/grtp now - устанавливает GRTP для обновления на следующем минутном тике",
 
-  "dawn-help": "/rs dawn <i>число</i> - Изменяет час когда восходящее солнце заменит ночь",
-  "dusk-help": "/rs dusk <i>число</i> - Изменяет час когда восходящее солнце сменится ночью",
-  "dm-help": "/dm <i>playername messageToPlayer</i> - отправляет сообщение игроку.",
-  "ssm-add-help": "/ssm add <i>Сервеное сообщение</i> - добавить сообщение в список серверных сообщений",
+  "dawn-help": "/rs dawn <i>число</i> - устанавливает час, когда Rising Sun переводит ночь в рассвет",
+  "dusk-help": "/rs dusk <i>число</i> - устанавливает час, когда Rising Sun считает это ночью",
+  "dm-help": "/dm <i>имя_игрока сообщение_игроку</i> - отправляет сообщение игроку.",
+  "ssm-add-help": "/ssm add <i>Серверное сообщение</i> - добавляет сообщение в список серверных сообщений",
   "ssm-list-help": "/ssm list - показывает список существующих серверных сообщений",
-  "ssm-remove-help": "/ssm remove <i>число из /ssm списка</i> - удалает сообщение с этим номером из списка серверных сообщений",
-  "ssm-freq-help": "/ssm frequency <i>number in minutes</i> - изменяет промежуток в минутах между серверными сообщениями",
-  "ssm-now-help": "/ssm now - транслировать следущее серверное сообщение в списке",
-  "tpt-help": "/tpt playername - Запросить у игрока разрещение на телепорт к ним",
-  "tpaccept-help": "/tpaccept - Принять запрос игрока на телепорт к вам",
-  "tpdeny-help": "/tpdeny - Отказать в запросе на телепортацию к вам",
-  "bunny-bell-help": "Bunny bell создает звук -ding- когда ваше имя пишут в чате",
-  "rtp-help": "/rtp - Телепортирует игрока в случайную локацию"
+  "ssm-remove-help": "/ssm remove <i>номер из /ssm list</i> - удаляет сообщение с указанным номером из списка",
+  "ssm-freq-help": "/ssm frequency <i>число в минутах</i> - изменяет интервал времени между сообщениями",
+  "ssm-now-help": "/ssm now - транслирует следующее серверное сообщение в списке",
+  "tpt-help": "/tpt имя_игрока - запрашивает игрока о возможности телепортироваться к нему",
+  "tpaccept-help": "/tpaccept - принимает запрос на телепортацию и телепортирует игрока к вам",
+  "tpdeny-help": "/tpdeny - отклоняет запрос на телепортацию",
+  "bunny-bell-help": "Bunny Bell создает -ding-, когда ваше имя написано",
+  "rtp-help": "/rtp - Телепортирует игрока в случайное местоположение",
 
+  //Iron Man
+  "ironman-use-confirm": "Используйте /ironman confirm, чтобы начать режим Железного человека. <font color=red><strong>ВНИМАНИЕ: Вы потеряете все предметы на своем персонаже.</strong></font> Если вы умрете в режиме Железного человека, вы потеряете свой прогресс.",
+  "ironman-already-joined": "Вы уже являетесь Железным человеком.",
+  "ironman-confirmed": "Вы активировали режим Железного человека. Вы выйдете из режима Железного человека при смерти.",
+  "ironman-ended": "Железный человек {0} погиб. Проверьте таблицу лидеров, чтобы увидеть его результат.",
+  "ironman-teleporting": "Вы теперь телепортируетесь в ваше местоположение Железного человека.",
+  "ironman-teleport-wait": "Пожалуйста, подождите, пока загрузятся ваши части Железного человека",
+  "ironman-new-personal-highscore": "Железный человек {0} достиг нового личного рекорда! /ironman highscores, чтобы увидеть таблицу лидеров.",
+  "ironman-no-new-score": "Вы не превзошли свой рекорд {0} дней. Попробуйте еще раз!",
+  "ironman-first": "Вы завершили свой первый режим Железного человека!",
+  "ironman-highscores-title": "Таблица лидеров Железного человека",
+  "ironman-commands-disabled": "Все команды телепортации отключены в режиме Железного человека.",
+
+  //Teleport Costs
+  "empty-slot": "Рука пуста. Пожалуйста, поместите {1}x {0} в активный слот панели инструментов и попробуйте снова.",
+  "wrong-item": "Неверный предмет. Пожалуйста, держите {1}x {0} в руке и попробуйте снова.",
+  "not-enough": "Эта телепортация стоит {1}, а у вас есть {0} в руке.",
+  "cost-qty-updated": "Количество стоимости для {0} установлено на {1}",
+  "tp-dont-move": "Не перемещайте свою оплату с панели инструментов, пока TP не будет принято, иначе вы отмените TP.",
+  "tp-need-item": "Пожалуйста, введите полный код предмета. Пример: game:gear-rusty или roadworks:roadblock-free-asphalt",
+  "cost-itm-updated": "Предмет стоимости для {0} был обновлен на {1}",
+  "cost-remove": "Удаление {1} {0} из инвентаря.",
+
+  "module-costqty": "{0} costqty <i>число</i> - устанавливает стоимость телепортации для {0}",
+  "module-costitm": "{0} costitem <i>код_предмета</i> - устанавливает предмет, потребляемый для использования {0}. Пример кода предмета: game:gear-rusty",
+
+  //cooldown commamnd
+  "cooldown-command": "{0}: {1} Осталось минут.",
+  "cooldowns": "Время восстановления:",
+  "no-cooldowns": "Нет активных времен восстановления",
+
+  //version 1.0.6
+  "home-number": "Пожалуйста, введите номер дома, к которому вы хотите телепортироваться.",
+  "home-save": "Пожалуйста, введите номер дома, который вы хотите сохранить.",
+  "wiped": "tptDict и waitDict были очищены.",
+  "home-limit-updated": "Количество домов, которое может установить игрок, было обновлено до {0}.",
+  "reply-help": "/reply - отправляет сообщение последнему игроку, который вам написал",
+  "no-reply": "Вы не получили сообщения, на которое можно ответить.",
+  "home-limit-help": "/home limit <i>число</i> - устанавливает количество домов, которые каждый игрок может установить",
+  "no-homes": "У вас нет домов в слоте {0}, которые можно удалить.",
+  "home-removed": "Дом с номером {0} был удален.",
+  "no-home": "У вас нет установленных домов. Используйте /sethome, чтобы установить дом",
+  "help-home-delete": "<номер> - Удаляет дом, установленный под указанным номером",
+  "tpt-help-wipe": "/tpt wipe - Очищает всех игроков из TptDict и WaitDict. Попробуйте это, если игрок не может использовать TPT или быть телепортированным.",
+  "not-enough-permissions": "У вас недостаточно прав для выполнения этой команды. Привилегия: {0}"
 } 
