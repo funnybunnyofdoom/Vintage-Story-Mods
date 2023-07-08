@@ -4,7 +4,7 @@
   "name": "bunnys blocklog",
   "authors": [ "FunnyBunnyofDOOM" ],
   "description": "Tracks blocks placed and broken",
-  "version": "1.0.0T",
+  "version": "1.0.1",
   "dependencies": {
     "game": ""
   },

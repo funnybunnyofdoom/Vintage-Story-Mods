@@ -164,7 +164,16 @@ namespace blocklog.src
             {
                 System.Diagnostics.Debug.WriteLine("Not in a claim");
             }
-            cdata.claimowner = lc[0].LastKnownOwnerName;
+            if (lc != null && lc.Length > 0)
+            {
+                cdata.claimowner = lc[0].LastKnownOwnerName;
+            }
+            else
+            {
+                // Handle the case when lc array is empty or null
+                // Set a default or handle it based on your requirements
+                cdata.claimowner = "Unknown";
+            }
             //System.Diagnostics.Debug.WriteLine(cdata.claimowner);
 
             //add this new creature data to the list
