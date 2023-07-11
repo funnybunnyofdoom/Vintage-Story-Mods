@@ -42,7 +42,43 @@ namespace blocklog.src
 
         private void cmd_animallog(IServerPlayer player, int groupId, CmdArgs args)
         {
-            //
+            LandClaim[] lc = player.Entity.World.Claims.Get(player.Entity.Pos.AsBlockPos); //Get land claim you are standing in
+            string claimowner = lc != null && lc.Length > 0 ? lc[0].LastKnownOwnerName : "Unknown";
+
+            if (args.PopWord() == "here")
+            {
+                List<creaturedata> testcreaturedata;
+                creaturedeathsave.TryGetValue(claimowner, out testcreaturedata);
+
+                if (testcreaturedata != null)
+                {
+                    int page = (int)args.PopInt(1); // Default to page 1 if no page number provided
+
+                    int startIndex = (page - 1) * 4;
+                    int endIndex = Math.Min(startIndex + 3, testcreaturedata.Count - 1);
+
+                    for (int i = startIndex; i <= endIndex; i++)
+                    {
+                        player.SendMessage(GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:name", testcreaturedata[i].killed), EnumChatType.Notification);
+                        player.SendMessage(GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:killedby", testcreaturedata[i].killedby), EnumChatType.Notification);
+                        player.SendMessage(GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:deathdate", testcreaturedata[i].date.ToString()), EnumChatType.Notification);
+                        player.SendMessage(GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:position", testcreaturedata[i].pos.ToString()), EnumChatType.Notification);
+                        player.SendMessage(GlobalConstants.GeneralChatGroup, Lang.Get("blocklog:divider"), EnumChatType.Notification);
+                    }
+
+                    int totalPages = (int)Math.Ceiling((double)testcreaturedata.Count / 4);
+
+                    player.SendMessage(GlobalConstants.GeneralChatGroup, "Page " + page + "/" + totalPages, EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(GlobalConstants.GeneralChatGroup, "No creature data available.", EnumChatType.Notification);
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("NOT YET IMPLEMENTED");
+            }
         }
 
         //Command functions
@@ -171,7 +207,6 @@ namespace blocklog.src
             else
             {
                 // Handle the case when lc array is empty or null
-                // Set a default or handle it based on your requirements
                 cdata.claimowner = "Unknown";
             }
             //System.Diagnostics.Debug.WriteLine(cdata.claimowner);
@@ -198,7 +233,8 @@ namespace blocklog.src
             }
             
 
-            //Check save file DEBUG
+            //Check save file DEBUG start
+            
             List<creaturedata> testcreaturedata = new List<creaturedata>();
             creaturedeathsave.TryGetValue(cdata.claimowner, out testcreaturedata);
             for (int i = 0; i < testcreaturedata.Count; i++)
@@ -209,6 +245,8 @@ namespace blocklog.src
                 System.Diagnostics.Debug.WriteLine("death date:" + testcreaturedata[i].date.ToString());
                 System.Diagnostics.Debug.WriteLine("Position:" + testcreaturedata[i].pos.ToString());
             }
+            
+            //end debug
 
         }
         private void OnSaveGameSaving() //This function is called when the game saves

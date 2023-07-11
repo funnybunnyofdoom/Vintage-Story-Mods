@@ -9,5 +9,11 @@
   "blocklog:place-date": "Date: {0}",
   "blocklog:no-block": "Please point at the block you would like to check, or 1 under the block you would like to check.",
   "blocklog:no-place-info": "There is no logged block placement information at this location.",
-  "blocklog:no-break-info": "There is no logged block break information at this location."
+  "blocklog:no-break-info": "There is no logged block break information at this location.",
+
+  "blocklog:name": "Killed: {0}",
+  "blocklog:killedby": "Killed by: {0}",
+  "blocklog:deathdate": "Death Date: {0}",
+  "blocklog:position": "Position: {0}",
+  "blocklog:divider": "==============="
 }
