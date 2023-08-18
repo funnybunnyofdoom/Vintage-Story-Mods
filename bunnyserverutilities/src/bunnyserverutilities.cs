@@ -538,7 +538,7 @@ namespace bunnyserverutilities.src
                         if (homeSave.ContainsKey(playerID))
                         {
                             homeSave.TryGetValue(playerID, out homelist);
-                            homecount = homelist.Count();
+                            homecount = homelist.Count;
                         }
                         else
                         {
@@ -657,7 +657,7 @@ namespace bunnyserverutilities.src
                             if (homeSave.ContainsKey(playerID))
                             {
                                 homeSave.TryGetValue(playerID, out homelist);
-                                homecount = homelist.Count();
+                                homecount = homelist.Count;
                             }
                             else
                             {
@@ -732,7 +732,7 @@ namespace bunnyserverutilities.src
                         if (homeSave.ContainsKey(playerID2))
                         {
                             homeSave.TryGetValue(playerID2, out homelist2);
-                            homecount2 = homelist2.Count();
+                            homecount2 = homelist2.Count;
                         }
                         else
                         {
@@ -861,7 +861,7 @@ namespace bunnyserverutilities.src
                             if (homeSave.ContainsKey(playerID))
                             {
                                 homeSave.TryGetValue(playerID, out homelist);
-                                homecount = homelist.Count();
+                                homecount = homelist.Count;
                             }
                             else
                             {
@@ -941,7 +941,7 @@ namespace bunnyserverutilities.src
                     if (homeSave.ContainsKey(playerID3))
                     {
                         homeSave.TryGetValue(playerID3, out homelist3);
-                        homecount3 = homelist3.Count();
+                        homecount3 = homelist3.Count;
                     }
                     else
                     {
@@ -2303,7 +2303,7 @@ namespace bunnyserverutilities.src
                 case "highscores":
                     System.Diagnostics.Debug.WriteLine("SORTING LIST");
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-highscores-title"), Vintagestory.API.Common.EnumChatType.Notification);
-                    if (ironmanhighscores.Count() == 0)
+                    if (ironmanhighscores.Count == 0)
                     {
                         ironmanhighscores.Add("Placeholder", -1);
                     }
@@ -2330,9 +2330,9 @@ namespace bunnyserverutilities.src
                     }
                     //var sortedDict = from entry in ironmanhighscores orderby entry.Value ascending select entry;
                     tempscores = tempscores.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                    System.Diagnostics.Debug.WriteLine(tempscores.Count());
+                    System.Diagnostics.Debug.WriteLine(tempscores.Count);
                     int skip = 0; //skip this many
-                    for (int i = 0; i < tempscores.Count(); i++) {
+                    for (int i = 0; i < tempscores.Count; i++) {
                         IServerPlayerData playername = sapi.PlayerData.GetPlayerDataByUid(tempscores.ElementAt(i).Key);
                         if (playername != null)
                         {
@@ -3508,7 +3508,7 @@ namespace bunnyserverutilities.src
                 string checklist = data;
                 IPlayer[] playerList = sapi.World.AllOnlinePlayers;
                 int volume = 1;
-                for (var i = 0; i < playerList.Count(); i++)
+                for (var i = 0; i < playerList.Length; i++)
                 {
                     string templist = checklist;
                     IPlayer templayer = playerList[i];
