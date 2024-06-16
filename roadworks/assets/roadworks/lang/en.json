@@ -29,6 +29,22 @@
   "roadworks:block-roadblock-*-brick": "Brick Road",
   "roadworks:block-roadblock-*-concrete": "Concrete Road",
   "roadworks:block-roadblock-*-asphalt": "Asphalt Road",
+  "roadworks:block-roadblock-gravel-*-basalt": "Basalt Gravel Road",
+  "roadworks:block-roadblock-gravel-*-chert": "Chert gravel Road",
+  "roadworks:block-roadblock-gravel-*-conglomerate": "Conglomerate gravel Road",
+  "roadworks:block-roadblock-gravel-*-limestone": "Limestone gravel Road",
+  "roadworks:block-roadblock-gravel-*-peridotite": "Peridotite gravel Road",
+  "roadworks:block-roadblock-gravel-*-phyllite": "Phyllite gravel Road",
+  "roadworks:block-roadblock-gravel-*-slate": "Slate gravel Road",
+  "roadworks:block-roadblock-gravel-*-andesite": "Andesite gravel Road",
+  "roadworks:block-roadblock-gravel-*-chalk": "Chalk gravel Road",
+  "roadworks:block-roadblock-gravel-*-claystone": "Claystone gravel Road",
+  "roadworks:block-roadblock-gravel-*-granite": "Granite gravel Road",
+  "roadworks:block-roadblock-gravel-*-sandstone": "Sandstone gravel Road",
+  "roadworks:block-roadblock-gravel-*-shale": "Shale gravel Road",
+  "roadworks:block-roadblock-gravel-*-bauxite": "Bauxite gravel Road",
+
+
 
 
   "roadworks:block-unfinishedasphalt": "Unpaved Asphalt",
