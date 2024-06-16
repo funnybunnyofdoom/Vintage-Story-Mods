@@ -1,0 +1,23 @@
+{
+	"code": "soakedtarsand",
+	"sealHours": 24,
+	"ingredients": [
+		{
+			"type": "block",
+			"code": "game:sand-*",
+			"quantity": 1,
+			"name": "sand",
+			"allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate" ]
+		},
+		{
+			"type": "item",
+			"code": "roadworks:tarportion-plain",
+			"litres": 1
+		}
+	],
+	"output": {
+		"type": "item",
+		"code": "roadworks:tarportion-sand",
+		"litres": 1
+	}
+}

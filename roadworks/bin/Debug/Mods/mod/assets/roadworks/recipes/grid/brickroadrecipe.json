@@ -1,0 +1,25 @@
+{
+  "ingredientPattern": "L,C",
+  "ingredients": {
+    "C": {
+      "type": "item",
+      "code": "game:mortar",
+      "quantity": 1
+    },
+    "L": {
+      "type": "item",
+      "code": "game:stonebrick-*",
+      "name": "rock",
+      "quantity": 8,
+      "allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite" ]
+    }
+  },
+  "shapeless": true,
+  "width": 1,
+  "height": 2,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadblock-free-brick",
+    "quantity": 8
+  }
+}

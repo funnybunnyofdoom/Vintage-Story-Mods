@@ -1,0 +1,27 @@
+{
+  "ingredientPattern": "L,C,P",
+  "ingredients": {
+    "C": {
+      "type": "item",
+      "code": "game:lime",
+      "quantity": 1
+    },
+    "L": {
+      "type": "item",
+      "code": "game:crushed-*",
+      "quantity": 8
+    },
+    "P": {
+      "type": "item",
+      "code": "game:clay-*",
+      "quantity": 8
+    }
+  },
+  "width": 1,
+  "height": 3,
+  "output": {
+    "type": "item",
+    "code": "roadworks:cementpowder",
+    "quantity": 8
+  }
+}
