@@ -177,6 +177,12 @@
         "code": "game:packeddirt"
       }
     ],
+    "roadblock-*-gravel": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblock-gravel-free-granite"
+      }
+    ],
     "*": [
       {
         "type": "block",

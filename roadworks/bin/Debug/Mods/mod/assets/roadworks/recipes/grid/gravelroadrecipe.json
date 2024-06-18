@@ -10,6 +10,7 @@
       "type": "block",
       "code": "game:gravel-*",
       "quantity": 1,
+      "name": "gravel",
       "allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite" ]
     }
   },
@@ -18,7 +19,7 @@
   "height": 2,
   "output": {
     "type": "block",
-    "code": "roadworks:roadblock-free-gravel",
+    "code": "roadworks:roadblock-gravel-free-{gravel}",
     "quantity": 1
   }
 }
