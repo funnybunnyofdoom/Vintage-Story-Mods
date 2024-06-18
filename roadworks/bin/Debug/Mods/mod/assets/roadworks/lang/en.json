@@ -29,6 +29,7 @@
   "roadworks:block-roadblock-*-brick": "Brick Road",
   "roadworks:block-roadblock-*-concrete": "Concrete Road",
   "roadworks:block-roadblock-*-asphalt": "Asphalt Road",
+
   "roadworks:block-roadblock-gravel-*-basalt": "Basalt Gravel Road",
   "roadworks:block-roadblock-gravel-*-chert": "Chert gravel Road",
   "roadworks:block-roadblock-gravel-*-conglomerate": "Conglomerate gravel Road",
@@ -43,6 +44,21 @@
   "roadworks:block-roadblock-gravel-*-sandstone": "Sandstone gravel Road",
   "roadworks:block-roadblock-gravel-*-shale": "Shale gravel Road",
   "roadworks:block-roadblock-gravel-*-bauxite": "Bauxite gravel Road",
+
+  "roadworks:block-ramp-gravel-*-*-basalt": "Basalt Gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-chert": "Chert gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-conglomerate": "Conglomerate gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-limestone": "Limestone gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-peridotite": "Peridotite gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-phyllite": "Phyllite gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-slate": "Slate gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-andesite": "Andesite gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-chalk": "Chalk gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-claystone": "Claystone gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-granite": "Granite gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-sandstone": "Sandstone gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-shale": "Shale gravel Ramp",
+  "roadworks:block-ramp-gravel-*-*-bauxite": "Bauxite gravel Ramp",
 
 
 

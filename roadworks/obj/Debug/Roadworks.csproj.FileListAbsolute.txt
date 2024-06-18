@@ -99,3 +99,5 @@ C:\Users\funnybunnyofdoom\source\repos\Roadworks\Roadworks\obj\Debug\refint\Road
 C:\Users\funnybunnyofdoom\source\repos\Roadworks\Roadworks\obj\Debug\Roadworks.pdb
 C:\Users\funnybunnyofdoom\source\repos\Roadworks\Roadworks\obj\Debug\ref\Roadworks.dll
 C:\Users\funnybunnyofdoom\source\repos\Roadworks\Roadworks\bin\Debug\Mods\mod\assets\roadworks\blocktypes\roadblockgravel.json
+C:\Users\funnybunnyofdoom\source\repos\Roadworks\Roadworks\bin\Debug\Mods\mod\assets\roadworks\blocktypes\gravelramp.json
+C:\Users\funnybunnyofdoom\source\repos\Roadworks\Roadworks\bin\Debug\Mods\mod\assets\roadworks\recipes\grid\gravelramprecipe.json

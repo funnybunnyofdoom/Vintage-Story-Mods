@@ -7,7 +7,7 @@
         "code": "roadworks:roadblock-free-*",
         "name": "road",
         "quantity": 1,
-        "allowedVariants": [ "gravel", "wood", "brick", "concrete", "asphalt" ]
+        "allowedVariants": ["wood", "brick", "concrete", "asphalt" ]
       }
     },
     "width": 3,
