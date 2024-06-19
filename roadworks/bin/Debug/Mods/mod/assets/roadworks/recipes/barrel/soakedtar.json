@@ -1,8 +1,0 @@
-{
-	code: "soakedtar",
-	ingredients: [
-		{ type: "item", code: "game:waterportion", litres: 1 },
-		{ type: "item", code: "roadworks:tar", quantity: 1 }
-	],
-	output: { type: "item", code: "roadworks:tarportion-plain", litres: 1 }
-}

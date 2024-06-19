@@ -1,0 +1,181 @@
+{
+  "code": "roadstairsgravel",
+  "class": "BlockStairs",
+  "attributes": {
+    "noDownVariant": true
+  },
+  "variantgroups": [
+    {
+      "code": "updown",
+      "states": [ "up" ]
+    },
+    { "loadFromProperties": "abstract/horizontalorientation" },
+    {
+      "code": "cover",
+      "states": [ "free", "snow" ]
+    },
+    {
+      "loadFromProperties": "block/rock",
+      "code": "rock"
+    }
+  ],
+  "creativeinventory": {
+    "general": [ "*-up-north-free-*" ],
+    "construction": [ "*-up-north-free-*" ]
+  },
+  "sidesolidByType": {
+    "*-up-north-*": {
+      "all": false,
+      "down": true,
+      "north": true
+    },
+    "*-up-west-*": {
+      "all": false,
+      "down": true,
+      "west": true
+    },
+    "*-up-south-*": {
+      "all": false,
+      "down": true,
+      "south": true
+    },
+    "*-up-east-*": {
+      "all": false,
+      "down": true,
+      "east": true
+    }
+  },
+  "sideopaque": {
+    "all": false,
+    "down": true
+  },
+  "shapebytype": {
+    "*-up-north-free-*": {
+      "base": "roadworks:block/stairs/normal",
+      "rotateY": 0
+    },
+    "*-up-west-free-*": {
+      "base": "roadworks:block/stairs/normal",
+      "rotateY": 90
+    },
+    "*-up-south-free-*": {
+      "base": "roadworks:block/stairs/normal",
+      "rotateY": 180
+    },
+    "*-up-east-free-*": {
+      "base": "roadworks:block/stairs/normal",
+      "rotateY": 270
+    },
+    "*-up-north-snow-*": {
+      "base": "game:block/basic/stairs/snow-normal",
+      "rotateY": 0
+    },
+    "*-up-west-snow-*": {
+      "base": "game:block/basic/stairs/snow-normal",
+      "rotateY": 90
+    },
+    "*-up-south-snow-*": {
+      "base": "game:block/basic/stairs/snow-normal",
+      "rotateY": 180
+    },
+    "*-up-east-snow-*": {
+      "base": "game:block/basic/stairs/snow-normal",
+      "rotateY": 270
+    }
+  },
+  "walkspeedmultiplierByType": {
+    "*": 1.4
+  },
+  "faceCullMode": "NeverCull",
+  "blockmaterialByType": {
+    "*": "Gravel"
+  },
+  "texturesByType": {
+    "*": {
+      "sides": {
+        "base": "game:block/stone/gravel/{rock}"
+      }
+    }
+  },
+  "replaceable": 900,
+  "resistance": 2.4,
+  "emitSideAo": { "all": true },
+  "walkspeedmultiplier": 1.40,
+  "collisionSelectionBoxesByType": {
+    "*-down-*": [
+      {
+        "x1": 0,
+        "y1": 0.5,
+        "z1": 0,
+        "x2": 1,
+        "y2": 1,
+        "z2": 1
+      },
+      {
+        "x1": 0,
+        "y1": 0,
+        "z1": 0.5,
+        "x2": 1,
+        "y2": 0.5,
+        "z2": 1,
+        "rotateYByType": {
+          "*-north-*": 180,
+          "*-east-*": 90,
+          "*-south-*": 0,
+          "*-west-*": 270
+        }
+      }
+    ],
+    "*-up-*": [
+      {
+        "x1": 0,
+        "y1": 0,
+        "z1": 0,
+        "x2": 1,
+        "y2": 0.5,
+        "z2": 1
+      },
+      {
+        "x1": 0,
+        "y1": 0.5,
+        "z1": 0.5,
+        "x2": 1,
+        "y2": 1,
+        "z2": 1,
+        "rotateYByType": {
+          "*-north-*": 180,
+          "*-east-*": 90,
+          "*-south-*": 0,
+          "*-west-*": 270
+        }
+      }
+    ]
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.2,
+      "y": -1.1,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -2,
+      "y": 25,
+      "z": -78
+    },
+    "scale": 0.37
+  },
+  "sounds": {
+    "place": "game:block/gravel",
+    "breakByType": {
+      "*": "game:block/gravel"
+    },
+    "hitByType": {
+      "*": "game:block/gravel"
+    },
+    "walkByType": {
+      "*": "game:walk/gravel1"
+    }
+  }
+}
