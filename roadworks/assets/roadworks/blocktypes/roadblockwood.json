@@ -1,0 +1,103 @@
+{
+  "code": "roadblock-wood",
+  "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
+  "creativeinventory": {
+    "general": [ "*-free-*" ],
+    "decorative": [ "*-free-*" ]
+  },
+  "blockmaterialByType": {
+    "*": "Wood"
+  },
+  "attributesByType": {
+
+  },
+  "replaceable": 900,
+  "lightAbsorption": 99,
+  "variantgroups": [
+    {
+      "code": "cover",
+      "states": [ "free", "snow" ]
+    },
+    {
+      "code": "wood",
+      "states": [ "aged", "rottenebony" ],
+      "loadFromProperties": "block/wood"
+    }
+  ],
+  "behaviorsByType": {
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ]
+  },
+  "textures": {
+    "all": { "base": "game:block/wood/planks/{wood}*" }
+  },
+  "resistanceByType": {
+    "*-snow-*": 0.2,
+    "*-free-*": 2.0
+  },
+  "walkspeedmultiplierByType": {
+
+    "*-snow-*": 0.8,
+    "*": 1.4
+  },
+  "faceCullMode": "FlushExceptTop",
+  "sideopaque": {
+    "all": false,
+    "down": true
+  },
+  "sidesolid": {
+    "all": false,
+    "down": true
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.2,
+      "y": -1.1,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -2,
+      "y": 25,
+      "z": -78
+    },
+    "scale": 0.37
+  },
+  "dropsByType": {
+    "*": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblock-wood-free-{wood}"
+      }
+    ]
+  },
+  "sounds": {
+    "place": "game:block/planks",
+    "breakByType": {
+      "*": "game:block/planks"
+    },
+    "hitByType": {
+      "*": "game:block/planks"
+    },
+    "walkByType": {
+
+      "*": "game:walk/planks"
+    }
+  }
+}

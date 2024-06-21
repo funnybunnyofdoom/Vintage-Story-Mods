@@ -11,9 +11,9 @@
   "roadworks:item-tar": "Creosote Tar",
 
 
-  "roadworks:block-roadstairs-*-*-gravel": "Gravel Stairs",
-  "roadworks:block-roadstairs-*-*-wood": "Wood Stairs",
-  "roadworks:block-roadstairs-*-*-brick": "Brick Stairs",
+  "roadworks:block-roadstairs-*-*-gravel": "Gravel Stairs", //Obsolete
+  "roadworks:block-roadstairs-*-*-wood": "Wood Stairs", //Obsolete
+  "roadworks:block-roadstairs-*-*-brick": "Brick Stairs", //Obsolete
   "roadworks:block-roadstairs-*-*-concrete": "Concrete Stairs",
   "roadworks:block-roadstairs-*-*-asphalt": "Asphalt Stairs",
 
@@ -25,7 +25,7 @@
 
   "roadworks:block-roadblock-*-gravel": "Gravel Road", //Obsolete
   "roadworks:block-roadblock-*-dirt": "Dirt Road",
-  "roadworks:block-roadblock-*-wood": "Wood Road",
+  "roadworks:block-roadblock-*-wood": "Wood Road", //Obsolete
   "roadworks:block-roadblock-*-brick": "Brick Road", //Obsolete
   "roadworks:block-roadblock-*-concrete": "Concrete Road",
   "roadworks:block-roadblock-*-asphalt": "Asphalt Road",
@@ -94,6 +94,37 @@
   "roadworks:block-roadstairsgravel-*-*-shale": "Shale gravel Road Stairs",
   "roadworks:block-roadstairsgravel-*-*-bauxite": "Bauxite gravel Road Stairs",
 
+  //New Wood Roads by Wood Type
+
+  "roadworks:block-roadblock-wood-*-birch": "Birch Wood Road",
+  "roadworks:block-roadblock-wood-*-oak": "Oak Wood Road",
+  "roadworks:block-roadblock-wood-*-maple": "Maple Wood Road",
+  "roadworks:block-roadblock-wood-*-pine": "Pine Wood Road",
+  "roadworks:block-roadblock-wood-*-acacia": "Acacia Wood Road",
+  "roadworks:block-roadblock-wood-*-kapok": "Kapok Wood Road",
+  "roadworks:block-roadblock-wood-*-baldcypress": "Baldcypress Wood Road",
+  "roadworks:block-roadblock-wood-*-larch": "Larch Wood Road",
+  "roadworks:block-roadblock-wood-*-redwood": "Redwood Wood Road",
+  "roadworks:block-roadblock-wood-*-ebony": "Ebony Wood Road",
+  "roadworks:block-roadblock-wood-*-walnut": "Walnut Wood Road",
+  "roadworks:block-roadblock-wood-*-purpleheart": "Purpleheart Wood Road",
+  "roadworks:block-roadblock-wood-*-rottenebony": "Rotten Ebony Wood Road",
+  "roadworks:block-roadblock-wood-*-aged": "Aged Wood Road",
+
+  "roadworks:block-roadstairswood-*-*-birch": "Birch Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-oak": "Oak Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-maple": "Maple Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-pine": "Pine Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-acacia": "Acacia Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-kapok": "Kapok Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-baldcypress": "Baldcypress Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-larch": "Larch Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-redwood": "Redwood Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-ebony": "Ebony Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-walnut": "Walnut Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-purpleheart": "Purpleheart Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-rottenebony": "Rotten Ebony Wood Road Stairs",
+  "roadworks:block-roadstairswood-*-*-aged": "Aged Wood Road Stairs",
 
 
   "roadworks:block-unfinishedasphalt": "Unpaved Asphalt",

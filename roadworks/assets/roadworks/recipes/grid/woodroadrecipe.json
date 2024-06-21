@@ -9,6 +9,8 @@
     "L": {
       "type": "item",
       "code": "game:plank-*",
+      "name": "wood",
+      "skipVariants": [ "agedebony" ],
       "quantity": 4
     }
   },
@@ -17,7 +19,7 @@
   "height": 2,
   "output": {
     "type": "block",
-    "code": "roadworks:roadblock-free-wood",
+    "code": "roadworks:roadblock-wood-free-{wood}",
     "quantity": 1
   }
 }
