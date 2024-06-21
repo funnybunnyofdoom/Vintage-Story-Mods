@@ -1,0 +1,19 @@
+  {
+    "ingredientPattern": "__G,_GG,GGG",
+    "ingredients": {
+      "G": {
+        "type": "block",
+        "code": "roadworks:roadblock-brick-free-*",
+        "name": "clay",
+        "allowedVariants": [ "blue", "brown", "fire", "red" ],
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "roadworks:ramp-brick-1-north-{clay}",
+      "quantity": 6
+    }
+  }

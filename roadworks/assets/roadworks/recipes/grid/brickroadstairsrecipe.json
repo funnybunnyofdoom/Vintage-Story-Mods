@@ -1,0 +1,20 @@
+{
+  "ingredientPattern": "L",
+  "ingredients": {
+    "L": {
+      "type": "block",
+      "code": "roadworks:roadblock-brick-free-*",
+      "name": "road",
+      "quantity": 3,
+      "allowedVariants": [ "blue", "brown", "fire", "red" ]
+    }
+  },
+  "shapeless": true,
+  "width": 1,
+  "height": 1,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadstairsbrick-up-north-free-{road}",
+    "quantity": 6
+  }
+}

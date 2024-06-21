@@ -23,12 +23,31 @@
   "roadworks:block-roadblockslab-*-concrete": "Concrete Slab",
   "roadworks:block-roadblockslab-*-asphalt": "Asphalt Slab",
 
-  "roadworks:block-roadblock-*-gravel": "Gravel Road",
+  "roadworks:block-roadblock-*-gravel": "Gravel Road", //Obsolete
   "roadworks:block-roadblock-*-dirt": "Dirt Road",
   "roadworks:block-roadblock-*-wood": "Wood Road",
-  "roadworks:block-roadblock-*-brick": "Brick Road",
+  "roadworks:block-roadblock-*-brick": "Brick Road", //Obsolete
   "roadworks:block-roadblock-*-concrete": "Concrete Road",
   "roadworks:block-roadblock-*-asphalt": "Asphalt Road",
+
+  //New Brick Roads by Clay Type
+
+  "roadworks:block-roadblock-brick-*-blue": "Blue Brick Road",
+  "roadworks:block-roadblock-brick-*-brown": "Brown Brick Road",
+  "roadworks:block-roadblock-brick-*-fire": "Fire Brick Road",
+  "roadworks:block-roadblock-brick-*-red": "Red Brick Road",
+
+  "roadworks:block-roadstairsbrick-*-blue": "Blue Brick Road Stairs",
+  "roadworks:block-roadstairsbrick-*-brown": "Brown Brick Road Stairs",
+  "roadworks:block-roadstairsbrick-*-fire": "Fire Brick Road Stairs",
+  "roadworks:block-roadstairsbrick-*-red": "Red Brick Road Stairs",
+
+  "roadworks:block-ramp-brick-*-*-blue": "Blue Brick Road Ramp",
+  "roadworks:block-ramp-brick-*-*-brown": "Brown Brick Road Ramp",
+  "roadworks:block-ramp-brick-*-*-fire": "Fire Brick Road Ramp",
+  "roadworks:block-ramp-brick-*-*-red": "Red Brick Road Ramp",
+
+  //New gravel Roads by Stone Type
 
   "roadworks:block-roadblock-gravel-*-basalt": "Basalt Gravel Road",
   "roadworks:block-roadblock-gravel-*-chert": "Chert gravel Road",
@@ -60,20 +79,20 @@
   "roadworks:block-ramp-gravel-*-*-shale": "Shale gravel Ramp",
   "roadworks:block-ramp-gravel-*-*-bauxite": "Bauxite gravel Ramp",
 
-  "roadworks:block-roadstairsgravel-*-*-basalt": "Basalt Gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-chert": "Chert gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-conglomerate": "Conglomerate gravel Stairs",
-  "roadworks:block-roadstairsgravell-*-*-limestone": "Limestone gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-peridotite": "Peridotite gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-phyllite": "Phyllite gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-slate": "Slate gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-andesite": "Andesite gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-chalk": "Chalk gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-claystone": "Claystone gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-granite": "Granite gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-sandstone": "Sandstone gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-shale": "Shale gravel Stairs",
-  "roadworks:block-roadstairsgravel-*-*-bauxite": "Bauxite gravel Stairs",
+  "roadworks:block-roadstairsgravel-*-*-basalt": "Basalt Gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-chert": "Chert gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-conglomerate": "Conglomerate gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-limestone": "Limestone gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-peridotite": "Peridotite gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-phyllite": "Phyllite gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-slate": "Slate gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-andesite": "Andesite gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-chalk": "Chalk gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-claystone": "Claystone gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-granite": "Granite gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-sandstone": "Sandstone gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-shale": "Shale gravel Road Stairs",
+  "roadworks:block-roadstairsgravel-*-*-bauxite": "Bauxite gravel Road Stairs",
 
 
 
