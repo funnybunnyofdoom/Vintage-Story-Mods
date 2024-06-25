@@ -8,7 +8,7 @@
   "blockmaterialByType": {
     "*": "Ceramic"
   },
-  "attributesByType": {
+  "attributes": {
 
   },
   "replaceable": 700,

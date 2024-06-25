@@ -8,8 +8,15 @@
   "blockmaterialByType": {
     "*-gravel": "Gravel"
   },
-  "attributesByType": {
-
+  "attributes": {
+    "handbook": {
+      "extraSections": [
+        {
+          "title": "handbooktitle-roadblock-gravel",
+          "text": "handbooktext-roadblock-gravel"
+        }
+      ]
+    }
   },
   "replaceable": 900,
   "lightAbsorption": 99,

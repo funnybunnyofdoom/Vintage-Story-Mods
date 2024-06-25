@@ -126,6 +126,22 @@
   "roadworks:block-roadstairswood-*-*-rottenebony": "Rotten Ebony Wood Road Stairs",
   "roadworks:block-roadstairswood-*-*-aged": "Aged Wood Road Stairs",
 
+  "roadworks:block-ramp-wood-*-*-birch": "Birch Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-oak": "Oak Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-maple": "Maple Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-pine": "Pine Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-acacia": "Acacia Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-kapok": "Kapok Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-baldcypress": "Baldcypress Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-larch": "Larch Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-redwood": "Redwood Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-ebony": "Ebony Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-walnut": "Walnut Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-purpleheart": "Purpleheart Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-rottenebony": "Rotten Ebony Wood Road Ramp",
+  "roadworks:block-ramp-wood-*-*-aged": "Aged Wood Road Ramp",
+
+
 
   "roadworks:block-unfinishedasphalt": "Unpaved Asphalt",
   "roadworks:block-roadtoolmold-raw-roadtool": "Raw Road Tool Mold",
@@ -179,5 +195,14 @@
   "roadworks:block-ramp-*-*-dirt": "Dirt Ramp",
 
   "game:handbooktitle-roadblock-free-asphalt": "Crafting:",
-  "game:handbooktext-roadblock-free-asphalt": "Use a road tool on Unpaved Asphalt to turn it into Asphalt Roads. "
+  "game:handbooktext-roadblock-free-asphalt": "Use a road tool on Unpaved Asphalt to turn it into Asphalt Roads. ",
+
+  "game:handbooktitle-unfinishedasphalt": "Crafting:",
+  "game:handbooktext-unfinishedasphalt": "Use a road tool on Unpaved Asphalt to turn it into Asphalt Roads. ",
+
+  "game:handbooktitle-roadblock-gravel": "Crafting:",
+  "game:handbooktext-roadblock-gravel": "Use a road tool on gravel to turn it into gravel Roads. ",
+
+  "game:handbooktitle-roadblock-dirt": "Crafting:",
+  "game:handbooktext-roadblock-dirt": "Use a road tool on soil to turn it into dirt Roads. "
 }

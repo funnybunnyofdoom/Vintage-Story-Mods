@@ -1,0 +1,20 @@
+{
+  "ingredientPattern": "L",
+  "ingredients": {
+    "L": {
+      "type": "block",
+      "code": "roadworks:roadblock-wood-free-*",
+      "name": "wood",
+      "skipVariants": [ "agedebony" ],
+      "quantity": 3
+    }
+  },
+  "shapeless": true,
+  "width": 1,
+  "height": 1,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadstairswood-up-north-free-{wood}",
+    "quantity": 6
+  }
+}

@@ -1,0 +1,19 @@
+  {
+    "ingredientPattern": "__G,_GG,GGG",
+    "ingredients": {
+      "G": {
+        "type": "block",
+        "code": "roadworks:roadblock-wood-free-*",
+        "name": "wood",
+        "skipVariants": [ "agedebony" ],
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "roadworks:ramp-wood-1-north-{wood}",
+      "quantity": 6
+    }
+  }

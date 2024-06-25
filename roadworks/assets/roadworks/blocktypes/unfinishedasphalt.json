@@ -6,6 +6,16 @@
     "decorative": [ "*" ]
   },
   "blockmaterial": "Stone",
+  "attributes": {
+      "handbook": {
+        "extraSections": [
+          {
+            "title": "handbooktitle-unfinishedasphalt",
+            "text": "handbooktext-unfinishedasphalt"
+          }
+        ]
+    }
+  },
   "replaceable": 900,
   "lightAbsorption": 99,
   "textures": {

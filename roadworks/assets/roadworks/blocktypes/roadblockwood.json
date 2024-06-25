@@ -8,7 +8,7 @@
   "blockmaterialByType": {
     "*": "Wood"
   },
-  "attributesByType": {
+  "attributes": {
 
   },
   "replaceable": 900,

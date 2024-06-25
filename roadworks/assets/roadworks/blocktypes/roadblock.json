@@ -21,7 +21,17 @@
           }
         ]
       }
-    }
+    },
+      "*-dirt": {
+        "handbook": {
+          "extraSections": [
+            {
+              "title": "handbooktitle-roadblock-dirt",
+              "text": "handbooktext-roadblock-dirt"
+            }
+          ]
+        }
+      }
   },
   "replaceable": 900,
   "lightAbsorption": 99,
@@ -181,6 +191,18 @@
       {
         "type": "block",
         "code": "roadworks:roadblock-gravel-free-granite"
+      }
+    ],
+    "roadblock-*-wood": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblock-wood-free-maple"
+      }
+    ],
+    "roadblock-*-brick": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblock-brick-free-blue"
       }
     ],
     "*": [

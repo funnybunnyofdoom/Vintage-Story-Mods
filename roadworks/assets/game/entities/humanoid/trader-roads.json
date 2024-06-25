@@ -33,7 +33,11 @@
         "code": "controlledphysics",
         "stepHeight": 1.01
       },
-      { "code": "interpolateposition" }
+      { "code": "interpolateposition" },
+      {
+        "code": "conversable",
+        "dialogue": "config/dialogue/trader"
+      }
     ],
     "animations": [
       {
@@ -106,7 +110,7 @@
             }
           },
           {
-            "code": "roadworks:roadblock-free-gravel",
+            "code": "roadworks:roadblock-gravel-free-granite",
             "type": "block",
             "stacksize": 16,
             "stock": {
@@ -372,7 +376,7 @@
         "list": [
 
           {
-            "code": "roadworks:roadblock-free-gravel",
+            "code": "roadworks:roadblock-gravel-free-granite",
             "type": "block",
             "stacksize": 16,
             "stock": {
