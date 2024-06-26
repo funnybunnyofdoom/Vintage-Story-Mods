@@ -67,6 +67,7 @@
 	},
 	"shapeinventory": { "base":"roadworks:block/ramp" },
 	"walkspeedmultiplierByType": {
+		"*-dirt": 1.2,
 		"*-gravel": 1.4,
 		"*-wood": 1.6,
 		"*-brick": 2.0,

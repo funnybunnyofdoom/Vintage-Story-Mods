@@ -51,19 +51,19 @@
 	},
 	"shapebytype": {
 		"*-up-north-free-*": {
-			"base": "game:block/basic/stairs/normal",
+			"base": "roadworks:block/stairs/normal",
 			"rotateY": 0
 		},
 		"*-up-west-free-*": {
-			"base": "game:block/basic/stairs/normal",
+			"base": "roadworks:block/stairs/normal",
 			"rotateY": 90
 		},
 		"*-up-south-free-*": {
-			"base": "game:block/basic/stairs/normal",
+			"base": "roadworks:block/stairs/normal",
 			"rotateY": 180
 		},
 		"*-up-east-free-*": {
-			"base": "game:block/basic/stairs/normal",
+			"base": "roadworks:block/stairs/normal",
 			"rotateY": 270
 		},
 		"*-up-north-snow-*": {

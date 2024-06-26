@@ -55,7 +55,9 @@
         "alternates": [
           { "base": "roadworks:block/roadblock-{type}-2" },
           { "base": "roadworks:block/roadblock-{type}-3" },
-          { "base": "roadworks:block/roadblock-{type}-4" }
+          { "base": "roadworks:block/roadblock-{type}-4" },
+          { "base": "roadworks:block/roadblock-{type}-5" },
+          { "base": "roadworks:block/roadblock-{type}-6" }
         ]
       }
     },
