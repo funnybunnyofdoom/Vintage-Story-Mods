@@ -1,15 +1,13 @@
 {
-  "type": "code",
-  "modid": "bunny server utility",
-  "name": "Bunny_Server_Utility",
-  "authors": [
-    "FunnyBunnyofDOOM"
-  ],
-  "contributors": [ "ShadowPotion", "MiMaRz" ],
-  "description": "A suite of server-side features",
-  "version": "1.0.0",
-  "dependencies": {
-    "game": ""
-  },
-  "side": "server"
+    "type": "code",
+    "modid": "bunnyserverutilities",
+    "name": "bunnyserverutilities",
+    "authors": [
+        "FunnyBunnyofDOOM"
+    ],
+    "description": "To be added",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": ""
+    }
 }
