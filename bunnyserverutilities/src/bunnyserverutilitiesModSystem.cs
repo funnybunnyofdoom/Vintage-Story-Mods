@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -13,7 +12,6 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 using Vintagestory.ServerMods;
-using static HarmonyLib.Code;
 
 namespace bunnyserverutilities
 {
@@ -432,7 +430,7 @@ namespace bunnyserverutilities
                         if (homeSave.ContainsKey(playerID))
                         {
                             homeSave.TryGetValue(playerID, out homelist);
-                            homecount = homelist.Count();
+                            homecount = homelist.Count;
                         }
                         else
                         {
@@ -560,7 +558,7 @@ namespace bunnyserverutilities
                             if (homeSave.ContainsKey(playerID))
                             {
                                 homeSave.TryGetValue(playerID, out homelist);
-                                homecount = homelist.Count();
+                                homecount = homelist.Count;
                             }
                             else
                             {
@@ -660,7 +658,7 @@ namespace bunnyserverutilities
                         if (homeSave.ContainsKey(playerID2))
                         {
                             homeSave.TryGetValue(playerID2, out homelist2);
-                            homecount2 = homelist2.Count();
+                            homecount2 = homelist2.Count;
                         }
                         else
                         {
@@ -802,7 +800,7 @@ namespace bunnyserverutilities
                             if (homeSave.ContainsKey(playerID))
                             {
                                 homeSave.TryGetValue(playerID, out homelist);
-                                homecount = homelist.Count();
+                                homecount = homelist.Count;
                             }
                             else
                             {
@@ -893,7 +891,7 @@ namespace bunnyserverutilities
                     if (homeSave.ContainsKey(playerID3))
                     {
                         homeSave.TryGetValue(playerID3, out homelist3);
-                        homecount3 = homelist3.Count();
+                        homecount3 = homelist3.Count;
                     }
                     else
                     {
@@ -1608,8 +1606,17 @@ namespace bunnyserverutilities
                         bsuconfig.Current.tptDict.Remove(key);
                     }
 
-                    // Iterate through waitDict and remove any entries where the value matches the key
-                    var waitDictKeys = bsuconfig.Current.waitDict.Where(pair => pair.Value == key).Select(pair => pair.Key).ToList();
+                    // Create a list to hold the keys to remove from waitDict
+                    List<string> waitDictKeys = new List<string>();
+
+                    // Iterate through waitDict and add any keys where the value matches the key to waitDictKeys
+                    foreach (var pair in bsuconfig.Current.waitDict)
+                    {
+                        if (pair.Value == key)
+                        {
+                            waitDictKeys.Add(pair.Key);
+                        }
+                    }
 
                     foreach (var waitKey in waitDictKeys)
                     {
@@ -1619,6 +1626,7 @@ namespace bunnyserverutilities
                         }
                     }
                 }
+
 
                 if (keysToRemove.Count > 0)
                 {
@@ -1839,7 +1847,7 @@ namespace bunnyserverutilities
                 string checklist = data;
                 IPlayer[] playerList = sapi.World.AllOnlinePlayers;
                 int volume = 1;
-                for (var i = 0; i < playerList.Count(); i++)
+                for (var i = 0; i < playerList.Length; i++)
                 {
                     string templist = checklist;
                     IPlayer templayer = playerList[i];
