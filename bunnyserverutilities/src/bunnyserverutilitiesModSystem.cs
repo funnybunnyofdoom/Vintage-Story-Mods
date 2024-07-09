@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HarmonyLib;
+using privileges.src;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -137,13 +139,13 @@ namespace bunnyserverutilities
                 .WithDescription("Set your current position as home for teleports.")
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
-                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(cmd_sethome));
             api.ChatCommands.Create("home")
                 .WithDescription("Teleport to your set home.")
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
-                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(Cmd_home));
 
             //Back Commands
@@ -151,7 +153,24 @@ namespace bunnyserverutilities
                 .WithDescription("Return you to the point where you used your last teleport.")
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(Cmd_back));
+
+            //Spawn Commands
+            api.ChatCommands.Create("spawn")
+                .WithDescription("Teleport to the spawn point of the world.")
+                .RequiresPrivilege(BPrivilege.spawn)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
+                .HandleWith(new OnCommandDelegate(Cmd_spawn));
+
+            //tpcost Commands
+            api.ChatCommands.Create("tpcost")
+                .WithDescription("Enable or disable item costs for teleports.")
+                .RequiresPrivilege(Privilege.controlserver)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_tpcost));
 
             //////////End Register Commands//////////
 
@@ -518,8 +537,7 @@ namespace bunnyserverutilities
                 case "costqty":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        int? num = args[1] as int?;
-                        if (num != null && num >= 0)
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int num) && num >= 0)
                         {
                             bsuconfig.Current.sethomecostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -761,8 +779,7 @@ namespace bunnyserverutilities
                 case "costqty":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        int? num = args.ArgCount > 1 ? args[1] as int? : null;
-                        if (num != null && num >= 0)
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int num) && num >= 0)
                         {
                             bsuconfig.Current.homecostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -784,9 +801,16 @@ namespace bunnyserverutilities
                     //displayhelp(player, cmdname); //ENABLE THIS when display help is added
                     return TextCommandResult.Success(" ");
                 case "playercooldown":
-                    int? cooldownnumber = args[1] as int?;
-                    setplayercooldown(player, cooldownnumber, cmdname);
-                    return TextCommandResult.Success("Player Cooldown Set");
+                    if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int numbr) && numbr >= 0)
+                    {
+                        int? cooldownnumber = numbr as int?;
+                        setplayercooldown(player, cooldownnumber, cmdname);
+                        return TextCommandResult.Success("Player Cooldown Set");
+                    }
+                    else
+                    {
+                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                    }
                 default:
                     if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
                     {
@@ -991,7 +1015,7 @@ namespace bunnyserverutilities
                     }
                 case "help":
                     //displayhelp(player, cmdname); //THIS NEEDS ENABLED ONCE DISPLAY HELP IS ENABLED
-                    return TextCommandResult.Success(" ");
+                    return TextCommandResult.Success("In Development");
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
@@ -1026,8 +1050,7 @@ namespace bunnyserverutilities
                 case "costqty":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        int? num = args.ArgCount > 1 ? args[1] as int? : null;
-                        if (num != null && num >= 0)
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int num) && num >= 0)
                         {
                             bsuconfig.Current.backcostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1046,11 +1069,210 @@ namespace bunnyserverutilities
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "playercooldown":
-                    int? cooldownnumber = args[1] as int?;
-                    setplayercooldown(player, cooldownnumber, cmdname);
-                    return TextCommandResult.Success("Player Cooldown Set");
+                    if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int numb) && numb >= 0)
+                    {
+                        int? cooldownnumber = numb as int?;
+                        setplayercooldown(player, cooldownnumber, cmdname);
+                        return TextCommandResult.Success("Player Cooldown Set");
+                    }
+                    else
+                    {
+                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                    }
             }
-            return TextCommandResult.Success("");
+            return TextCommandResult.Success("In Development");
+        }
+
+
+        //spawn command
+        private TextCommandResult Cmd_spawn(TextCommandCallingArgs args) //spawn command
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+            string cmdname = "spawn";
+            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+            switch (cmd)
+            {
+                case null:
+                    if (bsuconfig.Current.enableSpawn == true && !ironManPlayerList.Contains(player.PlayerUID))
+                    {
+
+                        string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.spawnPlayerCooldown);
+                        if (cooldownstate != "wait")
+                        {
+                            if (processPayment(bsuconfig.Current.spawncostitem, bsuconfig.Current.spawncostqty, player, null))
+                            {
+                                spawnTeleport(player);
+                                addcooldown(cmdname, player, cooldownstate);
+                            }
+                        }
+                        return TextCommandResult.Success("In Development 1122");
+                    }
+                    else if (ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "spawn"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled", "spawn"));
+                    }
+
+                case "enable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enableSpawn = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "spawn"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "spawn"));
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "disable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enableSpawn = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "spawn"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "spawn"));
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "help":
+                    //displayhelp(player, cmdname); //This needs fixed when the
+                    return TextCommandResult.Success("In Development"); //This needs fixed when the help command is complete
+                case "playercooldown":
+                    if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int numb) && numb >= 0)
+                    {
+                        int? cooldownnumber = numb as int?;
+                        setplayercooldown(player, cooldownnumber, cmdname);
+                        return TextCommandResult.Success("Player Cooldown Set");
+                    }
+                    else
+                    {
+                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                    }
+                case "costitem":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        
+                        string code = args.ArgCount > 1 ? args[1] as String : null;
+                        if (code == null)
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
+                        }
+                        else
+                        {
+                            bool outcome = checkcostitem(code);
+                            if (outcome == false)
+                            {
+                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                                return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
+                            }
+                            else
+                            {
+                                bsuconfig.Current.spawncostitem = code;
+                                sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
+                                return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                    //break;
+                case "costqty":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int num) && num >= 0)
+                        {
+                            bsuconfig.Current.spawncostqty = (int)num;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
+                        }
+                        else
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }                    
+            }
+            return TextCommandResult.Success("In Development");
+        }
+
+
+        //cost command
+        private TextCommandResult Cmd_tpcost(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            if (player.Role.Code == "admin" || player.HasPrivilege("tptadmin"))
+            {
+                string cmdname = "tpcost";
+                string cmd = args.ArgCount > 0 ? args[0] as String : null;
+                switch (cmd)
+                {
+                    case "help":
+                        //displayhelp(player, cmdname);
+                        return TextCommandResult.Success("In Development");
+                    case "enable":
+                        bsuconfig.Current.teleportcostenabled = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", cmdname));
+                    case "disable":
+                        bsuconfig.Current.teleportcostenabled = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", cmdname));
+                    case null:
+                        return TextCommandResult.Success("[Help|Enable|Disable]");
+                }
+                return TextCommandResult.Success("[Help|Enable|Disable]");
+            }
+            else
+            {
+                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", "tptadmin"), Vintagestory.API.Common.EnumChatType.Notification);
+                return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", "tptadmin"));
+            }
         }
 
         //////////End Command Functions//////////
