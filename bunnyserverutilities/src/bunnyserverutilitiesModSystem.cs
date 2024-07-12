@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿
+using HarmonyLib;
 using privileges.src;
 using System;
 using System.Collections.Generic;
@@ -171,6 +172,14 @@ namespace bunnyserverutilities
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpcost));
+
+            //GRTP Commands
+            api.ChatCommands.Create("grtp")
+                .WithDescription("Randomly Teleports the player to a group location")
+                .RequiresPrivilege(APrivilege.grtp)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_grtp));
 
             //////////End Register Commands//////////
 
@@ -1116,7 +1125,8 @@ namespace bunnyserverutilities
                                 addcooldown(cmdname, player, cooldownstate);
                             }
                         }
-                        return TextCommandResult.Success("In Development 1122");
+                        //return TextCommandResult.Success("In Development 1127");
+                        return TextCommandResult.Deferred;
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
@@ -1273,6 +1283,231 @@ namespace bunnyserverutilities
                 //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", "tptadmin"), Vintagestory.API.Common.EnumChatType.Notification);
                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", "tptadmin"));
             }
+        }
+
+        //grtp command
+        private TextCommandResult Cmd_grtp(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            string cmdname = "grtp";
+            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+            switch (cmd)
+            {
+                case null:
+                    if (bsuconfig.Current.enableGrtp == true && !ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        if (randx != 0 & randz != 0)
+                        {
+                            if (loaded == true)
+                            {
+
+                                string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.grtpPlayerCooldown);
+                                if (cooldownstate != "wait")
+                                {
+                                    if (processPayment(bsuconfig.Current.grtpcostitem, bsuconfig.Current.grtpcostqty, player, null))
+                                    {
+                                        grtpteleport(player);
+                                        addcooldown(cmdname, player, cooldownstate);
+                                        return TextCommandResult.Deferred;
+                                    }
+                                    return TextCommandResult.Deferred;
+                                }
+                                return TextCommandResult.Deferred;
+                            }
+                            else
+                            {
+                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:chunkloading-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the chunk is still loading                               
+                                sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
+                                return TextCommandResult.Success(Lang.Get("bunnyserverutilities:chunkloading-grtp"));
+                            }
+                        }
+                        else
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:notset-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that GRTP location is not yet set
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:notset-grtp"));
+                        }
+
+                    }
+                    else if (ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that GRTP is disabled
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled", "grtp"));
+                    }
+                case "help":
+                    //displayhelp(player, cmdname); //Fix this when help function is done
+                    return TextCommandResult.Success("In Developmet: GRTP Help");
+                case "cooldown":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        int cdnum = 0; // Initialize cdnum to a default value
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum >= 0)
+                        {
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:greater-than", 0));
+                        }
+                        else if (cdnum < 0)
+                        {
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
+                        }
+                        else
+                        {
+                            bsuconfig.Current.cooldownminutes = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cooldown-set-grtp", cdnum));
+                        }
+                    }
+                    else
+                    {
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "radius":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        int cdnum = 0; // Initialize cdnum to a default value
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum >= 10)
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than", 10), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a number greater than 10
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:greater-than", 9));
+                        }
+                        else if (cdnum < 0)
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a non-negative number
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
+                        }
+                        else
+                        {
+                            bsuconfig.Current.teleportradius = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:set-radius-grtp", cdnum), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the radius was set
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:set-radius-grtp", cdnum));
+                        }
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "now":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        grtptimer = 0 - (int)bsuconfig.Current.cooldownminutes;
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wait-now-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user to wait while the GRTP teleport location is updated
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:wait-now-grtp"));
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "enable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enableGrtp = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user that GRTP has been enabled
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "grtp"));
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "disable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enableGrtp = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user that GRTP has been disabled
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "grtp"));
+                    }
+                    else
+                    {
+                        // player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "playercooldown":
+                    if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int numb) && numb >= 0)
+                    {
+                        int? cooldownnumber = numb as int?;
+                        setplayercooldown(player, cooldownnumber, cmdname);
+                        return TextCommandResult.Success("Player Cooldown Set");
+                    }
+                    else
+                    {
+                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                    }
+                case "costitem":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+
+                        string code = args.ArgCount > 1 ? args[1] as String : null;
+                        if (code == null)
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
+                        }
+                        else
+                        {
+                            bool outcome = checkcostitem(code);
+                            if (outcome == false)
+                            {
+                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                                return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
+                            }
+                            else
+                            {
+                                bsuconfig.Current.grtpcostitem = code;
+                                sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
+                                return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+                case "costqty":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int num) && num >= 0)
+                        {
+                            bsuconfig.Current.grtpcostqty = (int)num;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
+                        }
+                        else
+                        {
+                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
+                        }
+                    }
+                    else
+                    {
+                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
+                    }
+
+            }
+            return TextCommandResult.Deferred;
         }
 
         //////////End Command Functions//////////
