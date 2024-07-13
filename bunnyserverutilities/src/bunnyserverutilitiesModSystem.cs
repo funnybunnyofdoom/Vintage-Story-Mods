@@ -178,7 +178,7 @@ namespace bunnyserverutilities
                 .WithDescription("Randomly Teleports the player to a group location")
                 .RequiresPrivilege(APrivilege.grtp)
                 .RequiresPlayer()
-                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(Cmd_grtp));
 
             //////////End Register Commands//////////
@@ -1357,11 +1357,11 @@ namespace bunnyserverutilities
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int cdnum = 0; // Initialize cdnum to a default value
-                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum >= 0)
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum == 0)
                         {
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:greater-than", 0));
                         }
-                        else if (cdnum < 0)
+                        else if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum < 0)
                         {
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
