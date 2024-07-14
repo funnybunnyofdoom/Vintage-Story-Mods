@@ -138,13 +138,13 @@ namespace bunnyserverutilities
             //Home Commands
             api.ChatCommands.Create("sethome")
                 .WithDescription("Set your current position as home for teleports.")
-                .RequiresPrivilege(Privilege.chat)
+                .RequiresPrivilege(CPrivilege.home)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(cmd_sethome));
             api.ChatCommands.Create("home")
                 .WithDescription("Teleport to your set home.")
-                .RequiresPrivilege(Privilege.chat)
+                .RequiresPrivilege(CPrivilege.home)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(Cmd_home));
@@ -152,7 +152,7 @@ namespace bunnyserverutilities
             //Back Commands
             api.ChatCommands.Create("back")
                 .WithDescription("Return you to the point where you used your last teleport.")
-                .RequiresPrivilege(Privilege.chat)
+                .RequiresPrivilege(DPrivilege.back)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(Cmd_back));
@@ -205,12 +205,20 @@ namespace bunnyserverutilities
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_bb));
 
-            api.ChatCommands.Create("removedeny")
-                .WithDescription("removes a privilege denial")
+            //Remove Deny Commands
+            api.ChatCommands.Create("Cooldown")
+                .WithDescription("List of the user's current cooldowns")
                 .RequiresPrivilege(Privilege.controlserver)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(Cmd_removedeny));
+            //Remove Deny Commands
+            api.ChatCommands.Create("Cooldowns")
+                .WithDescription("List of the user's current cooldowns")
+                .RequiresPrivilege(Privilege.chat)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_cooldown));
 
             //////////End Register Commands//////////
 
@@ -1822,6 +1830,52 @@ namespace bunnyserverutilities
                 ipm.RemovePrivilegeDenial(targetplayer.PlayerUID, cmd2);
                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:remove-denial", cmd2, cmd));
 
+            }
+            return TextCommandResult.Deferred;
+        }
+
+        private TextCommandResult Cmd_cooldown(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            string[] modlist = { "rtp", "home", "spawn", "back", "tpt", "grtp" };
+            int[] cooldownlist = { (int)bsuconfig.Current.cooldownduration, (int)bsuconfig.Current.homePlayerCooldown, (int)bsuconfig.Current.spawnPlayerCooldown, (int)bsuconfig.Current.backPlayerCooldown, (int)bsuconfig.Current.tptPlayerCooldown, (int)bsuconfig.Current.grtpPlayerCooldown };
+            int cooldowncount = 0;
+            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cooldowns"), Vintagestory.API.Common.EnumChatType.Notification);
+            for (int i = 0; i < modlist.Length; i++)
+            {
+                string modname = modlist[i];
+                if (cooldownDict.ContainsKey(modname)) //look for the mods cooldown dictionary
+                {
+                    Dictionary<string, int> dicdata = cooldownDict[modname]; //Assign our cooldown dictionary to dicdata
+                    if (dicdata.ContainsKey(player.PlayerUID)) //Check dictionary for player's uid
+                    {
+                        int playersactivecooldowntime;
+                        dicdata.TryGetValue(player.PlayerUID, out playersactivecooldowntime);
+                        if (cooldownlist[i] - (count - playersactivecooldowntime) > 0)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cooldown-command", modlist[i], cooldownlist[i] - (count - playersactivecooldowntime)), Vintagestory.API.Common.EnumChatType.Notification);
+                            cooldowncount++;
+                        }
+
+
+                    }
+                }
+            }
+            if (cooldowncount == 0)
+            {
+                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-cooldowns"), Vintagestory.API.Common.EnumChatType.Notification);
             }
             return TextCommandResult.Deferred;
         }
