@@ -15,6 +15,7 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 using Vintagestory.ServerMods;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace bunnyserverutilities
 {
@@ -206,12 +207,13 @@ namespace bunnyserverutilities
                 .HandleWith(new OnCommandDelegate(Cmd_bb));
 
             //Remove Deny Commands
-            api.ChatCommands.Create("Cooldown")
+            api.ChatCommands.Create("removedeny")
                 .WithDescription("List of the user's current cooldowns")
                 .RequiresPrivilege(Privilege.controlserver)
                 .RequiresPlayer()
-                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
+                .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("cmd2"))
                 .HandleWith(new OnCommandDelegate(Cmd_removedeny));
+            
             //Remove Deny Commands
             api.ChatCommands.Create("Cooldowns")
                 .WithDescription("List of the user's current cooldowns")
@@ -219,6 +221,14 @@ namespace bunnyserverutilities
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_cooldown));
+            
+            //Simple Server Messages Commands
+            api.ChatCommands.Create("ssm")
+                .WithDescription("Sets a list of messages to broadcast on a regular interval")
+                .RequiresPrivilege(FPrivilege.ssm) //Consider changing this to FPrivilege.admin and giving normal players access to /ssm list
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_ssm));
 
             //////////End Register Commands//////////
 
@@ -1876,6 +1886,117 @@ namespace bunnyserverutilities
             if (cooldowncount == 0)
             {
                 player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-cooldowns"), Vintagestory.API.Common.EnumChatType.Notification);
+            }
+            return TextCommandResult.Deferred;
+        }
+
+        //Simple Server Messages Commands
+
+        private TextCommandResult Cmd_ssm(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            string cmdname = "ssm";
+            string cmd = args.RawArgs.PopWord();
+            switch (cmd)
+            {
+                case "add":
+                    string text = args.RawArgs.PopAll();
+                    bsuconfig.Current.messages.Add(text);
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:add-message"), Vintagestory.API.Common.EnumChatType.Notification);
+                    return TextCommandResult.Deferred;
+                case "remove":
+                    int? listindex = args.RawArgs.PopInt();
+                    if (listindex != null)
+                    {
+                        int lindex = (int)listindex;
+
+                        List<string> msglist = bsuconfig.Current.messages;
+                        if (msglist.Count >= lindex)
+                        {
+                            string removemsg = msglist.ElementAt(lindex);
+                            bsuconfig.Current.messages.Remove(removemsg);
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:remove-message"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:remove-message-help"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:remove-message-help-2"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    return TextCommandResult.Deferred;
+                case "list":
+                    List<string> listofmessages = bsuconfig.Current.messages;
+                    int lastindex = listofmessages.Count;
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:list-of-messages"), Vintagestory.API.Common.EnumChatType.Notification);
+                    for (int i = 0; i < lastindex; i++)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i + " : " + listofmessages[i], Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    return TextCommandResult.Deferred;
+                case "frequency":
+                    int? frqnum = args.RawArgs.PopInt();
+                    if (frqnum != null & frqnum >= 1)
+                    {
+                        bsuconfig.Current.frequency = frqnum;
+                        sapi.StoreModConfig(bsuconfig.Current, "ssmconfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:message-frequency", frqnum), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than", 0), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    return TextCommandResult.Deferred;
+                case "now":
+                    broadcast();
+                    return TextCommandResult.Deferred;
+                case "help":
+                    displayhelp(player, cmdname);
+                    return TextCommandResult.Deferred;
+                case null:
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /ssm help|add|remove|list|frequency|now|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
+                    return TextCommandResult.Deferred;
+                case "enable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enableSimpleServerMessages = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Server Messages"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that server messagess are enabled
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    return TextCommandResult.Deferred;
+                case "disable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enableSimpleServerMessages = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Server Messages"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that server messages are disabled
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    return TextCommandResult.Deferred;
+
             }
             return TextCommandResult.Deferred;
         }
