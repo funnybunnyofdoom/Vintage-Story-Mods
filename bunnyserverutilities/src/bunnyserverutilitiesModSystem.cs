@@ -16,7 +16,7 @@ using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 using Vintagestory.ServerMods;
 using static bunnyserverutilities.bunnyserverutilitiesModSystem;
-using static System.Net.Mime.MediaTypeNames;
+//using static System.Net.Mime.MediaTypeNames;
 
 namespace bunnyserverutilities
 {
@@ -1954,7 +1954,7 @@ namespace bunnyserverutilities
                         List<string> msglist = bsuconfig.Current.messages;
                         if (msglist.Count >= lindex)
                         {
-                            string removemsg = msglist.ElementAt(lindex);
+                            string removemsg = msglist[lindex];
                             bsuconfig.Current.messages.Remove(removemsg);
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:remove-message"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -2115,7 +2115,7 @@ namespace bunnyserverutilities
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:warn-help"), Vintagestory.API.Common.EnumChatType.Notification);
                     for (var i = 1; i < uswd.Count; i++)
                     {
-                        userWarning UW = uswd.ElementAt(i).Value;
+                        userWarning UW = uswd.Values.ToList()[i];
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i + ") " + Lang.Get("bunnyserverutilities:warn-player") + UW.playername + " | " + Lang.Get("bunnyserverutilities:warn-warning") + ": " + UW.warnings, Vintagestory.API.Common.EnumChatType.Notification);
                     }
                 }
@@ -2123,7 +2123,7 @@ namespace bunnyserverutilities
                 {
                     if (listnum != null & listnum > 0 & listnum < uswd.Count)
                     {
-                        userWarning UW = uswd.ElementAt((int)listnum).Value;
+                        userWarning UW = uswd.Values.ToList()[(int)listnum];// ElementAt((int)listnum).Value;
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:warn-player") + UW.playername, Vintagestory.API.Common.EnumChatType.Notification);
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "IP: " + UW.ipaddress, Vintagestory.API.Common.EnumChatType.Notification);
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:warn-warnings") + UW.warnings, Vintagestory.API.Common.EnumChatType.Notification);
