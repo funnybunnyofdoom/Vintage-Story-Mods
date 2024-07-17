@@ -234,10 +234,30 @@ namespace bunnyserverutilities
             //Warn Commands
             api.ChatCommands.Create("warn")
                 .WithDescription("Assign warnings for other admins to read about players who cause trouble")
-                .RequiresPrivilege(IPrivilege.warn) //Consider changing this to FPrivilege.admin and giving normal players access to /ssm list
+                .RequiresPrivilege(IPrivilege.warn)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_warn));
+
+            //TPT Commands
+            api.ChatCommands.Create("tpt")
+                .WithDescription("Teleports the player to another player")
+                .RequiresPrivilege(IPrivilege.warn)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_tpt));
+            api.ChatCommands.Create("tpaccept")
+                .WithDescription("Accepts a teleport request")
+                .RequiresPrivilege(IPrivilege.warn)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_tpaccept));
+            api.ChatCommands.Create("tpdeny")
+                .WithDescription("Denies a teleport request")
+                .RequiresPrivilege(IPrivilege.warn)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_tpdeny));
 
             //////////End Register Commands//////////
 
@@ -2126,6 +2146,260 @@ namespace bunnyserverutilities
             }
             return TextCommandResult.Deferred;
         }
+
+        //teleport to
+        private TextCommandResult Cmd_tpt(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            string cmdname = "tpt";
+            string cmd = args.RawArgs.PopWord();
+            if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable" & cmd != "playercooldown" & cmd != "costqty" & cmd != "costitem" & cmd != "wipe")
+            {
+                if (bsuconfig.Current.enabletpt == true && !ironManPlayerList.Contains(player.PlayerUID))
+                {
+
+                    string actions = checkCooldown(player, cmdname, bsuconfig.Current.tptPlayerCooldown);
+                    if (actions != "wait")
+                    {
+                        if (bsuconfig.Current.teleportcostenabled == true)
+                        {
+                            bool outcome = prepay(bsuconfig.Current.tptcostitem, bsuconfig.Current.tptcostqty, player);
+                            if (outcome == true) { teleportTo(player, cmd); }
+                        }
+                        else
+                        {
+                            teleportTo(player, cmd);
+                        }
+
+                    }
+
+                }
+                else if (ironManPlayerList.Contains(player.PlayerUID))
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "tpt"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+
+            }
+            else if (cmd == "help")
+            {
+                displayhelp(player, cmdname);
+            }
+            else if (cmd == "enable")
+            {
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    bsuconfig.Current.enabletpt = true;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Teleport To"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "disable")
+            {
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    bsuconfig.Current.enabletpt = false;
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Teleport To"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "playercooldown")
+            {
+                setplayercooldown(player, args.RawArgs.PopInt(), cmdname);
+            }
+            else if (cmd == "costqty")
+            {
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    int? num = args.RawArgs.PopInt();
+                    if (num != null && num >= 0)
+                    {
+                        bsuconfig.Current.tptcostqty = (int)num;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "costitem")
+            {
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    string code = args.RawArgs.PopWord();
+                    if (code == null)
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        bool outcome = checkcostitem(code);
+                        if (outcome == false)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.tptcostitem = code;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        }
+                    }
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else if (cmd == "wipe")
+            {
+                if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                {
+                    bsuconfig.Current.tptDict = new Dictionary<string, tptInfo>{
+                    { "Default",new tptInfo() }
+                };
+                    bsuconfig.Current.waitDict = new Dictionary<string, string>
+                    {
+                        { "Default", "Default" }
+                    };
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wiped"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            else
+            {
+                if (bsuconfig.Current.enabletpt == true)
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:need-playername-tpt"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "tpt"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            return TextCommandResult.Deferred;
+        }
+
+        //Teleport to deny
+        private TextCommandResult Cmd_tpdeny(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            if (bsuconfig.Current.enabletpt == true)
+            {
+                if (bsuconfig.Current.waitDict.ContainsKey(player.PlayerUID))
+                {
+                    String value;
+                    bsuconfig.Current.waitDict.TryGetValue(player.PlayerUID, out value);
+                    string tpPlayer = value;
+                    sapi.SendMessage(sapi.World.PlayerByUid(tpPlayer), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-deny-player"), Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-deny-target"), Vintagestory.API.Common.EnumChatType.Notification);
+                    bsuconfig.Current.waitDict.Remove(player.PlayerUID);
+                    bsuconfig.Current.tptDict.Remove(tpPlayer);
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-tp-deny"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            return TextCommandResult.Deferred;
+        }
+
+        //teleport to accept
+        private TextCommandResult Cmd_tpaccept(TextCommandCallingArgs args)
+        {
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            if (bsuconfig.Current.enabletpt == true)
+            {
+                if (bsuconfig.Current.waitDict.ContainsKey(player.PlayerUID))
+                {
+                    String value;
+                    bsuconfig.Current.waitDict.TryGetValue(player.PlayerUID, out value);
+                    String tpPlayer = value;
+                    EntityPlayer tpserverplayer = sapi.World.PlayerByUid(tpPlayer).WorldData.EntityPlayer;
+                    if (bsuconfig.Current.teleportcostenabled)
+                    {
+                        if (processPayment(tptcostdictionary[sapi.World.PlayerByUid(tpPlayer).PlayerName].item, tptcostdictionary[sapi.World.PlayerByUid(tpPlayer).PlayerName].qty, (IServerPlayer)sapi.World.PlayerByUid(tpPlayer), tptcostdictionary[sapi.World.PlayerByUid(tpPlayer).PlayerName].slot) == false)
+                        {
+                            return TextCommandResult.Deferred;
+                        }
+                    }
+
+                    sapi.SendMessage(sapi.World.PlayerByUid(tpPlayer), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleport-accepted"), Vintagestory.API.Common.EnumChatType.Notification);
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:teleport-accepted-user"), Vintagestory.API.Common.EnumChatType.Notification);
+                    //Add BACK here    
+                    string actions = checkCooldown((IServerPlayer)sapi.World.PlayerByUid(tpPlayer), "tpt", bsuconfig.Current.tptPlayerCooldown);
+                    addcooldown("tpt", (IServerPlayer)sapi.World.PlayerByUid(tpPlayer), actions);
+                    tpserverplayer.TeleportTo(player.Entity.Pos.AsBlockPos);
+                    bsuconfig.Current.waitDict.Remove(player.PlayerUID);
+                    bsuconfig.Current.tptDict.Remove(tpPlayer);
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+
+                }
+                else
+                {
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-tp-accept"), Vintagestory.API.Common.EnumChatType.Notification);
+                }
+            }
+            return TextCommandResult.Deferred;
+        }
+
 
         //////////End Command Functions//////////
 
