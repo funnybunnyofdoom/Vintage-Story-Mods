@@ -259,6 +259,14 @@ namespace bunnyserverutilities
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpdeny));
 
+            //RTP Commands
+            api.ChatCommands.Create("rtp")
+                .WithDescription("Teleports the player to a random location")
+                .RequiresPrivilege(HPrivilege.rtp)
+                .RequiresPlayer()
+                .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
+                .HandleWith(new OnCommandDelegate(Cmd_rtp));
+
             //////////End Register Commands//////////
 
             //===================//
@@ -2110,12 +2118,17 @@ namespace bunnyserverutilities
                 int? listnum = args.RawArgs.PopInt();
                 Dictionary<String, userWarning> uswd = new Dictionary<String, userWarning>();
                 uswd = bsuconfig.Current.warningDict;
+                List<userWarning> warningsList = new List<userWarning>();
+                foreach (userWarning warning in uswd.Values)
+                {
+                    warningsList.Add(warning);
+                }
                 if (listnum == null)
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:warn-help"), Vintagestory.API.Common.EnumChatType.Notification);
                     for (var i = 1; i < uswd.Count; i++)
                     {
-                        userWarning UW = uswd.Values.ToList()[i];
+                        userWarning UW = warningsList[i];
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, i + ") " + Lang.Get("bunnyserverutilities:warn-player") + UW.playername + " | " + Lang.Get("bunnyserverutilities:warn-warning") + ": " + UW.warnings, Vintagestory.API.Common.EnumChatType.Notification);
                     }
                 }
@@ -2123,7 +2136,7 @@ namespace bunnyserverutilities
                 {
                     if (listnum != null & listnum > 0 & listnum < uswd.Count)
                     {
-                        userWarning UW = uswd.Values.ToList()[(int)listnum];// ElementAt((int)listnum).Value;
+                        userWarning UW = warningsList[(int)listnum];// ElementAt((int)listnum).Value;
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:warn-player") + UW.playername, Vintagestory.API.Common.EnumChatType.Notification);
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "IP: " + UW.ipaddress, Vintagestory.API.Common.EnumChatType.Notification);
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:warn-warnings") + UW.warnings, Vintagestory.API.Common.EnumChatType.Notification);
@@ -2396,6 +2409,205 @@ namespace bunnyserverutilities
                 {
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-tp-accept"), Vintagestory.API.Common.EnumChatType.Notification);
                 }
+            }
+            return TextCommandResult.Deferred;
+        }
+
+        //RTP Commands
+        private TextCommandResult Cmd_rtp(TextCommandCallingArgs args)
+        {
+
+            IServerPlayer[] playerlist = sapi.Server.Players; //Get our list of players
+            string playerUID = args.Caller.Player.PlayerUID;  //Get the playeruid of the caller of this command 
+            IServerPlayer player = null; //A player object to hold our player
+
+            foreach (IServerPlayer p in playerlist) //Search through the playerlist
+            {
+                if (p.PlayerUID == playerUID) //Check against the UID from the command call
+                {
+                    player = p; //Assign the player object to player if it's the matching PlayerUID
+                    break; //End the foreach loop
+                }
+            }
+
+            string cmdname = "rtp";
+            string cmd = args.RawArgs.PopWord();
+            switch (cmd)
+            {
+                case "cooldown":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        int? cdnum = args.RawArgs.PopInt();
+                        if (cdnum == null)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum < 0)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.cooldownduration = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:rtp-cooldown-set") + bsuconfig.Current.cooldownduration + " minutes.", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-permission"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "help":
+                    displayhelp(player, cmdname);
+                    break;
+                case null:
+                    if (bsuconfig.Current.enablejrtp == true && !ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        ICoreServerAPI api = sapi; //get the server api
+                        Splayer = player;
+                        GEntity = player.Entity; //assign the entity to global variable
+                        IWorldManagerAPI world = api.WorldManager;
+                        System.Diagnostics.Debug.Write(count);
+                        string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.cooldownduration);
+                        if (cooldownstate != "wait" & teleporting == false)
+                        {
+                            if (processPayment(bsuconfig.Current.rtpcostitem, bsuconfig.Current.rtpcostqty, player, null))
+                            {
+                                setbackteleport(player);
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:rtp-wait"), Vintagestory.API.Common.EnumChatType.Notification);
+                                int radius = bsuconfig.Current.rtpradius ?? default(int);
+                                int worldx = world.MapSizeX;
+                                int worldz = world.MapSizeZ;
+                                int rawxmin = (worldx / 2) - radius;
+                                int rawxmax = (worldx / 2) + radius;
+                                int rawzmin = (worldz / 2) - radius;
+                                int rawzmax = (worldz / 2) + radius;
+                                rtprandx = GEntity.World.Rand.Next(rawxmin, rawxmax);
+                                rtprandz = GEntity.World.Rand.Next(rawzmin, rawzmax);
+                                world.LoadChunkColumnPriority(rtprandx / sapi.WorldManager.ChunkSize, rtprandz / sapi.WorldManager.ChunkSize);
+
+                                teleporting = true;
+                                addcooldown(cmdname, player, cooldownstate);
+
+                            }
+                        }
+                        else if (teleporting == true)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:rtp-wait-2"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (bsuconfig.Current.cooldownDict.ContainsKey(player.PlayerUID) == true & teleporting == false)
+                        {
+                            int values;
+                            bsuconfig.Current.cooldownDict.TryGetValue(player.PlayerUID, out values);
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:rtp-cooldown-timer", ((values + bsuconfig.Current.cooldownduration) - cooldowntimer)), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else if (ironManPlayerList.Contains(player.PlayerUID))
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "rtp"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "enable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enablejrtp = true;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "rtp"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "disable":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        bsuconfig.Current.enablejrtp = false;
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "rtp"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "radius":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        int? cdnum = args.RawArgs.PopInt();
+                        if (cdnum == null | cdnum < 10)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-or-greater", 10), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else if (cdnum < 0)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bsuconfig.Current.rtpradius = cdnum;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:set-radius-rtp", cdnum), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "costitem":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        string code = args.RawArgs.PopWord();
+                        if (code == null)
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            bool outcome = checkcostitem(code);
+                            if (outcome == false)
+                            {
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                            else
+                            {
+                                bsuconfig.Current.rtpcostitem = code;
+                                sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
+                case "costqty":
+                    if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
+                    {
+                        int? num = args.RawArgs.PopInt();
+                        if (num != null && num >= 0)
+                        {
+                            bsuconfig.Current.rtpcostqty = (int)num;
+                            sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                        else
+                        {
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+                    break;
             }
             return TextCommandResult.Deferred;
         }
