@@ -548,7 +548,22 @@ namespace bunnyserverutilities
                 }
             }
 
-            string cmd = args[0] as String;
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+                
+            }
+
+                string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case "help":
@@ -578,7 +593,23 @@ namespace bunnyserverutilities
                 }
             }
             string cmdname = "sethome";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+
+
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case null:
@@ -648,7 +679,7 @@ namespace bunnyserverutilities
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        string code = args[1] as String;
+                        string code = lowerArgs[1]; // Use the lowercase version of the command
                         if (code == null)
                         {
                             //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -806,7 +837,22 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "home";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case null:
@@ -890,7 +936,7 @@ namespace bunnyserverutilities
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        string code = args.ArgCount > 1 ? args[1] as String : null;
+                        string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
                             //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -1102,7 +1148,22 @@ namespace bunnyserverutilities
                 }
             }
             string cmdname = "back";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case null:
@@ -1161,7 +1222,7 @@ namespace bunnyserverutilities
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        string code = args.ArgCount > 1 ? args[1] as String : null;
+                        string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
                             //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -1242,7 +1303,21 @@ namespace bunnyserverutilities
                 }
             }
             string cmdname = "spawn";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case null:
@@ -1315,7 +1390,7 @@ namespace bunnyserverutilities
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         
-                        string code = args.ArgCount > 1 ? args[1] as String : null;
+                        string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
                             //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -1389,7 +1464,21 @@ namespace bunnyserverutilities
             if (player.Role.Code == "admin" || player.HasPrivilege("tptadmin"))
             {
                 string cmdname = "tpcost";
-                string cmd = args.ArgCount > 0 ? args[0] as String : null;
+                // Create a new array to store the lowercase arguments
+                string[] lowerArgs = new string[args.ArgCount];
+                for (int i = 0; i < args.ArgCount; i++)
+                {
+                    if (args[i] as string != null)
+                    {
+                        lowerArgs[i] = (args[i] as string).ToLower();
+                    }
+                    else
+                    {
+                        lowerArgs[i] = null;
+                    }
+                }
+
+                string cmd = lowerArgs[0]; // Use the lowercase version of the command
                 switch (cmd)
                 {
                     case "help":
@@ -1434,7 +1523,21 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "grtp";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case null:
@@ -1588,7 +1691,7 @@ namespace bunnyserverutilities
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
 
-                        string code = args.ArgCount > 1 ? args[1] as String : null;
+                        string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
                             //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -1659,7 +1762,22 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "joinannounce";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case null:
@@ -1715,7 +1833,21 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "risingsun";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case "help":
@@ -1847,7 +1979,22 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "bb";
-            string cmd = args.ArgCount > 0 ? args[0] as String : null;
+
+            // Create a new array to store the lowercase arguments
+            string[] lowerArgs = new string[args.ArgCount];
+            for (int i = 0; i < args.ArgCount; i++)
+            {
+                if (args[i] as string != null)
+                {
+                    lowerArgs[i] = (args[i] as string).ToLower();
+                }
+                else
+                {
+                    lowerArgs[i] = null;
+                }
+            }
+
+            string cmd = lowerArgs[0]; // Use the lowercase version of the command
             switch (cmd)
             {
                 case "help":
@@ -1978,7 +2125,16 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "ssm";
-            string cmd = args.RawArgs.PopWord();
+            string cmd;
+            if (args.RawArgs.PopWord() != null)
+            {
+                cmd = args.RawArgs.PopWord().ToLower();
+            }
+            else
+            {
+                cmd = null;
+            }
+
             switch (cmd)
             {
                 case "add":
@@ -2089,7 +2245,15 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "warn";
-            string cmd = args.RawArgs.PopWord();
+            string cmd;
+            if (args.RawArgs.PopWord() != null)
+            {
+                cmd = args.RawArgs.PopWord().ToLower();
+            }
+            else
+            {
+                cmd = null;
+            }
             if (cmd != "list" & cmd != null)
             {
                 IServerPlayerData targetplayer = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
@@ -2211,7 +2375,15 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "tpt";
-            string cmd = args.RawArgs.PopWord();
+            string cmd;
+            if (args.RawArgs.PopWord() != null)
+            {
+                cmd = args.RawArgs.PopWord().ToLower();
+            }
+            else
+            {
+                cmd = null;
+            }
             if (cmd != null & cmd != "help" & cmd != "enable" & cmd != "disable" & cmd != "playercooldown" & cmd != "costqty" & cmd != "costitem" & cmd != "wipe")
             {
                 if (bsuconfig.Current.enabletpt == true && !ironManPlayerList.Contains(player.PlayerUID))
@@ -2302,7 +2474,15 @@ namespace bunnyserverutilities
             {
                 if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                 {
-                    string code = args.RawArgs.PopWord();
+                    string code;
+                    if (args.RawArgs.PopWord() != null)
+                    {
+                        code = args.RawArgs.PopWord().ToLower();
+                    }
+                    else
+                    {
+                        code = null;
+                    }
                     if (code == null)
                     {
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -2465,7 +2645,15 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "rtp";
-            string cmd = args.RawArgs.PopWord();
+            string cmd;
+            if (args.RawArgs.PopWord() != null)
+            {
+                cmd = args.RawArgs.PopWord().ToLower();
+            }
+            else
+            {
+                cmd = null;
+            }
             switch (cmd)
             {
                 case "cooldown":
@@ -2597,7 +2785,16 @@ namespace bunnyserverutilities
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        string code = args.RawArgs.PopWord();
+                        string code;
+                        if (args.RawArgs.PopWord() != null)
+                        {
+                            code = args.RawArgs.PopWord().ToLower();
+                        }
+                        else
+                        {
+                            code = null;
+                        }
+
                         if (code == null)
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
@@ -2663,7 +2860,15 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "ironman";
-            string cmd = args.RawArgs.PopWord();
+            string cmd;
+            if (args.RawArgs.PopWord() != null)
+            {
+                cmd = args.RawArgs.PopWord().ToLower();
+            }
+            else
+            {
+                cmd = null;
+            }
             switch (cmd)
             {
                 case null:
@@ -2726,7 +2931,7 @@ namespace bunnyserverutilities
                     }
                     break;
                 case "highscores":
-                    System.Diagnostics.Debug.WriteLine("SORTING LIST");
+                    //System.Diagnostics.Debug.WriteLine("SORTING LIST");
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-highscores-title"), Vintagestory.API.Common.EnumChatType.Notification);
                     if (ironmanhighscores.Count() == 0)
                     {
@@ -2823,7 +3028,17 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "jpm";
-            string cmd = args.RawArgs.PopWord();
+
+            string cmd;
+            if (args.RawArgs.PopWord() != null)
+            {
+                cmd = args.RawArgs.PopWord().ToLower();
+            }
+            else
+            {
+                cmd = null;
+            }
+
             switch (cmd)
             {
                 case null:
