@@ -201,7 +201,7 @@ namespace bunnyserverutilities
             //Bunnybell Commands
             api.ChatCommands.Create("bb")
                 .WithDescription("Bunny Bell configuration")
-                .RequiresPrivilege(Privilege.controlserver)
+                .RequiresPrivilege(Privilege.controlserver) //This will need changed if we allow non-admins to change their own sound settings
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_bb));
@@ -241,19 +241,19 @@ namespace bunnyserverutilities
             //TPT Commands
             api.ChatCommands.Create("tpt")
                 .WithDescription("Teleports the player to another player")
-                .RequiresPrivilege(IPrivilege.warn)
+                .RequiresPrivilege(GPrivilege.tpt)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpt));
             api.ChatCommands.Create("tpaccept")
                 .WithDescription("Accepts a teleport request")
-                .RequiresPrivilege(IPrivilege.warn)
+                .RequiresPrivilege(GPrivilege.tpt)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpaccept));
             api.ChatCommands.Create("tpdeny")
                 .WithDescription("Denies a teleport request")
-                .RequiresPrivilege(IPrivilege.warn)
+                .RequiresPrivilege(GPrivilege.tpt)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpdeny));
@@ -638,13 +638,13 @@ namespace bunnyserverutilities
                                 }
                                 homelist.Add(player.Entity.Pos.AsBlockPos);
                                 homeSave.Add(player.Entity.PlayerUID, homelist);
-                                //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
+                                
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-sethome"));
                             }
                         }
                         else
                         {
-                            //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-save"), Vintagestory.API.Common.EnumChatType.Notification);
+                           
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-save"));
                         }
                     }
@@ -654,12 +654,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableSetHome = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enabled", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enabled", cmdname));
                     }
                     else
                     {
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -667,12 +665,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableSetHome = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled", cmdname));
                     }
                     else
                     {
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "costitem":
@@ -681,7 +677,6 @@ namespace bunnyserverutilities
                         string code = lowerArgs[1]; // Use the lowercase version of the command
                         if (code == null)
                         {
-                            //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                         }
                         else
@@ -689,21 +684,18 @@ namespace bunnyserverutilities
                             bool outcome = checkcostitem(code);
                             if (outcome == false)
                             {
-                                //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                             }
                             else
                             {
                                 bsuconfig.Current.sethomecostitem = code;
                                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                                //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
                             }
                         }
                     }
                     else
                     {
-                        //Old Message// .SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "costqty":
@@ -713,18 +705,15 @@ namespace bunnyserverutilities
                         {
                             bsuconfig.Current.sethomecostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
                         }
                         else
                         {
-                            //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                     }
                     else
                     {
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "help":
@@ -737,10 +726,10 @@ namespace bunnyserverutilities
 
                         string inputString = cmd;
                         int input;
-                        System.Diagnostics.Debug.WriteLine(inputString);
+                        //System.Diagnostics.Debug.WriteLine(inputString);
                         if (int.TryParse(inputString, out input))
                         {
-                            System.Diagnostics.Debug.WriteLine(input);
+                            //System.Diagnostics.Debug.WriteLine(input);
 
                             string playerID = player.Entity.PlayerUID; //get the using player's player ID
                             int homecount;
@@ -757,12 +746,10 @@ namespace bunnyserverutilities
 
                             if (input > homecount + 1)
                             {
-                                //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount + 1), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:number-between", 1, homecount + 1));
                             }
                             else if (input > bsuconfig.Current.homelimit)
                             {
-                                //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, bsuconfig.Current.homelimit), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:number-between", 1, bsuconfig.Current.homelimit));
                             }
                             else if (input > 0)
@@ -782,7 +769,6 @@ namespace bunnyserverutilities
                                         homelist.Add(player.Entity.Pos.AsBlockPos);
                                     }
                                     homeSave.Add(player.Entity.PlayerUID, homelist);
-                                    //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-sethome"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that they have set their home
                                     return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-sethome"));
                                 }
                                 else
@@ -792,26 +778,22 @@ namespace bunnyserverutilities
                             }
                             else
                             {
-                                //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                             }
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine(input);
-                            //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                            //System.Diagnostics.Debug.WriteLine(input);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
 
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
                     }
                     else
                     {
-                        //Old Message// player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled-home"));
                     }
             }
@@ -887,23 +869,19 @@ namespace bunnyserverutilities
                         }
                         else if (homecount2 == 0)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-home"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:no-home"));
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-number"));
                         }
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled-home"));
                     }
                 case "enable":
@@ -911,12 +889,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableHome = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable-home"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable-home"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions"));
                     }
                 case "disable":
@@ -924,12 +900,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableHome = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable-home"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable-home"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "costitem":
@@ -938,7 +912,6 @@ namespace bunnyserverutilities
                         string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                         }
                         else
@@ -946,21 +919,18 @@ namespace bunnyserverutilities
                             bool outcome = checkcostitem(code);
                             if (outcome == false)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                             }
                             else
                             {
                                 bsuconfig.Current.homecostitem = code;
                                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
                             }
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "costqty":
@@ -970,18 +940,15 @@ namespace bunnyserverutilities
                         {
                             bsuconfig.Current.homecostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "help":
@@ -1020,7 +987,6 @@ namespace bunnyserverutilities
 
                             if (input > homecount && homecount > 0)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:number-between", 1, homecount));
                             }
                             else if (input > 0 && input <= bsuconfig.Current.homelimit && homecount != 0)
@@ -1039,36 +1005,30 @@ namespace bunnyserverutilities
                             }
                             else if (homecount == 0)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-home"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:no-home"));
                             }
                             else if (input < 1)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, homecount), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:number-between", 1, homecount));
                             }
                             else
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:number-between", 1, bsuconfig.Current.homelimit), Vintagestory.API.Common.EnumChatType.Notification); //Tell player to use a number lower than the homelimit
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:number-between", 1, bsuconfig.Current.homelimit));
                             }
                         }
                         else
                         {
-                            System.Diagnostics.Debug.WriteLine(input);
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
+                            //System.Diagnostics.Debug.WriteLine(input);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
 
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-home"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user home is disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled-home"));
                     }
                 case "limit":
@@ -1079,18 +1039,15 @@ namespace bunnyserverutilities
                         {
                             bsuconfig.Current.homelimit = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-limit-updated", num), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-limit-updated", num));
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
 
@@ -1111,12 +1068,10 @@ namespace bunnyserverutilities
 
                     if (homecount3 == 0 || homecount3 < numb || numb <= 0)
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:no-homes", numb), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:no-homes", numb));
                     }
                     else if (numb == null)
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                     }
                     else
@@ -1124,7 +1079,6 @@ namespace bunnyserverutilities
                         homelist3.RemoveAt((int)numb - 1);
                         homeSave.Remove(playerID3);
                         homeSave.Add(playerID3, homelist3);
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:home-removed", numb), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-removed", numb));
                     }
 
@@ -1181,12 +1135,10 @@ namespace bunnyserverutilities
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled-back"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled-back"));
                     }
                 case "enable":
@@ -1194,12 +1146,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableBack = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable-back"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable-back"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -1207,12 +1157,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableBack = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable-back"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable-back"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "help":
@@ -1224,7 +1172,6 @@ namespace bunnyserverutilities
                         string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                         }
                         else
@@ -1232,21 +1179,18 @@ namespace bunnyserverutilities
                             bool outcome = checkcostitem(code);
                             if (outcome == false)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                             }
                             else
                             {
                                 bsuconfig.Current.backcostitem = code;
                                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
                             }
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "costqty":
@@ -1256,18 +1200,15 @@ namespace bunnyserverutilities
                         {
                             bsuconfig.Current.backcostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "playercooldown":
@@ -1336,12 +1277,10 @@ namespace bunnyserverutilities
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "spawn"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled", "spawn"));
                     }
 
@@ -1350,12 +1289,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableSpawn = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "spawn"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "spawn"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -1363,12 +1300,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableSpawn = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "spawn"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "spawn"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "help":
@@ -1392,7 +1327,6 @@ namespace bunnyserverutilities
                         string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                         }
                         else
@@ -1400,14 +1334,12 @@ namespace bunnyserverutilities
                             bool outcome = checkcostitem(code);
                             if (outcome == false)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                             }
                             else
                             {
                                 bsuconfig.Current.spawncostitem = code;
                                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
                             }
                         }
@@ -1417,7 +1349,6 @@ namespace bunnyserverutilities
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
-                    //break;
                 case "costqty":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
@@ -1425,12 +1356,10 @@ namespace bunnyserverutilities
                         {
                             bsuconfig.Current.spawncostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                     }
@@ -1486,12 +1415,10 @@ namespace bunnyserverutilities
                     case "enable":
                         bsuconfig.Current.teleportcostenabled = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", cmdname));
                     case "disable":
                         bsuconfig.Current.teleportcostenabled = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", cmdname), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", cmdname));
                     case null:
                         return TextCommandResult.Success("[Help|Enable|Disable]");
@@ -1500,7 +1427,6 @@ namespace bunnyserverutilities
             }
             else
             {
-                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", "tptadmin"), Vintagestory.API.Common.EnumChatType.Notification);
                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", "tptadmin"));
             }
         }
@@ -1562,26 +1488,22 @@ namespace bunnyserverutilities
                             }
                             else
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:chunkloading-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the chunk is still loading                               
                                 sapi.WorldManager.LoadChunkColumnPriority(randx / sapi.WorldManager.ChunkSize, randz / sapi.WorldManager.ChunkSize);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:chunkloading-grtp"));
                             }
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:notset-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that GRTP location is not yet set
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:notset-grtp"));
                         }
 
                     }
                     else if (ironManPlayerList.Contains(player.PlayerUID))
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-commands-disabled"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:ironman-commands-disabled"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disabled", "grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that GRTP is disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disabled", "grtp"));
                     }
                 case "help":
@@ -1616,37 +1538,31 @@ namespace bunnyserverutilities
                         int cdnum = 0; // Initialize cdnum to a default value
                         if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum >= 10)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:greater-than", 10), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a number greater than 10
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:greater-than", 9));
                         }
                         else if (cdnum < 0)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user for a non-negative number
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                         else
                         {
                             bsuconfig.Current.teleportradius = cdnum;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:set-radius-grtp", cdnum), Vintagestory.API.Common.EnumChatType.Notification); //Inform the user that the radius was set
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:set-radius-grtp", cdnum));
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "now":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         grtptimer = 0 - (int)bsuconfig.Current.cooldownminutes;
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wait-now-grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user to wait while the GRTP teleport location is updated
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:wait-now-grtp"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "enable":
@@ -1654,12 +1570,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableGrtp = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user that GRTP has been enabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "grtp"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -1667,12 +1581,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableGrtp = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "grtp"), Vintagestory.API.Common.EnumChatType.Notification); //Informs the user that GRTP has been disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "grtp"));
                     }
                     else
                     {
-                        // player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "playercooldown":
@@ -1693,7 +1605,6 @@ namespace bunnyserverutilities
                         string code = args.ArgCount > 1 ? lowerArgs[1] as String : null;
                         if (code == null)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                         }
                         else
@@ -1701,21 +1612,18 @@ namespace bunnyserverutilities
                             bool outcome = checkcostitem(code);
                             if (outcome == false)
                             {
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-need-item"), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:tp-need-item"));
                             }
                             else
                             {
                                 bsuconfig.Current.grtpcostitem = code;
                                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code), Vintagestory.API.Common.EnumChatType.Notification);
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-itm-updated", cmdname, code));
                             }
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "costqty":
@@ -1725,18 +1633,15 @@ namespace bunnyserverutilities
                         {
                             bsuconfig.Current.grtpcostqty = (int)num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cost-qty-updated", cmdname, num));
                         }
                         else
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:non-negative-number"), Vintagestory.API.Common.EnumChatType.Notification);
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                         }
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
 
@@ -1789,12 +1694,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableJoinAnnounce = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Join Announce"), Vintagestory.API.Common.EnumChatType.Notification); //inform the player that join announce is now disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "Join Announce"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -1802,12 +1705,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableJoinAnnounce = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Join Announce"), Vintagestory.API.Common.EnumChatType.Notification); //inform the user that joina nnounce is now enabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "Join Announce"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
             }
@@ -1858,17 +1759,14 @@ namespace bunnyserverutilities
                         int cdnum = 0; // Initialize cdnum to a default value
                         if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && (cdnum < 1 | cdnum > 23))
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:between-hours"), Vintagestory.API.Common.EnumChatType.Notification); //Asks user for hour between 1-23
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:between-hours"));
                         }
                         else if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum > bsuconfig.Current.dusk)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:smaller-dusk") + bsuconfig.Current.dusk, Vintagestory.API.Common.EnumChatType.Notification); //informs user to use a smaller number
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:smaller-dusk") + bsuconfig.Current.dusk);
                         }
                         else if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum == 0)//null)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:between-hours"), Vintagestory.API.Common.EnumChatType.Notification); //Asks user for hour between 1-23
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:between-hours"));
                         }
                         else
@@ -1877,7 +1775,6 @@ namespace bunnyserverutilities
                             {
                                 bsuconfig.Current.dawn = cdnum;
                                 sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:dawn-updated") + cdnum + ":00", Vintagestory.API.Common.EnumChatType.Notification); //informs user that the dawn time is updated
                                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:dawn-updated") + cdnum + ":00");
                             }
                             else
@@ -1888,7 +1785,6 @@ namespace bunnyserverutilities
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "dusk":
@@ -1897,17 +1793,14 @@ namespace bunnyserverutilities
                         int cdnum = 0; // Initialize cdnum to a default value
                         if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && (cdnum < 1 | cdnum > 23))
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:between-hours"), Vintagestory.API.Common.EnumChatType.Notification); //Asks user for hour between 1-23
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:between-hours"));
                         }
                         else if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum < bsuconfig.Current.dawn)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:larger-dawn") + bsuconfig.Current.dawn, Vintagestory.API.Common.EnumChatType.Notification); //informs user to use a larger number
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:larger-dawn") + bsuconfig.Current.dawn);
                         }
                         else if (args.ArgCount > 1 && int.TryParse(args[1] as string, out cdnum) && cdnum == 0)//null)
                         {
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:between-hours"), Vintagestory.API.Common.EnumChatType.Notification); //Asks user for hour between 1-23
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:between-hours"));
                         }
                         else
@@ -1915,7 +1808,6 @@ namespace bunnyserverutilities
                             if (cdnum != 0) {
                             bsuconfig.Current.dusk = cdnum;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                            //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:dusk-updated") + cdnum + ":00", Vintagestory.API.Common.EnumChatType.Notification); //informs the user that the dusk time is updated
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:dusk-updated") + cdnum + ":00");
                             }
                             else
@@ -1926,7 +1818,6 @@ namespace bunnyserverutilities
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "enable":
@@ -1934,12 +1825,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableRisingSun = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Rising Sun"), Vintagestory.API.Common.EnumChatType.Notification); // Inform the user that Rising Sun has been enabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "Rising Sun"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -1947,16 +1836,13 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableRisingSun = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Rising Sun"), Vintagestory.API.Common.EnumChatType.Notification); // Inform the user that Rising Sun has been disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "Rising Sun"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case null:
-                    //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /rs dawn|dusk|help|enable|disable", Vintagestory.API.Common.EnumChatType.Notification);
                     return TextCommandResult.Success("use /rs dawn|dusk|help|enable|disable");
             }
             return TextCommandResult.Deferred;
@@ -2000,19 +1886,16 @@ namespace bunnyserverutilities
                     displayhelp(player, cmdname);
                     return TextCommandResult.Deferred;
                 case null:
-                    //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "use /bb [help|enable|disable]", Vintagestory.API.Common.EnumChatType.Notification);
                     return TextCommandResult.Success("use /bb [help|enable|disable]");
                 case "enable":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         bsuconfig.Current.enableBunnyBell = true;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:enable", "Bunny Bell"), Vintagestory.API.Common.EnumChatType.Notification); //Inform user that bunny bell is enabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:enable", "Bunny Bell"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "disable":
@@ -2020,12 +1903,10 @@ namespace bunnyserverutilities
                     {
                         bsuconfig.Current.enableBunnyBell = false;
                         sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:disable", "Bunny Bell"), Vintagestory.API.Common.EnumChatType.Notification); //Inforn user that bunny bell is disabled
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:disable", "Bunny Bell"));
                     }
                     else
                     {
-                        //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"), Vintagestory.API.Common.EnumChatType.Notification);
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
             }
@@ -2052,7 +1933,6 @@ namespace bunnyserverutilities
             IServerPlayerData targetplayer = sapi.PlayerData.GetPlayerDataByLastKnownName(cmd);
             if (targetplayer != null)
             {
-                //player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:remove-denial", cmd2, cmd), Vintagestory.API.Common.EnumChatType.Notification);
                 ipm.RemovePrivilegeDenial(targetplayer.PlayerUID, cmd2);
                 return TextCommandResult.Success(Lang.Get("bunnyserverutilities:remove-denial", cmd2, cmd));
 
@@ -2644,10 +2524,11 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "rtp";
-            string cmd;
-            if (args.RawArgs.PopWord() != null)
+            string cmd = args.RawArgs.PeekWord();
+            if (cmd != null)
             {
-                cmd = args.RawArgs.PopWord().ToLower();
+                cmd = cmd.ToLower();
+                args.RawArgs.PopWord(); // Remove the word after checking
             }
             else
             {
@@ -2689,7 +2570,7 @@ namespace bunnyserverutilities
                         Splayer = player;
                         GEntity = player.Entity; //assign the entity to global variable
                         IWorldManagerAPI world = api.WorldManager;
-                        System.Diagnostics.Debug.Write(count);
+                        //System.Diagnostics.Debug.Write(count);
                         string cooldownstate = checkCooldown(player, cmdname, bsuconfig.Current.cooldownduration);
                         if (cooldownstate != "wait" & teleporting == false)
                         {
@@ -2784,10 +2665,11 @@ namespace bunnyserverutilities
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        string code;
-                        if (args.RawArgs.PopWord() != null)
+                        string code = args.RawArgs.PeekWord();
+                        if (code != null)
                         {
-                            code = args.RawArgs.PopWord().ToLower();
+                            code = code.ToLower();
+                            args.RawArgs.PopWord(); // Remove the word after checking
                         }
                         else
                         {
@@ -2963,7 +2845,6 @@ namespace bunnyserverutilities
                     }
                     tempscores = sortedTempscoresDict;
 
-                    //System.Diagnostics.Debug.WriteLine(tempscores.Count);
                     int skip = 0; //skip this many
                     int index = 0;
                     foreach (var entry in tempscores)
@@ -3168,7 +3049,7 @@ namespace bunnyserverutilities
                     else
                     {
                         string message = args.RawArgs.PopAll();
-                        System.Diagnostics.Debug.WriteLine(message);
+                        //System.Diagnostics.Debug.WriteLine(message);
                         if (message == null | message == "")
                         {
                             player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:include-message"), Vintagestory.API.Common.EnumChatType.Notification); //Ask the user to include a message with the command
