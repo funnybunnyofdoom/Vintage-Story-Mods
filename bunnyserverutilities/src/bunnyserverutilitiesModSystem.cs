@@ -16,7 +16,6 @@ using Vintagestory.API.Util;
 using Vintagestory.GameContent;
 using Vintagestory.ServerMods;
 using static bunnyserverutilities.bunnyserverutilitiesModSystem;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace bunnyserverutilities
 {
@@ -2860,10 +2859,11 @@ namespace bunnyserverutilities
             }
 
             string cmdname = "ironman";
-            string cmd;
-            if (args.RawArgs.PopWord() != null)
+            string cmd = args.RawArgs.PeekWord();
+            if (cmd != null)
             {
-                cmd = args.RawArgs.PopWord().ToLower();
+                cmd = cmd.ToLower();
+                args.RawArgs.PopWord(); // Remove the word after checking
             }
             else
             {
@@ -2925,62 +2925,66 @@ namespace bunnyserverutilities
                         //add player to current ironman score list
                         currentironmandict.Add(player.PlayerUID, sapi.World.Calendar.TotalDays);
                         imteleporting = true;
-
-
-
                     }
                     break;
                 case "highscores":
-                    //System.Diagnostics.Debug.WriteLine("SORTING LIST");
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:ironman-highscores-title"), Vintagestory.API.Common.EnumChatType.Notification);
-                    if (ironmanhighscores.Count() == 0)
+                    if (ironmanhighscores.Count == 0)
                     {
                         ironmanhighscores.Add("Placeholder", -1);
                     }
                     Dictionary<string, int> tempscores = new Dictionary<string, int>();
-                    for (int i = 0; i < currentironmandict.Count; i++)
+                    foreach (var entry in currentironmandict)
                     {
-                        if (ironmanhighscores.ContainsKey(currentironmandict.ElementAt(i).Key))
+                        if (ironmanhighscores.ContainsKey(entry.Key))
                         {
                             int value;
-                            ironmanhighscores.TryGetValue(currentironmandict.ElementAt(i).Key, out value);
-                            if (currentironmandict.ElementAt(i).Value > value)
+                            ironmanhighscores.TryGetValue(entry.Key, out value);
+                            if (entry.Value > value)
                             {
-                                tempscores.Add(currentironmandict.ElementAt(i).Key, (int)(sapi.World.Calendar.TotalDays - currentironmandict.ElementAt(i).Value));
+                                tempscores.Add(entry.Key, (int)(sapi.World.Calendar.TotalDays - entry.Value));
                             }
                         }
-
                     }
-                    for (int i = 0; i < ironmanhighscores.Count; i++)
+                    foreach (var entry in ironmanhighscores)
                     {
-                        if (!tempscores.ContainsKey(ironmanhighscores.ElementAt(i).Key))
+                        if (!tempscores.ContainsKey(entry.Key))
                         {
-                            tempscores.Add(ironmanhighscores.ElementAt(i).Key, ironmanhighscores.ElementAt(i).Value);
+                            tempscores.Add(entry.Key, entry.Value);
                         }
                     }
-                    //var sortedDict = from entry in ironmanhighscores orderby entry.Value ascending select entry;
-                    tempscores = tempscores.OrderByDescending(i => i.Value).ToDictionary(i => i.Key, i => i.Value);
-                    System.Diagnostics.Debug.WriteLine(tempscores.Count());
-                    int skip = 0; //skip this many
-                    for (int i = 0; i < tempscores.Count(); i++)
+                    var sortedTempscores = new List<KeyValuePair<string, int>>(tempscores);
+                    sortedTempscores.Sort((firstPair, nextPair) => nextPair.Value.CompareTo(firstPair.Value));
+
+                    Dictionary<string, int> sortedTempscoresDict = new Dictionary<string, int>();
+                    foreach (var pair in sortedTempscores)
                     {
-                        IServerPlayerData playername = sapi.PlayerData.GetPlayerDataByUid(tempscores.ElementAt(i).Key);
+                        sortedTempscoresDict.Add(pair.Key, pair.Value);
+                    }
+                    tempscores = sortedTempscoresDict;
+
+                    //System.Diagnostics.Debug.WriteLine(tempscores.Count);
+                    int skip = 0; //skip this many
+                    int index = 0;
+                    foreach (var entry in tempscores)
+                    {
+                        IServerPlayerData playername = sapi.PlayerData.GetPlayerDataByUid(entry.Key);
                         if (playername != null)
                         {
-                            if (currentironmandict.ContainsKey(tempscores.ElementAt(i).Key))
+                            if (currentironmandict.ContainsKey(entry.Key))
                             {
-                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (i - skip) + 1 + ") " + playername.LastKnownPlayername + " (In Progress): " + tempscores.ElementAt(i).Value, Vintagestory.API.Common.EnumChatType.Notification);
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (index - skip + 1) + ") " + playername.LastKnownPlayername + " (In Progress): " + entry.Value, Vintagestory.API.Common.EnumChatType.Notification);
                             }
                             else
                             {
-                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (i - skip) + 1 + ") " + playername.LastKnownPlayername + ": " + tempscores.ElementAt(i).Value, Vintagestory.API.Common.EnumChatType.Notification);
+                                player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, (index - skip + 1) + ") " + playername.LastKnownPlayername + ": " + entry.Value, Vintagestory.API.Common.EnumChatType.Notification);
                             }
                         }
                         else
                         {
                             skip++;
                         }
-
+                        index++;
                     }
                     break;
                 case "enable":
@@ -3042,6 +3046,7 @@ namespace bunnyserverutilities
             switch (cmd)
             {
                 case null:
+
                     displayhelp(player, cmdname);
                     break;
                 case "help":
