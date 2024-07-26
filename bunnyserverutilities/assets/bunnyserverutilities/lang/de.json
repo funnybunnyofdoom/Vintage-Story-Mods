@@ -1,200 +1,224 @@
 {
   // back messages
-  "disabled-back": "Zur�ck ist deaktiviert. Ein Administrator muss /back enable verwenden, um es zu aktivieren",
+  "disabled-back": "Zurück ist deaktiviert. Ein Administrator muss /back enable verwenden, um es zu aktivieren",
   "enable-back": "/back wurde aktiviert",
   "disable-back": "/back wurde deaktiviert",
 
   //home messages
   "home-sethome": "Neues Zuhause wurde gespeichert.",
-  "disabled-home": "Home ist deaktiviert. Ein Administrator muss /home enable verwenden, um es zu aktivieren",
+  "disabled-home": "Zuhause ist deaktiviert. Ein Administrator muss /home enable verwenden, um es zu aktivieren",
   "enable-home": "/home wurde aktiviert",
   "disable-home": "/home wurde deaktiviert",
   "teleporting-home": "Teleportiere zu deinem gespeicherten Zuhause",
-  "no-home-saved": "Kein Zuhause gespeichert. Teleportiere zum Zentrum der Welt. Verwende /sethome, um ein Zuhause zu setzen.",
-  "teleporting-back": "R�ckkehr zum letzten Ort.",
-  "no-back-saved": "Kein R�ckkehrort gespeichert. Verwende /home, um einen R�ckkehrort zu erstellen.",
-  "on-death-back": "Verwende /back, um zu deinem Todespunkt zur�ckzukehren.",
+  "no-home-saved": "Kein Zuhause gespeichert. Teleportiere zum Weltzentrum. Verwende /sethome, um ein Zuhause festzulegen.",
+  "teleporting-back": "Rückkehr zu deinem letzten Standort.",
+  "no-back-saved": "Kein Rückstandort. Verwende /home, um einen Rückstandort zu erstellen.",
+  "on-death-back": "Verwende /back, um zu deinem Todespunkt zurückzukehren.",
 
   //GRTP messages
   "chunkloading-grtp": "Chunk wird geladen. Bitte versuche es in ein paar Sekunden erneut",
-  "notset-grtp": "GRTP wurde noch nicht festgelegt. Ist der Server gerade erst gestartet?",
-  "cooldown-set-grtp": "GRTP-Abklingzeit wurde auf {0} Minuten aktualisiert.", //{0} = cooldown-Wert
-  "set-radius-grtp": "GRTP-Radius wurde auf {0} Bl�cke aktualisiert.", //{0} = Radius-Wert
-  "wait-now-grtp": "GRTP wurde jetzt aktiviert. Bitte warte ein paar Minuten, bis der Standort aktualisiert wird.",
-  "teleporting-grtp": "Teleportiere zu einem zuf�lligen Ort. Ein neuer Ort wird innerhalb von 1 Minute generiert.",
-  "teleporting-grtp-2": "Teleportiere zu einem zuf�lligen Ort. Andere k�nnen sich dir {0} Minuten lang anschlie�en.",
-  "new-grtp": "Neue /grtp-Koordinaten generiert. Neuer Ort wird in {0} Minuten verf�gbar sein.",
+  "notset-grtp": "GRTP wurde noch nicht festgelegt. Hat der Server gerade gestartet?",
+  "cooldown-set-grtp": "GRTP-Abklingzeit wurde auf {0} Minuten aktualisiert.", //{0} = Abklingzeitwert
+  "set-radius-grtp": "GRTP-Radius wurde auf {0} Blöcke aktualisiert.", //{0} = Radiuswert
+  "wait-now-grtp": "GRTP jetzt ausgegeben. Bitte warte bis zu ein paar Minuten, bis der Standort aktualisiert wird.",
+  "teleporting-grtp": "Teleportiere zu einem zufälligen Standort. Ein neuer Standort wird innerhalb von 1 Minute generiert",
+  "teleporting-grtp-2": "Teleportiere zu einem zufälligen Standort. Andere können sich dir für {0} Minuten anschließen.",
+  "new-grtp": "Neue /grtp-Koordinaten generiert. Neuer Standort wird in {0} Minuten verfügbar sein.",
 
   //re-usable messages
-  "greater-than": "Bitte gib eine Zahl gr��er als {0} in Minuten ein.", //{0} = Zahl
-  "non-negative-number": "Bitte gib eine nicht-negative Zahl ein.",
-  "disabled": "{0} ist deaktiviert. Ein Administrator muss /{0} enable verwenden, um diesen Befehl zu aktivieren.", //{0} = Befehlszeichenkette
-  "disabled-2": "{0} ist durch den Administrator deaktiviert.",
-  "enable": "{0} wurde aktiviert.", //{0} = Befehlszeichenkette
-  "disable": "{0} wurde deaktiviert.", //{0} = Befehlszeichenkette
+  "greater-than": "Bitte gib eine Zahl größer als {0} in Minuten ein.", //{0} = Zahl
+  "non-negative-number": "Bitte gib eine nicht negative Zahl ein.",
+  "disabled": "{0} ist deaktiviert. Ein Administrator muss /{0} enable verwenden, um diesen Befehl zu aktivieren.", //{0} = Befehlszeichenfolge
+  "disabled-2": "{0} ist vom Administrator deaktiviert.",
+  "enable": "{0} wurde aktiviert.", //{0} = Befehlszeichenfolge
+  "disable": "{0} wurde deaktiviert.", //{0} = Befehlszeichenfolge
   "no-permission": "Du hast keine Berechtigung, diesen Befehl zu verwenden.",
   "player": "Spieler",
-  "player-not-found": "Der Spieler konnte nicht gefunden werden. Bitte �berpr�fe deine Rechtschreibung und versuche es erneut.",
-  "number-or-greater": "Bitte gib eine Zahl {0} oder gr��er ein.",
+  "player-not-found": "Spieler konnte nicht gefunden werden. Bitte überprüfe deine Schreibweise und versuche es erneut.",
+  "number-or-greater": "Bitte gib eine Zahl {0} oder größer ein.",
   "number-between": "Bitte gib eine Zahl zwischen {0} und {1} ein.",
-  "cooldown-reusable": "{0}-Cooldown wurde auf {1} Minuten aktualisiert.", // {0} = Befehlsname {1} = Anzahl der Minuten
+  "cooldown-reusable": "{0}-Abklingzeit wurde auf {1} Minuten aktualisiert.", // {0} = Befehlsname {1} = Anzahl der Minuten
   "cooldown-player-reusable": "Bitte warte {0} Minuten.",
+  "cooldown-fail": "Abklingzeit konnte nicht festgelegt werden",
 
-  //Importiere alte Homes
-  "importing": "Importiere alte Homes",
-  "old-home-config-size": "Gr��e der Home-Konfiguration: ",
-  "old-home-imported": "Alte Homes importiert",
-  "no-old-homes": "Keine g�ltigen Home-Konfigurationen zum Importieren vorhanden.",
-  "home-already-imported": "Alte Homes wurden bereits importiert. Dieser Befehl sollte nur einmal verwendet werden.",
+  //Import Old Homes
+  "importing": "Importiere alte Häuser",
+  "old-home-config-size": "Größe der Hauskonfiguration: ",
+  "old-home-imported": "Alte Häuser importiert",
+  "no-old-homes": "Keine gültigen Hauskonfigurationen zum Importieren.",
+  "home-already-imported": "Alte Häuser wurden bereits importiert. Dieser Befehl sollte nur einmal verwendet werden.",
 
-  //Rising Sun-Nachrichten
+  //Rising Sun messages
   "between-hours": "Bitte gib eine Stunde zwischen 1 und 23 ein.",
-  "smaller-dusk": "Bitte gib eine Zahl kleiner als die Abendd�mmerung ein: ",
-  "larger-dawn": "Bitte gib eine Zahl gr��er als die Morgend�mmerung ein: ",
-  "dawn-updated": "Die Morgend�mmerungszeit wurde aktualisiert auf ",
-  "dusk-updated": "Die Abendd�mmerungszeit wurde aktualisiert auf ",
-  "welcome-rs": "Die Sonne ist auf einen neuen Spieler aufgegangen! Willkommen {0}",
+  "smaller-dusk": "Bitte gib eine Zahl kleiner als Dämmerung ein: ",
+  "larger-dawn": "Bitte gib eine Zahl größer als Morgendämmerung ein: ",
+  "dawn-updated": "Morgendämmerungszeit wurde auf aktualisiert",
+  "dusk-updated": "Dämmerungszeit wurde auf aktualisiert",
+  "welcome-rs": "Die Sonne ist für einen neuen Spieler aufgegangen! Willkommen {0}",
 
-  //Private Message-Nachrichten
-  "include-message": "Bitte gib eine Nachricht ein.",
-  "include-player": "Bitte gib den Namen eines Spielers ein.",
+  //Private Message messages
+  "include-message": "Bitte füge eine Nachricht hinzu.",
+  "include-player": "Bitte füge einen Spielernamen hinzu.",
 
   //Simple Server Message
-  "add-message": "Nachricht hinzugef�gt",
+  "add-message": "Nachricht hinzugefügt",
   "remove-message": "Nachricht entfernt",
-  "remove-message-help": "Bitte benutze /ssm list und dann /ssm remove Nummer, um die Nachricht zu l�schen",
-  "remove-message-help-2": "Bitte benutze /ssm remove Nummer, um eine Nachricht zu entfernen",
+  "remove-message-help": "Bitte verwende /ssm list und dann /ssm remove number, um die Nachricht zu löschen",
+  "remove-message-help-2": "Bitte verwende /ssm remove Number, um eine Nachricht zu entfernen",
   "list-of-messages": "Liste der aktuellen Servernachrichten: ",
   "message-frequency": "Nachrichten werden alle {0} Minuten gesendet",
 
-  //Teleportiere zu
-  "tp-deny-player": "Deine Teleport-Anfrage wurde abgelehnt.",
+  //Teleport To
+  "tp-deny-player": "Deine Teleportanfrage wurde abgelehnt.",
   "tp-deny-target": "Teleport zu abgelehnt",
-  "no-tp-deny": "Du hast keine aktiven Anfragen zum Ablehnen.",
-  "no-tp-accept": "Du hast keine aktiven Anfragen zum Akzeptieren.",
-  "teleport-accepted": "Deine Teleport-Anfrage wurde akzeptiert. Bitte warte, w�hrend du teleportiert wirst.",
+  "no-tp-deny": "Du hast keine aktiven Anfragen zum Ablehnen",
+  "no-tp-accept": "Du hast keine aktiven Anfragen zum Akzeptieren",
+  "teleport-accepted": "Deine Teleportanfrage wurde akzeptiert. Warte, während du teleportiert wirst.",
   "teleport-accepted-user": "Teleport zu akzeptiert",
-  "need-playername-tpt": "Bitte gib den Namen des Spielers ein, zu dem du teleportieren m�chtest.",
-  "wait-for-tp": "Bitte warte. Du wirst teleportiert, sobald der andere Spieler die Teleportation akzeptiert.",
-  "tp-to-you": "{0} m�chte zu dir teleportieren. Bitte gib /tpaccept ein, um zu akzeptieren.", //{0} = Spielername
-  "active-tp": "Der Zielspieler hat bereits eine andere aktive TP-Anfrage. Versuche es in K�rze erneut.",
-  "pending-tp": "Du hast bereits eine ausstehende Teleport-Anfrage.",
-  "expired-tp": "Deine TP-Anfrage zu einem Spieler ist abgelaufen",
+  "need-playername-tpt": "Bitte gib den Namen des Spielers ein, zu dem du teleportieren möchtest.",
+  "wait-for-tp": "Warte. Du wirst teleportiert, wenn der andere Spieler den Teleport akzeptiert",
+  "tp-to-you": "{0} möchte sich zu dir teleportieren. Bitte gib /tpaccept ein, um zu akzeptieren.", //{0} = Name des Spielers
+  "active-tp": "Zielspieler hat bereits eine andere aktive TP-Anfrage. Versuche es in Kürze erneut.",
+  "pending-tp": "Du hast bereits eine ausstehende Teleportanfrage.",
+  "expired-tp": "Dein TP zum Spieler ist abgelaufen",
 
-  //Zuf�llige Teleportation
-  "rtp-cooldown-set": "RTP-Abklingzeit-Timer auf {0} eingestellt.",
-  "rtp-wait": "Bitte warte, w�hrend die Zielschunks geladen werden.",
-  "rtp-wait-2": "Die Chunks werden noch generiert. Bitte warte.",
-  "rtp-cooldown-timer": "Du kannst in {0} Minuten erneut teleportieren.",
-  "set-radius-rtp": "RTP-Radius wurde auf {0} Bl�cke aktualisiert.", //{0} = Radius-Wert
-  "new-rtp": "Teleportiere zu einem zuf�lligen Ort.",
+  //Random Teleport
+  "rtp-cooldown-set": "RTP-Abklingzeit-Timer auf eingestellt",
+  "rtp-wait": "Bitte warte, während die Ziel-Chunks geladen werden.",
+  "rtp-wait-2": "Die Chunks werden noch generiert, bitte warte.",
+  "rtp-cooldown-timer": "Du kannst dich in {0} Minuten erneut teleportieren.",
+  "set-radius-rtp": "RTP-Radius wurde auf {0} Blöcke aktualisiert.", //{0} = Radiuswert
+  "new-rtp": "Teleportiere zu einem zufälligen Standort.",
 
-  //Privilegienentzug aufheben
-  "remove-denial": "Hebe den Entzug von {0} f�r {1} auf.",
+  //Remove Denial
+  "remove-denial": "Entferne die Ablehnung von {0} von {1}.",
 
-  //Warnung
+  //warn
   "warn-player": "Spieler: ",
   "warn-warnings": "Warnungen: ",
   "warn-warning": "Warnung: ",
-  "warn-reasons": "Gr�nde: ",
-  "warn-help": "Verwende /warn list num, um die Warnungen f�r diesen Spieler anzuzeigen.",
+  "warn-reasons": "Gründe: ",
+  "warn-help": "Verwende /warn list num, um die Warnungen für diesen Spieler zu sehen",
 
-  //Spawn
+  //spawn
   "teleporting-spawn": "Du wirst zum Spawn teleportiert.",
 
-  //Standard-Begr��ungsnachricht:
-  "default-welcome": "Willkommen auf dem Server", //Dies ist die Begr��ungsnachricht, die angezeigt wird, wenn nichts konfiguriert ist.
+  //Default welcome message: 
+  "default-welcome": "Willkommen auf dem Server", //Dies ist die Willkommensnachricht, die von Simple Server Messages angezeigt wird, wenn sie nicht konfiguriert ist.
 
-  "welcome-player": "Bitte hei�e <font color=\"white\"><strong>{0}</strong></font> auf dem Server willkommen!\"",
+  "welcome-player": "Bitte heiße <font color=\"white\"><strong>{0}</strong></font> auf dem Server willkommen!",
 
-  //Spielerliste beim Betreten
+  //Player list on join
   "players-online": "Spieler online: ",
   "player-divider": "|",
 
-  //Hilfe-Befehl
+  //Help command
   "bsu-commands": "Bunny's Server Utility-Befehle:",
-  "bsu-help": "- Verwende /bsu help, um Hilfe f�r alle Bunny Server Utility-Befehle anzuzeigen",
-  "bsu-version": "Verwende {0}, um die Mod-Version anzuzeigen",
-  "help-removedeny": "- Entfernt den Entzug eines Privilegs von einem Spieler.",
+  "bsu-help": "-Verwende /bsu help, um Hilfe für alle Bunny Server Utility-Befehle zu sehen",
+  "bsu-version": "Verwende {0} für die Mod-Version",
+  "help-removedeny": "- entferne eine Privilegienverweigerung von einem Spieler.",
   "module-commands": "---{0}-Befehle---", //{0} = Modulname
-  "help-sethome": "<i>Nummer</i> - Setzt deine aktuelle Position als dein Home-Teleport f�r die angegebene Nummer",
-  "help-home": "<i>Nummer</i> - Teleportiert dich zu deinem gesetzten Home-Standort f�r die angegebene Nummer",
+  "help-sethome": "<i>Nummer</i>- Setzt deinen Standort als dein Zuhause-Teleport für die angegebene Nummer",
+  "help-home": "<i>Nummer</i> - teleportiert dich zu deinem festgelegten Zuhause-Standort für die angegebene Nummer",
   "admin-commands": "{0}-Admin-Befehle:", //{0} = Modulname
   "module-disable": "{0} disable - deaktiviert den {0}-Befehl",
   "module-disable-2": "{0} disable - deaktiviert das {1}-Modul.",
   "module-enable": "{0} enable - aktiviert den {0}-Befehl",
   "module-enable-2": "{0} enable - aktiviert das {1}-Modul",
-  "ja-enable": "/joinannounce enable - aktiviert das Senden einer Nachricht an Spieler, wenn sie das erste Mal dem Server beitreten",
-  "ja-disable": "/joinannounce disable - deaktiviert das Senden einer Nachricht an Spieler, wenn sie das erste Mal dem Server beitreten",
+  "ja-enable": "/joinannounce enable - aktiviert das Senden einer Nachricht an Spieler, wenn sie sich zum ersten Mal verbinden",
+  "ja-disable": "/joinannounce disable - deaktiviert das Senden einer Nachricht an Spieler, wenn sie sich zum ersten Mal verbinden",
   "module-cooldown": "{0} playercooldown <i>Nummer</i> - setzt den Abklingzeit-Timer",
-  "grtp-cooldown": "/grtp cooldown <i>Nummer</i> - Legt die H�ufigkeit fest, mit der sich der GRTP-Standort in Minuten bewegt",
-  "rtp-cooldown": "/rtp cooldown <i>Nummer</i> - setzt den Abklingzeit-Timer in Minuten",
-  "old-home-help": "/importOldHomes - verschiebt gespeicherte Home-Standorte von jhome 1.05 und fr�her auf den neuen Speichertyp. F�hre dies nur einmal aus, wenn du dieses Mod von Bunny's Just Home 1.0.5 oder fr�her aktualisierst.",
-  "back-help": "/back - Gehe zum letzten Ort zur�ck, an dem du /home, /back verwendet hast oder gestorben bist",
-  "spawn-help": "/spawn - Gehe zum Server-Spawn-Punkt zur�ck",
-  "grtp-update": "GRTP-Standort aktualisiert sich alle {0} Minuten.",
-  "grtp-radius": "Teleport-Radius: {0} Bl�cke",
+  "grtp-cooldown": "/grtp cooldown <i>Nummer</i> - Setzt die Häufigkeit, mit der sich der GRTP-Standort in Minuten bewegt",
+  "rtp-cooldown": "/rtp cooldown <i>Nummer</i> - Setzt den Abklingzeit-Timer in Minuten",
+  "old-home-help": "/importOldHomes - verschiebt gespeicherte Häuser von jhome 1.05 und früher auf den neuen Speichertyp. Führe dies nur einmal aus, wenn du dieses Mod von Bunny's Just Home 1.0.5 oder früher aktualisierst.",
+  "back-help": "/back - kehrt zum letzten Ort zurück, an dem du /home, /back verwendet oder gestorben bist",
+  "spawn-help": "/spawn - kehrt zum vom Server festgelegten Spawn-Punkt zurück",
+  "grtp-update": "GRTP-Standort wird alle {0} Minuten aktualisiert.",
+  "grtp-radius": "Teleport-Radius: {0} Blöcke",
   "grtp-cmd-help": "/grtp - teleportiert den Spieler zum Gruppen-Teleport-Punkt",
-  "grtp-help-radius": "/grtp radius <i>Nummer</i> - legt den Teleport-Radius fest",
-  "grtp-help-now": "/grtp now - Aktualisiert den GRTP beim n�chsten 1-Minuten-Takt",
-
-  "dawn-help": "/rs dawn <i>Nummer</i> - Legt die Stunde fest, zu der Rising Sun die Nacht voranschreitet",
-  "dusk-help": "/rs dusk <i>Nummer</i> - Legt die Stunde fest, zu der Rising Sun die Nacht beginnt",
-  "dm-help": "/dm <i>Spielername NachrichtF�rSpieler</i> - sendet eine Nachricht an einen Spieler.",
-  "ssm-add-help": "/ssm add <i>Server-Nachricht</i> - f�gt eine Nachricht zur Liste der Server-Nachrichten hinzu",
-  "ssm-list-help": "/ssm list - listet die vorhandenen Server-Nachrichten auf",
-  "ssm-remove-help": "/ssm remove <i>Nummer aus /ssm list</i> - entfernt die Nachricht mit der angegebenen Nummer",
-  "ssm-freq-help": "/ssm frequency <i>Nummer in Minuten</i> - �ndert die Dauer in Minuten zwischen den Nachrichten",
-  "ssm-now-help": "/ssm now - sendet die n�chste Server-Nachricht in der Reihe",
-  "tpt-help": "/tpt Spielername - Fragt einen Spieler, ob du dich zu ihnen teleportieren darfst",
-  "tpaccept-help": "/tpaccept - akzeptiert eine TPT-Anfrage und teleportiert den Spieler zu dir",
-  "tpdeny-help": "/tpdeny - lehnt eine TPT-Anfrage ab",
-  "bunny-bell-help": "Bunny-Glocke erzeugt ein -Kling- Ger�usch, wenn dein Name eingegeben wird",
-  "rtp-help": "/rtp - Teleportiert den Spieler zu einem zuf�lligen Ort",
+  "grtp-help-radius": "/grtp radius <i>Nummer</i> - setzt den Teleport-Radius",
+  "grtp-help-now": "/grtp now - Setzt GRTP so, dass es beim nächsten 1-Minuten-Tick aktualisiert wird",
+  "dawn-help": "/rs dawn <i>Nummer</i> - Setzt die Stunde, zu der Rising Sun die Nacht vorantreibt",
+  "dusk-help": "/rs dusk <i>Nummer</i> - Setzt die Stunde, die Rising Sun als Nacht betrachtet",
+  "dm-help": "/dm <i>Spielername NachrichtAnSpieler</i> - sendet eine Nachricht an einen Spieler.",
+  "ssm-add-help": "/ssm add <i>Servernachricht</i> - fügt eine Nachricht zur Liste der Servernachrichten hinzu",
+  "ssm-list-help": "/ssm list - listet die vorhandenen Servernachrichten auf",
+  "ssm-remove-help": "/ssm remove <i>Nummer von /ssm list</i> - entfernt die Nachricht von der Nummer in der Liste",
+  "ssm-freq-help": "/ssm frequency <i>Nummer in Minuten</i> - ändert die Dauer der Minuten zwischen den Nachrichten",
+  "ssm-now-help": "/ssm now - sendet die nächste Servernachricht in der Reihe",
+  "tpt-help": "/tpt Spielername - Fragt einen Spieler, ob du dich zu ihm teleportieren kannst",
+  "tpaccept-help": "/tpaccept - akzeptiert eine tpt-Anfrage und teleportiert den Spieler zu dir",
+  "tpdeny-help": "/tpdeny - lehnt eine tpt-Anfrage ab",
+  "bunny-bell-help": "Bunny bell erzeugt ein -ding-, wenn dein Name getippt wird",
+  "rtp-help": "/rtp - Teleportiert den Spieler zu einem zufälligen Standort",
 
   //Iron Man
-  "ironman-use-confirm": "Verwende /ironman confirm, um den Iron-Man-Modus zu starten. <font color=red><strong>WARNUNG: Du verlierst alle Gegenst�nde auf deinem Charakter.</strong></font> Wenn du im Iron-Man-Modus stirbst, verlierst du deinen Fortschritt.",
+  "ironman-use-confirm": "Verwende /ironman confirm, um den Iron Man-Modus zu starten. <font color=red><strong>WARNUNG: Du wirst alle Gegenstände auf deinem Charakter verlieren.</strong></font> Wenn du im Iron Man-Modus stirbst, verlierst du deinen Fortschritt.",
   "ironman-already-joined": "Du bist bereits ein Ironman.",
-  "ironman-confirmed": "Du hast den Iron-Man-Modus aktiviert. Du wirst den Iron-Man-Modus bei Tod verlassen.",
-  "ironman-ended": "Ironman {0} ist gestorben. �berpr�fe die Bestenliste, um ihren Punktestand zu sehen.",
+  "ironman-confirmed": "Du hast den Ironman-Modus aktiviert. Du verlässt den Ironman-Modus beim Tod.",
+  "ironman-ended": "Ironman {0} ist gestorben. Überprüfe die Bestenlisten, um seine Punktzahl zu sehen.",
   "ironman-teleporting": "Du wirst jetzt zu deinem Ironman-Standort teleportiert.",
-  "ironman-teleport-wait": "Bitte warte, w�hrend die Ironman-Chunks geladen werden.",
-  "ironman-new-personal-highscore": "Ironman {0} hat einen neuen pers�nlichen H�chststand erreicht! Verwende /ironman highscores, um die Bestenliste zu sehen.",
-  "ironman-no-new-score": "Du hast deinen pers�nlichen H�chststand von {0} Tagen nicht �bertroffen. Versuche es erneut!",
+  "ironman-teleport-wait": "Bitte warte, während deine Ironman-Chunks geladen werden",
+  "ironman-new-personal-highscore": "Ironman {0} hat eine neue persönliche Bestleistung erreicht! /ironman highscores, um die Bestenliste zu sehen.",
+  "ironman-no-new-score": "Du hast deine Bestleistung von {0} Tagen nicht übertroffen. Versuche es erneut!",
   "ironman-first": "Du hast deinen ersten Ironman abgeschlossen!",
   "ironman-highscores-title": "Ironman-Bestenliste",
-  "ironman-commands-disabled": "Alle Teleportbefehle sind im Iron-Man-Modus deaktiviert.",
+  "ironman-commands-disabled": "Alle Teleport-Befehle sind im Iron Man-Modus deaktiviert.",
 
-  //Teleportkosten
-  "empty-slot": "Die Hand ist leer. Bitte platziere {1}x {0} in deinem aktiven Hotbar-Slot und versuche es erneut. ",
+  //Teleport Costs
+  "empty-slot": "Hand ist leer. Bitte platziere {1}x {0} in deinem aktiven Hotbar-Slot und versuche es erneut.",
   "wrong-item": "Falscher Gegenstand. Bitte halte {1}x {0} in deiner Hand und versuche es erneut.",
-  "not-enough": "Dieser Teleport kostet {1}, und du hast {0} in deiner Hand.",
-  "cost-qty-updated": "Die Kostenmenge f�r {0} wurde auf {1} festgelegt.",
-  "tp-dont-move": "Bewege deine Bezahlung nicht aus der Hotbar, bis der TP akzeptiert ist, sonst brichst du den TP ab.",
-  "tp-need-item": "Bitte gib den vollst�ndigen Gegenstandscodes ein. Beispiel: game:gear-rusty oder roadworks:roadblock-free-asphalt",
-  "cost-itm-updated": "Der Kostengegenstand f�r {0} wurde auf {1} aktualisiert.",
+  "not-enough": "Dieser Teleport kostet {1} und du hast {0} in deiner Hand.",
+  "cost-qty-updated": "Die Kostenmenge für {0} wurde auf {1} festgelegt",
+  "tp-dont-move": "Bewege deine Zahlung nicht aus der Hotbar, bis der TP akzeptiert wird, sonst wird der TP abgebrochen.",
+  "tp-need-item": "Bitte gib den vollständigen Artikelcode ein. Beispiel: game:gear-rusty oder roadworks:roadblock-free-asphalt",
+  "cost-itm-updated": "Der Kostenartikel für {0} wurde auf {1} aktualisiert",
   "cost-remove": "Entferne {1} {0} aus dem Inventar.",
 
-  "module-costqty": "{0} costqty <i>Zahl</i> - setzt die Teleportkosten f�r {0}",
-  "module-costitm": "{0} costitem <i>Gegenstandcode</i> - legt den verbrauchten Gegenstand f�r die Verwendung von {0} fest. Beispiel Gegenstandcode: game:gear-rusty",
+  "module-costqty": "{0} costqty <i>Nummer</i> - setzt die Teleportkosten für {0}",
+  "module-costitm": "{0} costitem <i>Artikelcode</i> - setzt den verbrauchten Artikel für die Verwendung von {0}. Beispiel Artikelcode: game:gear-rusty",
 
-  //Cooldown-Befehl
+  //cooldown command
   "cooldown-command": "{0}: {1} verbleibende Minuten.",
   "cooldowns": "Abklingzeiten:",
   "no-cooldowns": "Keine aktiven Abklingzeiten",
 
-  //Version 1.0.6
-  "home-number": "Bitte gib die Nummer des Homes ein, zu dem du teleportieren m�chtest.",
-  "home-save": "Bitte gib die Nummer des Homes ein, das du speichern m�chtest.",
-  "wiped": "tptDict und waitDict wurden gel�scht.",
-  "home-limit-updated": "Die Anzahl der Homes, die ein Spieler setzen kann, wurde auf {0} aktualisiert.",
-  "reply-help": "/reply - sendet eine Nachricht an den letzten Spieler, der dir eine Nachricht gesendet hat",
-  "no-reply": "Du hast keine Nachricht erhalten, auf die du antworten kannst.",
-  "home-limit-help": "/home limit <i>Zahl</i> - legt die Anzahl der Homes fest, die jeder Spieler setzen kann",
-  "no-homes": "Du hast keine Homes im Slot {0}, die gel�scht werden k�nnen.",
-  "home-removed": "Home-Nummer {0} wurde entfernt.",
-  "no-home": "Du hast keine gesetzten Homes. Verwende /sethome, um ein Home zu setzen.",
-  "help-home-delete": "<Nummer> - L�scht das Home an der angegebenen Nummer",
-  "tpt-help-wipe": "/tpt wipe - L�scht alle Spieler aus TptDict und WaitDict. Versuche dies, wenn ein Spieler sich nicht teleportieren kann oder nicht zu ihm teleportiert werden kann.",
-  "not-enough-permissions": "Du hast nicht gen�gend Berechtigungen, um diesen Befehl auszuf�hren. Privileg: {0}"
+  //version 1.0.6
+  "home-number": "Bitte gib die Nummer des Hauses ein, zu dem du dich teleportieren möchtest.",
+  "home-save": "Bitte gib die Nummer des Hauses ein, das du speichern möchtest.",
+  "wiped": "tptDict und waitDict wurden gelöscht.",
+  "home-limit-updated": "Die Anzahl der Häuser, die ein Spieler setzen kann, wurde auf {0} aktualisiert.",
+  "reply-help": "/reply - sendet eine Nachricht an den letzten Spieler, der Ihnen eine Nachricht gesendet hat.",
+  "no-reply": "Sie haben keine Nachricht erhalten, auf die Sie antworten können.",
+  "home-limit-help": "/home limit <i>number</i> - legt die Anzahl der Häuser fest, die jeder Spieler setzen kann.",
+  "no-homes": "Sie haben keine Häuser im Slot {0} zum Löschen.",
+  "home-removed": "Haus Nummer {0} wurde entfernt.",
+  "no-home": "Sie haben keine gesetzten Häuser. Verwenden Sie /sethome, um ein Haus zu setzen.",
+  "help-home-delete": "<number> - Löscht das Haus, das an der angegebenen Nummer gesetzt wurde.",
+  "tpt-help-wipe": "/tpt wipe - Löscht alle Spieler aus TptDict und WaitDict. Versuchen Sie dies, wenn ein Spieler nicht TPT kann oder nicht zu TPT werden kann.",
+  "not-enough-permissions": "Sie haben nicht genügend Berechtigungen, um diesen Befehl auszuführen. Privileg: {0}",
+
+  //Command Descriptions version 2.0.0
+  "desc-bsu": "Informationen zu Bunny's Server Utility Mod",
+  "desc-back": "Teleportiert den Spieler zurück zu seinem letzten bekannten Standort",
+  "desc-home": "Teleportiert den Spieler zu seinem Zuhause",
+  "desc-sethome": "Setzt das Zuhause des Spielers",
+  "desc-spawn": "Teleportiert den Spieler zum Spawnpunkt des Servers",
+  "desc-grtp": "Teleportiert den Spieler zum Gruppenteleportpunkt",
+  "desc-tpcost": "Aktiviert oder deaktiviert die Kosten für Teleports.",
+  "desc-joinannounce": "Kündigt einen neuen Spieler auf dem Server an, wenn er beitritt",
+  "desc-rs": "Rising Sun Konfiguration",
+  "desc-bb": "Bunny Bell Konfiguration",
+  "desc-removedeny": "Entfernt eine Privilegverweigerung von einem Spieler",
+  "desc-cooldowns": "Liste der aktuellen Abklingzeiten des Benutzers",
+  "desc-ssm": "Legt eine Liste von Nachrichten fest, die in regelmäßigen Abständen gesendet werden",
+  "desc-warn": "Weist Warnungen zu, die andere Administratoren über Spieler lesen können, die Probleme verursachen",
+  "desc-tpaccept": "Akzeptiert eine Teleportanfrage von einem Spieler",
+  "desc-tpdeny": "Lehnt eine Teleportanfrage von einem Spieler ab",
+  "desc-tpt": "Fragt einen Spieler, ob Sie zu ihm teleportieren können",
+  "desc-ironman": "Versetzt den Spieler in den Iron Man Schwierigkeitsmodus",
+  "desc-rtp": "Teleportiert den Spieler an einen zufälligen Ort",
+  "desc-dm": "Private Nachricht",
+  "desc-jpm": "Private Nachricht Admin-Berechtigungen"
+
 }

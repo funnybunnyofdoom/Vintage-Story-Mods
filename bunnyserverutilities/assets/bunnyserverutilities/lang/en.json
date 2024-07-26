@@ -39,6 +39,7 @@
   "number-between": "Please enter a number between {0} and {1}.",
   "cooldown-reusable": "{0} cooldown has been updated to {1} minutes.", // {0} = command name {1} = number of minutes
   "cooldown-player-reusable": "Please wait for {0} minutes.",
+  "cooldown-fail": "Cooldown could not be set",
 
   //Import Old Homes
   "importing": "Importing old homes",
@@ -196,5 +197,28 @@
   "no-home": "You have no set homes. use /sethome to set a home",
   "help-home-delete": "<number> - Deletes the home set at the number provided",
   "tpt-help-wipe": "/tpt wipe - Wipes all players from TptDict and WaitDict. Try this if a player can't TPT or can't be TPTed to.",
-  "not-enough-permissions": "You do not have enough permissions to perform this command. Privilege: {0}"
+  "not-enough-permissions": "You do not have enough permissions to perform this command. Privilege: {0}",
+
+  //Command Descriptions version 2.0.0
+  "desc-bsu": "Information regarding Bunny's Server Utility mod",
+  "desc-back": "Teleport the player back to their last known location",
+  "desc-home": "Teleport the player to their home",
+  "desc-sethome": "Set the player's home",
+  "desc-spawn": "Teleport the player to the server's spawn point",
+  "desc-grtp": "Teleport the player to the group teleport point",
+  "desc-tpcost": "Enable or disable item costs for teleports.",
+  "desc-joinannounce": "Announces a new player to the server when they join",
+  "desc-rs": "Rising Sun configuration",
+  "desc-bb": "Bunny Bell configuration",
+  "desc-removedeny": "Removes a privilege denial from a player",
+  "desc-cooldowns": "List of the user's current cooldowns",
+  "desc-ssm": "Sets a list of messages to broadcast on a regular interval",
+  "desc-warn": "Assign warnings for other admins to read about players who cause trouble",
+  "desc-tpaccept": "Accepts a teleport request from a player",
+  "desc-tpdeny": "Denies a teleport request from a player",
+  "desc-tpt": "Asks a player if you can teleport to them",
+  "desc-ironman": "Puts the player into Iron Man difficulty mode",
+  "desc-rtp": "Teleports the player to a random location",
+  "desc-dm": "Private Message",
+  "desc-jpm": "Private Message Admin permissions"
 }

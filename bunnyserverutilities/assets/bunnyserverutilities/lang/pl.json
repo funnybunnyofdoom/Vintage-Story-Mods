@@ -1,111 +1,112 @@
 {
   // back messages
-  "disabled-back": "Wstecz jest wyłączone. Administrator musi użyć /back enable, aby włączyć",
-  "enable-back": "/back zostało włączone",
-  "disable-back": "/back zostało wyłączone",
+  "disabled-back": "Back jest wyłączony. Administrator musi użyć /back enable, aby włączyć",
+  "enable-back": "/back został włączony",
+  "disable-back": "/back został wyłączony",
 
   //home messages
   "home-sethome": "Nowy dom został zapisany.",
-  "disabled-home": "Dom jest wyłączony. Administrator musi użyć /home enable, aby go włączyć",
-  "enable-home": "/home zostało włączone",
-  "disable-home": "/home zostało wyłączone",
+  "disabled-home": "Home jest wyłączony. Administrator musi użyć /home enable, aby włączyć",
+  "enable-home": "/home został włączony",
+  "disable-home": "/home został wyłączony",
   "teleporting-home": "Teleportowanie do zapisanego domu",
-  "no-home-saved": "Nie ma zapisanego domu. Teleportowanie do środka świata. Użyj /sethome, aby ustawić dom.",
-  "teleporting-back": "Powracanie do ostatniej lokalizacji.",
-  "no-back-saved": "Brak lokalizacji powrotnej. Użyj /home, aby utworzyć lokalizację powrotną.",
-  "on-death-back": "Użyj /back, aby wrócić do miejsca śmierci.",
+  "no-home-saved": "Brak zapisanego domu. Teleportowanie do centrum świata. Użyj /sethome, aby ustawić dom.",
+  "teleporting-back": "Powrót do ostatniej lokalizacji.",
+  "no-back-saved": "Brak zapisanej lokalizacji. Użyj /home, aby utworzyć lokalizację powrotu.",
+  "on-death-back": "Użyj /back, aby wrócić do punktu śmierci.",
 
   //GRTP messages
-  "chunkloading-grtp": "Ładowanie obszaru. Spróbuj ponownie za kilka sekund",
-  "notset-grtp": "GRTP nie zostało jeszcze ustawione. Czy serwer właśnie wystartował?",
+  "chunkloading-grtp": "Ładowanie chunku. Spróbuj ponownie za kilka sekund",
+  "notset-grtp": "GRTP nie został jeszcze ustawiony. Czy serwer właśnie się uruchomił?",
   "cooldown-set-grtp": "Czas odnowienia GRTP został zaktualizowany do {0} minut.", //{0} = wartość czasu odnowienia
   "set-radius-grtp": "Promień GRTP został zaktualizowany do {0} bloków.", //{0} = wartość promienia
-  "wait-now-grtp": "GRTP zostało teraz wydane. Prosimy odczekać kilka minut, aby zaktualizować lokalizację.",
-  "teleporting-grtp": "Teleportowanie do losowej lokalizacji. Nowa lokalizacja zostanie wygenerowana w ciągu 1 minuty.",
-  "teleporting-grtp-2": "Teleportowanie do losowej lokalizacji. Inni gracze mogą dołączyć do Ciebie na {0} minut.",
-  "new-grtp": "Wygenerowano nowe koordynaty /grtp. Nowa lokalizacja będzie dostępna za {0} minut.",
+  "wait-now-grtp": "GRTP teraz wydany. Proszę poczekać do kilku minut na aktualizację lokalizacji.",
+  "teleporting-grtp": "Teleportowanie do losowej lokalizacji. Nowa lokalizacja zostanie wygenerowana w ciągu 1 minuty",
+  "teleporting-grtp-2": "Teleportowanie do losowej lokalizacji. Inni mogą dołączyć do ciebie przez {0} minut.",
+  "new-grtp": "Nowe współrzędne /grtp wygenerowane. Nowa lokalizacja będzie dostępna za {0} minut.",
 
   //re-usable messages
-  "greater-than": "Proszę podać liczbę większą niż {0} minut.", //{0} = liczba
-  "non-negative-number": "Proszę podać nieujemną liczbę.",
-  "disabled": "{0} jest wyłączone. Administrator musi użyć /{0} enable, aby je włączyć.", //{0} = ciąg komendy
-  "disabled-2": "{0} jest wyłączone przez administratora.",
-  "enable": "{0} zostało włączone.", //{0} = ciąg komendy
-  "disable": "{0} zostało wyłączone.", //{0} = ciąg komendy
+  "greater-than": "Proszę wprowadzić liczbę większą niż {0} w minutach.", //{0} = liczba
+  "non-negative-number": "Proszę wprowadzić liczbę nieujemną.",
+  "disabled": "{0} jest wyłączony. Administrator musi użyć /{0} enable, aby włączyć tę komendę.", //{0} = ciąg komendy
+  "disabled-2": "{0} jest wyłączony przez administratora.",
+  "enable": "{0} został włączony.", //{0} = ciąg komendy
+  "disable": "{0} został wyłączony.", //{0} = ciąg komendy
   "no-permission": "Nie masz uprawnień do użycia tej komendy.",
   "player": "gracz",
-  "player-not-found": "Nie można znaleźć gracza. Sprawdź poprawność pisowni i spróbuj ponownie.",
-  "number-or-greater": "Proszę podać liczbę {0} lub większą.",
-  "number-between": "Proszę podać liczbę pomiędzy {0} a {1}.",
-  "cooldown-reusable": "Czas odnowienia {0} został zaktualizowany do {1} minut.", // {0} = nazwa komendy, {1} = liczba minut
-  "cooldown-player-reusable": "Proszę czekać {0} minut.",
+  "player-not-found": "Nie znaleziono gracza. Proszę sprawdzić pisownię i spróbować ponownie.",
+  "number-or-greater": "Proszę wprowadzić liczbę {0} lub większą.",
+  "number-between": "Proszę wprowadzić liczbę między {0} a {1}.",
+  "cooldown-reusable": "Czas odnowienia {0} został zaktualizowany do {1} minut.", // {0} = nazwa komendy {1} = liczba minut
+  "cooldown-player-reusable": "Proszę poczekać {0} minut.",
+  "cooldown-fail": "Nie udało się ustawić czasu odnowienia",
 
   //Import Old Homes
   "importing": "Importowanie starych domów",
   "old-home-config-size": "Rozmiar konfiguracji domu: ",
-  "old-home-imported": "Stare domy zostały zaimportowane",
-  "no-old-homes": "Brak prawidłowych konfiguracji domów do zaimportowania.",
-  "home-already-imported": "Stare domy zostały już zaimportowane. Ta komenda powinna być używana tylko raz.",
+  "old-home-imported": "Stare domy zaimportowane",
+  "no-old-homes": "Brak ważnych konfiguracji domów do zaimportowania.",
+  "home-already-imported": "Stare domy zostały już zaimportowane. Ta komenda powinna być użyta tylko raz.",
 
   //Rising Sun messages
-  "between-hours": "Proszę podać godzinę pomiędzy 1 a 23.",
-  "smaller-dusk": "Proszę podać liczbę mniejszą niż zmierzch: ",
-  "larger-dawn": "Proszę podać liczbę większą niż świt: ",
-  "dawn-updated": "Czas świtu został zaktualizowany na ",
-  "dusk-updated": "Czas zmierzchu został zaktualizowany na ",
-  "welcome-rs": "Słońce wschodzi dla nowego gracza! Witaj {0}",
+  "between-hours": "Proszę wprowadzić godzinę między 1 a 23.",
+  "smaller-dusk": "Proszę wprowadzić liczbę mniejszą niż zmierzch: ",
+  "larger-dawn": "Proszę wprowadzić liczbę większą niż świt: ",
+  "dawn-updated": "Czas świtu został zaktualizowany do ",
+  "dusk-updated": "Czas zmierzchu został zaktualizowany do ",
+  "welcome-rs": "Słońce wzeszło na nowego gracza! Witamy {0}",
 
   //Private Message messages
-  "include-message": "Proszę wpisać wiadomość.",
-  "include-player": "Proszę wpisać nazwę gracza.",
+  "include-message": "Proszę dołączyć wiadomość.",
+  "include-player": "Proszę dołączyć nazwę gracza.",
 
   //Simple Server Message
   "add-message": "Dodano wiadomość",
   "remove-message": "Usunięto wiadomość",
-  "remove-message-help": "Proszę użyć /ssm list, a następnie /ssm remove numer, aby usunąć wiadomość",
-  "remove-message-help-2": "Proszę użyć /ssm remove Numer, aby usunąć wiadomość",
-  "list-of-messages": "Lista obecnych wiadomości serwera: ",
+  "remove-message-help": "Proszę użyć /ssm list, a następnie /ssm remove number, aby usunąć wiadomość",
+  "remove-message-help-2": "Proszę użyć /ssm remove Number, aby usunąć wiadomość",
+  "list-of-messages": "Lista aktualnych wiadomości serwera: ",
   "message-frequency": "Wiadomości będą nadawane co {0} minut",
 
   //Teleport To
   "tp-deny-player": "Twoje żądanie teleportacji zostało odrzucone.",
-  "tp-deny-target": "Teleport To odrzucone",
+  "tp-deny-target": "Teleportacja odrzucona",
   "no-tp-deny": "Nie masz aktywnych żądań do odrzucenia",
   "no-tp-accept": "Nie masz aktywnych żądań do zaakceptowania",
-  "teleport-accepted": "Twoje żądanie teleportacji zostało zaakceptowane. Czekaj, aż zostaniesz teleportowany.",
-  "teleport-accepted-user": "Teleport To zaakceptowane",
-  "need-playername-tpt": "Proszę podać nazwę gracza, do którego chcesz się teleportować.",
-  "wait-for-tp": "Czekaj. Zostaniesz teleportowany, gdy drugi gracz zaakceptuje teleportację",
-  "tp-to-you": "{0} chce się do Ciebie teleportować. Wpisz /tpaccept, aby zaakceptować.", //{0} = nazwa gracza
-  "active-tp": "Docelowy gracz ma już inne aktywne żądanie TP. Spróbuj ponownie wkrótce.",
+  "teleport-accepted": "Twoje żądanie teleportacji zostało zaakceptowane. Proszę czekać na teleportację.",
+  "teleport-accepted-user": "Teleportacja zaakceptowana",
+  "need-playername-tpt": "Proszę wprowadzić nazwę gracza, do którego chcesz się teleportować.",
+  "wait-for-tp": "Proszę czekać. Zostaniesz teleportowany, gdy drugi gracz zaakceptuje teleportację",
+  "tp-to-you": "{0} chciałby się do ciebie teleportować. Proszę wpisać /tpaccept, aby zaakceptować.", //{0} = nazwa gracza
+  "active-tp": "Gracz docelowy ma już aktywne inne żądanie TP. Spróbuj ponownie za chwilę.",
   "pending-tp": "Masz już oczekujące żądanie teleportacji.",
-  "expired-tp": "Twoje żądanie TP do gracza wygasło",
+  "expired-tp": "Twoje TP do gracza wygasło",
 
   //Random Teleport
   "rtp-cooldown-set": "Czas odnowienia RTP ustawiony na ",
-  "rtp-wait": "Proszę czekać, aż zostaną załadowane obszary docelowe.",
-  "rtp-wait-2": "Obszary wciąż są generowane, proszę czekać.",
-  "rtp-cooldown-timer": "Możesz ponownie teleportować się za {0}",
-  "set-radius-rtp": "Promień RTP został zaktualizowany na {0} bloków.", //{0} = wartość promienia
+  "rtp-wait": "Proszę czekać, aż docelowe chunky zostaną załadowane.",
+  "rtp-wait-2": "Chunky nadal są generowane, proszę czekać.",
+  "rtp-cooldown-timer": "Możesz się teleportować ponownie za {0} minut.",
+  "set-radius-rtp": "Promień RTP został zaktualizowany do {0} bloków.", //{0} = wartość promienia
   "new-rtp": "Teleportowanie do losowej lokalizacji.",
 
   //Remove Denial
-  "remove-denial": "Usuwanie blokady dla {0} od {1}.",
+  "remove-denial": "Usuwanie odmowy {0} od {1}.",
 
   //warn
   "warn-player": "Gracz: ",
   "warn-warnings": "Ostrzeżenia: ",
   "warn-warning": "Ostrzeżenie: ",
   "warn-reasons": "Powody: ",
-  "warn-help": "Użyj /warn list numer, aby zobaczyć ostrzeżenia dla danego gracza",
+  "warn-help": "Użyj /warn list num, aby zobaczyć ostrzeżenia dla tego gracza",
 
   //spawn
-  "teleporting-spawn": "Teleportujesz się do punktu spawnu.",
+  "teleporting-spawn": "Teleportowanie do spawnu.",
 
-  //Default welcome message:
-  "default-welcome": "Witamy na serwerze", //This is the welcome displayed by Simple Server Messages if not configured.
+  //Default welcome message: 
+  "default-welcome": "Witamy na serwerze", //To jest powitanie wyświetlane przez Simple Server Messages, jeśli nie jest skonfigurowane.
 
-  "welcome-player": "Proszę przywitać <font color=\"white\"><strong>{0}</strong></font> na serwerze!\"",
+  "welcome-player": "Proszę powitać <font color=\"white\"><strong>{0}</strong></font> na serwerze!",
 
   //Player list on join
   "players-online": "Gracze online: ",
@@ -113,88 +114,111 @@
 
   //Help command
   "bsu-commands": "Komendy Bunny's Server Utility:",
-  "bsu-help": "-Użyj /bsu help, aby zobaczyć pomoc dla wszystkich komend narzędzia Bunny Server",
+  "bsu-help": "-Użyj /bsu help, aby zobaczyć pomoc dla wszystkich komend Bunny Server utility",
   "bsu-version": "Użyj {0} dla wersji moda",
-  "help-removedeny": "- usuń blokadę uprawnień dla gracza.",
+  "help-removedeny": "- usuń odmowę przywileju od gracza.",
   "module-commands": "---Komendy {0}---", //{0} = nazwa modułu
-  "help-sethome": "<i>numer</i>- Ustawia Twoją lokalizację jako domowy teleport dla podanego numeru",
-  "help-home": "<i>numer</i> - teleportuje Cię do ustawionej lokalizacji domowej dla podanego numeru",
-  "admin-commands": "{0} komendy administratora:", //{0} = nazwa modułu
-  "module-disable": "{0} disable - wyłącz komendę {0}",
+  "help-sethome": "<i>numer</i>- Ustawia twoją lokalizację jako teleport do domu dla podanego numeru",
+  "help-home": "<i>numer</i> - teleportuje cię do ustawionej lokalizacji domu dla podanego numeru",
+  "admin-commands": "Komendy admina {0}:", //{0} = nazwa modułu
+  "module-disable": "{0} disable - wyłącza komendę {0}",
   "module-disable-2": "{0} disable - wyłącza moduł {1}.",
-  "module-enable": "{0} enable - włącz komendę {0}",
+  "module-enable": "{0} enable - włącza komendę {0}",
   "module-enable-2": "{0} enable - włącza moduł {1}",
-  "ja-enable": "/joinannounce enable - włącza wysyłanie wiadomości do graczy przy ich pierwszym dołączeniu",
-  "ja-disable": "/joinannounce disable - wyłącza wysyłanie wiadomości do graczy przy ich pierwszym dołączeniu",
+  "ja-enable": "/joinannounce enable - włącza wysyłanie wiadomości do graczy przy pierwszym dołączeniu",
+  "ja-disable": "/joinannounce disable - wyłącza wysyłanie wiadomości do graczy przy pierwszym dołączeniu",
   "module-cooldown": "{0} playercooldown <i>numer</i> - ustawia czas odnowienia",
-  "grtp-cooldown": "/grtp cooldown <i>numer</i> - Ustawia częstotliwość poruszania się lokalizacji GRTP w minutach",
+  "grtp-cooldown": "/grtp cooldown <i>numer</i> - Ustawia częstotliwość zmiany lokalizacji GRTP w minutach",
   "rtp-cooldown": "/rtp cooldown <i>numer</i> - Ustawia czas odnowienia w minutach",
-  "old-home-help": "/importOldHomes - przenosi zapisane punkty domowe z jhome 1.05 i wcześniejszych do nowego typu zapisu. Uruchom to tylko raz, jeśli aktualizujesz ten mod z Bunny's Just Home 1.0.5 lub wcześniejszego.",
-  "back-help": "/back - wraca do ostatniego miejsca, w którym użyto komendy /home, /back lub umarło się",
-  "spawn-help": "/spawn - wraca do punktu spawnu ustawionego na serwerze",
+  "old-home-help": "/importOldHomes - przenosi zapisane domy z jhome 1.05 i wcześniejszych do nowego typu zapisu. Uruchom to tylko raz, jeśli aktualizujesz ten mod z Bunny's Just Home 1.0.5 lub wcześniejszych.",
+  "back-help": "/back - powrót do ostatniego miejsca, w którym użyłeś /home, /back lub zginąłeś",
+  "spawn-help": "/spawn - powrót do ustawionego punktu spawnu serwera",
   "grtp-update": "Lokalizacja GRTP aktualizuje się co {0} minut.",
   "grtp-radius": "Promień teleportacji: {0} bloków",
-  "grtp-cmd-help": "/grtp - teleportuje gracza do punktu grupowego teleportu",
+  "grtp-cmd-help": "/grtp - teleportuje gracza do punktu grupowej teleportacji",
   "grtp-help-radius": "/grtp radius <i>numer</i> - ustawia promień teleportacji",
-  "grtp-help-now": "/grtp now - Ustawia aktualizację GRTP w następnej minucie",
+  "grtp-help-now": "/grtp now - Ustawia GRTP do aktualizacji przy następnym tyknięciu 1 minuty",
 
-  "dawn-help": "/rs dawn <i>numer</i> - Ustawia godzinę, o której Rising Sun przyspiesza noc",
+  "dawn-help": "/rs dawn <i>numer</i> - Ustawia godzinę, o której Rising Sun przesunie noc",
   "dusk-help": "/rs dusk <i>numer</i> - Ustawia godzinę, którą Rising Sun uważa za noc",
-  "dm-help": "/dm <i>nazwagracza wiadomośćdolinkowanego gracza</i> - wysyła wiadomość do gracza.",
-  "ssm-add-help": "/ssm add <i>Wiadomość serwera</i> - dodaje wiadomość do listy wiadomości serwera",
+  "dm-help": "/dm <i>nazwa gracza wiadomośćDoGracza</i> - wysyła wiadomość do gracza.",
+  "ssm-add-help": "/ssm add <i>Wiadomość Serwera</i> - dodaje wiadomość do listy wiadomości serwera",
   "ssm-list-help": "/ssm list - wyświetla istniejące wiadomości serwera",
-  "ssm-remove-help": "/ssm remove <i>numer z /ssm list</i> - usuwa wiadomość o numerze z listy",
-  "ssm-freq-help": "/ssm frequency <i>numer w minutach</i> - zmienia czas między wiadomościami w minutach",
-  "ssm-now-help": "/ssm now - emituje następną wiadomość serwera z kolejki",
-  "tpt-help": "/tpt nazwagracza - Pyta gracza, czy możesz się do niego teleportować",
-  "tpaccept-help": "/tpaccept - akceptuje żądanie teleportacji i teleportuje gracza do Ciebie",
+  "ssm-remove-help": "/ssm remove <i>numer z /ssm list</i> - usuwa wiadomość z numeru na liście",
+  "ssm-freq-help": "/ssm frequency <i>numer w minutach</i> - zmienia czas trwania między wiadomościami",
+  "ssm-now-help": "/ssm now - nadaje następną wiadomość serwera w kolejce",
+  "tpt-help": "/tpt nazwa gracza - Pyta gracza, czy możesz się do niego teleportować",
+  "tpaccept-help": "/tpaccept - akceptuje żądanie teleportacji i teleportuje gracza do ciebie",
   "tpdeny-help": "/tpdeny - odrzuca żądanie teleportacji",
-  "bunny-bell-help": "Dzwonek Bunny powoduje -ding-, gdy jest wpisywane Twoje imię",
-  "rtp-help": "/rtp - teleportuje gracza do losowej lokalizacji",
+  "bunny-bell-help": "Bunny bell tworzy -ding- gdy twoje imię jest wpisane",
+  "rtp-help": "/rtp - Teleportuje gracza do losowej lokalizacji",
 
   //Iron Man
-  "ironman-use-confirm": "Użyj /ironman confirm, aby rozpocząć tryb Iron Man. <font color=red><strong>OSTRZEŻENIE: Stracisz wszystkie przedmioty na swojej postaci.</strong></font> Jeśli umrzesz w trybie Iron Man, stracisz swój postęp.",
-  "ironman-already-joined": "Jesteś już graczem w trybie Iron Man.",
-  "ironman-confirmed": "Aktywowano tryb Iron Man. Opuszczisz tryb Iron Man po śmierci.",
-  "ironman-ended": "Gracz Iron Man {0} zginął. Sprawdź tablicę wyników, aby zobaczyć jego wynik.",
-  "ironman-teleporting": "Aktualnie teleportujesz się do lokalizacji Iron Man.",
-  "ironman-teleport-wait": "Proszę czekać, aż wczytają się chunki Iron Man.",
-  "ironman-new-personal-highscore": "Gracz Iron Man {0} osiągnął nowy osobisty rekord! Użyj /ironman highscores, aby zobaczyć tablicę wyników.",
-  "ironman-no-new-score": "Nie udało Ci się pobić swojego rekordu wynoszącego {0} dni. Spróbuj ponownie!",
-  "ironman-first": "Ukończyłeś swój pierwszy tryb Iron Man!",
-  "ironman-highscores-title": "Tablica wyników Iron Man",
+  "ironman-use-confirm": "Użyj /ironman confirm, aby rozpocząć tryb iron man. <font color=red><strong>OSTRZEŻENIE: Stracisz wszystkie przedmioty na swojej postaci.</strong></font> Jeśli zginiesz w trybie Iron Man, stracisz swoje postępy.",
+  "ironman-already-joined": "Jesteś już ironmanem.",
+  "ironman-confirmed": "Aktywowałeś tryb Ironman. Opuszczasz tryb Ironman po śmierci.",
+  "ironman-ended": "Ironman {0} zginął. Sprawdź tablicę wyników, aby zobaczyć jego wynik.",
+  "ironman-teleporting": "Teraz teleportujesz się do swojej lokalizacji ironman.",
+  "ironman-teleport-wait": "Proszę czekać, aż twoje chunky Ironman zostaną załadowane",
+  "ironman-new-personal-highscore": "Ironman {0} osiągnął nowy osobisty rekord! /ironman highscores, aby zobaczyć tablicę wyników.",
+  "ironman-no-new-score": "Nie pobiłeś swojego rekordu {0} dni. Spróbuj ponownie!",
+  "ironman-first": "Ukończyłeś swój pierwszy Ironman!",
+  "ironman-highscores-title": "Tablica wyników Ironman",
   "ironman-commands-disabled": "Wszystkie komendy teleportacji są wyłączone w trybie Iron Man.",
 
   //Teleport Costs
-  "empty-slot": "Ręka jest pusta. Umieść {1}x {0} w swoim aktywnym slocie na pasku narzędzi i spróbuj ponownie.",
-  "wrong-item": "Nieprawidłowy przedmiot. Trzymaj {1}x {0} w ręce i spróbuj ponownie.",
-  "not-enough": "Ten teleport kosztuje {1}, a masz {0} w ręce.",
+  "empty-slot": "Ręka jest pusta. Proszę umieścić {1}x {0} w aktywnym slocie paska szybkiego dostępu i spróbować ponownie.",
+  "wrong-item": "Nieprawidłowy przedmiot. Proszę trzymać {1}x {0} w ręce i spróbować ponownie.",
+  "not-enough": "Ta teleportacja kosztuje {1}, a masz {0} w ręce.",
   "cost-qty-updated": "Ilość kosztu dla {0} została ustawiona na {1}",
-  "tp-dont-move": "Nie poruszaj płatności z paska narzędzi, dopóki teleportacja nie zostanie zaakceptowana, w przeciwnym razie anulujesz teleportację.",
-  "tp-need-item": "Wprowadź pełny kod przedmiotu. Przykład: game:gear-rusty lub roadworks:roadblock-free-asphalt",
-  "cost-itm-updated": "Przedmiot kosztu dla {0} został zaktualizowany na {1}",
-  "cost-remove": "Usuwanie {1} {0} z inwentarza.",
+  "tp-dont-move": "Nie przenoś swojej płatności z paska szybkiego dostępu, dopóki TP nie zostanie zaakceptowane, w przeciwnym razie anulujesz TP.",
+  "tp-need-item": "Proszę wprowadzić pełny kod przedmiotu. Przykład: game:gear-rusty lub roadworks:roadblock-free-asphalt",
+  "cost-itm-updated": "Przedmiot kosztu dla {0} został zaktualizowany do {1}",
+  "cost-remove": "Usuwanie {1} {0} z ekwipunku.",
 
-  "module-costqty": "{0} costqty <i>liczba</i> - ustawia koszt teleportacji dla {0}",
-  "module-costitm": "{0} costitem <i>kodprzedmiotu</i> - ustawia przedmiot zużywany do użycia {0}. Przykład kodu przedmiotu: game:gear-rusty",
+  "module-costqty": "{0} costqty <i>numer</i> - ustawia koszt teleportacji dla {0}",
+  "module-costitm": "{0} costitem <i>kod przedmiotu</i> - ustawia przedmiot zużywany do użycia {0}. Przykład kodu przedmiotu: game:gear-rusty",
 
   //cooldown commamnd
-  "cooldown-command": "{0}: Pozostało {1} minut(y).",
+  "cooldown-command": "{0}: {1} Pozostałe minuty.",
   "cooldowns": "Czasy odnowienia:",
   "no-cooldowns": "Brak aktywnych czasów odnowienia",
 
   //version 1.0.6
-  "home-number": "Wprowadź numer domu, do którego chcesz się teleportować.",
-  "home-save": "Wprowadź numer domu, który chcesz zapisać.",
-  "wiped": "TptDict i WaitDict zostały wyczyszczone.",
-  "home-limit-updated": "Liczba domów, które gracz może ustawić, została zaktualizowana na {0}.",
-  "reply-help": "/reply - wysyła wiadomość do ostatniego gracza, który wysłał Ci wiadomość",
-  "no-reply": "Nie otrzymałeś wiadomości, na którą mógłbyś odpowiedzieć.",
-  "home-limit-help": "/home limit <i>liczba</i> - ustawia liczbę domów, które gracz może ustawić",
-  "no-homes": "Nie masz domów w slocie {0}, które można usunąć.",
-  "home-removed": "Dom o numerze {0} został usunięty.",
-  "no-home": "Nie ustawiłeś żadnych domów. Użyj komendy /sethome, aby ustawić dom",
-  "help-home-delete": "<numer> - Usuwa dom o podanym numerze",
-  "tpt-help-wipe": "/tpt wipe - Usuwa wszystkich graczy z TptDict i WaitDict. Spróbuj tego, jeśli gracz nie może się teleportować lub nie można go teleportować.",
-  "not-enough-permissions": "Nie masz wystarczających uprawnień do wykonania tej komendy. Uprawnienie: {0}"
+  "home-number": "Proszę wprowadzić numer domu, do którego chcesz się teleportować.",
+  "home-save": "Proszę wprowadzić numer domu, do którego chcesz zapisać.",
+  "wiped": "tptDict i waitDict zostały wyczyszczone.",
+  "home-limit-updated": "Liczba domów, które gracz może ustawić, została zaktualizowana do {0}.",
+  "reply-help": "/reply - wysyła wiadomość do ostatniego gracza, który wysłał ci wiadomość",
+  "no-reply": "Nie otrzymałeś wiadomości, na którą możesz odpowiedzieć.",
+  "home-limit-help": "/home limit <i>numer</i> - ustawia liczbę domów, które każdy gracz może ustawić",
+  "no-homes": "Nie masz domów w slocie {0} do usunięcia.",
+  "home-removed": "Dom numer {0} został usunięty.",
+  "no-home": "Nie masz ustawionych domów. użyj /sethome, aby ustawić dom",
+  "help-home-delete": "<numer> - Usuwa dom ustawiony pod podanym numerem",
+  "tpt-help-wipe": "/tpt wipe - Usuwa wszystkich graczy z TptDict i WaitDict. Spróbuj tego, jeśli gracz nie może TPT lub nie można się do niego TPTować.",
+  "not-enough-permissions": "Nie masz wystarczających uprawnień do wykonania tej komendy. Przywilej: {0}",
+
+  //Command Descriptions version 2.0.0
+  "desc-bsu": "Informacje dotyczące moda Bunny's Server Utility",
+  "desc-back": "Teleportuje gracza z powrotem do jego ostatniej znanej lokalizacji",
+  "desc-home": "Teleportuje gracza do jego domu",
+  "desc-sethome": "Ustawia dom gracza",
+  "desc-spawn": "Teleportuje gracza do punktu spawnu serwera",
+  "desc-grtp": "Teleportuje gracza do punktu grupowej teleportacji",
+  "desc-tpcost": "Włącza lub wyłącza koszty przedmiotów za teleportacje.",
+  "desc-joinannounce": "Ogłasza nowego gracza na serwerze, gdy dołącza",
+  "desc-rs": "Konfiguracja Rising Sun",
+  "desc-bb": "Konfiguracja Bunny Bell",
+  "desc-removedeny": "Usuwa odmowę przywileju od gracza",
+  "desc-cooldowns": "Lista aktualnych czasów odnowienia użytkownika",
+  "desc-ssm": "Ustawia listę wiadomości do nadawania w regularnych odstępach czasu",
+  "desc-warn": "Przypisuje ostrzeżenia dla innych administratorów do przeczytania o graczach, którzy sprawiają problemy",
+  "desc-tpaccept": "Akceptuje żądanie teleportacji od gracza",
+  "desc-tpdeny": "Odrzuca żądanie teleportacji od gracza",
+  "desc-tpt": "Pyta gracza, czy możesz się do niego teleportować",
+  "desc-ironman": "Wprowadza gracza w tryb trudności Iron Man",
+  "desc-rtp": "Teleportuje gracza do losowej lokalizacji",
+  "desc-dm": "Wiadomość prywatna",
+  "desc-jpm": "Uprawnienia administratora wiadomości prywatnych"
 } 

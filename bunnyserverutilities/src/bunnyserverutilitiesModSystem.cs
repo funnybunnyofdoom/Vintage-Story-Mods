@@ -118,19 +118,19 @@ namespace bunnyserverutilities
 
             //Bunny Server Utilities Commands
             api.ChatCommands.Create("bsu")
-                .WithDescription("Information regarding Bunny's Server Utility mod")
+                .WithDescription(Lang.Get("desc-bsu"))
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_bsu));
             api.ChatCommands.Create("bunnyserverutility")
-                .WithDescription("Information regarding Bunny's Server Utility mod")
+                .WithDescription(Lang.Get("desc-bsu"))
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Word("cmd", new string[] { "help", "version", "leave" }))
                 .HandleWith(new OnCommandDelegate(Cmd_bsu));
             api.ChatCommands.Create("bunnyserverutilities")
-                .WithDescription("Information regarding Bunny's Server Utility mod")
+                .WithDescription(Lang.Get("desc-bsu"))
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Word("cmd", new string[] { "help", "version", "leave" }))
@@ -138,13 +138,13 @@ namespace bunnyserverutilities
 
             //Home Commands
             api.ChatCommands.Create("sethome")
-                .WithDescription("Set your current position as home for teleports.")
+                .WithDescription(Lang.Get("desc-sethome"))
                 .RequiresPrivilege(CPrivilege.home)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
                 .HandleWith(new OnCommandDelegate(cmd_sethome));
             api.ChatCommands.Create("home")
-                .WithDescription("Teleport to your set home.")
+                .WithDescription(Lang.Get("desc-home"))
                 .RequiresPrivilege(CPrivilege.home)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
@@ -152,7 +152,7 @@ namespace bunnyserverutilities
 
             //Back Commands
             api.ChatCommands.Create("back")
-                .WithDescription("Return you to the point where you used your last teleport.")
+                .WithDescription(Lang.Get("desc-back"))
                 .RequiresPrivilege(DPrivilege.back)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
@@ -160,7 +160,7 @@ namespace bunnyserverutilities
 
             //Spawn Commands
             api.ChatCommands.Create("spawn")
-                .WithDescription("Teleport to the spawn point of the world.")
+                .WithDescription(Lang.Get("desc-spawn"))
                 .RequiresPrivilege(BPrivilege.spawn)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
@@ -168,7 +168,7 @@ namespace bunnyserverutilities
 
             //tpcost Commands
             api.ChatCommands.Create("tpcost")
-                .WithDescription("Enable or disable item costs for teleports.")
+                .WithDescription(Lang.Get("desc-tpcost"))
                 .RequiresPrivilege(Privilege.controlserver)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
@@ -176,7 +176,7 @@ namespace bunnyserverutilities
 
             //GRTP Commands
             api.ChatCommands.Create("grtp")
-                .WithDescription("Randomly Teleports the player to a group location")
+                .WithDescription(Lang.Get("desc-grtp"))
                 .RequiresPrivilege(APrivilege.grtp)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
@@ -184,7 +184,7 @@ namespace bunnyserverutilities
 
             //Join Announce Commands
             api.ChatCommands.Create("joinannounce")
-                .WithDescription("Announces a new player to the server when they join")
+                .WithDescription(Lang.Get("desc-joinannounce"))
                 .RequiresPrivilege(Privilege.controlserver)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
@@ -192,7 +192,7 @@ namespace bunnyserverutilities
 
             //Rising Sun Commands
             api.ChatCommands.Create("rs")
-                .WithDescription("Rising Sun configuration")
+                .WithDescription(Lang.Get("desc-rs"))
                 .RequiresPrivilege(Privilege.controlserver)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("secondArg"))
@@ -200,7 +200,7 @@ namespace bunnyserverutilities
 
             //Bunnybell Commands
             api.ChatCommands.Create("bb")
-                .WithDescription("Bunny Bell configuration")
+                .WithDescription(Lang.Get("desc-bb"))
                 .RequiresPrivilege(Privilege.controlserver) //This will need changed if we allow non-admins to change their own sound settings
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
@@ -208,15 +208,15 @@ namespace bunnyserverutilities
 
             //Remove Deny Commands
             api.ChatCommands.Create("removedeny")
-                .WithDescription("List of the user's current cooldowns")
+                .WithDescription(Lang.Get("desc-removedeny"))
                 .RequiresPrivilege(Privilege.controlserver)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"), api.ChatCommands.Parsers.OptionalWord("cmd2"))
                 .HandleWith(new OnCommandDelegate(Cmd_removedeny));
             
             //Remove Deny Commands
-            api.ChatCommands.Create("Cooldowns")
-                .WithDescription("List of the user's current cooldowns")
+            api.ChatCommands.Create("cooldowns")
+                .WithDescription(Lang.Get("desc-cooldowns"))
                 .RequiresPrivilege(Privilege.chat)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.OptionalWord("cmd"))
@@ -224,7 +224,7 @@ namespace bunnyserverutilities
             
             //Simple Server Messages Commands
             api.ChatCommands.Create("ssm")
-                .WithDescription("Sets a list of messages to broadcast on a regular interval")
+                .WithDescription(Lang.Get("desc-ssm"))
                 .RequiresPrivilege(FPrivilege.ssm) //Consider changing this to FPrivilege.admin and giving normal players access to /ssm list
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
@@ -232,7 +232,7 @@ namespace bunnyserverutilities
 
             //Warn Commands
             api.ChatCommands.Create("warn")
-                .WithDescription("Assign warnings for other admins to read about players who cause trouble")
+                .WithDescription(Lang.Get("desc-warn"))
                 .RequiresPrivilege(IPrivilege.warn)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
@@ -240,19 +240,19 @@ namespace bunnyserverutilities
 
             //TPT Commands
             api.ChatCommands.Create("tpt")
-                .WithDescription("Teleports the player to another player")
+                .WithDescription(Lang.Get("desc-tpt"))
                 .RequiresPrivilege(GPrivilege.tpt)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpt));
             api.ChatCommands.Create("tpaccept")
-                .WithDescription("Accepts a teleport request")
+                .WithDescription(Lang.Get("desc-tpaccept"))
                 .RequiresPrivilege(GPrivilege.tpt)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_tpaccept));
             api.ChatCommands.Create("tpdeny")
-                .WithDescription("Denies a teleport request")
+                .WithDescription(Lang.Get("desc-tpdeny"))
                 .RequiresPrivilege(GPrivilege.tpt)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
@@ -260,7 +260,7 @@ namespace bunnyserverutilities
 
             //RTP Commands
             api.ChatCommands.Create("rtp")
-                .WithDescription("Teleports the player to a random location")
+                .WithDescription(Lang.Get("desc-rtp"))
                 .RequiresPrivilege(HPrivilege.rtp)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
@@ -268,7 +268,7 @@ namespace bunnyserverutilities
 
             //Ironman Commands
             api.ChatCommands.Create("ironman")
-                .WithDescription("Sets the player to ironman mode")
+                .WithDescription(Lang.Get("desc-ironman"))
                 .RequiresPrivilege(JPrivilege.ironman)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
@@ -282,19 +282,19 @@ namespace bunnyserverutilities
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_jpm));
             api.ChatCommands.Create("dm")
-                .WithDescription("Private Message")
+                .WithDescription(Lang.Get("desc-dm"))
                 .RequiresPrivilege(EPrivilege.jpm)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_pm));
             api.ChatCommands.Create("reply")
-                .WithDescription("Private Message")
+                .WithDescription(Lang.Get("desc-dm"))
                 .RequiresPrivilege(EPrivilege.jpm)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
                 .HandleWith(new OnCommandDelegate(Cmd_reply));
             api.ChatCommands.Create("r")
-                .WithDescription("Private Message")
+                .WithDescription(Lang.Get("desc-dm"))
                 .RequiresPrivilege(EPrivilege.jpm)
                 .RequiresPlayer()
                 .WithArgs(api.ChatCommands.Parsers.Unparsed("cmd"))
@@ -307,29 +307,29 @@ namespace bunnyserverutilities
             //===================//
 
             //Home privileges
-            ipm.RegisterPrivilege("sethome", "Set your current position as home");
-            ipm.RegisterPrivilege("home", "Set your current position as home");
-            ipm.RegisterPrivilege("back", "Go back to your last TP location");
-            ipm.RegisterPrivilege("spawn", "teleport to spawn");
+            ipm.RegisterPrivilege("sethome", Lang.Get("desc-sethome"));
+            ipm.RegisterPrivilege("home", Lang.Get("desc-home"));
+            ipm.RegisterPrivilege("back", Lang.Get("desc-back"));
+            ipm.RegisterPrivilege("spawn", Lang.Get("desc-spawn"));
 
             //Group Random Teleport privileges
-            ipm.RegisterPrivilege("grtp", "Random Teleport");
+            ipm.RegisterPrivilege("grtp", Lang.Get("desc-grtp"));
 
             //Just Random Teleport privileges
-            ipm.RegisterPrivilege("jpm", "Private Messages");//Register the privilege for general private messages
-            ipm.RegisterPrivilege("jpmadmin", "JPM management"); //Register the privilege for admin control
+            ipm.RegisterPrivilege("jpm", Lang.Get("desc-dm"));//Register the privilege for general private messages
+            ipm.RegisterPrivilege("jpmadmin", Lang.Get("desc-jpm")); //Register the privilege for admin control
 
             //Simple Server message privileges
-            ipm.RegisterPrivilege("ssm", "Simple Server Messages");
+            ipm.RegisterPrivilege("ssm", Lang.Get("desc-ssm"));
 
             //Teleport To privileges 
-            ipm.RegisterPrivilege("tpt", "Teleport To");
+            ipm.RegisterPrivilege("tpt", Lang.Get("desc-tpt"));
 
             //Random Teleport Privileges
-            ipm.RegisterPrivilege("rtp", "Random Teleport");
+            ipm.RegisterPrivilege("rtp", Lang.Get("desc-rtp"));
 
             //Ironman privileges
-            ipm.RegisterPrivilege("ironman", "Iron Man");
+            ipm.RegisterPrivilege("ironman", Lang.Get("desc-ironman"));
 
             //////////End Register Privileges//////////
 
@@ -773,7 +773,7 @@ namespace bunnyserverutilities
                                 }
                                 else
                                 {
-                                    return TextCommandResult.Success("Placeholder Text. Please inform FunnybunnyofDOOM if you recieve this message. This should have been removed before release.");
+                                    return TextCommandResult.Deferred;
                                 }
                             }
                             else
@@ -959,11 +959,11 @@ namespace bunnyserverutilities
                     {
                         int? cooldownnumber = numbr as int?;
                         setplayercooldown(player, cooldownnumber, cmdname);
-                        return TextCommandResult.Success("Player Cooldown Set");
+                        return TextCommandResult.Deferred;
                     }
                     else
                     {
-                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                        return TextCommandResult.Success(Lang.Get("cooldown-fail"));
                     }
                 default:
                     if (bsuconfig.Current.enableHome == true && !ironManPlayerList.Contains(player.PlayerUID))
@@ -1216,11 +1216,11 @@ namespace bunnyserverutilities
                     {
                         int? cooldownnumber = numb as int?;
                         setplayercooldown(player, cooldownnumber, cmdname);
-                        return TextCommandResult.Success("Player Cooldown Set");
+                        return TextCommandResult.Deferred;
                     }
                     else
                     {
-                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                        return TextCommandResult.Success(Lang.Get("cooldown-fail"));
                     }
             }
             return TextCommandResult.Deferred;
@@ -1314,11 +1314,11 @@ namespace bunnyserverutilities
                     {
                         int? cooldownnumber = numb as int?;
                         setplayercooldown(player, cooldownnumber, cmdname);
-                        return TextCommandResult.Success("Player Cooldown Set");
+                        return TextCommandResult.Deferred;
                     }
                     else
                     {
-                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                        return TextCommandResult.Success(Lang.Get("cooldown-fail"));
                     }
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
@@ -1592,11 +1592,11 @@ namespace bunnyserverutilities
                     {
                         int? cooldownnumber = numb as int?;
                         setplayercooldown(player, cooldownnumber, cmdname);
-                        return TextCommandResult.Success("Player Cooldown Set");
+                        return TextCommandResult.Deferred;
                     }
                     else
                     {
-                        return TextCommandResult.Success("Player Cooldown could not be Set");
+                        return TextCommandResult.Success(Lang.Get("cooldown-fail"));
                     }
                 case "costitem":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))

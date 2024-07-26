@@ -1,0 +1,224 @@
+﻿{
+  // back messages
+  "disabled-back": "Backは無効です。管理者は/back enableを使用して有効にする必要があります",
+  "enable-back": "/backが有効になりました",
+  "disable-back": "/backが無効になりました",
+
+  //home messages
+  "home-sethome": "新しいホームが保存されました。",
+  "disabled-home": "Homeは無効です。管理者は/home enableを使用して有効にする必要があります",
+  "enable-home": "/homeが有効になりました",
+  "disable-home": "/homeが無効になりました",
+  "teleporting-home": "保存されたホームにテレポートしています",
+  "no-home-saved": "保存されたホームがありません。ワールドの中心にテレポートします。/sethomeを使用してホームを設定してください。",
+  "teleporting-back": "最後の場所に戻っています。",
+  "no-back-saved": "保存されたバックの場所がありません。/homeを使用してバックの場所を作成してください。",
+  "on-death-back": "死亡地点に戻るには/backを使用してください。",
+
+  //GRTP messages
+  "chunkloading-grtp": "チャンクを読み込んでいます。数秒後にもう一度お試しください",
+  "notset-grtp": "GRTPはまだ設定されていません。サーバーが起動したばかりですか？",
+  "cooldown-set-grtp": "GRTPのクールダウンが{0}分に更新されました。", //{0} = クールダウン値
+  "set-radius-grtp": "GRTPの半径が{0}ブロックに更新されました。", //{0} = 半径値
+  "wait-now-grtp": "GRTPが発行されました。場所の更新には数分かかる場合があります。",
+  "teleporting-grtp": "ランダムな場所にテレポートしています。新しい場所は1分以内に生成されます",
+  "teleporting-grtp-2": "ランダムな場所にテレポートしています。他の人は{0}分間あなたに参加できます。",
+  "new-grtp": "新しい/grtp座標が生成されました。新しい場所は{0}分後に利用可能になります。",
+
+  //re-usable messages
+  "greater-than": "{0}分以上の数値を入力してください。", //{0} = 数値
+  "non-negative-number": "負の数値を入力しないでください。",
+  "disabled": "{0}は無効です。管理者は/{0} enableを使用してこのコマンドを有効にする必要があります。", //{0} = コマンド文字列
+  "disabled-2": "{0}は管理者によって無効にされています。",
+  "enable": "{0}が有効になりました。", //{0} = コマンド文字列
+  "disable": "{0}が無効になりました。", //{0} = コマンド文字列
+  "no-permission": "このコマンドを使用する権限がありません。",
+  "player": "プレイヤー",
+  "player-not-found": "プレイヤーが見つかりません。スペルを確認してもう一度お試しください。",
+  "number-or-greater": "{0}以上の数値を入力してください。",
+  "number-between": "{0}から{1}の間の数値を入力してください。",
+  "cooldown-reusable": "{0}のクールダウンが{1}分に更新されました。", // {0} = コマンド名 {1} = 分数
+  "cooldown-player-reusable": "{0}分待ってください。",
+  "cooldown-fail": "クールダウンを設定できませんでした",
+
+  //Import Old Homes
+  "importing": "古いホームをインポートしています",
+  "old-home-config-size": "ホーム設定のサイズ: ",
+  "old-home-imported": "古いホームがインポートされました",
+  "no-old-homes": "インポートする有効なホーム設定がありません。",
+  "home-already-imported": "古いホームはすでにインポートされています。このコマンドは一度だけ使用する必要があります。",
+
+  //Rising Sun messages
+  "between-hours": "1から23の間の時間を入力してください。",
+  "smaller-dusk": "夕暮れより小さい数値を入力してください: ",
+  "larger-dawn": "夜明けより大きい数値を入力してください: ",
+  "dawn-updated": "夜明けの時間が更新されました ",
+  "dusk-updated": "夕暮れの時間が更新されました ",
+  "welcome-rs": "新しいプレイヤーに太陽が昇りました！ようこそ {0}",
+
+  //Private Message messages
+  "include-message": "メッセージを含めてください。",
+  "include-player": "プレイヤー名を含めてください。",
+
+  //Simple Server Message
+  "add-message": "メッセージが追加されました",
+  "remove-message": "メッセージが削除されました",
+  "remove-message-help": "/ssm listを使用してから/ssm remove numberを使用してメッセージを削除してください",
+  "remove-message-help-2": "/ssm remove Numberを使用してメッセージを削除してください",
+  "list-of-messages": "現在のサーバーメッセージのリスト: ",
+  "message-frequency": "メッセージは{0}分ごとに放送されます",
+
+  //Teleport To
+  "tp-deny-player": "あなたのテレポートリクエストは拒否されました。",
+  "tp-deny-target": "テレポート先が拒否されました",
+  "no-tp-deny": "拒否するアクティブなリクエストがありません",
+  "no-tp-accept": "受け入れるアクティブなリクエストがありません",
+  "teleport-accepted": "あなたのテレポートリクエストが受け入れられました。テレポートされるまでお待ちください。",
+  "teleport-accepted-user": "テレポートが受け入れられました",
+  "need-playername-tpt": "テレポートしたいプレイヤーの名前を入力してください。",
+  "wait-for-tp": "お待ちください。もう一人のプレイヤーがテレポートを受け入れるとテレポートされます",
+  "tp-to-you": "{0}があなたにテレポートしたいと考えています。受け入れるには/tpacceptを入力してください。", //{0} = プレイヤーの名前
+  "active-tp": "目的のプレイヤーにはすでに他のアクティブなTPリクエストがあります。しばらくしてからもう一度お試しください。",
+  "pending-tp": "すでに保留中のテレポートリクエストがあります。",
+  "expired-tp": "プレイヤーへのTPが期限切れになりました",
+
+  //Random Teleport
+  "rtp-cooldown-set": "RTPのクールダウンタイマーが設定されました ",
+  "rtp-wait": "目的のチャンクが読み込まれるまでお待ちください。",
+  "rtp-wait-2": "チャンクはまだ生成中です。お待ちください。",
+  "rtp-cooldown-timer": "{0}分後に再度テレポートできます。",
+  "set-radius-rtp": "RTPの半径が{0}ブロックに更新されました。", //{0} = 半径値
+  "new-rtp": "ランダムな場所にテレポートしています。",
+
+  //Remove Denial
+  "remove-denial": "{1}から{0}の拒否を削除しています。",
+
+  //warn
+  "warn-player": "プレイヤー: ",
+  "warn-warnings": "警告: ",
+  "warn-warning": "警告: ",
+  "warn-reasons": "理由: ",
+  "warn-help": "/warn list numを使用してそのプレイヤーの警告を確認してください",
+
+  //spawn
+  "teleporting-spawn": "スポーンにテレポートしています。",
+
+  //Default welcome message: 
+  "default-welcome": "サーバーへようこそ", //これはSimple Server Messagesによって表示されるデフォルトの歓迎メッセージです。
+
+  "welcome-player": "<font color=\"white\"><strong>{0}</strong></font>をサーバーに歓迎してください！",
+
+  //Player list on join
+  "players-online": "オンラインプレイヤー: ",
+  "player-divider": "|",
+
+  //Help command
+  "bsu-commands": "Bunny's Server Utilityのコマンド:",
+  "bsu-help": "-Bunny Server Utilityのすべてのコマンドのヘルプを見るには/bsu helpを使用してください",
+  "bsu-version": "モッドのバージョンには{0}を使用してください",
+  "help-removedeny": "- プレイヤーから特権の拒否を削除します。",
+  "module-commands": "---{0}のコマンド---", //{0} = モジュール名
+  "help-sethome": "<i>番号</i>- 指定された番号のホームテレポートとしてあなたの位置を設定します",
+  "help-home": "<i>番号</i> - 指定された番号のホーム位置にテレポートします",
+  "admin-commands": "{0}の管理者コマンド:", //{0} = モジュール名
+  "module-disable": "{0} disable - {0}コマンドを無効にします",
+  "module-disable-2": "{0} disable - {1}モジュールを無効にします。",
+  "module-enable": "{0} enable - {0}コマンドを有効にします",
+  "module-enable-2": "{0} enable - {1}モジュールを有効にします",
+  "ja-enable": "/joinannounce enable - 初めて参加するプレイヤーにメッセージを送信することを有効にします",
+  "ja-disable": "/joinannounce disable - 初めて参加するプレイヤーにメッセージを送信することを無効にします",
+  "module-cooldown": "{0} playercooldown <i>番号</i> - クールダウンタイマーを設定します",
+  "grtp-cooldown": "/grtp cooldown <i>番号</i> - GRTPの場所が移動する頻度を分単位で設定します",
+  "rtp-cooldown": "/rtp cooldown <i>番号</i> - クールダウンタイマーを分単位で設定します",
+  "old-home-help": "/importOldHomes - jhome 1.05以前から保存されたホームを新しい保存タイプに移動します。このモッドをBunny's Just Home 1.0.5以前から更新する場合は、これを一度だけ実行してください。",
+  "back-help": "/back - /home、/backを使用した最後の場所または死亡した場所に戻ります",
+  "spawn-help": "/spawn - サーバー設定のスポーンポイントに戻ります",
+  "grtp-update": "GRTPの場所は{0}分ごとに更新されます。",
+  "grtp-radius": "テレポート半径: {0}ブロック",
+  "grtp-cmd-help": "/grtp - プレイヤーをグループテレポートポイントにテレポートします",
+  "grtp-help-radius": "/grtp radius <i>番号</i> - テレポート半径を設定します",
+  "grtp-help-now": "/grtp now - 次の1分のティックでGRTPを更新するように設定します",
+
+  "dawn-help": "/rs dawn <i>番号</i> - Rising Sunが夜を進める時間を設定します",
+  "dusk-help": "/rs dusk <i>番号</i> - Rising Sunが夜と見なす時間を設定します",
+  "dm-help": "/dm <i>プレイヤー名 メッセージ</i> - プレイヤーにメッセージを送信します。",
+  "ssm-add-help": "/ssm add <i>サーバーメッセージ</i> - サーバーメッセージのリストにメッセージを追加します",
+  "ssm-list-help": "/ssm list - 既存のサーバーメッセージをリストします",
+  "ssm-remove-help": "/ssm remove <i>/ssm listの番号</i> - リストの番号からメッセージを削除します",
+  "ssm-freq-help": "/ssm frequency <i>分単位の番号</i> - メッセージ間の時間を変更します",
+  "ssm-now-help": "/ssm now - 次のサーバーメッセージを放送します",
+  "tpt-help": "/tpt プレイヤー名 - プレイヤーにテレポートしてもよいか尋ねます",
+  "tpaccept-help": "/tpaccept - tptリクエストを受け入れてプレイヤーをあなたにテレポートします",
+  "tpdeny-help": "/tpdeny - tptリクエストを拒否します",
+  "bunny-bell-help": "Bunny bellはあなたの名前が入力されたときに-ディン-を作成します",
+  "rtp-help": "/rtp - プレイヤーをランダムな場所にテレポートします",
+
+  //Iron Man
+  "ironman-use-confirm": "/ironman confirmを使用してiron manモードを開始します。<font color=red><strong>警告: キャラクターのすべてのアイテムを失います。</strong></font> Iron Manモード中に死亡すると進行状況を失います。",
+  "ironman-already-joined": "あなたはすでにironmanです。",
+  "ironman-confirmed": "Ironmanモードを有効にしました。死亡するとIronmanモードを終了します。",
+  "ironman-ended": "Ironman {0}が死亡しました。リーダーボードでスコアを確認してください。",
+  "ironman-teleporting": "Ironmanの場所にテレポートしています。",
+  "ironman-teleport-wait": "Ironmanのチャンクが読み込まれるまでお待ちください",
+  "ironman-new-personal-highscore": "Ironman {0}が新しい個人最高記録を達成しました！/ironman highscoresでリーダーボードを確認してください。",
+  "ironman-no-new-score": "あなたは{0}日の最高記録を破りませんでした。もう一度お試しください！",
+  "ironman-first": "最初のIronmanを完了しました！",
+  "ironman-highscores-title": "Ironmanリーダーボード",
+  "ironman-commands-disabled": "Iron Manモードではすべてのテレポートコマンドが無効です。",
+
+  //Teleport Costs
+  "empty-slot": "手が空です。{1}x {0}をアクティブなホットバースロットに配置してもう一度お試しください。",
+  "wrong-item": "不正なアイテムです。{1}x {0}を手に持ってもう一度お試しください。",
+  "not-enough": "このテレポートには{1}が必要で、手に{0}があります。",
+  "cost-qty-updated": "{0}のコスト数量が{1}に設定されました",
+  "tp-dont-move": "TPが受け入れられるまで支払いをホットバーから移動しないでください。そうしないとTPがキャンセルされます。",
+  "tp-need-item": "完全なアイテムコードを入力してください。例: game:gear-rustyまたはroadworks:roadblock-free-asphalt",
+  "cost-itm-updated": "{0}のコストアイテムが{1}に更新されました",
+  "cost-remove": "インベントリから{1} {0}を削除しています。",
+
+  "module-costqty": "{0} costqty <i>番号</i> - {0}のテレポートコストを設定します",
+  "module-costitm": "{0} costitem <i>アイテムコード</i> - {0}を使用するために消費されるアイテムを設定します。アイテムコードの例: game:gear-rusty",
+
+  //cooldown commamnd
+  "cooldown-command": "{0}: {1} 残り分。",
+  "cooldowns": "クールダウン:",
+  "no-cooldowns": "アクティブなクールダウンはありません",
+
+  //version 1.0.6
+  "home-number": "テレポートしたいホームの番号を入力してください。",
+  "home-save": "保存したいホームの番号を入力してください。",
+  "wiped": "tptDictとwaitDictがクリアされました。",
+  "home-limit-updated": "プレイヤーが設定できるホームの数が{0}に更新されました。",
+  "reply-help": "/reply - 最後にメッセージを送信したプレイヤーにメッセージを送信します",
+  "no-reply": "返信できるメッセージを受け取っていません。",
+  "home-limit-help": "/home limit <i>番号</i> - 各プレイヤーが設定できるホームの数を設定します",
+  "no-homes": "削除するスロット{0}のホームがありません。",
+  "home-removed": "ホーム番号{0}が削除されました。",
+  "no-home": "設定されたホームがありません。/sethomeを使用してホームを設定してください",
+  "help-home-delete": "<番号> - 指定された番号のホームを削除します",
+  "tpt-help-wipe": "/tpt wipe - TptDictとWaitDictからすべてのプレイヤーを削除します。プレイヤーがTPTできない場合やTPTされない場合にこれを試してください。",
+  "not-enough-permissions": "このコマンドを実行するための十分な権限がありません。特権: {0}",
+
+  //Command Descriptions version 2.0.0
+  "desc-bsu": "Bunny's Server Utilityモッドに関する情報",
+  "desc-back": "プレイヤーを最後に知られている場所にテレポートします",
+  "desc-home": "プレイヤーをホームにテレポートします",
+  "desc-sethome": "プレイヤーのホームを設定します",
+  "desc-spawn": "プレイヤーをサーバーのスポーンポイントにテレポートします",
+  "desc-grtp": "プレイヤーをグループテレポートポイントにテレポートします",
+  "desc-tpcost": "テレポートのためのアイテムコストを有効または無効にします。",
+  "desc-joinannounce": "プレイヤーが参加したときにサーバーに新しいプレイヤーを発表します",
+  "desc-rs": "Rising Sunの設定",
+  "desc-bb": "Bunny Bellの設定",
+  "desc-removedeny": "プレイヤーから特権の拒否を削除します",
+  "desc-cooldowns": "ユーザーの現在のクールダウンのリスト",
+  "desc-ssm": "定期的な間隔で放送するメッセージのリストを設定します",
+  "desc-warn": "問題を引き起こすプレイヤーについて他の管理者が読むための警告を割り当てます",
+  "desc-tpaccept": "プレイヤーからのテレポートリクエストを受け入れます",
+  "desc-tpdeny": "プレイヤーからのテレポートリクエストを拒否します",
+  "desc-tpt": "プレイヤーにテレポートしてもよいか尋ねます",
+  "desc-ironman": "プレイヤーをIron Man難易度モードにします",
+  "desc-rtp": "プレイヤーをランダムな場所にテレポートします",
+  "desc-dm": "プライベートメッセージ",
+  "desc-jpm": "プライベートメッセージ管理者の権限"
+}
