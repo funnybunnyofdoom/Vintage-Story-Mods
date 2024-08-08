@@ -1034,10 +1034,10 @@ namespace bunnyserverutilities
                 case "limit":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        int? num = args.ArgCount > 1 ? args[1] as int? : null;
-                        if (num != null && num > 0)
+                        int num;
+                        if (args.ArgCount > 1 && int.TryParse(args[1].ToString(), out num) && num > 0)
                         {
-                            bsuconfig.Current.homelimit = (int)num;
+                            bsuconfig.Current.homelimit = num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                             return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-limit-updated", num));
                         }
