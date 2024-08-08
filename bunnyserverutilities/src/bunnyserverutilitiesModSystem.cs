@@ -2005,7 +2005,7 @@ namespace bunnyserverutilities
 
             string cmdname = "ssm";
             string cmd;
-            if (args.RawArgs.PopWord() != null)
+            if (args.RawArgs.PeekWord() != null)
             {
                 cmd = args.RawArgs.PopWord().ToLower();
             }
@@ -2060,7 +2060,7 @@ namespace bunnyserverutilities
                     if (frqnum != null & frqnum >= 1)
                     {
                         bsuconfig.Current.frequency = frqnum;
-                        sapi.StoreModConfig(bsuconfig.Current, "ssmconfig.json");
+                        sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                         player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:message-frequency", frqnum), Vintagestory.API.Common.EnumChatType.Notification);
                     }
                     else
@@ -2125,7 +2125,7 @@ namespace bunnyserverutilities
 
             string cmdname = "warn";
             string cmd;
-            if (args.RawArgs.PopWord() != null)
+            if (args.RawArgs.PeekWord() != null)
             {
                 cmd = args.RawArgs.PopWord().ToLower();
             }
@@ -2255,7 +2255,7 @@ namespace bunnyserverutilities
 
             string cmdname = "tpt";
             string cmd;
-            if (args.RawArgs.PopWord() != null)
+            if (args.RawArgs.PeekWord() != null)
             {
                 cmd = args.RawArgs.PopWord().ToLower();
             }
@@ -2354,7 +2354,7 @@ namespace bunnyserverutilities
                 if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                 {
                     string code;
-                    if (args.RawArgs.PopWord() != null)
+                    if (args.RawArgs.PeekWord() != null)
                     {
                         code = args.RawArgs.PopWord().ToLower();
                     }
@@ -2915,7 +2915,7 @@ namespace bunnyserverutilities
             string cmdname = "jpm";
 
             string cmd;
-            if (args.RawArgs.PopWord() != null)
+            if (args.RawArgs.PeekWord() != null)
             {
                 cmd = args.RawArgs.PopWord().ToLower();
             }
@@ -3497,7 +3497,7 @@ namespace bunnyserverutilities
                     info.timer = count;
                     bsuconfig.Current.tptDict.Add(player.PlayerUID, info);
                     bsuconfig.Current.waitDict.Add(pdata.PlayerUID, player.PlayerUID);
-                    sapi.StoreModConfig(bsuconfig.Current, "tptconfig.json");
+                    sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
                     player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:wait-for-tp"), Vintagestory.API.Common.EnumChatType.Notification);
                     setbackteleport(player);
                     sapi.SendMessage(sapi.World.PlayerByUid(pdata.PlayerUID), Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, Lang.Get("bunnyserverutilities:tp-to-you", player.PlayerName), Vintagestory.API.Common.EnumChatType.Notification);
