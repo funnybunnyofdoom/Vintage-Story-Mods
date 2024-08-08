@@ -952,7 +952,7 @@ namespace bunnyserverutilities
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "help":
-                    displayhelp(player, cmdname);
+                    displayhelp(player, "home"); //This is calling help for home instead of /sethome because it contains both helps
                     return TextCommandResult.Deferred;
                 case "playercooldown":
                     if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int numbr) && numbr >= 0)
@@ -1035,7 +1035,7 @@ namespace bunnyserverutilities
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
                         int num;
-                        if (args.ArgCount > 1 && int.TryParse(args[1].ToString(), out num) && num > 0)
+                        if (args.ArgCount > 1 && args[1] != null && int.TryParse(args[1].ToString(), out num) && num > 0)
                         {
                             bsuconfig.Current.homelimit = num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1050,7 +1050,6 @@ namespace bunnyserverutilities
                     {
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
-
                 case "delete":
                     int? numb = args.ArgCount > 1 ? args[1] as int? : null; ;
                     string playerID3 = player.Entity.PlayerUID; //get the using player's player ID
