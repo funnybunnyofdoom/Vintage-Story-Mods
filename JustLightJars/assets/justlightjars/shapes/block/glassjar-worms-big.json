@@ -11,9 +11,9 @@
 		"rime3": "game:block/clay/vessel/inside/rime",
 		"rime2": "game:block/clay/vessel/top/rime",
 		"smoky": "game:block/glass/smoky",
-		"glowworm": "game:block/glowworm/glowworm",
-		"end2": "game:block/glowworm/end2",
-		"end1": "game:block/glowworm/end1",
+		"glowworm": "game:block/creature/glowworm/glowworm",
+		"end2": "game:block/creature/glowworm/end2",
+		"end1": "game:block/creature/glowworm/end1",
 		"rime": "game:block/clay/vessel/sides/rime"
 	},
 	"elements": [

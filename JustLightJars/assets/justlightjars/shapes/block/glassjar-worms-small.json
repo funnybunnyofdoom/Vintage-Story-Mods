@@ -10,9 +10,9 @@
 	"textures": {
 		"ceramic": "game:block/clay/crock/ceramic",
 		"smoky": "game:block/glass/smoky",
-		"glowworm": "game:block/glowworm/glowworm",
-		"end2": "game:block/glowworm/end2",
-		"end1": "game:block/glowworm/end1"
+		"glowworm": "game:block/creature/glowworm/glowworm",
+		"end2": "game:block/creature/glowworm/end2",
+		"end1": "game:block/creature/glowworm/end1"
 	},
 	"elements": [
 		{

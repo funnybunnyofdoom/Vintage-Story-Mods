@@ -6,18 +6,17 @@
   "ingredients": {
     "G": {
       "type": "item",
-      "code": "jarblock:glowwormsitem",
-      "quantity": 4
+      "code": "justlightjars:glowwormsitem",
+      "quantity": 16
     },
     "J": {
-      "code": "jarblock:jarblock-small",
-      "type": "block",
-      "quantity": 1
+      "code": "justlightjars:jarblock-big",
+      "type": "block"
     }
   },
   "output": {
     "type": "block",
-    "code": "jarblock:wormsjarblock-small",
+    "code": "justlightjars:wormsjarblock-big",
     "quantity": 1
   }
 }
