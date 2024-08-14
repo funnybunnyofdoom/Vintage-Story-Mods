@@ -41,8 +41,8 @@
     "*-free-*": 2.4
   },
   "walkspeedmultiplierByType": {
-    "roadblock-free-gravel-*": 1.4,
-    "roadblock-snow-gravel-*": 0.8
+    "roadblock-gravel-free-*": 1.4,
+    "roadblock-gravel-now-*": 0.8
   },
   "faceCullMode": "FlushExceptTop",
   "sideopaque": {
