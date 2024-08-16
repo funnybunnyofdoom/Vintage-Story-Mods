@@ -16,7 +16,7 @@
 		},
 		{
 			"code": "type",
-			"states": [ "gravel", "wood", "brick", "concrete", "asphalt" ]
+			"states": [ "concrete", "asphalt" ]
 		}
 	],
 	"creativeinventory": {

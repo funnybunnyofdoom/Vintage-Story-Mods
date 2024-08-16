@@ -1,5 +1,5 @@
 {
-  "code": "roadstairswood",
+  "code": "roadstairscobblestone",
   "class": "BlockStairs",
   "attributes": {
     "noDownVariant": true
@@ -15,11 +15,11 @@
       "states": [ "free", "snow" ]
     },
     {
-      "code": "wood",
-      "states": [ "aged", "rottenebony" ],
-      "loadFromProperties": "block/wood"
+      "code": "type",
+      "loadFromProperties": "block/rockwithdeposit"
     }
   ],
+  "skipVariants": [ "*-obsidian", "*-halite", "*-scoria", "*-tuff" ],
   "creativeinventory": {
     "general": [ "*-up-north-free-*" ],
     "construction": [ "*-up-north-free-*" ]
@@ -84,21 +84,24 @@
       "rotateY": 270
     }
   },
+  "walkspeedmultiplierByType": {
+    "*": 2.0
+  },
   "faceCullMode": "NeverCull",
   "blockmaterialByType": {
-    "*": "Wood"
+    "*": "Stone"
   },
   "texturesByType": {
     "*": {
       "sides": {
-        "base": "game:block/wood/planks/{wood}*"
+        "base": "game:block/stone/cobblestone/{type}*"
       }
     }
   },
   "replaceable": 700,
   "resistance": 2.0,
   "emitSideAo": { "all": true },
-  "walkspeedmultiplier": 1.80,
+  "walkspeedmultiplier": 1.6,
   "collisionSelectionBoxesByType": {
     "*-down-*": [
       {
@@ -165,15 +168,14 @@
     "scale": 0.37
   },
   "sounds": {
-    "place": "game:block/planks",
     "breakByType": {
-      "*": "game:block/planks"
+      "*": "game:block/rock-break-pickaxe"
     },
     "hitByType": {
-      "*": "game:block/planks"
+      "*": "game:block/rock-hit-pickaxe"
     },
     "walkByType": {
-      "*": "game:walk/planks"
+      "*": "game:walk/stone"
     }
   }
 }

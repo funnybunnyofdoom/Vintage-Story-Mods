@@ -42,7 +42,7 @@
     },
     {
       "code": "type",
-      "states": [ "gravel", "wood", "brick", "concrete", "asphalt", "dirt" ]
+      "states": [ "concrete", "asphalt", "dirt" ]
     }
   ],
   "behaviorsByType": {
@@ -131,7 +131,7 @@
   "walkspeedmultiplierByType": {
     "roadblock-free-dirt": 1.2,
     "roadblock-free-gravel": 1.4,
-    "roadblock-free-wood": 1.6,
+    "roadblock-free-wood": 1.8,
     "roadblock-free-brick": 2.0,
     "roadblock-free-concrete": 2.5,
     "roadblock-free-asphalt": 3.0,

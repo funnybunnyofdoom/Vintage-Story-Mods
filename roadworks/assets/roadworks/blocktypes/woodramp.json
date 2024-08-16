@@ -78,7 +78,7 @@
 	},
 	"shapeinventory": { "base": "roadworks:block/ramp" },
 	"walkspeedmultiplierByType": {
-		"*": 1.4
+		"*": 1.8
 
 	},
 	"faceCullMode": "NeverCull",
