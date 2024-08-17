@@ -1,5 +1,5 @@
 {
-  "ingredientPattern": "CCC,L_L,LLL",
+  "ingredientPattern": "_C_,L_L,_L_",
   "width": 3,
   "height": 3,
   "ingredients": {

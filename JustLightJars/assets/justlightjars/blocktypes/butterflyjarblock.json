@@ -1,0 +1,78 @@
+{
+  "code": "butterflyjarblock",
+  "class": "Block",
+  "entityClass": "BlockEntityButterflyjar",
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "acmonbluefemale", "acmonbluemale", "aegamorphobluefemale", "aegamorphobrownfemale", "aegamorphomale", "africancloudedyellowmale", "africanmapwing", "amberphantom", "apollobutterflyfemale", "apollobutterflymale", "arcticwhitefemale", "arcticwhitemale", "atlasmothfemale", "atlasmothmale", "bloodredglidermale", "bloodredgliderpalefemale", "bloodredgliderredfemale", "blueadmiral", "bluepansyfemale", "borderedrusticfemale", "brownhairstreakfemale", "brownhairstreakmale", "cardinalapollofemale", "cardinalapollomale", "checkeredwhitefemale", "checkeredwhitemale", "chestnuttiger", "chocolatealbatrossdryseasonmale", "chocolatealbatrosswetseasonfemale", "chocolatealbatrosswetseasonmale", "cleopatrafemale", "cleopatramale", "cloudedapollofemale", "cloudedapollomale", "comma", "commaabdilutus", "commonbrimstonefemale", "commonbrimstonemale", "commongreenbirdwingfemale", "commongreenbirdwingmale", "commongreencharaxes", "commonmestra", "commonwhitegliderfemale", "commonyellowswallowtailfemale", "commonyellowswallowtailmale", "cynthiasfritillarymale", "darkbluepansy", "dawncloudedbutterflymale", "dawncloudedbutterflywhitefemale", "dawncloudedbutterflyyellowfemale", "dottedglory", "easterncommasummerform", "easterntigerswallowtaildarkfemale", "easterntigerswallowtailmale", "edwardsforesterfemale", "edwardsforestermale", "emeraldswallowtail", "eroessachiliensisfemale", "eroessachiliensismale", "falsecomma", "freyerspurpleemperormale", "gardentigermothmale", "giantnorthernsulfurfemale", "giantnorthernsulfurmale", "godartsnumberwing", "goldbandedforester", "goldenbirdwingfemale", "goldenbirdwingmale", "goldenjezebelfemale", "goldenjezebelmale", "goliathbirdwingmale", "grapevineepimenis", "grayhairstreak", "graypansy", "greenhairstreakmale", "greenveinedwhitefemale", "greenveinedwhitemale", "ireniametalmark", "juttaarctic", "largebluefemale", "largeorangesulphurfemale", "largeorangesulphurmale", "largeorangesulphurwhitefemale", "largewhitefemale", "largewhitemale", "lemonemigrantalcmeoneformmale", "lemonemigrantfemale", "lemonemigranthilariaformmale", "limehawkmoth", "macrocosmamoth", "madagascansunsetmoth", "malachitebutterfly", "mapbutterflymalespringform", "mapbutterflymalesummerform", "meadowbluemale", "meadowbrownfemale", "meadowbrownmale", "mexicanmarbledwhitefemale", "mexicanmarbledwhitemale", "milbertstortoiseshellfemale", "milbertstortoiseshellmale", "monarch", "morphoportis", "mountainapollofemale", "mourningcloak", "nessusleafwingfemale", "nessusleafwingmale", "northernbrownargusfemale", "northernbrownargusmale", "nyctemerakinabaluensis", "oleanderhawkmothmale", "orangebarredsulphurmale", "orangebarredsulphurthalestrisredfemale", "orangebarredsulphurthalestrisyellowfemale", "orangeemigrantfemale", "orangeemigrantmale", "orangetiger", "orangetipfemale", "orangetipmale", "orangetippedanglesulfur", "ornithopterapriamuseuphorionabgoldenmale", "ornithopterapriamusmiokensismale", "paintedbeauty", "peacock", "peacockpansy", "pearlcharaxesfemale", "pearlcharaxesmale", "purpleedgedcoppermale", "purpleemperorfemale", "purpleemperormale", "purplespottedswallowtail", "purplishcopperfemale", "purplishcoppermale", "queenvictoriasbirdwingmale", "redadmiral", "reedbutterfly", "rockgraylingmale", "rustic", "sagebrushgirdlemoth", "scarletmormonfemale", "scarletmormonmale", "silkyowl", "silverybluemale", "smallcoppermale", "smallcopperabschmidtiifemale", "smallheathfemale", "smallheathmale", "smalltortoiseshell", "smallwhitefemale", "smallwhitemale", "southerndogfacemale", "southerndogfacewhitefemale", "southerndogfaceyellowfemale", "stichelseyemarkfemale", "stichelseyemarkmale", "tawnycoster", "thalainachionoptila", "theanoalpinemale", "tropicalwhitedryseasonfemale", "tropicalwhitemale", "tropicalwhitewetseasonfemale", "twobarredflasher", "wallacesgoldenbirdwingmale", "westernbluecharaxesfemale", "westernbluecharaxesmale", "whiteangledsulphurmale", "woodwhitefemale", "woodwhitemale", "yellowpansyfemale", "yellowpansymale" ]
+    }
+  ],
+  "behaviorsByType": {
+    "*": [
+      {
+        "name": "UnstableFalling",
+        "properties": {
+          "attachmentArea": {
+            "x1": 5,
+            "y1": 0,
+            "z1": 5,
+            "x2": 10,
+            "y2": 0,
+            "z2": 10
+          }
+        }
+      },
+      { "name": "RightClickPickup" }
+    ]
+  },
+  "creativeinventory": { "general": [ "*" ] },
+  "shape": {
+    "base": "block/glassjar-big-butterfly",
+    "scale": 0.75
+  },
+  "textures": {
+    "wingandbody": {
+      "base": "game:entity/butterfly/{type}",
+      "overlays": []
+    }
+  },
+  "blockmaterial": "Glass",
+  "drawtype": "json",
+  "storageFlags": 257,
+  "sounds": {
+    "place": "game:block/glass",
+    "break": "game:block/glass",
+    "hit": "game:block/glass"
+  },
+  "maxStackSize": 1,
+  "resistance": 0.5,
+  "sidesolid": {
+    "all": "false"
+  },
+  "sideopaque": {
+    "all": "false"
+  },
+  "lightAbsorption": 0,
+  "randomizeRotations": true,
+  "overrideRandomDrawOffset": 0.1,
+  "randomDrawOffset": true,
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0.15,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": -90,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.15,
+      "z": 0.5
+    },
+    "scale": 2
+  }
+}
