@@ -1,0 +1,89 @@
+{
+  "code": "seedsand",
+  "class": "ItemPlantableSeed",
+  "maxstacksize": 128,
+  "variantgroups": [
+    {
+      "code": "type",
+      "states": [ "carrot" ]
+    }
+  ],
+  "shape": { "base": "gardencraft:seedbagsand" },
+  "textures": {
+    "seed": { "base": "game:item/resource/seeds/{type}" }
+  },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ]
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 180,
+      "y": 90,
+      "z": 13
+    }
+  },
+  "materialDensity": 450,
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 159,
+      "y": 148,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.53,
+      "y": 0.37,
+      "z": 0.5
+    },
+    "scale": 1.99
+  },
+  "fpHandTransform": {
+    "rotation": {
+      "x": 54,
+      "y": 99,
+      "z": -30
+    },
+    "scale": 1.34
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.67,
+      "y": -1.25,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": 70,
+      "y": 11,
+      "z": -65
+    },
+    "scale": 0.41
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+    },
+    "rotation": {
+      "x": -4,
+      "y": 8,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 0.5299
+    },
+    "scale": 1.92
+  }
+}

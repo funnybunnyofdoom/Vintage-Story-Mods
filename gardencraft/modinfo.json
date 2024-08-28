@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "gardencraft",
+    "name": "gardencraft",
+    "authors": [
+        "FunnyBunnyofDOOM"
+    ],
+    "description": "Enhances gardening and farming.",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": ""
+    }
+}
