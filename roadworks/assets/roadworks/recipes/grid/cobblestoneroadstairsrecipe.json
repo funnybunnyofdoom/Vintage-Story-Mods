@@ -1,0 +1,20 @@
+{
+  "ingredientPattern": "L",
+  "ingredients": {
+    "L": {
+      "type": "block",
+      "code": "roadworks:roadblock-cobblestone-*-free",
+      "name": "road",
+      "quantity": 3,
+      "allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite", "kimberlite", "suevite", "whitemarble", "redmarble", "greenmarble" ]
+    }
+  },
+  "shapeless": true,
+  "width": 1,
+  "height": 1,
+  "output": {
+    "type": "block",
+    "code": "roadworks:roadstairscobblestone-up-north-free-{road}",
+    "quantity": 6
+  }
+}

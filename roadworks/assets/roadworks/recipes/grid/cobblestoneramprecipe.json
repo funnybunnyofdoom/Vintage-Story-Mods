@@ -1,0 +1,19 @@
+  {
+    "ingredientPattern": "__G,_GG,GGG",
+    "ingredients": {
+      "G": {
+        "type": "block",
+        "code": "roadworks:roadblock-cobblestone-*-free",
+        "name": "stone",
+        "allowedvariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite", "kimberlite", "suevite", "whitemarble", "redmarble", "greenmarble" ],
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "roadworks:ramp-cobblestone-1-north-{stone}",
+      "quantity": 6
+    }
+  }
