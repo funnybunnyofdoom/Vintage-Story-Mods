@@ -10,7 +10,7 @@
       "states": [ "free", "snow" ]
     }
   ],
-  "skipVariants": [ "*-obsidian", "*-halite", "*-scoria", "*-tuff" ],
+  "skipVariants": [ "*-obsidian-*", "*-halite-*", "*-scoria-*", "*-tuff-*" ],
   "behaviorsByType": {
     "*-snow": [ { "name": "BreakSnowFirst" } ]
   },

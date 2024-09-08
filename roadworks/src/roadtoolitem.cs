@@ -69,7 +69,7 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob-") || block.Code.Path.StartsWith("gravel-"))
+            if (block.Code.Path.StartsWith("soil") || block.Code.Path.Contains("unfinishedasphalt") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob-") || block.Code.Path.StartsWith("gravel-") || block.Code.Path.StartsWith("cobblestone-"))
             {
                 handling = EnumHandHandling.PreventDefault;
             }
@@ -133,7 +133,7 @@ namespace roadworks.src
             BlockPos pos = blockSel.Position;
             Block block = byEntity.World.BlockAccessor.GetBlock(pos);
 
-            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt") && !block.Code.Path.StartsWith("forestfloor") && !block.Code.Path.Contains("packeddirt") && !block.Code.Path.StartsWith("cob-") && !block.Code.Path.StartsWith("gravel-")) return;
+            if (!block.Code.Path.StartsWith("soil") && !block.Code.Path.Contains("unfinishedasphalt") && !block.Code.Path.StartsWith("forestfloor") && !block.Code.Path.Contains("packeddirt") && !block.Code.Path.StartsWith("cob-") && !block.Code.Path.StartsWith("gravel-") && !block.Code.Path.StartsWith("cobblestone-")) return;
 
             Block topaveblock;
             if (block.Code.Path.StartsWith("soil") || block.Code.Path.StartsWith("forestfloor") || block.Code.Path.Contains("packeddirt") || block.Code.Path.StartsWith("cob-"))
@@ -153,6 +153,16 @@ namespace roadworks.src
 
                 // Use the rock type to get the corresponding road block
                 topaveblock = byEntity.World.GetBlock(new AssetLocation($"roadworks:roadblock-gravel-free-{rockType}"));
+            }
+            else if (block.Code.Path.Contains("cobblestone"))
+            {
+                // Split the block code path by the delimiter '-'
+                string[] pathParts = block.Code.Path.Split('-');
+                // Get the last element which should be the rock type
+                string rockType = pathParts[pathParts.Length - 1];
+
+                // Use the rock type to get the corresponding road block
+                topaveblock = byEntity.World.GetBlock(new AssetLocation($"roadworks:roadblock-cobblestone-{rockType}-free"));
             }
             else
             {

@@ -1,25 +1,25 @@
-{
-  "ingredientPattern": "L,C",
-  "ingredients": {
-    "C": {
-      "type": "block",
-      "code": "game:soil-*",
-      "quantity": 1
+  {
+    "ingredientPattern": "L,C",
+    "ingredients": {
+      "C": {
+        "type": "block",
+        "code": "game:soil-*",
+        "quantity": 1
+      },
+      "L": {
+        "type": "item",
+        "code": "game:plank-*",
+        "name": "wood",
+        "skipVariants": [ "agedebony" ],
+        "quantity": 4
+      }
     },
-    "L": {
-      "type": "item",
-      "code": "game:plank-*",
-      "name": "wood",
-      "skipVariants": [ "agedebony" ],
-      "quantity": 4
+    "shapeless": true,
+    "width": 1,
+    "height": 2,
+    "output": {
+      "type": "block",
+      "code": "roadworks:roadblock-wood-free-{wood}",
+      "quantity": 1
     }
-  },
-  "shapeless": true,
-  "width": 1,
-  "height": 2,
-  "output": {
-    "type": "block",
-    "code": "roadworks:roadblock-wood-free-{wood}",
-    "quantity": 1
   }
-}
