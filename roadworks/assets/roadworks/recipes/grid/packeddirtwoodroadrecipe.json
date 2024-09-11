@@ -3,7 +3,7 @@
     "ingredients": {
       "C": {
         "type": "block",
-        "code": "game:soil-*",
+        "code": "game:packeddirt",
         "quantity": 1
       },
       "L": {

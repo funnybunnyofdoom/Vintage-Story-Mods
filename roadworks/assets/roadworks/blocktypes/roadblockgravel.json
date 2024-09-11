@@ -1,5 +1,5 @@
 {
-  "code": "roadblock-gravel",
+  "code": "roadblockgravel",
   "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
   "creativeinventory": {
     "general": [ "*-free-*" ],
@@ -34,15 +34,15 @@
     "*-snow-*": [ { "name": "BreakSnowFirst" } ]
   },
   "textures": {
-    "all": { "base": "game:block/stone/gravel/{rock}" }
+    "sides": { "base": "game:block/stone/gravel/{rock}" }
   },
   "resistanceByType": {
     "*-snow-*": 0.2,
     "*-free-*": 2.4
   },
   "walkspeedmultiplierByType": {
-    "roadblock-gravel-free-*": 1.4,
-    "roadblock-gravel-now-*": 0.8
+    "roadblockgravel-free-*": 1.4,
+    "roadblockgravel-now-*": 0.8
   },
   "faceCullMode": "FlushExceptTop",
   "sideopaque": {
@@ -88,7 +88,7 @@
     "*": [
       {
         "type": "block",
-        "code": "roadworks:roadblock-gravel-free-{rock}"
+        "code": "roadworks:roadblockgravel-free-{rock}"
       }
     ]
   },

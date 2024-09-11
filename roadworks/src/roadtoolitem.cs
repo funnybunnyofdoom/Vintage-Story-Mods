@@ -44,13 +44,25 @@ namespace roadworks.src
                     {
                         stacks.Add(new ItemStack(block));
                     }
+                    else if (block.Code.Path.StartsWith("unfinishedasphalt"))
+                    {
+                        stacks.Add(new ItemStack(block));
+                    }
+                    else if (block.Code.Path.StartsWith("cob-"))
+                    {
+                        stacks.Add(new ItemStack(block));
+                    }
+                    else if (block.Code.Path.StartsWith("forestfloor"))
+                    {
+                        stacks.Add(new ItemStack(block));
+                    }
                 }
 
                 return new WorldInteraction[]
                 {
                     new WorldInteraction()
                     {
-                        ActionLangCode = "heldhelp-pave",
+                        ActionLangCode = "roadworks:heldhelp-pave",
                         MouseButton = EnumMouseButton.Right,
                         Itemstacks = stacks.ToArray()
                     }
@@ -152,7 +164,7 @@ namespace roadworks.src
                 string rockType = pathParts[pathParts.Length - 1];
 
                 // Use the rock type to get the corresponding road block
-                topaveblock = byEntity.World.GetBlock(new AssetLocation($"roadworks:roadblock-gravel-free-{rockType}"));
+                topaveblock = byEntity.World.GetBlock(new AssetLocation($"roadworks:roadblockgravel-free-{rockType}"));
             }
             else if (block.Code.Path.Contains("cobblestone"))
             {
@@ -162,7 +174,7 @@ namespace roadworks.src
                 string rockType = pathParts[pathParts.Length - 1];
 
                 // Use the rock type to get the corresponding road block
-                topaveblock = byEntity.World.GetBlock(new AssetLocation($"roadworks:roadblock-cobblestone-{rockType}-free"));
+                topaveblock = byEntity.World.GetBlock(new AssetLocation($"roadworks:roadblockcobblestone-free-{rockType}"));
             }
             else
             {

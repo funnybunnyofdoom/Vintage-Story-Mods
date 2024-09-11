@@ -2,7 +2,14 @@
   "code": "roadstairsbrick",
   "class": "BlockStairs",
   "attributes": {
-    "noDownVariant": true
+    "noDownVariant": true,
+    "mapColorCode": "road",
+    "liquidBarrierOnSidesByType": {
+      "*-up-north-*": [ 1.0, 0.5, 0.5, 0.5 ],
+      "*-up-south-*": [ 0.5, 0.5, 1.0, 0.5 ],
+      "*-up-west-*": [ 0.5, 0.5, 0.5, 1.0 ],
+      "*-up-east-*": [ 0.5, 1.0, 0.5, 0.5 ]
+    }
   },
   "variantgroups": [
     {
@@ -22,6 +29,15 @@
   "creativeinventory": {
     "general": [ "*-up-north-free-*" ],
     "construction": [ "*-up-north-free-*" ]
+  },
+  "behaviorsByType": {
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ],
+    "*": [
+      {
+        "name": "WrenchOrientable",
+        "properties": { "baseCode": "roadstairscobblestone-up-{cover}-{rock}" }
+      }
+    ]
   },
   "sidesolidByType": {
     "*-up-north-*": {
@@ -84,7 +100,8 @@
     }
   },
   "walkspeedmultiplierByType": {
-    "*": 2.0
+    "*-free-*": 2.0,
+    "*-snow-": 1.3
   },
   "faceCullMode": "NeverCull",
   "blockmaterialByType": {
@@ -98,7 +115,10 @@
     }
   },
   "replaceable": 700,
-  "resistance": 2.0,
+  "resistanceByType": {
+    "*-snow-*": 0.2,
+    "*-free-*": 2.0
+  },
   "emitSideAo": { "all": true },
   "walkspeedmultiplier": 2.00,
   "collisionSelectionBoxesByType": {

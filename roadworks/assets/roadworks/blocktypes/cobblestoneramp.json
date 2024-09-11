@@ -90,7 +90,7 @@
 		"all": { "base": "game:block/stone/cobblestone/{type}*" }
 	},
 	"replaceable": 700,
-	"resistance": 2.0,
+	"resistance": 4.0,
 	"emitSideAo": { "all": true },
 	"collisionSelectionBoxesByType": {
 		"*-1-*": [

@@ -61,29 +61,6 @@
         ]
       }
     },
-    "roadblock-*-wood": {
-      "sides": {
-        "base": "roadworks:block/roadblock-{type}-7",
-        "alternates": [
-          { "base": "roadworks:block/roadblock-{type}-1" },
-          { "base": "roadworks:block/roadblock-{type}-2" },
-          { "base": "roadworks:block/roadblock-{type}-3" },
-          { "base": "roadworks:block/roadblock-{type}-4" },
-          { "base": "roadworks:block/roadblock-{type}-5" },
-          { "base": "roadworks:block/roadblock-{type}-6" }
-        ]
-      }
-    },
-    "roadblock-*-gravel": {
-      "sides": {
-        "base": "roadworks:block/roadblock-{type}-1",
-        "alternates": [
-          { "base": "roadworks:block/roadblock-{type}-2" },
-          { "base": "roadworks:block/roadblock-{type}-3" },
-          { "base": "roadworks:block/roadblock-{type}-4" }
-        ]
-      }
-    },
     "roadblock-*-concrete": {
       "sides": {
         "base": "roadworks:block/roadblock-{type}-1",
@@ -96,15 +73,6 @@
           { "base": "roadworks:block/roadblock-{type}-6" },
           { "base": "roadworks:block/roadblock-{type}-7" },
           { "base": "roadworks:block/roadblock-{type}-8" }
-        ]
-      }
-    },
-    "roadblock-*-brick": {
-      "sides": {
-        "base": "roadworks:block/roadblock-{type}-1",
-        "alternates": [
-          { "base": "roadworks:block/roadblock-{type}-2" },
-          { "base": "roadworks:block/roadblock-{type}-3" }
         ]
       }
     },
@@ -126,19 +94,15 @@
   },
   "resistanceByType": {
     "*-snow-*": 0.2,
-    "*-free-*": 2.4
+    "*-free-dirt": 1.8,
+    "*-free-concrete": 4.5,
+    "*-free-asphalt": 5.0
   },
   "walkspeedmultiplierByType": {
     "roadblock-free-dirt": 1.2,
-    "roadblock-free-gravel": 1.4,
-    "roadblock-free-wood": 1.8,
-    "roadblock-free-brick": 2.0,
     "roadblock-free-concrete": 2.5,
     "roadblock-free-asphalt": 3.0,
     "roadblock-snow-dirt": 0.7,
-    "roadblock-snow-gravel": 0.8,
-    "roadblock-snow-wood": 0.9,
-    "roadblock-snow-brick": 1.3,
     "roadblock-snow-concrete": 1.75,
     "roadblock-snow-asphalt": 2.0
   },

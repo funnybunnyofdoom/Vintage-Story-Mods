@@ -2,7 +2,14 @@
 	"code": "roadstairs",
 	"class": "BlockStairs",
 	"attributes": {
-		"noDownVariant": true
+		"mapColorCode": "road",
+		"noDownVariant": true,
+		"liquidBarrierOnSidesByType": {
+			"*-up-north-*": [ 1.0, 0.5, 0.5, 0.5 ],
+			"*-up-south-*": [ 0.5, 0.5, 1.0, 0.5 ],
+			"*-up-west-*": [ 0.5, 0.5, 0.5, 1.0 ],
+			"*-up-east-*": [ 0.5, 1.0, 0.5, 0.5 ]
+		}
 	},
 	"variantgroups": [
 		{
@@ -19,6 +26,15 @@
 			"states": [ "concrete", "asphalt" ]
 		}
 	],
+	"behaviorsByType": {
+		"*-snow-*": [ { "name": "BreakSnowFirst" } ],
+		"*": [
+			{
+				"name": "WrenchOrientable",
+				"properties": { "baseCode": "roadstairscobblestone-up-{cover}-{rock}" }
+			}
+		]
+	},
 	"creativeinventory": {
 		"general": [ "*-up-north-free-*" ],
 		"construction": [ "*-up-north-free-*" ]
@@ -162,7 +178,11 @@
 		}
 	},
 	"replaceable": 900,
-	"resistance": 2.4,
+	"resistanceByType": {
+		"*-snow-*": 0.2,
+		"*-free-concrete": 4.5,
+		"*-free-asphalt": 5.0
+	},
 	"emitSideAo": { "all": true },
 	"walkspeedmultiplier": 1.20,
 	"collisionSelectionBoxesByType": {

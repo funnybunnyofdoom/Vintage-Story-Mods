@@ -2,7 +2,23 @@
   "code": "roadstairswood",
   "class": "BlockStairs",
   "attributes": {
-    "noDownVariant": true
+    "mapColorCode": "road",
+    "noDownVariant": true,
+    "liquidBarrierOnSidesByType": {
+      "*-up-north-*": [ 1.0, 0.5, 0.5, 0.5 ],
+      "*-up-south-*": [ 0.5, 0.5, 1.0, 0.5 ],
+      "*-up-west-*": [ 0.5, 0.5, 0.5, 1.0 ],
+      "*-up-east-*": [ 0.5, 1.0, 0.5, 0.5 ]
+    }
+  },
+  "behaviorsByType": {
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ],
+    "*": [
+      {
+        "name": "WrenchOrientable",
+        "properties": { "baseCode": "roadstairscobblestone-up-{cover}-{rock}" }
+      }
+    ]
   },
   "variantgroups": [
     {
@@ -96,9 +112,15 @@
     }
   },
   "replaceable": 700,
-  "resistance": 2.0,
+  "resistanceByType": {
+    "*-snow-*": 0.2,
+    "*-free-*": 3.5
+  },
   "emitSideAo": { "all": true },
-  "walkspeedmultiplier": 1.80,
+  "walkspeedmultiplierByType": {
+    "*-free-*": 1.8,
+    "*-snow-*": 1
+  },
   "collisionSelectionBoxesByType": {
     "*-down-*": [
       {

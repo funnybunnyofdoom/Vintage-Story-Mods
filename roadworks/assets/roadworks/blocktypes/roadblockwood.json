@@ -1,5 +1,5 @@
 {
-  "code": "roadblock-wood",
+  "code": "roadblockwood",
   "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
   "creativeinventory": {
     "general": [ "*-free-*" ],
@@ -28,7 +28,7 @@
     "*-snow-*": [ { "name": "BreakSnowFirst" } ]
   },
   "textures": {
-    "all": { "base": "game:block/wood/planks/{wood}*" }
+    "sides": { "base": "game:block/wood/planks/{wood}*" }
   },
   "resistanceByType": {
     "*-snow-*": 0.2,
@@ -83,7 +83,7 @@
     "*": [
       {
         "type": "block",
-        "code": "roadworks:roadblock-wood-free-{wood}"
+        "code": "roadworks:roadblockwood-free-{wood}"
       }
     ]
   },

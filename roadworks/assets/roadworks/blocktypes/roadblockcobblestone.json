@@ -1,37 +1,37 @@
 {
-  "code": "roadblock-cobblestone",
+  "code": "roadblockcobblestone",
   "variantgroups": [
-    {
-      "code": "type",
-      "loadFromProperties": "block/rockwithdeposit"
-    },
     {
       "code": "cover",
       "states": [ "free", "snow" ]
+    },
+    {
+      "code": "type",
+      "loadFromProperties": "block/rockwithdeposit"
     }
   ],
   "skipVariants": [ "*-obsidian-*", "*-halite-*", "*-scoria-*", "*-tuff-*" ],
   "behaviorsByType": {
-    "*-snow": [ { "name": "BreakSnowFirst" } ]
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ]
   },
   "attributes": {
     "mapColorCode": "road",
     "liquidBarrierOnSides": [ 1.0, 1.0, 1.0, 1.0 ]
   },
   "creativeinventory": {
-    "general": [ "*" ],
-    "construction": [ "*" ]
+    "general": [ "*-free-*" ],
+    "decorative": [ "*-free-*" ]
   },
   "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
   "blockmaterial": "Stone",
   "textures": {
-    "all": { "base": "game:block/stone/cobblestone/{type}*" }
+    "sides": { "base": "game:block/stone/cobblestone/{type}*" }
   },
   "replaceable": 140,
   "fertility": 0,
   "resistanceByType": {
-    "*-snow": 0.2,
-    "*-free": 4.0
+    "*-snow-*": 0.2,
+    "*-free-*": 4.0
   },
   "sideopaque": {
     "all": false,
@@ -40,6 +40,10 @@
   "sidesolid": {
     "all": false,
     "down": true
+  },
+  "walkspeedmultiplierByType": {
+    "*-free-*": 1.6,
+    "*-snow-*": 0.8
   },
   "walkspeedmultiplier": 1.6,
   "selectionbox": {
@@ -77,7 +81,7 @@
     "*": [
       {
         "type": "block",
-        "code": "roadworks:roadblock-cobblestone-{type}-free"
+        "code": "roadworks:roadblockcobblestone-free-{type}"
       }
     ]
   },

@@ -28,7 +28,13 @@
   ],
   "skipVariants": [ "*-obsidian", "*-halite", "*-scoria", "*-tuff" ],
   "behaviorsByType": {
-    "*-snow": [ { "name": "BreakSnowFirst" } ]
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ],
+    "*": [
+      {
+        "name": "WrenchOrientable",
+        "properties": { "baseCode": "roadstairscobblestone-up-{cover}-{rock}" }
+      }
+    ]
   },
   "creativeinventory": {
     "general": [ "*-up-north-free-*" ],
@@ -95,7 +101,8 @@
     }
   },
   "walkspeedmultiplierByType": {
-    "*": 2.0
+    "*-free-*": 1.6,
+    "*-snow-*": 0.8
   },
   "faceCullMode": "NeverCull",
   "blockmaterialByType": {
@@ -110,11 +117,10 @@
   },
   "replaceable": 700,
   "resistanceByType": {
-    "*-snow": 0.2,
-    "*-free": 2.0
+    "*-snow-*": 0.2,
+    "*-free-*": 4.0
   },
   "emitSideAo": { "all": true },
-  "walkspeedmultiplier": 1.6,
   "collisionSelectionBoxesByType": {
     "*-down-*": [
       {

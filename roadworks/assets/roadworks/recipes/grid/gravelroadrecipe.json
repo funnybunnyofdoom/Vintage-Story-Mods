@@ -19,7 +19,7 @@
   "height": 2,
   "output": {
     "type": "block",
-    "code": "roadworks:roadblock-gravel-free-{gravel}",
+    "code": "roadworks:roadblockgravel-free-{gravel}",
     "quantity": 1
   }
 }

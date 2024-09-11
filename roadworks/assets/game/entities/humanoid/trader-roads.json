@@ -76,10 +76,6 @@
         "avg": 30,
         "var": 10
       },
-
-
-
-
       "selling": {
         "maxItems": 14,
         "list": [
@@ -110,7 +106,7 @@
             }
           },
           {
-            "code": "roadworks:roadblock-gravel-free-granite",
+            "code": "roadworks:roadblockgravel-free-granite",
             "type": "block",
             "stacksize": 16,
             "stock": {
@@ -119,6 +115,33 @@
             },
             "price": {
               "avg": 2,
+              "var": 0.5
+            }
+          },
+          {
+            "code": "roadworks:roadblockcobblestone-free-granite",
+            "type": "block",
+            "stacksize": 16,
+            "stock": {
+              "avg": 8,
+              "var": 2
+            },
+            "price": {
+              "avg": 2,
+              "var": 0.5
+            }
+          },
+
+          {
+            "code": "roadworks:roadblockwood-free-oak",
+            "type": "block",
+            "stacksize": 16,
+            "stock": {
+              "avg": 8,
+              "var": 2
+            },
+            "price": {
+              "avg": 3,
               "var": 0.5
             }
           },
@@ -376,7 +399,7 @@
         "list": [
 
           {
-            "code": "roadworks:roadblock-gravel-free-granite",
+            "code": "roadworks:roadblockgravel-free-granite",
             "type": "block",
             "stacksize": 16,
             "stock": {
