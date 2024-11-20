@@ -1,38 +1,53 @@
 {
-  "code": "roadblockcobblestone",
+  "code": "roadblock-wood",
+  "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
+  "blockmaterialByType": {
+    "*": "Wood"
+  },
+  "attributes": {
+
+  },
+  "transitionableProps": [
+    {
+      "type": "cure",
+      "freshHours": { "avg": 0 },
+      "transitionHours": { "avg": 0.01 },
+      "transitionedStack": {
+        "type": "block",
+        "code": "roadworks:roadblockwood-{cover}-{wood}"
+      },
+      "transitionRatio": 1
+    }
+  ],
+  "replaceable": 900,
+  "lightAbsorption": 99,
   "variantgroups": [
     {
       "code": "cover",
       "states": [ "free", "snow" ]
     },
     {
-      "code": "type",
-      "loadFromProperties": "block/rockwithdeposit"
+      "code": "wood",
+      "states": [ "aged", "rottenebony" ],
+      "loadFromProperties": "block/wood"
     }
   ],
-  "skipVariants": [ "*-obsidian", "*-halite", "*-scoria", "*-tuff" ],
   "behaviorsByType": {
     "*-snow-*": [ { "name": "BreakSnowFirst" } ]
   },
-  "attributes": {
-    "mapColorCode": "road",
-    "liquidBarrierOnSides": [ 1.0, 1.0, 1.0, 1.0 ]
-  },
-  "creativeinventory": {
-    "general": [ "*-free-*" ],
-    "decorative": [ "*-free-*" ]
-  },
-  "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
-  "blockmaterial": "Stone",
   "textures": {
-    "sides": { "base": "game:block/stone/cobblestone/{type}*" }
+    "sides": { "base": "game:block/wood/planks/{wood}*" }
   },
-  "replaceable": 140,
-  "fertility": 0,
   "resistanceByType": {
     "*-snow-*": 0.2,
-    "*-free-*": 4.0
+    "*-free-*": 2.0
   },
+  "walkspeedmultiplierByType": {
+
+    "*-snow-*": 1.0,
+    "*": 1.8
+  },
+  "faceCullMode": "FlushExceptTop",
   "sideopaque": {
     "all": false,
     "down": true
@@ -41,11 +56,6 @@
     "all": false,
     "down": true
   },
-  "walkspeedmultiplierByType": {
-    "*-free-*": 1.6,
-    "*-snow-*": 0.8
-  },
-  "walkspeedmultiplier": 1.6,
   "selectionbox": {
     "x1": 0,
     "y1": 0,
@@ -81,20 +91,21 @@
     "*": [
       {
         "type": "block",
-        "code": "roadworks:roadblockcobblestone-free-{type}"
+        "code": "roadworks:roadblockwood-free-{wood}"
       }
     ]
   },
   "sounds": {
+    "place": "game:block/planks",
     "breakByType": {
-      "*": "game:block/rock-break-pickaxe"
+      "*": "game:block/planks"
     },
     "hitByType": {
-      "*": "game:block/rock-hit-pickaxe"
+      "*": "game:block/planks"
     },
     "walkByType": {
 
-      "*": "game:walk/stone"
+      "*": "game:walk/planks"
     }
   }
 }

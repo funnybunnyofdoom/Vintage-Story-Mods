@@ -11,9 +11,9 @@
   "roadworks:item-tar": "Creosote Tar",
 
 
-  "roadworks:block-roadstairs-*-*-gravel": "Gravel Stairs", //Obsolete
-  "roadworks:block-roadstairs-*-*-wood": "Wood Stairs", //Obsolete
-  "roadworks:block-roadstairs-*-*-brick": "Brick Stairs", //Obsolete
+  "roadworks:block-roadstairs-*-*-gravel": "(Obsolete) Gravel Stairs", //Obsolete
+  "roadworks:block-roadstairs-*-*-wood": "(Obsolete) Wood Stairs", //Obsolete
+  "roadworks:block-roadstairs-*-*-brick": "(Obsolete) Brick Stairs", //Obsolete
   "roadworks:block-roadstairs-*-*-concrete": "Concrete Stairs",
   "roadworks:block-roadstairs-*-*-asphalt": "Asphalt Stairs",
 
@@ -23,10 +23,10 @@
   "roadworks:block-roadblockslab-*-concrete": "Concrete Slab",
   "roadworks:block-roadblockslab-*-asphalt": "Asphalt Slab",
 
-  "roadworks:block-roadblock-*-gravel": "Gravel Road", //Obsolete
+  "roadworks:block-roadblock-*-gravel": "(Obsolete) Gravel Road", //Obsolete
   "roadworks:block-roadblock-*-dirt": "Dirt Road",
-  "roadworks:block-roadblock-*-wood": "Wood Road", //Obsolete
-  "roadworks:block-roadblock-*-brick": "Brick Road", //Obsolete
+  "roadworks:block-roadblock-*-wood": "(Obsolete) Wood Road", //Obsolete
+  "roadworks:block-roadblock-*-brick": "(Obsolete) Brick Road", //Obsolete
   "roadworks:block-roadblock-*-concrete": "Concrete Road",
   "roadworks:block-roadblock-*-asphalt": "Asphalt Road",
 
@@ -264,5 +264,42 @@
   "game:handbooktext-roadblock-gravel": "Use a road tool on gravel to turn it into gravel Roads. ",
 
   "game:handbooktitle-roadblock-dirt": "Crafting:",
-  "game:handbooktext-roadblock-dirt": "Use a road tool on soil to turn it into dirt Roads. "
+  "game:handbooktext-roadblock-dirt": "Use a road tool on soil to turn it into dirt Roads. ",
+
+  //Legacy Roads
+  //New Wood Roads by Wood Type
+
+  "roadworks:block-roadblock-wood-*-birch": "(Obsolete) Birch Wood Road",
+  "roadworks:block-roadblock-wood-*-oak": "(Obsolete) Oak Wood Road",
+  "roadworks:block-roadblock-wood-*-maple": "(Obsolete) Maple Wood Road",
+  "roadworks:block-roadblock-wood-*-pine": "(Obsolete) Pine Wood Road",
+  "roadworks:block-roadblock-wood-*-acacia": "(Obsolete) Acacia Wood Road",
+  "roadworks:block-roadblock-wood-*-kapok": "(Obsolete) Kapok Wood Road",
+  "roadworks:block-roadblock-wood-*-baldcypress": "(Obsolete) Baldcypress Wood Road",
+  "roadworks:block-roadblock-wood-*-larch": "(Obsolete) Larch Wood Road",
+  "roadworks:block-roadblock-wood-*-redwood": "(Obsolete) Redwood Wood Road",
+  "roadworks:block-roadblock-wood-*-ebony": "(Obsolete) Ebony Wood Road",
+  "roadworks:block-roadblock-wood-*-walnut": "(Obsolete) Walnut Wood Road",
+  "roadworks:block-roadblock-wood-*-purpleheart": "(Obsolete) Purpleheart Wood Road",
+  "roadworks:block-roadblock-wood-*-rottenebony": "(Obsolete) Rotten Ebony Wood Road",
+  "roadworks:block-roadblock-wood-*-aged": "(Obsolete) Aged Wood Road",
+
+  "roadworks:block-roadblock-brick-*-blue": "(Obsolete) Blue Brick Road",
+  "roadworks:block-roadblock-brick-*-brown": "(Obsolete) Brown Brick Road",
+  "roadworks:block-roadblock-brick-*-fire": "(Obsolete) Fire Brick Road",
+  "roadworks:block-roadblock-brick-*-red": "(Obsolete) Red Brick Road",
+  "roadworks:block-roadblock-gravel-*-basalt": "(Obsolete) Basalt Gravel Road",
+  "roadworks:block-roadblock-gravel-*-chert": "(Obsolete) Chert gravel Road",
+  "roadworks:block-roadblock-gravel-*-conglomerate": "(Obsolete) Conglomerate gravel Road",
+  "roadworks:block-roadblock-gravel-*-limestone": "(Obsolete) Limestone gravel Road",
+  "roadworks:block-roadblock-gravel-*-peridotite": "(Obsolete) Peridotite gravel Road",
+  "roadworks:block-roadblock-gravel-*-phyllite": "(Obsolete) Phyllite gravel Road",
+  "roadworks:block-roadblock-gravel-*-slate": "(Obsolete) Slate gravel Road",
+  "roadworks:block-roadblock-gravel-*-andesite": "(Obsolete) Andesite gravel Road",
+  "roadworks:block-roadblock-gravel-*-chalk": "(Obsolete) Chalk gravel Road",
+  "roadworks:block-roadblock-gravel-*-claystone": "(Obsolete) Claystone gravel Road",
+  "roadworks:block-roadblock-gravel-*-granite": "(Obsolete) Granite gravel Road",
+  "roadworks:block-roadblock-gravel-*-sandstone": "(Obsolete) Sandstone gravel Road",
+  "roadworks:block-roadblock-gravel-*-shale": "(Obsolete) Shale gravel Road",
+  "roadworks:block-roadblock-gravel-*-bauxite": "(Obsolete) Bauxite gravel Road"
 }

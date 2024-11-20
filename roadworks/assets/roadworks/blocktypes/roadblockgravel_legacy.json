@@ -1,0 +1,116 @@
+{
+  "code": "roadblock-gravel",
+  "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
+  "blockmaterialByType": {
+    "*-gravel": "Gravel"
+  },
+  "attributes": {
+    "handbook": {
+      "extraSections": [
+        {
+          "title": "handbooktitle-roadblock-gravel",
+          "text": "handbooktext-roadblock-gravel"
+        }
+      ]
+    }
+  },
+  "transitionableProps": [
+    {
+      "type": "cure",
+      "freshHours": { "avg": 0 },
+      "transitionHours": { "avg": 0.01 },
+      "transitionedStack": {
+        "type": "block",
+        "code": "roadworks:roadblockgravel-{cover}-{rock}"
+      },
+      "transitionRatio": 1
+    }
+  ],
+  "replaceable": 900,
+  "lightAbsorption": 99,
+  "variantgroups": [
+    {
+      "code": "cover",
+      "states": [ "free", "snow" ]
+    },
+    {
+      "loadFromProperties": "block/rock",
+      "code": "rock"
+    }
+  ],
+  "behaviorsByType": {
+    "*-snow-*": [ { "name": "BreakSnowFirst" } ]
+  },
+  "textures": {
+    "sides": { "base": "game:block/stone/gravel/{rock}" }
+  },
+  "resistanceByType": {
+    "*-snow-*": 0.2,
+    "*-free-*": 2.4
+  },
+  "walkspeedmultiplierByType": {
+    "roadblockgravel-free-*": 1.4,
+    "roadblockgravel-now-*": 0.8
+  },
+  "faceCullMode": "FlushExceptTop",
+  "sideopaque": {
+    "all": false,
+    "down": true
+  },
+  "sidesolid": {
+    "all": false,
+    "down": true
+  },
+  "selectionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "collisionbox": {
+    "x1": 0,
+    "y1": 0,
+    "z1": 0,
+    "x2": 1,
+    "y2": 1,
+    "z2": 1
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldTpUseAnimation": "twohandplaceblock",
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.2,
+      "y": -1.1,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -2,
+      "y": 25,
+      "z": -78
+    },
+    "scale": 0.37
+  },
+  "dropsByType": {
+    "*": [
+      {
+        "type": "block",
+        "code": "roadworks:roadblockgravel-free-{rock}"
+      }
+    ]
+  },
+  "sounds": {
+    "place": "game:block/gravel",
+    "breakByType": {
+      "*": "game:block/gravel"
+    },
+    "hitByType": {
+      "*": "game:block/gravel"
+    },
+    "walkByType": {
+
+      "*": "game:walk/gravel1"
+    }
+  }
+}

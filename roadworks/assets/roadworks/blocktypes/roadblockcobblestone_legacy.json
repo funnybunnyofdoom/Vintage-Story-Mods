@@ -1,16 +1,17 @@
 {
-  "code": "roadblockcobblestone",
+  "code": "roadblock-cobblestone",
   "variantgroups": [
-    {
-      "code": "cover",
-      "states": [ "free", "snow" ]
-    },
+
     {
       "code": "type",
       "loadFromProperties": "block/rockwithdeposit"
+    },
+    {
+      "code": "cover",
+      "states": [ "free", "snow" ]
     }
   ],
-  "skipVariants": [ "*-obsidian", "*-halite", "*-scoria", "*-tuff" ],
+  "skipVariants": [ "*-obsidian-*", "*-halite-*", "*-scoria-*", "*-tuff-*" ],
   "behaviorsByType": {
     "*-snow-*": [ { "name": "BreakSnowFirst" } ]
   },
@@ -18,10 +19,18 @@
     "mapColorCode": "road",
     "liquidBarrierOnSides": [ 1.0, 1.0, 1.0, 1.0 ]
   },
-  "creativeinventory": {
-    "general": [ "*-free-*" ],
-    "decorative": [ "*-free-*" ]
-  },
+  "transitionableProps": [
+    {
+      "type": "cure",
+      "freshHours": { "avg": 0 },
+      "transitionHours": { "avg": 0.01 },
+      "transitionedStack": {
+        "type": "block",
+        "code": "roadworks:roadblockcobblestone-{cover}-{type}"
+      },
+      "transitionRatio": 1
+    }
+  ],
   "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
   "blockmaterial": "Stone",
   "textures": {
