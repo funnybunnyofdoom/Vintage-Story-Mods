@@ -40,6 +40,7 @@
   "cooldown-reusable": "{0} cooldown has been updated to {1} minutes.", // {0} = command name {1} = number of minutes
   "cooldown-player-reusable": "Please wait for {0} minutes.",
   "cooldown-fail": "Cooldown could not be set",
+  "no-value": "Please input a value.",
 
   //Import Old Homes
   "importing": "Importing old homes",

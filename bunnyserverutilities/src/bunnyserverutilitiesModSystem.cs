@@ -1051,34 +1051,41 @@ namespace bunnyserverutilities
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:not-enough-permissions", cmdname + "admin"));
                     }
                 case "delete":
-                    int? numb = args.ArgCount > 1 ? args[1] as int? : null; ;
-                    string playerID3 = player.Entity.PlayerUID; //get the using player's player ID
-                    int homecount3;
-                    List<BlockPos> homelist3 = new List<BlockPos>();
-                    if (homeSave.ContainsKey(playerID3))
+                    if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int numb) && numb >= 0)
                     {
-                        homeSave.TryGetValue(playerID3, out homelist3);
-                        homecount3 = homelist3.Count;
+
+                        string playerID3 = player.Entity.PlayerUID; //get the using player's player ID
+                        int homecount3;
+                        List<BlockPos> homelist3 = new List<BlockPos>();
+                        if (homeSave.ContainsKey(playerID3))
+                        {
+                            homeSave.TryGetValue(playerID3, out homelist3);
+                            homecount3 = homelist3.Count;
+                        }
+                        else
+                        {
+                            homecount3 = 0;
+                        }
+
+                        if (homecount3 == 0 || homecount3 < numb || numb <= 0)
+                        {
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:no-homes", numb));
+                        }
+                        else if (numb == null)
+                        {
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
+                        }
+                        else
+                        {
+                            homelist3.RemoveAt((int)numb - 1);
+                            homeSave.Remove(playerID3);
+                            homeSave.Add(playerID3, homelist3);
+                            return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-removed", numb));
+                        }
                     }
                     else
-                    {
-                        homecount3 = 0;
-                    }
-
-                    if (homecount3 == 0 || homecount3 < numb || numb <= 0)
-                    {
-                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:no-homes", numb));
-                    }
-                    else if (numb == null)
                     {
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
-                    }
-                    else
-                    {
-                        homelist3.RemoveAt((int)numb - 1);
-                        homeSave.Remove(playerID3);
-                        homeSave.Add(playerID3, homelist3);
-                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:home-removed", numb));
                     }
 
             }
@@ -1219,7 +1226,7 @@ namespace bunnyserverutilities
                     }
                     else
                     {
-                        return TextCommandResult.Success(Lang.Get("cooldown-fail"));
+                        return TextCommandResult.Success(Lang.Get("bunnyserverutilities:cooldown-fail"));
                     }
             }
             return TextCommandResult.Deferred;

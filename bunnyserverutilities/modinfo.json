@@ -6,7 +6,7 @@
     "FunnyBunnyofDOOM"
   ],
   "description": "A suite of server utilities to aid the server owner in a customized experience",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "dependencies": {
     "game": ""
   },
