@@ -1034,8 +1034,8 @@ namespace bunnyserverutilities
                 case "limit":
                     if (player.Role.Code == "admin" || player.HasPrivilege(cmdname + "admin"))
                     {
-                        int num;
-                        if (args.ArgCount > 1 && args[1] != null && int.TryParse(args[1].ToString(), out num) && num > 0)
+                        //int num;
+                        if (args.ArgCount > 1 && int.TryParse(args[1] as string, out int num) && num >= 0)
                         {
                             bsuconfig.Current.homelimit = num;
                             sapi.StoreModConfig(bsuconfig.Current, "BunnyServerUtilitiesConfig.json");
@@ -1087,7 +1087,27 @@ namespace bunnyserverutilities
                     {
                         return TextCommandResult.Success(Lang.Get("bunnyserverutilities:non-negative-number"));
                     }
+                case "list":
+                    player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "Home list:", Vintagestory.API.Common.EnumChatType.Notification);
+                    string pID = player.Entity.PlayerUID; //get the using player's player ID;
+                    List<BlockPos> homelst = new List<BlockPos>();
 
+                    if (homeSave.ContainsKey(pID))
+                    {
+                        int homecount = 0;
+                        homeSave.TryGetValue(pID, out homelst);
+                        foreach (var home in homelst)
+                        {
+                            homecount++;
+                            player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "home " + homecount + ": ("+home.ToLocalPosition(sapi).X.ToString() + "," + home.ToLocalPosition(sapi).Y.ToString() + "," + home.ToLocalPosition(sapi).Z.ToString() + ")", Vintagestory.API.Common.EnumChatType.Notification);
+                        }
+                    }
+                    else
+                    {
+                        player.SendMessage(Vintagestory.API.Config.GlobalConstants.GeneralChatGroup, "No homes found for this player.", Vintagestory.API.Common.EnumChatType.Notification);
+                    }
+
+                    return TextCommandResult.Deferred;
             }
         }
 
@@ -4389,13 +4409,5 @@ namespace bunnyserverutilities
         //////////End Classes//////////
 
     }
-
-
-
-
-
-
-
-
 
 }
