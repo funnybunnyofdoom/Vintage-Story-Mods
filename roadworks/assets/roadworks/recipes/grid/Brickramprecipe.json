@@ -3,7 +3,7 @@
     "ingredients": {
       "G": {
         "type": "block",
-        "code": "roadworks:roadblock-brick-free-*",
+        "code": "roadworks:roadblockbrick-free-*",
         "name": "clay",
         "allowedVariants": [ "blue", "brown", "fire", "red" ],
         "quantity": 1

@@ -3,7 +3,7 @@
   "ingredients": {
     "L": {
       "type": "block",
-      "code": "roadworks:roadblock-brick-free-*",
+      "code": "roadworks:roadblockbrick-free-*",
       "name": "road",
       "quantity": 3,
       "allowedVariants": [ "blue", "brown", "fire", "red" ]

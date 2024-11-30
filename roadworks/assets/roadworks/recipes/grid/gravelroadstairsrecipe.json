@@ -3,7 +3,7 @@
   "ingredients": {
     "L": {
       "type": "block",
-      "code": "roadworks:roadblock-gravel-free-*",
+      "code": "roadworks:roadblockgravel-free-*",
       "name": "road",
       "quantity": 3,
       "allowedVariants": [ "andesite", "chalk", "chert", "conglomerate", "limestone", "claystone", "granite", "sandstone", "shale", "basalt", "peridotite", "phyllite", "slate", "bauxite", "kimberlite", "suevite", "whitemarble", "redmarble", "greenmarble" ]

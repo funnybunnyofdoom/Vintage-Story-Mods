@@ -3,7 +3,7 @@
     "ingredients": {
       "G": {
         "type": "block",
-        "code": "roadworks:roadblock-wood-free-*",
+        "code": "roadworks:roadblockwood-free-*",
         "name": "wood",
         "skipVariants": [ "agedebony" ],
         "quantity": 1
