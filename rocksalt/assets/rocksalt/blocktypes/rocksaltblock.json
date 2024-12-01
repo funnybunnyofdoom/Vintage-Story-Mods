@@ -1,0 +1,64 @@
+{
+	"code": "rocksaltblock",
+	"behaviors": [ { "name": "UnstableFalling" } ],
+	"class": "BlockRequireSolidGround",
+	"entityClass": "Transient",
+	"attributes": {
+		"mapColorCode": "settlement",
+		"transientProps": {
+			"convertFrom": "*",
+			"convertTo": "game:air",
+			"inGameHours": "1"
+		}
+	},
+	"blockmaterial": "Soil",
+	"creativeinventory": {
+		"general": [ "*" ],
+		"terrain": [ "*" ]
+	},
+	"randomDrawOffset": true,
+	"randomizeRotations": true,
+	"shape": { "base": "rocksalt:block/saltmodel01" },
+	"replaceable": 6001,
+	"resistance": 1.2,
+	"lightAbsorption": 0,
+	"sidesolid": { "all": false },
+	"sideopaque": { "all": false },
+	"selectionbox": {
+		"x1": 0,
+		"y1": 0,
+		"z1": 0,
+		"x2": 1,
+		"y2": 1,
+		"z2": 1
+	},
+	"selectionboxByType": {
+		"rocksaltblock": {
+			"x1": 0,
+			"y1": 0,
+			"z1": 0,
+			"x2": 1,
+			"y2": 0.0625,
+			"z2": 1
+		}
+	},
+	"collisionbox": null,
+	"sounds": {
+		"place": "game:block/sand",
+		"break": "game:block/sand",
+		"hit": "game:block/sand",
+		"walk": "game:walk/sand"
+	},
+	"guiTransform": {
+		"translation": {
+			"x": 0,
+			"y": 2,
+			"z": 0
+		},
+		"origin": {
+			"x": 0.5,
+			"y": 0.0625,
+			"z": 0.5
+		}
+	}
+}
