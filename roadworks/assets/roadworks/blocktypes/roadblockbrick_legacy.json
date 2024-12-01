@@ -1,12 +1,6 @@
 {
   "code": "roadblock-brick",
-  "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
-  "blockmaterialByType": {
-    "*": "Ceramic"
-  },
-  "attributes": {
-
-  },
+  "entityClass": "Transient",
   "transitionableProps": [
     {
       "type": "cure",
@@ -19,6 +13,17 @@
       "transitionRatio": 1
     }
   ],
+  "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
+  "blockmaterialByType": {
+    "*": "Ceramic"
+  },
+  "attributes": {
+    "transientProps": {
+      "convertFrom": "*",
+      "convertTo": "roadworks:roadblockbrick-{cover}-{type}",
+      "inGameHours": "0.01"
+    }
+  },
   "replaceable": 700,
   "lightAbsorption": 99,
   "variantgroups": [

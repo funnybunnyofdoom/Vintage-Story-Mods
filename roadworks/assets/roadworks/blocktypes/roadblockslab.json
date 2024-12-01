@@ -1,9 +1,12 @@
 {
   "code": "roadblockslab",
   "shapeByType": {
-    "*-big-*": { "base": "roadworks:block/threequarterslab-{cover}" },
-    "*-small-*": { "base": "roadworks:block/quarterslab-{cover}" },
-    "*-mid-*": { "base": "game:block/basic/slab/slab-lowered-{cover}" }
+    "*-big-free-*": { "base": "roadworks:block/threequarterslab-free" },
+    "*-small-free-*": { "base": "roadworks:block/quarterslab-free" },
+    "*-mid-free-*": { "base": "game:block/basic/slab/slab-lowered-free" },
+    "*-big-snow-*": { "base": "roadworks:block/threequarterslab-snow" },
+    "*-small-snow-*": { "base": "roadworks:block/quarterslab-snow" },
+    "*-mid-snow-*": { "base": "game:block/basic/slab/slab-lowered-snow" }
   },
     "creativeinventory": {
       "general": [ "*-free-*" ],

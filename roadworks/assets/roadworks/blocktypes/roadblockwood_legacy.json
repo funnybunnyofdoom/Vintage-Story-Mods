@@ -1,11 +1,16 @@
 {
   "code": "roadblock-wood",
+  "entityClass": "Transient",
   "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
   "blockmaterialByType": {
     "*": "Wood"
   },
   "attributes": {
-
+    "transientProps": {
+      "convertFrom": "*",
+      "convertTo": "roadworks:roadblockgravel-{cover}-{wood}",
+      "inGameHours": "0.01"
+    }
   },
   "transitionableProps": [
     {

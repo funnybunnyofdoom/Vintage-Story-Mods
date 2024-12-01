@@ -1,5 +1,6 @@
 {
   "code": "roadblock-cobblestone",
+  "entityClass": "Transient",
   "variantgroups": [
 
     {
@@ -17,7 +18,12 @@
   },
   "attributes": {
     "mapColorCode": "road",
-    "liquidBarrierOnSides": [ 1.0, 1.0, 1.0, 1.0 ]
+    "liquidBarrierOnSides": [ 1.0, 1.0, 1.0, 1.0 ],
+    "transientProps": {
+      "convertFrom": "*",
+      "convertTo": "roadworks:roadblockcobblestone-{type}-{cover}",
+      "inGameHours": "0.01"
+    }
   },
   "transitionableProps": [
     {

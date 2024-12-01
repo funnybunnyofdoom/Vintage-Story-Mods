@@ -1,17 +1,15 @@
 {
   "code": "roadblock-gravel",
+  "entityClass": "Transient",
   "shape": { "base": "game:block/basic/cube-lowered-{cover}" },
   "blockmaterialByType": {
     "*-gravel": "Gravel"
   },
   "attributes": {
-    "handbook": {
-      "extraSections": [
-        {
-          "title": "handbooktitle-roadblock-gravel",
-          "text": "handbooktext-roadblock-gravel"
-        }
-      ]
+    "transientProps": {
+      "convertFrom": "*",
+      "convertTo": "roadworks:roadblockgravel-{cover}-{rock}",
+      "inGameHours": "0.01"
     }
   },
   "transitionableProps": [

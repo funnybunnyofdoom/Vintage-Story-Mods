@@ -8,7 +8,7 @@
 	"textureSizes": {
 	},
 	"textures": {
-		"snowcover": "game:block/snow/normal1",
+		"snowcover": "game:block/liquid/snow/normal1",
 		"roadtype": "roadworks:block/roadblock-asphalt-1"
 	},
 	"elements": [
