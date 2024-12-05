@@ -1,14 +1,13 @@
 {
 	"code": "rocksaltblock",
 	"behaviors": [ { "name": "UnstableFalling" } ],
-	"class": "BlockRequireSolidGround",
 	"entityClass": "Transient",
 	"attributes": {
 		"mapColorCode": "settlement",
 		"transientProps": {
 			"convertFrom": "*",
 			"convertTo": "game:air",
-			"inGameHours": "1"
+			"inGameHours": "72"
 		}
 	},
 	"blockmaterial": "Soil",
@@ -24,6 +23,7 @@
 	"lightAbsorption": 0,
 	"sidesolid": { "all": false },
 	"sideopaque": { "all": false },
+	"rainPermeable": true,
 	"selectionbox": {
 		"x1": 0,
 		"y1": 0,

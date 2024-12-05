@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -11,13 +12,14 @@ using Vintagestory.API.Util;
 
 namespace rocksalt.src
 {
-    class rocksalt : ModSystem
+    public class rocksaltModSystem : ModSystem
     {
         public override void Start(ICoreAPI api)
         {
             base.Start(api);
             api.RegisterItemClass("rocksalt", typeof(ItemRockSalt));
         }
+
         public override void StartServerSide(ICoreServerAPI api)
         {
             base.StartServerSide(api);
@@ -25,12 +27,12 @@ namespace rocksalt.src
         }
     }
 
-    public class ItemRockSalt: Item
+    public class ItemRockSalt : Item
     {
         WorldInteraction[] interactions;
+
         public override void OnLoaded(ICoreAPI api)
         {
-
             if (api.Side != EnumAppSide.Client) return;
             ICoreClientAPI capi = api as ICoreClientAPI;
 
@@ -62,66 +64,103 @@ namespace rocksalt.src
 
         public override void OnHeldInteractStart(ItemSlot itemslot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling)
         {
-            if (blockSel == null || !byEntity.Controls.ShiftKey)
+            if (blockSel == null)
             {
                 base.OnHeldInteractStart(itemslot, byEntity, blockSel, entitySel, firstEvent, ref handHandling);
                 return;
             }
-            if (blockSel.Block == null) { return; }
-            //System.Diagnostics.Debug.WriteLine(blockSel);
-            if (blockSel.Block.FirstCodePart() == "snowlayer" || blockSel.Block.FirstCodePart() == "snowblock" || blockSel.Block.FirstCodePart() == "lakeice" || blockSel.Block.FirstCodePart() == "glacierice" || blockSel.Block.FirstCodePart() == "stonepath" || blockSel.Block.FirstCodePart() == "roadblock")
+
+            if (blockSel.Block == null) return;
+
+            if (blockSel.Block.FirstCodePart() == "snowlayer" || blockSel.Block.FirstCodePart() == "snowblock" || blockSel.Block.FirstCodePart() == "lakeice" || blockSel.Block.FirstCodePart() == "glacierice" || blockSel.Block.FirstCodePart() == "stonepath" || blockSel.Block.FirstCodePart() == "roadblock" || blockSel.Block.FirstCodePart() == "roadblockcobblestone" || blockSel.Block.FirstCodePart() == "roadblockgravel" || blockSel.Block.FirstCodePart() == "roadblockbrick" || blockSel.Block.FirstCodePart() == "roadblockwood")
             {
                 IPlayer byPlayer = null;
-                if (byEntity is EntityPlayer) byPlayer = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
+                Boolean Success = false;
+                if (byEntity is EntityPlayer)
+                {
+                    byPlayer = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
+                }
 
                 blockSel = blockSel.Clone();
-                //blockSel.Position.Up();
 
-                    byEntity.World.PlaySoundAt(new AssetLocation("sounds/effect/stonecrush"), blockSel.Position.X + 0.5f, blockSel.Position.Y, blockSel.Position.Z + 0.5f, byPlayer);
-
-                if ((byEntity as EntityPlayer) == null || ((byEntity as EntityPlayer).Player as IClientPlayer) == null) { return; }
-                    ((byEntity as EntityPlayer).Player as IClientPlayer).TriggerFpAnimation(EnumHandInteract.HeldItemInteract);
-
-                if (byPlayer == null) { return; }
-                if (byPlayer.WorldData == null) { return; }
-                if (byPlayer.WorldData.CurrentGameMode != EnumGameMode.Creative)
-                    {
-                        itemslot.TakeOut(1);
-                        itemslot.MarkDirty();
-                    }
                 
-                if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z, BlockLayersAccess.Fluid).FirstCodePart() =="lakeice")
+
+                if ((byEntity as EntityPlayer) == null || ((byEntity as EntityPlayer).Player as IClientPlayer) == null) return;
+
+                ((byEntity as EntityPlayer).Player as IClientPlayer).TriggerFpAnimation(EnumHandInteract.HeldItemInteract);
+
+                if (byPlayer == null) return;
+                if (byPlayer.WorldData == null) return;
+
+                string firstpart = api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart(); //use this for the if statements
+
+                var newBlockId = api.World.GetBlock(new AssetLocation("rocksalt:rocksaltblock")).BlockId;
+
+                if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z, BlockLayersAccess.Fluid).FirstCodePart() == "lakeice")
                 {
+                    //Lake ice might have water underneath. We shouldn't place our rocksalt block in this case, I think
                     api.World.BlockAccessor.SetBlock(0, blockSel.Position, BlockLayersAccess.Fluid);
-                    if (api.World.BlockAccessor.GetBlock(blockSel.Position.Up()).FirstCodePart() == "snowlayer")//remove snowlayer above the block you're removing (no floating snow)
+                    if (api.World.BlockAccessor.GetBlock(blockSel.Position.Up()).FirstCodePart() == "snowlayer")
                     {
                         api.World.BlockAccessor.SetBlock(0, blockSel.Position);
                     }
-                }else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X,blockSel.Position.Y,blockSel.Position.Z).FirstCodePart() == "stonepath")
+
+                    Success = true; //This triggers our sound
+
+                }
+                else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart() == "stonepath")
                 {
-                    if(api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart(1) == "snow")
+                    if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart(1) == "snow")
                     {
                         api.World.BlockAccessor.SetBlock(api.World.GetBlock(new AssetLocation("stonepath-free")).BlockId, blockSel.Position);
-                    }
-                    
+                        api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position.UpCopy());
+
+                        Success = true; //This triggers our sound
+
+                    } 
+
                 }
-                else if (api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z).FirstCodePart() == "roadblock")
+                else if (firstpart == "roadblockcobblestone" || firstpart == "roadblockgravel" || firstpart == "roadblockwood" || firstpart == "roadblockbrick" || firstpart == "roadblock")
                 {
                     Block block = api.World.BlockAccessor.GetBlock(blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z);
-                    string code = "roadworks:roadblock-free-"+block.FirstCodePart(2);
+                    string code = "roadworks:"+block.FirstCodePart()+"-free-" + block.FirstCodePart(2);
                     Block gb = api.World.GetBlock(new AssetLocation(code));
-                    if (gb == null) return;
+                    if (gb == null)
+                    {                        
+                        return;
+                    }
                     api.World.BlockAccessor.SetBlock(gb.BlockId, blockSel.Position);
+                    api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position.UpCopy());
 
+                    Success = true; // This triggers our sound
                 }
                 else
                 {
-                    api.World.BlockAccessor.SetBlock(0, blockSel.Position);
-                    if (api.World.BlockAccessor.GetBlock(blockSel.Position.Up()).FirstCodePart() == "snowlayer")//remove snowlayer above the block you're removing (no floating snow)
+                    
+                    if (api.World.BlockAccessor.GetBlock(blockSel.Position).FirstCodePart() == "snowlayer")
                     {
-                        api.World.BlockAccessor.SetBlock(0, blockSel.Position);
+                        //api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position);
+                        api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position);
+
+                        Success = true; //This triggers our sound
+                    }
+                    else
+                    {
+                        api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position);
+                        Success = true; //This triggers our sound and consumes salt item
                     }
                 }
+
+                if(Success == true)
+                {
+                    if (byPlayer.WorldData.CurrentGameMode != EnumGameMode.Creative)
+                    {
+                        itemslot.TakeOut(1);
+                        itemslot.MarkDirty();
+                        byEntity.World.PlaySoundAt(new AssetLocation("sounds/effect/stonecrush"), blockSel.Position.X + 0.5f, blockSel.Position.Y, blockSel.Position.Z + 0.5f, byPlayer);
+                    }
+                }
+
             }
             else
             {
@@ -129,10 +168,8 @@ namespace rocksalt.src
             }
 
 
-
-                handHandling = EnumHandHandling.PreventDefault;
+            handHandling = EnumHandHandling.PreventDefault;
         }
-
 
         public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot)
         {
