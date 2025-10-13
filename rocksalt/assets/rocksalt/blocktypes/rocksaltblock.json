@@ -7,7 +7,7 @@
 		"transientProps": {
 			"convertFrom": "*",
 			"convertTo": "game:air",
-			"inGameHours": "72"
+			"inGameHours": "240"
 		}
 	},
 	"blockmaterial": "Soil",

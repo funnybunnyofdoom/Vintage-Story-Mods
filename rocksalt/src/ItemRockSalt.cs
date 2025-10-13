@@ -18,12 +18,14 @@ namespace rocksalt.src
         {
             base.Start(api);
             api.RegisterItemClass("rocksalt", typeof(ItemRockSalt));
+            api.RegisterItemClass("snowshovel", typeof(Snowshovel));
         }
 
         public override void StartServerSide(ICoreServerAPI api)
         {
             base.StartServerSide(api);
             api.RegisterItemClass("rocksalt", typeof(ItemRockSalt));
+            api.RegisterItemClass("snowshovel", typeof(Snowshovel));
         }
     }
 
@@ -139,14 +141,16 @@ namespace rocksalt.src
                     
                     if (api.World.BlockAccessor.GetBlock(blockSel.Position).FirstCodePart() == "snowlayer")
                     {
-                        //api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position);
-                        api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position);
-
+                        //api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position,BlockLayersAccess.Solid);
+                        api.World.BlockAccessor.ExchangeBlock(newBlockId, blockSel.Position);
+                        api.World.BlockAccessor.MarkBlockEntityDirty(blockSel.Position);
                         Success = true; //This triggers our sound
                     }
                     else
                     {
-                        api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position);
+                        //api.World.BlockAccessor.SetBlock(newBlockId, blockSel.Position, BlockLayersAccess.Solid);
+                        api.World.BlockAccessor.ExchangeBlock(newBlockId, blockSel.Position);
+                        api.World.BlockAccessor.MarkBlockEntityDirty(blockSel.Position);
                         Success = true; //This triggers our sound and consumes salt item
                     }
                 }
@@ -157,6 +161,7 @@ namespace rocksalt.src
                     {
                         itemslot.TakeOut(1);
                         itemslot.MarkDirty();
+                        api.World.BlockAccessor.Commit();
                         byEntity.World.PlaySoundAt(new AssetLocation("sounds/effect/stonecrush"), blockSel.Position.X + 0.5f, blockSel.Position.Y, blockSel.Position.Z + 0.5f, byPlayer);
                     }
                 }

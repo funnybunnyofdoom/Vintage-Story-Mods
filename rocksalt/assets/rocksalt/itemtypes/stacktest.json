@@ -1,0 +1,67 @@
+{
+	code: "rocksaltsack",
+	maxstacksize: 64,
+	attributes: {
+		handbook: {
+			groupBy: ["rocksaltsack"]
+		},
+		displaycaseable: true, 
+		shelvable: true,
+		onDisplayTransform: {
+			origin: { x: 0.5, y: 0, z: 0.5 },
+			scale: 0.8
+		}
+	},
+	behaviors: [{ 
+		name: "GroundStorable",
+		properties: {
+			"layout": "Stacking",
+			"placeRemoveSound": "game:sounds/block/ceramicplace",
+			"stackingModel": "rocksalt:block/rocksaltsackpile",
+			"modelItemsToStackSizeRatio": 1,
+			"tessQuantityElements": 3,
+			"stackingCapacity": 16,
+			"transferQuantity": 1,
+			"bulkTransferQuantity": 4,
+			"collisionBox": {
+				"x1": 0,
+				"y1": 0,
+				"z1": 0,
+				"x2": 1,
+				"y2": 0.25,
+				"z2": 1
+			},
+			"cbScaleYByLayer": 0.1666666666666667
+		}
+	}],
+	shape: { base: "rocksalt:item/rocksaltsack" },
+	textures: {
+		"material": { base: "game:block/clay/brickpile/burned/blue-side" },
+		"top": { base: "game:block/clay/brickpile/burned/blue-top" }
+	},
+	creativeinventory: { "general": ["*"], "items": ["*"] },
+	guiTransform: {
+		translation: { x: 2, y: 0, z: 0 },
+		rotation: { x: 164, y: -37, z: 1 },
+		origin: { x: 0.5, y: 0.2, z: 0.5 },
+		scale: 2.78
+	},
+	fpHandTransform: {
+		translation: { x: 0, y: 0.1, z: 0 },
+		rotation: { x: 111, y: 69, z: -57 },
+		origin: { x: 0.5, y: 0.1, z: 0.5 },
+		scale: 1.57
+	},
+	tpHandTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -17, y: 8, z: -19 },
+		origin: { x: 0.14, y: 0.04, z: 0.18 },
+		scale: 0.46
+	},
+	groundTransform: {
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 0, y: 0, z: 0 },
+		origin: { x: 0.5, y: 0, z: 0.5 },
+		scale: 3
+	}
+}

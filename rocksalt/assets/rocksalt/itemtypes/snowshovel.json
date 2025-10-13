@@ -1,0 +1,321 @@
+{
+  "code": "snowshovel",
+  "class": "snowshovel",
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "WallHalves",
+        "wallOffY": 2,
+        "ctrlKey": true,
+        "selectionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 1,
+          "y2": 0.1,
+          "z2": 1
+        },
+        "collisionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 0,
+          "y2": 0,
+          "z2": 0
+        }
+      }
+    }
+  ],
+  "attributes": {
+    "groundStorageTransformByType": {
+      "@snowshovel-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+        "translation": {
+          "x": 0,
+          "y": 0.59,
+          "z": -0.15
+        },
+        "rotation": {
+          "x": 13,
+          "y": 88,
+          "z": -87
+        },
+        "scale": 0.88
+      },
+      "*": {
+        "translation": {
+          "x": 0,
+          "y": 0.4,
+          "z": -0.155
+        },
+        "rotation": {
+          "x": 13,
+          "y": 88,
+          "z": -87
+        },
+        "scale": 0.88
+      }
+    },
+    "handbook": {
+      "groupBy": [ "snowshovel-*" ]
+    },
+    "toolrackTransform": {
+      "rotation": {
+        "y": 1,
+        "z": -1
+      },
+      "translation": {
+        "x": -0.47,
+        "y": 0.6
+      },
+      "scale": 1.25
+    }
+  },
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [
+        "chert",
+        "granite",
+        "andesite",
+        "basalt",
+        "obsidian",
+        "peridotite",
+        "flint",
+        "copper",
+        "tinbronze",
+        "bismuthbronze",
+        "blackbronze",
+        "gold",
+        "silver",
+        "iron",
+        "meteoriciron",
+        "steel"
+      ]
+    }
+  ],
+  "tool": "shovel",
+  "damagedby": [ "blockbreaking", "attacking" ],
+  "shapeByType": {
+    "snowshovel-chert": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-granite": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-andesite": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-basalt": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-obsidian": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-peridotite": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-flint": { "base": "rocksalt:item/snowshovel-stone" },
+    "snowshovel-copper": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-tinbronze": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-bismuthbronze": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-blackbronze": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-gold": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-silver": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-iron": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-meteoriciron": { "base": "rocksalt:item/snowshovel-copper" },
+    "snowshovel-steel": { "base": "rocksalt:item/snowshovel-wood-metallip" }
+  },
+  "heldTpIdleAnimation": "shovelidle",
+  "heldRightReadyAnimation": "shovelready",
+  "heldTpHitAnimation": "shoveldig",
+  "heldTpUseAnimation": "interactStaticLong",
+  "texturesByType": {
+    "snowshovel-flint": {
+      "material": { "base": "game:item/tool/material/{material}" }
+    },
+    "snowshovel-chert": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "snowshovel-granite": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "snowshovel-andesite": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "snowshovel-basalt": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "snowshovel-obsidian": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "snowshovel-peridotite": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "*": {
+      "material": { "base": "game:block/metal/ingot/{material}" }
+    }
+  },
+  "miningspeedbytype": {
+    "snowshovel-chert": {
+      "snow": 0.8
+    },
+    "snowshovel-granite": {
+      "snow": 0.8
+    },
+    "snowshovel-peridotite": {
+      "snow": 0.8
+    },
+    "snowshovel-andesite": {
+      "snow": 0.8
+    },
+    "snowshovel-basalt": {
+      "snow": 0.8
+    },
+    "snowshovel-obsidian": {
+      "snow": 0.8
+    },
+    "snowshovel-flint": {
+      "snow": 0.8
+    },
+    "snowshovel-copper": {
+      "snow": 2
+    },
+    "snowshovel-bismuthbronze": {
+      "snow": 2
+    },
+    "snowshovel-tinbronze": {
+      "snow": 2
+    },
+    "snowshovel-gold": {
+      "snow": 2
+    },
+    "snowshovel-silver": {
+      "snow": 2
+    },
+    "snowshovel-blackbronze": {
+      "snow": 2
+    },
+    "snowshovel-iron": {
+      "snow": 4
+    },
+    "snowshovel-meteoriciron": {
+      "snow": 4.2
+    },
+    "snowshovel-steel": {
+      "snow": 4.4
+    }
+  },
+  "attackpowerbytype": {
+    "snowshovel-chert": 0.75,
+    "snowshovel-granite": 0.75,
+    "snowshovel-andesite": 0.75,
+    "snowshovel-peridotite": 0.75,
+    "snowshovel-basalt": 0.75,
+    "snowshovel-obsidian": 1.25,
+
+    "snowshovel-flint": 1,
+    "snowshovel-copper": 1.25,
+    "snowshovel-gold": 1.5,
+    "snowshovel-silver": 1.5,
+    "snowshovel-bismuthbronze": 1.5,
+    "snowshovel-tinbronze": 1.75,
+    "snowshovel-blackbronze": 2,
+    "snowshovel-iron": 2.25,
+    "snowshovel-meteoriciron": 2.35,
+    "snowshovel-steel": 2.5
+  },
+  "durabilitybytype": {
+    "snowshovel-chert": 60,
+    "snowshovel-granite": 60,
+    "snowshovel-peridotite": 60,
+    "snowshovel-andesite": 60,
+    "snowshovel-basalt": 60,
+    "snowshovel-flint": 90,
+    "snowshovel-obsidian": 100,
+
+    "snowshovel-gold": 200,
+    "snowshovel-silver": 200,
+    "snowshovel-copper": 400,
+    "snowshovel-tinbronze": 600,
+    "snowshovel-bismuthbronze": 650,
+    "snowshovel-blackbronze": 700,
+    "snowshovel-iron": 1200,
+    "snowshovel-meteoriciron": 1400,
+    "snowshovel-steel": 3000
+  },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "tools": [ "*" ]
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0.046875,
+      "y": -0.2,
+      "z": 0
+    },
+    "rotation": {
+      "x": -15,
+      "y": 15,
+      "z": 100
+    },
+    "scale": 2
+  },
+  "guiTransformByType": {
+    "@snowshovel-(copper|tinbronze|bismuthbronze|blackbronze|gold|silver|iron|meteoriciron|steel)": {
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": -113,
+        "y": -147,
+        "z": 139
+      },
+      "origin": {
+        "x": 0.2,
+        "y": 0.7,
+        "z": 0.8
+      }
+    },
+    "*": {
+      "translation": {
+        "x": 7,
+        "y": 0,
+        "z": 1
+      },
+      "rotation": {
+        "x": -112,
+        "y": -147,
+        "z": 139
+      },
+      "origin": {
+        "x": 0.3,
+        "y": 0.7,
+        "z": 0.7
+      },
+      "scale": 1.18
+    }
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 3.6
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1.69,
+      "y": -0.29,
+      "z": -0.6
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": -10
+    },
+    "scale": 0.8
+  }
+}
