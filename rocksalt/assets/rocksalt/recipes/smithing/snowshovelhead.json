@@ -1,0 +1,37 @@
+[
+  {
+    "ingredient": {
+      "type": "item",
+      "code": "game:ingot-*",
+      "name": "metal",
+      "allowedVariants": [ "copper", "tinbronze", "bismuthbronze", "blackbronze", "silver", "gold", "iron", "meteoriciron", "steel" ]
+    },
+    "pattern": [
+      [
+        "########",
+        "########",
+        "########",
+        "########",
+        "########",
+        "########",
+        "########",
+        "########"
+      ],
+      [
+        "________",
+        "________",
+        "#_______",
+        "##______",
+        "##______",
+        "#_______",
+        "________",
+        "________"
+      ]
+    ],
+    "name": "Shovel",
+    "output": {
+      "type": "item",
+      "code": "rocksalt:snowshovelhead-{metal}"
+    }
+  }
+]

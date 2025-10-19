@@ -1,24 +1,42 @@
 [
-{
-  "ingredientPattern": "HA",
-  "ingredients": {
-    "H": {
-      "type": "item",
-      "code": "game:hammer-*",
-      "isTool": true
+  {
+    "ingredientPattern": "HA",
+    "ingredients": {
+      "H": {
+        "type": "item",
+        "code": "game:hammer-*",
+        "isTool": true
+      },
+      "A": {
+        "type": "item",
+        "code": "game:stone-halite"
+      }
     },
-    "A": {
+    "shapeless": true,
+    "width": 2,
+    "height": 1,
+    "output": {
       "type": "item",
-      "code": "game:stone-halite"
+      "code": "rocksalt:rocksalt",
+      "quantity": 2
     }
   },
-  "shapeless": true,
-  "width": 2,
-  "height": 1,
-  "output": {
-    "type": "item",
-    "code": "rocksalt:rocksalt",
-    "quantity": 2
+  {
+    "ingredientPattern": "S",
+    "ingredients": {
+      "S": {
+        "type": "item",
+        "code": "rocksalt:rocksaltsack",
+        "returnedStack": { "type": "item", "code": "game:linensack" }
+      }
+    },
+    "shapeless": true,
+    "width": 1,
+    "height": 1,
+    "output": {
+      "type": "item",
+      "code": "rocksalt:rocksalt",
+      "quantity": 64
+    }
   }
-}
 ]

@@ -1,0 +1,153 @@
+{
+  "code": "snowshovelhead",
+  "variantgroups": [
+    {
+      "code": "material",
+      "states": [ "copper", "tinbronze", "bismuthbronze", "blackbronze", "gold", "silver", "iron", "meteoriciron", "steel" ]
+    }
+  ],
+  "heldTpUseAnimation": "interactstatic",
+  "maxstacksize": 4,
+  "shapeByType": {
+    "*": { "base": "rocksalt:item/snowshovel-copper-head" }
+  },
+  "texturesByType": {
+    "@snowshovelhead-(flint|chert|granite|andesite|basalt|obsidian|peridotite)": {
+      "material": { "base": "game:block/stone/rock/{material}1" }
+    },
+    "*": {
+      "material": { "base": "game:block/metal/ingot/{material}" }
+    }
+  },
+  "attributes": {
+    "onTongTransform": {
+      "translation": {
+        "x": -0.55,
+        "y": -0.56,
+        "z": -0.55
+      },
+      "rotation": {
+        "x": -86,
+        "y": -16,
+        "z": 85
+      }
+    }
+  },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ]
+  },
+  "fpHandTransformByType": {
+    "@snowshovelhead-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|gold|silver|steel)": {
+      "translation": {
+        "x": -0.25,
+        "y": -0.1,
+        "z": 0
+      },
+      "rotation": {
+        "x": 3,
+        "y": 15,
+        "z": 90
+      },
+      "scale": 2.5
+    },
+    "*": {
+      "translation": {
+        "x": -0.04,
+        "y": -0.9,
+        "z": 0
+      },
+      "rotation": {
+        "x": 3,
+        "y": 15,
+        "z": 90
+      },
+      "scale": 2.5
+    }
+  },
+  "guiTransformByType": {
+    "@snowshovelhead-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|gold|silver|steel)": {
+      "rotate": false,
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": 4
+      },
+      "rotation": {
+        "x": 141,
+        "y": 33,
+        "z": -38
+      },
+      "origin": {
+        "x": 0.52,
+        "y": 0.29,
+        "z": 0.3
+      },
+      "scale": 2.24
+    },
+    "*": {
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": 120
+      },
+      "rotation": {
+        "x": -45,
+        "y": -134,
+        "z": -180
+      },
+      "origin": {
+        "x": 0.87,
+        "y": 0.55,
+        "z": 0.2
+      },
+      "scale": 3
+    }
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0.33,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.8,
+      "y": 0.47,
+      "z": 0.5
+    },
+    "scale": 3.6
+  },
+  "tpHandTransformByType": {
+    "@snowshovelhead-(copper|tinbronze|bismuthbronze|blackbronze|iron|meteoriciron|gold|silver)": {
+      "translation": {
+        "x": -0.7,
+        "y": -0.6,
+        "z": -0.1
+      },
+      "rotation": {
+        "x": 90,
+        "y": 20,
+        "z": 0
+      },
+      "scale": 0.85
+    },
+    "*": {
+      "translation": {
+        "x": 0,
+        "y": -0.4,
+        "z": -0.1
+      },
+      "rotation": {
+        "x": 90,
+        "y": 20,
+        "z": 0
+      },
+      "scale": 0.85
+    }
+  }
+}

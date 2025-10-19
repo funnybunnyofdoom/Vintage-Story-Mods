@@ -1,3 +1,30 @@
 {
-  "rocksalt:item-rocksalt": "Rock Salt"
+  "rocksalt:item-rocksalt": "Rock Salt",
+  "rocksalt:item-rocksaltsack": "Sack of Rock Salt",
+  "rocksalt:block-rocksaltblock": "Rock Salt",
+
+  //Snow Shovel Heads
+
+  "rocksalt:item-snowshovelhead-copper": "Copper snow shovel head",
+  "rocksalt:item-snowshovelhead-tinbronze": "Tin Bronze snow shovel head",
+  "rocksalt:item-snowshovelhead-bismuthbronze": "Bismuth Bronze snow shovel head",
+  "rocksalt:item-snowshovelhead-blackbronze": "Black Bronze snow shovel head",
+  "rocksalt:item-snowshovelhead-gold": "Gold snow shovel head",
+  "rocksalt:item-snowshovelhead-silver": "Silver snow shovel head",
+  "rocksalt:item-snowshovelhead-iron": "Iron snow shovel head",
+  "rocksalt:item-snowshovelhead-meteoriciron": "Meteoric Iron snow shovel head",
+  "rocksalt:item-snowshovelhead-steel": "Steel snow shovel head",
+
+  //Snow Shovels
+
+  "rocksalt:item-snowshovel-copper": "Copper snow shovel",
+  "rocksalt:item-snowshovel-tinbronze": "Tin Bronze snow shovel",
+  "rocksalt:item-snowshovel-bismuthbronze": "Bismuth Bronze snow shovel",
+  "rocksalt:item-snowshovel-blackbronze": "Black Bronze snow shovel",
+  "rocksalt:item-snowshovel-gold": "Gold snow shovel",
+  "rocksalt:item-snowshovel-silver": "Silver snow shovel",
+  "rocksalt:item-snowshovel-iron": "Iron snow shovel",
+  "rocksalt:item-snowshovel-meteoriciron": "Meteoric Iron snow shovel",
+  "rocksalt:item-snowshovel-steel": "Steel snow shovel"
+
 }

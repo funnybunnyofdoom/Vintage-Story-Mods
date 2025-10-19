@@ -75,13 +75,6 @@
     {
       "code": "material",
       "states": [
-        "chert",
-        "granite",
-        "andesite",
-        "basalt",
-        "obsidian",
-        "peridotite",
-        "flint",
         "copper",
         "tinbronze",
         "bismuthbronze",
